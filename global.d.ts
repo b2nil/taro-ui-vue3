@@ -1,3 +1,5 @@
+import * as CSS from 'csstype'
+
 declare module '*.png';
 declare module '*.gif';
 declare module '*.jpg';
@@ -16,3 +18,5 @@ declare const process: {
     [key: string]: any;
   }
 }
+
+export type CSSProperties = CSS.Properties<string | number>
