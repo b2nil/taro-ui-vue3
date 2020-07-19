@@ -1,4 +1,4 @@
-import { h, defineComponent, ref, reactive, watch} from 'vue'
+import { h, defineComponent, reactive, watch} from 'vue'
 import classNames from 'classnames'
 import { Text, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
@@ -64,25 +64,15 @@ const AtAccordion = defineComponent({
         })
 
         return () => {
-            const { 
-                customStyle,
-                className,
-                title,
-                icon,
-                hasBorder,
-                open,
-                note,
-             } = props
-
-             const rootClass = classNames('at-accordion', className)
-             const prefixClass = (icon && icon.prefixClass) || 'at-icon'
+             const rootClass = classNames('at-accordion', props.className)
+             const prefixClass = (props.icon && props.icon.prefixClass) || 'at-icon'
              const iconClass = classNames({
                  [prefixClass]: true,
-                 [`${prefixClass}-${icon && icon.value}`]: icon && icon.value,
+                 [`${prefixClass}-${props.icon && props.icon.value}`]: props.icon && props.icon.value,
                  'at-accordion__icon': true
              })
              const headerClass = classNames('at-accordion__header', {
-                'at-accordion__header--noborder': !hasBorder
+                'at-accordion__header--noborder': !props.hasBorder
              })
              const arrowClass = classNames('at-accordion__arrow', {
                  'at-accordion__arrow--folded': !!open
@@ -91,8 +81,8 @@ const AtAccordion = defineComponent({
                  'at-accordion__content--inactive': (!open && state.isCompleted) || state.startOpen
              })
              const iconStyle = {
-                 color: (icon && icon.color) || '',
-                 fontSize: (icon && `${icon.size}px`) || ''
+                 color: (props.icon && props.icon.color) || '',
+                 fontSize: (props.icon && `${props.icon.size}px`) || ''
              }
              const contentStyle = {
                  height: `${state.wrapperHeight}px`
@@ -102,12 +92,12 @@ const AtAccordion = defineComponent({
                  contentStyle.height = ''
              }
 
-            return h(View, { class: rootClass, style: customStyle }, [
+            return h(View, { class: rootClass, style: props.customStyle }, [
                 h(View, { class: headerClass, onTap: handleClick}, [
-                    icon && icon.value && h(Text, { class: iconClass, style: iconStyle }),
+                    props.icon && props.icon.value && h(Text, { class: iconClass, style: iconStyle }),
                     h(View, { class: 'at-accordion__info' }, [
-                        h(View, { class: 'at-accordion__info__title' }, title), 
-                        h(View, { class: 'at-accordion__info__note' }, note)
+                        h(View, { class: 'at-accordion__info__title' }, props.title), 
+                        h(View, { class: 'at-accordion__info__note' }, props.note)
                     ]),
                     h(View, { class: arrowClass }, [
                         h(Text, { class: classNames('at-icon', 'at-icon-chevron-down') })

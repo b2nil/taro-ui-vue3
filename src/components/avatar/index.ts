@@ -26,27 +26,26 @@ const AtAvatar = defineComponent({
 
     setup(props) {
         const { isWEAPP } = getEnvs()
-        const { size, circle, image, text, openData, customStyle, className } = props
         const rootClassName = ['at-avatar']
-        const iconSize = SIZE_CLASS[size || 'normal']
+        const iconSize = SIZE_CLASS[props.size || 'normal']
         
         const classObject = {
             [`at-avatar--${iconSize}`]: iconSize,
-            'at-avatar--circle': circle
+            'at-avatar--circle': props.circle
         }
 
-        let letter = text ? text[0] : ''
+        let letter = props.text ? props.text[0] : ''
         // if (text) letter = text[0]
         
-        const elem = openData && openData.type === 'userAvatarUrl' && isWEAPP
-            ? h(OpenData, { type: openData.type })
-            : image
-                ? h(Image, { class: 'at-avatar__img', src: image })
+        const elem = props.openData && props.openData.type === 'userAvatarUrl' && isWEAPP
+            ? h(OpenData, { type: props.openData.type })
+            : props.image
+                ? h(Image, { class: 'at-avatar__img', src: props.image })
                 : h(Text, { class: 'at-avatar__text'}, letter)
 
         return () => h(View, {
-            class: classNames(rootClassName, classObject, className),
-            style: customStyle
+            class: classNames(rootClassName, classObject, props.className),
+            style: props.customStyle
         }, [ elem ])
     }
 })

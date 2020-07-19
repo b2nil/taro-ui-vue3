@@ -11,9 +11,7 @@ const AtFab = defineComponent({
             validator: (prop: string) => ['normal', 'small'].includes(prop)
         },
         onClick: { type: Function, default: () => {} }
-    },
-
-    
+    },    
 
     setup(props, { attrs, slots }) {
 
@@ -31,7 +29,7 @@ const AtFab = defineComponent({
 
         return () => h(View, {
             class: rootClass,
-            onClick: onClick,
+            onTap: onClick,
         }, slots.default && slots.default())
     }
 })

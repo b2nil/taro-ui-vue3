@@ -9,17 +9,16 @@ const AtLoading = defineComponent({
     },
 
     setup(props){
-        const { color, size } = props
-        const loadingSize = typeof size === 'string' ? size : String(size)
+        const loadingSize = typeof props.size === 'string' ? props.size : String(props.size)
 
         const sizeStyle = {
-            width: size ? `${ pxTransform(parseInt(loadingSize)) }` : '',
-            height: size ? `${ pxTransform(parseInt(loadingSize)) }` : '',
+            width: props.size ? `${ pxTransform(parseInt(loadingSize)) }` : '',
+            height: props.size ? `${ pxTransform(parseInt(loadingSize)) }` : '',
         }
 
         const colorStyle = {
-            border: color ? `1px solid ${color}` : '',
-            'border-color': color ? `${color} transparent transparent transparent` : '',
+            border: props.color ? `1px solid ${props.color}` : '',
+            'border-color': props.color ? `${props.color} transparent transparent transparent` : '',
         }
 
         const ringStyle = Object.assign({}, colorStyle, sizeStyle)
