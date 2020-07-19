@@ -75,10 +75,10 @@ const AtAccordion = defineComponent({
                 'at-accordion__header--noborder': !props.hasBorder
              })
              const arrowClass = classNames('at-accordion__arrow', {
-                 'at-accordion__arrow--folded': !!open
+                 'at-accordion__arrow--folded': !!props.open
              })
              const contentClass = classNames('at-accordion__content', {
-                 'at-accordion__content--inactive': (!open && state.isCompleted) || state.startOpen
+                 'at-accordion__content--inactive': (!props.open && state.isCompleted) || state.startOpen
              })
              const iconStyle = {
                  color: (props.icon && props.icon.color) || '',
