@@ -13,9 +13,18 @@
     </view>
     <view class="wrapper">
       <at-accordion title="基础用法" note="这是一个测试" :open="isOpen" @tap="onClick" hasBorder>
-        <view class="acc">This is a test</view>
-        <view class="acc">This is a another test</view>
-        <text class="acc">This is a real text</text>
+        <at-list>
+          <at-list-item
+            title="标题文字"
+            thumb="https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png"
+          />
+          <at-list-item
+            hasBorder
+            title="标题文字"
+            note="描述信息，这里是对标题进行补充的地方"
+            thumb="http://img12.360buyimg.com/jdphoto/s72x72_jfs/t10660/330/203667368/1672/801735d7/59c85643N31e68303.png"
+          />
+        </at-list>
       </at-accordion>
     </view>
   </view>
@@ -30,6 +39,8 @@ import AtLoading from '../../components/loading'
 import AtFab from '../../components/fab'
 import AtAvatar from '../../components/avatar'
 import AtAccordion from '../../components/accordion'
+import AtList from '../../components/list'
+import AtListItem from '../../components/list/item'
 
 export default {
   components: {
@@ -37,7 +48,9 @@ export default {
     AtLoading,
     AtFab,
     AtAvatar,
-    AtAccordion
+    AtAccordion,
+    AtList,
+    AtListItem
   },
   setup() {
     const msg = ref('Hello world')
