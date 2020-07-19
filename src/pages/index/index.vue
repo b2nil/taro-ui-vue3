@@ -11,6 +11,13 @@
       <at-avatar class="avartar" size="large" text="A" circle></at-avatar>
       <at-avatar class="avartar" size="large" :image="imgSrc" circle></at-avatar>
     </view>
+    <view class="wrapper">
+      <at-accordion title="基础用法" note="这是一个测试" :open="isOpen" @tap="onClick" hasBorder>
+        <view class="acc">This is a test</view>
+        <view class="acc">This is a another test</view>
+        <text class="acc">This is a real text</text>
+      </at-accordion>
+    </view>
   </view>
 </template>
 
@@ -22,21 +29,27 @@ import AtButton from '../../components/button'
 import AtLoading from '../../components/loading'
 import AtFab from '../../components/fab'
 import AtAvatar from '../../components/avatar'
+import AtAccordion from '../../components/accordion'
 
 export default {
   components: {
     AtButton,
     AtLoading,
     AtFab,
-    AtAvatar
+    AtAvatar,
+    AtAccordion
   },
   setup() {
     const msg = ref('Hello world')
     const imgSrc = ref('https://avatars1.githubusercontent.com/u/16893585?s=460&u=d96ed6c4dc00f6fba5c2f42cf7595df693e6f1db&v=4')
     // const avatarStyle = computed(() => {})
+    const isOpen = ref(false)
 
     function handleClick() {
       console.log('msg: ', msg.value)
+    }
+    function onClick() {
+      isOpen.value = !isOpen.value
     }
     function onShareAppMessage(res) {
       if (res.from == 'button') {
@@ -50,7 +63,9 @@ export default {
     return {
       msg,
       imgSrc,
-      handleClick
+      isOpen,
+      handleClick,
+      onClick
     }
   }
 }
@@ -74,5 +89,9 @@ export default {
       text-align: center !important;
     }
   }
+}
+.acc {
+  color: black;
+  background-color: cadetblue;
 }
 </style>

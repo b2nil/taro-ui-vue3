@@ -1,4 +1,4 @@
-import Taro from '@tarojs/taro'
+import Taro, { SelectorQuery } from '@tarojs/taro'
 
 const { getEnv, ENV_TYPE } = Taro
 const ENV = Taro.getEnv()
@@ -32,9 +32,37 @@ function pxTransform(size: number): string {
     return `${size / deviceRatio[designWidth]}rpx`
 }
 
+function delay(delayTime = 500): Promise<null> {
+    return new Promise((resolve) => {
+        if ([Taro.ENV_TYPE.WEB, Taro.ENV_TYPE.SWAN].includes(ENV)) {
+            setTimeout(() => {
+                resolve()
+            }, delayTime)
+            return
+        }
+        resolve()
+    })
+}
+
+function delayQuerySelector(_, selectorStr: string, delayTime = 500): Promise<[]> {
+    false && console.log(_)
+    const selector: SelectorQuery = Taro.createSelectorQuery()
+
+    return new Promise((resolve) => {
+        delay(delayTime).then(() => {
+            selector
+                .select(selectorStr)
+                .boundingClientRect()
+                .exec((res: []) => {
+                    resolve(res)
+                })
+        })
+    })
+}
 
 
 export { 
     pxTransform,
     getEnvs,
+    delayQuerySelector,
 }
