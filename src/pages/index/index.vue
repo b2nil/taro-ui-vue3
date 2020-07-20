@@ -12,7 +12,7 @@
       <at-avatar class="avartar" size="large" :image="imgSrc" circle></at-avatar>
     </view>
     <view class="wrapper">
-      <at-accordion title="基础用法" note="这是一个测试" :open="isOpen" @tap="onClick" hasBorder>
+      <at-accordion title="基础用法" note="这是一个测试" :open="isOpen" @tap="handleAccordionClick" hasBorder>
         <at-list>
           <at-list-item
             title="标题文字"
@@ -27,11 +27,20 @@
         </at-list>
       </at-accordion>
     </view>
+    <view class="wrapper">
+      <at-button @tap="handleActionSheetClick">打开 ActionSheet</at-button>
+    </view>
+    <at-action-sheet cancelText="取消" :isOpened="isOpened" @close="handleActionSheetClose">
+      <at-action-sheet-item @tap="showToast('点击了按钮一')">按钮一</at-action-sheet-item>
+      <at-action-sheet-item @tap="showToast('点击了按钮二')">按钮二</at-action-sheet-item>
+      <at-action-sheet-item @tap="showToast('点击了按钮三')">按钮三</at-action-sheet-item>
+    </at-action-sheet>
   </view>
 </template>
 
 <script>
 import { ref, computed } from 'vue'
+import Taro from '@tarojs/taro'
 import './index.scss'
 
 import AtButton from '../../components/button'
@@ -41,6 +50,8 @@ import AtAvatar from '../../components/avatar'
 import AtAccordion from '../../components/accordion'
 import AtList from '../../components/list'
 import AtListItem from '../../components/list/item'
+import AtActionSheet from '../../components/action-sheet/index'
+import AtActionSheetItem from '../../components/action-sheet/body/item/index'
 
 export default {
   components: {
@@ -50,19 +61,37 @@ export default {
     AtAvatar,
     AtAccordion,
     AtList,
-    AtListItem
+    AtListItem,
+    AtActionSheet,
+    AtActionSheetItem
   },
   setup() {
     const msg = ref('Hello world')
     const imgSrc = ref('https://avatars1.githubusercontent.com/u/16893585?s=460&u=d96ed6c4dc00f6fba5c2f42cf7595df693e6f1db&v=4')
     // const avatarStyle = computed(() => {})
     const isOpen = ref(false)
+    const isOpened = ref(false)
 
     function handleClick() {
       console.log('msg: ', msg.value)
     }
-    function onClick() {
+    function handleAccordionClick() {
       isOpen.value = !isOpen.value
+    }
+    function handleActionSheetClick() {
+      isOpened.value = true
+    }
+    function handleActionSheetClose() {
+      isOpened.value = false
+    }
+    function handleActionSheetCancel() {
+      showToast('点击了取消按钮')
+    }
+    function showToast(name) {
+      Taro.showToast({
+        icon: 'none',
+        title: name
+      })
     }
     function onShareAppMessage(res) {
       if (res.from == 'button') {
@@ -77,8 +106,13 @@ export default {
       msg,
       imgSrc,
       isOpen,
+      isOpened,
       handleClick,
-      onClick
+      handleAccordionClick,
+      handleActionSheetClick,
+      handleActionSheetClose,
+      handleActionSheetCancel,
+      showToast
     }
   }
 }
@@ -102,9 +136,5 @@ export default {
       text-align: center !important;
     }
   }
-}
-.acc {
-  color: black;
-  background-color: cadetblue;
 }
 </style>
