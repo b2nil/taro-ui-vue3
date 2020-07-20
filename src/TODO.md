@@ -1,0 +1,66 @@
+# TODOs
+- [x] accordion
+- [x] action-sheet
+   - [x]  body
+      - [x]  item
+   - [x]  footer
+   - [x]  header
+- [x]  activity-indicator
+- [x]  avatar
+- []  badge
+- [x]  button
+- []  calendar
+   - []  body
+   - []  common
+   - []  controller
+   - []  ui
+       - []  date-list
+       - []  day-list
+- []  card
+- []  checkbox
+- []  countdown
+   - []  item
+- []  curtain
+- []  divider
+- []  drawer
+- []  fab
+- []  flex
+   - []  item
+- []  float-layout
+- []  form
+- []  grid
+- []  icon
+- []  image-picker
+- []  indexes
+- []  input
+- []  input-number
+- [x]  list
+   - [x]  item
+- []  load-more
+- [x]  loading
+- []  message
+- []  modal
+   - []  action
+   - []  content
+   - []  header
+- []  nav-bar
+- []  noticebar
+- []  pagination
+- []  progress
+- []  radio
+- []  range
+- []  rate
+- []  search-bar
+- []  segmented-control
+- []  slider
+- []  steps
+- []  swipe-action
+   - []  options
+- []  switch
+- []  tab-bar
+- []  tabs
+- []  tabs-pane
+- []  tag
+- []  textarea
+- []  timeline
+- []  toast
