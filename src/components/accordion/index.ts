@@ -4,6 +4,9 @@ import { Text, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { delayQuerySelector } from '../../utils/common'
 
+import '../../style/components/accordion.scss'
+import '../../style/components/icon.scss'
+
 const AtAccordion = defineComponent({
     props: {
         open: { type: Boolean, default: false },
@@ -52,7 +55,7 @@ const AtAccordion = defineComponent({
                 setTimeout(() => {
                     state.isCompleted = true
                     state.wrapperHeight = 0
-                }, 100)
+                }, 300)
             })
         }
 

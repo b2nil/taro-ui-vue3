@@ -3,6 +3,8 @@ import { View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import classNames from 'classnames'
 
+import '../../style/components/fab.scss'
+
 const AtFab = defineComponent({
     props: {
         size: {
@@ -10,14 +12,13 @@ const AtFab = defineComponent({
             default: 'normal',
             validator: (prop: string) => ['normal', 'small'].includes(prop)
         },
+        className: { type: Array || String, default: '' },
         onClick: { type: Function, default: () => {} }
     },    
 
-    setup(props, { attrs, slots }) {
+    setup(props, { slots }) {
 
-        // TODO: className under props or attrs
-        // TODO: Use mergeProps instead of classNames
-        const rootClass = classNames('at-fab', attrs.className, {
+        const rootClass = classNames('at-fab', props.className, {
             [`at-fab--${props.size}`]: props.size
         })
 

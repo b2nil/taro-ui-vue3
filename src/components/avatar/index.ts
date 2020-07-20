@@ -3,6 +3,8 @@ import { Image, OpenData, Text, View } from "@tarojs/components"
 import { getEnvs } from '../../utils/common'
 import classNames from 'classnames'
 
+import '../../style/components/avatar.scss'
+
 const SIZE_CLASS = {
     large: 'large',
     normal: 'normal',

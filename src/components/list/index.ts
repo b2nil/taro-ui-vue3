@@ -2,6 +2,8 @@ import { h, defineComponent } from 'vue'
 import { View } from '@tarojs/components'
 import classNames from 'classnames'
 
+import '../../style/components/list.scss'
+
 const AtList = defineComponent({
     props: {
         hasBorder: { type: Boolean, default: true },

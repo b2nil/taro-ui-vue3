@@ -2,6 +2,8 @@ import { h, defineComponent } from 'vue'
 import { View } from '@tarojs/components'
 import { pxTransform } from '../../utils/common'
 
+import '../../style/components/loading.scss'
+
 const AtLoading = defineComponent({
     props: {
         size: { type: String||Number, default: 0 },

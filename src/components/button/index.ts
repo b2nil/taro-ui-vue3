@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import AtLoading from '../loading/index'
 import { getEnvs } from '../../utils/common'
 
+import '../../style/components/button.scss'
 
 const SIZE_CLASS = {
     normal: 'normal',

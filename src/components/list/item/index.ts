@@ -4,6 +4,8 @@ import { View, Image, Switch } from '@tarojs/components'
 import { CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
 import { mergeStyle } from "../../../utils/common"
 
+import '../../../style/components/list.scss'
+
 const AtListItem = defineComponent({
     props: {
         className: { type: Array || String, default: ''},
