@@ -35,6 +35,11 @@
       <at-action-sheet-item @tap="showToast('点击了按钮二')">按钮二</at-action-sheet-item>
       <at-action-sheet-item @tap="showToast('点击了按钮三')">按钮三</at-action-sheet-item>
     </at-action-sheet>
+    <view class="wrapper">
+      <at-activity-indicator size="80" color="teal" content="加载中..." />
+      <at-activity-indicator size="60" color="red" content="加载中..." />
+      <at-activity-indicator size="40" color="blue" content="加载中..." />
+    </view>
   </view>
 </template>
 
@@ -52,6 +57,7 @@ import AtList from '../../components/list'
 import AtListItem from '../../components/list/item'
 import AtActionSheet from '../../components/action-sheet/index'
 import AtActionSheetItem from '../../components/action-sheet/body/item/index'
+import AtActivityIndicator from '../../components/activity-indicator/index'
 
 export default {
   components: {
@@ -63,7 +69,8 @@ export default {
     AtList,
     AtListItem,
     AtActionSheet,
-    AtActionSheetItem
+    AtActionSheetItem,
+    AtActivityIndicator
   },
   setup() {
     const msg = ref('Hello world')
