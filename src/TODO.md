@@ -7,7 +7,7 @@
    - [x]  header
 - [x]  activity-indicator
 - [x]  avatar
-- []  badge
+- [x]  badge
 - [x]  button
 - []  calendar
    - []  body
@@ -23,7 +23,7 @@
 - []  curtain
 - []  divider
 - []  drawer
-- []  fab
+- [x]  fab
 - []  flex
    - []  item
 - []  float-layout

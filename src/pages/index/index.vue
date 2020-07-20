@@ -40,6 +40,26 @@
       <at-activity-indicator size="60" color="red" content="加载中..." />
       <at-activity-indicator size="40" color="blue" content="加载中..." />
     </view>
+    <view class="wrapper">
+      <at-badge value="10" maxValue="99">
+        <at-button size="small">按钮</at-button>
+      </at-badge>
+      <at-badge value="100" :maxValue="99">
+        <at-button size="small">按钮</at-button>
+      </at-badge>
+      <at-badge dot>
+        <at-button size="small" circle>按钮</at-button>
+      </at-badge>
+      <at-badge dot>
+        <at-button size="small">按钮</at-button>
+      </at-badge>
+      <at-badge value="NEW">
+        <at-button size="small">按钮</at-button>
+      </at-badge>
+      <at-badge value="NEW">
+        <at-button size="small" circle>按钮</at-button>
+      </at-badge>
+    </view>
   </view>
 </template>
 
@@ -58,6 +78,7 @@ import AtListItem from '../../components/list/item'
 import AtActionSheet from '../../components/action-sheet/index'
 import AtActionSheetItem from '../../components/action-sheet/body/item/index'
 import AtActivityIndicator from '../../components/activity-indicator/index'
+import AtBadge from '../../components/badge/index'
 
 export default {
   components: {
@@ -70,7 +91,8 @@ export default {
     AtListItem,
     AtActionSheet,
     AtActionSheetItem,
-    AtActivityIndicator
+    AtActivityIndicator,
+    AtBadge
   },
   setup() {
     const msg = ref('Hello world')
