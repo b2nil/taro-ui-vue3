@@ -232,7 +232,17 @@ const VuePropTypes = {
   },
 };
 
-const typeDefaults = () => ({
+interface Defaults {
+  func?: undefined,
+  bool?: undefined,
+  string?: undefined,
+  number?: undefined,
+  array?: undefined,
+  object?: undefined,
+  integer?: undefined,
+}
+
+const typeDefaults = (): Defaults => ({
   func: undefined,
   bool: undefined,
   string: undefined,
@@ -242,7 +252,7 @@ const typeDefaults = () => ({
   integer: undefined,
 });
 
-let currentDefaults = typeDefaults();
+let currentDefaults: Defaults = typeDefaults();
 
 Object.defineProperty(VuePropTypes, 'sensibleDefaults', {
   enumerable: false,

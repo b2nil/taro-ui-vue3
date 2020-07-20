@@ -22,7 +22,7 @@ export const getNativeType = value => {
 /**
  * No-op function
  */
-export const noop = () => {};
+export const noop = (...msg) => {};
 
 /**
  * Checks for a own property in an object
@@ -190,7 +190,7 @@ let warn = noop;
 
 if (process.env.NODE_ENV !== 'production') {
   const hasConsole = typeof console !== 'undefined';
-  warn = msg => {
+  warn = (...msg: any[]) => {
     if (hasConsole) {
       console.warn(`[VueTypes warn]: ${msg}`);
     }
