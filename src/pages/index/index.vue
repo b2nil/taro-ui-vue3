@@ -1,9 +1,6 @@
 <template>
   <view class="index">
-    <at-button type="primary" @tap="handleClick" loading> 主操作: {{ msg }} </at-button>
-    <at-button type="secondary" @tap="handleClick" loading> 次操作 </at-button>
-    <at-button type="primary" disabled> 不可操作 </at-button>
-    <at-button @tap="handleClick" loading> 默认操作 </at-button>
+    <at-button type="primary" @tap="handleClick"> 跳转至日历显示页 </at-button>
     <at-button type="primary" openType="share"> 分享 </at-button>
     <view class="wrapper">
       <at-fab class="avartar">at-fat</at-fab>
@@ -102,7 +99,7 @@ export default {
     const isOpened = ref(false)
 
     function handleClick() {
-      console.log('msg: ', msg.value)
+      Taro.navigateTo({ url: '/pages/calendar/index' })
     }
     function handleAccordionClick() {
       isOpen.value = !isOpen.value
