@@ -1,3 +1,5 @@
+const path = require('path')
+
 const config = {
   projectName: 'taro-ui-vue3',
   date: '2020-7-16',
@@ -8,9 +10,14 @@ const config = {
     828: 1.81 / 2
   },
   sourceRoot: 'src',
-  outputRoot: 'dist',
+  outputRoot: `dist/${process.env.TARO_ENV}`,
   plugins: [],
   defineConstants: {
+  },
+  alias: {
+    '@/components': path.resolve(__dirname, '..', 'src/components'),
+    '@/utils': path.resolve(__dirname, '..', 'src/utils'),
+    '@/style': path.resolve(__dirname, '..', 'src/style'),
   },
   copy: {
     patterns: [
