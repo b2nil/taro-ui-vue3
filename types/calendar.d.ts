@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import { BaseEvent } from '@tarojs/components/types/common'
+import { CommonEvent } from '@tarojs/components/types/common'
 
 // #region Calendar
 declare namespace Calendar {
@@ -115,15 +115,15 @@ export interface AtCalendarPropsBase {
 }
 
 export interface AtCalendarSingleSelectedProps extends AtCalendarPropsBase {
-  isMultiSelect?: false
+  isMultiSelect?: boolean
 
-  currentDate?: Calendar.DateArg
+  currentDate?: Calendar.DateArg | Calendar.SelectedDate
 }
 
 export interface AtCalendarMutilSelectedProps extends AtCalendarPropsBase {
-  isMultiSelect?: true
+  isMultiSelect?: boolean
 
-  currentDate?: Calendar.SelectedDate
+  currentDate?: Calendar.DateArg | Calendar.SelectedDate
 }
 
 export type AtCalendarProps =
@@ -178,7 +178,7 @@ export interface AtCalendarControllerProps {
 
   onNextMonth: () => void
 
-  onSelectDate: (e: BaseEvent) => void
+  onSelectDate: (e: CommonEvent) => void
 }
 
 export interface AtCalendarControllerState {}
