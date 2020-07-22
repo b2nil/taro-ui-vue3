@@ -1,21 +1,34 @@
 import { h, defineComponent } from "vue"
 import { Text, View } from "@tarojs/components"
+import { AtActivityIndicatorProps } from "types/activity-indicator";
 import classNames from "classnames"
-import PropTypes from "../../utils/vue-types"
 import AtLoading from "../loading/index"
-import "../../style/components/activity-indicator.scss"
 
 const AtActivityIndicator = defineComponent({
     props: {
-        size: PropTypes.number.def(0),
-        mode: PropTypes.string.def('normal'),
-        color: PropTypes.string.def(''),
-        content: PropTypes.string.def(''),
-        isOpened: PropTypes.bool.def(true),
-        className: PropTypes.oneOfType([PropTypes.array, PropTypes.string]).def('')
+        size: {
+            type: Number,
+            default: 24
+        },
+        mode: {
+            type: String as () => 'center' | 'normal',
+            default: 'normal' as 'center' | 'normal'
+        },
+        color: {
+            type: String,
+            default: '#6190E8'
+        },
+        content: {
+            type: String,
+            default: ''
+        },
+        isOpened: {
+            type: Boolean,
+            default: true
+        },
     },
 
-    setup(props) {
+    setup(props: AtActivityIndicatorProps) {
 
         return () => {
             const rootClass = classNames(

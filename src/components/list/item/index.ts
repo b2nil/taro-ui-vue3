@@ -1,14 +1,13 @@
 import classNames from 'classnames'
 import { h, defineComponent } from 'vue'
 import { View, Image, Switch } from '@tarojs/components'
-import { CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
+import { CommonEvent, ITouchEvent, CommonEventFunction } from '@tarojs/components/types/common'
+import { AtListItemProps } from "types/list"
+import { AtIconBaseProps } from "types/base"
 import { mergeStyle } from "../../../utils/common"
-
-import '../../../style/components/list.scss'
 
 const AtListItem = defineComponent({
     props: {
-        className: { type: Array || String, default: ''},
         note: { type: String, default: ''},
         title: { type: String, default: ''},
         thumb: { type: String, default: ''},
@@ -19,17 +18,26 @@ const AtListItem = defineComponent({
         isSwitch: { type: Boolean, default: false},
         switchIsCheck: { type: Boolean, default: false},
         hasBorder: { type: Boolean, default: false},
-        iconInfo: { type: Object, default: () => ({value: ''})},
-        onClick: { type: Function, default: () => {}},
-        onSwitchChange: { type: Function, default: () => {}},
+        iconInfo: {
+            type: Object as () => AtIconBaseProps,
+            default: () => ({value: ''} as AtIconBaseProps)
+        },
         arrow: {
-            type: String,
-            default: '',
+            type: String as () => 'up' | 'down' | 'right' | undefined,
+            default: '' as 'up' | 'down' | 'right' | undefined,
             validator: (prop: string) => ['up', 'down', 'right', ''].includes(prop) 
-        }
+        },
+        onClick: { 
+            type: Function as unknown as () => CommonEventFunction, 
+            default: () => () => {}
+        },
+        onSwitchChange: {
+            type: Function as unknown as () => CommonEventFunction, 
+            default: () => () => {}
+        },
     },
 
-    setup(props) {
+    setup(props: AtListItemProps) {
 
         function handleClick(e: ITouchEvent) {
             if (typeof props.onClick === 'function' && !props.disabled) {
@@ -62,11 +70,11 @@ const AtListItem = defineComponent({
             )
 
             const iconClass = classNames(
-                props.iconInfo.prefixClass || 'at-icon',
+                props.iconInfo!.prefixClass || 'at-icon',
                 {
-                    [`${props.iconInfo.prefixClass || 'at-icon'}-${props.iconInfo.value}`]: props.iconInfo.value
+                    [`${props.iconInfo!.prefixClass || 'at-icon'}-${props.iconInfo!.value}`]: props.iconInfo!.value
                 },
-                props.iconInfo.className
+                props.iconInfo!.className
             )
 
             return h(View, { class: rootClass, onTap: handleClick }, [
@@ -74,13 +82,13 @@ const AtListItem = defineComponent({
                     props.thumb && h(View, { class: classNames('at-list__item-thumb', 'item-thumb') }, [
                         h(Image, { class: 'item-thumb__info', mode: 'scaleToFill', src: props.thumb })
                     ]),
-                    props.iconInfo.value && h(View, { class: classNames('at-list__item-icon', 'item-icon') }, [
+                    props.iconInfo!.value && h(View, { class: classNames('at-list__item-icon', 'item-icon') }, [
                         h(View, { 
                             class: iconClass,
                             style: mergeStyle({
-                                color: props.iconInfo.color || '',
-                                fontSize: `${props.iconInfo.size || 24}px`,
-                            }, props.iconInfo.customStyle)
+                                color: props.iconInfo!.color || '',
+                                fontSize: `${props.iconInfo!.size || 24}px`,
+                            }, props.iconInfo!.customStyle!)
                         })
                     ]),
                     h(View, { class: classNames('at-list__item-content', 'item-content')}, [

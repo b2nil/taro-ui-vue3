@@ -20,15 +20,15 @@ const AtCalendar = defineComponent({
     props: {
         // 参数
         currentDate: {
-            type: (Number || String || Date || Object) as () => Calendar.DateArg | Calendar.SelectedDate, 
+            type: [Number, String, Date, Object] as unknown as () => Calendar.DateArg | Calendar.SelectedDate, 
             default: Date.now() as Calendar.DateArg
         },
         minDate: {
-            type: (String || Number || Date) as () => Calendar.DateArg,
+            type: [String, Number, Date] as unknown as () => Calendar.DateArg,
             default: () => '' 
         },       
         maxDate: {
-            type: (String || Number || Date) as () => Calendar.DateArg, 
+            type: [String, Number, Date] as unknown as () => Calendar.DateArg, 
             default: () => '' 
         },
         isSwiper: {
@@ -315,8 +315,8 @@ const AtCalendar = defineComponent({
 
             return h(View, { class: classNames('at-calendar', className)}, [
                 h(AtCalendarController, {
-                    minDate: minDate.value,
-                    maxDate: maxDate.value,
+                    minDate: minDate!.value,
+                    maxDate: maxDate!.value,
                     hideArrow: hideArrow.value,
                     monthFormat: monthFormat.value,
                     generateDate: generateDate,
@@ -328,8 +328,8 @@ const AtCalendar = defineComponent({
                     validDates: validDates.value,
                     marks: marks.value,
                     format: format.value,
-                    minDate: minDate.value,
-                    maxDate: maxDate.value,
+                    minDate: minDate!.value,
+                    maxDate: maxDate!.value,
                     isSwiper: isSwiper.value,
                     isVertical: isVertical.value,
                     selectedDate: selectedDate,

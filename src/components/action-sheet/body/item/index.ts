@@ -1,24 +1,31 @@
 import { h, defineComponent } from "vue"
-import { View } from "@tarojs/components"
+import { View, CommonEvent } from "@tarojs/components"
+import { AtActionSheetItemProps } from "types/action-sheet";
 import classNames from "classnames"
-import '../../../../style/components/action-sheet.scss'
 
 const AtActionSheetItem = defineComponent({
     props: {
-        className: { type: Array || String, default: '' },
-        onClick: { type: Function, default: () => {} },
+        onClick: { 
+            type: Function as unknown as () => (event?: CommonEvent) => void, 
+            default: () => () => {} 
+        },
     },
 
-    setup(props, { slots }) {
+    setup(props: AtActionSheetItemProps, { slots }) {
 
-        function handleClick(e) {
+        function handleClick(e: CommonEvent) {
             props.onClick && props.onClick(e)
         }
 
         return () => {
             const rootClass = classNames('at-action-sheet__item', props.className)
             
-            return h(View, { class: rootClass, onTap: handleClick }, slots.default && slots.default()) 
+            return h(View, { 
+                    class: rootClass,
+                    onTap: handleClick
+                }, 
+                slots.default && slots!.default()
+            )
         }
     }
 })

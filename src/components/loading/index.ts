@@ -2,15 +2,18 @@ import { h, defineComponent } from 'vue'
 import { View } from '@tarojs/components'
 import { pxTransform } from '../../utils/common'
 
-import '../../style/components/loading.scss'
+interface AtLoadingProps {
+    size?: string | number
+    color?: string | number
+}
 
 const AtLoading = defineComponent({
     props: {
-        size: { type: String||Number, default: 0 },
-        color: { type: String||Number, default: '' },
+        size: { type: [String, Number], default: 0 },
+        color: { type: [String, Number], default: '' },
     },
 
-    setup(props){
+    setup(props: AtLoadingProps){
         const loadingSize = typeof props.size === 'string' ? props.size : String(props.size)
 
         const sizeStyle = {
@@ -20,7 +23,10 @@ const AtLoading = defineComponent({
 
         const colorStyle = {
             border: props.color ? `1px solid ${props.color}` : '',
-            'border-color': props.color ? `${props.color} transparent transparent transparent` : '',
+            'border-color': 
+                props.color
+                    ? `${props.color} transparent transparent transparent`
+                    : '',
         }
 
         const ringStyle = Object.assign({}, colorStyle, sizeStyle)

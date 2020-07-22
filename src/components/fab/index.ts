@@ -1,26 +1,23 @@
 import { h, defineComponent } from 'vue'
 import { View } from '@tarojs/components'
-import { CommonEvent } from '@tarojs/components/types/common'
+import { CommonEvent, CommonEventFunction } from '@tarojs/components/types/common'
+import { AtFabProps } from "types/fab";
 import classNames from 'classnames'
-
-import '../../style/components/fab.scss'
 
 const AtFab = defineComponent({
     props: {
         size: {
-            type: String,
-            default: 'normal',
+            type: String as () => 'normal' | 'small',
+            default: () => 'normal' as 'normal' | 'small',
             validator: (prop: string) => ['normal', 'small'].includes(prop)
         },
-        className: { type: Array || String, default: '' },
-        onClick: { type: Function, default: () => {} }
+        onClick: { 
+            type: Function as unknown as () => CommonEventFunction, 
+            default: () => () => {} 
+        }
     },    
 
-    setup(props, { slots }) {
-
-        const rootClass = classNames('at-fab', props.className, {
-            [`at-fab--${props.size}`]: props.size
-        })
+    setup(props: AtFabProps, { slots }) {
 
         function onClick(e: CommonEvent): void {
             if ( typeof props.onClick === 'function') {
@@ -28,10 +25,16 @@ const AtFab = defineComponent({
             }
         }
 
-        return () => h(View, {
-            class: rootClass,
-            onTap: onClick,
-        }, slots.default && slots.default())
+        return () => {
+            const rootClass = classNames('at-fab', props.className, {
+                [`at-fab--${props.size}`]: props.size
+            })
+
+            return h(View, {
+                class: rootClass,
+                onTap: onClick
+            }, slots.default && slots.default())
+        }
     }
 })
 

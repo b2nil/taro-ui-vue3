@@ -1,19 +1,16 @@
 import { h, defineComponent } from "vue"
 import { View } from "@tarojs/components"
+import { AtActionSheetHeaderProps } from "types/action-sheet";
 import classNames from "classnames"
-import "../../../style/components/action-sheet.scss"
 
 const AtActionSheetHeader = defineComponent({
-    props: {
-        className: { type: Array || String, default: '' }
-    },
 
-    setup(props, { slots }) {
+    setup(props: AtActionSheetHeaderProps, { slots }) {
 
         return () => {
             const rootClass = classNames('at-action-sheet__header', props.className)
             
-            return h(View, { class: rootClass }, slots.default && slots.default()) 
+            return h(View, { class: rootClass }, slots.default && slots!.default()) 
         }
     }
 })

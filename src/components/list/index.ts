@@ -1,16 +1,14 @@
 import { h, defineComponent } from 'vue'
 import { View } from '@tarojs/components'
+import { AtListProps } from "types/list";
 import classNames from 'classnames'
-
-import '../../style/components/list.scss'
 
 const AtList = defineComponent({
     props: {
         hasBorder: { type: Boolean, default: true },
-        className: { type: Array || String, default: '' },
     },
 
-    setup(props, { slots }) {
+    setup(props: AtListProps, { slots }) {
         
         const rootClass = classNames(
             'at-list', 

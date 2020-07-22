@@ -5,8 +5,8 @@ import AtComponent from './base'
 
 type TaroButtonProps = Pick<ButtonProps, 'formType' | 'openType' |
   'lang' | 'sessionFrom' | 'sendMessageTitle' | 'sendMessagePath' |
-  'sendMessageImg' | 'showMessageCard' | 'appParameter' | 'onContact' |
-  'onGetUserInfo' | 'onGetPhoneNumber' | 'onOpenSetting' | 'onError'>
+  'sendMessageImg' | 'showMessageCard' | 'appParameter' | 'scope' | 'onContact' |
+  'onGetUserInfo' | 'onGetPhoneNumber' | 'onOpenSetting' | 'onError' | 'onLaunchapp' | 'onGetAuthorize' | 'onGetRealnameAuthInfo'>
 
 export interface AtButtonProps extends AtComponent, TaroButtonProps {
   /**

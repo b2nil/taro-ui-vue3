@@ -33,12 +33,12 @@
       <at-action-sheet-item @tap="showToast('点击了按钮三')">按钮三</at-action-sheet-item>
     </at-action-sheet>
     <view class="wrapper">
-      <at-activity-indicator size="80" color="teal" content="加载中..." />
-      <at-activity-indicator size="60" color="red" content="加载中..." />
-      <at-activity-indicator size="40" color="blue" content="加载中..." />
+      <at-activity-indicator :size="80" color="teal" content="加载中..." />
+      <at-activity-indicator :size="60" color="red" content="加载中..." />
+      <at-activity-indicator :size="40" color="blue" content="加载中..." />
     </view>
     <view class="wrapper">
-      <at-badge value="10" maxValue="99">
+      <at-badge value="10" :maxValue="99">
         <at-button size="small">按钮</at-button>
       </at-badge>
       <at-badge value="100" :maxValue="99">

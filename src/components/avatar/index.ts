@@ -1,9 +1,8 @@
 import { h, defineComponent } from 'vue'
 import { Image, OpenData, Text, View } from "@tarojs/components"
+import { AtAvatarProps } from "types/avatar";
 import { getEnvs } from '../../utils/common'
 import classNames from 'classnames'
-
-import '../../style/components/avatar.scss'
 
 const SIZE_CLASS = {
     large: 'large',
@@ -14,41 +13,54 @@ const SIZE_CLASS = {
 const AtAvatar = defineComponent({
     props: {
         size: {
-            type: String,
-            default: 'normal',
+            type: String as () => 'large' | 'normal' | 'small',
+            default: 'normal' as 'large' | 'normal' | 'small',
             validator: (prop: string) => ['large', 'normal', 'small'].includes(prop)
         },
-        circle: { type: Boolean, default: false },
-        text: { type: String, default: '' },
-        image: { type: String, default: '' },
-        openData: { type: Object, default: undefined },
-        customStyle: { type: Object || String, default: () => {} },
-        className: { type: Array || String, default: () => '' }
+        circle: { 
+            type: Boolean, 
+            default: false 
+        },
+        text: { 
+            type: String,
+            default: '' 
+        },
+        image: { 
+            type: String,
+            default: ''
+        },
+        openData: { 
+            type: Object as () => { type: 'userAvatarUrl' },
+            default: undefined
+        }
     },
 
-    setup(props) {
-        const { isWEAPP } = getEnvs()
-        const rootClassName = ['at-avatar']
-        const iconSize = SIZE_CLASS[props.size || 'normal']
-        
-        const classObject = {
-            [`at-avatar--${iconSize}`]: iconSize,
-            'at-avatar--circle': props.circle
-        }
+    setup(props: AtAvatarProps) {
+        const { isWEAPP } = getEnvs()       
 
         let letter = props.text ? props.text[0] : ''
-        // if (text) letter = text[0]
-        
-        const elem = props.openData && props.openData.type === 'userAvatarUrl' && isWEAPP
-            ? h(OpenData, { type: props.openData.type })
-            : props.image
-                ? h(Image, { class: 'at-avatar__img', src: props.image })
-                : h(Text, { class: 'at-avatar__text'}, letter)
 
-        return () => h(View, {
-            class: classNames(rootClassName, classObject, props.className),
-            style: props.customStyle
-        }, [ elem ])
+        return () => {
+            const iconSize = SIZE_CLASS[props.size || 'normal']
+
+            const rootClass = classNames(
+                'at-avatar',
+                {
+                    [`at-avatar--${iconSize}`]: iconSize,
+                    'at-avatar--circle': props.circle
+                },
+                props.className
+            )
+
+            const elem = isWEAPP && props.openData && 
+                props.openData.type === 'userAvatarUrl'
+                    ? h(OpenData, { type: props.openData.type })
+                    : props.image
+                        ? h(Image, { class: 'at-avatar__img', src: props.image })
+                        : h(Text, { class: 'at-avatar__text'}, letter)
+            
+            return h(View, { class: rootClass, style: props.customStyle }, [ elem ])
+        }
     }
 })
 

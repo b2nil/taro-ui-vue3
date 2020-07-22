@@ -1,23 +1,37 @@
 import { h, defineComponent, reactive, watch } from "vue"
 import { View } from "@tarojs/components"
 import { CommonEvent } from "@tarojs/components/types/common"
+import { AtActionSheetProps } from "types/action-sheet";
 import classNames from "classnames"
 import AtActionSheetHeader from "./header/index"
 import AtActionSheetBody from "./body/index"
 import AtActionSheetFooter from "./footer/index"
-import "../../style/components/action-sheet.scss"
 
 const AtActionSheet = defineComponent({
     props: {
-        title: { type: String, default: '' },
-        cancelText: { type: String, default: '' },
-        isOpened: { type: Boolean, default: false },
-        className: { type: Array || String, default: '' },
-        onClose: { type: Function, default: () => {} },
-        onCancel: { type: Function, default: () => {} },
+        isOpened: {
+            type: Boolean,
+            default: false
+        },
+        title: {
+            type: String, 
+            default: ''
+        },
+        cancelText: {
+            type: String, 
+            default: ''
+        },
+        onClose: {
+            type: Function as unknown as () => (event?: CommonEvent) => void, 
+            default: () => () => {} 
+        },
+        onCancel: {
+            type: Function as unknown as () => (event?: CommonEvent) => void,
+            default: () => () => {} 
+        },
     },
 
-    setup(props, { slots }) {
+    setup(props: AtActionSheetProps, { slots }) {
         const state = reactive({ _isOpened: props.isOpened })
 
         watch(() => props.isOpened, (val) => {
@@ -57,7 +71,7 @@ const AtActionSheet = defineComponent({
                 h(View, { class: 'at-action-sheet__overlay', onTap: close }),
                 h(View, { class: 'at-action-sheet__container' }, [
                     props.title && h(AtActionSheetHeader, null, props.title),
-                    h(AtActionSheetBody, null, slots.default && slots.default()),
+                    h(AtActionSheetBody, slots.default && slots!.default()),
                     props.cancelText && h(AtActionSheetFooter, { onTap: handleCancel }, props.cancelText)
                 ]),
             ]) 
