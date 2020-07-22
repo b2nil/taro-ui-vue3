@@ -13,6 +13,8 @@ const config = {
   outputRoot: `dist/${process.env.TARO_ENV}`,
   plugins: [],
   defineConstants: {
+    __VUE_OPTIONS_API__: true,
+    __VUE_PROD_DEVTOOLS__: false
   },
   alias: {
     '@/components': path.resolve(__dirname, '..', 'src/components'),
