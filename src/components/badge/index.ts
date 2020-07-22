@@ -39,7 +39,7 @@ const AtBadge = defineComponent({
                 props.className
             )
             const val = formatValue(props.value, props.maxValue!)
-            console.log("val: ", val)
+            
             return h(View, { class: rootClass, style: props.customStyle }, [
                 slots.default && slots.default(),
                 props.dot 
