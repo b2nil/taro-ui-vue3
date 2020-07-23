@@ -1,273 +1,211 @@
-import isPlainObject from 'lodash/isPlainObject';
-import { toType, getType, isFunction, validateType, isInteger, isArray, warn } from './utils';
+import {
+  toType,
+  toValidableType,
+  validateType,
+  isArray,
+  isVueTypeDef,
+  has,
+  fromType,
+} from './utils'
 
-const VuePropTypes = {
-  get any() {
-    return toType('any', {
-      type: null,
-    });
-  },
+import {
+  VueTypesDefaults,
+  ExtendProps,
+  VueTypeDef,
+  VueTypeValidableDef,
+} from './types'
+import { typeDefaults } from './sensibles'
+import { PropOptions } from './types'
 
-  get func() {
-    return toType('function', {
-      type: Function,
-    }).def(currentDefaults.func);
-  },
+import {
+  any,
+  func,
+  bool,
+  string,
+  number,
+  array,
+  integer,
+  symbol,
+  object,
+} from './validators/native'
+import custom from './validators/custom'
+import oneOf from './validators/oneof'
+import oneOfType from './validators/oneoftype'
+import arrayOf from './validators/arrayof'
+import instanceOf from './validators/instanceof'
+import objectOf from './validators/objectof'
+import shape from './validators/shape'
 
-  get bool() {
-    return toType('boolean', {
-      type: Boolean,
-    }).def(currentDefaults.bool);
-  },
+class BaseVueTypes {
+  static defaults: Partial<VueTypesDefaults> = {}
 
-  get string() {
-    return toType('string', {
-      type: String,
-    }).def(currentDefaults.string);
-  },
+  static get any() {
+    return any()
+  }
+  static get func() {
+    return func().def(this.defaults.func)
+  }
+  static get bool() {
+    return bool().def(this.defaults.bool)
+  }
+  static get string() {
+    return string().def(this.defaults.string)
+  }
+  static get number() {
+    return number().def(this.defaults.number)
+  }
+  static get array() {
+    return array().def(this.defaults.array)
+  }
+  static get object() {
+    return object().def(this.defaults.object)
+  }
+  static get integer() {
+    return integer().def(this.defaults.integer)
+  }
+  static get symbol() {
+    return symbol()
+  }
 
-  get number() {
-    return toType('number', {
-      type: Number,
-    }).def(currentDefaults.number);
-  },
+  static readonly custom = custom
+  static readonly oneOf = oneOf
+  static readonly instanceOf = instanceOf
+  static readonly oneOfType = oneOfType
+  static readonly arrayOf = arrayOf
+  static readonly objectOf = objectOf
+  static readonly shape = shape
 
-  get array() {
-    return toType('array', {
-      type: Array,
-    }).def(currentDefaults.array);
-  },
-
-  get object() {
-    return toType('object', {
-      type: Object,
-    }).def(currentDefaults.object);
-  },
-
-  get integer() {
-    return toType('integer', {
-      type: Number,
-      validator(value) {
-        return isInteger(value);
-      },
-    }).def(currentDefaults.integer);
-  },
-
-  get symbol() {
-    return toType('symbol', {
-      type: null,
-      validator(value) {
-        return typeof value === 'symbol';
-      },
-    });
-  },
-
-  custom(validatorFn, warnMsg = 'custom validation failed') {
-    if (typeof validatorFn !== 'function') {
-      throw new TypeError('[VueTypes error]: You must provide a function as argument');
+  static extend<T>(props: ExtendProps | ExtendProps[]): T {
+    if (isArray(props)) {
+      props.forEach((p) => this.extend(p))
+      return this as any
     }
 
-    return toType(validatorFn.name || '<<anonymous function>>', {
-      validator(...args) {
-        const valid = validatorFn(...args);
-        if (!valid) warn(`${this._vueTypes_name} - ${warnMsg}`);
-        return valid;
-      },
-    });
-  },
+    const { name, validate = false, getter = false, ...opts } = props
 
-  oneOf(arr) {
-    if (!isArray(arr)) {
-      throw new TypeError('[VueTypes error]: You must provide an array as argument');
+    if (has(this, name as any)) {
+      throw new TypeError(`[VueTypes error]: Type "${name}" already defined`)
     }
-    const msg = `oneOf - value should be one of "${arr.join('", "')}"`;
-    const allowedTypes = arr.reduce((ret, v) => {
-      if (v !== null && v !== undefined) {
-        ret.indexOf(v.constructor) === -1 && ret.push(v.constructor);
+
+    const { type } = opts
+    if (isVueTypeDef(type)) {
+      // we are using as base type a vue-type object
+
+      // detach the original type
+      // we are going to inherit the parent data.
+      delete opts.type
+
+      if (getter) {
+        return Object.defineProperty(this, name, {
+          get: () => fromType(name, type, opts as Omit<ExtendProps, 'type'>),
+        })
       }
-      return ret;
-    }, []);
-
-    return toType('oneOf', {
-      type: allowedTypes.length > 0 ? allowedTypes : null,
-      validator(value) {
-        const valid = arr.indexOf(value) !== -1;
-        if (!valid) warn(msg);
-        return valid;
-      },
-    });
-  },
-
-  instanceOf(instanceConstructor) {
-    return toType('instanceOf', {
-      type: instanceConstructor,
-    });
-  },
-
-  oneOfType(arr) {
-    if (!isArray(arr)) {
-      throw new TypeError('[VueTypes error]: You must provide an array as argument');
-    }
-
-    let hasCustomValidators = false;
-
-    const nativeChecks = arr.reduce((ret, type) => {
-      if (isPlainObject(type)) {
-        if (type._vueTypes_name === 'oneOf') {
-          return ret.concat(type.type || []);
-        }
-        if (type.type && !isFunction(type.validator)) {
-          if (isArray(type.type)) return ret.concat(type.type);
-          ret.push(type.type);
-        } else if (isFunction(type.validator)) {
-          hasCustomValidators = true;
-        }
-        return ret;
-      }
-      ret.push(type);
-      return ret;
-    }, []);
-
-    if (!hasCustomValidators) {
-      // we got just native objects (ie: Array, Object)
-      // delegate to Vue native prop check
-      return toType('oneOfType', {
-        type: nativeChecks,
-      }).def(undefined);
-    }
-
-    const typesStr = arr
-      .map(type => {
-        if (type && isArray(type.type)) {
-          return type.type.map(getType);
-        }
-        return getType(type);
-      })
-      .reduce((ret, type) => ret.concat(isArray(type) ? type : [type]), [])
-      .join('", "');
-
-    return this.custom(function oneOfType(value) {
-      const valid = arr.some(type => {
-        if (type._vueTypes_name === 'oneOf') {
-          return type.type ? validateType(type.type, value, true) : true;
-        }
-        return validateType(type, value, true);
-      });
-      if (!valid) warn(`oneOfType - value type should be one of "${typesStr}"`);
-      return valid;
-    }).def(undefined);
-  },
-
-  arrayOf(type) {
-    return toType('arrayOf', {
-      type: Array,
-      validator(values) {
-        const valid = values.every(value => validateType(type, value));
-        if (!valid) warn(`arrayOf - value must be an array of "${getType(type)}"`);
-        return valid;
-      },
-    });
-  },
-
-  objectOf(type) {
-    return toType('objectOf', {
-      type: Object,
-      validator(obj) {
-        const valid = Object.keys(obj).every(key => validateType(type, obj[key]));
-        if (!valid) warn(`objectOf - value must be an object of "${getType(type)}"`);
-        return valid;
-      },
-    });
-  },
-
-  shape(obj) {
-    const keys = Object.keys(obj);
-    const requiredKeys = keys.filter(key => obj[key] && obj[key].required === true);
-
-    const type = toType('shape', {
-      type: Object,
-      validator(value) {
-        if (!isPlainObject(value)) {
-          return false;
-        }
-        const valueKeys = Object.keys(value);
-
-        // check for required keys (if any)
-        if (requiredKeys.length > 0 && requiredKeys.some(req => valueKeys.indexOf(req) === -1)) {
-          warn(
-            `shape - at least one of required properties "${requiredKeys.join(
-              '", "',
-            )}" is not present`,
-          );
-          return false;
-        }
-
-        return valueKeys.every(key => {
-          if (keys.indexOf(key) === -1) {
-            if (this._vueTypes_isLoose === true) return true;
-            warn(`shape - object is missing "${key}" property`);
-            return false;
+      return Object.defineProperty(this, name, {
+        value(...args: unknown[]) {
+          const t = fromType(name, type, opts as Omit<ExtendProps, 'type'>)
+          if (t.validator) {
+            t.validator = t.validator.bind(t, ...args)
           }
-          const type = obj[key];
-          return validateType(type, value[key]);
-        });
-      },
-    });
+          return t
+        },
+      })
+    }
 
-    Object.defineProperty(type, '_vueTypes_isLoose', {
-      enumerable: false,
-      writable: true,
-      value: false,
-    });
+    let descriptor: PropertyDescriptor
+    if (getter) {
+      descriptor = {
+        get() {
+          const typeOptions = Object.assign({}, opts as PropOptions<T>)
+          if (validate) {
+            return toValidableType<T>(name, typeOptions)
+          }
+          return toType<T>(name, typeOptions)
+        },
+        enumerable: true,
+      }
+    } else {
+      descriptor = {
+        value(...args: T[]) {
+          const typeOptions = Object.assign({}, opts as PropOptions<T>)
+          let ret: VueTypeDef<T>
+          if (validate) {
+            ret = toValidableType<T>(name, typeOptions)
+          } else {
+            ret = toType<T>(name, typeOptions)
+          }
 
-    Object.defineProperty(type, 'loose', {
-      get() {
-        this._vueTypes_isLoose = true;
-        return this;
-      },
-      enumerable: false,
-    });
+          if (typeOptions.validator) {
+            ret.validator = typeOptions.validator.bind(ret, ...args)
+          }
+          return ret
+        },
+        enumerable: true,
+      }
+    }
 
-    return type;
-  },
-};
+    return Object.defineProperty(this, name, descriptor)
+  }
 
-interface Defaults {
-  func?: undefined,
-  bool?: undefined,
-  string?: undefined,
-  number?: undefined,
-  array?: undefined,
-  object?: undefined,
-  integer?: undefined,
+  static utils = {
+    validate<T, U>(value: T, type: U) {
+      return validateType<U, T>(type, value, true)
+    },
+    toType<T = unknown>(
+      name: string,
+      obj: PropOptions<T>,
+      validable = false,
+    ): VueTypeDef<T> | VueTypeValidableDef<T> {
+      return validable ? toValidableType<T>(name, obj) : toType<T>(name, obj)
+    },
+  }
 }
 
-const typeDefaults = (): Defaults => ({
-  func: undefined,
-  bool: undefined,
-  string: undefined,
-  number: undefined,
-  array: undefined,
-  object: undefined,
-  integer: undefined,
-});
+function createTypes(defs: Partial<VueTypesDefaults> = typeDefaults()) {
+  return class extends BaseVueTypes {
+    static defaults: Partial<VueTypesDefaults> = { ...defs }
 
-let currentDefaults: Defaults = typeDefaults();
-
-Object.defineProperty(VuePropTypes, 'sensibleDefaults', {
-  enumerable: false,
-  set(value) {
-    if (value === false) {
-      currentDefaults = {};
-    } else if (value === true) {
-      currentDefaults = typeDefaults();
-    } else if (isPlainObject(value)) {
-      currentDefaults = value;
+    static get sensibleDefaults() {
+      return { ...this.defaults }
     }
-  },
-  get() {
-    return currentDefaults;
-  },
-});
 
-export default VuePropTypes;
+    static set sensibleDefaults(v: boolean | Partial<VueTypesDefaults>) {
+      if (v === false) {
+        this.defaults = {}
+        return
+      }
+      if (v === true) {
+        this.defaults = { ...defs }
+        return
+      }
+      this.defaults = { ...v }
+    }
+  }
+}
+
+export default class VueTypes extends createTypes() {}
+
+export {
+  any,
+  func,
+  bool,
+  string,
+  number,
+  array,
+  integer,
+  symbol,
+  object,
+  custom,
+  oneOf,
+  oneOfType,
+  arrayOf,
+  instanceOf,
+  objectOf,
+  shape,
+  createTypes,
+  toType,
+  toValidableType,
+  validateType,
+  fromType,
+}
+
+export { VueTypeDef, VueTypeValidableDef }

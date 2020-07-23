@@ -1,28 +1,58 @@
-import isPlainObject from 'lodash/isPlainObject';
+import _isPlainObject from 'is-plain-object'
+import {
+  VueTypeDef,
+  VueTypeValidableDef,
+  VueProp,
+  InferType,
+  PropOptions,
+} from './types'
 
-const ObjProto = Object.prototype;
-const toString = ObjProto.toString;
-export const hasOwn = ObjProto.hasOwnProperty;
+const ObjProto = Object.prototype
+const toString = ObjProto.toString
+export const hasOwn = ObjProto.hasOwnProperty
 
-const FN_MATCH_REGEXP = /^\s*function (\w+)/;
+const FN_MATCH_REGEXP = /^\s*function (\w+)/
 
-// https://github.com/vuejs/vue/blob/dev/src/core/util/props.js#L159
-export const getType = fn => {
-  const type = fn !== null && fn !== undefined ? (fn.type ? fn.type : fn) : null;
-  const match = type && type.toString().match(FN_MATCH_REGEXP);
-  return match && match[1];
-};
+// https://github.com/vuejs/vue/blob/dev/src/core/util/props.js#L177
+export function getType(
+  fn: VueProp<any> | (() => any) | (new (...args: any[]) => any),
+): string {
+  const type = (fn as VueProp<any>)?.type ?? fn
+  if (type) {
+    const match = type.toString().match(FN_MATCH_REGEXP)
+    return match ? match[1] : ''
+  }
+  return ''
+}
 
-export const getNativeType = value => {
-  if (value === null || value === undefined) return null;
-  const match = value.constructor.toString().match(FN_MATCH_REGEXP);
-  return match && match[1];
-};
+export function getNativeType(value: any): string {
+  if (value === null || value === undefined) return ''
+  const match = value.constructor.toString().match(FN_MATCH_REGEXP)
+  return match ? match[1] : ''
+}
+
+type PlainObject = { [key: string]: any }
+export const isPlainObject = _isPlainObject as (obj: any) => obj is PlainObject
 
 /**
  * No-op function
  */
-export const noop = (...msg) => {};
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+export function noop() {}
+
+let warn: (msg: string) => void = noop
+
+if (process.env.NODE_ENV !== 'production') {
+  const hasConsole = typeof console !== 'undefined'
+  warn = hasConsole
+    ? function warn(msg) {
+        // eslint-disable-next-line no-console
+        console.warn(`[VueTypes warn]: ${msg}`)
+      }
+    : noop
+}
+
+export { warn }
 
 /**
  * Checks for a own property in an object
@@ -30,7 +60,8 @@ export const noop = (...msg) => {};
  * @param {object} obj - Object
  * @param {string} prop - Property to check
  */
-export const has = (obj, prop) => hasOwn.call(obj, prop);
+export const has = <T extends object, U extends keyof T>(obj: T, prop: U) =>
+  hasOwn.call(obj, prop)
 
 /**
  * Determines whether the passed value is an integer. Uses `Number.isInteger` if available
@@ -41,9 +72,13 @@ export const has = (obj, prop) => hasOwn.call(obj, prop);
  */
 export const isInteger =
   Number.isInteger ||
-  function(value) {
-    return typeof value === 'number' && isFinite(value) && Math.floor(value) === value;
-  };
+  function isInteger(value: unknown): value is number {
+    return (
+      typeof value === 'number' &&
+      isFinite(value) &&
+      Math.floor(value) === value
+    )
+  }
 
 /**
  * Determines whether the passed value is an Array.
@@ -53,9 +88,9 @@ export const isInteger =
  */
 export const isArray =
   Array.isArray ||
-  function(value) {
-    return toString.call(value) === '[object Array]';
-  };
+  function isArray(value): value is any[] {
+    return toString.call(value) === '[object Array]'
+  }
 
 /**
  * Checks if a value is a function
@@ -63,74 +98,35 @@ export const isArray =
  * @param {any} value - Value to check
  * @returns {boolean}
  */
-export const isFunction = value => toString.call(value) === '[object Function]';
+export const isFunction = (value: unknown): value is Function =>
+  toString.call(value) === '[object Function]'
 
-/**
- * Adds a `def` method to the object returning a new object with passed in argument as `default` property
- *
- * @param {object} type - Object to enhance
- */
-export const withDefault = function(type) {
-  Object.defineProperty(type, 'def', {
-    value(def) {
-      if (def === undefined && this.default === undefined) {
-        this.default = undefined;
-        return this;
-      }
-      if (!isFunction(def) && !validateType(this, def)) {
-        warn(`${this._vueTypes_name} - invalid default value: "${def}"`, def);
-        return this;
-      }
-      this.default =
-        isArray(def) || isPlainObject(def)
-          ? function() {
-              return def;
-            }
-          : def;
+export const isVueTypeDef = <T>(
+  value: any,
+): value is VueTypeDef<T> | VueTypeValidableDef<T> =>
+  isPlainObject(value) && has(value, '_vueTypes_name')
 
-      return this;
-    },
-    enumerable: false,
-    writable: false,
-  });
-};
+export const isComplexType = <T>(value: any): value is VueProp<T> =>
+  isPlainObject(value) &&
+  (has(value, 'type') ||
+    ['_vueTypes_name', 'validator', 'default', 'required'].some((k) =>
+      has(value, k),
+    ))
 
-/**
- * Adds a `isRequired` getter returning a new object with `required: true` key-value
- *
- * @param {object} type - Object to enhance
- */
-export const withRequired = function(type) {
-  Object.defineProperty(type, 'isRequired', {
-    get() {
-      this.required = true;
-      return this;
-    },
-    enumerable: false,
-  });
-};
+export interface WrappedFn {
+  (...args: any[]): any
+  __original: (...args: any[]) => any
+}
 
-/**
- * Adds `isRequired` and `def` modifiers to an object
- *
- * @param {string} name - Type internal name
- * @param {object} obj - Object to enhance
- * @returns {object}
- */
-export const toType = (name, obj) => {
-  Object.defineProperty(obj, '_vueTypes_name', {
-    enumerable: false,
-    writable: false,
-    value: name,
-  });
-  withRequired(obj);
-  withDefault(obj);
+export function bindTo(fn: (...args: any[]) => any, ctx: any): WrappedFn {
+  return Object.defineProperty(fn.bind(ctx), '__original', {
+    value: fn,
+  })
+}
 
-  if (isFunction(obj.validator)) {
-    obj.validator = obj.validator.bind(obj);
-  }
-  return obj;
-};
+export function unwrap<T extends WrappedFn | Function>(fn: T) {
+  return (fn as WrappedFn).__original ?? fn
+}
 
 /**
  * Validates a given value against a prop type object
@@ -138,63 +134,191 @@ export const toType = (name, obj) => {
  * @param {Object|*} type - Type to use for validation. Either a type object or a constructor
  * @param {*} value - Value to check
  * @param {boolean} silent - Silence warnings
- * @returns {boolean}
  */
-export const validateType = (type, value, silent = false) => {
-  let typeToCheck = type;
-  let valid = true;
-  let expectedType;
+export function validateType<T, U>(type: T, value: U, silent = false) {
+  let typeToCheck: { [key: string]: any }
+  let valid = true
+  let expectedType = ''
   if (!isPlainObject(type)) {
-    typeToCheck = { type };
+    typeToCheck = { type }
+  } else {
+    typeToCheck = type
   }
-  const namePrefix = typeToCheck._vueTypes_name ? typeToCheck._vueTypes_name + ' - ' : '';
+  const namePrefix = isVueTypeDef(typeToCheck)
+    ? typeToCheck._vueTypes_name + ' - '
+    : ''
 
-  if (hasOwn.call(typeToCheck, 'type') && typeToCheck.type !== null) {
-    if (isArray(typeToCheck.type)) {
-      valid = typeToCheck.type.some(type => validateType(type, value, true));
-      expectedType = typeToCheck.type.map(type => getType(type)).join(' or ');
+  if (
+    isComplexType(typeToCheck) &&
+    typeToCheck.type &&
+    typeToCheck.type !== true
+  ) {
+    if (typeToCheck.type === undefined) {
+      return valid
+    }
+    if (!typeToCheck.required && value === undefined) {
+      return valid
+    }
+    if (typeToCheck.type === undefined) {
+      expectedType = 'any'
+    } else if (isArray(typeToCheck.type)) {
+      valid = typeToCheck.type.some((type: any) =>
+        validateType(type, value, true),
+      )
+      expectedType = typeToCheck.type
+        .map((type: any) => getType(type))
+        .join(' or ')
     } else {
-      expectedType = getType(typeToCheck);
+      expectedType = getType(typeToCheck)
 
       if (expectedType === 'Array') {
-        valid = isArray(value);
+        valid = isArray(value)
       } else if (expectedType === 'Object') {
-        valid = isPlainObject(value);
+        valid = isPlainObject(value)
       } else if (
         expectedType === 'String' ||
         expectedType === 'Number' ||
         expectedType === 'Boolean' ||
         expectedType === 'Function'
       ) {
-        valid = getNativeType(value) === expectedType;
+        valid = getNativeType(value) === expectedType
       } else {
-        valid = value instanceof typeToCheck.type;
+        valid = value instanceof typeToCheck.type
       }
     }
   }
 
   if (!valid) {
-    silent === false && warn(`${namePrefix}value "${value}" should be of type "${expectedType}"`);
-    return false;
+    silent === false &&
+      warn(`${namePrefix}value "${value}" should be of type "${expectedType}"`)
+    return false
   }
 
-  if (hasOwn.call(typeToCheck, 'validator') && isFunction(typeToCheck.validator)) {
-    valid = typeToCheck.validator(value);
-    if (!valid && silent === false) warn(`${namePrefix}custom validation failed`);
-    return valid;
-  }
-  return valid;
-};
-
-let warn = noop;
-
-if (process.env.NODE_ENV !== 'production') {
-  const hasConsole = typeof console !== 'undefined';
-  warn = (...msg: any[]) => {
-    if (hasConsole) {
-      console.warn(`[VueTypes warn]: ${msg}`);
+  if (has(typeToCheck, 'validator') && isFunction(typeToCheck.validator)) {
+    // swallow warn
+    let oldWarn: any
+    if (silent) {
+      oldWarn = warn
+      warn = noop
     }
-  };
+
+    valid = typeToCheck.validator(value)
+    oldWarn && (warn = oldWarn)
+
+    if (!valid && silent === false)
+      warn(`${namePrefix}custom validation failed`)
+    return valid
+  }
+  return valid
 }
 
-export { warn };
+/**
+ * Adds `isRequired` and `def` modifiers to an object
+ *
+ * @param {string} name - Type internal name
+ * @param {object} obj - Object to enhance
+ */
+export function toType<T = any>(name: string, obj: PropOptions<T>) {
+  const type: VueTypeDef<T> = Object.defineProperties(obj, {
+    // eslint-disable-next-line @typescript-eslint/camelcase
+    _vueTypes_name: {
+      value: name,
+      writable: true,
+    },
+    isRequired: {
+      get() {
+        this.required = true
+        return this
+      },
+    },
+    def: {
+      value(def?: any) {
+        if (def === undefined && !this.default) {
+          return this
+        }
+        if (!isFunction(def) && !validateType(this, def)) {
+          warn(`${this._vueTypes_name} - invalid default value: "${def}"`)
+          return this
+        }
+        if (isArray(def)) {
+          this.default = () => [...def]
+        } else if (isPlainObject(def)) {
+          this.default = () => Object.assign({}, def)
+        } else {
+          this.default = def
+        }
+        return this
+      },
+    },
+  })
+
+  const { validator } = type
+  if (isFunction(validator)) {
+    type.validator = bindTo(validator, type)
+  }
+
+  return type
+}
+
+/**
+ * Like `toType` but also adds the `validate()` method to the type object
+ *
+ * @param {string} name - Type internal name
+ * @param {object} obj - Object to enhance
+ */
+export function toValidableType<T = any>(name: string, obj: PropOptions<T>) {
+  const type = toType<T>(name, obj)
+  return Object.defineProperty(type, 'validate', {
+    value(fn: (value: T) => boolean) {
+      this.validator = bindTo(fn, this)
+      return this
+    },
+  }) as VueTypeValidableDef<T>
+}
+
+export function clone<T extends object>(type: T): T {
+  const descriptors = {} as { [P in keyof T]: any }
+  Object.getOwnPropertyNames(type).forEach((key) => {
+    descriptors[key as keyof T] = Object.getOwnPropertyDescriptor(type, key)
+  })
+  return Object.defineProperties({}, descriptors)
+}
+
+export function fromType<T extends VueTypeDef<any>, U = InferType<T>>(
+  name: string,
+  source: T,
+  props = {} as PropOptions<U>,
+): VueTypeDef<U> {
+  const { validator, ...rest } = props
+
+  // 1. create an exact copy of the source type
+  const copy = clone<VueTypeDef<U>>(source)
+
+  // 2. give it a new name
+  // eslint-disable-next-line @typescript-eslint/camelcase
+  copy._vueTypes_name = name
+
+  // 3. compose the validator function
+  // with the one on the source (if present)
+  // and ensure it is bound to the copy
+  if (isFunction(validator)) {
+    let { validator: prevValidator } = copy
+
+    if (prevValidator) {
+      prevValidator = unwrap(prevValidator)
+    }
+
+    copy.validator = bindTo(
+      prevValidator
+        ? function (this: VueTypeDef<U>, value: any) {
+            return (
+              prevValidator!.call(this, value) && validator.call(this, value)
+            )
+          }
+        : validator,
+      copy,
+    )
+  }
+  // 4. overwrite the rest, if present
+  return Object.assign(copy, rest)
+}
