@@ -22,7 +22,7 @@ const AtActionSheetFooter = defineComponent({
             
             return h(View, 
                 { class: rootClass, onTap: handleClick }, 
-                slots.default && slots!.default()
+                slots!.default()
             )
         }
     }

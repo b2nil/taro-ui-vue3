@@ -20,11 +20,11 @@ const AtActionSheetItem = defineComponent({
         return () => {
             const rootClass = classNames('at-action-sheet__item', props.className)
             
-            return h(View, { 
+            return h(View, {
                     class: rootClass,
                     onTap: handleClick
                 }, 
-                slots.default && slots!.default()
+                slots!.default()
             )
         }
     }

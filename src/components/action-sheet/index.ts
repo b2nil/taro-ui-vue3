@@ -1,4 +1,4 @@
-import { h, defineComponent, reactive, watch } from "vue"
+import { h, defineComponent, watch, ref } from "vue"
 import { View } from "@tarojs/components"
 import { CommonEvent } from "@tarojs/components/types/common"
 import { AtActionSheetProps } from "types/action-sheet";
@@ -32,11 +32,11 @@ const AtActionSheet = defineComponent({
     },
 
     setup(props: AtActionSheetProps, { slots }) {
-        const state = reactive({ _isOpened: props.isOpened })
+        const _isOpened =  ref(props.isOpened)
 
         watch(() => props.isOpened, (val) => {
-            if (val !== state._isOpened) {
-                state._isOpened = val
+            if (val !== _isOpened.value) {
+                _isOpened.value = val
             }
             !val && handleClose()
         })
@@ -51,7 +51,7 @@ const AtActionSheet = defineComponent({
         }
 
         function close() {
-            state._isOpened = false
+            _isOpened.value = false
             handleClose()
         }
 
@@ -63,7 +63,7 @@ const AtActionSheet = defineComponent({
         return () => {
             const rootClass = classNames(
                 'at-action-sheet',
-                { 'at-action-sheet--active': state._isOpened },
+                { 'at-action-sheet--active': _isOpened.value },
                 props.className
             )
             
@@ -71,7 +71,7 @@ const AtActionSheet = defineComponent({
                 h(View, { class: 'at-action-sheet__overlay', onTap: close }),
                 h(View, { class: 'at-action-sheet__container' }, [
                     props.title && h(AtActionSheetHeader, null, props.title),
-                    h(AtActionSheetBody, slots.default && slots!.default()),
+                    h(AtActionSheetBody, slots!.default()),
                     props.cancelText && h(AtActionSheetFooter, { onTap: handleCancel }, props.cancelText)
                 ]),
             ]) 

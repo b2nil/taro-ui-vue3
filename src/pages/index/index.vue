@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import Taro from '@tarojs/taro'
 import './index.scss'
 
@@ -89,7 +89,7 @@ export default {
     AtActionSheet,
     AtActionSheetItem,
     AtActivityIndicator,
-    AtBadge
+    AtBadge,
   },
   setup() {
     const msg = ref('Hello world')
@@ -116,7 +116,7 @@ export default {
     function showToast(name) {
       Taro.showToast({
         icon: 'none',
-        title: name
+        title: name,
       })
     }
     function onShareAppMessage(res) {
@@ -125,7 +125,7 @@ export default {
       }
       return {
         title: '分享测试',
-        path: '/pages/index/index?id=124'
+        path: '/pages/index/index?id=124',
       }
     }
     return {
@@ -138,9 +138,9 @@ export default {
       handleActionSheetClick,
       handleActionSheetClose,
       handleActionSheetCancel,
-      showToast
+      showToast,
     }
-  }
+  },
 }
 </script>
 

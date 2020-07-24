@@ -10,7 +10,7 @@ const AtActionSheetHeader = defineComponent({
         return () => {
             const rootClass = classNames('at-action-sheet__header', props.className)
             
-            return h(View, { class: rootClass }, slots.default && slots!.default()) 
+            return h(View, { class: rootClass }, slots!.default()) 
         }
     }
 })
