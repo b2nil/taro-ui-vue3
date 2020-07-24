@@ -1,7 +1,8 @@
 export default {
   pages: [
     'pages/index/index',
-    'pages/calendar/index'
+    'pages/calendar/index',
+    'pages/form/input/index'
   ],
   window: {
     backgroundTextStyle: 'light',

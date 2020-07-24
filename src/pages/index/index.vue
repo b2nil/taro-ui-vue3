@@ -1,7 +1,16 @@
 <template>
   <view class="index">
-    <at-button type="primary" @tap="handleClick"> 跳转至日历显示页 </at-button>
-    <at-button type="primary" openType="share"> 分享 </at-button>
+    <view class="wrapper">
+       <at-button 
+        type="primary"
+        @tap="navigateTo('/pages/calendar/index')"
+      > 跳转至日历显示页 </at-button>
+      <at-button
+        type="primary"
+        @tap="navigateTo('/pages/form/input/index')"
+      > 跳转至 AtInput Demo </at-button>
+      <at-button type="primary" openType="share"> 分享 </at-button>
+    </view>
     <view class="wrapper">
       <at-fab class="avartar">at-fat</at-fab>
       <at-avatar class="avartar" size="normal" text="T"></at-avatar>
@@ -33,9 +42,9 @@
       <at-action-sheet-item @tap="showToast('点击了按钮三')">按钮三</at-action-sheet-item>
     </at-action-sheet>
     <view class="wrapper">
-      <at-activity-indicator :size="80" color="teal" content="加载中..." />
-      <at-activity-indicator :size="60" color="red" content="加载中..." />
-      <at-activity-indicator :size="40" color="blue" content="加载中..." />
+      <at-activity-indicator class="at-avatar" :size="80" color="teal" content="加载中..." />
+      <at-activity-indicator class="at-avatar" :size="60" color="red" content="加载中..." />
+      <at-activity-indicator class="at-avatar" :size="40" color="blue" content="加载中..." />
     </view>
     <view class="wrapper">
       <at-badge value="10" :maxValue="99">
@@ -98,8 +107,8 @@ export default {
     const isOpen = ref(false)
     const isOpened = ref(false)
 
-    function handleClick() {
-      Taro.navigateTo({ url: '/pages/calendar/index' })
+    function navigateTo(pageUrl) {
+      Taro.navigateTo({ url: pageUrl })
     }
     function handleAccordionClick() {
       isOpen.value = !isOpen.value
@@ -133,7 +142,7 @@ export default {
       imgSrc,
       isOpen,
       isOpened,
-      handleClick,
+      navigateTo,
       handleAccordionClick,
       handleActionSheetClick,
       handleActionSheetClose,

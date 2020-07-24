@@ -29,12 +29,12 @@
 - []  flex
    - []  item
 - []  float-layout
-- []  form
+- [x]  form
 - []  grid
 - []  icon
 - []  image-picker
 - []  indexes
-- []  input
+- [x]  input //- ontouchend clear not working, - keyboard not showing
 - []  input-number
 - [x]  list
    - [x]  item
