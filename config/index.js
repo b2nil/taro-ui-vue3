@@ -20,6 +20,7 @@ const config = {
     '@/components': path.resolve(__dirname, '..', 'src/components'),
     '@/utils': path.resolve(__dirname, '..', 'src/utils'),
     '@/style': path.resolve(__dirname, '..', 'src/style'),
+    '@/assets': path.resolve(__dirname, '..', 'src/assets'),
   },
   copy: {
     patterns: [
@@ -49,6 +50,14 @@ const config = {
           generateScopedName: '[name]__[local]___[hash:base64:5]'
         }
       }
+    },
+    webpackChain(chain) {
+      chain.module
+        .rule('pug')
+          .test('/\.pug$/')
+          .use('pug-plain-loader')
+            .loader('pug-plain-loader')
+          .end()
     }
   },
   h5: {
