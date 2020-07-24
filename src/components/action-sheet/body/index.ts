@@ -10,7 +10,7 @@ const AtActionSheetBody = defineComponent({
         return () => {
             const rootClass = classNames('at-action-sheet__body', props.className)
 
-            return h(View, { class: rootClass }, slots!.default())
+            return h(View, { class: rootClass }, slots.default!())
         }
     }
 })

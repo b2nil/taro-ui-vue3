@@ -3,7 +3,7 @@ import { View } from "@tarojs/components"
 import { AtActionSheetFooterProps } from "types/action-sheet";
 import classNames from "classnames"
 
-const AtActionSheetFooter = defineComponent({
+const AtActionSheetFooter = defineComponent({    
     props: {
         onClick: { 
             type: Function as unknown as () => () => {}, 
@@ -20,9 +20,11 @@ const AtActionSheetFooter = defineComponent({
         return () => {
             const rootClass = classNames('at-action-sheet__footer', props.className)
             
-            return h(View, 
-                { class: rootClass, onTap: handleClick }, 
-                slots!.default()
+            return h(View, {
+                    class: rootClass,
+                    onTap: handleClick
+                },
+                slots.default!()
             )
         }
     }

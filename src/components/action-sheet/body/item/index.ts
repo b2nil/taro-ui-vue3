@@ -23,8 +23,8 @@ const AtActionSheetItem = defineComponent({
             return h(View, {
                     class: rootClass,
                     onTap: handleClick
-                }, 
-                slots!.default()
+                },
+                slots.default!()
             )
         }
     }
