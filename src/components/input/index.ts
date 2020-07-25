@@ -4,13 +4,14 @@ import { h, defineComponent, ref, toRefs, computed } from "vue"
 // Styles
 // Components
 import { Input, Text, View, Label } from "@tarojs/components";
+import AtComponentWithDefaultProps from "../mixins"
 // Effects
 // Directives
 // Utilities
-import VueTypes, { func, oneOf } from "@/utils/vue-types/index";
+import VueTypes from "@/utils/vue-types/index";
 import classNames from 'classnames'
 // Types
-import { BaseEventOrig, ITouchEvent, CommonEventFunction, CommonEvent } from "@tarojs/components/types/common"
+import { BaseEventOrig, ITouchEvent } from "@tarojs/components/types/common"
 import { InputProps } from "@tarojs/components/types/Input"
 import {
     AtInputProps,
@@ -19,8 +20,7 @@ import {
     FocusEventDetail,
     InputEventDetail,
     KeyboardHeightEventDetail,
-    InputFunction
-} from "types/input";
+} from "types/input"
 // Functions
 
 type PickAtInputProps = Pick<AtInputProps, 'maxlength' | 'disabled' | 'password'>
@@ -55,6 +55,8 @@ function getInputProps(props: AtInputProps): GetInputPropsReturn {
 }
 
 const AtInput = defineComponent({
+    extends: AtComponentWithDefaultProps,
+
     props: {
         name: VueTypes.string.def('').isRequired,
         title: VueTypes.string.def(''),
@@ -76,17 +78,17 @@ const AtInput = defineComponent({
         autoFocus: VueTypes.bool.def(false),
         required: VueTypes.bool.def(false),
         confirmType: {
-            type: String as () => "done" | "send" | "search" | "next" | "go" | undefined,
-            default: 'done' as "done" | "send" | "search" | "next" | "go" | undefined,
-            validator: (val: string) => ["done", "send", "search", "next", "go", undefined].includes(val)
+            type: String as () => AtInputProps["confirmType"],
+            default: 'done' as AtInputProps["confirmType"],
+            validator: (val: string) => ["done", "send", "search", "next", "go"].includes(val)
         },
         type: {
-            type: String as () => 'text' | 'number' | 'password' | 'phone' | 'idcard' | 'digit' | undefined,
-            default: 'text' as 'text' | 'number' | 'password' | 'phone' | 'idcard' | 'digit' | undefined,
+            type: String as () => AtInputProps['type'],
+            default: 'text' as AtInputProps['type'],
             validator: (val: string) => ['text', 'number', 'password', 'phone', 'idcard', 'digit'].includes(val)
         },
         onChange: {
-            type: Function as unknown as () => InputFunction<string | number, InputEventDetail, any>,
+            type: Function as unknown as () => AtInputProps['onChange'],
             default: () => () => { }
         }
     },
@@ -174,11 +176,9 @@ const AtInput = defineComponent({
 
             const { type, maxlength, disabled, password } = computed(() => getInputProps(props)).value
 
-            const rootCls = classNames('at-input', {
+            const rootCls = classNames('at-input', className?.value, {
                 'at-input--without-border': !border?.value
-            },
-                className?.value
-            )
+            })
 
             const containerCls = classNames('at-input__container', {
                 'at-input--error': error?.value,
@@ -191,8 +191,8 @@ const AtInput = defineComponent({
 
             const placeholderCls = classNames('placeholder', placeholderClass?.value)
 
-            // conditional components
-            const titleComp = h(Label, {
+            // conditional nodes
+            const titleNode = h(Label, {
                 class: classNames(
                     'at-input__title',
                     required?.value && `at-input__title--required`
@@ -200,13 +200,19 @@ const AtInput = defineComponent({
                 for: name.value
             }, title?.value)
 
-            const clearComp = h(View, { class: 'at-input__icon', onTouchEnd: handleClearValue }, [
+            const clearNode = h(View, {
+                class: 'at-input__icon',
+                onTouchEnd: handleClearValue
+            }, [
                 h(Text, {
                     class: classNames('at-icon', 'at-icon-close-circle', 'at-input__icon-close')
                 })
             ])
 
-            const errorComp = h(View, { class: 'at-input__icon', onTouchStart: handleErrorClick }, [
+            const errorNode = h(View, {
+                class: 'at-input__icon',
+                onTouchStart: handleErrorClick
+            }, [
                 h(Text, {
                     class: classNames('at-icon', 'at-icon-alert-circle', 'at-input__icon-alert')
                 })
@@ -216,7 +222,7 @@ const AtInput = defineComponent({
                 h(View, { class: rootCls, style: customStyle?.value }, [
                     h(View, { class: containerCls }, [
                         h(View, { class: overlayCls, onTap: handleClick }),
-                        title?.value && titleComp,
+                        title?.value && titleNode,
                         h(Input, {
                             class: 'at-input__input',
                             id: name.value,
@@ -242,9 +248,9 @@ const AtInput = defineComponent({
                             onConfirm: handleConfirm,
                             onKeyboardHeightChange: handleKeyboardHeightChange,
                         }),
-                        (clear?.value && value?.value) && clearComp,
-                        error?.value && errorComp,
-                        h(View, { class: 'at-input__children' }, slots.default && slots.default())
+                        (clear?.value && value?.value) && clearNode,
+                        error?.value && errorNode,
+                        h(View, { class: 'at-input__children' }, slots.default!())
                     ])
                 ])
             )
