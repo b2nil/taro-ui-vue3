@@ -43,7 +43,7 @@ const AtAccordion = defineComponent({
         const state = reactive<AtAccordionState>({ wrapperHeight: 0 })
 
         watch(() => props.open, (val) => {
-            startOpen.value = !!val.open && !!props.isAnimation
+            startOpen.value = !!val && !!props.isAnimation
             toggleWithAnimation()
         })
 
