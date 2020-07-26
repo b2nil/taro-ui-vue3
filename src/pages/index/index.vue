@@ -1,21 +1,10 @@
 <template>
   <view class="index">
     <view class="wrapper">
-       <at-button 
-        type="primary"
-        @tap="navigateTo('/pages/calendar/index')"
-      > 跳转至日历显示页 </at-button>
-      <at-button
-        type="primary"
-        @tap="navigateTo('/pages/form/input/index')"
-      > 跳转至 AtInput Demo </at-button>
+      <at-button type="primary" @tap="navigateTo('/pages/calendar/index')"> 跳转至日历显示页 </at-button>
+      <at-button type="primary" @tap="navigateTo('/pages/form/input/index')"> 跳转至 AtInput Demo </at-button>
+      <at-button type="primary" @tap="navigateTo('/pages/action/toast/index')"> 跳转至 Toast Demo </at-button>
       <at-button type="primary" openType="share"> 分享 </at-button>
-    </view>
-    <view class="wrapper">
-      <at-fab class="avartar">at-fat</at-fab>
-      <at-avatar class="avartar" size="normal" text="T"></at-avatar>
-      <at-avatar class="avartar" size="large" text="A" circle></at-avatar>
-      <at-avatar class="avartar" size="large" :image="imgSrc" circle></at-avatar>
     </view>
     <view class="wrapper">
       <at-accordion title="基础用法" note="这是一个测试" :open="isOpen" @tap="handleAccordionClick" hasBorder>
@@ -41,31 +30,6 @@
       <at-action-sheet-item @tap="showToast('点击了按钮二')">按钮二</at-action-sheet-item>
       <at-action-sheet-item @tap="showToast('点击了按钮三')">按钮三</at-action-sheet-item>
     </at-action-sheet>
-    <view class="wrapper">
-      <at-activity-indicator class="at-avatar" :size="80" color="teal" content="加载中..." />
-      <at-activity-indicator class="at-avatar" :size="60" color="red" content="加载中..." />
-      <at-activity-indicator class="at-avatar" :size="40" color="blue" content="加载中..." />
-    </view>
-    <view class="wrapper">
-      <at-badge value="10" :maxValue="99">
-        <at-button size="small">按钮</at-button>
-      </at-badge>
-      <at-badge value="100" :maxValue="99">
-        <at-button size="small">按钮</at-button>
-      </at-badge>
-      <at-badge dot>
-        <at-button size="small" circle>按钮</at-button>
-      </at-badge>
-      <at-badge dot>
-        <at-button size="small">按钮</at-button>
-      </at-badge>
-      <at-badge value="NEW">
-        <at-button size="small">按钮</at-button>
-      </at-badge>
-      <at-badge value="NEW">
-        <at-button size="small" circle>按钮</at-button>
-      </at-badge>
-    </view>
   </view>
 </template>
 
