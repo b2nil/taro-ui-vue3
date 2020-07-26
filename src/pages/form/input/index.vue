@@ -173,7 +173,7 @@
                 :value="state.value14"
                 @change="handleInput('value14', 'value14')"
               >
-                <image src="@/assets/images/verification_code.png"></image>
+                <image src="@/assets/images/verification_code.png" />
               </at-input>
               <at-input
                 name="value15"
@@ -191,8 +191,9 @@
                     width: '90px',
                   }"
                   @tap="sendCode"
-                  >{{ showTipText() }}</view
                 >
+                  {{ showTipText() }}
+                </view>
               </at-input>
             </at-form>
           </view>

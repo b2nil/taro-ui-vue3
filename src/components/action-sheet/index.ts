@@ -79,7 +79,7 @@ const AtActionSheet = defineComponent({
                     props.title && (
                         h(AtActionSheetHeader, null, props.title)
                     ),
-                    h(AtActionSheetBody, null, slots.default!()),
+                    h(AtActionSheetBody, null, slots.default && slots.default()),
                     props.cancelText && (
                         h(AtActionSheetFooter, { onTap: handleCancel }, props.cancelText)
                     )

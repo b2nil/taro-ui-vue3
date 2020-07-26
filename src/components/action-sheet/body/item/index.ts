@@ -24,7 +24,7 @@ const AtActionSheetItem = defineComponent({
                     class: rootClass,
                     onTap: handleClick
                 },
-                slots.default!()
+                slots.default && slots.default()
             )
         }
     }

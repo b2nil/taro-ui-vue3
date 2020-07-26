@@ -250,7 +250,7 @@ const AtInput = defineComponent({
                         }),
                         (clear?.value && value?.value) && clearNode,
                         error?.value && errorNode,
-                        h(View, { class: 'at-input__children' }, slots.default!())
+                        h(View, { class: 'at-input__children' }, slots.default && slots.default())
                     ])
                 ])
             )
