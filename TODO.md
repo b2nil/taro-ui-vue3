@@ -65,7 +65,7 @@
 - []  tag
 - []  textarea
 - []  timeline
-- []  toast
+- [x]  toast
 
 ## 简化 Props 类型以及默认值声明
 ### 实现
