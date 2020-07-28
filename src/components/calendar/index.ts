@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import dayjs, { Dayjs } from 'dayjs'
 
-import { h, defineComponent, reactive, toRefs, watch, nextTick } from "vue";
+import { h, defineComponent, reactive, toRefs, watch, nextTick, watchEffect } from "vue";
 import { View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import {
@@ -13,22 +13,30 @@ import {
 
 import AtCalendarBody from './body'
 import AtCalendarController from './controller'
+import AtComponentWithDefaultProps from '../mixins';
 
 const AtCalendar = defineComponent({
+    mixins: [AtComponentWithDefaultProps],
+
+    components: {
+        AtCalendarBody,
+        AtCalendarController
+    },
+
     data: () => ({ addGlobalClass: true }),
 
     props: {
         // 参数
         currentDate: {
-            type: [Number, String, Date, Object] as unknown as () => Calendar.DateArg | Calendar.SelectedDate, 
+            type: [Number, String, Date, Object] as unknown as () => AtCalendarProps['currentDate'], 
             default: Date.now() as Calendar.DateArg
         },
         minDate: {
-            type: [String, Number, Date] as unknown as () => Calendar.DateArg,
+            type: [String, Number, Date] as unknown as () => AtCalendarProps['minDate'],
             default: () => '' 
         },       
         maxDate: {
-            type: [String, Number, Date] as unknown as () => Calendar.DateArg, 
+            type: [String, Number, Date] as unknown as () => AtCalendarProps['maxDate'], 
             default: () => '' 
         },
         isSwiper: {
@@ -36,12 +44,12 @@ const AtCalendar = defineComponent({
             default: true
         },
         marks: {
-            type: Array as () => Array<Calendar.Mark>, 
-            default: () => [] as Array<Calendar.Mark>
+            type: Array as () => AtCalendarProps['marks'], 
+            default: () => []
         },
         validDates: { 
-            type: Array as () => Array<Calendar.ValidDate>, 
-            default: () => [] as Array<Calendar.ValidDate> 
+            type: Array as () => AtCalendarProps['validDates'], 
+            default: () => [] 
         },
         format: {
             type: String,
@@ -51,45 +59,36 @@ const AtCalendar = defineComponent({
             type: String,
             default: 'YYYY 年 MM 月'
         },
-        hideArrow: {
-            type: Boolean,
-            default: false
-        },
-        isVertical: {
-            type: Boolean,
-            default: false
-        },
-        isMultiSelect: {
-            type: Boolean,
-            default: false
-        },
+        hideArrow: Boolean,
+        isVertical: Boolean,
+        isMultiSelect: Boolean,
         selectedDates: {
-            type: Array as () => Array<Calendar.SelectedDate> | [],
+            type: Array as () => AtCalendarPropsWithDefaults['selectedDates'],
             default: () => []
         },
         // 事件        
         onClickPreMonth: {
-            type: Function as unknown as () => () => {},
+            type: Function as unknown as () => AtCalendarProps['onClickPreMonth'],
             default: () => () => {}
         },
         onClickNextMonth: {
-            type: Function as unknown as () => () => {},
+            type: Function as unknown as () => AtCalendarProps['onClickNextMonth'],
             default: () => () => {}
         },
         onDayClick: { 
-            type: Function as unknown as () => (item: { value: string }) => {},
+            type: Function as unknown as () => AtCalendarProps['onDayClick'],
             default: () => () => {}
         },
         onDayLongClick: { 
-            type: Function as unknown as () => (item: { value: string }) => {},
+            type: Function as unknown as () => AtCalendarProps['onDayLongClick'],
             default: () => () => {}
         },
         onMonthChange: {
-            type: Function as unknown as () => (value: string) => {},
+            type: Function as unknown as () => AtCalendarProps['onMonthChange'],
             default: () => () => {}
         },
         onSelectDate: { 
-            type: Function as unknown as () => (item: {value: Calendar.SelectedDate}) => {},
+            type: Function as unknown as () => AtCalendarProps['onSelectDate'],
             default: () => () => {}
         },
         
@@ -97,27 +96,44 @@ const AtCalendar = defineComponent({
     
     setup(props: AtCalendarProps) {
         const { currentDate, isMultiSelect } = toRefs(props as AtCalendarPropsWithDefaults)
-        const state = reactive(getInitializedState(currentDate.value, isMultiSelect.value))
+        
+        let { generateDate, selectedDate } = getInitializedState(currentDate.value, isMultiSelect.value)
 
-        watch(() => props, (nextProps, preProps: AtCalendarProps) => {
-            if(!nextProps.currentDate || nextProps.currentDate === preProps.currentDate) return
+        const state = reactive<AtCalendarState>({
+            generateDate,
+            selectedDate
+        })
 
-            if(nextProps.isMultiSelect && preProps.isMultiSelect) {
-                const { start, end } = nextProps.currentDate as Calendar.SelectedDate
-                const { start: preStart, end: preEnd } = preProps.currentDate as Calendar.SelectedDate
+        // watchEffect(() => {
+        //     const stateValue: AtCalendarState = getInitializedState(
+        //         props.currentDate as Calendar.SelectedDate,
+        //         props.isMultiSelect as boolean
+        //     )
+        //     Object.assign(state, stateValue)
+        // })
+        
+        watch([currentDate, isMultiSelect], 
+            ([currentDate, isMultiSelect], [preCurrentDate, preIsMultiSelect]) => {
+            if(!currentDate || currentDate === preCurrentDate) return
+
+            if(isMultiSelect && preIsMultiSelect) {
+                const { start, end } = currentDate as Calendar.SelectedDate
+                const { start: preStart, end: preEnd } = preCurrentDate as Calendar.SelectedDate
 
                 if ( start === preStart && preEnd === end) {
                     return
                 }
             }
 
-            const stateValue: AtCalendarState = getInitializedState(nextProps.currentDate, nextProps.isMultiSelect)
-            state.generateDate = stateValue.generateDate
-            state.selectedDate = stateValue.selectedDate
+            const stateValue: AtCalendarState = getInitializedState(
+                currentDate as Calendar.SelectedDate,
+                isMultiSelect as boolean
+            )
+
+            Object.assign(state, stateValue)
         })
 
         function getSingleSelectedState(value: Dayjs): Partial<AtCalendarState>{
-            const { generateDate } = state
 
             const stateValue: Partial<AtCalendarState> = {
                 selectedDate: getSelectedDate(value.valueOf())
@@ -126,7 +142,7 @@ const AtCalendar = defineComponent({
             const dayjsGenerateDate: Dayjs = value.startOf('month')
             const generateDateValue: number = dayjsGenerateDate.valueOf()
 
-            if(generateDateValue !== generateDate) {
+            if(generateDateValue !== state.generateDate) {
                 triggerChangeDate(dayjsGenerateDate)
                 stateValue.generateDate = generateDateValue
             }
@@ -135,12 +151,12 @@ const AtCalendar = defineComponent({
         }
 
         function getMultiSelectedState(value: Dayjs): Pick<AtCalendarState, 'selectedDate'> {
-            const { selectedDate } = state
-            const { end, start } = selectedDate
+
+            const { end, start } = state.selectedDate
 
             const valueUnix: number = value.valueOf()
             const stateValue: Pick<AtCalendarState, 'selectedDate'> = {
-                selectedDate
+                selectedDate: state.selectedDate
             }
 
             if(end) {
@@ -180,12 +196,14 @@ const AtCalendar = defineComponent({
 
                 start = dayjsStart.startOf('day').valueOf()
                 generateDateValue = dayjsStart.startOf('month').valueOf()
+
                 end = cEnd ? dayjs(cEnd).startOf('day').valueOf() : start
             } else {
                 const dayjsStart = dayjs(currentDate as Calendar.DateArg)
 
                 start = dayjsStart.startOf('day').valueOf()
                 generateDateValue = dayjsStart.startOf('month').valueOf()
+
                 end = start
             }
             
@@ -215,8 +233,11 @@ const AtCalendar = defineComponent({
         }
 
         function setMonth(vectorCount: number) {
+            console.log("before: ", state.generateDate)
             const _generateDate: Dayjs = dayjs(state.generateDate).add(vectorCount, 'month')
             state.generateDate = _generateDate.valueOf()
+            console.log("after: ", state.generateDate)
+            
 
             if(vectorCount && typeof props.onMonthChange === 'function') {
                 props.onMonthChange(_generateDate.format(props.format))
@@ -266,8 +287,8 @@ const AtCalendar = defineComponent({
                 ? getMultiSelectedState(dayjsDate)
                 : getSingleSelectedState(dayjsDate)
             
-            state.generateDate = (stateValue as AtCalendarState).generateDate
-            state.selectedDate = (stateValue as AtCalendarState).selectedDate
+            // TODO: avoid assign null to state
+            Object.assign(state, stateValue)
             nextTick(() => {
                 handleSelectedDate()
             })
@@ -298,7 +319,7 @@ const AtCalendar = defineComponent({
         }
 
         return () => {
-            const { generateDate, selectedDate } = state
+            const { generateDate, selectedDate } = toRefs(state)
             const {
                 validDates,
                 marks,
@@ -312,14 +333,17 @@ const AtCalendar = defineComponent({
                 monthFormat,
                 selectedDates
             } = toRefs(props as AtCalendarPropsWithDefaults)
+            console.log('generateDate: ', state.generateDate)
+            console.log('selectedDate.start: ', dayjs(state.selectedDate.start).format(props.format))
+            console.log('selectedDate.end: ', dayjs(state.selectedDate.end).format(props.format))
 
             return h(View, { class: classNames('at-calendar', className)}, [
                 h(AtCalendarController, {
-                    minDate: minDate!.value,
-                    maxDate: maxDate!.value,
+                    minDate: minDate?.value,
+                    maxDate: maxDate?.value,
                     hideArrow: hideArrow.value,
                     monthFormat: monthFormat.value,
-                    generateDate: generateDate,
+                    generateDate: generateDate.value,
                     onPreMonth: handleClickPreMonth,
                     onNextMonth: handleClickNextMonth,
                     onSelectDate: handleSelectDate,
@@ -328,13 +352,13 @@ const AtCalendar = defineComponent({
                     validDates: validDates.value,
                     marks: marks.value,
                     format: format.value,
-                    minDate: minDate!.value,
-                    maxDate: maxDate!.value,
+                    minDate: minDate?.value,
+                    maxDate: maxDate?.value,
                     isSwiper: isSwiper.value,
                     isVertical: isVertical.value,
-                    selectedDate: selectedDate,
+                    selectedDate: selectedDate.value,
                     selectedDates: selectedDates.value,
-                    generateDate: generateDate,
+                    generateDate: generateDate.value,
                     onDayClick: handleDayClick,
                     onSwipeMonth: setMonth,
                     onLongPress: handleDayLongClick

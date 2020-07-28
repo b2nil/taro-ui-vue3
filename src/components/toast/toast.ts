@@ -7,7 +7,7 @@ import classNames from 'classnames'
 import statusImg from './img.json'
 
 const AtToast = defineComponent({
-    extends: AtComponentWithDefaultProps,
+    mixins: [AtComponentWithDefaultProps],
 
     props: {
         isOpened: PropTypes.bool.def(false).isRequired,

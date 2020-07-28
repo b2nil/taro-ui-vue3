@@ -55,7 +55,7 @@ function getInputProps(props: AtInputProps): GetInputPropsReturn {
 }
 
 const AtInput = defineComponent({
-    extends: AtComponentWithDefaultProps,
+    mixins: [AtComponentWithDefaultProps],
 
     props: {
         name: VueTypes.string.def('').isRequired,

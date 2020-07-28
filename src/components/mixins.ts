@@ -1,7 +1,6 @@
-import { defineComponent } from "vue"
 import { AtComponent } from "types/base";
 
-const AtComponentWithDefaultProps = defineComponent({
+const AtComponentWithDefaultProps = {
     props: {
         className: {
             type: String as () => AtComponent['className'],
@@ -12,6 +11,6 @@ const AtComponentWithDefaultProps = defineComponent({
             default: ''
         }
     }
-})
+}
 
 export default AtComponentWithDefaultProps

@@ -51,21 +51,36 @@ const AtCalendarController = defineComponent({
         const dayjsMaxDate = computed(() => !!props.maxDate && dayjs(props.maxDate))
 
         const isMinMonth = computed(() => {
-            return dayjsMinDate.value && dayjsMinDate.value.startOf('month').isSame(dayjsDate.value)
+            return dayjsMinDate.value && 
+                dayjsMinDate.value
+                    .startOf('month')
+                    .isSame(dayjsDate.value)
         })
 
         const isMaxMonth = computed(() => {
-            return dayjsMaxDate.value && dayjsMaxDate.value.startOf('month').isSame(dayjsDate.value)
+            return dayjsMaxDate.value && 
+                dayjsMaxDate.value
+                    .startOf('month')
+                    .isSame(dayjsDate.value)
         })
 
-        const minDateValue = computed(() => dayjsMinDate.value ? dayjsMinDate.value.format('YYYY-MM') : '')
+        const minDateValue = computed(() => dayjsMinDate.value 
+            ? dayjsMinDate.value.format('YYYY-MM') 
+            : ''
+        )
 
-        const maxDateValue = computed(() => dayjsMaxDate.value ? dayjsMaxDate.value.format('YYYY-MM') : '')            
+        const maxDateValue = computed(() => dayjsMaxDate.value
+            ? dayjsMaxDate.value.format('YYYY-MM') 
+            : ''
+        )
 
         return () => {
             const rootClass = classNames('at-calendar__controller', 'controller')
 
-            const genArrowClass = (direction: string, disabled: boolean): string => classNames(
+            const genArrowClass = (
+                direction: string,
+                disabled: boolean
+            ): string => classNames(
                 `controller__arrow controller__arrow--${direction}`, 
                 { 'controller__arrow--disabled': disabled },
             )
@@ -80,8 +95,8 @@ const AtCalendarController = defineComponent({
                     fields: 'month',
                     end: maxDateValue.value,
                     start: minDateValue.value,
-                    onChange: props.onSelectDate,
-                    value: dayjsDate.value.format('YYYY-MM')
+                    value: dayjsDate.value.format('YYYY-MM'),
+                    onChange: props.onSelectDate
                 }, [
                     h(Text, { class: 'controller__info' }, dayjsDate.value.format(props.monthFormat))
                 ]),

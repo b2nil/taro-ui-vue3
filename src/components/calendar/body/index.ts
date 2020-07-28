@@ -1,10 +1,10 @@
 import classNames from "classnames"
 import dayjs from 'dayjs'
 
-import { h, defineComponent, computed, reactive, watch, onMounted, ref, nextTick} from "vue"
+import { h, defineComponent, computed, reactive, watch, onMounted, ref, nextTick } from "vue"
 import { Swiper, SwiperItem, View } from "@tarojs/components"
 import { BaseEventOrig, ITouch, ITouchEvent } from '@tarojs/components/types/common'
-import { AtCalendarBodyListGroup, AtCalendarBodyProps, Calendar } from 'types/calendar'
+import { AtCalendarBodyListGroup, AtCalendarBodyProps, Calendar, AtCalendarBodyState} from 'types/calendar'
 import { delayQuerySelector } from '../../../utils/common'
 import generateCalendarGroup from '../common/helper'
 import AtCalendarDateList from '../ui/date-list/index'
@@ -77,20 +77,13 @@ const AtCalendarBody = defineComponent({
     },
 
     setup(props: AtCalendarBodyProps) {
-        const states = reactive({
-            changeCount: 0,
-            currentSwiperIndex: 1,
-            startX: 0,
-            swipeStartPoint: 0,
-            maxWidth: 0,
-            isPreMonth: false,
-            isTouching: false,
-            state: {
-                listGroup: [] as AtCalendarBodyListGroup,
-                offsetSize: 0,
-                isAnimate: false
-            }
-        })
+        const startX = ref(0)
+        const maxWidth = ref(0)
+        const changeCount = ref(0)
+        const swipeStartPoint = ref(0)
+        const currentSwiperIndex = ref(1)
+        const isTouching = ref(false)
+        const isPreMonth = ref(false)
 
         const generateFunc = ref(generateCalendarGroup({
             validDates: props.validDates,
@@ -99,32 +92,46 @@ const AtCalendarBody = defineComponent({
             maxDate: props.maxDate,
             marks: props.marks,
             selectedDates: props.selectedDates
-        }))        
-
-        const nextProps = computed(() => ({
-            validDates: props.validDates,
-            marks: props.marks,
-            format: props.format,
-            minDate: props.minDate,
-            maxDate: props.maxDate,
-            generateDate: props.generateDate,
-            selectedDate: props.selectedDate,
-            selectedDates: props.selectedDates
         }))
 
-        watch(nextProps, (nextP, prevP) => {
-            const options: Calendar.GroupOptions = {
-                validDates: nextP.validDates,
-                marks: nextP.marks,
-                format: nextP.format,
-                selectedDates: nextP.selectedDates,
-                minDate: nextP.minDate,
-                maxDate: nextP.maxDate
-            }
+        const state = reactive<AtCalendarBodyState>({
+            listGroup: getGroups(props.generateDate, props.selectedDate),
+            offsetSize: 0,
+            isAnimate: false
+        })  
+
+        watch(() => [
+            props.validDates,
+            props.marks,
+            props.format,
+            props.minDate,
+            props.maxDate,
+            props.selectedDates,
+            props.generateDate,
+            props.selectedDate
+        ], ([
+            validDates,
+            marks,
+            format,
+            minDate,
+            maxDate,
+            selectedDates,
+            generateDate,
+            selectedDate
+        ]) => {
+            const options = {
+                validDates: validDates,
+                marks: marks,
+                format: format,
+                selectedDates: selectedDates,
+                minDate: minDate,
+                maxDate: maxDate
+            } as Calendar.GroupOptions
+
             generateFunc.value = generateCalendarGroup(options)
 
-            states.state.offsetSize = 0
-            states.state.listGroup = getGroups(nextP.generateDate, nextP.selectedDate)
+            state.offsetSize = 0
+            state.listGroup = getGroups(generateDate as number, selectedDate as Calendar.SelectedDate)
         })
 
         function getGroups(
@@ -150,56 +157,54 @@ const AtCalendarBody = defineComponent({
                 selectedDate
             )
 
-            const preListIndex = states.currentSwiperIndex === 0 ? 2 : states.currentSwiperIndex - 1
-            const nextListIndex = states.currentSwiperIndex === 2 ? 0 : states.currentSwiperIndex + 1
+            const preListIndex = currentSwiperIndex.value === 0 ? 2 : currentSwiperIndex.value - 1
+            const nextListIndex = currentSwiperIndex.value === 2 ? 0 : currentSwiperIndex.value + 1
 
             arr[preListIndex] = preList
             arr[nextListIndex] = nextList
-            arr[states.currentSwiperIndex] = nowList
+            arr[currentSwiperIndex.value] = nowList
 
             return arr
         }
 
         function handleTouchStart(e: ITouchEvent) {
             if (!props.isSwiper) return
-            states.isTouching = true
-            states.startX = e.touches[0].clientX
+            isTouching.value = true
+            startX.value = e.touches[0].clientX
         }
 
         function handleTouchMove(e: ITouchEvent) {
             if (!props.isSwiper) return
-            if (!states.isTouching) return
+            if (!isTouching.value) return
 
             const { clientX } = e.touches[0]
-            states.state.offsetSize = clientX - states.startX
+            state.offsetSize = clientX - startX.value
         }
 
         function animateMoveSlide(offset: number, callback?: Function) {
-            states.state.isAnimate = true
+            state.isAnimate = true
             nextTick(() => {
-                states.state.offsetSize = offset
+                state.offsetSize = offset
                 setTimeout(() => {
-                    states.state.isAnimate = false
+                    state.isAnimate = false
                     nextTick(() => {
                         callback && callback()
                     })
                 }, ANIMATE_DURATION)
-            })            
+            })
         }
 
         function handleTouchEnd() {
             if(!props.isSwiper) return
 
-            const { offsetSize } = states.state
+            isTouching.value = false
+            const isRight = state.offsetSize > 0
 
-            states.isTouching = false
-            const isRight = offsetSize > 0
-
-            const breakpoint = states.maxWidth / 2
-            const absOffsetSize = Math.abs(offsetSize)
+            const breakpoint = maxWidth.value / 2
+            const absOffsetSize = Math.abs(state.offsetSize)
 
             if(absOffsetSize > breakpoint) {
-                const res = isRight ? states.maxWidth : - states.maxWidth
+                const res = isRight ? maxWidth.value : - maxWidth.value
                 return animateMoveSlide(res, () => {
                     props.onSwipeMonth(isRight ? -1 : 1)
                 })
@@ -212,52 +217,51 @@ const AtCalendarBody = defineComponent({
             const { current, source } = e.detail
 
             if(source === 'touch') {
-                states.currentSwiperIndex = current
-                states.changeCount += 1
+                currentSwiperIndex.value = current
+                changeCount.value += 1
             }
         }
 
         function handleAnimateFinish() {
-            if(states.changeCount > 0) {
-                props.onSwipeMonth(states.isPreMonth ? -states.changeCount : states.changeCount)
-                states.changeCount = 0
+            if(changeCount.value > 0) {
+                console.log("animation finish: ", changeCount.value)
+                props.onSwipeMonth(isPreMonth.value ? -changeCount.value : changeCount.value)
+                changeCount.value = 0
             }
         }
 
         function handleSwipeTouchStart(e: ITouchEvent & { changedTouches: Array<ITouch> }) {
             const { clientX, clientY } = e.changedTouches[0]
-            states.swipeStartPoint = props.isVertical ? clientY : clientX
+            swipeStartPoint.value = props.isVertical ? clientY : clientX
         }
 
         function handleSwipeTouchEnd(e: ITouchEvent & { changedTouches: Array<ITouch> }) {
             const { clientX, clientY } = e.changedTouches[0]
-            states.isPreMonth = props.isVertical 
-                ? clientY - states.swipeStartPoint > 0 
-                : clientX - states.swipeStartPoint > 0
+            isPreMonth.value = props.isVertical
+                ? clientY - swipeStartPoint.value > 0 
+                : clientX - swipeStartPoint.value > 0
         }
-
-        states.state.listGroup = getGroups(props.generateDate, props.selectedDate)
         
         onMounted(() => {
-            delayQuerySelector(this, '.at-calendar-slider__main').then(res => {
-                states.maxWidth = res[0].width
+            delayQuerySelector(this, '.at-calendar-slider__main', 30).then(res => {
+                maxWidth.value = res[0].width
             })
         })
 
         return () => {
-            const rootClass = classNames(
+            const rootClass = computed(() => classNames(
                 'main',
                 'at-calendar-slider__main',
                 `at-calendar-slider__main--${process.env.TARO_ENV}`
-            )
+            ))
 
             if (!props.isSwiper) {
-                return h(View, { class: rootClass }, [
+                return h(View, { class: rootClass.value }, [
                     h(AtCalendarDayList),
                     h(View, { class: classNames('main__body', 'body') }, [
                         h(View, { class: classNames('body__slider', 'body__slider--now') }, [
                             h(AtCalendarDateList, {
-                                list: states.state.listGroup[1].list,
+                                list: state.listGroup[1].list,
                                 onTap: props.onDayClick,
                                 onLongPress: props.onLongClick
                             })
@@ -268,46 +272,46 @@ const AtCalendarBody = defineComponent({
 
             /* 需要 Taro 组件库维护 Swiper 使 小程序 和 H5 的表现保持一致  */
             if (process.env.TARO_ENV === 'h5') {
-                const h5MainBodyClass = classNames('main__body body', {
+                const h5MainBodyClass = computed(() => classNames('main__body body', {
                     'main__body--slider': props.isSwiper,
-                    'main__body--animate': states.state.isAnimate,
-                })
+                    'main__body--animate': state.isAnimate,
+                }))
 
-                const h5MainBodyStyle = {
+                const h5MainBodyStyle = computed(() => ({
                     transform: props.isSwiper 
-                        ? `translateX(-100%) translate3d(${states.state.offsetSize},0,0)` 
+                        ? `translateX(-100%) translate3d(${state.offsetSize},0,0)` 
                         : '',
                     WebkitTransform: props.isSwiper 
-                        ? `translateX(-100%) translate3d(${states.state.offsetSize}px,0,0)`
+                        ? `translateX(-100%) translate3d(${state.offsetSize}px,0,0)`
                         : ''
-                }
+                }))
 
                 return h(View, {
-                    class: rootClass,
+                    class: rootClass.value,
                     onTouchEnd: handleTouchEnd,
                     onTouchMove: handleTouchMove,
                     onTouchStart: handleTouchStart
                 }, [
                     h(AtCalendarDayList),
-                    h(View, { class: h5MainBodyClass, style: h5MainBodyStyle }, [
+                    h(View, { class: h5MainBodyClass.value, style: h5MainBodyStyle.value }, [
                         h(View, { class: classNames('body__slider', 'body__slider--pre')}, [
-                            h(AtCalendarDateList, { list: states.state.listGroup[0].list })
+                            h(AtCalendarDateList, { list: state.listGroup[0].list })
                         ]),
                         h(View, { class: classNames('body__slider', 'body__slider--now')}, [
                             h(AtCalendarDateList, {
-                                list: states.state.listGroup[1].list,
+                                list: state.listGroup[1].list,
                                 onTap: props.onDayClick,
                                 onLongPress: props.onLongClick
                             })
                         ]),
                         h(View, { class: classNames('body__slider', 'body__slider--next')}, [
-                            h(AtCalendarDateList, { list: states.state.listGroup[2].list })
+                            h(AtCalendarDateList, { list: state.listGroup[2].list })
                         ])
                     ])
                 ])
             }
 
-            const swiperItems = states.state.listGroup.map((item, key) => {
+            const swiperItems = state.listGroup.map((item, key) => {
                 return h(SwiperItem, { key: item.value, itemId: key.toString() }, [
                     h(AtCalendarDateList, {
                         list: item.list,
@@ -317,7 +321,7 @@ const AtCalendarBody = defineComponent({
                 ])
             })
             
-            return h(View, { class: rootClass }, [
+            return h(View, { class: rootClass.value }, [
                     h(AtCalendarDayList),
                     h(Swiper, {
                         circular: true,

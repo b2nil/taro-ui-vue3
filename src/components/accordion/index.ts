@@ -7,7 +7,7 @@ import { AtAccordionProps, AtAccordionState } from "types/accordion";
 import { delayQuerySelector } from '../../utils/common'
 
 const AtAccordion = defineComponent({
-    extends: AtComponentWithDefaultProps,
+    mixins: [AtComponentWithDefaultProps],
 
     props: {
         open: Boolean,

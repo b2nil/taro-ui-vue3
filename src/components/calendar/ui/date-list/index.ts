@@ -1,4 +1,4 @@
-import { h, defineComponent } from "vue"
+import { h, defineComponent, computed } from "vue"
 import { Text, View } from "@tarojs/components"
 import { Calendar } from 'types/calendar'
 import classNames from "classnames"
@@ -38,13 +38,13 @@ const AtCalendarList = defineComponent({
 
     setup(props: AtCalendarListProps) {
 
-        function handleClick(item) {
+        function handleClick(item: Calendar.Item) {
             if (typeof props.onClick === 'function') {
                 props.onClick(item)
             }
         }
 
-        function handleLongClick(item) {
+        function handleLongClick(item: Calendar.Item) {
             if (typeof props.onLongClick === 'function') {
                 props.onLongClick(item)
             }
@@ -54,7 +54,8 @@ const AtCalendarList = defineComponent({
 
         return () => {
             const rootClass = classNames('at-calendar__list', 'flex')
-            const flexItemClass = (item: Calendar.Item) => {
+            
+            const flexItemClass = computed(() => (item: Calendar.Item) => {
                 return classNames('flex__item', `flex__item--${MAP[item.type]}`, {
                     'flex__item--today': item.isToday,
                     'flex__item--active': item.isActive,
@@ -66,7 +67,8 @@ const AtCalendarList = defineComponent({
                         item.type === constant.TYPE_PRE_MONTH ||
                         item.type === constant.TYPE_NEXT_MONTH
                 })
-            }
+            })
+
             return (
                 h(View, { class: rootClass },
                     props.list.map((item: Calendar.Item, index: number) => {
@@ -74,16 +76,16 @@ const AtCalendarList = defineComponent({
                             key: `list-item-${item.value}-${index}`,
                             onTap: handleClick(item),
                             onLongPress: handleLongClick(item),
-                            class: flexItemClass(item)
+                            class: flexItemClass.value(item)
                         }, [
                             h(View, { class: 'flex__item-container'}, [
                                 h(View, { class: 'container-text' }, item.text)
                             ]),
                             h(View, { class: classNames('flex__item-extra', 'extra')}, [
-                                item.marks && item.marks.length > 0
-                                && h(View, { class: 'extra-marks'},                               
-                                    item.marks.map((mark, key) => {
-                                        return h(Text, { key: key, class: 'mark'}, String(mark))
+                                (item.marks && item.marks.length > 0) && 
+                                    h(View, { class: 'extra-marks' },                               
+                                        item.marks.map((mark, key) => {
+                                            return h(Text, { key: key, class: 'mark'}, String(mark))
                                     })
                                 )
                             ])
