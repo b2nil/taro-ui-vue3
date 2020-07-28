@@ -13,14 +13,14 @@
                 type="text"
                 placeholder="标准五个字"
                 :value="value1"
-                :onChange="handleInput.bind(this, 'value1')"
+                @change="handleInput.bind(this, 'value1')"
               ></at-input>
               <at-input
                 name="value2"
                 title="标题实在特别长就换行"
                 placeholder="其他列保持正常间距"
                 :value="value2"
-                :onChange="handleInput.bind(this, 'value2')"
+                @change="handleInput.bind(this, 'value2')"
               ></at-input>
               <at-input
                 name="value3"
@@ -28,7 +28,7 @@
                 placeholder="其他列保持正常间距"
                 :border="false"
                 :value="value3"
-                :onChange="handleInput.bind(this, 'value3')"
+                @change="handleInput.bind(this, 'value3')"
               ></at-input>
             </at-form>
           </view>
@@ -45,7 +45,7 @@
                 type="text"
                 placeholder="当行文本"
                 :value="value4"
-                :onChange="handleInput.bind(this, 'value4')"
+                @change="handleInput.bind(this, 'value4')"
               ></at-input>
               <at-input
                 name="value5"
@@ -53,7 +53,7 @@
                 type="number"
                 placeholder="请输入数字"
                 :value="value5"
-                :onChange="handleInput.bind(this, 'value5')"
+                @change="handleInput.bind(this, 'value5')"
               ></at-input>
               <at-input
                 name="value6"
@@ -61,7 +61,7 @@
                 type="password"
                 placeholder="密码不能少于 10 位数"
                 :value="value6"
-                :onChange="handleInput.bind(this, 'value6')"
+                @change="handleInput.bind(this, 'value6')"
               ></at-input>
               <at-input
                 name="value7"
@@ -69,7 +69,7 @@
                 type="idcard"
                 placeholder="身份证号码"
                 :value="value7"
-                :onChange="handleInput.bind(this, 'value7')"
+                @change="handleInput.bind(this, 'value7')"
               ></at-input>
               <at-input
                 name="value8"
@@ -77,7 +77,7 @@
                 type="digit"
                 placeholder="请输入小数"
                 :value="value8"
-                :onChange="handleInput.bind(this, 'value8')"
+                @change="handleInput.bind(this, 'value8')"
               ></at-input>
               <at-input
                 name="value9"
@@ -86,7 +86,7 @@
                 placeholder="手机号码"
                 :border="false"
                 :value="value9"
-                :onChange="handleInput.bind(this, 'value9')"
+                @change="handleInput.bind(this, 'value9')"
               ></at-input>
             </at-form>
           </view>
@@ -104,7 +104,7 @@
                 type="text"
                 placeholder="禁止输入"
                 :value="value10"
-                :onChange="handleInput.bind(this, 'value10')"
+                @change="handleInput.bind(this, 'value10')"
               ></at-input>
               <at-input
                 name="value11"
@@ -113,7 +113,7 @@
                 type="text"
                 placeholder="点击按钮触发回调"
                 :value="value11"
-                :onChange="handleInput.bind(this, 'value11')"
+                @change="handleInput.bind(this, 'value11')"
                 :onErrorClick="onClickErrorIcon"
               ></at-input>
               <at-input
@@ -132,7 +132,7 @@
                 type="text"
                 placeholder="点击清除按钮清空内容"
                 :value="value13"
-                :onChange="handleInput.bind(this, 'value13')"
+                @change="handleInput.bind(this, 'value13')"
               ></at-input>
               <at-input
                 name="value16"
@@ -143,7 +143,7 @@
                 type="text"
                 placeholder="必须填写内容"
                 :value="value16"
-                :onChange="handleInput.bind(this, 'value16')"
+                @change="handleInput.bind(this, 'value16')"
               ></at-input>
               <at-input
                 name="value17"
@@ -152,7 +152,7 @@
                 type="text"
                 placeholder="监听键盘高度事件"
                 :value="value17"
-                :onChange="handleInput.bind(this, 'value17')"
+                @change="handleInput.bind(this, 'value17')"
                 @keyboard-height-change="handleKeyboardHeightChange($event)"
               ></at-input>
             </at-form>
@@ -172,7 +172,7 @@
                 clear="clear"
                 placeholder="验证码"
                 :value="value14"
-                :onChange="handleInput.bind(this, 'value14')"
+                @change="handleInput.bind(this, 'value14')"
               >
                 <image src="@/assets/images/verification_code.png" />
               </at-input>
@@ -183,7 +183,7 @@
                 clear="clear"
                 placeholder="请输入手机号码"
                 :value="value15"
-                :onChange="handleInput.bind(this, 'value15')"
+                @change="handleInput.bind(this, 'value15')"
               >
                 <view
                   :style="{
