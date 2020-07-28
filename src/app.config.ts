@@ -3,7 +3,8 @@ export default {
     'pages/index/index',
     'pages/calendar/index',
     'pages/form/input/index',
-    'pages/action/toast/index'
+    'pages/action/toast/index',
+    'pages/layout/card/index',
   ],
   window: {
     backgroundTextStyle: 'light',

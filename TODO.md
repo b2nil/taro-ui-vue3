@@ -18,7 +18,7 @@
    - [x]  ui
        - [x]  date-list
        - [x]  day-list
-- []  card
+- [x]  card
 - []  checkbox
 - []  countdown
    - []  item
@@ -31,7 +31,7 @@
 - []  float-layout
 - [x]  form
 - []  grid
-- []  icon
+- [x]  icon
 - []  image-picker
 - []  indexes
 - [x]  input //- ontouchend clear not working, - keyboard not showing
