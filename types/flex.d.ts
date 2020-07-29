@@ -12,6 +12,6 @@ export interface AtFlexProps extends AtComponent {
   wrap: 'no-wrap' | 'wrap' | 'wrap-reverse'
   align: 'start' | 'end' | 'center' | 'stretch' | 'baseline'
   justify: 'start' | 'end' | 'center' | 'between' | 'around'
-  dirction: 'row' | 'column' | 'row-reverse' | 'column-reverse'
+  direction: 'row' | 'column' | 'row-reverse' | 'column-reverse'
   alignContent: 'start' | 'end' | 'center' | 'stretch' | 'between' | 'around'
 }
