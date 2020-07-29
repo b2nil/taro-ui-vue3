@@ -19,11 +19,11 @@
        - [x]  date-list
        - [x]  day-list
 - [x]  card
-- []  checkbox
+- [x]  checkbox
 - []  countdown
    - []  item
-- []  curtain
-- []  divider
+- [x]  curtain
+- [x]  divider
 - []  drawer
 - [x]  fab
 - []  flex
