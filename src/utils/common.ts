@@ -133,6 +133,10 @@ function uuid(len = 8, radix = 16): string {
     return value.join('')
 }
 
+function isTest(): boolean {
+    return process.env.NODE_ENV === 'test'
+}
+
 export {
     pxTransform,
     getEnvs,
@@ -140,4 +144,5 @@ export {
     mergeStyle,
     handleTouchScroll,
     uuid,
+    isTest,
 }
