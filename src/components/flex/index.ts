@@ -7,6 +7,7 @@ import { View } from '@tarojs/components'
 import { AtFlexProps } from 'types/flex'
 
 import AtComponentWithDefaultProps from '../mixins'
+import './index.scss'
 
 const AtFlex = defineComponent({
     mixins: [AtComponentWithDefaultProps],
