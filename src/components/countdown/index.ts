@@ -9,6 +9,8 @@ import { AtCountDownProps, AtCountdownState } from 'types/countdown'
 import AtComponentWithDefaultProps from '../mixins'
 import AtCountdownItem from "./item"
 
+import './index.scss'
+
 const toSeconds = (
     day: number,
     hours: number,
