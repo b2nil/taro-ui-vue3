@@ -224,7 +224,6 @@ const AtCalendarBody = defineComponent({
 
         function handleAnimateFinish() {
             if(changeCount.value > 0) {
-                console.log("animation finish: ", changeCount.value)
                 props.onSwipeMonth(isPreMonth.value ? -changeCount.value : changeCount.value)
                 changeCount.value = 0
             }

@@ -12,10 +12,10 @@
       <view class="panel__content">
         <at-calendar :currentDate="now" />
         <view class="body_controllers">
-          <at-button size="small" :onClick="handleClick.bind(this, 'now', '2018/01/01')">
+          <at-button size="small" @tap="handleClick('now', '2018/01/01')">
             跳转到 2018/01/01
           </at-button>
-          <at-button size="small" :onClick="handleClick.bind(this, 'now', '2018/06/18')">
+          <at-button size="small" @tap="handleClick('now', '2018/06/18')">
             跳转到 2018/6/18
           </at-button>
         </view>
@@ -27,10 +27,10 @@
       <view class="panel__content">
         <at-calendar :minDate="minDate" :maxDate="maxDate" />
         <view class="body_controllers">
-          <at-button size="small" :onClick="handleClick.bind(this, 'minDate', '2018/01/01')">
+          <at-button size="small" @tap="handleClick('minDate', '2018/01/01')">
             设置最小值 2018/1/1
           </at-button>
-          <at-button size="small" :onClick="handleClick.bind(this, 'maxDate', '2019/12/31')">
+          <at-button size="small" @tap="handleClick('maxDate', '2019/12/31')">
             设置最大值 2019/12/31
           </at-button>
         </view>
@@ -42,7 +42,7 @@
       <view class="panel__content">
         <at-calendar :marks="mark" />
         <view class="body_controllers">
-          <at-button size="small" class="button" :onClick="handleClick.bind(this, 'mark', [{ value: Date.now() }])">
+          <at-button size="small" class="button" @tap="handleClick('mark', [{ value: Date.now() }])">
             标记当前时间
           </at-button>
         </view>
@@ -52,12 +52,12 @@
     <view class="doc-body">
       <view class="panel__title">范围选择</view>
       <view class="panel__content">
-        <at-calendar :onSelectDate="handleDateChange" :currentDate="multiCurrentDate" isMultiSelect />
+        <at-calendar @select-date="handleDateChange" :currentDate="multiCurrentDate" isMultiSelect />
         <view class="body_controllers">
           <at-button
             size="small"
             class="button"
-            :onClick="handleClick.bind(this, 'multiCurrentDate', { start: '2018/10/28', end: '2018/11/11' })"
+            @tap="handleClick('multiCurrentDate', { start: '2018/10/28', end: '2018/11/11' })"
           >
             设置选择区间为 2018/10/28 - 2018/11/11
           </at-button>
@@ -75,7 +75,7 @@
     <view class="doc-body">
       <view class="panel__title">垂直滑动</view>
       <view class="panel__content">
-        <at-calendar is-vertical :onSelectDate="handleDateChange" />
+        <at-calendar is-vertical @select-date="handleDateChange" />
       </view>
     </view>
 
@@ -99,7 +99,7 @@ import AtCalendar from '../../components/calendar'
 export default {
   components: {
     AtButton,
-    AtCalendar
+    AtCalendar,
   },
   setup() {
     const state = reactive({
@@ -107,10 +107,10 @@ export default {
       minDate: '2018/06/11',
       maxDate: '2020/12/12',
       multiCurrentDate: {
-        start: Date.now()
+        start: Date.now(),
       },
       mark: [{ value: '2018/11/11' }],
-      validDates: [{ value: '2019/04/17' }, { value: '2019/04/21' }, { value: '2019/05/04' }, { value: '2019/05/28' }]
+      validDates: [{ value: '2019/04/17' }, { value: '2019/04/21' }, { value: '2019/05/04' }, { value: '2019/05/28' }],
     })
 
     function handleClick(key, value) {
@@ -120,6 +120,7 @@ export default {
     }
 
     function handleDayClick(...args) {
+      console.log(this.$event)
       console.log('handleDayClick', args)
     }
 
@@ -130,13 +131,13 @@ export default {
     function handleDateChange(arg) {
       Taro.showToast({
         title: `handleDateChange: ${JSON.stringify(arg)}`,
-        icon: 'none'
+        icon: 'none',
       })
     }
     function handleMonthChange(arg) {
       Taro.showToast({
         title: `handleMonthChange: ${JSON.stringify(arg)}`,
-        icon: 'none'
+        icon: 'none',
       })
     }
 
@@ -146,9 +147,9 @@ export default {
       handleDayClick,
       handleDayLongClick,
       handleDateChange,
-      handleMonthChange
+      handleMonthChange,
     }
-  }
+  },
 }
 </script>
 
