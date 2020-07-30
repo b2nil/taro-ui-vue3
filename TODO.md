@@ -41,10 +41,10 @@
 - [x]  load-more
 - [x]  loading
 - [x]  message
-- []  modal
-   - []  action
-   - []  content
-   - []  header
+- [x]  modal
+   - [x]  action
+   - [x]  content
+   - [x]  header
 - []  nav-bar
 - []  noticebar
 - []  pagination
