@@ -40,7 +40,7 @@
    - [x]  item
 - [x]  load-more
 - [x]  loading
-- []  message
+- [x]  message
 - []  modal
    - []  action
    - []  content
