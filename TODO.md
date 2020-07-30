@@ -35,10 +35,10 @@
 - [x]  image-picker
 - [x]  indexes
 - [x]  input
-- []  input-number
+- [x]  input-number
 - [x]  list
    - [x]  item
-- []  load-more
+- [x]  load-more
 - [x]  loading
 - []  message
 - []  modal
