@@ -13,14 +13,14 @@
                 type="text"
                 placeholder="标准五个字"
                 :value="value1"
-                @change="handleInput.bind(this, 'value1')"
+                @change="handleInput('value1', $event)"
               ></at-input>
               <at-input
                 name="value2"
                 title="标题实在特别长就换行"
                 placeholder="其他列保持正常间距"
                 :value="value2"
-                @change="handleInput.bind(this, 'value2')"
+                @change="handleInput('value2', $event)"
               ></at-input>
               <at-input
                 name="value3"
@@ -28,7 +28,7 @@
                 placeholder="其他列保持正常间距"
                 :border="false"
                 :value="value3"
-                @change="handleInput.bind(this, 'value3')"
+                @change="handleInput('value3', $event)"
               ></at-input>
             </at-form>
           </view>
@@ -45,7 +45,7 @@
                 type="text"
                 placeholder="当行文本"
                 :value="value4"
-                @change="handleInput.bind(this, 'value4')"
+                @change="handleInput('value4', $event)"
               ></at-input>
               <at-input
                 name="value5"
@@ -53,7 +53,7 @@
                 type="number"
                 placeholder="请输入数字"
                 :value="value5"
-                @change="handleInput.bind(this, 'value5')"
+                @change="handleInput('value5', $event)"
               ></at-input>
               <at-input
                 name="value6"
@@ -61,7 +61,7 @@
                 type="password"
                 placeholder="密码不能少于 10 位数"
                 :value="value6"
-                @change="handleInput.bind(this, 'value6')"
+                @change="handleInput('value6', $event)"
               ></at-input>
               <at-input
                 name="value7"
@@ -69,7 +69,7 @@
                 type="idcard"
                 placeholder="身份证号码"
                 :value="value7"
-                @change="handleInput.bind(this, 'value7')"
+                @change="handleInput('value7', $event)"
               ></at-input>
               <at-input
                 name="value8"
@@ -77,7 +77,7 @@
                 type="digit"
                 placeholder="请输入小数"
                 :value="value8"
-                @change="handleInput.bind(this, 'value8')"
+                @change="handleInput('value8', $event)"
               ></at-input>
               <at-input
                 name="value9"
@@ -86,7 +86,7 @@
                 placeholder="手机号码"
                 :border="false"
                 :value="value9"
-                @change="handleInput.bind(this, 'value9')"
+                @change="handleInput('value9', $event)"
               ></at-input>
             </at-form>
           </view>
@@ -98,23 +98,23 @@
           <view class="component-item">
             <at-form>
               <at-input
+                disabled
                 name="value10"
-                disabled="disabled"
                 title="禁用"
                 type="text"
                 placeholder="禁止输入"
                 :value="value10"
-                @change="handleInput.bind(this, 'value10')"
+                @change="handleInput('value10', $event)"
               ></at-input>
               <at-input
+                error
                 name="value11"
-                error="error"
                 title="出现错误"
                 type="text"
                 placeholder="点击按钮触发回调"
                 :value="value11"
-                @change="handleInput.bind(this, 'value11')"
-                :onErrorClick="onClickErrorIcon"
+                @change="handleInput('value11', $event)"
+                @error-click="onClickErrorIcon"
               ></at-input>
               <at-input
                 name="value12"
@@ -125,35 +125,36 @@
                 value="不可编辑的内容"
               ></at-input>
               <at-input
+                clear
                 name="value13"
                 :border="false"
-                :clear="true"
                 title="清除按钮"
                 type="text"
                 placeholder="点击清除按钮清空内容"
                 :value="value13"
-                @change="handleInput.bind(this, 'value13')"
+                @change="handleInput('value13', $event)"
               ></at-input>
               <at-input
+                clear
+                required
                 name="value16"
                 :border="false"
-                :clear="true"
-                :required="true"
                 title="必填项"
                 type="text"
                 placeholder="必须填写内容"
                 :value="value16"
-                @change="handleInput.bind(this, 'value16')"
+                @change="handleInput('value16', $event)"
               ></at-input>
               <at-input
+                clear
                 name="value17"
                 :border="false"
                 title="监听事件"
                 type="text"
                 placeholder="监听键盘高度事件"
                 :value="value17"
-                @change="handleInput.bind(this, 'value17')"
-                @keyboard-height-change="handleKeyboardHeightChange($event)"
+                @change="handleInput('value17', $event)"
+                @keyboard-height-change="handleKeyboardHeightChange"
               ></at-input>
             </at-form>
           </view>
@@ -165,25 +166,25 @@
           <view class="component-item">
             <at-form>
               <at-input
+                clear
                 name="value14"
                 title="验证码"
                 type="text"
-                :maxLength="4"
-                clear="clear"
                 placeholder="验证码"
+                :maxLength="4"
                 :value="value14"
-                @change="handleInput.bind(this, 'value14')"
+                @change="handleInput('value14', $event)"
               >
-                <image src="@/assets/images/verification_code.png" />
+                <image :src="verificationCode" />
               </at-input>
               <at-input
+                clear
                 name="value15"
-                :border="false"
                 type="phone"
-                clear="clear"
                 placeholder="请输入手机号码"
+                :border="false"
                 :value="value15"
-                @change="handleInput.bind(this, 'value15')"
+                @change="handleInput('value15', $event)"
               >
                 <view
                   :style="{
@@ -206,10 +207,12 @@
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from 'vue'
+import Taro from '@tarojs/taro'
+
 import AtForm from '@/components/form'
 import AtInput from '@/components/input'
 import DocsHeader from '../../components/doc-header'
-// import verificationCode from '@/assets/images/verification_code.png'
+import verificationCode from '@/assets/images/verification_code.png'
 import './index.scss'
 
 export default defineComponent({
@@ -293,7 +296,7 @@ export default defineComponent({
 
     return {
       ...toRefs(state),
-      // verificationCode,
+      verificationCode,
       handleInput,
       showTipText,
       sendCode,
