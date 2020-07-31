@@ -1,10 +1,10 @@
 <template>
   <view class="index">
     <view class="wrapper">
-      <at-button type="primary" @tap="navigateTo('/pages/calendar/index')"> 跳转至日历显示页 </at-button>
-      <at-button type="primary" @tap="navigateTo('/pages/form/input/index')"> 跳转至 AtInput Demo </at-button>
-      <at-button type="primary" @tap="navigateTo('/pages/action/toast/index')"> 跳转至 Toast Demo </at-button>
-      <at-button type="primary" @tap="navigateTo('/pages/layout/card/index')"> 跳转至 Card Demo </at-button>
+      <at-button type="primary" @click="navigateTo('/pages/calendar/index')"> 跳转至日历显示页 </at-button>
+      <at-button type="primary" @click="navigateTo('/pages/form/input/index')"> 跳转至 AtInput Demo </at-button>
+      <at-button type="primary" @click="navigateTo('/pages/action/toast/index')"> 跳转至 Toast Demo </at-button>
+      <at-button type="primary" @click="navigateTo('/pages/layout/card/index')"> 跳转至 Card Demo </at-button>
       <at-button type="primary" openType="share"> 分享 </at-button>
     </view>
   </view>
