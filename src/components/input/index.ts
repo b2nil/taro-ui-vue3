@@ -8,7 +8,6 @@ import AtComponentWithDefaultProps from "../mixins"
 // Effects
 // Directives
 // Utilities
-import VueTypes from "@/utils/vue-types/index";
 import classNames from 'classnames'
 // Types
 import { BaseEventOrig, ITouchEvent } from "@tarojs/components/types/common"
@@ -58,39 +57,88 @@ const AtInput = defineComponent({
     mixins: [AtComponentWithDefaultProps],
 
     props: {
-        name: VueTypes.string.def('').isRequired,
-        title: VueTypes.string.def(''),
-        value: VueTypes.string.def(''),
-        placeholder: VueTypes.string.def(''),
-        placeholderStyle: VueTypes.string.def(''),
-        placeholderClass: VueTypes.string.def(''),
-        cursorSpacing: VueTypes.integer.def(50),
-        cursor: VueTypes.integer.def(0),
-        selectionStart: VueTypes.integer.def(-1),
-        selectionEnd: VueTypes.integer.def(-1),
-        maxLength: VueTypes.integer.def(140),
-        border: VueTypes.bool.def(true),
-        editable: VueTypes.bool.def(true),
-        disabled: VueTypes.bool.def(false),
-        error: VueTypes.bool.def(false),
-        clear: VueTypes.bool.def(false),
-        focus: VueTypes.bool.def(false),
-        autoFocus: VueTypes.bool.def(false),
-        required: VueTypes.bool.def(false),
-        confirmType: {
-            type: String as () => AtInputProps["confirmType"],
-            default: 'done' as AtInputProps["confirmType"],
-            validator: (val: string) => ["done", "send", "search", "next", "go"].includes(val)
+        name: {
+            type: String as () => AtInputProps['name'],
+            default: '',
+            required: true
+        },
+        title: {
+            type: String as () => AtInputProps['title'],
+            default: ''
         },
         type: {
             type: String as () => AtInputProps['type'],
             default: 'text' as AtInputProps['type'],
             validator: (val: string) => ['text', 'number', 'password', 'phone', 'idcard', 'digit'].includes(val)
         },
+        error: Boolean,
+        clear: Boolean,
+        border: {
+            type: Boolean,
+            default: true
+        },
+        disabled: Boolean,
+        value: {
+            type: String as () => AtInputProps['value'],
+            default: ''
+        },
+        placeholder: {
+            type: String as () => AtInputProps['placeholder'],
+            default: ''
+        },
+        placeholderStyle: {
+            type: String as () => AtInputProps['placeholderStyle'],
+            default: ''
+        },
+        placeholderClass:{
+            type: String as () => AtInputProps['placeholderClass'],
+            default: ''
+        },
+        editable: {
+            type: Boolean,
+            default: true
+        },
+        adjustPosition: Boolean,
+        autoFocus: Boolean,
+        focus: Boolean,
+        required: Boolean,
+        cursorSpacing: {
+            type: Number as () => AtInputProps['cursorSpacing'],
+            default: 50
+        },
+        cursor: {
+            type: Number as () => AtInputProps['cursor'],
+            default: 0
+        },
+        selectionStart: {
+            type: Number as () => AtInputProps['selectionStart'],
+            default: -1
+        },
+        selectionEnd: {
+            type: Number as () => AtInputProps['selectionEnd'],
+            default: -1
+        },
+        maxLength: {
+            type: Number as () => AtInputProps['maxLength'],
+            default: 140
+        },
+        confirmType: {
+            type: String as () => AtInputProps["confirmType"],
+            default: 'done' as AtInputProps["confirmType"],
+            validator: (val: string) => ["done", "send", "search", "next", "go"].includes(val)
+        },
+        // events
         onChange: {
             type: Function as unknown as () => AtInputProps['onChange'],
-            default: () => () => { }
-        }
+            default: () => () => { },
+            required: true
+        },
+        onBlur: Function as unknown as () => AtInputProps['onBlur'],
+        onFocus: Function as unknown as () => AtInputProps['onFocus'],
+        onConfirm: Function as unknown as () => AtInputProps['onConfirm'],
+        onClick: Function as unknown as () => AtInputProps['onClick'],
+        onKeyboardHeightChange: Function as unknown as () => AtInputProps['onKeyboardHeightChange'],
+        onErrorClick: Function as unknown as () => AtInputProps['onErrorClick']
     },
 
     setup(props: AtInputProps, { slots }) {
