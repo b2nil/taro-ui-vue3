@@ -18,7 +18,20 @@
    - [x]  ui
        - [x]  date-list
        - [x]  day-list
-- [x]  card
+- [x]  card  // VM457:1 TypeError: Cannot read property 'bum' of null
+``` when navigate back to prev page
+VM457:1 TypeError: Cannot read property 'bum' of null
+    at unmountComponent (runtime-core.esm-bundler.js:4632)
+    at unmount (runtime-core.esm-bundler.js:4549)
+    at unmountChildren (runtime-core.esm-bundler.js:4681)
+    at unmount (runtime-core.esm-bundler.js:4564)
+    at unmountComponent (runtime-core.esm-bundler.js:4646)
+    at unmount (runtime-core.esm-bundler.js:4549)
+    at unmountChildren (runtime-core.esm-bundler.js:4681)
+    at unmount (runtime-core.esm-bundler.js:4567)
+    at patchKeyedChildren (runtime-core.esm-bundler.js:4370)
+    at patchChildren (runtime-core.esm-bundler.js:4261)
+```
 - [x]  checkbox
 - [x]  countdown
    - [x]  item
@@ -65,7 +78,20 @@
 - []  tag
 - []  textarea
 - []  timeline
-- [x]  toast
+- [x]  toast // RangeError: Maximum call stack size exceeded
+```
+VM457:1 RangeError: Maximum call stack size exceeded
+    at Object.set (<anonymous>)
+    at Object.set (reactivity.esm-bundler.js:251)
+    at clearTimer (toast.ts:43)
+    at handleChange (toast.ts:88)
+    at toast.ts:34
+    at callWithErrorHandling (runtime-core.esm-bundler.js:154)
+    at getter (runtime-core.esm-bundler.js:4871)
+    at reactiveEffect (reactivity.esm-bundler.js:42)
+    at Array.job (runtime-core.esm-bundler.js:4913)
+    at flushPostFlushCbs (runtime-core.esm-bundler.js:282)
+```
 
 ## 简化 Props 类型以及默认值声明
 ### 实现
@@ -134,4 +160,16 @@ export default defineComponent({
    }
 })
    
+```
+
+## Event Handling
+- 使用 Vue 模板时，回调函数如果需要传入参数，可以采用以下方式：
+   1. `:onClick="handleClick.bind(this, 'value')"`
+   2. `@click="handleClick('value', $event)"`
+```vue
+<template>
+   <AtButton :onClick="handleClick.bind(this, 'value')"/> //OK
+   <AtButton @click="handleClick('value', $event)"/>      //OK
+   <AtInput @click="handleChange.bind(this, 'value')"/>  //cannot trigger event
+</template>
 ```
