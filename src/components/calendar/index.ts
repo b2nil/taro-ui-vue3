@@ -1,7 +1,7 @@
+import { h, defineComponent, reactive, toRefs, watch, nextTick } from "vue"
 import classNames from 'classnames'
 import dayjs, { Dayjs } from 'dayjs'
 
-import { h, defineComponent, reactive, toRefs, watch, nextTick, watchEffect } from "vue";
 import { View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import {
@@ -103,17 +103,15 @@ const AtCalendar = defineComponent({
             generateDate,
             selectedDate
         })
-
-        // watchEffect(() => {
-        //     const stateValue: AtCalendarState = getInitializedState(
-        //         props.currentDate as Calendar.SelectedDate,
-        //         props.isMultiSelect as boolean
-        //     )
-        //     Object.assign(state, stateValue)
-        // })
         
-        watch([currentDate, isMultiSelect], 
-            ([currentDate, isMultiSelect], [preCurrentDate, preIsMultiSelect]) => {
+        watch(() => [
+            props.currentDate,
+            props.isMultiSelect
+        ], (
+            [currentDate, isMultiSelect],
+            [preCurrentDate, preIsMultiSelect]
+        ) => {
+
             if(!currentDate || currentDate === preCurrentDate) return
 
             if(isMultiSelect && preIsMultiSelect) {
@@ -125,11 +123,10 @@ const AtCalendar = defineComponent({
                 }
             }
 
-            const stateValue: AtCalendarState = getInitializedState(
+            const stateValue = getInitializedState(
                 currentDate as Calendar.SelectedDate,
                 isMultiSelect as boolean
             )
-
             Object.assign(state, stateValue)
         })
 
@@ -233,11 +230,8 @@ const AtCalendar = defineComponent({
         }
 
         function setMonth(vectorCount: number) {
-            console.log("before: ", state.generateDate)
             const _generateDate: Dayjs = dayjs(state.generateDate).add(vectorCount, 'month')
-            state.generateDate = _generateDate.valueOf()
-            console.log("after: ", state.generateDate)
-            
+            state.generateDate = _generateDate.valueOf()            
 
             if(vectorCount && typeof props.onMonthChange === 'function') {
                 props.onMonthChange(_generateDate.format(props.format))
@@ -333,9 +327,6 @@ const AtCalendar = defineComponent({
                 monthFormat,
                 selectedDates
             } = toRefs(props as AtCalendarPropsWithDefaults)
-            console.log('generateDate: ', state.generateDate)
-            console.log('selectedDate.start: ', dayjs(state.selectedDate.start).format(props.format))
-            console.log('selectedDate.end: ', dayjs(state.selectedDate.end).format(props.format))
 
             return h(View, { class: classNames('at-calendar', className)}, [
                 h(AtCalendarController, {

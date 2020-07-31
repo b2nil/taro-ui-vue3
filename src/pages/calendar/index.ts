@@ -42,29 +42,28 @@ export default defineComponent({
         })
 
         function handleClick(key, value) {
-            console.log('state[key]: ', state[key])
+            console.log(key, value)
             state[key] = value
-            console.log('state.now : ', state.now)
         }
 
-        function handleDayClick(...args) {
-            console.log(this.$event)
-            console.log('handleDayClick', args)
+        function handleDayClick(item: {value: string}) {
+            console.log('handleDayClick: ', item.value)
         }
 
         function handleDayLongClick(...args) {
-            console.log('handleDayLongClick', args)
+            console.log('handleDayLongClick: ', args)
         }
 
-        function handleDateChange(arg) {
+        function handleDateChange(...args) {
+            // state.now = args[0].value
             Taro.showToast({
-                title: `handleDateChange: ${JSON.stringify(arg)}`,
+                title: `handleDateChange: ${JSON.stringify(args)}`,
                 icon: 'none',
             })
         }
-        function handleMonthChange(arg) {
+        function handleMonthChange(value: string) {
             Taro.showToast({
-                title: `handleMonthChange: ${JSON.stringify(arg)}`,
+                title: `handleMonthChange: ${JSON.stringify(value)}`,
                 icon: 'none',
             })
         }
@@ -85,7 +84,10 @@ export default defineComponent({
                     h('view', { class: "panel" }, [
                         h('view', { class: "panel__title" }, '跳转到制定日期'),
                         h('view', { class: "panel__content" }, [
-                            h(AtCalendar, { currentDate: state.now }),
+                            h(AtCalendar, {
+                                currentDate: state.now,
+                                onSelectDate: handleDateChange
+                            }),
                             h('view', { class: "body_controllers" }, [
                                 h(AtButton, {
                                     size: "small",
@@ -124,7 +126,7 @@ export default defineComponent({
                                 h(AtButton, {
                                     size: "small",
                                     class: "button",
-                                    onTap: handleClick.bind(this, 'mark', { value: Date.now() })
+                                    onTap: handleClick.bind(this, 'mark', [{ value: Date.now() }])
                                 }, '标记当前时间'),
                             ]),
                         ]),

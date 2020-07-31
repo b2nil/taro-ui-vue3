@@ -4,7 +4,7 @@ import dayjs from 'dayjs'
 import { h, defineComponent, computed, reactive, watch, onMounted, ref, nextTick } from "vue"
 import { Swiper, SwiperItem, View } from "@tarojs/components"
 import { BaseEventOrig, ITouch, ITouchEvent } from '@tarojs/components/types/common'
-import { AtCalendarBodyListGroup, AtCalendarBodyProps, Calendar, AtCalendarBodyState} from 'types/calendar'
+import { AtCalendarBodyListGroup, AtCalendarBodyProps, Calendar, AtCalendarBodyState } from 'types/calendar'
 import { delayQuerySelector } from '../../../utils/common'
 import generateCalendarGroup from '../common/helper'
 import AtCalendarDateList from '../ui/date-list/index'
@@ -19,7 +19,7 @@ const AtCalendarBody = defineComponent({
         AtCalendarDayList,
     },
 
-    data: () => ({ addGlobalClass: true}),
+    data: () => ({ addGlobalClass: true }),
 
     props: {
         format: {
@@ -27,19 +27,19 @@ const AtCalendarBody = defineComponent({
             default: 'YYYY-MM-DD'
         },
         validDates: {
-            type: Array as () => Array<Calendar.ValidDate>, 
+            type: Array as () => Array<Calendar.ValidDate>,
             default: () => [] as Array<Calendar.ValidDate>
         },
         marks: {
             type: Array as () => Array<Calendar.Mark>,
             default: () => [] as Array<Calendar.Mark>
-        },        
+        },
         minDate: {
             type: (String || Number || Date) as () => Calendar.DateArg,
-            default: () => '' 
+            default: () => ''
         },
         maxDate: {
-            type: (String || Number || Date) as () => Calendar.DateArg, 
+            type: (String || Number || Date) as () => Calendar.DateArg,
             default: () => ''
         },
         isSwiper: {
@@ -48,31 +48,31 @@ const AtCalendarBody = defineComponent({
         },
         isVertical: {
             type: Boolean,
-            default: false 
+            default: false
         },
         generateDate: {
             type: Number || String,
-            default: Date.now() 
+            default: Date.now()
         },
         selectedDate: {
             type: Object as () => Calendar.SelectedDate,
             default: () => ({ end: Date.now(), start: Date.now() })
         },
-        selectedDates: { 
-            type: Array as () => Array<Calendar.SelectedDate> | [], 
+        selectedDates: {
+            type: Array as () => Array<Calendar.SelectedDate> | [],
             default: () => []
         },
         onDayClick: {
             type: Function as unknown as () => (item: Calendar.Item) => void,
-            default: () => () => {}
+            default: () => () => { }
         },
         onLongClick: {
-            type: Function as unknown as () => (item: Calendar.Item) => void, 
-            default: () => () => {} 
+            type: Function as unknown as () => (item: Calendar.Item) => void,
+            default: () => () => { }
         },
-        onSwipeMonth: { 
-            type: Function as unknown as () => (vectorCount: number) => void, 
-            default: () => () => {} 
+        onSwipeMonth: {
+            type: Function as unknown as () => (vectorCount: number) => void,
+            default: () => () => { }
         },
     },
 
@@ -85,20 +85,20 @@ const AtCalendarBody = defineComponent({
         const isTouching = ref(false)
         const isPreMonth = ref(false)
 
-        const generateFunc = ref(generateCalendarGroup({
+        let generateFunc = generateCalendarGroup({
             validDates: props.validDates,
             format: props.format,
             minDate: props.minDate,
             maxDate: props.maxDate,
             marks: props.marks,
             selectedDates: props.selectedDates
-        }))
+        })
 
         const state = reactive<AtCalendarBodyState>({
             listGroup: getGroups(props.generateDate, props.selectedDate),
             offsetSize: 0,
             isAnimate: false
-        })  
+        })
 
         watch(() => [
             props.validDates,
@@ -128,7 +128,7 @@ const AtCalendarBody = defineComponent({
                 maxDate: maxDate
             } as Calendar.GroupOptions
 
-            generateFunc.value = generateCalendarGroup(options)
+            generateFunc = generateCalendarGroup(options)
 
             state.offsetSize = 0
             state.listGroup = getGroups(generateDate as number, selectedDate as Calendar.SelectedDate)
@@ -141,18 +141,18 @@ const AtCalendarBody = defineComponent({
             const dayjsDate = dayjs(generateDate)
             const arr: AtCalendarBodyListGroup = []
 
-            const preList: Calendar.ListInfo<Calendar.Item> = generateFunc.value(
+            const preList: Calendar.ListInfo<Calendar.Item> = generateFunc(
                 dayjsDate.subtract(1, 'month').valueOf(),
                 selectedDate
             )
-            
-            const nowList: Calendar.ListInfo<Calendar.Item> = generateFunc.value(
+
+            const nowList: Calendar.ListInfo<Calendar.Item> = generateFunc(
                 generateDate,
                 selectedDate,
                 true
             )
-            
-            const nextList: Calendar.ListInfo<Calendar.Item> = generateFunc.value(
+
+            const nextList: Calendar.ListInfo<Calendar.Item> = generateFunc(
                 dayjsDate.add(1, 'month').valueOf(),
                 selectedDate
             )
@@ -195,7 +195,7 @@ const AtCalendarBody = defineComponent({
         }
 
         function handleTouchEnd() {
-            if(!props.isSwiper) return
+            if (!props.isSwiper) return
 
             isTouching.value = false
             const isRight = state.offsetSize > 0
@@ -203,7 +203,7 @@ const AtCalendarBody = defineComponent({
             const breakpoint = maxWidth.value / 2
             const absOffsetSize = Math.abs(state.offsetSize)
 
-            if(absOffsetSize > breakpoint) {
+            if (absOffsetSize > breakpoint) {
                 const res = isRight ? maxWidth.value : - maxWidth.value
                 return animateMoveSlide(res, () => {
                     props.onSwipeMonth(isRight ? -1 : 1)
@@ -213,17 +213,16 @@ const AtCalendarBody = defineComponent({
             animateMoveSlide(0)
         }
 
-        function handleChange(e: BaseEventOrig<{current: number, source: string}>) {
+        function handleChange(e: BaseEventOrig<{ current: number, source: string }>) {
             const { current, source } = e.detail
-
-            if(source === 'touch') {
+            if (source === 'touch') {
                 currentSwiperIndex.value = current
                 changeCount.value += 1
             }
         }
 
         function handleAnimateFinish() {
-            if(changeCount.value > 0) {
+            if (changeCount.value > 0) {
                 props.onSwipeMonth(isPreMonth.value ? -changeCount.value : changeCount.value)
                 changeCount.value = 0
             }
@@ -237,10 +236,10 @@ const AtCalendarBody = defineComponent({
         function handleSwipeTouchEnd(e: ITouchEvent & { changedTouches: Array<ITouch> }) {
             const { clientX, clientY } = e.changedTouches[0]
             isPreMonth.value = props.isVertical
-                ? clientY - swipeStartPoint.value > 0 
+                ? clientY - swipeStartPoint.value > 0
                 : clientX - swipeStartPoint.value > 0
         }
-        
+
         onMounted(() => {
             delayQuerySelector(this, '.at-calendar-slider__main', 30).then(res => {
                 maxWidth.value = res[0].width
@@ -277,10 +276,10 @@ const AtCalendarBody = defineComponent({
                 }))
 
                 const h5MainBodyStyle = computed(() => ({
-                    transform: props.isSwiper 
-                        ? `translateX(-100%) translate3d(${state.offsetSize},0,0)` 
+                    transform: props.isSwiper
+                        ? `translateX(-100%) translate3d(${state.offsetSize},0,0)`
                         : '',
-                    WebkitTransform: props.isSwiper 
+                    WebkitTransform: props.isSwiper
                         ? `translateX(-100%) translate3d(${state.offsetSize}px,0,0)`
                         : ''
                 }))
@@ -293,47 +292,58 @@ const AtCalendarBody = defineComponent({
                 }, [
                     h(AtCalendarDayList),
                     h(View, { class: h5MainBodyClass.value, style: h5MainBodyStyle.value }, [
-                        h(View, { class: classNames('body__slider', 'body__slider--pre')}, [
-                            h(AtCalendarDateList, { list: state.listGroup[0].list })
-                        ]),
-                        h(View, { class: classNames('body__slider', 'body__slider--now')}, [
+                        h(View, { class: classNames('body__slider', 'body__slider--pre') }, [
                             h(AtCalendarDateList, {
-                                list: state.listGroup[1].list,
+                                key: state.listGroup[0].value,
+                                list: state.listGroup.length ? state.listGroup[0].list : []
+                            })
+                        ]),
+                        h(View, { class: classNames('body__slider', 'body__slider--now') }, [
+                            h(AtCalendarDateList, {
+                                key: state.listGroup[1].value,
+                                list: state.listGroup.length ? state.listGroup[1].list : [],
                                 onTap: props.onDayClick,
                                 onLongPress: props.onLongClick
                             })
                         ]),
-                        h(View, { class: classNames('body__slider', 'body__slider--next')}, [
-                            h(AtCalendarDateList, { list: state.listGroup[2].list })
+                        h(View, { class: classNames('body__slider', 'body__slider--next') }, [
+                            h(AtCalendarDateList, {
+                                key: state.listGroup[2].value,
+                                list: state.listGroup.length ? state.listGroup[2].list : []
+                            })
                         ])
                     ])
                 ])
             }
 
             const swiperItems = state.listGroup.map((item, key) => {
-                return h(SwiperItem, { key: item.value, itemId: key.toString() }, [
+                return h(SwiperItem, {
+                    key: key.toString(),
+                    itemId: key.toString()
+                }, [
                     h(AtCalendarDateList, {
+                        key: item.value,
                         list: item.list,
                         onTap: props.onDayClick,
                         onLongPress: props.onLongClick
                     })
                 ])
             })
-            
+
             return h(View, { class: rootClass.value }, [
-                    h(AtCalendarDayList),
-                    h(Swiper, {
-                        circular: true,
-                        current: 1,
-                        skipHiddenItemLayout: true,
-                        vertical: props.isVertical,
-                        class: classNames('main__body'),
-                        onChange: handleChange,
-                        onAnimateFinish: handleAnimateFinish,
-                        onTouchEnd: handleSwipeTouchEnd,
-                        onTouchStart: handleSwipeTouchStart
-                    }, swiperItems)
-                ]
+                h(AtCalendarDayList),
+                h(Swiper, {
+                    circular: true,
+                    current: 1,
+                    skipHiddenItemLayout: true,
+                    vertical: props.isVertical,
+                    class: classNames('main__body'),
+                    onChange: handleChange,
+                    onAnimationFinish: handleAnimateFinish,
+                    onTouchEnd: handleSwipeTouchEnd,
+                    onTouchStart: handleSwipeTouchStart
+                }, swiperItems)
+            ]
             )
         }
     }
