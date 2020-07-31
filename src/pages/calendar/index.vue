@@ -3,7 +3,7 @@
     <view class="doc-body">
       <view class="panel__title">一般案例</view>
       <view class="panel__content">
-        <at-calendar @month-change="handleMonthChange" />
+        <at-calendar @month-change="handleMonthChange" @day-click="handleDayClick"/>
       </view>
     </view>
 
@@ -12,10 +12,10 @@
       <view class="panel__content">
         <at-calendar :currentDate="now" />
         <view class="body_controllers">
-          <at-button size="small" @tap="handleClick('now', '2018/01/01')">
+          <at-button size="small" @click="handleClick('now', '2018/01/01')">
             跳转到 2018/01/01
           </at-button>
-          <at-button size="small" @tap="handleClick('now', '2018/06/18')">
+          <at-button size="small" @click="handleClick('now', '2018/06/18')">
             跳转到 2018/6/18
           </at-button>
         </view>
@@ -27,10 +27,10 @@
       <view class="panel__content">
         <at-calendar :minDate="minDate" :maxDate="maxDate" />
         <view class="body_controllers">
-          <at-button size="small" @tap="handleClick('minDate', '2018/01/01')">
+          <at-button size="small" @click="handleClick('minDate', '2018/01/01')">
             设置最小值 2018/1/1
           </at-button>
-          <at-button size="small" @tap="handleClick('maxDate', '2019/12/31')">
+          <at-button size="small" @click="handleClick('maxDate', '2019/12/31')">
             设置最大值 2019/12/31
           </at-button>
         </view>
@@ -42,7 +42,7 @@
       <view class="panel__content">
         <at-calendar :marks="mark" />
         <view class="body_controllers">
-          <at-button size="small" class="button" @tap="handleClick('mark', [{ value: Date.now() }])">
+          <at-button size="small" class="button" @click="handleClick('mark', [{ value: Date.now() }])">
             标记当前时间
           </at-button>
         </view>
@@ -57,7 +57,7 @@
           <at-button
             size="small"
             class="button"
-            @tap="handleClick('multiCurrentDate', { start: '2018/10/28', end: '2018/11/11' })"
+            @click="handleClick('multiCurrentDate', { start: '2018/10/28', end: '2018/11/11' })"
           >
             设置选择区间为 2018/10/28 - 2018/11/11
           </at-button>
@@ -114,13 +114,10 @@ export default {
     })
 
     function handleClick(key, value) {
-      console.log('state[key]: ', state[key])
       state[key] = value
-      console.log('state.now : ', state.now)
     }
 
     function handleDayClick(...args) {
-      console.log(this.$event)
       console.log('handleDayClick', args)
     }
 
