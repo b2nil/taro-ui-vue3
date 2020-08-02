@@ -72,7 +72,7 @@ VM457:1 TypeError: Cannot read property 'bum' of null
 - [x]  swipe-action
    - [x]  options
 - [x]  switch
-- []  tab-bar
+- [x]  tab-bar
 - []  tabs
 - []  tabs-pane
 - []  tag
