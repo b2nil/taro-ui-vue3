@@ -65,5 +65,5 @@ export interface AtSwipeActionState {
 export interface AtSwipeActionOptionsProps extends AtComponent {
   componentId: string
   options: SwipeActionOption[]
-  onQueryedDom: (res: SelectorQuery) => void
+  onQueryedDom: ({ width }: { width: number }) => void
 }

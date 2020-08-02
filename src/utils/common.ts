@@ -220,6 +220,35 @@ function getEventDetail(event: any): EventDetail {
     return detail
 }
 
+function delayGetScrollOffset({ delayTime = 500 }): Promise<any[]> {
+    return new Promise(resolve => {
+        delay(delayTime).then(() => {
+            Taro.createSelectorQuery()
+                .selectViewport()
+                .scrollOffset()
+                .exec((res: any[]) => {
+                    resolve(res)
+                })
+        })
+    })
+}
+
+function delayGetClientRect({ selectorStr, delayTime = 500 }): Promise<any[]> {
+    const selector: SelectorQuery = Taro.createSelectorQuery()
+
+    return new Promise(resolve => {
+        delay(delayTime).then(() => {
+            selector
+                .select(selectorStr)
+                .boundingClientRect()
+                .exec((res: any[]) => {
+                    resolve(res)
+                })
+        })
+    })
+}
+
+
 export {
     pxTransform,
     getEnvs,
@@ -229,4 +258,6 @@ export {
     uuid,
     isTest,
     getEventDetail,
+    delayGetClientRect,
+    delayGetScrollOffset,
 }

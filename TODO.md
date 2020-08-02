@@ -69,8 +69,8 @@ VM457:1 TypeError: Cannot read property 'bum' of null
 - [x]  segmented-control
 - [x]  slider
 - [x]  steps
-- []  swipe-action
-   - []  options
+- [x]  swipe-action
+   - [x]  options
 - []  switch
 - []  tab-bar
 - []  tabs
