@@ -64,7 +64,7 @@ VM457:1 TypeError: Cannot read property 'bum' of null
 - [x]  progress
 - [x]  radio
 - [x]  range
-- []  rate
+- [x]  rate
 - []  search-bar
 - []  segmented-control
 - []  slider
