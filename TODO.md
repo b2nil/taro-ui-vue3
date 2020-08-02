@@ -75,7 +75,7 @@ VM457:1 TypeError: Cannot read property 'bum' of null
 - [x]  tab-bar
 - [x]  tabs
 - [x]  tabs-pane
-- []  tag
+- [x]  tag
 - []  textarea
 - []  timeline
 - [x]  toast // RangeError: Maximum call stack size exceeded
