@@ -137,6 +137,89 @@ function isTest(): boolean {
     return process.env.NODE_ENV === 'test'
 }
 
+interface EventDetail {
+    pageX: number
+    pageY: number
+    clientX: number
+    clientY: number
+    offsetX: number
+    offsetY: number
+    x: number
+    y: number
+}
+
+function getEventDetail(event: any): EventDetail {
+    let detail: EventDetail
+    switch (ENV) {
+        case Taro.ENV_TYPE.WEB:
+            detail = {
+                pageX: event.pageX,
+                pageY: event.pageY,
+                clientX: event.clientX,
+                clientY: event.clientY,
+                offsetX: event.offsetX,
+                offsetY: event.offsetY,
+                x: event.x,
+                y: event.y
+            }
+            break
+
+        case Taro.ENV_TYPE.WEAPP:
+            detail = {
+                pageX: event.touches[0].pageX,
+                pageY: event.touches[0].pageY,
+                clientX: event.touches[0].clientX,
+                clientY: event.touches[0].clientY,
+                offsetX: event.target.offsetLeft,
+                offsetY: event.target.offsetTop,
+                x: event.target.x,
+                y: event.target.y
+            }
+            break
+
+        case Taro.ENV_TYPE.ALIPAY:
+            detail = {
+                pageX: event.target.pageX,
+                pageY: event.target.pageY,
+                clientX: event.target.clientX,
+                clientY: event.target.clientY,
+                offsetX: event.target.offsetLeft,
+                offsetY: event.target.offsetTop,
+                x: event.target.x,
+                y: event.target.y
+            }
+            break
+
+        case Taro.ENV_TYPE.SWAN:
+            detail = {
+                pageX: event.changedTouches[0].pageX,
+                pageY: event.changedTouches[0].pageY,
+                clientX: event.target.clientX,
+                clientY: event.target.clientY,
+                offsetX: event.target.offsetLeft,
+                offsetY: event.target.offsetTop,
+                x: event.detail.x,
+                y: event.detail.y
+            }
+            break
+
+        default:
+            detail = {
+                pageX: 0,
+                pageY: 0,
+                clientX: 0,
+                clientY: 0,
+                offsetX: 0,
+                offsetY: 0,
+                x: 0,
+                y: 0
+            }
+            console.warn('getEventDetail暂未支持该环境')
+            break
+    }
+    return detail
+}
+
 export {
     pxTransform,
     getEnvs,
@@ -145,4 +228,5 @@ export {
     handleTouchScroll,
     uuid,
     isTest,
+    getEventDetail,
 }
