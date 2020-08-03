@@ -2,7 +2,6 @@ import { h, defineComponent } from 'vue'
 import { View } from '@tarojs/components'
 import { pxTransform } from '../../utils/common'
 import { AtComponent } from 'types/base'
-import * as VueTypes from '@/utils/vue-types/index'
 
 interface AtLoadingProps extends AtComponent {
     size?: string | number
@@ -11,8 +10,8 @@ interface AtLoadingProps extends AtComponent {
 
 const AtLoading = defineComponent({
     props: {
-        size: VueTypes.oneOfType([String, Number]).def(0),
-        color: VueTypes.oneOfType([String, Number]).def('')
+        size: { type: [String, Number], default: 0 },
+        color: { type: [String, Number], default: '' }
     },
 
     setup(props: AtLoadingProps){

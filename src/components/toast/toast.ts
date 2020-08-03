@@ -1,8 +1,7 @@
 import { h, defineComponent, nextTick, watch, computed, reactive, watchEffect } from "vue"
-import { Image, Text, View, CommonEventFunction, CommonEvent } from "@tarojs/components"
+import { Image, Text, View, CommonEvent } from "@tarojs/components"
 import { AtToastProps } from "types/toast"
 import AtComponentWithDefaultProps from '@/components/mixins'
-import PropTypes, { func } from '@/utils/vue-types/index'
 import classNames from 'classnames'
 import statusImg from './img.json'
 
@@ -10,19 +9,19 @@ const AtToast = defineComponent({
     mixins: [AtComponentWithDefaultProps],
 
     props: {
-        isOpened: PropTypes.bool.def(false).isRequired,
-        text: PropTypes.string,
-        icon: PropTypes.string,
-        image: PropTypes.string,
-        status: { 
-            type: String as () => AtToastProps['status'], 
+        isOpened: { type: Boolean, default: false, required: true },
+        text: { type: String, default: '' },
+        icon: { type: String, default: '' },
+        image: { type: String, default: '' },
+        status: {
+            type: String as () => AtToastProps['status'],
             default: '' as AtToastProps['status'],
             validator: (val: string) => ['', 'error', 'loading', 'success'].includes(val)
         },
-        duration: PropTypes.number.def(3000),
+        duration: { type: Number, default: 3000 },
         hasMask: Boolean,
-        onClick: func<CommonEventFunction>().def(() => () => {}),
-        onClose: func<CommonEventFunction>().def(() => () => {}),
+        onClick: Function as unknown as () => AtToastProps['onClick'],
+        onClose: Function as unknown as () => AtToastProps['onClick'],
     },
 
     setup(props: AtToastProps, { slots }) {
@@ -38,14 +37,14 @@ const AtToast = defineComponent({
         })
 
         function clearTimer() {
-            if(state._timer) {
+            if (state._timer) {
                 clearTimeout(state._timer)
                 state._timer = null
             }
         }
 
         function makeTimer(duration: number) {
-            if(duration === 0) return
+            if (duration === 0) return
 
             state._timer = setTimeout(() => {
                 close()
@@ -53,7 +52,7 @@ const AtToast = defineComponent({
         }
 
         function close() {
-            if(state._isOpened) {
+            if (state._isOpened) {
                 state._isOpened = false
                 nextTick(handleClose)
                 clearTimer()
@@ -77,12 +76,12 @@ const AtToast = defineComponent({
         }
 
         function handleChange() {
-            if(!props.isOpened) {
+            if (!props.isOpened) {
                 close()
                 return
             }
 
-            if(!state._isOpened) {
+            if (!state._isOpened) {
                 state._isOpened = true
             } else {
                 clearTimer()
@@ -105,7 +104,7 @@ const AtToast = defineComponent({
             const iconClass = computed(() => classNames('at-icon', {
                 [`at-icon-${props.icon}`]: props.icon
             }))
-            
+
             return state._isOpened ? (
                 h(View, { class: rootClass.value }, [
                     // mask layer
@@ -137,7 +136,7 @@ const AtToast = defineComponent({
                         ])
                     ])
                 ])
-            ): null
+            ) : null
         }
     }
 })
