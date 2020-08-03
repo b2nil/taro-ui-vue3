@@ -53,11 +53,15 @@ const config = {
     },
     webpackChain(chain) {
       chain.module
-        .rule('pug')
-          .test('/\.pug$/')
-          .use('pug-plain-loader')
-            .loader('pug-plain-loader')
-          .end()
+        .rule('typescript')
+          .test(/.\ts$/)
+          .use('ts-loader')
+            .loader('ts-loader')
+            .tap(options => ({
+              ...options, 
+              appendTsSuffixTo: [/\.vue$/]
+            }))
+            .end()
     }
   },
   h5: {
