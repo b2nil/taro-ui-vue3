@@ -2,9 +2,11 @@ import { h, defineComponent } from "vue"
 import { View } from "@tarojs/components"
 import { AtActionSheetBodyProps } from "types/action-sheet";
 import classNames from "classnames"
+import AtComponentWithDefaultProps from "@/components/mixins";
 
 const AtActionSheetBody = defineComponent({
-
+    mixins: [AtComponentWithDefaultProps],
+    
     setup(props: AtActionSheetBodyProps, { slots }) {
         
         return () => {

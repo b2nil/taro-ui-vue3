@@ -2,8 +2,11 @@ import { h, defineComponent } from "vue"
 import { View, CommonEvent } from "@tarojs/components"
 import { AtActionSheetItemProps } from "types/action-sheet";
 import classNames from "classnames"
+import AtComponentWithDefaultProps from "@/components/mixins";
 
 const AtActionSheetItem = defineComponent({
+    mixins: [AtComponentWithDefaultProps],
+    
     props: {
         onClick: { 
             type: Function as unknown as () => (event?: CommonEvent) => void, 

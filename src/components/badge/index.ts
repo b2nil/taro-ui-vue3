@@ -2,8 +2,11 @@ import { h, defineComponent } from "vue"
 import { View } from "@tarojs/components"
 import { AtBadgeProps } from "types/badge";
 import classNames from "classnames"
+import AtComponentWithDefaultProps from "../mixins";
 
 const AtBadge = defineComponent({
+    mixins: [AtComponentWithDefaultProps],
+
     props: {
         dot: { 
             type: Boolean, 

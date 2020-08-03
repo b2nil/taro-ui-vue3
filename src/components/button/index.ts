@@ -5,6 +5,7 @@ import { AtButtonProps } from "types/button";
 import classNames from 'classnames'
 import AtLoading from '../loading/index'
 import { getEnvs } from '../../utils/common'
+import AtComponentWithDefaultProps from '../mixins';
 
 const SIZE_CLASS = {
     normal: 'normal',
@@ -17,6 +18,8 @@ const TYPE_CLASS = {
 }
 
 const AtButton = defineComponent({
+    mixins: [AtComponentWithDefaultProps],
+
     components: { 
         AtLoading
     },

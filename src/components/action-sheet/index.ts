@@ -6,8 +6,11 @@ import classNames from "classnames"
 import AtActionSheetHeader from "./header/index"
 import AtActionSheetBody from "./body/index"
 import AtActionSheetFooter from "./footer/index"
+import AtComponentWithDefaultProps from "../mixins";
 
 const AtActionSheet = defineComponent({
+    mixins: [AtComponentWithDefaultProps],
+
     props: {
         isOpened: {
             type: Boolean,

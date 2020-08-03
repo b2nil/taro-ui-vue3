@@ -2,8 +2,10 @@ import { h, defineComponent } from "vue"
 import { View } from "@tarojs/components"
 import { AtActionSheetHeaderProps } from "types/action-sheet";
 import classNames from "classnames"
+import AtComponentWithDefaultProps from "@/components/mixins";
 
 const AtActionSheetHeader = defineComponent({
+    mixins: [AtComponentWithDefaultProps],
 
     setup(props: AtActionSheetHeaderProps, { slots }) {
 

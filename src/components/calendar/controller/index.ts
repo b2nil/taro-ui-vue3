@@ -4,10 +4,11 @@ import { Calendar, AtCalendarControllerProps } from 'types/calendar'
 import { CommonEvent } from '@tarojs/components/types/common'
 import dayjs from 'dayjs'
 import classNames from "classnames"
-
-// import "@/style/components/calendar.scss"
+import AtComponentWithDefaultProps from "@/components/mixins"
 
 const AtCalendarController = defineComponent({
+    mixins: [AtComponentWithDefaultProps],
+
     data: () => ({ addGlobalClass: true}),
 
     props: {

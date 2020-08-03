@@ -9,11 +9,14 @@ import { delayQuerySelector } from '../../../utils/common'
 import generateCalendarGroup from '../common/helper'
 import AtCalendarDateList from '../ui/date-list/index'
 import AtCalendarDayList from '../ui/day-list/index'
+import AtComponentWithDefaultProps from "@/components/mixins"
 
 
 const ANIMATE_DURATION: number = 300
 
 const AtCalendarBody = defineComponent({
+    mixins: [AtComponentWithDefaultProps],
+
     components: {
         AtCalendarDateList,
         AtCalendarDayList,

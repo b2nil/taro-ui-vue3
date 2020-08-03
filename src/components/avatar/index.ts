@@ -3,6 +3,7 @@ import { Image, OpenData, Text, View } from "@tarojs/components"
 import { AtAvatarProps } from "types/avatar";
 import { getEnvs } from '../../utils/common'
 import classNames from 'classnames'
+import AtComponentWithDefaultProps from '../mixins';
 
 const SIZE_CLASS = {
     large: 'large',
@@ -11,6 +12,8 @@ const SIZE_CLASS = {
 }
 
 const AtAvatar = defineComponent({
+    mixins: [AtComponentWithDefaultProps],
+
     props: {
         size: {
             type: String as () => 'large' | 'normal' | 'small',

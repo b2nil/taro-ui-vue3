@@ -2,9 +2,12 @@ import { h, defineComponent } from "vue"
 import { Text, View } from "@tarojs/components"
 import { AtActivityIndicatorProps } from "types/activity-indicator";
 import classNames from "classnames"
-import AtLoading from "../loading/index"
+import AtLoading from "../loading"
+import AtComponentWithDefaultProps from "../mixins";
 
 const AtActivityIndicator = defineComponent({
+    mixins: [AtComponentWithDefaultProps],
+
     props: {
         size: {
             type: Number,

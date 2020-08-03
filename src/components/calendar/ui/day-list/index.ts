@@ -1,9 +1,11 @@
 import { h, defineComponent } from "vue"
 import { View } from "@tarojs/components"
 import classNames from "classnames"
-// import "@/style/components/calendar.scss"
+import AtComponentWithDefaultProps from "@/components/mixins"
 
 const AtCalendarHeader = defineComponent({
+    mixins: [AtComponentWithDefaultProps],
+
     data: () => ({ addGlobalClass: true}),
 
     setup() {

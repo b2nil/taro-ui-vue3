@@ -2,12 +2,15 @@ import { h, defineComponent } from "vue"
 import { View } from "@tarojs/components"
 import { AtActionSheetFooterProps } from "types/action-sheet";
 import classNames from "classnames"
+import AtComponentWithDefaultProps from "@/components/mixins";
 
-const AtActionSheetFooter = defineComponent({    
+const AtActionSheetFooter = defineComponent({
+    mixins: [AtComponentWithDefaultProps],
+
     props: {
-        onClick: { 
-            type: Function as unknown as () => () => {}, 
-            default: () => () => {} 
+        onClick: {
+            type: Function as unknown as () => () => {},
+            default: () => () => { }
         },
     },
 
@@ -19,11 +22,11 @@ const AtActionSheetFooter = defineComponent({
 
         return () => {
             const rootClass = classNames('at-action-sheet__footer', props.className)
-            
+
             return h(View, {
-                    class: rootClass,
-                    onTap: handleClick
-                },
+                class: rootClass,
+                onTap: handleClick
+            },
                 slots.default && slots.default()
             )
         }

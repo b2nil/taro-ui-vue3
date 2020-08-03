@@ -3,8 +3,7 @@ import { Text, View } from "@tarojs/components"
 import { Calendar } from 'types/calendar'
 import classNames from "classnames"
 import * as constant from '../../common/constant'
-
-// import "@/style/components/calendar.scss"
+import AtComponentWithDefaultProps from "@/components/mixins"
 
 const MAP: { [key: number]: string } = {
     [constant.TYPE_PRE_MONTH]: 'pre',
@@ -19,6 +18,8 @@ export interface AtCalendarListProps {
 }
 
 const AtCalendarList = defineComponent({
+    mixins: [AtComponentWithDefaultProps],
+
     data: () => ({ addGlobalClass: true}),
 
     props: {
