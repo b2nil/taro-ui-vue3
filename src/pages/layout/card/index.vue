@@ -9,7 +9,7 @@
         <view class="panel__title">基础卡片</view>
         <view class="panel_content no-padding">
           <view class="example-item">
-            <at-card title="这是标题" @tap="handleClick">
+            <at-card title="这是标题" @click="handleClick">
               这也是内容区 可以随意定义功能
             </at-card>
           </view>
@@ -45,7 +45,7 @@
         <view class="panel__title">自定义图标的卡片</view>
         <view class="panel_content no-padding">
           <view class="example-item">
-            <at-card title="这是标题" :renderIcon="renderIcon()">
+            <at-card title="这是标题" :renderIcon="renderIcon">
               这也是内容区 可以随意定义功能
             </at-card>
           </view>
@@ -125,7 +125,7 @@ export default defineComponent({
   },
 
   setup() {
-    const renderIcon = () => h(AtIcon, {
+    const renderIcon = h(AtIcon, {
       prefixClass: 'at-icon',
       value: 'home',
       size: 16,
