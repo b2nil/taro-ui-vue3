@@ -92,20 +92,6 @@ VM457:1 TypeError: Cannot read property 'bum' of null
     at patchKeyedChildren (runtime-core.esm-bundler.js:4370)
     at patchChildren (runtime-core.esm-bundler.js:4261)
 ```
-4. Toast 报错：
-```
-VM457:1 RangeError: Maximum call stack size exceeded
-    at Object.set (<anonymous>)
-    at Object.set (reactivity.esm-bundler.js:251)
-    at clearTimer (toast.ts:43)
-    at handleChange (toast.ts:88)
-    at toast.ts:34
-    at callWithErrorHandling (runtime-core.esm-bundler.js:154)
-    at getter (runtime-core.esm-bundler.js:4871)
-    at reactiveEffect (reactivity.esm-bundler.js:42)
-    at Array.job (runtime-core.esm-bundler.js:4913)
-    at flushPostFlushCbs (runtime-core.esm-bundler.js:282)
-```
 
 ## Event Handling
 - 使用 Vue 模板时，回调函数如果需要传入参数，可以采用以下方式：
