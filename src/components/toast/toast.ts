@@ -30,11 +30,17 @@ const AtToast = defineComponent({
             _isOpened: props.isOpened
         })
 
-        watchEffect(() => handleChange())
+        // watchEffect(() => handleChange(), { flush: 'sync' })
 
-        watch(() => props.duration, (val) => {
-            handleChange()
-        })
+        watch(() => [
+            props.isOpened,
+            props.text,
+            props.icon,
+            props.duration,
+            props.hasMask,
+            props.image,
+            props.status
+        ], handleChange)
 
         function clearTimer() {
             if (state._timer) {
