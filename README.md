@@ -78,21 +78,6 @@
       - 如果使用 onTap， 回调函数的参数传回的是 TaroEvent，无法获取到 Calendar.Item 的参数
       - 如果使用 OnClick，回调函数能够正常传回日历参数 Calendar.Item，但是会无限触发 props.onDayClick
 
-3. card 展示页面返回上一页时报错：
-```
-VM457:1 TypeError: Cannot read property 'bum' of null
-    at unmountComponent (runtime-core.esm-bundler.js:4632)
-    at unmount (runtime-core.esm-bundler.js:4549)
-    at unmountChildren (runtime-core.esm-bundler.js:4681)
-    at unmount (runtime-core.esm-bundler.js:4564)
-    at unmountComponent (runtime-core.esm-bundler.js:4646)
-    at unmount (runtime-core.esm-bundler.js:4549)
-    at unmountChildren (runtime-core.esm-bundler.js:4681)
-    at unmount (runtime-core.esm-bundler.js:4567)
-    at patchKeyedChildren (runtime-core.esm-bundler.js:4370)
-    at patchChildren (runtime-core.esm-bundler.js:4261)
-```
-
 ## Event Handling
 - 使用 Vue 模板时，回调函数如果需要传入参数，可以采用以下方式：
    1. `:onClick="handleClick.bind(this, 'value')"`
