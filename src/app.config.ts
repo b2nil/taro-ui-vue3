@@ -27,7 +27,7 @@ export default {
     'pages/action/action-sheet/index',
     // 'pages/action/swipe-action/index',
     'pages/action/activity-indicator/index',
-    // 'pages/action/message/index',
+    'pages/action/message/index',
     // navigation
     // 'pages/navigation/drawer/index',
     // 'pages/navigation/pagination/index',
