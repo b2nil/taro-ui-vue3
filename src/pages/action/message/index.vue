@@ -28,6 +28,9 @@
             </view>
         </view>
         <!-- end body -->
+
+        <!-- AtMessage Component -->
+        <at-message />
     </view>
 </template>
 
