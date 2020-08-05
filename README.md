@@ -67,16 +67,7 @@
  - [] 解决已知问题
 
 ## 已知问题
-1. action-sheet 报以下警告：
-```
-[Vue warn]: Non-function value encountered for default slot. Prefer function slots for better performance.
-```
-2. calendar, [问题复现项目: taro-vue3-calendar](https://github.com/b2nil/taro-vue3-calendar)：
-   - 点选日期时，不能选中日期
-   - date-list/index.ts: 滑动月份时，每个日期会自动触发一次 handleClick
-   - AtCalendarDateList, onTap 或 onClick 的使用问题
-      - 如果使用 onTap， 回调函数的参数传回的是 TaroEvent，无法获取到 Calendar.Item 的参数
-      - 如果使用 OnClick，回调函数能够正常传回日历参数 Calendar.Item，但是会无限触发 props.onDayClick
+1. [#4](https://github.com/b2nil/taro-ui-vue3/issues/4) 日历组件不能选取日期
 
 ## Event Handling
 - 使用 Vue 模板时，回调函数如果需要传入参数，可以采用以下方式：
