@@ -72,7 +72,7 @@ const AtCard = defineComponent({
         return () => (
             h(View, {
                 class: rootClass.value,
-                onClick: handleClick
+                onTap: handleClick
             }, [
                 // header
                 h(View, { class: 'at-card__header'}, [
