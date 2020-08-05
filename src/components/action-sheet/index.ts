@@ -73,21 +73,23 @@ const AtActionSheet = defineComponent({
             return h(View, {
                 class: rootClass,
                 onTouchMove: handleTouchMove
-            }, [
+            }, { default: () => [
                 h(View, {
                     class: 'at-action-sheet__overlay',
                     onTap: close
                 }),
-                h(View, { class: 'at-action-sheet__container' }, [
+                h(View, { class: 'at-action-sheet__container' }, { default: () => [
                     props.title && (
-                        h(AtActionSheetHeader, null, props.title)
+                        h(AtActionSheetHeader, null, { default: () => props.title })
                     ),
-                    h(AtActionSheetBody, null, slots.default && slots.default()),
+                    h(AtActionSheetBody, null, { default: () => slots.default && slots.default() }),
                     props.cancelText && (
-                        h(AtActionSheetFooter, { onTap: handleCancel }, props.cancelText)
+                        h(AtActionSheetFooter, {
+                            onTap: handleCancel
+                        }, { default: () => props.cancelText })
                     )
-                ]),
-            ])
+                ]}),
+            ]})
         }
     }
 })
