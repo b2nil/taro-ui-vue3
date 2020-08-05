@@ -24,7 +24,7 @@
                 <view
                     v-for="item in itemList"
                     :key="item.id"
-                    class="compoenent-list__item"
+                    class="component-list__item"
                     @tap="gotoComponent(item.id, currentId)"
                 >
                     <text class="name">{{ `${item.id} ${item.name}` }}</text>
