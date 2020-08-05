@@ -11,7 +11,7 @@ const AtActivityIndicator = defineComponent({
     props: {
         size: {
             type: Number,
-            default: 24
+            default: 48
         },
         mode: {
             type: String as () => 'center' | 'normal',
