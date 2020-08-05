@@ -1,4 +1,4 @@
-import { h, defineComponent } from "vue"
+import { h, defineComponent, computed } from "vue"
 import { Text, View } from "@tarojs/components"
 import { AtActivityIndicatorProps } from "types/activity-indicator";
 import classNames from "classnames"
@@ -34,16 +34,16 @@ const AtActivityIndicator = defineComponent({
     setup(props: AtActivityIndicatorProps) {
 
         return () => {
-            const rootClass = classNames(
-                'at-activity-inidicator',
+            const rootClass = computed(() => classNames(
+                'at-activity-indicator',
                 {
-                    'at-activity-inidicator--center': props.mode === 'center',
-                    'at-activity-inidicator--isopened': props.isOpened,
+                    'at-activity-indicator--center': props.mode === 'center',
+                    'at-activity-indicator--isopened': props.isOpened,
                 },
                 props.className
-            )
+            ))
             
-            return h(View, { class: rootClass }, [
+            return h(View, { class: rootClass.value }, [
                 h(View, { class: 'at-activity-indicator__body'}, [
                     h(AtLoading, { size: props.size, color: props.color })
                 ]),
