@@ -31,14 +31,10 @@ const AtProgress = defineComponent({
 
         return () => {
             const { percent } = toRefs(props)
-
-            if (typeof percent?.value !== 'number') {
+            
+            if (percent!.value! < 0) {
                 percent!.value = 0
-            }
-
-            if (percent!.value < 0) {
-                percent!.value = 0
-            } else if (percent!.value > 100) {
+            } else if (percent!.value! > 100) {
                 percent!.value = 100
             }
 
@@ -56,7 +52,7 @@ const AtProgress = defineComponent({
             }))
 
             const progressStyle = computed(() => ({
-                width: percent?.value && `${+percent?.value}%`,
+                width: percent!.value ? `${+percent!.value}%` : '0%',
                 height: props.strokeWidth && `${+props.strokeWidth}px`,
                 backgroundColor: props.color
             }))
