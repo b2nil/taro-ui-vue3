@@ -116,7 +116,7 @@ const AtPagination = defineComponent({
                                         size: 'small',
                                         disabled: prevDisabled
                                     }, {
-                                        defualt: () => [
+                                        default: () => [
                                             h(Text, { class: 'at-icon at-icon-chevron-left' })
                                         ]
                                     })
