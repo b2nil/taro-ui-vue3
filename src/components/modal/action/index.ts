@@ -1,4 +1,4 @@
-import { h, defineComponent } from 'vue'
+import { h, defineComponent, computed } from 'vue'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { AtModalActionProps } from 'types/modal'
@@ -15,16 +15,16 @@ const AtModalAction = defineComponent ({
     setup(props: AtModalActionProps, { slots }){
 
         return () => {
-            const rootClass = classNames(
+            const rootClass = computed(() => classNames(
                 'at-modal__footer',
                 {
                     'at-modal__footer--simple': props.isSimple
                 },
                 props.className
-            )
+            ))
     
             return (
-                h(View, { class: rootClass }, [
+                h(View, { class: rootClass.value }, [
                     h(View, {
                         class: 'at-modal__action'
                     }, slots.default && slots.default())

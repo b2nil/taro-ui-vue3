@@ -17,7 +17,7 @@ const AtModalContent = defineComponent({
             
             return h(ScrollView, {
                 scrollY: true,
-                class: rootClass
+                class: rootClass.value
             }, slots.default && slots.default())
         }
     }

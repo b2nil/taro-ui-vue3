@@ -1,4 +1,4 @@
-import { defineComponent, reactive, nextTick, watch, h } from 'vue'
+import { defineComponent, reactive, nextTick, watch, h, computed } from 'vue'
 import classNames from 'classnames'
 import { handleTouchScroll } from '@/utils/common'
 
@@ -81,20 +81,20 @@ const AtModal = defineComponent({
         }
 
         return () => {
-            const rootClass = classNames(
+            const rootClass = computed(() => classNames(
                 'at-modal',
                 {
                     'at-modal--active': state._isOpened
                 },
                 props.className
-            )
+            ))
 
             // if either title or content exists
             if (props.title || props.content) {
                 const isRenderAction = props.cancelText || props.confirmText
 
                 return (
-                    h(View, { class: rootClass }, { default: () => [
+                    h(View, { class: rootClass.value }, { default: () => [
                         h(View, {
                             onTap: handleClickOverlay,
                             class: 'at-modal__overlay'
@@ -136,7 +136,7 @@ const AtModal = defineComponent({
             return (
                 h(View, {
                     onTouchMove: handleTouchMove,
-                    class: rootClass
+                    class: rootClass.value
                 }, [
                     h(View, {
                         class: 'at-modal__overlay',

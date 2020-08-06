@@ -15,7 +15,7 @@ const AtModalHeader = defineComponent({
             ))
 
             return h(View, {
-                class: rootClass
+                class: rootClass.value
             }, slots.default && slots.default())
         }
     }
