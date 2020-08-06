@@ -197,13 +197,13 @@ const AtIndexes = defineComponent({
                         key: dataList.key
                     }, [
                         h(View, { class: 'at-indexes__list-title' }, dataList.title),
-                        h(AtList, null, dataList.items && dataList.items.map(item => {
+                        h(AtList, null, { default: () => dataList.items && dataList.items.map(item => {
                             return h(AtListItem, {
                                 key: item.name,
                                 title: item.name,
                                 onTap: handleClick.bind(this, item)
                             })
-                        }))
+                        })})
                     ])
                 )
             })

@@ -94,42 +94,42 @@ const AtModal = defineComponent({
                 const isRenderAction = props.cancelText || props.confirmText
 
                 return (
-                    h(View, { class: rootClass }, [
+                    h(View, { class: rootClass }, { default: () => [
                         h(View, {
                             onTap: handleClickOverlay,
                             class: 'at-modal__overlay'
                         }),
-                        h(View, { class: 'at-modal__container' }, [
+                        h(View, { class: 'at-modal__container' }, { default: () => [
                             props.title && (
-                                h(AtModalHeader, null, [
+                                h(AtModalHeader, null, { default: () => [
                                     h(Text, null, props.title)
-                                ])
+                                ]})
                             ),
                             props.content && (
-                                h(AtModalContent, null, [
+                                h(AtModalContent, null, { default: () => [
                                     h(View, { class: 'content-simple' }, [
                                         state.isWEB
                                             ? h(Text, {
                                                 dangerouslySetInnerHTML: {
-                                                    __html: props.content.replace(/\n/g, '<br])')
+                                                    __html: props.content!.replace(/\n/g, '<br])')
                                                 }
                                             })
                                             : h(Text, null, props.content)
                                     ])
-                                ])
+                                ]})
                             ),
                             isRenderAction && (
-                                h(AtModalAction, { isSimple: true }, [
+                                h(AtModalAction, { isSimple: true }, { default: () => [
                                     props.cancelText && (
                                         h(Button, { onTap: handleCancel }, props.cancelText)
                                     ),
                                     props.confirmText && (
                                         h(Button, { onTap: handleConfirm }, props.confirmText)
                                     )
-                                ])
+                                ]})
                             )
-                        ])
-                    ])
+                        ]})
+                    ]})
                 )
             }
 
