@@ -55,7 +55,7 @@ const AtSwipeAction = defineComponent({
             return Promise.all([
                 delayGetClientRect({
                     delayTime: 0,
-                    selectorStr: `#swipeAction-${this.state.componentId}`
+                    selectorStr: `#swipeAction-${state.componentId}`
                 }),
                 delayGetScrollOffset({ delayTime: 0 })
             ]).then(([rect, scrollOffset]) => {
@@ -76,9 +76,9 @@ const AtSwipeAction = defineComponent({
             isTouching.value = false
 
             if (isOpened) {
-                endValue.value = -this.maxOffsetSize
+                endValue.value = -maxOffsetSize.value
                 state._isOpened = true
-                state.offsetSize = -this.maxOffsetSize
+                state.offsetSize = -maxOffsetSize.value
 
             } else {
                 endValue.value = 0
@@ -157,7 +157,7 @@ const AtSwipeAction = defineComponent({
 
             endValue.value = offsetSize
 
-            const breakpoint = this.maxOffsetSize / 2
+            const breakpoint = maxOffsetSize.value / 2
             const absOffsetSize = Math.abs(offsetSize)
 
             if (absOffsetSize > breakpoint) {
@@ -220,29 +220,27 @@ const AtSwipeAction = defineComponent({
                             style: transformStyle.value
                         }, slots.default && slots.default()),
                         // action options
-                        Array.isArray(props.options) && props.options.length > 0
-                            ? (
-                                h(AtSwipeActionOptions, {
-                                    options: props.options,
-                                    componentId: componentId,
-                                    onQueryedDom: handleDomInfo,
-                                }, {
-                                    default: () =>
-                                        props.options!.map((item, key) => (
-                                            h(View, {
-                                                key: `${item.text}-${key}`,
-                                                style: item.style,
-                                                onClick: (e) => handleClick(item, key, e),
-                                                class: classNames('at-swipe-action__option', item.className)
-                                            }, {
-                                                defualt: () => [
-                                                    h(Text, { class: 'option__text' }, item.text)
-                                                ]
-                                            })
-                                        ))
-                                })
-                            )
-                            : null,
+                        Array.isArray(props.options) && props.options.length > 0 && (
+                            h(AtSwipeActionOptions, {
+                                options: props.options,
+                                componentId: componentId,
+                                onQueryedDom: handleDomInfo,
+                            }, {
+                                default: () =>
+                                    props.options!.map((item, key) => {
+                                        return h(View, {
+                                            key: `${item.text}-${key}`,
+                                            class: classNames('at-swipe-action__option', item.className),
+                                            style: item.style,
+                                            onTap: (e) => handleClick(item, key, e)
+                                        }, {
+                                            default: () => [
+                                                h(Text, { class: 'option__text' }, item.text)
+                                            ]
+                                        })
+                                    })
+                            })
+                        ),
                     ]
                 })
             )
