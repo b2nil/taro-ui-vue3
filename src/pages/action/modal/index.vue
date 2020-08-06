@@ -49,8 +49,8 @@
                     </view>
                 </at-modal-content>
                 <at-modal-action>
-                    <at-button @click="closeModal(1, '点击了取消')">取消</at-button>
-                    <at-button @click="closeModal(1, '点击了确定')">确定</at-button>
+                    <button @tap="closeModal(1, '点击了取消')">取消</button>
+                    <button @tap="closeModal(1, '点击了确定')">确定</button>
                 </at-modal-action>
             </at-modal>
 
@@ -64,7 +64,7 @@
                     <view class="modal-content">这里是正文内容，欢迎加入京东凹凸实验室</view>
                 </at-modal-content>
                 <at-modal-action>
-                    <at-button @click="closeModal(2, '点击了确定')">确定</at-button>
+                    <button @tap="closeModal(2, '点击了确定')">确定</button>
                 </at-modal-action>
             </at-modal>
 
