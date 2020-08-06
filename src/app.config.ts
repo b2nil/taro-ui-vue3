@@ -22,7 +22,7 @@ export default {
     // 'pages/view/curtain/index',
     // action
     'pages/action/toast/index',
-    // 'pages/action/modal/index',
+    'pages/action/modal/index',
     // 'pages/action/progress/index',
     'pages/action/action-sheet/index',
     // 'pages/action/swipe-action/index',
