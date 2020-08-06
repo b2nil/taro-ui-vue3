@@ -1,6 +1,6 @@
 <template>
     <page
-        extra-class="progress-page"
+        class="progress-page"
         header-title="Progress 进度条"
     >
         <!-- body -->
