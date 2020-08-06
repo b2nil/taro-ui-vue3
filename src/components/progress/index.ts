@@ -8,10 +8,23 @@ const AtProgress = defineComponent({
     mixins: [AtComponentWithDefaultProps],
 
     props: {
-        color: String as () => AtProgressProps['color'],
-        status: String as () => AtProgressProps['status'],
-        percent: Number as () => AtProgressProps['percent'],
-        strokeWidth: Number as () => AtProgressProps['strokeWidth'],
+        color: {
+            type: String as () => AtProgressProps['color'],
+            default: ''
+        },
+        status: {
+            type: String as () => AtProgressProps['status'],
+            default: 'progress' as AtProgressProps['status'],
+            validator: (val: string) => ['progress', 'error', 'success'].includes(val)
+        },
+        percent: {
+            type: Number as () => AtProgressProps['percent'],
+            default: 0
+        },
+        strokeWidth: {
+            type: Number as () => AtProgressProps['strokeWidth'],
+            default: 10
+        },
         isHidePercent: Boolean,
     },
 
