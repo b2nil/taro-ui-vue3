@@ -14,7 +14,6 @@ const AtProgress = defineComponent({
         },
         status: {
             type: String as () => AtProgressProps['status'],
-            default: 'progress' as AtProgressProps['status'],
             validator: (val: string) => ['progress', 'error', 'success'].includes(val)
         },
         percent: {
@@ -81,8 +80,8 @@ const AtProgress = defineComponent({
                         !props.isHidePercent && (
                             h(View, {
                                 class: 'at-progress__content'
-                            }, (!status || status === 'progress')
-                                ? `${percent}%`
+                            }, (!props.status || props.status === 'progress')
+                                ? `${percent!.value}%`
                                 : {
                                     default: () => [
                                         h(Text, { class: iconClass.value })
