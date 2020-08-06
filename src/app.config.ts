@@ -4,7 +4,7 @@ export default {
     'pages/panel/index',
     // basic
     // 'pages/basic/icon/index',
-    // 'pages/basic/button/index',
+    'pages/basic/button/index',
     // 'pages/basic/color/index',
     // 'pages/basic/typo/index',
     // view
