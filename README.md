@@ -67,7 +67,7 @@
    - [] view
    - [x] action
    - [] form
-   - [] layout
+   - [x] layout
    - [] navigation
    - [] theme
    - [x] advanced
