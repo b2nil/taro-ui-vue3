@@ -48,7 +48,7 @@ export interface AtFloatLayoutProps extends AtComponent {
   /**
    * 元素被关闭时候触发的事件
    */
-  onClose?: CommonEventFunction
+  onClose?: Function
   /**
    * 滚动时触发的事件
    */

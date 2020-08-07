@@ -55,7 +55,7 @@ const AtFloatLayout = defineComponent({
 
         function handleClose() {
             if (typeof props.onClose === 'function') {
-                props.onClose(this.$event)
+                props.onClose()
             }
         }
 
