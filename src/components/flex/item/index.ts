@@ -15,26 +15,23 @@ const AtFlexItem = defineComponent({
     props: {
         isAuto: {
             type: Boolean,
-            required: true
+            default: false,
         },
         isWrap: {
             type: Boolean,
-            required: true
+            default: false,
         },
         align: {
             type: String as () => AtFlexItemProps['align'],
             default: 'center',
-            required: true
         },
         size: {
             type: Number as () => AtFlexItemProps['size'],
-            default: 1,
-            required: true
+            default: 0,
         },
         offset: {
             type: Number as () => AtFlexItemProps['offset'],
-            default: 1,
-            required: true
+            default: 0,
         },
     },
 
@@ -46,14 +43,23 @@ const AtFlexItem = defineComponent({
 
                 _forEach(props, (value, key) => {
                     switch (key) {
+                        case 'customStyle':
+                        case 'className':
+                            return
                         case 'isAuto':
-                            return root.push('at-col--auto')
+                            if (value) return root.push('at-col--auto')
+                            return
                         case 'isWrap':
-                            if(value) return root.push(`at-col--wrap`)
+                            if (value) return root.push(`at-col--wrap`)
+                            return
                         case 'size':
-                            if(value) return root.push(`at-col-${value}`)
+                            if (value) return root.push(`at-col-${value}`)
+                            return
+                        case 'offset':
+                            if (value != 0) return root.push(`at-col__offset-${value}`)
+                            return
                         default:
-                            root.push(`at-col__${key}--${value}`)
+                            return root.push(`at-col__${key}--${value}`)
                     }
                 })
 

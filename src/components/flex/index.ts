@@ -16,27 +16,21 @@ const AtFlex = defineComponent({
         wrap: {
             type: String as () => AtFlexProps['wrap'],
             default: 'no-wrap',
-            required: true
         },
         align: {
             type: String as () => AtFlexProps['align'],
-            default: 'center',
-            required: true
+            default: 'stretch',
         },
         justify: {
             type: String as () => AtFlexProps['justify'],
-            default: 'center',
-            required: true
+            default: 'start',
         },
         direction: {
             type: String as () => AtFlexProps['direction'],
-            default: 'center',
-            required: true
+            default: 'row',
         },
         alignContent: {
             type: String as () => AtFlexProps['alignContent'],
-            default: 'center',
-            required: true
         },
     },
 
@@ -48,14 +42,15 @@ const AtFlex = defineComponent({
 
                 _forEach(props, (value, key) => {
                     switch (key) {
-                        case 'children':
+                        case 'className':
+                        case 'customStyle':
                             return
-                        case 'alignContent':
+                        case 'wrap':
                             return root.push(`at-row--${value}`)
                         case 'alignContent':
                             return root.push(`at-row__align-content--${value}`)
                         default:
-                            root.push(`at-row__${key}--${value}`)
+                            return root.push(`at-row__${key}--${value}`)
                     }
                 })
 
