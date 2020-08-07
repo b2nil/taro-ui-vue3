@@ -107,7 +107,7 @@ const AtGrid = defineComponent({
                                     // use image
                                     childItem.image && (
                                         h(Image, {
-                                            class: 'container-inner__img',
+                                            class: 'content-inner__img',
                                             mode: 'scaleToFill',
                                             src: childItem.image
                                         })
