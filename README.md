@@ -63,7 +63,7 @@
 
 ## TODOs
  - [] 组件展示页面
-   - [] basic
+   - [x] basic
    - [] view
    - [x] action
    - [] form
