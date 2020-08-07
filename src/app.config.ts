@@ -42,7 +42,7 @@ export default {
     // 'pages/layout/float-layout/index',
     'pages/layout/card/index',
     // 'pages/layout/list/index',
-    // 'pages/layout/accordion/index',
+    'pages/layout/accordion/index',
     // form
     // 'pages/form/form/index',
     // 'pages/form/checkbox/index',
