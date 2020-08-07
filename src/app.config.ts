@@ -6,7 +6,7 @@ export default {
     'pages/basic/icon/index',
     'pages/basic/button/index',
     'pages/basic/color/index',
-    // 'pages/basic/typo/index',
+    'pages/basic/typo/index',
     // view
     // 'pages/view/noticebar/index',
     // 'pages/view/badge/index',
