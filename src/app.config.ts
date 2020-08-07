@@ -35,13 +35,13 @@ export default {
     // 'pages/navigation/tabbar/index',
     // 'pages/navigation/segmented-control/index',
     // 'pages/navigation/navbar/index',
-    // 'pages/navigation/indexes/index',
+    'pages/navigation/indexes/index',
     // layout
     'pages/layout/flex/index',
     'pages/layout/grid/index',
     'pages/layout/float-layout/index',
     'pages/layout/card/index',
-    // 'pages/layout/list/index',
+    'pages/layout/list/index',
     'pages/layout/accordion/index',
     // form
     // 'pages/form/form/index',
