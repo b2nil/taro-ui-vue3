@@ -98,7 +98,7 @@
                     <at-flex-item
                         :size="5"
                         :style="{height: '100px'}"
-                    >C</at-flex-item>
+                    >D</at-flex-item>
                     <at-flex-item is-auto>底部对齐 -- end</at-flex-item>
                 </at-flex>
             </example-item>
@@ -107,7 +107,7 @@
                     <at-flex-item
                         :size="5"
                         :style="{height: '100px'}"
-                    >C</at-flex-item>
+                    >E</at-flex-item>
                     <at-flex-item is-auto>基线对齐 -- baseline</at-flex-item>
                 </at-flex>
             </example-item>
