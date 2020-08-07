@@ -38,7 +38,7 @@ export default {
     // 'pages/navigation/indexes/index',
     // layout
     'pages/layout/flex/index',
-    // 'pages/layout/grid/index',
+    'pages/layout/grid/index',
     'pages/layout/float-layout/index',
     'pages/layout/card/index',
     // 'pages/layout/list/index',
