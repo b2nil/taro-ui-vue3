@@ -48,7 +48,7 @@ const AtDrawer = defineComponent({
         })
 
         watch(() => props.show, (val) => {
-            if (val === state._show) {
+            if (val !== state._show) {
                 val ? showAnimation() : hideAnimation()
             }
         })
@@ -118,7 +118,7 @@ const AtDrawer = defineComponent({
                     'data-index': index,
                     title: name,
                     arrow: 'right',
-                    onTap: handleItemClick.bind(this, index)
+                    onClick: handleItemClick.bind(this, index)
                 })
             })
 
@@ -136,7 +136,7 @@ const AtDrawer = defineComponent({
                     class: 'at-drawer__content',
                     style: listStyle.value
                 }, (!!props.items && props.items.length)
-                    ? [ h(AtList, null, atListItemNodes)]
+                    ? [ h(AtList, null, { default: () => atListItemNodes })]
                     : slots.default && slots.default()
                 )
             ])
