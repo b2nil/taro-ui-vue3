@@ -179,7 +179,6 @@ const AtIndexes = defineComponent({
             const menuList = props.list.map((dataList, i) => {
                 const { key } = dataList
                 const targetView = `at-indexes__list-${key}`
-
                 return (
                     h(View, {
                         class: 'at-indexes__menu-item',
@@ -201,7 +200,7 @@ const AtIndexes = defineComponent({
                             return h(AtListItem, {
                                 key: item.name,
                                 title: item.name,
-                                onTap: handleClick.bind(this, item)
+                                onClick: handleClick.bind(this, item)
                             })
                         })})
                     ])
@@ -237,7 +236,7 @@ const AtIndexes = defineComponent({
                         scrollWithAnimation: props.animation,
                         scrollTop: state.isWEB ? state._scrollTop: undefined,
                         scrollIntoView: !state.isWEB ? state._scrollIntoView: '',
-                        onScroll: handleScoll.bind(this)
+                        onScroll: handleScoll
                     }, [
                         h(View, {
                             class: 'at-indexes__content',
