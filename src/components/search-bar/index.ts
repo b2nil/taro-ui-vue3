@@ -208,7 +208,7 @@ const AtSearchBar = defineComponent({
                         h(View, {
                             class: 'at-search-bar__action',
                             style: actionStyle,
-                            onClick: handleActionClick
+                            onTap: handleActionClick
                         }, props.actionName)
                     ]
                 })
