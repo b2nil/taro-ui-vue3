@@ -133,20 +133,24 @@ export default {
             state[key] = value
         }
 
-        function handleDayClick(...args) {
-            console.log('handleDayClick', args)
+        function handleDayClick(item) {
+            state.now = item.value
         }
 
-        function handleDayLongClick(...args) {
-            console.log('handleDayLongClick', args)
+        function handleDayLongClick(item) {
+            console.log('handleDayLongClick', item.value)
         }
 
-        function handleDateChange(arg) {
+        function handleDateChange(selectedDates) {
+            if (selectedDates.value.end) {
+                state.multiCurrentDate = selectedDates.value
+            }
             Taro.showToast({
-                title: `handleDateChange: ${JSON.stringify(arg)}`,
+                title: `handleDateChange: ${JSON.stringify(selectedDates)}`,
                 icon: 'none',
             })
         }
+
         function handleMonthChange(arg) {
             Taro.showToast({
                 title: `handleMonthChange: ${JSON.stringify(arg)}`,
