@@ -179,14 +179,14 @@ export default defineComponent({
     setup() {
         function handleChange(e) {
             Taro.showToast({
-                title: `Change Switch: ${e}`,
+                title: `Change Switch: ${JSON.stringify(e.detail)}`,
                 icon: 'none'
             })
         }
 
         function handleClick(e) {
             Taro.showToast({
-                title: `Click Item: ${e}`,
+                title: `Click Item: ${JSON.stringify(e.detail)}`,
                 icon: 'none'
             })
         }
