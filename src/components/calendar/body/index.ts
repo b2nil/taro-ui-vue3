@@ -298,13 +298,13 @@ const AtCalendarBody = defineComponent({
                         h(View, { class: classNames('body__slider', 'body__slider--pre') }, [
                             h(AtCalendarDateList, {
                                 key: state.listGroup[0].value,
-                                list: state.listGroup.length ? state.listGroup[0].list : []
+                                list: state.listGroup[0].list
                             })
                         ]),
                         h(View, { class: classNames('body__slider', 'body__slider--now') }, [
                             h(AtCalendarDateList, {
                                 key: state.listGroup[1].value,
-                                list: state.listGroup.length ? state.listGroup[1].list : [],
+                                list: state.listGroup[1].list,
                                 onClick: props.onDayClick,
                                 onLongClick: props.onLongClick
                             })
@@ -312,7 +312,7 @@ const AtCalendarBody = defineComponent({
                         h(View, { class: classNames('body__slider', 'body__slider--next') }, [
                             h(AtCalendarDateList, {
                                 key: state.listGroup[2].value,
-                                list: state.listGroup.length ? state.listGroup[2].list : []
+                                list: state.listGroup[2].list
                             })
                         ])
                     ])
