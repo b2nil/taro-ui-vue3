@@ -30,7 +30,7 @@ export default {
     'pages/action/message/index',
     // navigation
     'pages/navigation/drawer/index',
-    // 'pages/navigation/pagination/index',
+    'pages/navigation/pagination/index',
     // 'pages/navigation/tabs/index',
     // 'pages/navigation/tabbar/index',
     // 'pages/navigation/segmented-control/index',
