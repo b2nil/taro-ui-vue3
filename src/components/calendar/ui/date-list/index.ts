@@ -75,8 +75,8 @@ const AtCalendarList = defineComponent({
                     props.list.map((item: Calendar.Item, index: number) => {
                         return h(View, {
                             key: `list-item-${item.value}-${index}`,
-                            onTap: handleClick(item),
-                            onLongPress: handleLongClick(item),
+                            onTap: handleClick.bind(this, item),
+                            onLongPress: handleLongClick.bind(this, item),
                             class: flexItemClass.value(item)
                         }, [
                             h(View, { class: 'flex__item-container'}, [
