@@ -29,7 +29,7 @@ export default {
     'pages/action/activity-indicator/index',
     'pages/action/message/index',
     // navigation
-    // 'pages/navigation/drawer/index',
+    'pages/navigation/drawer/index',
     // 'pages/navigation/pagination/index',
     // 'pages/navigation/tabs/index',
     // 'pages/navigation/tabbar/index',
