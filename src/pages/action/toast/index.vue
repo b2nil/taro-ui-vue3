@@ -90,7 +90,7 @@
                         <at-button
                             @tap="
                                 handleClick({
-                                ttext: '正在加载…',
+                                text: '正在加载…',
                                 hasMask: true,
                                 status: 'loading',
                                 })
