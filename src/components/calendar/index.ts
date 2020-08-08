@@ -328,7 +328,7 @@ const AtCalendar = defineComponent({
                 selectedDates
             } = toRefs(props as AtCalendarPropsWithDefaults)
 
-            return h(View, { class: classNames('at-calendar', className)}, [
+            return h(View, { class: classNames('at-calendar', className?.value)}, [
                 h(AtCalendarController, {
                     minDate: minDate?.value,
                     maxDate: maxDate?.value,
