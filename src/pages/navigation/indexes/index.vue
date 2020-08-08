@@ -5,17 +5,17 @@
     >
         <view style="height: 100%;">
             <at-indexes
-                :list="mockdata"
                 topKey="Top"
+                :list="mockdata"
                 @click="handleClick"
                 @scroll-into-view="handleScrollIntoView"
             >
                 <view class="custom-area">
                     用户自定义内容
                     <at-search-bar
-                        :value="searchbarValue"
                         placeholder="跳转到指定Key"
-                        @hange="handleChange"
+                        :value="searchbarValue"
+                        @change="handleChange"
                         @action-click="handleActionClick"
                     />
                 </view>
@@ -60,10 +60,9 @@ export default defineComponent({
             if (!searchbarValue.value) {
                 return
             }
-
-            searchbarValue.value = ''
-
-            scrollIntoView && scrollIntoView(searchbarValue.value.toUpperCase())
+            setTimeout(() => {
+                scrollIntoView && scrollIntoView(searchbarValue.value.toUpperCase())
+            }, 10);
         }
 
         function handleChange(value) {
