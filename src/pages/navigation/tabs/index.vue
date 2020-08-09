@@ -8,109 +8,61 @@
                 :swipeable="false"
                 :current="current1"
                 :tab-list="tabList1"
-                @click="handleClick.bind(this, 'current1')"
+                @click="handleClick('current1', $event)"
             >
                 <at-tabs-pane
+                    v-for="(paneNo, index) in ['一', '二', '三']"
+                    :key="index"
                     :current="current1"
-                    :index="0"
+                    :index="index"
                 >
-                    <view class="tab-content">标签页一的内容</view>
-                </at-tabs-pane>
-                <at-tabs-pane
-                    :current="current1"
-                    :index="1"
-                >
-                    <view class="tab-content">标签页二的内容</view>
-                </at-tabs-pane>
-                <at-tabs-pane
-                    :current="current1"
-                    :index="2"
-                >
-                    <view class="tab-content">标签页三的内容</view>
+                    <view class="tab-content">标签页{{paneNo}}的内容</view>
                 </at-tabs-pane>
             </at-tabs>
         </panel>
         <panel
             no-padding
-            title="等宽标签栏"
+            title="滚动标签栏"
         >
             <at-tabs
-                :swipeable="false"
                 scroll
+                :swipeable="false"
                 :current="current2"
                 :tab-list="tabList2"
-                @click="handleClick.bind(this, 'current2')"
+                @click="handleClick('current2', $event)"
             >
                 <at-tabs-pane
+                    v-for="(paneNo, index) in ['一', '二', '三', '四', '五', '六']"
+                    :key="index"
                     :current="current2"
-                    :index="0"
+                    :index="index"
                 >
-                    <view class="tab-content">标签页一的内容</view>
-                </at-tabs-pane>
-                <at-tabs-pane
-                    :current="current2"
-                    :index="1"
-                >
-                    <view class="tab-content">标签页二的内容</view>
-                </at-tabs-pane>
-                <at-tabs-pane
-                    :current="current2"
-                    :index="2"
-                >
-                    <view class="tab-content">标签页三的内容</view>
-                </at-tabs-pane>
-                <at-tabs-pane
-                    :current="current2"
-                    :index="3"
-                >
-                    <view class="tab-content">标签页四的内容</view>
-                </at-tabs-pane>
-                <at-tabs-pane
-                    :current="current2"
-                    :index="4"
-                >
-                    <view class="tab-content">标签页五的内容</view>
-                </at-tabs-pane>
-                <at-tabs-pane
-                    :current="current2"
-                    :index="5"
-                >
-                    <view class="tab-content">标签页六的内容</view>
+                    <view class="tab-content">标签页{{paneNo}}的内容</view>
                 </at-tabs-pane>
             </at-tabs>
         </panel>
         <panel
             no-padding
-            title="等宽标签栏"
+            title="滑动切换内容"
         >
             <at-tabs
                 :current="current3"
                 :tab-list="tabList1"
-                @click="handleClick.bind(this, 'current3')"
+                @click="handleClick('current3', $event)"
             >
                 <at-tabs-pane
+                    v-for="(paneNo, index) in ['一', '二', '三']"
+                    :key="index"
                     :current="current3"
-                    :index="0"
+                    :index="index"
                 >
-                    <view class="tab-content">标签页一的内容</view>
-                </at-tabs-pane>
-                <at-tabs-pane
-                    :current="current3"
-                    :index="1"
-                >
-                    <view class="tab-content">标签页二的内容</view>
-                </at-tabs-pane>
-                <at-tabs-pane
-                    :current="current3"
-                    :index="2"
-                >
-                    <view class="tab-content">标签页三的内容</view>
+                    <view class="tab-content">标签页{{paneNo}}的内容</view>
                 </at-tabs-pane>
             </at-tabs>
         </panel>
         <panel
             no-padding
-            title="等宽标签栏"
+            title="垂直模式"
         >
             <at-tabs
                 scroll
@@ -118,85 +70,36 @@
                 tab-direction="vertical"
                 :current="current4"
                 :tab-list="tabList2"
-                @click="handleClick.bind(this, 'current4')"
+                @click="handleClick('current4', $event)"
             >
                 <at-tabs-pane
-                    tab-direction="vertical"
+                    v-for="(paneNo, index) in ['一', '二', '三', '四', '五', '六']"
+                    :key="index"
                     :current="current4"
-                    :index="0"
-                >
-                    <view class="tab-content--vertical">标签页一的内容</view>
-                </at-tabs-pane>
-                <at-tabs-pane
+                    :index="index"
                     tab-direction="vertical"
-                    :current="current4"
-                    :index="1"
                 >
-                    <view class="tab-content--vertical">标签页二的内容</view>
-                </at-tabs-pane>
-                <at-tabs-pane
-                    tab-direction="vertical"
-                    :current="current4"
-                    :index="2"
-                >
-                    <view class="tab-content--vertical">标签页三的内容</view>
-                </at-tabs-pane>
-                <at-tabs-pane
-                    tab-direction="vertical"
-                    :current="current4"
-                    :index="3"
-                >
-                    <view class="tab-content--vertical">标签页四的内容</view>
-                </at-tabs-pane>
-                <at-tabs-pane
-                    tab-direction="vertical"
-                    :current="current4"
-                    :index="4"
-                >
-                    <view class="tab-content--vertical">标签页五的内容</view>
-                </at-tabs-pane>
-                <at-tabs-pane
-                    tab-direction="vertical"
-                    :current="current4"
-                    :index="5"
-                >
-                    <view class="tab-content--vertical">标签页六的内容</view>
+                    <view class="tab-content--vertical">标签页{{paneNo}}的内容</view>
                 </at-tabs-pane>
             </at-tabs>
         </panel>
         <panel
             no-padding
-            title="等宽标签栏"
+            title="禁止内容切换动画"
         >
             <at-tabs
                 :current="current5"
                 :animated="false"
                 :tab-list="tabList1"
-                @click="handleClick.bind(this, 'current5')"
+                @click="handleClick('current5', $event)"
             >
                 <at-tabs-pane
+                    v-for="(paneNo, index) in ['一', '二', '三', '四']"
+                    :key="index"
                     :current="current5"
-                    :index="0"
+                    :index="index"
                 >
-                    <view class="tab-content">标签页一的内容</view>
-                </at-tabs-pane>
-                <at-tabs-pane
-                    :current="current5"
-                    :index="1"
-                >
-                    <view class="tab-content">标签页二的内容</view>
-                </at-tabs-pane>
-                <at-tabs-pane
-                    :current="current5"
-                    :index="2"
-                >
-                    <view class="tab-content">标签页三的内容</view>
-                </at-tabs-pane>
-                <at-tabs-pane
-                    :current="current5"
-                    :index="3"
-                >
-                    <view class="tab-content">标签页四的内容</view>
+                    <view class="tab-content">标签页{{paneNo}}的内容</view>
                 </at-tabs-pane>
             </at-tabs>
         </panel>
