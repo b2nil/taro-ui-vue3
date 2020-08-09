@@ -126,9 +126,9 @@ const AtTabBar = defineComponent({
               // tab-bar item
               h(View, {
                 key: item.title,
-                class: tabItemClass.value,
+                class: tabItemClass.value(i),
                 style: props.current === i ? selectedStyle.value : defaultStyle.value,
-                onClick: handleClick.bind(this, i)
+                onTap: handleClick.bind(this, i)
               }, {
                 default: () => [
                   // tab bar icon
