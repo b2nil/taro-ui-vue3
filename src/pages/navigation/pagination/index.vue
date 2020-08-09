@@ -73,7 +73,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs, ref } from "vue"
+import { defineComponent, reactive, toRefs, computed } from "vue"
 import Taro from "@tarojs/taro"
 import { AtButton, AtPagination } from "@/components/index"
 import { Page, Panel, ExampleItem } from '../../components/demo-page'
@@ -96,19 +96,19 @@ export default defineComponent({
             pageSize: 10
         })
 
-        const len = ref(state.list.length)
+        const len = computed(() => state.list.length)
 
         function onPage(data) {
             state.current = data.current
             Taro.showToast({
-                title: `Pagination: ${data}`,
+                title: `Pagination: ${JSON.stringify(data)}`,
                 icon: 'none'
             })
         }
 
         function onPageDataChange() {
             const _list = new Array(10).fill(1)
-            state.list = this.state.list.concat(_list)
+            state.list = state.list.concat(..._list)
         }
 
         function onCurrentChange() {
