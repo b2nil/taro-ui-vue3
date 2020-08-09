@@ -127,7 +127,7 @@ const AtPagination = defineComponent({
                                         onClick: onPrev,
                                         size: 'small',
                                         disabled: prevDisabled
-                                    }, '上一页')
+                                    }, { default: () => '上一页' })
                                 )
                             ]
                         }),
@@ -161,7 +161,7 @@ const AtPagination = defineComponent({
                                         onClick: onNext,
                                         size: 'small',
                                         disabled: nextDisabled
-                                    }, '下一页')
+                                    }, { default: () => '下一页' })
                                 )
                             ]
                         }),
