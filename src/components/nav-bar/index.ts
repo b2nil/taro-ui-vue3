@@ -169,7 +169,7 @@ const AtNavBar = defineComponent({
                         h(View, {
                             class: 'at-nav-bar__left-view',
                             style: linkStyle.value,
-                            onClick: handleClickLeftView
+                            onTap: handleClickLeftView
                         }, {
                             default: () => [
                                 (props.leftIconType) && (
@@ -192,7 +192,7 @@ const AtNavBar = defineComponent({
                                 h(View, {
                                     class: containerClass.value(props.rightSecondIconType),
                                     style: linkStyle.value,
-                                    onClick: handleClick2Nd
+                                    onTap: handleClick2Nd
                                 }, {
                                     default: () => [
                                         (props.rightSecondIconType) && (
@@ -207,7 +207,7 @@ const AtNavBar = defineComponent({
                                 h(View, {
                                     class: containerClass.value(props.rightFirstIconType),
                                     style: linkStyle.value,
-                                    onClick: handleClick1St
+                                    onTap: handleClick1St
                                 }, {
                                     default: () => [
                                         (props.rightFirstIconType) && (
