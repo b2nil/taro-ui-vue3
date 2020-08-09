@@ -68,25 +68,29 @@
    - [x] action
    - [] form
    - [x] layout
-   - [] navigation
+   - [x] navigation
    - [] theme
    - [x] advanced
  - [] 兼容 h5
- - [] 解决已知问题
+ - [] 移除 `classnames` 依赖
 
-## 已知问题
-1. [#4](https://github.com/b2nil/taro-ui-vue3/issues/4) 日历组件不能选取日期
+## 使用 `vue` 的 `computed` 替代 `classnames` 依赖
+```ts
+type Classes = Record<string, boolean | undefined>
 
-## Event Handling
-- 使用 Vue 模板时，回调函数如果需要传入参数，可以采用以下方式：
-   1. `:onClick="handleClick.bind(this, 'value')"`
-   2. `@click="handleClick('value', $event)"`
-```vue
-<template>
-   <AtButton :onClick="handleClick.bind(this, 'value')"/> //OK
-   <AtButton @click="handleClick('value', $event)"/>      //OK
-   <AtInput @click="handleChange.bind(this, 'value')"/>  // 不能触发事件处理回调函数
-</template>
+// 顺序
+// - destructuring
+// - dynamic key
+// - string key
+
+const classes = computed((): Classes => ({
+   ...(!props.coloredBorder ? colorData.value.colorClasses.value : {}),
+  [`at-alert--border-${props.border}`]: !!props.border || undefined,
+  'at-alert': true,
+  'at-alert--border': Boolean(props.border),
+  'at-alert--dense': props.dense,
+  'at-alert--text': props.text,
+}))
 ```
 
 ## License
