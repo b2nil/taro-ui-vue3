@@ -29,11 +29,11 @@ const AtPagination = defineComponent({
 
     setup(props: AtPaginationProps, { slots }) {
 
-        const maxPage = getMaxPage(Math.ceil(props.total / props.pageSize!))
+        const maxPage = computed(() => getMaxPage(Math.ceil(props.total / props.pageSize!)))
         const state = reactive<AtPaginationState>({
             currentPage: props.current || 1,
-            maxPage: maxPage,
-            pickerRange: createPickerRange(maxPage)
+            maxPage: maxPage.value,
+            pickerRange: createPickerRange(maxPage.value)
         })
 
         function onPrev(): void {
@@ -84,15 +84,8 @@ const AtPagination = defineComponent({
 
         return () => {
 
-            const {
-                currentPage,
-                maxPage
-                // pickerRange,
-            } = state
-
-            const prevDisabled = maxPage === MIN_MAXPAGE || currentPage === 1
-            const nextDisabled = maxPage === MIN_MAXPAGE || currentPage === maxPage
-
+            const prevDisabled = computed(() => state.maxPage === MIN_MAXPAGE || state.currentPage === 1)
+            const nextDisabled = computed(() => state.maxPage === MIN_MAXPAGE || state.currentPage === state.maxPage)
             const rootClass = computed(() => classNames(
                 'at-pagination',
                 {
@@ -114,7 +107,7 @@ const AtPagination = defineComponent({
                                     h(AtButton, {
                                         onClick: onPrev,
                                         size: 'small',
-                                        disabled: prevDisabled
+                                        disabled: prevDisabled.value
                                     }, {
                                         default: () => [
                                             h(Text, { class: 'at-icon at-icon-chevron-left' })
@@ -126,7 +119,7 @@ const AtPagination = defineComponent({
                                     h(AtButton, {
                                         onClick: onPrev,
                                         size: 'small',
-                                        disabled: prevDisabled
+                                        disabled: prevDisabled.value
                                     }, { default: () => '上一页' })
                                 )
                             ]
@@ -136,8 +129,9 @@ const AtPagination = defineComponent({
                             class: 'at-pagination__number'
                         }, {
                             default: () => [
-                                h(Text, { class: 'at-pagination__number-current' }, currentPage),
-                                maxPage
+                                h(Text, { class: 'at-pagination__number-current' }, state.currentPage),
+                                h(Text, null, '/'),
+                                h(Text, null, state.maxPage)
                             ]
                         }),
                         // btn next
@@ -149,7 +143,7 @@ const AtPagination = defineComponent({
                                     h(AtButton, {
                                         onClick: onNext,
                                         size: 'small',
-                                        disabled: nextDisabled,
+                                        disabled: nextDisabled.value,
                                     }, {
                                         default: () => [
                                             h(Text, { class: 'at-icon at-icon-chevron-right' })
@@ -160,7 +154,7 @@ const AtPagination = defineComponent({
                                     h(AtButton, {
                                         onClick: onNext,
                                         size: 'small',
-                                        disabled: nextDisabled
+                                        disabled: nextDisabled.value
                                     }, { default: () => '下一页' })
                                 )
                             ]
