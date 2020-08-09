@@ -1,12 +1,11 @@
 import { h, defineComponent, computed } from "vue"
-import DocsHeader from "../doc-header"
 import { View } from "@tarojs/components"
 
 const Page = defineComponent({
     props: {
         headerTitle: {
             type: String,
-            default: '',
+            default: '标题',
             required: true
         }
     },
@@ -15,7 +14,9 @@ const Page = defineComponent({
         return () => (
             h(View, { class: `page ${attrs.class}` }, {
                 default: () => [
-                    h(DocsHeader, { title: props.headerTitle }),
+                    h(View, { class: 'doc-header'}, [
+                        h(View, { class: 'doc-header__title' }, props.headerTitle)
+                    ]),
                     h(View, { class: 'doc-body' }, slots.default && slots.default()),
                     slots.extra && slots.extra(),
                 ]
@@ -32,7 +33,7 @@ const Panel = defineComponent({
             default: '',
             required: true
         },
-        noPadding: { type: Boolean, default: false }
+        noPadding: Boolean
     },
 
     setup(props, { slots }) {
@@ -61,8 +62,6 @@ const ExampleItem = defineComponent({
         }, slots.default && slots.default() )
     }
 })
-
-
 
 export {
     Page,
