@@ -91,7 +91,7 @@ const AtSegmentedControl = defineComponent({
                 'at-segmented-control__item--active': props.current === i
               }),
               style: props.current === i ? selectedItemStyle.value : itemStyle.value,
-              onClick: handleClick.bind(this, i)
+              onTap: handleClick.bind(this, i)
             }, value)
           ))
         })
