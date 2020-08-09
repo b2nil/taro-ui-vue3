@@ -1,6 +1,6 @@
 import { h, defineComponent, reactive, ref, watch, onMounted, onUnmounted, CSSProperties, computed } from 'vue'
 import classNames from 'classnames'
-import { ScrollView, View } from '@tarojs/components'
+import { ScrollView, View, Text } from '@tarojs/components'
 import { CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
 import Taro from '@tarojs/taro'
 import { AtTabsProps, AtTabsState } from 'types/tabs'
@@ -186,9 +186,9 @@ const AtTabs = defineComponent({
       const rootClass = computed(() => classNames(
         {
           'at-tabs': true,
-          'at-tabs--scroll': scroll,
-          [`at- tabs--${props.tabDirection}`]: true,
-          [`at - tabs--${ENV}`]: true
+          'at-tabs--scroll': props.scroll,
+          [`at-tabs--${props.tabDirection}`]: true,
+          [`at-tabs--${ENV}`]: true
         },
         props.className
       ))
@@ -229,10 +229,10 @@ const AtTabs = defineComponent({
           id: `tab${_tabId.value}${idx}`,
           key: item.title,
           class: tabItemClass.value(idx),
-          onClick: handleClick.bind(this, idx)
+          onTap: handleClick.bind(this, idx)
         }, {
           default: () => [
-            item.title,
+            h(Text, null, item.title),
             h(View, { class: 'at-tabs__item-underline' }),
           ]
         })
