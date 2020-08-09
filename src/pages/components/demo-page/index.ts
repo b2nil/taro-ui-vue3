@@ -13,7 +13,7 @@ const Page = defineComponent({
 
     setup(props, { slots, attrs }) {
         return () => (
-            h(View, { class: `page ${attrs.class}` }, {
+            h(View, { class: `page ${ attrs.class ? attrs.class : '' }` }, {
                 default: () => [
                     h(View, { class: 'doc-header'}, [
                         h(View, { class: 'doc-header__title' }, props.headerTitle)
@@ -60,7 +60,7 @@ const ExampleItem = defineComponent({
 
     setup(props, { slots, attrs }) {
         return () => h(View, {
-            class: `example-item ${attrs.class}`,
+            class: `example-item ${ attrs.class ? attrs.class : ''}`,
             style: attrs.style
         }, slots.default && slots.default() )
     }
