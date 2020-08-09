@@ -8,7 +8,7 @@
                 <at-segmented-control
                     :current="current1"
                     :values="tabList2"
-                    @click="handleClick.bind(this, 1)"
+                    @click="handleClick(1, $event)"
                 />
                 <view class="tab-content">标签 {{ current1 + 1 }} 的内容</view>
             </example-item>
@@ -20,13 +20,13 @@
         >
             <example-item>
                 <at-segmented-control
-                    @click="handleClick.bind(this, 2)"
+                    @click="handleClick(2, $event)"
                     selectedColor="#FF4949"
                     :fontSize="30"
                     :current="current2"
                     :values="tabList2"
                 />
-                <view class="tab-content">标签 {current2 + 1} 的内容</view>
+                <view class="tab-content">标签 {{current2 + 1}} 的内容</view>
             </example-item>
         </panel>
 
