@@ -1,4 +1,4 @@
-import { h, defineComponent } from 'vue'
+import { h, defineComponent, computed } from 'vue'
 import { Button, View, Form, CommonEventFunction } from '@tarojs/components'
 import { ButtonProps } from "@tarojs/components/types/Button";
 import { AtButtonProps } from "types/button";
@@ -129,14 +129,15 @@ const AtButton = defineComponent({
 
     setup(props: AtButtonProps, { slots }){
         const { isWEAPP, isALIPAY, isWEB } = getEnvs()
-        const rootClassName = ['at-button']
-        const classObject = {
+        
+        const rootClass = computed(() => classNames('at-button', props.className, {
             [`at-button--${SIZE_CLASS[props.size ? props.size : 'normal']}`]: SIZE_CLASS[props.size ? props.size : 'normal'],
-            'at-button--disabled': props.disabled,
             [`at-button--${props.type}`]: TYPE_CLASS[props.type ? props.type : ''],
             'at-button--circle': props.circle,
+            'at-button--disabled': props.disabled,
             'at-button--full': props.full,
-        }
+            'at-button--icon': props.loading
+        }))
 
         const loadingColor = props.type === 'primary' ? '#fff' : ''
         const loadingSize = props.size === 'small' ? '30' : '0'
@@ -232,10 +233,6 @@ const AtButton = defineComponent({
             return wxButtonProps
         }
 
-        if (props.loading) {
-            rootClassName.push('at-button--icon')
-        }
-
         const webButton = h(Button, {
             class: 'at-button__wxbutton',
             lang: props.lang,
@@ -258,7 +255,7 @@ const AtButton = defineComponent({
 
         return () => h(View, {
             onTap: handleClick,
-            class: classNames(rootClassName, classObject, props.className),
+            class: rootClass.value,
             style: props.customStyle,
         }, [
             isWEB && !props.disabled && webButton,
