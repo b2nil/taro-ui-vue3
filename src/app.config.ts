@@ -31,7 +31,7 @@ export default {
     // navigation
     'pages/navigation/drawer/index',
     'pages/navigation/pagination/index',
-    // 'pages/navigation/tabs/index',
+    'pages/navigation/tabs/index',
     // 'pages/navigation/tabbar/index',
     'pages/navigation/segmented-control/index',
     'pages/navigation/navbar/index',
