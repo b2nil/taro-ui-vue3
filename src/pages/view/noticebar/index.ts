@@ -75,16 +75,16 @@ export default defineComponent({
                   })
                 ]
               }),
-            ]
-          }),
 
-          h(View, { class: 'bar-item' }, {
-            default: () => [
-              h(AtNoticebar, { marquee: true }, {
+              h(View, { class: 'bar-item' }, {
                 default: () => [
-                  h(Text, null, '[超长文本]这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏[结束]')
+                  h(AtNoticebar, { marquee: true }, {
+                    default: () => [
+                      h(Text, null, '[超长文本]这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏[结束]')
+                    ]
+                  })
                 ]
-              })
+              }),
             ]
           }),
 
