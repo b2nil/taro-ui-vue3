@@ -6,7 +6,7 @@ import { Page, Panel } from '../../components/demo-page'
 import './index.scss'
 
 export default defineComponent({
-  
+
   setup() {
 
     return () => {
@@ -17,7 +17,7 @@ export default defineComponent({
           default: () => [
 
             /* 数字*/
-            h(Panel, { title: '数字', class: 'panel__content' }, {
+            h(Panel, { title: '数字' }, {
               default: () => [
                 h(View, { class: 'badge-item' }, {
                   default: () => [
@@ -53,7 +53,7 @@ export default defineComponent({
             }),
 
             /* 小红点*/
-            h(Panel, { title: '小红点', class: 'panel__content' }, {
+            h(Panel, { title: '小红点' }, {
               default: () => [
                 h(View, { class: 'badge-item' }, {
                   default: () => [
@@ -90,72 +90,34 @@ export default defineComponent({
                 }),
               ]
             }),
-          ]
-        }),
 
-        /* 文本*/
-        h(Panel, { title: '文本', class: 'panel__content' }, {
-          default: () => [
-            h(View, { class: 'badge-item' }, {
+            /* 文本*/
+            h(Panel, { title: '文本' }, {
               default: () => [
-                h(View, { class: 'subitem' }, {
+                h(View, { class: 'badge-item' }, {
                   default: () => [
-                    h(AtBadge, { value: 'NEW', }, {
+                    h(View, { class: 'subitem' }, {
                       default: () => [
-                        h(AtButton, {
-                          size: 'small', circle: true
-                        }, {
+                        h(AtBadge, { value: 'NEW', }, {
                           default: () => [
-                            h(Text, null, '按钮')
+                            h(AtButton, {
+                              size: 'small', circle: true
+                            }, {
+                              default: () => [
+                                h(Text, null, '按钮')
+                              ]
+                            }),
                           ]
                         }),
                       ]
                     }),
-                  ]
-                }),
-                h(View, { class: 'subitem' }, {
-                  default: () => [
-                    h(AtBadge, { value: 'NEW', }, {
+                    h(View, { class: 'subitem' }, {
                       default: () => [
-                        h(AtButton, { size: 'small', }, {
-                          default: () => [h(Text, null, '按钮')]
-                        }),
-                      ]
-                    }),
-                  ]
-                }),
-              ]
-            }),
-          ]
-        }),
-
-        /* 省略号*/
-        h(Panel, { title: '省略号', class: 'panel__content' }, {
-          default: () => [
-            h(View, { class: 'badge-item' }, {
-              default: () => [
-                h(View, { class: 'subitem' }, {
-                  default: () => [
-                    h(AtBadge, { value: dot, }, {
-                      default: () => [
-                        h(AtButton, {
-                          size: 'small', circle: true
-                        }, {
+                        h(AtBadge, { value: 'NEW', }, {
                           default: () => [
-                            h(Text, null, '按钮')
-                          ]
-                        }),
-                      ]
-                    }),
-                  ]
-                }),
-                h(View, { class: 'subitem' }, {
-                  default: () => [
-                    h(AtBadge, { value: dot, }, {
-                      default: () => [
-                        h(AtButton, { size: 'small', }, {
-                          default: () => [
-                            h(Text, null, '按钮')
+                            h(AtButton, { size: 'small', }, {
+                              default: () => [h(Text, null, '按钮')]
+                            }),
                           ]
                         }),
                       ]
@@ -164,6 +126,44 @@ export default defineComponent({
                 }),
               ]
             }),
+
+            /* 省略号*/
+            h(Panel, { title: '省略号' }, {
+              default: () => [
+                h(View, { class: 'badge-item' }, {
+                  default: () => [
+                    h(View, { class: 'subitem' }, {
+                      default: () => [
+                        h(AtBadge, { value: dot, }, {
+                          default: () => [
+                            h(AtButton, {
+                              size: 'small', circle: true
+                            }, {
+                              default: () => [
+                                h(Text, null, '按钮')
+                              ]
+                            }),
+                          ]
+                        }),
+                      ]
+                    }),
+                    h(View, { class: 'subitem' }, {
+                      default: () => [
+                        h(AtBadge, { value: dot, }, {
+                          default: () => [
+                            h(AtButton, { size: 'small', }, {
+                              default: () => [
+                                h(Text, null, '按钮')
+                              ]
+                            }),
+                          ]
+                        }),
+                      ]
+                    }),
+                  ]
+                }),
+              ]
+            })
           ]
         })
       )
