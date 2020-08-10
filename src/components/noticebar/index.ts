@@ -1,4 +1,4 @@
-import { h, defineComponent, reactive, onMounted, watchEffect, Ref, toRefs, computed } from 'vue'
+import { h, defineComponent, reactive, onMounted, Ref, computed, ref } from 'vue'
 import classNames from 'classnames'
 import { Text, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
@@ -28,10 +28,12 @@ const AtNoticebar = defineComponent({
 
     setup(props: AtNoticeBarProps, { slots }) {
 
-        let timeout: Ref<NodeJS.Timeout | null>
-        let interval: Ref<NodeJS.Timer>
+        const timeout: Ref<NodeJS.Timeout | null> = ref(null)
+        const interval: Ref<NodeJS.Timer | null> = ref(null)
 
         const state = reactive({
+            _showMore: !props.single ? false : props.showMore,
+            _close: props.marquee ? false : props.close,
             show: true,
             animElemId: `J_${Math.ceil(Math.random() * 10e5).toString(36)}`,
             animationData: {
@@ -52,13 +54,6 @@ const AtNoticebar = defineComponent({
             props.onGotoMore && props.onGotoMore(event)
         }
 
-        watchEffect(() => {
-            if (!timeout.value) {
-                interval.value && clearInterval(interval.value)
-                initAnimation()
-            }
-        })
-
         onMounted(() => {
             if (!props.marquee) return
             initAnimation()
@@ -69,13 +64,12 @@ const AtNoticebar = defineComponent({
             timeout.value = setTimeout(() => {
                 timeout.value = null
                 if (state.isWEB) {
-                    const { speed = 100 } = props
                     const elem = document.querySelector(`.${state.animElemId}`)
 
                     if (!elem) return
 
                     const width = elem.getBoundingClientRect().width
-                    state.dura = width / +speed
+                    state.dura = width / +props.speed!
 
                 } else if (isWEAPP || isALIPAY) {
                     const query = Taro.createSelectorQuery()
@@ -87,9 +81,8 @@ const AtNoticebar = defineComponent({
                             if (!queryRes) return
 
                             const { width } = queryRes
-                            const { speed = 100 } = props
-                            const dura = width / +speed
-
+                            const dura = width / +props.speed!
+                            
                             const animation = Taro.createAnimation({
                                 duration: dura * 1000,
                                 timingFunction: 'linear'
@@ -128,11 +121,10 @@ const AtNoticebar = defineComponent({
                             interval.value = setInterval(animBody, dura * 1000 + 1000)
                         })
                 }
-            }, 1000)
+            }, 100)
         }
 
         return () => {
-            let { showMore, close } = toRefs(props)
             const {
                 dura,
                 show,
@@ -141,10 +133,6 @@ const AtNoticebar = defineComponent({
                 isWEAPP,
                 isALIPAY
             } = state
-
-            if (!props.single) {
-                showMore!.value = false
-            }
 
             const rootClass = computed(() => classNames(
                 'at-noticebar',
@@ -156,17 +144,28 @@ const AtNoticebar = defineComponent({
                 props.className
             ))
 
-            const style = {}
-            const innerClass = ['at-noticebar__content-inner']
+            const animationStyle = computed(() => {
+                const style = {}
+                if (props.marquee) {
+                    style['animation-duration'] = `${dura}s`
+                }
+                return style
+            })
 
-            if (props.marquee) {
-                close!.value = false
-                style['animation-duration'] = `${dura}s`
-                innerClass.push(animElemId)
-            }
+            const innerContentClass = computed(() => {
+                const innerClass = ['at-noticebar__content-inner']
+                if (props.marquee) {
+                    innerClass.push(animElemId)
+                }
+                return classNames(innerClass)
+            })
 
-            const iconClass = ['at-icon']
-            if (props.icon) iconClass.push(`at-icon-${props.icon}`)
+            const iconClass = computed(() => {
+                const iconClass = ['at-icon']
+                if (props.icon) iconClass.push(`at-icon-${props.icon}`)
+                                /* start hack 百度小程序 */
+                return classNames(iconClass, iconClass)
+            })
 
             return (
                 show && (
@@ -176,10 +175,10 @@ const AtNoticebar = defineComponent({
                     }, {
                         default: () => [
                             // close icon
-                            close?.value && (
+                            state._close && (
                                 h(View, {
                                     class: 'at-noticebar__close',
-                                    onClick: handleClose
+                                    onTap: handleClose
                                 }, {
                                     default: () => [
                                         h(Text, { class: 'at-icon at-icon-close' })
@@ -194,7 +193,7 @@ const AtNoticebar = defineComponent({
                                         h(View, { class: 'at-noticebar__content-icon' }, {
                                             default: () => [
                                                 /* start hack 百度小程序 */
-                                                h(Text, { class: classNames(iconClass, iconClass) })
+                                                h(Text, { class: iconClass.value })
                                             ]
                                         })
                                     ),
@@ -205,14 +204,14 @@ const AtNoticebar = defineComponent({
                                             h(View, {
                                                 id: animElemId,
                                                 animation: animationData,
-                                                class: classNames(innerClass),
-                                                style: style,
+                                                class: innerContentClass.value,
+                                                style: animationStyle.value,
                                             }, slots.default && slots.default()),
                                             // show more content
-                                            showMore?.value && (
+                                            state._showMore && (
                                                 h(View, {
                                                     class: 'at-noticebar__more',
-                                                    onClick: onGotoMore.bind(this)
+                                                    onTap: onGotoMore.bind(this)
                                                 }, {
                                                     default: () => [
                                                         h(Text, { class: 'text' }, props.moreText),
