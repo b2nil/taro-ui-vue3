@@ -66,7 +66,7 @@ const AtLoadMore = defineComponent({
                     full: true,
                     onTap: handleClick.bind(this),
                     customStyle: props.moreBtnStyle
-                }, props.moreText)
+                }, { default: () => props.moreText })
             ])
 
             const moreTipNode = h(Text, {
