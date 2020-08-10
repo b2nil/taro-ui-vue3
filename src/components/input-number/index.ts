@@ -53,8 +53,7 @@ const AtInputNumber = defineComponent({
         // 参数
         type: {
             type: String as () => AtInputNumberProps['type'],
-            default: 'number' as AtInputNumberProps['type'],
-            required: true
+            default: 'number' as AtInputNumberProps['type']
         },
         value: {
             type: [Number, String] as unknown as () => AtInputNumberProps['value'],
