@@ -41,7 +41,7 @@ export default defineComponent({
           /* 自定义内容*/
           h(Panel, { title: '自定义内容', noPadding: true }, {
             default: () => [
-              h(AtDivider, {
+              h(AtDivider, null, {
                 default: () => [
                   h(AtIcon, { value: 'check-circle' })
                 ]
