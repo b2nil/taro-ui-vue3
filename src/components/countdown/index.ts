@@ -3,7 +3,6 @@ import { h, defineComponent, computed, ref, watch, reactive, onMounted, onUnmoun
 import classNames from 'classnames'
 
 import { View } from '@tarojs/components'
-import { onAppHide, onAppShow } from "@tarojs/taro"
 import { AtCountDownProps, AtCountdownState } from 'types/countdown'
 
 import AtComponentWithDefaultProps from '../mixins'
@@ -53,6 +52,14 @@ const AtCountdown = defineComponent({
         },
         // 事件
         onTimeUp: Function as unknown as () => AtCountDownProps['onTimeUp']
+    },
+
+    onShow() {
+        this.setTimer()
+    },
+
+    onHide(){
+        this.clearTimer()
     },
 
     setup(props: AtCountDownProps) {
@@ -139,14 +146,6 @@ const AtCountdown = defineComponent({
 
         onUnmounted(() => {
             clearTimer()
-        })
-
-        onAppHide(() => {
-            clearTimer()
-        })
-
-        onAppShow(() => {
-            setTimer()
         })
 
         return () => {

@@ -29,7 +29,7 @@ const AtCountdownItem = defineComponent({
 
         return () => (
             h(View, { class: 'at-countdown__item' }, [
-                h(View, { class: 'at-countdown__item-box' }, [
+                h(View, { class: 'at-countdown__time-box' }, [
                     h(Text, { class: 'at-countdown__time' }, formatNum(props.num))
                 ]),
                 h(Text, { class: 'at-countdown__separator' }, props.separator)
