@@ -72,11 +72,11 @@ const AtSlider = defineComponent({
         }
 
         function handleChanging(e: CommonEvent): void {
-            const { _value } = this.state
+            const { _value } = state
             const { value }: { value: number } = e.detail
 
             if (value !== _value) {
-                this.setState({ _value: value })
+                state._value = value
             }
             props.onChanging && props.onChanging(value)
         }
@@ -84,7 +84,7 @@ const AtSlider = defineComponent({
         function handleChange(e: CommonEvent): void {
             const { value } = e.detail
 
-            this.setState({ _value: value })
+            state._value = value
             props.onChange && props.onChange(value)
         }
 
