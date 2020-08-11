@@ -176,9 +176,9 @@ const AtInputNumber = defineComponent({
         return () => {
             const inputValue = Number(handleValue(props.value))
 
-            const inputStyle = computed(() => {
+            const inputStyle = computed(() => ({
                 width: props.width ? `${pxTransform(props.width)}` : ''
-            })
+            }))
 
             const rootClass = computed(() => classNames('at-input-number', {
                 'at-input-number--lg': props.size! === 'large'
