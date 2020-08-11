@@ -31,11 +31,14 @@ export default defineComponent({
                   h(AtForm, null, {
                     default: () => [
                       h(AtSwitch, {
-                        title: '开启中',
+                        title: state.switchValue ? '开启中' : '已关闭',
                         checked: state.switchValue,
                         onChange: handleChange,
                       }),
-                      h(AtSwitch, { title: '已关闭', border: false, })
+                      h(AtSwitch, {
+                        title: '已关闭',
+                        border: false,
+                      })
                     ]
                   })
                 ]
