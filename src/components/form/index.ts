@@ -39,8 +39,8 @@ const AtForm = defineComponent({
                h(Form, {
                    class: rootClass,
                    style: props.customStyle,
-                   onSubmit: onSubmit.bind(this),
                    reportSubmit: props.reportSubmit,
+                   onSubmit: onSubmit.bind(this),
                    onReset: onReset.bind(this)
                }, slots.default && slots.default())
             )
