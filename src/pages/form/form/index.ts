@@ -32,12 +32,11 @@ export default defineComponent({
     function handleSubmit(): void {
       const { value1, value2, value3 } = state
       if (!value1 || !value2) {
-        state.isOpened = true,
-          state.text = `表单必填项未填写完整`
-
+        state.isOpened = true
+        state.text = `表单必填项未填写完整`
       } else {
-        state.isOpened = true,
-          state.text =
+        state.isOpened = true
+        state.text =
           value3 && value3.length > 0
             ? `${value1} / ${value2} / ${value3.join(',')}`
             : `${value1} / ${value2}`
@@ -110,13 +109,13 @@ export default defineComponent({
                               h(AtButton, {
                                 type: 'primary',
                                 formType: 'submit'
-                              }, '提交')
+                              }, { default: () => '提交' })
                             ]
                           }),
 
                           h(View, { class: 'component-item__btn-group__btn-item' }, {
                             default: () => [
-                              h(AtButton, { formtype: 'reset' }, '重置')
+                              h(AtButton, { formtype: 'reset' }, { default: () => '重置' })
                             ]
                           }),
                         ]
