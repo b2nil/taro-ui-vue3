@@ -64,7 +64,7 @@ const AtSteps = defineComponent({
                             h(View, {
                                 key: item.title,
                                 class: stepItemClass.value(i),
-                                onClick: handleClick.bind(this, i)
+                                onTap: handleClick.bind(this, i)
                             }, {
                                 default: () => [
                                     // circular wrap

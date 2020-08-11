@@ -80,7 +80,7 @@ const AtTag = defineComponent({
         h(View, {
           class: rootClass.value,
           style: props.customStyle,
-          onClick: handleClick
+          onTap: handleClick
         },
           slots.default && slots.default()
         )

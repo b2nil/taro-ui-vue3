@@ -76,7 +76,7 @@ const AtRate = defineComponent({
                                 key: `at-rate-star-${i}`,
                                 class: cls,
                                 style: iconStyle.value,
-                                onClick: handleClick.bind(this, i + 1)
+                                onTap: handleClick.bind(this, i + 1)
                             }, {
                                 default: () => [
                                     h(Text, {

@@ -184,7 +184,7 @@ const AtRange = defineComponent({
                 h(View, {
                     class: rootClass.value,
                     style: props.customStyle,
-                    onClick: handleClick
+                    onTap: handleClick
                 }, {
                     default: () => [
                         h(View, {

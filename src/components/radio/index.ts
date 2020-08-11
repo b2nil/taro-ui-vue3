@@ -51,7 +51,7 @@ const AtRadio = defineComponent({
                     h(View, {
                         key: option.value,
                         class: optionClass.value,
-                        onClick: handleClick.bind(this, option)
+                        onTap: handleClick.bind(this, option)
                     }, {
                         default: () => [
                             h(View, { class: 'at-radio__option-wrap' }, {

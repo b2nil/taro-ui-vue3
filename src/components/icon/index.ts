@@ -59,7 +59,7 @@ const AtIcon = defineComponent({
             return h(Text, {
                 class: rootClass.value,
                 style: mergedStyle,
-                onClick: handleClick.bind(this)
+                onTap: handleClick.bind(this)
             })
         }
     }
