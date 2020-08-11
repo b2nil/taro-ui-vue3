@@ -32,7 +32,6 @@ const AtTextarea = defineComponent({
     value: {
       type: String,
       default: '',
-      required: true
     },
     maxLength: {
       type: [String, Number],
@@ -140,13 +139,10 @@ const AtTextarea = defineComponent({
               onBlur: handleBlur,
               onConfirm: handleConfirm,
               onLineChange: handleLinechange,
-            }, {
-              default: () => [
-                props.count && h(View, {
-                  class: 'at-textarea__counter'
-                }, props.value.length / _maxLength.value)
-              ]
-            })
+            }),
+            props.count && h(View, {
+              class: 'at-textarea__counter'
+            }, `${props.value.length} / ${_maxLength.value}`)
           ]
         })
       )
