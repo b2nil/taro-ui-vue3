@@ -6,6 +6,7 @@ import classNames from 'classnames'
 import AtLoading from '../loading/index'
 import { getEnvs } from '../../utils/common'
 import AtComponentWithDefaultProps from '../mixins';
+import Taro from '@tarojs/taro'
 
 const SIZE_CLASS = {
     normal: 'normal',
@@ -182,7 +183,8 @@ const AtButton = defineComponent({
 
         function handleSubmit(event) {
             if (isWEAPP || isWEB) {
-                this.$scope.triggerEvent('submit', event.detail, {
+                // 已知问题：https://github.com/NervJS/taro-ui/issues/96
+                Taro.eventCenter.trigger('submit', event.detail, {
                     bubbles: true,
                     composed: true,
                 })
@@ -191,7 +193,8 @@ const AtButton = defineComponent({
 
         function handleReset(event) {
             if (isWEAPP || isWEB) {
-                this.$scope.triggerEvent('reset', event.detail, {
+                // 已知问题：https://github.com/NervJS/taro-ui/issues/96
+                Taro.eventCenter.trigger('reset', event.detail, {
                     bubbles: true,
                     composed: true,
                 })
