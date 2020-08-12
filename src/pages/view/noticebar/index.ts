@@ -10,6 +10,12 @@ export default defineComponent({
 
   setup() {
 
+    const textOnly = '[纯文字] 这是 NoticeBar 通告栏。云对雨，雪对风，晚照退晴空。来鸿对去雁，宿鸟对鸣虫。 [结束]'
+    const singleLineText = '[单行] 这是 NoticeBar 通告栏。云对雨，雪对风，晚照退晴空。来鸿对去雁，宿鸟对鸣虫。'
+    const multiLineText = '[多行] 这是 NoticeBar 通告栏。云对雨，雪对风，晚照退晴空。来鸿对去雁，宿鸟对鸣虫。三尺剑，六钧弓，岭北对江东。人间清暑殿，天上广寒宫。两岸晓烟杨柳绿，一园春雨杏花红。'
+    const textWithIcon = '[带icon] 这是 NoticeBar 通告栏。云对雨，雪对风，晚照退晴空。来鸿对去雁，宿鸟对鸣虫。三尺剑，六钧弓，岭北对江东。人间清暑殿，天上广寒宫。两岸晓烟杨柳绿，一园春雨杏花红。 [结束]'
+    const superLongText = '[超长文本] 这是 NoticeBar 通告栏。云对雨，雪对风，晚照退晴空。来鸿对去雁，宿鸟对鸣虫。三尺剑，六钧弓，岭北对江东。人间清暑殿，天上广寒宫。两岸晓烟杨柳绿，一园春雨杏花红。两鬓风霜，途次早行之客，一蓑烟雨，溪边晚钓之翁。沿对革，异对同，白叟对黄童。江风对海雾，牧子对渔翁。颜巷陋，阮途穷，冀北对辽东。池中濯足水，门外打头风。梁帝讲经同泰寺，汉皇置酒未央宫。 [结束]'
+
     function onGotoMore(): void {
       if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
         alert('您点击了更多!')
@@ -32,8 +38,7 @@ export default defineComponent({
                 default: () => [
                   h(AtNoticebar, { single: true }, {
                     default: () => [
-                      h(Text, null, '[单行]'),
-                      h(Text, null, '这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏'),
+                      h(Text, null, singleLineText),
                     ]
                   })
                 ]
@@ -42,8 +47,7 @@ export default defineComponent({
                 default: () => [
                   h(AtNoticebar, null, {
                     default: () => [
-                      h(Text, null, '[多行]'),
-                      h(Text, null, '这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏'),
+                      h(Text, null, multiLineText),
                     ]
                   })
                 ]
@@ -58,7 +62,7 @@ export default defineComponent({
                 default: () => [
                   h(AtNoticebar, { marquee: true }, {
                     default: () => [
-                      h(Text, null, '[纯文字]这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏[结束]')
+                      h(Text, null, textOnly)
                     ]
                   })
                 ]
@@ -70,7 +74,7 @@ export default defineComponent({
                     icon: 'volume-plus'
                   }, {
                     default: () => [
-                      h(Text, null, '[带icon]这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏[结束]')
+                      h(Text, null, textWithIcon)
                     ]
                   })
                 ]
@@ -80,7 +84,7 @@ export default defineComponent({
                 default: () => [
                   h(AtNoticebar, { marquee: true }, {
                     default: () => [
-                      h(Text, null, '[超长文本]这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏[结束]')
+                      h(Text, null, superLongText)
                     ]
                   })
                 ]
@@ -95,7 +99,7 @@ export default defineComponent({
                 default: () => [
                   h(AtNoticebar, { icon: 'volume-plus', single: true }, {
                     default: () => [
-                      h(Text, null, '[单行] 这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏')
+                      h(Text, null, singleLineText)
                     ]
                   })
                 ]
@@ -106,7 +110,7 @@ export default defineComponent({
                     icon: 'volume-plus'
                   }, {
                     default: () => [
-                      h(Text, null, '[多行] 这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏')
+                      h(Text, null, multiLineText)
                     ]
                   })
                 ]
@@ -125,7 +129,7 @@ export default defineComponent({
                     onGotoMore: onGotoMore.bind(this)
                   }, {
                     default: () => [
-                      h(Text, null, '[单行] 这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏')
+                      h(Text, null, singleLineText)
                     ]
                   })
                 ]
@@ -140,7 +144,7 @@ export default defineComponent({
                     onGotoMore: onGotoMore.bind(this)
                   }, {
                     default: () => [
-                      h(Text, null, '[单行] 这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏')
+                      h(Text, null, singleLineText)
                     ]
                   })
                 ]
@@ -153,7 +157,7 @@ export default defineComponent({
                     onGotoMore: onGotoMore.bind(this)
                   }, {
                     default: () => [
-                      h(Text, null, '[多行] 这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏')
+                      h(Text, null, multiLineText)
                     ]
                   })
                 ]
@@ -169,7 +173,7 @@ export default defineComponent({
                   },
                     {
                       default: () => [
-                        h(Text, null, '[多行] 这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏')
+                        h(Text, null, multiLineText)
                       ]
                     })
                 ]
@@ -184,7 +188,7 @@ export default defineComponent({
                 default: () => [
                   h(AtNoticebar, { close: true, single: true }, {
                     default: () => [
-                      h(Text, null, '[单行] 这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏')
+                      h(Text, null, singleLineText)
                     ]
                   })
                 ]
@@ -194,7 +198,7 @@ export default defineComponent({
                 default: () => [
                   h(AtNoticebar, { close: true, icon: 'volume-plus', single: true }, {
                     default: () => [
-                      h(Text, null, '[单行] 这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏')
+                      h(Text, null, singleLineText)
                     ]
                   })
                 ]
@@ -208,7 +212,7 @@ export default defineComponent({
                     onGotoMore: onGotoMore.bind(this),
                   }, {
                     default: () => [
-                      h(Text, null, '[单行] 这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏')
+                      h(Text, null, singleLineText)
                     ]
                   })
                 ]
@@ -224,7 +228,7 @@ export default defineComponent({
                     onGotoMore: onGotoMore.bind(this),
                   }, {
                     default: () => [
-                      h(Text, null, '[单行]这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏')
+                      h(Text, null, singleLineText)
                     ]
                   })
                 ]
@@ -234,7 +238,7 @@ export default defineComponent({
                 default: () => [
                   h(AtNoticebar, { close: true }, {
                     default: () => [
-                      h(Text, null, '[多行]这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏')
+                      h(Text, null, multiLineText)
                     ]
                   })
                 ]
@@ -244,7 +248,7 @@ export default defineComponent({
                 default: () => [
                   h(AtNoticebar, { close: true }, {
                     default: () => [
-                      h(Text, null, '[多行] 这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏')
+                      h(Text, null, multiLineText)
                     ]
                   })
                 ]
@@ -257,7 +261,7 @@ export default defineComponent({
                     icon: 'volume-plus'
                   }, {
                     default: () => [
-                      h(Text, null, '[多行]这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏，这是NoticeBar通告栏')
+                      h(Text, null, multiLineText)
                     ]
                   })
                 ]
