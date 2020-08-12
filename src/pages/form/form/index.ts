@@ -108,14 +108,18 @@ export default defineComponent({
                             default: () => [
                               h(AtButton, {
                                 type: 'primary',
-                                formType: 'submit'
+                                formType: 'submit',
+                                onClick: handleSubmit
                               }, { default: () => '提交' })
                             ]
                           }),
 
                           h(View, { class: 'component-item__btn-group__btn-item' }, {
                             default: () => [
-                              h(AtButton, { formType: 'reset' }, { default: () => '重置' })
+                              h(AtButton, {
+                                formType: 'reset',
+                                onClick: handleReset
+                              }, { default: () => '重置' })
                             ]
                           }),
                         ]
