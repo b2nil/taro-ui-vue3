@@ -115,7 +115,7 @@ export default defineComponent({
 
                           h(View, { class: 'component-item__btn-group__btn-item' }, {
                             default: () => [
-                              h(AtButton, { formtype: 'reset' }, { default: () => '重置' })
+                              h(AtButton, { formType: 'reset' }, { default: () => '重置' })
                             ]
                           }),
                         ]
