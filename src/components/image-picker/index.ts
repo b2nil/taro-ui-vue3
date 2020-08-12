@@ -155,47 +155,46 @@ const AtImagePicker = defineComponent({
                 props.className
             ))
 
-            const matrixNodes = matrix.value.map((row, i) => {
-                const itemNodes = row.map((item, j) => {
-
-                    const nodeWithURL = h(View, { class: 'at-image-picker__item' }, [
-                        h(View, {
-                            class: 'at-image-picker__remove-btn',
-                            onTap: handleRemoveImg.bind(this, i * props.length! + j)
-                        }),
-                        h(Image, {
-                            class: 'at-image-picker__preview-img',
-                            mode: props.mode,
-                            src: item.url,
-                            onTap: handleImageClick.bind(this, i * props.length! + j)
-                        })
-                    ])
-
-                    const nodeWithoutURL = h(View,
-                        {
-                            class: 'at-image-picker__item at-image-picker__choose-btn',
-                            onTap: chooseFile
-                        }, 
-                        Array.apply(null, { length: 2 })
-                            .map(() => h(View, { class: 'add-bar' }))
-                    )
-
-                    return (
-                        h(View, {
-                            class: 'at-image-picker__flex-item',
-                            key: i*props.length! +j
-                        }, [
-                            item.url
-                                ? nodeWithURL
-                                : item.type === 'btn' && nodeWithoutURL
-                        ])
-                    )
+            const genPreviewNode = (item, i, j) => h(View, { class: 'at-image-picker__item' }, [
+                h(View, {
+                    class: 'at-image-picker__remove-btn',
+                    onTap: handleRemoveImg.bind(this, i * props.length! + j)
+                }),
+                h(Image, {
+                    class: 'at-image-picker__preview-img',
+                    mode: props.mode,
+                    src: item.url,
+                    onTap: handleImageClick.bind(this, i * props.length! + j)
                 })
+            ])
 
+            const addBarNode = h(View,
+                {
+                    class: 'at-image-picker__item at-image-picker__choose-btn',
+                    onTap: chooseFile
+                }, 
+                Array.apply(null, { length: 2 })
+                    .map(() => h(View, { class: 'add-bar' }))
+            )
+
+            const genItemNodes = (row, i) => row.map((item, j) => {
+                return (
+                    h(View, {
+                        class: 'at-image-picker__flex-item',
+                        key: i*props.length! +j
+                    }, [
+                        item.url
+                            ? genPreviewNode(item, i, j)
+                            : item.type === 'btn' && addBarNode
+                    ])
+                )
+            })
+
+            const matrixNodes = matrix.value.map((row, i) => {
                 return h(View, {
                     class: 'at-image-picker__flex-box',
                     key: i + 1
-                }, itemNodes)
+                }, genItemNodes(row, i))
             })
 
             return (
