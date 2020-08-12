@@ -46,14 +46,14 @@ export default defineComponent({
 
     function onFail(mes: string): void {
       Taro.showToast({
-        title: `onFail: ${mes}`,
+        title: `onFail: ${JSON.stringify(mes)}`,
         icon: 'none'
       })
     }
 
     function onImageClick(index: number, file: DogaImage): void {
       Taro.showToast({
-        title: `onImageClick: ${index}${file}`,
+        title: `onImageClick: ${index}${JSON.stringify(file)}`,
         icon: 'none'
       })
     }
