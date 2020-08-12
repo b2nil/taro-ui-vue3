@@ -28,7 +28,7 @@ const AtRange = defineComponent({
             default: ''
         },
         value: {
-            type: [Number, Number] as unknown as () => AtRangeProps['value'],
+            type: Array as unknown as () => AtRangeProps['value'],
             default: [0, 0] as AtRangeProps['value']
         },
         min: {
