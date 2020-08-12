@@ -2,66 +2,102 @@ export default {
   pages: [
     'pages/index/index',
     'pages/panel/index',
-    // basic
-    'pages/basic/icon/index',
-    'pages/basic/button/index',
-    'pages/basic/color/index',
-    'pages/basic/typo/index',
-    // view
-    'pages/view/noticebar/index',
-    'pages/view/badge/index',
-    'pages/view/tag/index',
-    'pages/view/avatar/index',
-    'pages/view/article/index',
-    'pages/view/timeline/index',
-    'pages/view/swiper/index',
-    'pages/view/load-more/index',
-    'pages/view/divider/index',
-    'pages/view/countdown/index',
-    'pages/view/steps/index',
-    'pages/view/curtain/index',
-    // action
-    'pages/action/toast/index',
-    'pages/action/modal/index',
-    'pages/action/progress/index',
-    'pages/action/action-sheet/index',
-    'pages/action/swipe-action/index',
-    'pages/action/activity-indicator/index',
-    'pages/action/message/index',
-    // navigation
-    'pages/navigation/drawer/index',
-    'pages/navigation/pagination/index',
-    'pages/navigation/tabs/index',
-    'pages/navigation/tabbar/index',
-    'pages/navigation/segmented-control/index',
-    'pages/navigation/navbar/index',
-    'pages/navigation/indexes/index',
-    // layout
-    'pages/layout/flex/index',
-    'pages/layout/grid/index',
-    'pages/layout/float-layout/index',
-    'pages/layout/card/index',
-    'pages/layout/list/index',
-    'pages/layout/accordion/index',
-    // form
-    'pages/form/form/index',
-    'pages/form/checkbox/index',
-    'pages/form/input/index',
-    'pages/form/input-number/index',
-    'pages/form/radio/index',
-    'pages/form/textarea/index',
-    'pages/form/switch/index',
-    'pages/form/rate/index',
-    'pages/form/picker/index',
-    'pages/form/picker-view/index',
-    'pages/form/slider/index',
-    'pages/form/search-bar/index',
-    'pages/form/image-picker/index',
-    'pages/form/range/index',
-    // advanced
-    'pages/advanced/calendar/index',
     // theme
     // 'pages/theme/index'
+  ],
+  subpackages: [
+    // basic
+    {
+      root: 'pages/basic',
+      pages: [
+        'icon/index',
+        'button/index',
+        'color/index',
+        'typo/index',
+      ]
+    },
+    {
+      root: 'pages/view',
+      pages: [
+        // view
+        'noticebar/index',
+        'badge/index',
+        'tag/index',
+        'avatar/index',
+        'article/index',
+        'timeline/index',
+        'swiper/index',
+        'load-more/index',
+        'divider/index',
+        'countdown/index',
+        'steps/index',
+        'curtain/index',
+      ]
+    },
+    // action
+    {
+      root: 'pages/action',
+      pages: [
+        'toast/index',
+        'modal/index',
+        'progress/index',
+        'action-sheet/index',
+        'swipe-action/index',
+        'activity-indicator/index',
+        'message/index',
+      ]
+    },
+    // navigation
+    {
+      root: 'pages/navigation',
+      pages: [
+        'drawer/index',
+        'pagination/index',
+        'tabs/index',
+        'tabbar/index',
+        'segmented-control/index',
+        'navbar/index',
+        'indexes/index',
+      ]
+    },
+    // layout
+    {
+      root: 'pages/layout',
+      pages: [
+        'flex/index',
+        'grid/index',
+        'float-layout/index',
+        'card/index',
+        'list/index',
+        'accordion/index',
+      ]
+    },
+    // form
+    {
+      root: 'pages/form',
+      pages: [
+        // form
+        'form/index',
+        'checkbox/index',
+        'input/index',
+        'input-number/index',
+        'radio/index',
+        'textarea/index',
+        'switch/index',
+        'rate/index',
+        'picker/index',
+        'picker-view/index',
+        'slider/index',
+        'search-bar/index',
+        'image-picker/index',
+        'range/index',
+      ]
+    },
+    // advanced
+    {
+      root: 'pages/advanced',
+      pages: ['calendar/index']
+    }
   ],
   window: {
     backgroundTextStyle: 'light',
