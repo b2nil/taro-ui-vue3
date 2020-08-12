@@ -64,9 +64,9 @@
 ## TODOs
  - [] 组件展示页面
    - [x] basic
-   - [] view
+   - [x] view
    - [x] action
-   - [] form
+   - [x] form
    - [x] layout
    - [x] navigation
    - [] theme
