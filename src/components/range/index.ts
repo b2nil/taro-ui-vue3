@@ -123,7 +123,7 @@ const AtRange = defineComponent({
         }
 
         function updatePos(): void {
-            delayQuerySelector(this, '.at-range__container', 0).then(rect => {
+            delayQuerySelector(this, '.at-range__container', 10).then(rect => {
                 width.value = Math.round(rect[0].width)
                 left.value = Math.round(rect[0].left)
             })
