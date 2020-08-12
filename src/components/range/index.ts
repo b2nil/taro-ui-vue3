@@ -163,12 +163,14 @@ const AtRange = defineComponent({
 
             const sliderAStyle = computed(() => ({
                 ...sliderCommonStyle.value,
-                left: `${aX}%`
+                left: `${aX}%`,
+                top: '0%'
             }))
 
             const sliderBStyle = computed(() => ({
                 ...sliderCommonStyle.value,
-                left: `${bX}%`
+                left: `${bX}%`,
+                top: '0%'
             }))
 
             const containerStyle = computed(() => ({
