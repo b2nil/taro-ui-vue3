@@ -51,7 +51,7 @@ export default defineComponent({
 
         function handleClick(item) {
             Taro.showToast({
-                title: `onClick: ${item}`,
+                title: `onClick: ${JSON.stringify(item)}`,
                 icon: 'none'
             })
         }
