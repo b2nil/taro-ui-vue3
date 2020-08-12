@@ -216,7 +216,7 @@ export default defineComponent({
                   default: () => [
                     state.hollowTagList2.map((item, index) => (
                       h(View, { class: 'subitem', key: `at-tag-${index}` }, {
-                        default: () =>
+                        default: () => [
                           h(AtTag, {
                             size: 'small',
                             name: item.name,
@@ -228,6 +228,7 @@ export default defineComponent({
                               h(Text, null, '标签')
                             ]
                           })
+                        ]
                       })
                     ))
                   ]
