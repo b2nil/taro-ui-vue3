@@ -1,6 +1,6 @@
 import { h, defineComponent, toRefs, computed } from 'vue'
 import classNames from 'classnames'
-import { Text, View } from '@tarojs/components'
+import { Text, View } from '@/utils/components'
 import { AtProgressProps } from 'types/progress'
 import AtComponentWithDefaultProps from '../mixins'
 

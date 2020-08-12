@@ -1,6 +1,6 @@
 import { h, defineComponent, reactive } from 'vue'
 import { AtButton, AtCurtain } from '@/components/index'
-import { Image, Text } from '@tarojs/components'
+import { Image, Text } from '@/utils/components'
 import curtainPng from '@/assets/images/curtain.png'
 import { Page, Panel, ExampleItem } from '../../components/demo-page'
 import './index.scss'

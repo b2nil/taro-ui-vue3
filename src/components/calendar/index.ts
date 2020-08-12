@@ -2,7 +2,7 @@ import { h, defineComponent, reactive, toRefs, watch, nextTick } from "vue"
 import classNames from 'classnames'
 import dayjs, { Dayjs } from 'dayjs'
 
-import { View } from '@tarojs/components'
+import { View } from '@/utils/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import {
     AtCalendarProps,

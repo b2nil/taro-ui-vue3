@@ -1,5 +1,5 @@
 import { h, defineComponent } from "vue"
-import { View } from "@tarojs/components"
+import { View } from "@/utils/components"
 import { AtActionSheetFooterProps } from "types/action-sheet";
 import classNames from "classnames"
 import AtComponentWithDefaultProps from "@/components/mixins";

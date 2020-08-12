@@ -1,6 +1,6 @@
 import { h, defineComponent, computed } from 'vue'
 import classNames from 'classnames'
-import { Textarea, View } from '@tarojs/components'
+import { Textarea, View } from '@/utils/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import Taro from '@tarojs/taro'
 import { AtTextareaProps } from 'types/textarea'

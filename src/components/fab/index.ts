@@ -1,5 +1,5 @@
 import { h, defineComponent } from 'vue'
-import { View } from '@tarojs/components'
+import { View } from '@/utils/components'
 import { CommonEvent, CommonEventFunction } from '@tarojs/components/types/common'
 import { AtFabProps } from "types/fab";
 import classNames from 'classnames'

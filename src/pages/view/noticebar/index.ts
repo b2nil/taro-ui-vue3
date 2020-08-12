@@ -1,7 +1,7 @@
 
 import { h, defineComponent } from 'vue'
 import { AtNoticebar } from '@/components/index'
-import { View, Text } from '@tarojs/components'
+import { View, Text } from '@/utils/components'
 import Taro from '@tarojs/taro'
 import { Page, Panel } from '../../components/demo-page'
 import './index.scss'

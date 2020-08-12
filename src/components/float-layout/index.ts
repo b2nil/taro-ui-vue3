@@ -3,7 +3,7 @@ import { h, defineComponent, computed, ref, nextTick, watch } from "vue"
 import classNames from 'classnames'
 import { handleTouchScroll } from "@/utils/common"
 
-import { ScrollView, Text, View } from '@tarojs/components'
+import { ScrollView, Text, View } from '@/utils/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtFloatLayoutProps } from 'types/float-layout'
 

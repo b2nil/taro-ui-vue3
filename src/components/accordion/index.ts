@@ -1,6 +1,6 @@
 import { h, defineComponent, reactive, ref, watch, computed } from 'vue'
 import classNames from 'classnames'
-import { Text, View } from '@tarojs/components'
+import { Text, View } from '@/utils/components'
 import AtComponentWithDefaultProps from "@/components/mixins";
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtAccordionProps, AtAccordionState } from "types/accordion";

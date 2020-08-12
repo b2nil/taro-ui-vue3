@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { Switch, View } from '@tarojs/components'
+import { Switch, View } from '@/utils/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtSwitchProps } from 'types/switch'
 

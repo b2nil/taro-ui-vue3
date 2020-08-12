@@ -1,6 +1,6 @@
 import { h, defineComponent, ref, reactive, onMounted, onUnmounted, nextTick } from 'vue'
 import classNames from 'classnames'
-import { View } from '@tarojs/components'
+import { View } from '@/utils/components'
 import Taro from '@tarojs/taro'
 import { AtMessageProps, AtMessageState } from 'types/message'
 import AtComponentWithDefaultProps from "../mixins"

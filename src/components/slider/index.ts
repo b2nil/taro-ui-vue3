@@ -1,6 +1,6 @@
 import { reactive, watch, computed, h, defineComponent } from 'vue'
 import classNames from 'classnames'
-import { Slider, View } from '@tarojs/components'
+import { Slider, View } from '@/utils/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtSliderProps, AtSliderState } from 'types/slider'
 

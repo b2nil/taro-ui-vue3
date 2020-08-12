@@ -1,6 +1,6 @@
 import { h, defineComponent, computed, reactive, watch } from 'vue'
 import classNames from 'classnames'
-import { Text, View } from '@tarojs/components'
+import { Text, View } from '@/utils/components'
 import { AtPaginationProps, AtPaginationState } from 'types/pagination'
 import AtButton from '../button/index'
 import AtComponentWithDefaultProps from '../mixins'

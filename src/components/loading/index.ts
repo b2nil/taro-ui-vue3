@@ -1,5 +1,5 @@
 import { h, defineComponent } from 'vue'
-import { View } from '@tarojs/components'
+import { View } from '@/utils/components'
 import { pxTransform } from '../../utils/common'
 import { AtComponent } from 'types/base'
 import AtComponentWithDefaultProps from '../mixins'

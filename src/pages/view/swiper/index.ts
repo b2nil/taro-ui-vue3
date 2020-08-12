@@ -8,7 +8,7 @@ import {
   SwiperItem,
   Text,
   View
-} from '@tarojs/components'
+} from '@/utils/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { Page, Panel, ExampleItem } from '../../components/demo-page'
 import './index.scss'

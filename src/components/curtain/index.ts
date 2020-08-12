@@ -2,7 +2,8 @@ import { h, defineComponent, computed } from "vue"
 
 import classNames from 'classnames'
 
-import { View, CommonEvent } from '@tarojs/components'
+import { View } from '@/utils/components'
+import { CommonEvent } from '@tarojs/components/types/common'
 import { AtCurtainProps } from 'types/curtain'
 
 import AtComponentWithDefaultProps from '../mixins'

@@ -1,6 +1,6 @@
 import { h, defineComponent, reactive } from 'vue'
 import { AtSearchBar } from '@/components/index'
-import { View } from '@tarojs/components'
+import { View } from '@/utils/components'
 import Taro from '@tarojs/taro'
 import { Page, Panel } from '../../components/demo-page'
 import './index.scss'

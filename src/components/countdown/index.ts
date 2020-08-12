@@ -2,7 +2,7 @@ import { h, defineComponent, computed, ref, watch, reactive, onMounted, onUnmoun
 
 import classNames from 'classnames'
 
-import { View } from '@tarojs/components'
+import { View } from '@/utils/components'
 import { AtCountDownProps, AtCountdownState } from 'types/countdown'
 
 import AtComponentWithDefaultProps from '../mixins'

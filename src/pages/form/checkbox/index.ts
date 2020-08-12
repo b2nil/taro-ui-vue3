@@ -1,7 +1,7 @@
 import { h, defineComponent, reactive } from 'vue'
 import { AtCheckbox } from '@/components/index'
 import { CheckboxOption } from 'types/checkbox'
-import { View } from '@tarojs/components'
+import { View } from '@/utils/components'
 import { Page, Panel, ExampleItem } from '../../components/demo-page'
 import './index.scss'
 

@@ -1,7 +1,7 @@
 
 import { AtTag } from '@/components/index'
 import { h, defineComponent, reactive } from 'vue'
-import { View, Text } from '@tarojs/components'
+import { View, Text } from '@/utils/components'
 import Taro from '@tarojs/taro'
 import { Page, Panel, ExampleItem } from '../../components/demo-page'
 import './index.scss'

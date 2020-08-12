@@ -1,6 +1,6 @@
 import { h, defineComponent } from "vue"
 
-import { Text, View } from '@tarojs/components'
+import { Text, View } from '@/utils/components'
 import { AtCountdownItemProps } from 'types/countdown'
 
 import AtComponentWithDefaultProps from '../../mixins'

@@ -2,7 +2,7 @@ import { h, defineComponent, computed } from "vue"
 
 import classNames from 'classnames'
 
-import { Image, Text, View } from '@tarojs/components'
+import { Image, Text, View } from '@/utils/components'
 import { AtCardProps } from 'types/card'
 
 import AtComponentWithDefaultProps from '../mixins'

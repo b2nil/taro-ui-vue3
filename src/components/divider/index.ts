@@ -2,7 +2,7 @@ import { h, defineComponent, computed, CSSProperties } from "vue"
 
 import classNames from 'classnames'
 
-import { View } from '@tarojs/components'
+import { View } from '@/utils/components'
 import { AtDividerProps } from 'types/divider'
 
 import AtComponentWithDefaultProps from '../mixins'

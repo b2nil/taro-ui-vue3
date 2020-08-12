@@ -1,6 +1,6 @@
 import { h, defineComponent, computed } from 'vue'
 import classNames from 'classnames'
-import { Text, View } from '@tarojs/components'
+import { Text, View } from '@/utils/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtRateProps } from 'types/rate'
 import { pxTransform } from '@/utils/common'

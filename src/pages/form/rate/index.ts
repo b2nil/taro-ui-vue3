@@ -1,6 +1,6 @@
 import { h, defineComponent, reactive } from 'vue'
 import { AtRate } from '@/components/index'
-import { View } from '@tarojs/components'
+import { View } from '@/utils/components'
 import { Page, Panel, ExampleItem } from '../../components/demo-page'
 import './index.scss'
 

@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import _toString from 'lodash/toString'
 import { pxTransform } from "@/utils/common";
 
-import { Input, Text, View } from '@tarojs/components'
+import { Input, Text, View } from '@/utils/components'
 import { CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
 import { AtInputNumberProps, InputError } from 'types/input-number'
 

@@ -1,5 +1,6 @@
 import { h, defineComponent, nextTick, watch, computed, reactive, watchEffect } from "vue"
-import { Image, Text, View, CommonEvent } from "@tarojs/components"
+import { Image, Text, View } from "@/utils/components"
+import { CommonEvent } from "@tarojs/components/types/common"
 import { AtToastProps } from "types/toast"
 import AtComponentWithDefaultProps from '@/components/mixins'
 import classNames from 'classnames'

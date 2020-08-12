@@ -1,5 +1,5 @@
 import { h, defineComponent, computed } from "vue"
-import { Picker, Text, View } from "@tarojs/components"
+import { Picker, Text, View } from "@/utils/components"
 import { Calendar, AtCalendarControllerProps } from 'types/calendar'
 import { CommonEvent } from '@tarojs/components/types/common'
 import dayjs from 'dayjs'

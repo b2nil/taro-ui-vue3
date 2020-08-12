@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { handleTouchScroll } from '@/utils/common'
 
 import Taro from '@tarojs/taro'
-import { Button, Text, View } from '@tarojs/components'
+import { Button, Text, View } from '@/utils/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtModalProps, AtModalState } from 'types/modal'
 

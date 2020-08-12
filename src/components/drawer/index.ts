@@ -2,7 +2,7 @@ import { h, defineComponent, computed, reactive, onMounted, nextTick, watch } fr
 
 import classNames from 'classnames'
 
-import { View } from '@tarojs/components'
+import { View } from '@/utils/components'
 import { AtDrawerProps, AtDrawerState } from 'types/drawer'
 
 import AtComponentWithDefaultProps from '../mixins'

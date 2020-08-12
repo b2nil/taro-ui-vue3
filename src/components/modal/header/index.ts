@@ -1,6 +1,6 @@
 import { defineComponent, computed, h } from 'vue'
 import classNames from 'classnames'
-import { View } from '@tarojs/components'
+import { View } from '@/utils/components'
 import { AtModalHeaderProps } from 'types/modal'
 import AtComponentWithDefaultProps from '@/components/mixins'
 

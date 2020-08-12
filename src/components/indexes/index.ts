@@ -8,7 +8,7 @@ import {
 } from "@/utils/common";
 
 import Taro from '@tarojs/taro'
-import { ScrollView, View } from '@tarojs/components'
+import { ScrollView, View } from '@/utils/components'
 import { CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
 import { AtIndexesProps, AtIndexesState, Item } from 'types/indexes'
 

@@ -1,7 +1,7 @@
 import { h, defineComponent, computed } from "vue"
 import classNames from 'classnames'
 
-import { Text, View } from '@tarojs/components'
+import { Text, View } from '@/utils/components'
 import { AtLoadMoreProps } from 'types/load-more'
 
 import AtComponentWithDefaultProps from '../mixins'
