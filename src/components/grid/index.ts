@@ -3,7 +3,8 @@ import { h, defineComponent, computed } from "vue"
 import classNames from 'classnames'
 import _chunk from 'lodash/chunk'
 
-import { Image, View, Text, CommonEvent } from '@tarojs/components'
+import { Image, View, Text } from '@tarojs/components'
+import { CommonEvent } from '@tarojs/components/types/common'
 import { AtGridProps, AtGridItem } from 'types/grid'
 
 import AtComponentWithDefaultProps from '../mixins'
