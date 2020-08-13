@@ -1,4 +1,5 @@
 const path = require('path')
+const h5BuildLoader = require('./h5-build-loader')
 
 const config = {
   projectName: 'taro-ui-vue3',
@@ -80,6 +81,17 @@ const config = {
           generateScopedName: '[name]__[local]___[hash:base64:5]'
         }
       }
+    },
+    webpackChain(chain) {
+      chain.module
+        .rule('h5-build-loader')
+          .test(/\.ts$/)
+          .exclude
+            .add(/node_modules/)
+            .end()
+          .use('h5-build-loader')
+            .loader(path.resolve('config/h5-build-loader.js'))
+            .end()
     }
   }
 }
