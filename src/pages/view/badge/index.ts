@@ -1,7 +1,7 @@
 
 import { h, defineComponent } from 'vue'
 import { AtBadge, AtButton } from '@/components/index'
-import { View, Text } from '@/utils/components'
+import { View, Text } from '@tarojs/components'
 import { Page, Panel } from '../../components/demo-page'
 import './index.scss'
 

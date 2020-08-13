@@ -1,6 +1,6 @@
 import { h, defineComponent, reactive, ref, watch, onMounted, computed, } from 'vue'
 import classNames from 'classnames'
-import { View } from '@/utils/components'
+import { View } from '@tarojs/components'
 import { CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
 import { AtRangeProps, AtRangeState } from 'types/range'
 import {

@@ -1,6 +1,6 @@
 import { h, defineComponent, reactive, ref, watch, onMounted, onUnmounted, CSSProperties, computed } from 'vue'
 import classNames from 'classnames'
-import { ScrollView, View, Text } from '@/utils/components'
+import { ScrollView, View, Text } from '@tarojs/components'
 import { CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
 import Taro from '@tarojs/taro'
 import { AtTabsProps, AtTabsState } from 'types/tabs'

@@ -4,7 +4,7 @@ import Taro from '@tarojs/taro'
 import classNames from 'classnames'
 import { uuid } from '@/utils/common'
 
-import { Image, View } from '@/utils/components'
+import { Image, View } from '@tarojs/components'
 import { AtImagePickerProps, File } from 'types/image-picker'
 
 import AtComponentWithDefaultProps from '../mixins'

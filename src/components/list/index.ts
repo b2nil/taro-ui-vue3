@@ -1,5 +1,5 @@
 import { h, defineComponent } from 'vue'
-import { View } from '@/utils/components'
+import { View } from '@tarojs/components'
 import { AtListProps } from "types/list";
 import classNames from 'classnames'
 

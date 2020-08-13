@@ -1,6 +1,6 @@
 import { h, defineComponent, reactive, computed, CSSProperties } from 'vue'
 import classNames from 'classnames'
-import { Input, Text, View } from '@/utils/components'
+import { Input, Text, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtSearchBarProps, AtSearchBarState } from 'types/search-bar'
 import AtComponentWithDefaultProps from '../mixins'

@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import { h, defineComponent, computed } from 'vue'
-import { Image, Text, View } from '@/utils/components'
+import { Image, Text, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtTabBarProps, TabItem } from 'types/tab-bar'
 import { mergeStyle } from '@/utils/common'

@@ -1,5 +1,5 @@
 import { h, defineComponent, computed } from 'vue'
-import { Button, View, Form } from '@/utils/components'
+import { Button, View, Form } from '@tarojs/components'
 import { CommonEventFunction } from '@tarojs/components/types/common'
 import { ButtonProps } from "@tarojs/components/types/Button";
 import { AtButtonProps } from "types/button";

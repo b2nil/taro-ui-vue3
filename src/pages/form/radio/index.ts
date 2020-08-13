@@ -1,7 +1,7 @@
 import { h, defineComponent, reactive } from 'vue'
 import { AtRadio } from '@/components/index'
 import { RadioOption } from 'types/radio'
-import { View } from '@/utils/components'
+import { View } from '@tarojs/components'
 import { Page, Panel } from '../../components/demo-page'
 import './index.scss'
 

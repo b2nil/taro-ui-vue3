@@ -1,6 +1,6 @@
 import { defineComponent, computed, h } from "vue"
 import classNames from 'classnames'
-import { Text } from "@/utils/components"
+import { Text } from "@tarojs/components"
 import { AtIconProps } from "types/icon"
 import { pxTransform, mergeStyle } from "@/utils/common"
 import AtComponentWithDefaultProps from "../mixins"

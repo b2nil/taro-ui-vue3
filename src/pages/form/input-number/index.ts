@@ -1,6 +1,6 @@
 import { h, defineComponent, reactive } from 'vue'
 import { AtInputNumber } from '@/components/index'
-import { View } from '@/utils/components'
+import { View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { Page, Panel, ExampleItem } from '../../components/demo-page'
 import './index.scss'

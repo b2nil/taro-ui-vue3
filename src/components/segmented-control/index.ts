@@ -1,6 +1,6 @@
 import { h, defineComponent, computed } from 'vue'
 import classNames from 'classnames'
-import { View } from '@/utils/components'
+import { View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtSegmentedControlProps } from 'types/segmented-control'
 import { mergeStyle, pxTransform } from '@/utils/common'

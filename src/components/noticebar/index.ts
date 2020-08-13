@@ -1,6 +1,6 @@
 import { h, defineComponent, reactive, onMounted, Ref, computed, ref } from 'vue'
 import classNames from 'classnames'
-import { Text, View } from '@/utils/components'
+import { Text, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import Taro from '@tarojs/taro'
 import { AtNoticeBarProps } from 'types/noticebar'

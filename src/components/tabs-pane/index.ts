@@ -1,6 +1,6 @@
 import { h, defineComponent, computed } from 'vue'
 import classNames from 'classnames'
-import { View } from '@/utils/components'
+import { View } from '@tarojs/components'
 import { AtTabsPaneProps } from 'types/tabs-pane'
 import AtComponentWithDefaultProps from '../mixins'
 

@@ -1,6 +1,6 @@
 import { h, defineComponent, computed } from 'vue'
 import classNames from 'classnames'
-import { Text, View } from '@/utils/components'
+import { Text, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtRadioProps, RadioOption } from 'types/radio'
 import AtComponentWithDefaultProps from '../mixins'

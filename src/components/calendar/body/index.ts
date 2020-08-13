@@ -2,7 +2,7 @@ import classNames from "classnames"
 import dayjs from 'dayjs'
 
 import { h, defineComponent, computed, reactive, watch, onMounted, ref, nextTick } from "vue"
-import { Swiper, SwiperItem, View } from "@/utils/components"
+import { Swiper, SwiperItem, View } from "@tarojs/components"
 import { BaseEventOrig, ITouch, ITouchEvent } from '@tarojs/components/types/common'
 import { AtCalendarBodyListGroup, AtCalendarBodyProps, Calendar, AtCalendarBodyState } from 'types/calendar'
 import { delayQuerySelector } from '../../../utils/common'

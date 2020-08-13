@@ -1,6 +1,6 @@
 import { defineComponent, onMounted, watch, computed, h } from 'vue'
 import classNames from 'classnames'
-import { View } from '@/utils/components'
+import { View } from '@tarojs/components'
 import { delayQuerySelector } from '@/utils/common'
 import { AtSwipeActionOptionsProps } from 'types/swipe-action'
 import AtComponentWithDefaultProps from '@/components/mixins'

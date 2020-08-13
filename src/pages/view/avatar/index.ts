@@ -1,7 +1,7 @@
 
 import { h, defineComponent } from 'vue'
 import { AtAvatar } from '@/components/index'
-import { View } from '@/utils/components'
+import { View } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import { Page, Panel, ExampleItem } from '../../components/demo-page'
 import './index.scss'

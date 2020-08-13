@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import { h, defineComponent } from 'vue'
-import { View, Image, Switch } from '@/utils/components'
+import { View, Image, Switch } from '@tarojs/components'
 import { CommonEvent, ITouchEvent, CommonEventFunction } from '@tarojs/components/types/common'
 import { AtListItemProps } from "types/list"
 import { AtIconBaseProps } from "types/base"

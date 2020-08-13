@@ -1,5 +1,5 @@
 import { h, defineComponent, computed } from "vue"
-import { View } from "@/utils/components"
+import { View } from "@tarojs/components"
 import "./index.scss"
 
 const Page = defineComponent({

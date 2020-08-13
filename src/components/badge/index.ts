@@ -1,5 +1,5 @@
 import { h, defineComponent } from "vue"
-import { View } from "@/utils/components"
+import { View } from "@tarojs/components"
 import { AtBadgeProps } from "types/badge";
 import classNames from "classnames"
 import AtComponentWithDefaultProps from "../mixins";

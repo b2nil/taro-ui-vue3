@@ -3,7 +3,7 @@ import { h, defineComponent, ref, toRefs, computed } from "vue"
 
 // Styles
 // Components
-import { Input, Text, View, Label } from "@/utils/components";
+import { Input, Text, View, Label } from "@tarojs/components";
 import AtComponentWithDefaultProps from "../mixins"
 // Effects
 // Directives

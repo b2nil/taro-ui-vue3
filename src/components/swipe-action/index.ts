@@ -2,7 +2,7 @@ import { h, defineComponent, ref, reactive, watch, CSSProperties, computed, Comp
 import classNames from 'classnames'
 import _inRange from 'lodash/inRange'
 import _isEmpty from 'lodash/isEmpty'
-import { Text, View } from '@/utils/components'
+import { Text, View } from '@tarojs/components'
 import { CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
 import {
     AtSwipeActionProps,

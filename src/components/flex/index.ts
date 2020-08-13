@@ -3,7 +3,7 @@ import { h, defineComponent, computed } from "vue"
 import classNames from 'classnames'
 import _forEach from 'lodash/forEach'
 
-import { View } from '@/utils/components'
+import { View } from '@tarojs/components'
 import { AtFlexProps } from 'types/flex'
 
 import AtComponentWithDefaultProps from '../mixins'

@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import { defineComponent, computed, h } from 'vue'
-import { ScrollView } from '@/utils/components'
+import { ScrollView } from '@tarojs/components'
 import { AtModalContentProps } from 'types/modal'
 import AtComponentWithDefaultProps from '@/components/mixins'
 

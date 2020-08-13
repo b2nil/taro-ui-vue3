@@ -1,6 +1,6 @@
 import { h, defineComponent, computed } from 'vue'
 import classNames from 'classnames'
-import { Text, View } from '@/utils/components'
+import { Text, View } from '@tarojs/components'
 import { ITouchEvent } from '@tarojs/components/types/common'
 import { AtNavBarProps } from 'types/nav-bar'
 import { mergeStyle, pxTransform } from '@/utils/common'

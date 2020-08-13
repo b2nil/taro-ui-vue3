@@ -1,6 +1,6 @@
 
 import { h, defineComponent } from 'vue'
-import { Image, View, Text } from '@/utils/components'
+import { Image, View, Text } from '@tarojs/components'
 import { Page, Panel } from '../../components/demo-page'
 import './index.scss'
 

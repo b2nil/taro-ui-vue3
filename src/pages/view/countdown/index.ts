@@ -4,7 +4,7 @@ import { AtCountdown } from '@/components/index'
 import Taro from '@tarojs/taro'
 import { Page, Panel } from '../../components/demo-page'
 import './index.scss'
-import { View } from '@/utils/components'
+import { View } from '@tarojs/components'
 
 export default defineComponent({
 

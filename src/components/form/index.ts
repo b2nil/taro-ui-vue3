@@ -3,7 +3,7 @@ import { h, defineComponent } from "vue"
 
 // Styles
 // Components
-import { Form } from "@/utils/components";
+import { Form } from "@tarojs/components";
 // Effects
 // Directives
 // Utilities

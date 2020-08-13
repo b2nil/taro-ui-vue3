@@ -1,5 +1,5 @@
 import { h, defineComponent } from "vue"
-import { View } from "@/utils/components"
+import { View } from "@tarojs/components"
 import { CommonEvent } from "@tarojs/components/types/common"
 import { AtActionSheetItemProps } from "types/action-sheet";
 import classNames from "classnames"
