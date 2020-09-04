@@ -181,7 +181,7 @@ const AtImagePicker = defineComponent({
                 return (
                     h(View, {
                         class: 'at-image-picker__flex-item',
-                        key: i*props.length! +j
+                        key: item.url ? `preview-${i*props.length! +j}` : `add-bar-${i*props.length! +j}`
                     }, [
                         item.url
                             ? genPreviewNode(item, i, j)
