@@ -1,0 +1,95 @@
+<template>
+  <view
+    :class="rootClass"
+    :style="customStyle"
+    @tap="handleClick"
+  >
+    <slot />
+  </view>
+</template>
+
+<script lang="ts">
+import { defineComponent, computed, toRef } from 'vue'
+import { CommonEvent } from '@tarojs/components/types/common'
+import { AtTagProps } from 'types/tag'
+import AtComponentWithDefaultProps from '../mixins'
+
+const SIZE_CLASS = {
+  normal: 'normal',
+  small: 'small'
+}
+
+const TYPE_CLASS = {
+  primary: 'primary'
+}
+
+export default defineComponent({
+  name: "AtTag",
+
+  mixins: [AtComponentWithDefaultProps],
+
+  props: {
+    size: {
+      type: String as () => AtTagProps['size'],
+      default: 'normal' as AtTagProps['size'],
+      validator: (val: string) => ['normal', 'small'].includes(val)
+    },
+    type: {
+      type: String as () => AtTagProps['type'],
+      default: '',
+      validator: (val: string) => ['', 'primary'].includes(val)
+    },
+    name: {
+      type: String,
+      default: ''
+    },
+    circle: {
+      type: Boolean,
+      default: false
+    },
+    active: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    onClick: Function as unknown as () => AtTagProps['onClick'],
+  },
+
+  setup(props: AtTagProps, { slots }) {
+
+    const rootClass = computed(() => ({
+      'at-tag': true,
+      [`at-tag--${SIZE_CLASS[props.size!]}`]: SIZE_CLASS[props.size!],
+      [`at-tag--${props.type}`]: TYPE_CLASS[props.type!],
+      'at-tag--disabled': props.disabled,
+      'at-tag--active': props.active,
+      'at-tag--circle': props.circle,
+      [props.className]: true,
+    }))
+
+
+    function handleClick(event: CommonEvent): void {
+
+      if (!props.disabled) {
+        typeof props.onClick === 'function' &&
+          props.onClick(
+            {
+              name: props.name!,
+              active: props.active!
+            },
+            event
+          )
+      }
+    }
+
+    return {
+      customStyle: toRef(props, 'customStyle'),
+      rootClass,
+      handleClick
+    }
+  }
+})
+</script>

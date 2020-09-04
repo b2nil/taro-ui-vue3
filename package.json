@@ -1,65 +1,51 @@
 {
-  "name": "taro-ui-vue3",
-  "version": "0.0.1",
   "private": true,
+  "name": "taro-ui-vue3",
   "description": "Taro UI Rewritten in Vue 3.0",
-  "templateInfo": {
-    "name": "default",
-    "typescript": true,
-    "css": "sass"
+  "author": "b2nil",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:b2nil/taro-ui-vue3.git"
   },
+  "license": "MIT",
   "scripts": {
-    "build:weapp": "taro build --type weapp",
-    "build:swan": "taro build --type swan",
-    "build:alipay": "taro build --type alipay",
-    "build:tt": "taro build --type tt",
-    "build:h5": "taro build --type h5",
-    "build:rn": "taro build --type rn",
-    "build:qq": "taro build --type qq",
-    "build:jd": "taro build --type jd",
-    "build:quickapp": "taro build --type quickapp",
-    "dev:weapp": "taro build --type weapp --watch",
-    "dev:swan": "npm run build:swan -- --watch",
-    "dev:alipay": "npm run build:alipay -- --watch",
-    "dev:tt": "npm run build:tt -- --watch",
-    "dev:h5": "npm run build:h5 -- --watch",
-    "dev:rn": "npm run build:rn -- --watch",
-    "dev:qq": "npm run build:qq -- --watch",
-    "dev:jd": "npm run build:jd -- --watch",
-    "dev:quickapp": "npm run build:quickapp -- --watch"
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build",
+    "build:component": "lerna run --scope taro-ui-vue3 build",
+    "clean": "lerna run clean",
+    "clean:component": "lerna run --scope taro-ui-vue3 clean",
+    "publish": "lerna publish from-git --yes"
   },
-  "browserslist": [
-    "last 3 versions",
-    "Android >= 4.1",
-    "ios >= 8"
-  ],
-  "author": "",
-  "dependencies": {
-    "@babel/runtime": "^7.7.7",
-    "classnames": "^2.2.6",
-    "dayjs": "^1.8.29",
-    "lodash": "^4.17.19",
-    "vue": "^3.0.0-rc.5"
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
   },
   "devDependencies": {
-    "@babel/core": "^7.8.0",
-    "@tarojs/components": "^3.0.7",
-    "@tarojs/mini-runner": "^3.0.7",
-    "@tarojs/runtime": "^3.0.7",
-    "@tarojs/taro": "^3.0.7",
-    "@tarojs/webpack-runner": "^3.0.7",
-    "@types/webpack-env": "^1.13.6",
-    "@typescript-eslint/eslint-plugin": "^2.x",
-    "@typescript-eslint/parser": "^2.x",
-    "@vue/compiler-sfc": "^3.0.0-rc.5",
-    "babel-preset-taro": "^3.0.5",
-    "csstype": "^2.6.11",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@typescript-eslint/eslint-plugin": "^2.26.0",
+    "@typescript-eslint/parser": "^2.26.0",
+    "conventional-changelog-cli": "^2.0.31",
+    "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
-    "eslint-config-taro": "^3.0.5",
-    "eslint-plugin-vue": "^7.0.0-alpha.6",
-    "stylelint": "^9.3.0",
-    "ts-loader": "^8.0.2",
-    "typescript": "^3.7.0",
-    "vue-loader": "^16.0.0-beta.3"
+    "eslint-import-resolver-custom-alias": "^1.2.0",
+    "eslint-plugin-import": "^2.20.2",
+    "lerna": "^3.20.2",
+    "rimraf": "^3.0.2",
+    "stylelint": "^13.3.0",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-scss": "^3.16.0",
+    "typescript": "~3.7.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "eslint --quiet --cache --fix",
+    "src/**/*.scss": "stylelint --syntax scss --fix"
   }
 }

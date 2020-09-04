@@ -4,4 +4,13 @@ deploy_versions/
 .rn_temp/
 node_modules/
 .DS_Store
-*.code-workspace
+.vscode/
+
+# Rollup visualizer file
+stats.html
+
+# Build outputs
+bundle
+lib
+# test
+tests/coverage
