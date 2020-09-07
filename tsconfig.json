@@ -33,5 +33,10 @@
     "node_modules",
     "dist"
   ],
+  "include": [
+    "types",
+    "src/**/*",
+    "global.d.ts"
+  ],
   "compileOnSave": false
 }

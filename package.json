@@ -3,12 +3,48 @@
   "version": "0.0.1",
   "private": true,
   "description": "Taro UI Rewritten in Vue 3.0",
+  "browser": "dist/index.umd.js",
+  "module": "dist/index.esm.js",
+  "main": "dist/index.js",
+  "source": "src/index.ts",
+  "sideEffects": [
+    "*.scss",
+    "*.css"
+  ],
+  "types": "./types/index.d.ts",
+  "keywords": [
+    "taro",
+    "taro-ui-vue3",
+    "taro-ui",
+    "ui",
+    "taro-vue3"
+  ],
+  "files": [
+    "dist",
+    "types",
+    "src/**/interface.ts",
+    "src/**/*.d.ts",
+    "global.d.ts"
+  ],
+  "author": "Ken Ho <b2nil>",
+  "homepage": "https://github.com/b2nil/taro-ui-vue3",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:b2nil/taro-ui-vue3.git"
+  },
+  "license": "MIT",
   "templateInfo": {
     "name": "default",
     "typescript": true,
     "css": "sass"
   },
   "scripts": {
+    "dev": "yarn run dev:lib",
+    "dev:lib": "tsc --project ./tsconfig.build.json --watch --incremental",
+    "build": "yarn run build:rollup && yarn run build:lib",
+    "build:lib": "tsc --project ./tsconfig.build.json --declaration --declarationDir types",
+    "build:rollup": "rollup --config ./rollup.config.js",
+    "prepublishOnly": "yarn run clean && yarn run build",
     "build:weapp": "taro build --type weapp",
     "build:swan": "taro build --type swan",
     "build:alipay": "taro build --type alipay",
@@ -33,7 +69,6 @@
     "Android >= 4.1",
     "ios >= 8"
   ],
-  "author": "",
   "dependencies": {
     "@babel/runtime": "^7.7.7",
     "classnames": "^2.2.6",
@@ -43,6 +78,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",
+    "@rollup/plugin-commonjs": "^15.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
     "@tarojs/components": "^3.0.9",
     "@tarojs/mini-runner": "^3.0.9",
     "@tarojs/runtime": "^3.0.9",
@@ -53,10 +91,14 @@
     "@typescript-eslint/parser": "^2.x",
     "@vue/compiler-sfc": "^3.0.0-rc.9",
     "babel-preset-taro": "^3.0.5",
+    "cross-env": "^7.0.2",
     "csstype": "^2.6.11",
     "eslint": "^6.8.0",
     "eslint-config-taro": "^3.0.5",
     "eslint-plugin-vue": "^7.0.0-alpha.6",
+    "rollup-plugin-copy": "^3.3.0",
+    "rollup-plugin-sass": "^1.2.2",
+    "rollup-plugin-typescript2": "^0.27.2",
     "stylelint": "^9.3.0",
     "ts-loader": "^8.0.2",
     "typescript": "^3.7.0",
