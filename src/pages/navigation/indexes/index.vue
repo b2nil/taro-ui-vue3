@@ -1,27 +1,24 @@
 <template>
-    <view
-        class="page"
-        style="height: 100vh;"
-    >
-        <view style="height: 100%;">
-            <at-indexes
-                topKey="Top"
-                :list="mockdata"
-                @click="handleClick"
-                @scroll-into-view="handleScrollIntoView"
-            >
-                <view class="custom-area">
-                    用户自定义内容
-                    <at-search-bar
-                        placeholder="跳转到指定Key"
-                        :value="searchbarValue"
-                        @change="handleChange"
-                        @action-click="handleActionClick"
-                    />
-                </view>
-            </at-indexes>
+  <view class="page">
+    <view style="height: 100vh;">
+      <at-indexes
+        topKey="Top"
+        :list="mockdata"
+        @click="handleClick"
+        @scroll-into-view="handleScrollIntoView"
+      >
+        <view class="custom-area">
+          用户自定义内容
+          <at-search-bar
+            placeholder="跳转到指定Key"
+            :value="searchbarValue"
+            @change="handleChange"
+            @action-click="handleActionClick"
+          />
         </view>
+      </at-indexes>
     </view>
+  </view>
 </template>
 
 <script lang="ts">
@@ -33,55 +30,55 @@ import mockData from './mock-data'
 
 export default defineComponent({
 
-    components: {
-        AtIndexes,
-        AtSearchBar,
-    },
+  components: {
+    AtIndexes,
+    AtSearchBar,
+  },
 
-    setup() {
-        const searchbarValue = ref('')
-        const mockdata = ref(mockData)
+  setup() {
+    const searchbarValue = ref('')
+    const mockdata = ref(mockData)
 
-        let scrollIntoView = (key) => {
-            Taro.showToast({
-                title: `scrollIntoView: ${key}`,
-                icon: 'none'
-            })
-        }
+    const scrollIntoView = ref((key) => {
+      Taro.showToast({
+        title: `scrollIntoView: ${key}`,
+        icon: 'none'
+      })
+    })
 
-        function handleClick(item) {
-            Taro.showToast({
-                title: `onClick: ${JSON.stringify(item)}`,
-                icon: 'none'
-            })
-        }
-
-        function handleActionClick() {
-            if (!searchbarValue.value) {
-                return
-            }
-            setTimeout(() => {
-                scrollIntoView && scrollIntoView(searchbarValue.value.toUpperCase())
-            }, 10);
-        }
-
-        function handleChange(value) {
-            searchbarValue.value = value
-        }
-
-        function handleScrollIntoView(fn) {
-            scrollIntoView = fn
-        }
-
-        return {
-            mockdata,
-            searchbarValue,
-            handleClick,
-            handleChange,
-            handleActionClick,
-            handleScrollIntoView
-        }
+    function handleClick(item) {
+      Taro.showToast({
+        title: `onClick: ${JSON.stringify(item)}`,
+        icon: 'none'
+      })
     }
+
+    function handleActionClick() {
+      if (!searchbarValue.value) {
+        return
+      }
+
+      scrollIntoView.value(searchbarValue.value.toUpperCase())
+      searchbarValue.value = ''
+    }
+
+    function handleChange(value) {
+      searchbarValue.value = value
+    }
+
+    function handleScrollIntoView(fn) {
+      scrollIntoView.value = fn
+    }
+
+    return {
+      mockdata,
+      searchbarValue,
+      handleClick,
+      handleChange,
+      handleActionClick,
+      handleScrollIntoView
+    }
+  }
 })
 </script>
 
