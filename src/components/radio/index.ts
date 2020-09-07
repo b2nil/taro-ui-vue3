@@ -20,7 +20,7 @@ const AtRadio = defineComponent({
             required: true
         },
         onClick: {
-            type: Function as unknown as () => AtRadioProps<any>['options'],
+            type: Function as unknown as () => AtRadioProps<any>['onClick'],
             default: () => (vaule: any, event: CommonEvent) => { },
             required: true
         },
