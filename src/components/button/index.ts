@@ -58,12 +58,12 @@ const AtButton = defineComponent({
         },
         // Taro Button Props
         formType: {
-            type: String as () => keyof ButtonProps.formType,
+            type: String as () => AtButtonProps['formType'],
             default: undefined,
             validator: (prop: string) => ['submit', 'reset', ''].includes(prop)
         },
         openType: { 
-            type: String as () => keyof ButtonProps.openType, 
+            type: String as () => AtButtonProps['openType'], 
             default: undefined, 
             validator: (prop: string) => [
                 'contact',
