@@ -58,6 +58,7 @@ const AtAccordion = defineComponent({
 
             isCompleted.value = false
             delayQuerySelector(this, '.at-accordion__body', 0).then((rect) => {
+                // @ts-ignore
                 const height = parseInt(rect[0].height.toString())
                 const startHeight = props.open ? 0 : height
                 const endHeight = props.open ? height : 0

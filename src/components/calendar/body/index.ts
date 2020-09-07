@@ -245,6 +245,7 @@ const AtCalendarBody = defineComponent({
 
         onMounted(() => {
             delayQuerySelector(this, '.at-calendar-slider__main', 30).then(res => {
+                // @ts-ignore
                 maxWidth.value = res[0].width
             })
         })
