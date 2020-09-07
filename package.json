@@ -1,7 +1,6 @@
 {
   "name": "taro-ui-vue3",
-  "version": "0.0.1",
-  "private": true,
+  "version": "1.0.0-alpha.1",
   "description": "Taro UI Rewritten in Vue 3.0",
   "browser": "dist/index.umd.js",
   "module": "dist/index.esm.js",
@@ -42,7 +41,7 @@
     "dev": "yarn run dev:lib",
     "dev:lib": "tsc --project ./tsconfig.build.json --watch --incremental",
     "build": "yarn run build:rollup && yarn run build:lib",
-    "build:lib": "tsc --project ./tsconfig.build.json --declaration --declarationDir types",
+    "build:lib": "tsc --project ./tsconfig.build.json",
     "build:rollup": "rollup --config ./rollup.config.js",
     "prepublishOnly": "yarn run clean && yarn run build",
     "build:weapp": "taro build --type weapp",
@@ -62,7 +61,8 @@
     "dev:rn": "npm run build:rn -- --watch",
     "dev:qq": "npm run build:qq -- --watch",
     "dev:jd": "npm run build:jd -- --watch",
-    "dev:quickapp": "npm run build:quickapp -- --watch"
+    "dev:quickapp": "npm run build:quickapp -- --watch",
+    "clean": "rimraf .temp dist lib coverage"
   },
   "browserslist": [
     "last 3 versions",
@@ -96,6 +96,7 @@
     "eslint": "^6.8.0",
     "eslint-config-taro": "^3.0.5",
     "eslint-plugin-vue": "^7.0.0-alpha.6",
+    "rimraf": "^3.0.2",
     "rollup-plugin-copy": "^3.3.0",
     "rollup-plugin-sass": "^1.2.2",
     "rollup-plugin-typescript2": "^0.27.2",
