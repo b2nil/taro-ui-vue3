@@ -37,7 +37,7 @@
   </view>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, reactive, toRefs } from 'vue'
 import Taro from '@tarojs/taro'
 import iconAction from '@/assets/images/icon-list-action.png'
