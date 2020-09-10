@@ -9,6 +9,7 @@ interface LoadMorePageState {
 }
 
 export default defineComponent({
+  name: "LoadMoreDemo",
 
   setup() {
 

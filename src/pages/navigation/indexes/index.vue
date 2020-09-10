@@ -28,7 +28,10 @@ import AtIndexes from "@/components/indexes"
 import AtSearchBar from "@/components/search-bar"
 import mockData from './mock-data'
 
+import "./index.scss"
+
 export default defineComponent({
+  name: "IndexesDemo",
 
   components: {
     AtIndexes,
@@ -81,17 +84,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style lang="scss">
-.example-item {
-    color: #333;
-    font-size: 28px;
-}
-
-.custom-area {
-    padding: 80px 20px;
-    font-size: 28px;
-    text-align: center;
-    background: #fcfcfc;
-}
-</style>

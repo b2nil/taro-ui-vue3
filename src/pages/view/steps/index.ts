@@ -9,6 +9,7 @@ interface TimelinePageState {
 }
 
 export default defineComponent({
+  name: "StepsDemo",
 
   setup() {
 

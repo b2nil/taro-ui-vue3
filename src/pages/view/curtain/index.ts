@@ -19,6 +19,7 @@ interface TagPageState {
 }
 
 export default defineComponent({
+  name: "CurtainDemo",
 
   setup() {
 
