@@ -8,9 +8,9 @@ interface IndexState {
 }
 
 export default defineComponent({
+  name: "TextareaDemo",
+  
   setup() {
-
-
     const state = reactive<IndexState>({
       value1: '',
       value2: '',

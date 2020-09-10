@@ -6,6 +6,7 @@ import { Page, Panel } from '../../components/demo-page'
 import './index.scss'
 
 export default defineComponent({
+  name: "BadgeDemo",
 
   setup() {
 

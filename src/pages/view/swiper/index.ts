@@ -24,6 +24,7 @@ interface SwiperPageState {
 }
 
 export default defineComponent({
+  name: "SwiperDemo",
 
   setup() {
 

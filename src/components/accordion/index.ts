@@ -1,5 +1,4 @@
 import { h, defineComponent, reactive, ref, watch, computed } from 'vue'
-import classNames from 'classnames'
 import { Text, View } from '@tarojs/components'
 import AtComponentWithDefaultProps from "@/components/mixins";
 import { CommonEvent } from '@tarojs/components/types/common'
@@ -42,6 +41,46 @@ const AtAccordion = defineComponent({
         const startOpen = ref(false)
         const state = reactive<AtAccordionState>({ wrapperHeight: 0 })
 
+        const rootClass = computed(() => ({
+            'at-accordion': true,
+            [`${props.className}`]: true,
+        }))
+
+        const prefixClass = computed(() => ({
+            [`${props.icon!.prefixClass}`]: props.icon,
+            'at-icon': !props.icon
+        }))
+
+        const iconClass = computed(() => ({
+            ...prefixClass.value,
+            [`${prefixClass.value}-${props.icon && props.icon.value}`]: props.icon && props.icon.value,
+            'at-accordion__icon': true
+        }))
+
+        const headerClass = computed(() => ({
+            'at-accordion__header': true,
+            'at-accordion__header--noborder': !props.hasBorder
+        }))
+
+        const arrowClass = computed(() => ({
+            'at-accordion__arrow': true,
+            'at-accordion__arrow--folded': !!props.open
+        }))
+
+        const contentClass = computed(() => ({
+            'at-accordion__content': true,
+            'at-accordion__content--inactive': (!props.open && isCompleted.value) || startOpen.value
+        }))
+
+        const iconStyle = computed(() => ({
+            color: (props.icon && props.icon.color) || '',
+            fontSize: (props.icon && `${props.icon.size}px`) || ''
+        }))
+
+        const contentStyle = computed(() => ({
+            height: isCompleted.value ? '' : `${state.wrapperHeight}px`
+        }))
+
         watch(() => props.open, (val) => {
             startOpen.value = !!val && !!props.isAnimation
             toggleWithAnimation()
@@ -76,32 +115,8 @@ const AtAccordion = defineComponent({
             })
         }
 
-        return () => {
-            const rootClass = computed(() => classNames('at-accordion', props.className))
-            const prefixClass = computed(() => ((props.icon && props.icon.prefixClass) || 'at-icon'))
-            const iconClass = computed(() => classNames({
-                [prefixClass.value]: true,
-                [`${prefixClass.value}-${props.icon && props.icon.value}`]: props.icon && props.icon.value,
-                'at-accordion__icon': true
-            }))
-            const headerClass = computed(() => classNames('at-accordion__header', {
-                'at-accordion__header--noborder': !props.hasBorder
-            }))
-            const arrowClass = computed(() => classNames('at-accordion__arrow', {
-                'at-accordion__arrow--folded': !!props.open
-            }))
-            const contentClass = computed(() => classNames('at-accordion__content', {
-                'at-accordion__content--inactive': (!props.open && isCompleted.value) || startOpen.value
-            }))
-            const iconStyle = computed(() => ({
-                color: (props.icon && props.icon.color) || '',
-                fontSize: (props.icon && `${props.icon.size}px`) || ''
-            }))
-            const contentStyle = computed(() => ({
-                height: isCompleted.value ? '' : `${state.wrapperHeight}px`
-            }))
-
-            return h(View, { class: rootClass.value, style: props.customStyle }, [
+        return () => (
+            h(View, { class: rootClass.value, style: props.customStyle }, [
                 h(View, { class: headerClass.value, onTap: handleClick }, [
                     props.icon && props.icon.value && h(Text, { class: iconClass.value, style: iconStyle.value }),
                     h(View, { class: 'at-accordion__info' }, [
@@ -109,14 +124,14 @@ const AtAccordion = defineComponent({
                         h(View, { class: 'at-accordion__info__note' }, props.note)
                     ]),
                     h(View, { class: arrowClass.value }, [
-                        h(Text, { class: classNames('at-icon', 'at-icon-chevron-down') })
+                        h(Text, { class: 'at-icon at-icon-chevron-down' })
                     ])
                 ]),
                 h(View, { class: contentClass.value, style: contentStyle.value }, [
                     h(View, { class: 'at-accordion__body' }, slots.default && slots.default())
                 ])
             ])
-        }
+        )
     }
 })
 

@@ -7,6 +7,7 @@ import { Page, Panel, ExampleItem } from '../../components/demo-page'
 import './index.scss'
 
 export default defineComponent({
+  name: "AvatarDemo",
 
   setup() {
 

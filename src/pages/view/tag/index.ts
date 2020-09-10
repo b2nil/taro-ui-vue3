@@ -20,6 +20,7 @@ interface TagPageState {
 }
 
 export default defineComponent({
+  name: "TagDemo",
 
   setup() {
 
