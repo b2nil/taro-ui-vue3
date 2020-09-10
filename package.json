@@ -74,7 +74,7 @@
     "classnames": "^2.2.6",
     "dayjs": "^1.8.29",
     "lodash": "^4.17.19",
-    "vue": "^3.0.0-rc.9"
+    "vue": "^3.0.0-rc.10"
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",
@@ -89,7 +89,7 @@
     "@types/webpack-env": "^1.13.6",
     "@typescript-eslint/eslint-plugin": "^2.x",
     "@typescript-eslint/parser": "^2.x",
-    "@vue/compiler-sfc": "^3.0.0-rc.9",
+    "@vue/compiler-sfc": "^3.0.0-rc.10",
     "babel-preset-taro": "^3.0.5",
     "cross-env": "^7.0.2",
     "csstype": "^2.6.11",
@@ -103,6 +103,6 @@
     "stylelint": "^9.3.0",
     "ts-loader": "^8.0.2",
     "typescript": "^3.7.0",
-    "vue-loader": "^16.0.0-beta.3"
+    "vue-loader": "^16.0.0-beta.7"
   }
 }
