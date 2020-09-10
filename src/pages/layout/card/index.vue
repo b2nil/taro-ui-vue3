@@ -105,8 +105,6 @@ import { Page, Panel, ExampleItem } from '../../components/demo-page'
 import AtIcon from '@/components/icon'
 import AtCard from '@/components/card'
 
-import "./index.scss"
-
 export default defineComponent({
   name: "CardDemo",
 
