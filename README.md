@@ -27,18 +27,18 @@ yarn add taro-ui-vue3
 
 ### 使用
 - 按需引用组件和组件样式
-```typescript
-import { AtButton } from 'taro-ui-vue3'
-import 'taro-ui-vue3/dist/style/components/button.scss'
+  ```typescript
+  import { AtButton } from 'taro-ui-vue3'
+  import 'taro-ui-vue3/dist/style/components/button.scss'
 
-export default {
-  components: {
-    AtButton
+  export default {
+    components: {
+      AtButton
+    }
   }
-}
-```
+  ```
 - 语法遵照 `vue 3.0` 的语法
-- 目前没有单独文档，具体参数可参考 [Taro UI 的文档](https://taro-ui.jd.com/#/docs/introduction)
+- 目前没有单独文档，除了[与 Taro UI 有差异](#与-Taro-UI-的差异)的地方外, 具体参数可参考 [Taro UI 的文档](https://taro-ui.jd.com/#/docs/introduction)
 - 亦可参考 [Demo Pages](./src/pages) 的写法
 
 ### 体验 UI Demo
@@ -46,6 +46,12 @@ export default {
 - 运行 `yarn install` 安装依赖
 - 运行 `yarn dev:weapp`
 - 在微信开发工具中导入 `dist/weapp`
+
+### 与 Taro UI 的差异
+- 移除了 Taro UI 组件的 `className` 和 `customStyle` 属性参数，如需通过原 `className` 和 `customStyle` 的方式自定义组件样式，可直接给组件传入 `class` 和 `style` 属性
+  ```html
+  <at-card class="custom-class" style="height: 20px;">...</at-card>
+  ```
 
 ## TODOs
  - [] 组件展示页面
@@ -60,26 +66,7 @@ export default {
 
  - [] 兼容 h5
     - 部分组件功能异常，打开浏览器开发工具后才能正常工作，如 `AtInput`, `AtSearchBar`, `AtSlider` 等
-    - Vue3 H5 中使用 render 函数渲染节点时, onTap 不能触发点击事件[Taro issue #7329](https://github.com/NervJS/taro/issues/7329)
-
- - [] 使用 `vue` 的 `computed` 替代 `classnames` 依赖
-    ```ts
-    type Classes = Record<string, boolean | undefined>
-
-    // 顺序
-    // - destructuring
-    // - dynamic key
-    // - string key
-
-    const classes = computed((): Classes => ({
-       ...(!props.coloredBorder ? colorData.value.colorClasses.value : {}),
-      [`at-alert--border-${props.border}`]: !!props.border || undefined,
-      'at-alert': true,
-      'at-alert--border': Boolean(props.border),
-      'at-alert--dense': props.dense,
-      'at-alert--text': props.text,
-    }))
-    ```
+    - Vue3 H5 中使用 render 函数渲染节点时, onTap 不能触发点击事件 [Taro issue #7329](https://github.com/NervJS/taro/issues/7329)
 
 ## License
 [MIT](./LICENSE)
