@@ -1,19 +1,17 @@
-import { h, defineComponent } from "vue"
+import { h, defineComponent, mergeProps } from "vue"
 import { View } from "@tarojs/components"
-import { AtActionSheetHeaderProps } from "types/action-sheet";
-import classNames from "classnames"
-import AtComponentWithDefaultProps from "@/components/mixins";
+import { AtActionSheetHeaderProps } from "types/action-sheet"
 
 const AtActionSheetHeader = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtActionSheetHeader",
 
-    setup(props: AtActionSheetHeaderProps, { slots }) {
-
-        return () => {
-            const rootClass = classNames('at-action-sheet__header', props.className)
-            
-            return h(View, { class: rootClass }, slots.default && slots.default()) 
-        }
+    setup(props: AtActionSheetHeaderProps, { attrs, slots }) {
+        
+        return () => (
+            h(View, mergeProps(attrs, {
+                class: 'at-action-sheet__header'
+            }), slots.default && slots.default())
+        )
     }
 })
 

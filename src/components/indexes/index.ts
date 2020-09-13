@@ -1,4 +1,4 @@
-import { h, defineComponent, computed, ref, reactive, nextTick, watch, onMounted, onBeforeMount } from "vue"
+import { h, defineComponent, computed, ref, reactive, nextTick, watch, onMounted, onBeforeMount, mergeProps } from "vue"
 import {
     delayQuerySelector,
     isTest,
@@ -14,12 +14,11 @@ import { AtIndexesProps, AtIndexesState, Item } from 'types/indexes'
 import AtList from '../list'
 import AtListItem from '../list/item'
 import AtToast from '../toast'
-import AtComponentWithDefaultProps from '../mixins'
 
 const ENV = Taro.getEnv()
 
 const AtIndexes = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtIndexes",
 
     props: {
         // 参数
@@ -45,7 +44,7 @@ const AtIndexes = defineComponent({
         onScrollIntoView: Function as unknown as () => AtIndexesProps['onScrollIntoView']
     },
 
-    setup(props: AtIndexesProps, { slots }) {
+    setup(props: AtIndexesProps, { attrs, slots }) {
         const menuHeight = ref(0)
         const startTop = ref(0)
         const itemHeight = ref(0)
@@ -62,20 +61,15 @@ const AtIndexes = defineComponent({
             isWEB: Taro.getEnv() === Taro.ENV_TYPE.WEB
         })
 
+        const toastStyle = computed(() => ({
+            minWidth: pxTransform(100)
+        }))
+
         watch(() => props.list, (list, prevList) => {
             if (list.length !== prevList.length) {
                 initData()
             }
         })
-
-        const toastStyle = computed(() => ({
-            minWidth: pxTransform(100)
-        }))
-
-        const rootClass = computed(() => ({
-            'at-indexes': true,
-            [`${props.className}`]: true
-        }))
 
         function handleClick(item: Item) {
             props.onClick && props.onClick(item)
@@ -211,15 +205,14 @@ const AtIndexes = defineComponent({
         })
 
         return () => (
-            h(View, {
-                class: rootClass.value,
-                style: props.customStyle
-            }, [
+            h(View, mergeProps(attrs, {
+                class: 'at-indexes',
+            }), [
                 h(AtToast, {
                     isOpened: state._isShowToast,
                     text: state._tipText,
                     duration: 2000,
-                    customStyle: toastStyle.value
+                    style: toastStyle.value
                 }),
                 h(View, {
                     class: 'at-indexes__menu',

@@ -1,15 +1,12 @@
-import { h, defineComponent, computed } from "vue"
-import classNames from 'classnames'
-
+import { h, defineComponent, mergeProps } from "vue"
 import { Text, View } from '@tarojs/components'
 import { AtLoadMoreProps } from 'types/load-more'
 
-import AtComponentWithDefaultProps from '../mixins'
 import AtActivityIndicator from '../activity-indicator'
 import AtButton from "../button"
 
 const AtLoadMore = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtLoadMore",
 
     props: {
         // 参数
@@ -44,49 +41,43 @@ const AtLoadMore = defineComponent({
         },
     },
 
-    setup(props: AtLoadMoreProps) {
+    setup(props: AtLoadMoreProps, { attrs }) {
 
         function handleClick() {
             props.onClick && props.onClick(arguments as any)
         }
 
-        return () => {
-
-            const rootClass = computed(() => classNames('at-load-more', props.className))
-
-            const loadingNode = h(AtActivityIndicator, {
-                mode: 'center',
-                content: props.loadingText
-            })
-
-            const moreBtnNode = h(View, {
-                class: 'at-load-more__cnt'
-            }, [
-                h(AtButton, {
-                    full: true,
-                    onTap: handleClick.bind(this),
-                    customStyle: props.moreBtnStyle
-                }, { default: () => props.moreText })
+        return () => (
+            h(View, mergeProps(attrs, {
+                class: 'at-load-more',
+            }), [
+                props.status === 'loading'
+                    ? (
+                        h(AtActivityIndicator, {
+                            mode: 'center',
+                            content: props.loadingText
+                        })
+                    )
+                    : props.status === 'more'
+                        ? (
+                            h(View, {
+                                class: 'at-load-more__cnt'
+                            }, [
+                                h(AtButton, {
+                                    full: true,
+                                    style: props.moreBtnStyle,
+                                    onTap: handleClick.bind(this)
+                                }, { default: () => props.moreText })
+                            ])
+                        )
+                        : (
+                            h(Text, {
+                                class: 'at-load-more__tip',
+                                style: props.noMoreTextStyle
+                            }, props.noMoreText)
+                        )
             ])
-
-            const moreTipNode = h(Text, {
-                class: 'at-load-more__tip',
-                style: props.noMoreTextStyle
-            }, props.noMoreText)
-
-            return (
-                h(View, {
-                    class: rootClass.value,
-                    style: props.customStyle
-                }, [
-                    props.status === 'loading'
-                        ? loadingNode
-                        : props.status === 'more'
-                            ? moreBtnNode
-                            : moreTipNode
-                ])
-            )
-        }
+        )
     }
 })
 

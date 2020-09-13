@@ -1,15 +1,5 @@
-// Vue - anything pulling from vue or a vue library
-import { h, defineComponent, ref, toRefs, computed } from "vue"
-
-// Styles
-// Components
+import { h, defineComponent, ref, computed, mergeProps } from "vue"
 import { Input, Text, View, Label } from "@tarojs/components";
-import AtComponentWithDefaultProps from "../mixins"
-// Effects
-// Directives
-// Utilities
-import classNames from 'classnames'
-// Types
 import { BaseEventOrig, ITouchEvent } from "@tarojs/components/types/common"
 import { InputProps } from "@tarojs/components/types/Input"
 import {
@@ -20,7 +10,6 @@ import {
     InputEventDetail,
     KeyboardHeightEventDetail,
 } from "types/input"
-// Functions
 
 type PickAtInputProps = Pick<AtInputProps, 'maxlength' | 'disabled' | 'password'>
 type GetInputPropsReturn = PickAtInputProps & Pick<InputProps, 'type'>
@@ -54,7 +43,7 @@ function getInputProps(props: AtInputProps): GetInputPropsReturn {
 }
 
 const AtInput = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtInput",
 
     props: {
         name: {
@@ -90,7 +79,7 @@ const AtInput = defineComponent({
             type: String as () => AtInputProps['placeholderStyle'],
             default: ''
         },
-        placeholderClass:{
+        placeholderClass: {
             type: String as () => AtInputProps['placeholderClass'],
             default: ''
         },
@@ -141,8 +130,36 @@ const AtInput = defineComponent({
         onErrorClick: Function as unknown as () => AtInputProps['onErrorClick']
     },
 
-    setup(props: AtInputProps, { slots }) {
+    setup(props: AtInputProps, { attrs, slots }) {
         const inputClearing = ref(false)
+
+        const inputProps = computed(() => getInputProps(props))
+
+        const rootClasses = computed(() => ({
+            'at-input': true,
+            'at-input--without-border': props.border
+        }))
+
+        const containerClasses = computed(() => ({
+            'at-input__container': true,
+            'at-input--error': props.error,
+            'at-input--disabled': inputProps.value.disabled
+        }))
+
+        const overlayClasses = computed(() => ({
+            'at-input__overlay': true,
+            'at-input__overlay--hidden': !inputProps.value.disabled
+        }))
+
+        const placeholderClasses = computed(() => ({
+            'placeholder': true,
+            [`${props.placeholderClass}`]: props.placeholderClass !== ''
+        }))
+
+        const titleClasses = computed(() => ({
+            'at-input__title': true,
+            'at-input__title--required': props.required
+        }))
 
         function handleInput(e: BaseEventOrig<InputEventDetail>) {
             props.onChange(e.detail.value, e)
@@ -199,106 +216,76 @@ const AtInput = defineComponent({
         }
 
         return () => {
-            const {
-                className,
-                customStyle,
-                name,
-                cursorSpacing,
-                confirmType,
-                cursor,
-                selectionStart,
-                selectionEnd,
-                adjustPosition,
-                border,
-                title,
-                error,
-                clear,
-                placeholder,
-                placeholderStyle,
-                placeholderClass,
-                autoFocus,
-                focus,
-                value,
-                required
-            } = toRefs(props)
-
-            const { type, maxlength, disabled, password } = computed(() => getInputProps(props)).value
-
-            const rootCls = classNames('at-input', className?.value, {
-                'at-input--without-border': !border?.value
-            })
-
-            const containerCls = classNames('at-input__container', {
-                'at-input--error': error?.value,
-                'at-input--disabled': disabled
-            })
-
-            const overlayCls = classNames('at-input__overlay', {
-                'at-input__overlay--hidden': !disabled
-            })
-
-            const placeholderCls = classNames('placeholder', placeholderClass?.value)
-
-            // conditional nodes
-            const titleNode = h(Label, {
-                class: classNames(
-                    'at-input__title',
-                    required?.value && `at-input__title--required`
-                ),
-                for: name.value
-            }, title?.value)
-
-            const clearNode = h(View, {
-                class: 'at-input__icon',
-                onTouchEnd: handleClearValue
-            }, [
-                h(Text, {
-                    class: classNames('at-icon', 'at-icon-close-circle', 'at-input__icon-close')
-                })
-            ])
-
-            const errorNode = h(View, {
-                class: 'at-input__icon',
-                onTouchStart: handleErrorClick
-            }, [
-                h(Text, {
-                    class: classNames('at-icon', 'at-icon-alert-circle', 'at-input__icon-alert')
-                })
-            ])
-
             return (
-                h(View, { class: rootCls, style: customStyle?.value }, [
-                    h(View, { class: containerCls }, [
-                        h(View, { class: overlayCls, onTap: handleClick }),
-                        title?.value && titleNode,
+                h(View, mergeProps(attrs, {
+                    class: rootClasses.value,
+                }), [
+                    h(View, {
+                        class: containerClasses.value
+                    }, [
+                        h(View, {
+                            class: overlayClasses.value,
+                            onTap: handleClick
+                        }),
+
+                        props.title && (
+                            h(Label, {
+                                class: titleClasses.value,
+                                for: props.name
+                            }, props.title)
+                        ),
+
                         h(Input, {
                             class: 'at-input__input',
-                            id: name.value,
-                            name: name.value,
-                            type: type,
-                            password: password,
-                            placeholderStyle: placeholderStyle?.value,
-                            placeholderClass: placeholderCls,
-                            placeholder: placeholder?.value,
-                            cursorSpacing: cursorSpacing?.value,
-                            maxlength: maxlength,
-                            autoFocus: autoFocus?.value,
-                            focus: focus?.value,
-                            value: value?.value,
-                            confirmType: confirmType?.value,
-                            cursor: cursor?.value,
-                            selectionStart: selectionStart?.value,
-                            selectionEnd: selectionEnd?.value,
-                            adjustPosition: adjustPosition?.value,
+                            id: props.name,
+                            name: props.name,
+                            type: inputProps.value.type,
+                            password: inputProps.value.password,
+                            placeholderStyle: props.placeholderStyle,
+                            placeholderClass: placeholderClasses.value,
+                            placeholder: props.placeholder,
+                            cursorSpacing: props.cursorSpacing,
+                            maxlength: inputProps.value.maxlength,
+                            autoFocus: props.autoFocus,
+                            focus: props.focus,
+                            value: props.value,
+                            confirmType: props.confirmType,
+                            cursor: props.cursor,
+                            selectionStart: props.selectionStart,
+                            selectionEnd: props.selectionEnd,
+                            adjustPosition: props.adjustPosition,
+                            onBlur: handleBlur,
                             onInput: handleInput,
                             onFocus: handleFocus,
-                            onBlur: handleBlur,
                             onConfirm: handleConfirm,
                             onKeyboardHeightChange: handleKeyboardHeightChange,
                         }),
-                        (clear?.value && value?.value) && clearNode,
-                        error?.value && errorNode,
-                        h(View, { class: 'at-input__children' }, slots.default && slots.default())
+
+                        (props.clear && props.value) && (
+                            h(View, {
+                                class: 'at-input__icon',
+                                onTouchEnd: handleClearValue
+                            }, [
+                                h(Text, {
+                                    class: 'at-icon at-icon-close-circle at-input__icon-close'
+                                })
+                            ])
+                        ),
+
+                        props.error && (
+                            h(View, {
+                                class: 'at-input__icon',
+                                onTouchStart: handleErrorClick
+                            }, [
+                                h(Text, {
+                                    class: 'at-icon at-icon-alert-circle at-input__icon-alert'
+                                })
+                            ])
+                        ),
+
+                        h(View, {
+                            class: 'at-input__children'
+                        }, slots.default && slots.default())
                     ])
                 ])
             )

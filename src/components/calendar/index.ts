@@ -1,5 +1,4 @@
-import { h, defineComponent, reactive, toRefs, watch, nextTick } from "vue"
-import classNames from 'classnames'
+import { h, defineComponent, reactive, toRefs, watch, nextTick, mergeProps } from "vue"
 import dayjs, { Dayjs } from 'dayjs'
 
 import { View } from '@tarojs/components'
@@ -13,10 +12,9 @@ import {
 
 import AtCalendarBody from './body'
 import AtCalendarController from './controller'
-import AtComponentWithDefaultProps from '../mixins';
 
 const AtCalendar = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtCalendar",
 
     components: {
         AtCalendarBody,
@@ -94,7 +92,7 @@ const AtCalendar = defineComponent({
         
      },
     
-    setup(props: AtCalendarProps) {
+    setup(props: AtCalendarProps, { attrs }) {
         const { currentDate, isMultiSelect } = toRefs(props as AtCalendarPropsWithDefaults)
         
         let { generateDate, selectedDate } = getInitializedState(currentDate.value, isMultiSelect.value)
@@ -281,8 +279,8 @@ const AtCalendar = defineComponent({
                 ? getMultiSelectedState(dayjsDate)
                 : getSingleSelectedState(dayjsDate)
             
-            // TODO: avoid assign null to state
             Object.assign(state, stateValue)
+            
             nextTick(() => {
                 handleSelectedDate()
             })
@@ -313,7 +311,6 @@ const AtCalendar = defineComponent({
         }
 
         return () => {
-            const { generateDate, selectedDate } = toRefs(state)
             const {
                 validDates,
                 marks,
@@ -321,20 +318,21 @@ const AtCalendar = defineComponent({
                 minDate,
                 maxDate,
                 isSwiper,
-                className,
                 hideArrow,
                 isVertical,
                 monthFormat,
                 selectedDates
             } = toRefs(props as AtCalendarPropsWithDefaults)
 
-            return h(View, { class: classNames('at-calendar', className?.value)}, [
+            return h(View, mergeProps(attrs, {
+                class: 'at-calendar'
+            }), [
                 h(AtCalendarController, {
                     minDate: minDate?.value,
                     maxDate: maxDate?.value,
                     hideArrow: hideArrow.value,
                     monthFormat: monthFormat.value,
-                    generateDate: generateDate.value,
+                    generateDate: state.generateDate,
                     onPreMonth: handleClickPreMonth,
                     onNextMonth: handleClickNextMonth,
                     onSelectDate: handleSelectDate,
@@ -347,12 +345,12 @@ const AtCalendar = defineComponent({
                     maxDate: maxDate?.value,
                     isSwiper: isSwiper.value,
                     isVertical: isVertical.value,
-                    selectedDate: selectedDate.value,
+                    selectedDate: state.selectedDate,
                     selectedDates: selectedDates.value,
-                    generateDate: generateDate.value,
-                    onDayClick: handleDayClick,
+                    generateDate: state.generateDate,
                     onSwipeMonth: setMonth,
-                    onLongPress: handleDayLongClick
+                    onDayClick: handleDayClick,
+                    onLongClick: handleDayLongClick
                 })
             ])
         }

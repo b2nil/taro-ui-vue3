@@ -1,12 +1,11 @@
-import { h, defineComponent, reactive, ref, watch, computed } from 'vue'
+import { h, defineComponent, reactive, ref, watch, computed, mergeProps } from 'vue'
 import { Text, View } from '@tarojs/components'
-import AtComponentWithDefaultProps from "@/components/mixins";
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtAccordionProps, AtAccordionState } from "types/accordion";
 import { delayQuerySelector } from '../../utils/common'
 
 const AtAccordion = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtAccordion",
 
     props: {
         open: Boolean,
@@ -36,15 +35,10 @@ const AtAccordion = defineComponent({
         }
     },
 
-    setup(props: AtAccordionProps, { slots }) {
+    setup(props: AtAccordionProps, { attrs, slots }) {
         const isCompleted = ref(true)
         const startOpen = ref(false)
         const state = reactive<AtAccordionState>({ wrapperHeight: 0 })
-
-        const rootClass = computed(() => ({
-            'at-accordion': true,
-            [`${props.className}`]: true,
-        }))
 
         const prefixClass = computed(() => ({
             [`${props.icon!.prefixClass}`]: props.icon,
@@ -116,7 +110,7 @@ const AtAccordion = defineComponent({
         }
 
         return () => (
-            h(View, { class: rootClass.value, style: props.customStyle }, [
+            h(View, mergeProps(attrs, { class: 'at-accordion' }), [
                 h(View, { class: headerClass.value, onTap: handleClick }, [
                     props.icon && props.icon.value && h(Text, { class: iconClass.value, style: iconStyle.value }),
                     h(View, { class: 'at-accordion__info' }, [

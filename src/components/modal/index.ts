@@ -1,5 +1,5 @@
-import { defineComponent, reactive, nextTick, watch, h, computed } from 'vue'
-import classNames from 'classnames'
+import { defineComponent, reactive, nextTick, watch, h, computed, mergeProps } from 'vue'
+
 import { handleTouchScroll } from '@/utils/common'
 
 import Taro from '@tarojs/taro'
@@ -7,18 +7,17 @@ import { Button, Text, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtModalProps, AtModalState } from 'types/modal'
 
-import AtComponentWithDefaultProps from '../mixins'
 import AtModalAction from './action'
 import AtModalContent from './content'
 import AtModalHeader from './header'
 
 const AtModal = defineComponent({
 
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtModal",
 
     props: {
         title: String as () => AtModalProps['title'],
-        isOpened: { 
+        isOpened: {
             type: Boolean,
             default: false,
             required: true
@@ -35,11 +34,16 @@ const AtModal = defineComponent({
         onCancel: Function as unknown as () => AtModalProps['onCancel'],
     },
 
-    setup(props: AtModalProps, { slots }) {
+    setup(props: AtModalProps, { attrs, slots }) {
         const state = reactive<AtModalState>({
             _isOpened: props.isOpened,
             isWEB: Taro.getEnv() === Taro.ENV_TYPE.WEB
         })
+
+        const rootClasses = computed(() => ({
+            'at-modal': true,
+            'at-modal--active': state._isOpened
+        }))
 
         watch(() => props.isOpened, (val, oldVal) => {
             if (val !== oldVal) {
@@ -54,7 +58,7 @@ const AtModal = defineComponent({
         function handleClickOverlay() {
             if (props.closeOnClickOverlay) {
                 state._isOpened = false
-                nextTick(handleClose)
+                nextTick((event?: CommonEvent) => handleClose(event))
             }
         }
 
@@ -81,66 +85,77 @@ const AtModal = defineComponent({
         }
 
         return () => {
-            const rootClass = computed(() => classNames(
-                'at-modal',
-                {
-                    'at-modal--active': state._isOpened
-                },
-                props.className
-            ))
-
             // if either title or content exists
             if (props.title || props.content) {
                 const isRenderAction = props.cancelText || props.confirmText
 
                 return (
-                    h(View, { class: rootClass.value }, { default: () => [
+                    h(View, mergeProps(attrs, {
+                        class: rootClasses.value
+                    }), [
                         h(View, {
+                            class: 'at-modal__overlay',
                             onTap: handleClickOverlay,
-                            class: 'at-modal__overlay'
                         }),
-                        h(View, { class: 'at-modal__container' }, { default: () => [
+
+                        h(View, {
+                            class: 'at-modal__container'
+                        }, [
                             props.title && (
-                                h(AtModalHeader, null, { default: () => [
-                                    h(Text, null, props.title)
-                                ]})
+                                h(AtModalHeader, null, {
+                                    default: () => [
+                                        h(Text, null, props.title)
+                                    ]
+                                })
                             ),
+
                             props.content && (
-                                h(AtModalContent, null, { default: () => [
-                                    h(View, { class: 'content-simple' }, [
-                                        state.isWEB
-                                            ? h(Text, {
-                                                dangerouslySetInnerHTML: {
-                                                    __html: props.content!.replace(/\n/g, '<br])')
-                                                }
-                                            })
-                                            : h(Text, null, props.content)
-                                    ])
-                                ]})
+                                h(AtModalContent, null, {
+                                    default: () => [
+                                        h(View, {
+                                            class: 'content-simple'
+                                        }, [
+                                            state.isWEB
+                                                ? h(Text, {
+                                                    innerHTML: props.content!.replace(/\n/g, '<br])')
+                                                })
+                                                : h(Text, null, props.content)
+                                        ])
+                                    ]
+                                })
                             ),
+
                             isRenderAction && (
-                                h(AtModalAction, { isSimple: true }, { default: () => [
-                                    props.cancelText && (
-                                        h(Button, { onTap: handleCancel }, props.cancelText)
-                                    ),
-                                    props.confirmText && (
-                                        h(Button, { onTap: handleConfirm }, props.confirmText)
-                                    )
-                                ]})
+                                h(AtModalAction, {
+                                    isSimple: true
+                                }, {
+                                    default: () => [
+                                        props.cancelText && (
+                                            h(Button, {
+                                                onTap: handleCancel
+                                            }, props.cancelText)
+                                        ),
+                                        props.confirmText && (
+                                            h(Button, {
+                                                onTap: handleConfirm
+                                            }, props.confirmText)
+                                        )
+                                    ]
+                                })
                             )
-                        ]})
-                    ]})
+                        ])
+                    ])
                 )
             }
 
             return (
-                h(View, {
+                h(View, mergeProps(attrs, {
+                    class: rootClasses.value,
                     onTouchMove: handleTouchMove,
-                    class: rootClass.value
-                }, [
+                }), [
                     h(View, {
+                        onTap: handleClickOverlay,
                         class: 'at-modal__overlay',
-                        onTap: handleClickOverlay
                     }),
                     h(View, {
                         class: 'at-modal__container'

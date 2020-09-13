@@ -1,11 +1,9 @@
-import { h, defineComponent, toRefs, computed } from 'vue'
-import classNames from 'classnames'
+import { h, defineComponent, toRefs, computed, mergeProps } from 'vue'
 import { Text, View } from '@tarojs/components'
 import { AtProgressProps } from 'types/progress'
-import AtComponentWithDefaultProps from '../mixins'
 
 const AtProgress = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtProgress",
 
     props: {
         color: {
@@ -27,68 +25,59 @@ const AtProgress = defineComponent({
         isHidePercent: Boolean,
     },
 
-    setup(props: AtProgressProps, { slots }) {
+    setup(props: AtProgressProps, { attrs, slots }) {
+        const { percent } = toRefs(props)
 
-        return () => {
-            const { percent } = toRefs(props)
-            
-            if (percent!.value! < 0) {
-                percent!.value = 0
-            } else if (percent!.value! > 100) {
-                percent!.value = 100
-            }
-
-            const rootClass = computed(() => classNames(
-                'at-progress',
-                {
-                    [`at-progress--${props.status}`]: !!props.status
-                },
-                props.className
-            ))
-
-            const iconClass = computed(() => classNames('at-icon', {
-                'at-icon-close-circle': props.status === 'error',
-                'at-icon-check-circle': props.status === 'success'
-            }))
-
-            const progressStyle = computed(() => ({
-                width: percent!.value ? `${+percent!.value}%` : '0%',
-                height: props.strokeWidth && `${+props.strokeWidth}px`,
-                backgroundColor: props.color
-            }))
-
-            return (
-                h(View, { class: rootClass.value }, {
-                    default: () => [
-                        h(View, { class: 'at-progress__outer' }, {
-                            default: () => [
-                                h(View, { class: 'at-progress__outer-inner' }, {
-                                    default: () => [
-                                        h(View, {
-                                            class: 'at-progress__outer-inner-background',
-                                            style: progressStyle.value
-                                        })
-                                    ]
-                                })
-                            ]
-                        }),
-
-                        !props.isHidePercent && (
-                            h(View, {
-                                class: 'at-progress__content'
-                            }, (!props.status || props.status === 'progress')
-                                ? `${percent!.value}%`
-                                : {
-                                    default: () => [
-                                        h(Text, { class: iconClass.value })
-                                    ]
-                                }
-                            )
-                        )
-                    ]
-                })
-            )
+        if (percent!.value! < 0) {
+            percent!.value = 0
+        } else if (percent!.value! > 100) {
+            percent!.value = 100
         }
+
+        const rootClass = computed(() => ({
+            'at-progress': true,
+            [`at-progress--${props.status}`]: !!props.status
+        }))
+
+        const iconClass = computed(() => ({
+            'at-icon': true,
+            'at-icon-close-circle': props.status === 'error',
+            'at-icon-check-circle': props.status === 'success'
+        }))
+
+        const progressStyle = computed(() => ({
+            width: percent!.value ? `${+percent!.value}%` : '0%',
+            height: props.strokeWidth && `${+props.strokeWidth}px`,
+            backgroundColor: props.color
+        }))
+
+        return () => (
+            h(View, mergeProps(attrs, {
+                class: rootClass.value
+            }), [
+                h(View, {
+                    class: 'at-progress__outer'
+                }, [
+                    h(View, {
+                        class: 'at-progress__outer-inner'
+                    }, [
+                        h(View, {
+                            class: 'at-progress__outer-inner-background',
+                            style: progressStyle.value
+                        })
+                    ])
+                ]),
+
+                !props.isHidePercent && (
+                    h(View, {
+                        class: 'at-progress__content'
+                    }, (!props.status || props.status === 'progress')
+                        ? `${percent!.value}%`
+                        : h(Text, { class: iconClass.value })
+                    )
+                )
+            ])
+        )
     }
 })
 

@@ -1,17 +1,13 @@
-import { h, defineComponent, computed, ref, nextTick, watch } from "vue"
-
-import classNames from 'classnames'
+import { h, defineComponent, computed, ref, nextTick, watch, mergeProps } from "vue"
 import { handleTouchScroll } from "@/utils/common"
 
 import { ScrollView, Text, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtFloatLayoutProps } from 'types/float-layout'
 
-import AtComponentWithDefaultProps from '../mixins'
-
 const AtFloatLayout = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
-
+    name: "AtFloatLayout",
+    
     props: {
         // 参数
         isOpened: {
@@ -40,8 +36,13 @@ const AtFloatLayout = defineComponent({
         onScrollToLower: Function as unknown as () => AtFloatLayoutProps['onScrollToLower'],
     },
 
-    setup(props: AtFloatLayoutProps, { slots }) {
+    setup(props: AtFloatLayoutProps, { attrs, slots }) {
         const _isOpened = ref<boolean>(props.isOpened)
+
+        const rootClass = computed(() => ({
+            'at-float-layout': true,
+            'at-float-layout--active': _isOpened.value
+        }))
 
         watch(() => props.isOpened, (val, oldVal) => {
             if (val === oldVal) {
@@ -68,54 +69,44 @@ const AtFloatLayout = defineComponent({
             e.stopPropagation()
         }
 
-        return () => {
-            const rootClass = computed(() => classNames(
-                'at-float-layout',
-                {
-                    'at-float-layout--active': _isOpened.value
-                },
-                props.className
-            ))
-
-            return (
+        return () => (
+            h(View, mergeProps(attrs, {
+                class: rootClass.value,
+                onTouchMove: handleTouchMove
+            }), [
+                // overlay
                 h(View, {
-                    class: rootClass.value,
-                    onTouchMove: handleTouchMove
-                }, [
-                    // overlay
-                    h(View, {
-                        class: 'at-float-layout__overlay',
-                        onTap: close
-                    }),
-                    // container layout
-                    h(View, { class: 'at-float-layout__container layout' }, [
-                        // header
-                        props.title && (
-                            h(View, { class: 'layout-header' }, [
-                                h(Text, { class: 'layout-header__title' }, props.title),
-                                h(View, { class: 'layout-header__btn-close', onTap: close }),
-                            ])
-                        ),
-                        // body
-                        h(View, { class: 'layout-body' }, [
-                            h(ScrollView, {
-                                class: 'layout-body__content',
-                                scrollX: props.scrollX,
-                                scrollY: props.scrollY,
-                                scrollTop: props.scrollTop,
-                                scrollLeft: props.scrollLeft,
-                                upperThreshold: props.upperThreshold,
-                                lowerThreshold: props.lowerThreshold,
-                                scrollWithAnimation: props.scrollWithAnimation,
-                                onScroll: props.onScroll,
-                                onScrollToLower: props.onScrollToLower,
-                                onScrollToUpper: props.onScrollToUpper,
-                            }, slots.default && slots.default())
+                    class: 'at-float-layout__overlay',
+                    onTap: close
+                }),
+                // container layout
+                h(View, { class: 'at-float-layout__container layout' }, [
+                    // header
+                    props.title && (
+                        h(View, { class: 'layout-header' }, [
+                            h(Text, { class: 'layout-header__title' }, props.title),
+                            h(View, { class: 'layout-header__btn-close', onTap: close }),
                         ])
+                    ),
+                    // body
+                    h(View, { class: 'layout-body' }, [
+                        h(ScrollView, {
+                            class: 'layout-body__content',
+                            scrollX: props.scrollX,
+                            scrollY: props.scrollY,
+                            scrollTop: props.scrollTop,
+                            scrollLeft: props.scrollLeft,
+                            upperThreshold: props.upperThreshold,
+                            lowerThreshold: props.lowerThreshold,
+                            scrollWithAnimation: props.scrollWithAnimation,
+                            onScroll: props.onScroll,
+                            onScrollToLower: props.onScrollToLower,
+                            onScrollToUpper: props.onScrollToUpper,
+                        }, slots.default && slots.default())
                     ])
                 ])
-            )
-        }
+            ])
+        )
     }
 })
 

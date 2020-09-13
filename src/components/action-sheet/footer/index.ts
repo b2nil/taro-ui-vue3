@@ -1,11 +1,9 @@
-import { h, defineComponent } from "vue"
+import { h, defineComponent, mergeProps } from "vue"
 import { View } from "@tarojs/components"
-import { AtActionSheetFooterProps } from "types/action-sheet";
-import classNames from "classnames"
-import AtComponentWithDefaultProps from "@/components/mixins";
+import { AtActionSheetFooterProps } from "types/action-sheet"
 
 const AtActionSheetFooter = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtActionSheetFooter",
 
     props: {
         onClick: {
@@ -14,22 +12,20 @@ const AtActionSheetFooter = defineComponent({
         },
     },
 
-    setup(props: AtActionSheetFooterProps, { slots }) {
+    setup(props: AtActionSheetFooterProps, { attrs, slots }) {
 
         function handleClick(...args: any[]) {
             props.onClick && props.onClick(...args)
         }
 
-        return () => {
-            const rootClass = classNames('at-action-sheet__footer', props.className)
-
-            return h(View, {
-                class: rootClass,
+        return () => (
+            h(View, mergeProps(attrs, {
+                class: 'at-action-sheet__footer',
                 onTap: handleClick
-            },
+            }),
                 slots.default && slots.default()
             )
-        }
+        )
     }
 })
 

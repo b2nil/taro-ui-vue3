@@ -1,5 +1,4 @@
-import { h, defineComponent, reactive, ref, watch, onMounted, computed, } from 'vue'
-import classNames from 'classnames'
+import { h, defineComponent, nextTick, reactive, ref, watch, onMounted, computed, mergeProps } from 'vue'
 import { View } from '@tarojs/components'
 import { CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
 import { AtRangeProps, AtRangeState } from 'types/range'
@@ -8,11 +7,9 @@ import {
     getEventDetail,
     mergeStyle
 } from '@/utils/common'
-import AtComponentWithDefaultProps from '../mixins'
-import { nextTick } from '@tarojs/taro'
 
 const AtRange = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtRange",
 
     props: {
         sliderStyle: {
@@ -51,7 +48,7 @@ const AtRange = defineComponent({
         onAfterChange: Function as unknown as () => AtRangeProps['onAfterChange'],
     },
 
-    setup(props: AtRangeProps, { slots }) {
+    setup(props: AtRangeProps, { attrs, slots }) {
 
         const width = ref<number>(0)
         const left = ref<number>(0)
@@ -62,6 +59,38 @@ const AtRange = defineComponent({
             aX: 0,
             bX: 0
         })
+
+        const rootClass = computed(() => ({
+            'at-range': true,
+            'at-range--disabled': props.disabled
+        }))
+
+        const sliderCommonStyle = computed(() => ({
+            width: props.blockSize ? `${props.blockSize}PX` : '',
+            height: props.blockSize ? `${props.blockSize}PX` : '',
+            marginLeft: props.blockSize ? `${-props.blockSize / 2}PX` : ''
+        }))
+
+        const sliderAStyle = computed(() => mergeStyle(props.sliderStyle!, {
+            ...sliderCommonStyle.value,
+            left: `${state.aX}%`,
+            top: '0%'
+        }))
+
+        const sliderBStyle = computed(() => mergeStyle(props.sliderStyle!, {
+            ...sliderCommonStyle.value,
+            left: `${state.bX}%`,
+            top: '0%'
+        }))
+
+        const containerStyle = computed(() => ({
+            height: props.blockSize ? `${props.blockSize}PX` : ''
+        }))
+
+        const atTrackStyle = computed(() => mergeStyle(props.trackStyle!, {
+            left: `${Math.min(state.aX, state.bX)}%`,
+            width: `${Math.abs(state.aX - state.bX)}%`
+        }))
 
         function handleClick(event: CommonEvent) {
             if (currentSlider.value && !props.disabled) {
@@ -146,85 +175,41 @@ const AtRange = defineComponent({
             setValue(props.value!)
         })
 
-        return () => {
-            const rootClass = computed(() => classNames(
-                'at-range',
-                {
-                    'at-range--disabled': props.disabled
-                },
-                props.className
-            ))
-
-            const { aX, bX } = state
-
-            const sliderCommonStyle = computed(() => ({
-                width: props.blockSize ? `${props.blockSize}PX` : '',
-                height: props.blockSize ? `${props.blockSize}PX` : '',
-                marginLeft: props.blockSize ? `${-props.blockSize / 2}PX` : ''
-            }))
-
-            const sliderAStyle = computed(() => ({
-                ...sliderCommonStyle.value,
-                left: `${aX}%`,
-                top: '0%'
-            }))
-
-            const sliderBStyle = computed(() => ({
-                ...sliderCommonStyle.value,
-                left: `${bX}%`,
-                top: '0%'
-            }))
-
-            const containerStyle = computed(() => ({
-                height: props.blockSize ? `${props.blockSize}PX` : ''
-            }))
-
-            const atTrackStyle = computed(() => ({
-                left: `${Math.min(aX, bX)}%`,
-                width: `${Math.abs(aX - bX)}%`
-            }))
-
-            return (
+        return () => (
+            h(View, mergeProps(attrs, {
+                class: rootClass.value,
+                onTap: handleClick
+            }), [
                 h(View, {
-                    class: rootClass.value,
-                    style: props.customStyle,
-                    onTap: handleClick
-                }, {
-                    default: () => [
+                    class: 'at-range__container',
+                    style: containerStyle.value
+                }, [
+                    h(View, {
+                        class: 'at-range__rail',
+                        style: props.railStyle
+                    }, [
                         h(View, {
-                            class: 'at-range__container',
-                            style: containerStyle.value
-                        }, {
-                            default: () => [
-                                h(View, {
-                                    class: 'at-range__rail',
-                                    style: props.railStyle
-                                }, {
-                                    default: () => [
-                                        h(View, {
-                                            class: 'at-range__track',
-                                            style: mergeStyle(atTrackStyle.value, props.trackStyle!)
-                                        }),
-                                        h(View, {
-                                            class: 'at-range__slider',
-                                            style: mergeStyle(sliderAStyle.value, props.sliderStyle!),
-                                            onTouchMove: handleTouchMove.bind(this, 'aX'),
-                                            onTouchEnd: handleTouchEnd.bind(this, 'aX'),
-                                        }),
-                                        h(View, {
-                                            class: 'at-range__slider',
-                                            style: mergeStyle(sliderBStyle.value, props.sliderStyle!),
-                                            onTouchMove: handleTouchMove.bind(this, 'bX'),
-                                            onTouchEnd: handleTouchEnd.bind(this, 'bX'),
-                                        })
-                                    ]
-                                })
-                            ]
+                            class: 'at-range__track',
+                            style: atTrackStyle.value
+                        }),
+
+                        h(View, {
+                            class: 'at-range__slider',
+                            style: sliderAStyle.value,
+                            onTouchEnd: handleTouchEnd.bind(this, 'aX'),
+                            onTouchMove: handleTouchMove.bind(this, 'aX'),
+                        }),
+
+                        h(View, {
+                            class: 'at-range__slider',
+                            style: sliderBStyle.value,
+                            onTouchEnd: handleTouchEnd.bind(this, 'bX'),
+                            onTouchMove: handleTouchMove.bind(this, 'bX'),
                         })
-                    ]
-                })
-            )
-        }
+                    ])
+                ])
+            ])
+        )
     }
 })
 

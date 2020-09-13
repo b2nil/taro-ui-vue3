@@ -1,10 +1,11 @@
-import { reactive, watch, computed, h, defineComponent } from 'vue'
-import classNames from 'classnames'
+import { reactive, watch, computed, h, defineComponent, mergeProps } from 'vue'
 import { Slider, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtSliderProps, AtSliderState } from 'types/slider'
 
 const AtSlider = defineComponent({
+    name: "AtSlider",
+
     props: {
         min: {
             type: Number,
@@ -37,7 +38,7 @@ const AtSlider = defineComponent({
         blockSize: {
             type: Number,
             default: 28,
-            validator: (val: number) => val >= 12 && val <= 28 
+            validator: (val: number) => val >= 12 && val <= 28
         },
         blockColor: {
             type: String,
@@ -57,11 +58,16 @@ const AtSlider = defineComponent({
         },
     },
 
-    setup(props: AtSliderProps, { slots }) {
+    setup(props: AtSliderProps, { attrs, slots }) {
 
         const state = reactive<AtSliderState>({
             _value: clampNumber(props.value!, props.min!, props.max!)
         })
+
+        const rootClass = computed(() => ({
+            'at-slider': true,
+            'at-slider--disabled': props.disabled
+        }))
 
         function clampNumber(
             value: number,
@@ -96,47 +102,35 @@ const AtSlider = defineComponent({
             state._value = clampNumber(value!, min!, max!)
         })
 
-        return () => {
-            const { _value } = state
-
-            const rootClass = computed(() => classNames(
-                {
-                    'at-slider': true,
-                    'at-slider--disabled': props.disabled
-                },
-                props.className
-            ))
-
-            return (
-                h(View, {
-                    class: rootClass.value,
-                    style: props.customStyle
-                }, {
+        return () => (
+            h(View, mergeProps(attrs, {
+                class: rootClass.value
+            }), [
+                h(View, { class: 'at-slider__inner' }, {
                     default: () => [
-                        h(View, { class: 'at-slider__inner' }, {
-                            default: () => [
-                                h(Slider, {
-                                    min: props.min,
-                                    max: props.max,
-                                    step: props.step,
-                                    value: _value,
-                                    disabled: props.disabled,
-                                    activeColor: props.activeColor,
-                                    backgroundColor: props.backgroundColor,
-                                    blockSize: props.blockSize,
-                                    blockColor: props.blockColor,
-                                    onChanging: handleChanging,
-                                    onChange: handleChange,
-                                })
-                            ]
-                        }),
-                        props.showValue && (
-                            h(View, { class: 'at-slider__text' }, `${_value}`)
-                        )
+                        h(Slider, {
+                            min: props.min,
+                            max: props.max,
+                            step: props.step,
+                            value: state._value,
+                            disabled: props.disabled,
+                            activeColor: props.activeColor,
+                            backgroundColor: props.backgroundColor,
+                            blockSize: props.blockSize,
+                            blockColor: props.blockColor,
+                            onChange: handleChange,
+                            onChanging: handleChanging,
+                        })
                     ]
-                })
-            )
-        }
+                }),
+
+                props.showValue && (
+                    h(View, {
+                        class: 'at-slider__text'
+                    }, `${state._value}`)
+                )
+            ])
+        )
     }
 })
 

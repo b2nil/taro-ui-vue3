@@ -1,21 +1,17 @@
-import classNames from "classnames"
-import dayjs from 'dayjs'
-
 import { h, defineComponent, computed, reactive, watch, onMounted, ref, nextTick } from "vue"
 import { Swiper, SwiperItem, View } from "@tarojs/components"
 import { BaseEventOrig, ITouch, ITouchEvent } from '@tarojs/components/types/common'
 import { AtCalendarBodyListGroup, AtCalendarBodyProps, Calendar, AtCalendarBodyState } from 'types/calendar'
+import dayjs from 'dayjs'
 import { delayQuerySelector } from '../../../utils/common'
 import generateCalendarGroup from '../common/helper'
 import AtCalendarDateList from '../ui/date-list/index'
 import AtCalendarDayList from '../ui/day-list/index'
-import AtComponentWithDefaultProps from "@/components/mixins"
-
 
 const ANIMATE_DURATION: number = 300
 
 const AtCalendarBody = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtCalendarBody",
 
     components: {
         AtCalendarDateList,
@@ -101,6 +97,42 @@ const AtCalendarBody = defineComponent({
             listGroup: getGroups(props.generateDate, props.selectedDate),
             offsetSize: 0,
             isAnimate: false
+        })
+
+        const rootClass = computed(() => ({
+            'main': true,
+            'at-calendar-slider__main': true,
+            [`at-calendar-slider__main--${process.env.TARO_ENV}`]: true
+        }))
+
+        const h5MainBodyClass = computed(() => ({
+            'body': true,
+            'main__body': true,
+            'main__body--slider': props.isSwiper,
+            'main__body--animate': state.isAnimate,
+        }))
+
+        const h5MainBodyStyle = computed(() => ({
+            transform: props.isSwiper
+                ? `translateX(-100%) translate3d(${state.offsetSize},0,0)`
+                : '',
+            WebkitTransform: props.isSwiper
+                ? `translateX(-100%) translate3d(${state.offsetSize}px,0,0)`
+                : ''
+        }))
+
+        const swiperItems = state.listGroup.map((item, key) => {
+            return h(SwiperItem, {
+                key: `${item.value}-${key}`,
+                itemId: `${item.value}-${key}`
+            }, [
+                h(AtCalendarDateList, {
+                    key: item.value,
+                    list: item.list,
+                    onClick: props.onDayClick,
+                    onLongClick: props.onLongClick
+                })
+            ])
         })
 
         watch(() => [
@@ -251,17 +283,11 @@ const AtCalendarBody = defineComponent({
         })
 
         return () => {
-            const rootClass = computed(() => classNames(
-                'main',
-                'at-calendar-slider__main',
-                `at-calendar-slider__main--${process.env.TARO_ENV}`
-            ))
-
             if (!props.isSwiper) {
                 return h(View, { class: rootClass.value }, [
                     h(AtCalendarDayList),
-                    h(View, { class: classNames('main__body', 'body') }, [
-                        h(View, { class: classNames('body__slider', 'body__slider--now') }, [
+                    h(View, { class: 'main__body body' }, [
+                        h(View, { class: 'body__slider body__slider--now' }, [
                             h(AtCalendarDateList, {
                                 list: state.listGroup[1].list,
                                 onClick: props.onDayClick,
@@ -274,20 +300,6 @@ const AtCalendarBody = defineComponent({
 
             /* 需要 Taro 组件库维护 Swiper 使 小程序 和 H5 的表现保持一致  */
             if (process.env.TARO_ENV === 'h5') {
-                const h5MainBodyClass = computed(() => classNames('main__body body', {
-                    'main__body--slider': props.isSwiper,
-                    'main__body--animate': state.isAnimate,
-                }))
-
-                const h5MainBodyStyle = computed(() => ({
-                    transform: props.isSwiper
-                        ? `translateX(-100%) translate3d(${state.offsetSize},0,0)`
-                        : '',
-                    WebkitTransform: props.isSwiper
-                        ? `translateX(-100%) translate3d(${state.offsetSize}px,0,0)`
-                        : ''
-                }))
-
                 return h(View, {
                     class: rootClass.value,
                     onTouchEnd: handleTouchEnd,
@@ -295,14 +307,17 @@ const AtCalendarBody = defineComponent({
                     onTouchStart: handleTouchStart
                 }, [
                     h(AtCalendarDayList),
-                    h(View, { class: h5MainBodyClass.value, style: h5MainBodyStyle.value }, [
-                        h(View, { class: classNames('body__slider', 'body__slider--pre') }, [
+                    h(View, {
+                        class: h5MainBodyClass.value,
+                        style: h5MainBodyStyle.value
+                    }, [
+                        h(View, { class: 'body__slider body__slider--pre' }, [
                             h(AtCalendarDateList, {
                                 key: state.listGroup[0].value,
                                 list: state.listGroup[0].list
                             })
                         ]),
-                        h(View, { class: classNames('body__slider', 'body__slider--now') }, [
+                        h(View, { class: 'body__slider body__slider--now' }, [
                             h(AtCalendarDateList, {
                                 key: state.listGroup[1].value,
                                 list: state.listGroup[1].list,
@@ -310,7 +325,7 @@ const AtCalendarBody = defineComponent({
                                 onLongClick: props.onLongClick
                             })
                         ]),
-                        h(View, { class: classNames('body__slider', 'body__slider--next') }, [
+                        h(View, { class: 'body__slider body__slider--next' }, [
                             h(AtCalendarDateList, {
                                 key: state.listGroup[2].value,
                                 list: state.listGroup[2].list
@@ -320,35 +335,22 @@ const AtCalendarBody = defineComponent({
                 ])
             }
 
-            const swiperItems = state.listGroup.map((item, key) => {
-                return h(SwiperItem, {
-                    key: key.toString(),
-                    itemId: key.toString()
-                }, [
-                    h(AtCalendarDateList, {
-                        key: item.value,
-                        list: item.list,
-                        onClick: props.onDayClick,
-                        onLongClick: props.onLongClick
-                    })
-                ])
-            })
-
-            return h(View, { class: rootClass.value }, [
+            return h(View, {
+                class: rootClass.value
+            }, [
                 h(AtCalendarDayList),
                 h(Swiper, {
-                    circular: true,
+                    class: 'main__body',
                     current: 1,
-                    skipHiddenItemLayout: true,
+                    circular: true,
                     vertical: props.isVertical,
-                    class: classNames('main__body'),
+                    skipHiddenItemLayout: true,
                     onChange: handleChange,
-                    onAnimationFinish: handleAnimateFinish,
                     onTouchEnd: handleSwipeTouchEnd,
-                    onTouchStart: handleSwipeTouchStart
+                    onTouchStart: handleSwipeTouchStart,
+                    onAnimationFinish: handleAnimateFinish,
                 }, swiperItems)
-            ]
-            )
+            ])
         }
     }
 })

@@ -1,35 +1,29 @@
-import { h, defineComponent } from "vue"
+import { h, defineComponent, mergeProps } from "vue"
 import { View, CommonEvent } from "@tarojs/components"
 import { AtActionSheetItemProps } from "types/action-sheet";
-import classNames from "classnames"
-import AtComponentWithDefaultProps from "@/components/mixins";
 
 const AtActionSheetItem = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
-    
+    name: "AtActionSheetItem",
+
     props: {
-        onClick: { 
-            type: Function as unknown as () => (event?: CommonEvent) => void, 
-            default: () => () => {} 
+        onClick: {
+            type: Function as unknown as () => (event?: CommonEvent) => void,
+            default: () => () => { }
         },
     },
 
-    setup(props: AtActionSheetItemProps, { slots }) {
+    setup(props: AtActionSheetItemProps, { attrs, slots }) {
 
         function handleClick(e: CommonEvent) {
             props.onClick && props.onClick(e)
         }
 
-        return () => {
-            const rootClass = classNames('at-action-sheet__item', props.className)
-            
-            return h(View, {
-                    class: rootClass,
-                    onTap: handleClick
-                },
-                slots.default && slots.default()
-            )
-        }
+        return () => (
+            h(View, mergeProps(attrs, {
+                class: 'at-action-sheet__item',
+                onTap: handleClick
+            }), slots.default && slots.default())
+        )
     }
 })
 

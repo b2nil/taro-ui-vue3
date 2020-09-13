@@ -1,13 +1,10 @@
-import { h, defineComponent, computed } from "vue"
-import classNames from 'classnames'
+import { h, defineComponent, computed, mergeProps } from "vue"
 import _toString from 'lodash/toString'
 import { pxTransform } from "@/utils/common";
 
 import { Input, Text, View } from '@tarojs/components'
 import { CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
 import { AtInputNumberProps, InputError } from 'types/input-number'
-
-import AtComponentWithDefaultProps from '../mixins'
 
 // TODO: Check all types
 
@@ -47,7 +44,7 @@ type ExtendEvent = {
 }
 
 const AtInputNumber = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtInputNumber",
 
     props: {
         // 参数
@@ -93,7 +90,28 @@ const AtInputNumber = defineComponent({
         onErrorInput: Function as unknown as () => AtInputNumberProps['onErrorInput']
     },
 
-    setup(props: AtInputNumberProps) {
+    setup(props: AtInputNumberProps, { attrs }) {
+
+        const inputValue = computed(() => Number(handleValue(props.value)))
+
+        const inputStyle = computed(() => ({
+            width: props.width ? `${pxTransform(props.width)}` : ''
+        }))
+
+        const rootClass = computed(() => ({
+            'at-input-number': true,
+            'at-input-number--lg': props.size! === 'large'
+        }))
+
+        const minusBtnClass = computed(() => ({
+            'at-input-number__btn': true,
+            'at-input-number--disabled': inputValue.value <= props.min! || props.disabled
+        }))
+
+        const plusBtnClass = computed(() => ({
+            'at-input-number__btn': true,
+            'at-input-number--disabled': inputValue.value >= props.max! || props.disabled
+        }))
 
         function handleClick(clickType: 'minus' | 'plus', e: CommonEvent) {
             const belowMin = clickType === 'minus' && props.value <= props.min!
@@ -173,54 +191,39 @@ const AtInputNumber = defineComponent({
         }
 
 
-        return () => {
-            const inputValue = Number(handleValue(props.value))
-
-            const inputStyle = computed(() => ({
-                width: props.width ? `${pxTransform(props.width)}` : ''
-            }))
-
-            const rootClass = computed(() => classNames('at-input-number', {
-                'at-input-number--lg': props.size! === 'large'
-            }, props.className))
-
-            const minusBtnClass = computed(() => classNames('at-input-number__btn', {
-                'at-input-number--disabled': inputValue <= props.min! || props.disabled
-            }))
-
-            const plusBtnClass = computed(() => classNames('at-input-number__btn', {
-                'at-input-number--disabled': inputValue >= props.max! || props.disabled
-            }))
-
-            return (
+        return () => (
+            h(View, mergeProps(attrs, {
+                class: rootClass.value,
+            }), [
                 h(View, {
-                    class: rootClass.value,
-                    style: props.customStyle
+                    class: minusBtnClass.value,
+                    onTap: handleClick.bind(this, 'minus')
                 }, [
-                    h(View, {
-                        class: minusBtnClass.value,
-                        onTap: handleClick.bind(this, 'minus')
-                    }, [
-                        h(Text, { class: 'at-icon at-icon-subtract at-input-number__btn-subtract'})
-                    ]),
-                    h(Input, {
-                        class: 'at-input-number__input',
-                        style: inputStyle.value,
-                        type: props.type,
-                        value: String(inputValue),
-                        disabled: props.disabledInput || props.disabled,
-                        onInput: handleInput,
-                        onBlur: handleBlur
-                    }),
-                    h(View, {
-                        class: plusBtnClass.value,
-                        onTap: handleClick.bind(this, 'plus')
-                    }, [
-                        h(Text, { class: 'at-icon at-icon-add at-input-number__btn-add'})
-                    ])
+                    h(Text, {
+                        class: 'at-icon at-icon-subtract at-input-number__btn-subtract'
+                    })
+                ]),
+
+                h(Input, {
+                    class: 'at-input-number__input',
+                    style: inputStyle.value,
+                    type: props.type,
+                    value: String(inputValue.value),
+                    disabled: props.disabledInput || props.disabled,
+                    onBlur: handleBlur,
+                    onInput: handleInput,
+                }),
+
+                h(View, {
+                    class: plusBtnClass.value,
+                    onTap: handleClick.bind(this, 'plus')
+                }, [
+                    h(Text, {
+                        class: 'at-icon at-icon-add at-input-number__btn-add'
+                    })
                 ])
-            )
-        }
+            ])
+        )
     }
 })
 

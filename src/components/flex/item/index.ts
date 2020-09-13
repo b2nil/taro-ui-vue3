@@ -1,16 +1,11 @@
-import { h, defineComponent, computed } from "vue"
-
-import classNames from 'classnames'
+import { h, defineComponent, computed, mergeProps } from "vue"
 import _forEach from 'lodash/forEach'
-
 import { View } from '@tarojs/components'
 import { AtFlexItemProps } from 'types/flex'
-
-import AtComponentWithDefaultProps from '../../mixins'
 import './index.scss'
 
 const AtFlexItem = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtFlexItem",
 
     props: {
         isAuto: {
@@ -35,39 +30,51 @@ const AtFlexItem = defineComponent({
         },
     },
 
-    setup(props: AtFlexItemProps, { slots }) {
+    setup(props: AtFlexItemProps, { attrs, slots }) {
 
-        return () => {
-            const rootClass = computed(() => {
-                const root = ['at-col']
+        const rootClass = computed(() => {
+            const root = { 'at-col': true }
 
-                _forEach(props, (value, key) => {
-                    switch (key) {
-                        case 'customStyle':
-                        case 'className':
+            _forEach(props, (value, key) => {
+                switch (key) {
+                    case 'isAuto':
+                        if (value) {
+                            root['at-col--auto'] = true
                             return
-                        case 'isAuto':
-                            if (value) return root.push('at-col--auto')
+                        }
+                        return
+                    case 'isWrap':
+                        if (value) {
+                            root[`at-col--wrap`] = true
                             return
-                        case 'isWrap':
-                            if (value) return root.push(`at-col--wrap`)
+                        }
+                        return
+                    case 'size':
+                        if (value) {
+                            root[`at-col-${value}`] = true
                             return
-                        case 'size':
-                            if (value) return root.push(`at-col-${value}`)
+                        }
+                        return
+                    case 'offset':
+                        if (value != 0) {
+                            root[`at-col__offset-${value}`] = true
                             return
-                        case 'offset':
-                            if (value != 0) return root.push(`at-col__offset-${value}`)
-                            return
-                        default:
-                            return root.push(`at-col__${key}--${value}`)
-                    }
-                })
-
-                return classNames(root)
+                        }
+                        return
+                    default:
+                        root[`at-col__${key}--${value}`] = true
+                        return
+                }
             })
 
-            return h(View, { class: rootClass.value }, slots.default && slots.default())
-        }
+            return root
+        })
+
+        return () => (
+            h(View, mergeProps(attrs, {
+                class: rootClass.value
+            }), slots.default && slots.default())
+        )
     }
 })
 
