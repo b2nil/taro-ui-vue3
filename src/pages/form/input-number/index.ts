@@ -29,8 +29,6 @@ export default defineComponent({
       e: CommonEvent
     ): void {
       state[stateName] = value
-      /* eslint-disable-next-line no-console */
-      console.log('Event:', e)
     }
 
     return () => (
