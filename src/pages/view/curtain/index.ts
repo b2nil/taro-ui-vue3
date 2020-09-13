@@ -2,9 +2,9 @@ import { h, defineComponent, reactive } from 'vue'
 import { AtButton, AtCurtain } from '@/components/index'
 import { Image, Text } from '@tarojs/components'
 import { Page, Panel, ExampleItem } from '../../components/demo-page'
-import './index.scss'
 
-const curtainPng = require('@/assets/images/curtain.png')
+import curtainPng from '@/assets/images/curtain.png'
+import './index.scss'
 
 interface TagPageState {
   isOpened: boolean
