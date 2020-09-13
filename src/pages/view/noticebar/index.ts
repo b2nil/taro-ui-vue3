@@ -39,7 +39,7 @@ export default defineComponent({
                 default: () => [
                   h(AtNoticebar, { single: true }, {
                     default: () => [
-                      h(Text, null, singleLineText),
+                      h(Text, { selectable: true }, singleLineText),
                     ]
                   })
                 ]
@@ -48,7 +48,7 @@ export default defineComponent({
                 default: () => [
                   h(AtNoticebar, null, {
                     default: () => [
-                      h(Text, null, multiLineText),
+                      h(Text, { selectable: true }, multiLineText),
                     ]
                   })
                 ]
@@ -63,7 +63,7 @@ export default defineComponent({
                 default: () => [
                   h(AtNoticebar, { marquee: true }, {
                     default: () => [
-                      h(Text, null, textOnly)
+                      h(Text, { selectable: true }, textOnly)
                     ]
                   })
                 ]
@@ -75,7 +75,7 @@ export default defineComponent({
                     icon: 'volume-plus'
                   }, {
                     default: () => [
-                      h(Text, null, textWithIcon)
+                      h(Text, { selectable: true }, textWithIcon)
                     ]
                   })
                 ]
@@ -85,7 +85,7 @@ export default defineComponent({
                 default: () => [
                   h(AtNoticebar, { marquee: true }, {
                     default: () => [
-                      h(Text, null, superLongText)
+                      h(Text, { selectable: true }, superLongText)
                     ]
                   })
                 ]
@@ -100,7 +100,7 @@ export default defineComponent({
                 default: () => [
                   h(AtNoticebar, { icon: 'volume-plus', single: true }, {
                     default: () => [
-                      h(Text, null, singleLineText)
+                      h(Text, { selectable: true }, singleLineText)
                     ]
                   })
                 ]
@@ -111,7 +111,7 @@ export default defineComponent({
                     icon: 'volume-plus'
                   }, {
                     default: () => [
-                      h(Text, null, multiLineText)
+                      h(Text, { selectable: true }, multiLineText)
                     ]
                   })
                 ]
@@ -130,7 +130,7 @@ export default defineComponent({
                     onGotoMore: onGotoMore.bind(this)
                   }, {
                     default: () => [
-                      h(Text, null, singleLineText)
+                      h(Text, { selectable: true }, singleLineText)
                     ]
                   })
                 ]
@@ -145,7 +145,7 @@ export default defineComponent({
                     onGotoMore: onGotoMore.bind(this)
                   }, {
                     default: () => [
-                      h(Text, null, singleLineText)
+                      h(Text, { selectable: true }, singleLineText)
                     ]
                   })
                 ]
@@ -158,7 +158,7 @@ export default defineComponent({
                     onGotoMore: onGotoMore.bind(this)
                   }, {
                     default: () => [
-                      h(Text, null, multiLineText)
+                      h(Text, { selectable: true }, multiLineText)
                     ]
                   })
                 ]
@@ -174,7 +174,7 @@ export default defineComponent({
                   },
                     {
                       default: () => [
-                        h(Text, null, multiLineText)
+                        h(Text, { selectable: true }, multiLineText)
                       ]
                     })
                 ]
@@ -189,7 +189,7 @@ export default defineComponent({
                 default: () => [
                   h(AtNoticebar, { close: true, single: true }, {
                     default: () => [
-                      h(Text, null, singleLineText)
+                      h(Text, { selectable: true }, singleLineText)
                     ]
                   })
                 ]
@@ -199,7 +199,7 @@ export default defineComponent({
                 default: () => [
                   h(AtNoticebar, { close: true, icon: 'volume-plus', single: true }, {
                     default: () => [
-                      h(Text, null, singleLineText)
+                      h(Text, { selectable: true }, singleLineText)
                     ]
                   })
                 ]
@@ -213,7 +213,7 @@ export default defineComponent({
                     onGotoMore: onGotoMore.bind(this),
                   }, {
                     default: () => [
-                      h(Text, null, singleLineText)
+                      h(Text, { selectable: true }, singleLineText)
                     ]
                   })
                 ]
@@ -229,7 +229,7 @@ export default defineComponent({
                     onGotoMore: onGotoMore.bind(this),
                   }, {
                     default: () => [
-                      h(Text, null, singleLineText)
+                      h(Text, { selectable: true }, singleLineText)
                     ]
                   })
                 ]
@@ -239,7 +239,7 @@ export default defineComponent({
                 default: () => [
                   h(AtNoticebar, { close: true }, {
                     default: () => [
-                      h(Text, null, multiLineText)
+                      h(Text, { selectable: true }, multiLineText)
                     ]
                   })
                 ]
@@ -249,7 +249,7 @@ export default defineComponent({
                 default: () => [
                   h(AtNoticebar, { close: true }, {
                     default: () => [
-                      h(Text, null, multiLineText)
+                      h(Text, { selectable: true }, multiLineText)
                     ]
                   })
                 ]
@@ -262,7 +262,7 @@ export default defineComponent({
                     icon: 'volume-plus'
                   }, {
                     default: () => [
-                      h(Text, null, multiLineText)
+                      h(Text, { selectable: true }, multiLineText)
                     ]
                   })
                 ]
