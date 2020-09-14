@@ -121,20 +121,6 @@ const AtCalendarBody = defineComponent({
                 : ''
         }))
 
-        const swiperItems = state.listGroup.map((item, key) => {
-            return h(SwiperItem, {
-                key: `${item.value}-${key}`,
-                itemId: `${item.value}-${key}`
-            }, [
-                h(AtCalendarDateList, {
-                    key: item.value,
-                    list: item.list,
-                    onClick: props.onDayClick,
-                    onLongClick: props.onLongClick
-                })
-            ])
-        })
-
         watch(() => [
             props.validDates,
             props.marks,
@@ -198,7 +184,6 @@ const AtCalendarBody = defineComponent({
             arr[preListIndex] = preList
             arr[nextListIndex] = nextList
             arr[currentSwiperIndex.value] = nowList
-
             return arr
         }
 
@@ -276,7 +261,7 @@ const AtCalendarBody = defineComponent({
         }
 
         onMounted(() => {
-            delayQuerySelector(this, '.at-calendar-slider__main', 30).then(res => {
+            delayQuerySelector(this, '.at-calendar-slider__main', 100).then(res => {
                 // @ts-ignore
                 maxWidth.value = res[0].width
             })
@@ -284,10 +269,16 @@ const AtCalendarBody = defineComponent({
 
         return () => {
             if (!props.isSwiper) {
-                return h(View, { class: rootClass.value }, [
+                return h(View, {
+                    class: rootClass.value
+                }, [
                     h(AtCalendarDayList),
-                    h(View, { class: 'main__body body' }, [
-                        h(View, { class: 'body__slider body__slider--now' }, [
+                    h(View, {
+                        class: 'main__body body'
+                    }, [
+                        h(View, {
+                            class: 'body__slider body__slider--now'
+                        }, [
                             h(AtCalendarDateList, {
                                 list: state.listGroup[1].list,
                                 onClick: props.onDayClick,
@@ -311,13 +302,17 @@ const AtCalendarBody = defineComponent({
                         class: h5MainBodyClass.value,
                         style: h5MainBodyStyle.value
                     }, [
-                        h(View, { class: 'body__slider body__slider--pre' }, [
+                        h(View, {
+                            class: 'body__slider body__slider--pre'
+                        }, [
                             h(AtCalendarDateList, {
                                 key: state.listGroup[0].value,
                                 list: state.listGroup[0].list
                             })
                         ]),
-                        h(View, { class: 'body__slider body__slider--now' }, [
+                        h(View, {
+                            class: 'body__slider body__slider--now'
+                        }, [
                             h(AtCalendarDateList, {
                                 key: state.listGroup[1].value,
                                 list: state.listGroup[1].list,
@@ -325,7 +320,9 @@ const AtCalendarBody = defineComponent({
                                 onLongClick: props.onLongClick
                             })
                         ]),
-                        h(View, { class: 'body__slider body__slider--next' }, [
+                        h(View, {
+                            class: 'body__slider body__slider--next'
+                        }, [
                             h(AtCalendarDateList, {
                                 key: state.listGroup[2].value,
                                 list: state.listGroup[2].list
@@ -341,15 +338,28 @@ const AtCalendarBody = defineComponent({
                 h(AtCalendarDayList),
                 h(Swiper, {
                     class: 'main__body',
-                    current: 1,
                     circular: true,
                     vertical: props.isVertical,
                     skipHiddenItemLayout: true,
+                    current: 1,
                     onChange: handleChange,
                     onTouchEnd: handleSwipeTouchEnd,
                     onTouchStart: handleSwipeTouchStart,
                     onAnimationFinish: handleAnimateFinish,
-                }, swiperItems)
+                }, state.listGroup.map((item, key) => (
+                    h(SwiperItem, {
+                        // wrong key may cause the following issue:
+                        // TypeError: Cannot read property '$$' of undefined at HTMLElement._attached._touchstartHandlerForDevtools
+                        key: key.toString(),
+                        itemId: key.toString()
+                    }, [
+                        h(AtCalendarDateList, {
+                            list: item.list,
+                            onClick: props.onDayClick,
+                            onLongClick: props.onLongClick
+                        })
+                    ])
+                )))
             ])
         }
     }
