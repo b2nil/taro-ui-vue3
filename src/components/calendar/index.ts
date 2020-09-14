@@ -88,8 +88,7 @@ const AtCalendar = defineComponent({
         onSelectDate: { 
             type: Function as unknown as () => AtCalendarProps['onSelectDate'],
             default: () => () => {}
-        },
-        
+        }
      },
     
     setup(props: AtCalendarProps, { attrs }) {

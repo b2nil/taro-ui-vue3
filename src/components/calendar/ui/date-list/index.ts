@@ -66,33 +66,39 @@ const AtCalendarList = defineComponent({
         if (!props.list || props.list.length === 0) return null
 
         return () => (
-            h(View, { class: 'at-calendar__list flex' },
-                props.list.map((item: Calendar.Item, index: number) => (
+            h(View, {
+                class: 'at-calendar__list flex'
+            }, props.list.map((item: Calendar.Item, index: number) => (
+                h(View, {
+                    key: `list-item-${item.value}-${index}`,
+                    class: flexItemClass.value(item),
+                    onTap: handleClick.bind(this, item),
+                    onLongPress: handleLongClick.bind(this, item)
+                }, [
                     h(View, {
-                        key: `list-item-${item.value}-${index}`,
-                        class: flexItemClass.value(item),
-                        onTap: handleClick.bind(this, item),
-                        onLongPress: handleLongClick.bind(this, item)
+                        class: 'flex__item-container'
                     }, [
-                        h(View, { class: 'flex__item-container' }, [
-                            h(View, { class: 'container-text' }, item.text)
-                        ]),
+                        h(View, {
+                            class: 'container-text'
+                        }, item.text)
+                    ]),
 
-                        h(View, { class: 'flex__item-extra extra' }, [
-                            (item.marks && item.marks.length > 0) && (
-                                h(View, { class: 'extra-marks' },
-                                    item.marks.map((mark, key) => (
-                                        h(Text, {
-                                            key: key,
-                                            class: 'mark'
-                                        }, String(mark))
-                                    ))
-                                )
-                            )
-                        ])
+                    h(View, {
+                        class: 'flex__item-extra extra'
+                    }, [
+                        (item.marks && item.marks.length > 0) && (
+                            h(View, {
+                                class: 'extra-marks'
+                            }, item.marks.map((mark, key) => (
+                                h(Text, {
+                                    key: key,
+                                    class: 'mark'
+                                }, String(mark))
+                            )))
+                        )
                     ])
-                ))
-            )
+                ])
+            )))
         )
     }
 })
