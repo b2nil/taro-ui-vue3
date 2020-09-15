@@ -1,11 +1,7 @@
-import { h, defineComponent, computed, ref, watch, reactive, onMounted, onUnmounted } from "vue"
-
-import classNames from 'classnames'
-
+import { h, defineComponent, computed, ref, watch, reactive, onMounted, onUnmounted, mergeProps } from "vue"
 import { View } from '@tarojs/components'
 import { AtCountDownProps, AtCountdownState } from 'types/countdown'
 
-import AtComponentWithDefaultProps from '../mixins'
 import AtCountdownItem from "./item"
 
 import './index.scss'
@@ -18,7 +14,7 @@ const toSeconds = (
 ): number => day * 60 * 60 * 24 + hours * 60 * 60 + minutes * 60 + seconds
 
 const AtCountdown = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtCountdown",
 
     props: {
         // 参数
@@ -58,11 +54,11 @@ const AtCountdown = defineComponent({
         this.setTimer()
     },
 
-    onHide(){
+    onHide() {
         this.clearTimer()
     },
 
-    setup(props: AtCountDownProps) {
+    setup(props: AtCountDownProps, { attrs }) {
         const secondsRef = ref<number>(toSeconds(
             props.day!,
             props.hours!,
@@ -73,6 +69,11 @@ const AtCountdown = defineComponent({
         const timer = ref<NodeJS.Timeout | number | null>(null)
 
         const state = reactive<AtCountdownState>(calculateTime())
+
+        const rootClass = computed(() => ({
+            'at-countdown': true,
+            'at-countdown--card': props.isCard
+        }))
 
         watch(() => [
             props.day,
@@ -149,19 +150,10 @@ const AtCountdown = defineComponent({
         })
 
         return () => {
-            const rootClass = computed(() => classNames(
-                {
-                    'at-countdown': true,
-                    'at-countdown--card': props.isCard
-                },
-                props.className
-            ))
-
             return (
-                h(View, {
-                    class: rootClass.value,
-                    style: props.customStyle
-                }, [
+                h(View, mergeProps(attrs, {
+                    class: rootClass.value
+                }), [
                     props.isShowDay && (
                         h(AtCountdownItem, {
                             num: state._day,

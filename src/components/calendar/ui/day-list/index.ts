@@ -1,29 +1,28 @@
 import { h, defineComponent } from "vue"
 import { View } from "@tarojs/components"
-import classNames from "classnames"
-import AtComponentWithDefaultProps from "@/components/mixins"
 
 const AtCalendarHeader = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtCalendarHeader",
 
-    data: () => ({ addGlobalClass: true}),
+    data: () => ({ addGlobalClass: true }),
 
     setup() {
+        const days = ['日', '一', '二', '三', '四', '五', '六']
 
-        return () => {
-            const rootClass = classNames('at-calendar__header', 'header')
-            const days = ['日', '一', '二', '三', '四', '五', '六']
-
-            return (
-                h(View, { class: rootClass }, [
-                    h(View, { class: 'header__flex'}, 
-                        days.map((day, index) => {
-                            return h(View, { class: 'header__flex-item', key: index}, day)
-                        })
-                    )
-                ])
-            )
-        }
+        return () => (
+            h(View, {
+                class: 'at-calendar__header header'
+            }, [
+                h(View, {
+                    class: 'header__flex'
+                }, days.map((day, index) => (
+                    h(View, {
+                        key: index,
+                        class: 'header__flex-item'
+                    }, day)
+                )))
+            ])
+        )
     }
 })
 

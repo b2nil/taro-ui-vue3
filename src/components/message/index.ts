@@ -1,13 +1,11 @@
-import { h, defineComponent, ref, reactive, onMounted, onUnmounted, nextTick } from 'vue'
-import classNames from 'classnames'
+import { h, defineComponent, ref, reactive, onMounted, onUnmounted, nextTick, computed, mergeProps } from 'vue'
 import { View } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import { AtMessageProps, AtMessageState } from 'types/message'
-import AtComponentWithDefaultProps from "../mixins"
 
 const AtMessage = defineComponent({
 
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtMessage",
 
     onHide() {
         Taro.eventCenter.off('atMessage')
@@ -17,7 +15,7 @@ const AtMessage = defineComponent({
         this.bindMessageListener()
     },
 
-    setup(props: AtMessageProps) {
+    setup(props: AtMessageProps, { attrs }) {
         const _timer = ref<NodeJS.Timeout | number | null>(null)
 
         const state = reactive<AtMessageState>({
@@ -26,6 +24,13 @@ const AtMessage = defineComponent({
             _type: 'info',
             _duration: 3000
         })
+
+        const rootClasses = computed(() => ({
+            'at-message': true,
+            'at-message--show': state._isOpened,
+            'at-message--hidden': !state._isOpened,
+            [`at-message--${state._type}`]: true,
+        }))
 
         function bindMessageListener(): void {
             Taro.eventCenter.on('atMessage', (options = {}) => {
@@ -59,24 +64,11 @@ const AtMessage = defineComponent({
             Taro.eventCenter.off('atMessage')
         })
 
-        return () => {
-            const rootClass = classNames(
-                {
-                    'at-message': true,
-                    'at-message--show': state._isOpened,
-                    'at-message--hidden': !state._isOpened
-                },
-                `at-message--${state._type}`,
-                props.className
-            )
-
-            return (
-                h(View, {
-                    class: rootClass,
-                    style: props.customStyle,
-                }, state._message)
-            )
-        }
+        return () => (
+            h(View, mergeProps(attrs, {
+                class: rootClasses.value
+            }), state._message)
+        )
     }
 })
 

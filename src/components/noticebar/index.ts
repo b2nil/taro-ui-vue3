@@ -1,11 +1,11 @@
-import { h, defineComponent, reactive, onMounted, Ref, computed, ref } from 'vue'
-import classNames from 'classnames'
+import { h, defineComponent, reactive, onMounted, Ref, computed, ref, mergeProps } from 'vue'
 import { Text, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import Taro from '@tarojs/taro'
 import { AtNoticeBarProps } from 'types/noticebar'
 
 const AtNoticebar = defineComponent({
+    name: "AtNoticebar",
 
     props: {
         close: { type: Boolean, default: false },
@@ -26,7 +26,7 @@ const AtNoticebar = defineComponent({
         onGotoMore: Function as unknown as () => AtNoticeBarProps['onGotoMore']
     },
 
-    setup(props: AtNoticeBarProps, { slots }) {
+    setup(props: AtNoticeBarProps, { attrs, slots }) {
 
         const timeout: Ref<NodeJS.Timeout | null> = ref(null)
         const interval: Ref<NodeJS.Timer | null> = ref(null)
@@ -44,6 +44,31 @@ const AtNoticebar = defineComponent({
             isALIPAY: Taro.getEnv() === Taro.ENV_TYPE.ALIPAY,
             isWEB: Taro.getEnv() === Taro.ENV_TYPE.WEB
         })
+
+        const rootClass = computed(() => ({
+            'at-noticebar': true,
+            'at-noticebar--marquee': props.marquee,
+            'at-noticebar--weapp': props.marquee && (state.isWEAPP || state.isALIPAY),
+            'at-noticebar--single': !props.marquee && props.single
+        }))
+
+        const animationStyle = computed(() => {
+            const style = {}
+            if (props.marquee) {
+                style['animation-duration'] = `${state.dura}s`
+            }
+            return style
+        })
+
+        const innerContentClass = computed(() => ({
+            'at-noticebar__content-inner': true,
+            [`${state.animElemId}`]: props.marquee
+        }))
+
+        const iconClass = computed(() => ({
+            'at-icon': true,
+            [`at-icon-${props.icon}`]: Boolean(props.icon)
+        }))
 
         function handleClose(event: CommonEvent): void {
             state.show = false
@@ -82,7 +107,7 @@ const AtNoticebar = defineComponent({
 
                             const { width } = queryRes
                             const dura = width / +props.speed!
-                            
+
                             const animation = Taro.createAnimation({
                                 duration: dura * 1000,
                                 timingFunction: 'linear'
@@ -124,114 +149,69 @@ const AtNoticebar = defineComponent({
             }, 100)
         }
 
-        return () => {
-            const {
-                dura,
-                show,
-                animElemId,
-                animationData,
-                isWEAPP,
-                isALIPAY
-            } = state
+        return () => (
+            state.show && (
+                h(View, mergeProps(attrs, {
+                    class: rootClass.value
+                }), [
+                    // close icon
+                    state._close && (
+                        h(View, {
+                            class: 'at-noticebar__close',
+                            onTap: handleClose
+                        }, [
+                            h(Text, { class: 'at-icon at-icon-close' })
+                        ])
+                    ),
 
-            const rootClass = computed(() => classNames(
-                'at-noticebar',
-                {
-                    'at-noticebar--marquee': props.marquee,
-                    'at-noticebar--weapp': props.marquee && (isWEAPP || isALIPAY),
-                    'at-noticebar--single': !props.marquee && props.single
-                },
-                props.className
-            ))
-
-            const animationStyle = computed(() => {
-                const style = {}
-                if (props.marquee) {
-                    style['animation-duration'] = `${dura}s`
-                }
-                return style
-            })
-
-            const innerContentClass = computed(() => {
-                const innerClass = ['at-noticebar__content-inner']
-                if (props.marquee) {
-                    innerClass.push(animElemId)
-                }
-                return classNames(innerClass)
-            })
-
-            const iconClass = computed(() => {
-                const iconClass = ['at-icon']
-                if (props.icon) iconClass.push(`at-icon-${props.icon}`)
-                                /* start hack 百度小程序 */
-                return classNames(iconClass, iconClass)
-            })
-
-            return (
-                show && (
+                    // content
                     h(View, {
-                        class: rootClass.value,
-                        style: props.customStyle
-                    }, {
-                        default: () => [
-                            // close icon
-                            state._close && (
+                        class: 'at-noticebar__content'
+                    }, [
+                        // content icon
+                        props.icon && (
+                            h(View, {
+                                class: 'at-noticebar__content-icon'
+                            }, [
+                                /* start hack 百度小程序 */
+                                h(Text, { class: iconClass.value })
+                            ])
+                        ),
+
+                        // content text
+                        h(View, {
+                            class: 'at-noticebar__content-text'
+                        }, [
+                            // default content slot
+                            h(View, {
+                                id: state.animElemId,
+                                animation: state.animationData,
+                                class: innerContentClass.value,
+                                style: animationStyle.value,
+                            }, slots.default && slots.default()),
+
+                            // show more content
+                            state._showMore && (
                                 h(View, {
-                                    class: 'at-noticebar__close',
-                                    onTap: handleClose
-                                }, {
-                                    default: () => [
-                                        h(Text, { class: 'at-icon at-icon-close' })
-                                    ]
-                                })
-                            ),
-                            // content
-                            h(View, { class: 'at-noticebar__content' }, {
-                                default: () => [
-                                    // content icon
-                                    props.icon && (
-                                        h(View, { class: 'at-noticebar__content-icon' }, {
-                                            default: () => [
-                                                /* start hack 百度小程序 */
-                                                h(Text, { class: iconClass.value })
-                                            ]
-                                        })
-                                    ),
-                                    // content text
-                                    h(View, { class: 'at-noticebar__content-text' }, {
-                                        default: () => [
-                                            // default content slot
-                                            h(View, {
-                                                id: animElemId,
-                                                animation: animationData,
-                                                class: innerContentClass.value,
-                                                style: animationStyle.value,
-                                            }, slots.default && slots.default()),
-                                            // show more content
-                                            state._showMore && (
-                                                h(View, {
-                                                    class: 'at-noticebar__more',
-                                                    onTap: onGotoMore.bind(this)
-                                                }, {
-                                                    default: () => [
-                                                        h(Text, { class: 'text' }, props.moreText),
-                                                        h(View, { class: 'at-noticebar__more-icon' }, {
-                                                            default: () => [
-                                                                h(Text, { class: 'at-icon at-icon-chevron-right' })
-                                                            ]
-                                                        })
-                                                    ]
-                                                })
-                                            )
-                                        ]
-                                    })
-                                ]
-                            })
-                        ]
-                    })
-                )
+                                    class: 'at-noticebar__more',
+                                    onTap: onGotoMore.bind(this)
+                                }, [
+                                    h(Text, {
+                                        class: 'text'
+                                    }, props.moreText),
+
+                                    h(View, {
+                                        class: 'at-noticebar__more-icon'
+                                    }, [
+                                        h(Text, { class: 'at-icon at-icon-chevron-right' })
+                                    ])
+                                ])
+                            )
+                        ])
+                    ])
+                ])
             )
-        }
+        )
     }
 })
 

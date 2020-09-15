@@ -1,15 +1,14 @@
-import { h, defineComponent, watch, ref } from "vue"
+import { h, defineComponent, watch, ref, computed, mergeProps } from "vue"
 import { View } from "@tarojs/components"
 import { CommonEvent } from "@tarojs/components/types/common"
-import { AtActionSheetProps } from "types/action-sheet";
-import classNames from "classnames"
+import { AtActionSheetProps } from "types/action-sheet"
+
 import AtActionSheetHeader from "./header/index"
 import AtActionSheetBody from "./body/index"
 import AtActionSheetFooter from "./footer/index"
-import AtComponentWithDefaultProps from "../mixins";
 
 const AtActionSheet = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtActionSheet",
 
     props: {
         isOpened: {
@@ -17,25 +16,30 @@ const AtActionSheet = defineComponent({
             default: false
         },
         title: {
-            type: String, 
+            type: String,
             default: ''
         },
         cancelText: {
-            type: String, 
+            type: String,
             default: ''
         },
         onClose: {
-            type: Function as unknown as () => (event?: CommonEvent) => void, 
-            default: () => () => {} 
+            type: Function as unknown as () => (event?: CommonEvent) => void,
+            default: () => () => { }
         },
         onCancel: {
             type: Function as unknown as () => (event?: CommonEvent) => void,
-            default: () => () => {} 
+            default: () => () => { }
         },
     },
 
-    setup(props: AtActionSheetProps, { slots }) {
-        const _isOpened =  ref(props.isOpened)
+    setup(props: AtActionSheetProps, { attrs, slots }) {
+        const _isOpened = ref(props.isOpened)
+
+        const rootClasses = computed(() => ({
+            'at-action-sheet': true,
+            'at-action-sheet--active': _isOpened.value,
+        }))
 
         watch(() => props.isOpened, (val) => {
             if (val !== _isOpened.value) {
@@ -63,34 +67,28 @@ const AtActionSheet = defineComponent({
             e.preventDefault()
         }
 
-        return () => {
-            const rootClass = classNames(
-                'at-action-sheet',
-                { 'at-action-sheet--active': _isOpened.value },
-                props.className
-            )
-            
-            return h(View, {
-                class: rootClass,
+        return () => (
+            h(View, mergeProps(attrs, {
+                class: rootClasses.value,
                 onTouchMove: handleTouchMove
-            }, { default: () => [
+            }), [
                 h(View, {
                     class: 'at-action-sheet__overlay',
                     onTap: close
                 }),
-                h(View, { class: 'at-action-sheet__container' }, { default: () => [
+                h(View, { class: 'at-action-sheet__container' }, [
                     props.title && (
                         h(AtActionSheetHeader, null, { default: () => props.title })
                     ),
                     h(AtActionSheetBody, null, { default: () => slots.default && slots.default() }),
                     props.cancelText && (
                         h(AtActionSheetFooter, {
-                            onTap: handleCancel
+                            onClick: handleCancel
                         }, { default: () => props.cancelText })
                     )
-                ]}),
-            ]})
-        }
+                ]),
+            ])
+        )
     }
 })
 

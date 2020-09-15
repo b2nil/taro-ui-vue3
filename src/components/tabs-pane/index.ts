@@ -1,11 +1,9 @@
-import { h, defineComponent, computed } from 'vue'
-import classNames from 'classnames'
+import { h, defineComponent, computed, mergeProps } from 'vue'
 import { View } from '@tarojs/components'
 import { AtTabsPaneProps } from 'types/tabs-pane'
-import AtComponentWithDefaultProps from '../mixins'
 
 const AtTabsPane = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtTabsPane",
 
     props: {
         tabDirection: {
@@ -25,26 +23,20 @@ const AtTabsPane = defineComponent({
         },
     },
 
-    setup(props: AtTabsPaneProps, { slots }) {
+    setup(props: AtTabsPaneProps, { attrs, slots }) {
 
-        return () => {
-            const rootClass = computed(() => classNames(
-                {
-                    'at-tabs-pane': true,
-                    'at-tabs-pane--vertical': props.tabDirection === 'vertical',
-                    'at-tabs-pane--active': props.index === props.current,
-                    'at-tabs-pane--inactive': props.index !== props.current
-                },
-                props.className
-            ))
+        const rootClass = computed(() => ({
+            'at-tabs-pane': true,
+            'at-tabs-pane--vertical': props.tabDirection === 'vertical',
+            'at-tabs-pane--active': props.index === props.current,
+            'at-tabs-pane--inactive': props.index !== props.current
+        }))
 
-            return (
-                h(View, {
-                    class: rootClass.value,
-                    style: props.customStyle
-                }, slots.default && slots.default())
-            )
-        }
+        return () => (
+            h(View, mergeProps(attrs, {
+                class: rootClass.value
+            }), slots.default && slots.default())
+        )
     }
 })
 

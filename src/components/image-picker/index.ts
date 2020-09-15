@@ -1,13 +1,10 @@
-import { h, defineComponent, computed } from "vue"
+import { h, defineComponent, computed, mergeProps } from "vue"
 import Taro from '@tarojs/taro'
 
-import classNames from 'classnames'
 import { uuid } from '@/utils/common'
 
 import { Image, View } from '@tarojs/components'
 import { AtImagePickerProps, File } from 'types/image-picker'
-
-import AtComponentWithDefaultProps from '../mixins'
 
 interface MatrixFile extends Partial<File> {
     type: 'blank' | 'btn'
@@ -47,7 +44,7 @@ const generateMatrix = (
 const ENV = Taro.getEnv()
 
 const AtImagePicker = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtImagePicker",
 
     props: {
         // 参数
@@ -59,7 +56,7 @@ const AtImagePicker = defineComponent({
             type: String as () => AtImagePickerProps['mode'],
             default: 'aspectFill' as AtImagePickerProps['mode']
         },
-        showAddBtn: { 
+        showAddBtn: {
             type: Boolean,
             default: true
         },
@@ -70,33 +67,41 @@ const AtImagePicker = defineComponent({
         },
         count: Number as () => AtImagePickerProps['count'],
         sizeType: Array as () => AtImagePickerProps['sizeType'],
-        sourceType: Array as () => AtImagePickerProps['sourceType'],    
+        sourceType: Array as () => AtImagePickerProps['sourceType'],
         // 事件
         onChange: {
             type: Function as unknown as () => AtImagePickerProps['onChange'],
-            default: () => () => {},
+            default: () => () => { },
             required: true
         },
         onImageClick: {
             type: Function as unknown as () => AtImagePickerProps['onImageClick'],
-            default: () => () => {}
+            default: () => () => { }
         },
         onFail: {
             type: Function as unknown as () => AtImagePickerProps['onFail'],
-            default: () => () => {}
+            default: () => () => { }
         },
     },
 
-    setup(props: AtImagePickerProps) {
-        
+    setup(props: AtImagePickerProps, { attrs }) {
+
+        const rowLength = computed(() => props.length! <= 0 ? 1 : props.length)
+
+        const matrix = computed(() => generateMatrix(
+            props.files as MatrixFile[],
+            rowLength.value!,
+            props.showAddBtn!
+        ))
+
         function chooseFile() {
             const params: any = {}
 
-            const filePathName = 
+            const filePathName =
                 ENV === Taro.ENV_TYPE.ALIPAY
                     ? 'apFilePaths'
                     : 'tempFiles'
-            
+
             if (props.multiple) {
                 params.count = 99
             }
@@ -132,78 +137,54 @@ const AtImagePicker = defineComponent({
         }
 
         function handleRemoveImg(idx: number) {
-            if(ENV === Taro.ENV_TYPE.WEB) {
+            if (ENV === Taro.ENV_TYPE.WEB) {
                 window.URL.revokeObjectURL(props.files[idx].url)
             }
-            
+
             const newFiles = props.files.filter((_, i) => i !== idx)
 
             props.onChange(newFiles, 'remove', idx)
         }
 
-        return () => {
-            const rowLength = props.length! <= 0 ? 1 : props.length
-
-            const matrix = computed(() => generateMatrix(
-                props.files as MatrixFile[],
-                rowLength!,
-                props.showAddBtn!
-            ))
-
-            const rootClass = computed(() => classNames(
-                'at-image-picker',
-                props.className
-            ))
-
-            const genPreviewNode = (item, i, j) => h(View, { class: 'at-image-picker__item' }, [
+        return () => (
+            h(View, mergeProps(attrs, {
+                class: 'at-image-picker'
+            }), matrix.value.map((row, i) => (
                 h(View, {
-                    class: 'at-image-picker__remove-btn',
-                    onTap: handleRemoveImg.bind(this, i * props.length! + j)
-                }),
-                h(Image, {
-                    class: 'at-image-picker__preview-img',
-                    mode: props.mode,
-                    src: item.url,
-                    onTap: handleImageClick.bind(this, i * props.length! + j)
-                })
-            ])
-
-            const addBarNode = h(View,
-                {
-                    class: 'at-image-picker__item at-image-picker__choose-btn',
-                    onTap: chooseFile
-                }, 
-                Array.apply(null, { length: 2 })
-                    .map(() => h(View, { class: 'add-bar' }))
-            )
-
-            const genItemNodes = (row, i) => row.map((item, j) => {
-                return (
-                    h(View, {
-                        class: 'at-image-picker__flex-item',
-                        key: item.url ? `preview-${i*props.length! +j}` : `add-bar-${i*props.length! +j}`
-                    }, [
-                        item.url
-                            ? genPreviewNode(item, i, j)
-                            : item.type === 'btn' && addBarNode
-                    ])
-                )
-            })
-
-            const matrixNodes = matrix.value.map((row, i) => {
-                return h(View, {
                     class: 'at-image-picker__flex-box',
                     key: i + 1
-                }, genItemNodes(row, i))
-            })
-
-            return (
-                h(View, {
-                    class: rootClass.value,
-                    style: props.customStyle
-                }, matrixNodes)  
-            )
-        }
+                }, row.map((item, j) => (
+                    h(View, {
+                        class: 'at-image-picker__flex-item',
+                        key: item.url ? `preview-${i * props.length! + j}` : `add-bar-${i * props.length! + j}`
+                    }, [
+                        item.url
+                            ? ( // image preview
+                                h(View, { class: 'at-image-picker__item' }, [
+                                    h(View, {
+                                        class: 'at-image-picker__remove-btn',
+                                        onTap: handleRemoveImg.bind(this, i * props.length! + j)
+                                    }),
+                                    h(Image, {
+                                        class: 'at-image-picker__preview-img',
+                                        mode: props.mode,
+                                        src: item.url,
+                                        onTap: handleImageClick.bind(this, i * props.length! + j)
+                                    })
+                                ])
+                            )
+                            : item.type === 'btn' && ( // add bar
+                                h(View, {
+                                    class: 'at-image-picker__item at-image-picker__choose-btn',
+                                    onTap: chooseFile
+                                }, Array.apply(null, { length: 2 })
+                                    .map(() => h(View, { class: 'add-bar' }))
+                                )
+                            )
+                    ])
+                )))
+            )))
+        )
     }
 })
 

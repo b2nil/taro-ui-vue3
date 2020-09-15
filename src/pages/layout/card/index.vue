@@ -105,8 +105,6 @@ import { Page, Panel, ExampleItem } from '../../components/demo-page'
 import AtIcon from '@/components/icon'
 import AtCard from '@/components/card'
 
-import "./index.scss"
-
 export default defineComponent({
   name: "CardDemo",
 
@@ -124,7 +122,7 @@ export default defineComponent({
       value: 'home',
       size: 16,
       color: '#6190e8',
-      customStyle: { marginRight: '10px' }
+      style: { marginRight: '10px' }
     })
 
     function handleClick() {

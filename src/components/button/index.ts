@@ -1,11 +1,9 @@
-import { h, defineComponent, computed } from 'vue'
+import { h, defineComponent, computed, mergeProps } from 'vue'
 import { Button, View, Form, CommonEventFunction } from '@tarojs/components'
 import { ButtonProps } from "@tarojs/components/types/Button";
 import { AtButtonProps } from "types/button";
-import classNames from 'classnames'
 import AtLoading from '../loading/index'
 import { getEnvs } from '../../utils/common'
-import AtComponentWithDefaultProps from '../mixins';
 import Taro from '@tarojs/taro'
 
 const SIZE_CLASS = {
@@ -19,9 +17,9 @@ const TYPE_CLASS = {
 }
 
 const AtButton = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtButton",
 
-    components: { 
+    components: {
         AtLoading
     },
 
@@ -37,24 +35,24 @@ const AtButton = defineComponent({
             validator: (prop: string) => ['primary', 'secondary', ''].includes(prop)
         },
         circle: {
-            type: Boolean, 
-            default: false 
+            type: Boolean,
+            default: false
         },
         full: {
-            type: Boolean, 
-            default: false 
+            type: Boolean,
+            default: false
         },
         loading: {
-            type: Boolean, 
-            default: false 
+            type: Boolean,
+            default: false
         },
         disabled: {
-            type: Boolean, 
-            default: false 
+            type: Boolean,
+            default: false
         },
         onClick: {
             type: Function as unknown as () => CommonEventFunction,
-            default: () => () => {}, 
+            default: () => () => { },
         },
         // Taro Button Props
         formType: {
@@ -62,9 +60,9 @@ const AtButton = defineComponent({
             default: undefined,
             validator: (prop: string) => ['submit', 'reset', ''].includes(prop)
         },
-        openType: { 
-            type: String as () => AtButtonProps['openType'], 
-            default: undefined, 
+        openType: {
+            type: String as () => AtButtonProps['openType'],
+            default: undefined,
             validator: (prop: string) => [
                 'contact',
                 "contactShare",
@@ -79,8 +77,8 @@ const AtButton = defineComponent({
                 "feedback",
             ].includes(prop),
         },
-        lang: { 
-            type: String as () => keyof ButtonProps.lang, 
+        lang: {
+            type: String as () => keyof ButtonProps.lang,
             default: 'en' as keyof ButtonProps.lang
         },
         sessionFrom: { type: String, default: '', },
@@ -90,58 +88,59 @@ const AtButton = defineComponent({
         showMessageCard: { type: Boolean, default: false, },
         appParameter: { type: String, default: '', },
         scope: { // alipay scope
-            type: String as () => 'userInfo' | 'phoneNumber' | undefined, 
+            type: String as () => 'userInfo' | 'phoneNumber' | undefined,
             default: undefined
         },
         // Taro Button Events
         onGetUserInfo: {
             type: Function as unknown as () => CommonEventFunction<ButtonProps.onGetUserInfoEventDetail>,
-            default: () => () => {}
+            default: () => () => { }
         },
         onGetAuthrize: { // Alipay auth
             type: Function as unknown as () => CommonEventFunction,
-            default: () => () => {}
+            default: () => () => { }
         },
         onContact: {
             type: Function as unknown as () => CommonEventFunction<ButtonProps.onContactEventDetail>,
-            default: () => () => {}
+            default: () => () => { }
         },
         onGetPhoneNumber: {
             type: Function as unknown as () => CommonEventFunction<ButtonProps.onGetPhoneNumberEventDetail>,
-            default: () => () => {}
+            default: () => () => { }
         },
         onGetRealnameAuthInfo: {
             type: Function as unknown as () => CommonEventFunction,
-            default: () => () => {}
+            default: () => () => { }
         },
         onError: {
             type: Function as unknown as () => CommonEventFunction,
-            default: () => () => {}
+            default: () => () => { }
         },
         onOpenSetting: {
             type: Function as unknown as () => CommonEventFunction<ButtonProps.onOpenSettingEventDetail>,
-            default: () => () => {}
+            default: () => () => { }
         },
         onLaunchapp: {
             type: Function as unknown as () => CommonEventFunction,
-            default: () => () => {}
+            default: () => () => { }
         }
     },
 
-    setup(props: AtButtonProps, { slots }){
+    setup(props: AtButtonProps, { attrs, slots }) {
         const { isWEAPP, isALIPAY, isWEB } = getEnvs()
-        
-        const rootClass = computed(() => classNames('at-button', props.className, {
+
+        const rootClasses = computed(() => ({
             [`at-button--${SIZE_CLASS[props.size ? props.size : 'normal']}`]: SIZE_CLASS[props.size ? props.size : 'normal'],
             [`at-button--${props.type}`]: TYPE_CLASS[props.type ? props.type : ''],
             'at-button--circle': props.circle,
             'at-button--disabled': props.disabled,
             'at-button--full': props.full,
-            'at-button--icon': props.loading
+            'at-button--icon': props.loading,
+            'at-button': true,
         }))
 
-        const loadingColor = props.type === 'primary' ? '#fff' : ''
-        const loadingSize = props.size === 'small' ? '30' : '0'
+        const loadingColor = computed(() => props.type === 'primary' ? '#fff' : '')
+        const loadingSize = computed(() => props.size === 'small' ? '30' : '0')
 
         function handleClick(event) {
             if (!props.disabled) {
@@ -156,7 +155,7 @@ const AtButton = defineComponent({
         function handleGetPhoneNumber(event) {
             props.onGetPhoneNumber && props.onGetPhoneNumber(event)
         }
-        
+
         function handleOpenSetting(event) {
             props.onOpenSetting && props.onOpenSetting(event)
         }
@@ -253,29 +252,35 @@ const AtButton = defineComponent({
             sendMessageImg: props.sendMessageImg,
             showMessageCard: props.showMessageCard,
             appParameter: props.appParameter,
-            ...{ on: getWxButtonProps()}
+            ...{ on: getWxButtonProps() }
         })
 
-        return () => h(View, {
-            onTap: handleClick,
-            class: rootClass.value,
-            style: props.customStyle,
-        }, [
-            isWEB && !props.disabled && webButton,
+        return () => (
+            h(View, mergeProps(attrs, {
+                class: rootClasses.value,
+                onTap: handleClick
+            }), [
+                isWEB && !props.disabled && webButton,
 
-            isWEAPP && !props.disabled && h(Form, {
-                onSubmit: handleSubmit,
-                onReset: handleReset
-            }, [miniAppButton]),
+                isWEAPP && !props.disabled && h(Form, {
+                    onSubmit: handleSubmit,
+                    onReset: handleReset
+                }, [miniAppButton]),
 
-            isALIPAY && !props.disabled && miniAppButton,
+                isALIPAY && !props.disabled && miniAppButton,
 
-            props.loading && h(View, { class: 'at-button__icon' }, [ 
-                h(AtLoading, { color: loadingColor, size: loadingSize })
-            ]),
+                props.loading && h(View, {
+                    class: 'at-button__icon'
+                }, [
+                    h(AtLoading, {
+                        color: loadingColor.value,
+                        size: loadingSize.value
+                    })
+                ]),
 
-            h(View, { class: 'at-button__text' }, slots.default && slots.default())
-        ])
+                h(View, { class: 'at-button__text' }, slots.default && slots.default())
+            ])
+        )
     }
 })
 

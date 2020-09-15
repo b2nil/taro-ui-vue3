@@ -1,16 +1,12 @@
-import { h, defineComponent, computed } from "vue"
-
-import classNames from 'classnames'
+import { h, defineComponent, computed, mergeProps } from "vue"
 import _forEach from 'lodash/forEach'
-
 import { View } from '@tarojs/components'
 import { AtFlexProps } from 'types/flex'
 
-import AtComponentWithDefaultProps from '../mixins'
 import './index.scss'
 
 const AtFlex = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtFlex",
 
     props: {
         wrap: {
@@ -34,31 +30,33 @@ const AtFlex = defineComponent({
         },
     },
 
-    setup(props: AtFlexProps, { slots }) {
+    setup(props: AtFlexProps, { attrs, slots }) {
 
-        return () => {
-            const rootClass = computed(() => {
-                const root = ['at-row']
+        const rootClass = computed(() => {
+            const root = { 'at-row': true }
 
-                _forEach(props, (value, key) => {
-                    switch (key) {
-                        case 'className':
-                        case 'customStyle':
-                            return
-                        case 'wrap':
-                            return root.push(`at-row--${value}`)
-                        case 'alignContent':
-                            return root.push(`at-row__align-content--${value}`)
-                        default:
-                            return root.push(`at-row__${key}--${value}`)
-                    }
-                })
-
-                return classNames(root)
+            _forEach(props, (value, key) => {
+                switch (key) {
+                    case 'wrap':
+                        root[`at-row--${value}`] = true
+                        return
+                    case 'alignContent':
+                        root[`at-row__align-content--${value}`] = true
+                        return
+                    default:
+                        root[`at-row__${key}--${value}`] = true
+                        return
+                }
             })
 
-            return h(View, { class: rootClass.value }, slots.default && slots.default())
-        }
+            return root
+        })
+
+        return () => (
+            h(View, mergeProps(attrs, {
+                class: rootClass.value
+            }), slots.default && slots.default())
+        )
     }
 })
 

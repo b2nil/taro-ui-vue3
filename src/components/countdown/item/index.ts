@@ -3,10 +3,8 @@ import { h, defineComponent } from "vue"
 import { Text, View } from '@tarojs/components'
 import { AtCountdownItemProps } from 'types/countdown'
 
-import AtComponentWithDefaultProps from '../../mixins'
-
 const AtCountdownItem = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtCountdownItem",
 
     props: {
         // 参数

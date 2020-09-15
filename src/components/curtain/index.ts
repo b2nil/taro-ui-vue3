@@ -1,14 +1,9 @@
-import { h, defineComponent, computed } from "vue"
-
-import classNames from 'classnames'
-
+import { h, defineComponent, computed, mergeProps } from "vue"
 import { View, CommonEvent } from '@tarojs/components'
 import { AtCurtainProps } from 'types/curtain'
 
-import AtComponentWithDefaultProps from '../mixins'
-
 const AtCurtain = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtCurtain",
 
     props: {
         // 参数
@@ -24,33 +19,29 @@ const AtCurtain = defineComponent({
         }
     },
 
-    setup(props: AtCurtainProps, { slots }) {        
+    setup(props: AtCurtainProps, { attrs, slots }) {
+        const curtainClass = computed(() => ({
+            'at-curtain': true,
+            'at-curtain--closed': !props.isOpened
+        }))
+
+        const btnCloseClass = computed(() => ({
+            'at-curtain__btn-close': true,
+            [`at-curtain__btn-close--${props.closeBtnPosition}`]: props.closeBtnPosition
+        }))
 
         function handleClose(e: CommonEvent) {
             e.stopPropagation()
-            props.onClose(e)  
+            props.onClose(e)
         }
 
-        return () => {
-            const curtainClass = computed(() => classNames({
-                    'at-curtain': true,
-                    'at-curtain--closed': !props.isOpened
-                },
-                props.className
-            ))
-
-            const btnCloseClass = computed(() => classNames({
-                'at-curtain__btn-close': true,
-                [`at-curtain__btn-close--${props.closeBtnPosition}`]: props.closeBtnPosition
-            }))
-
-            return h(View, {
+        return () => (
+            h(View, mergeProps(attrs, {
                 class: curtainClass.value,
-                style: props.customStyle,
                 onTap: (e: CommonEvent) => { e.stopPropagation() }
-            }, [
-                h(View, { class: 'at-curtain__container'}, [
-                    h(View, { class: 'at-curtain__body'}, [
+            }), [
+                h(View, { class: 'at-curtain__container' }, [
+                    h(View, { class: 'at-curtain__body' }, [
                         slots.default && slots.default(),
                         h(View, {
                             class: btnCloseClass.value,
@@ -59,7 +50,7 @@ const AtCurtain = defineComponent({
                     ])
                 ])
             ])
-        }
+        )
     }
 })
 

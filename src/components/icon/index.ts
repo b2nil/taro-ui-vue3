@@ -1,12 +1,10 @@
-import { defineComponent, computed, h } from "vue"
-import classNames from 'classnames'
+import { defineComponent, computed, h, mergeProps } from "vue"
 import { Text } from "@tarojs/components"
 import { AtIconProps } from "types/icon"
-import { pxTransform, mergeStyle } from "@/utils/common"
-import AtComponentWithDefaultProps from "../mixins"
+import { pxTransform } from "@/utils/common"
 
 const AtIcon = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtIcon",
 
     props: {
         prefixClass: {
@@ -31,37 +29,29 @@ const AtIcon = defineComponent({
         }
     },
 
-    setup(props: AtIconProps) {
+    setup(props: AtIconProps, { attrs }) {
+
+        const rootStyle = computed(() => ({
+            color: props.color,
+            fontSize: `${pxTransform(parseInt(String(props.size)) * 2)}`
+        }))
+        
+        const rootClass = computed(() => ({
+            [`${props.prefixClass}`]: true,
+            [`${props.prefixClass}-${props.value}`]: Boolean(props.value),
+        }))
 
         function handleClick() {
             props.onClick && props.onClick(arguments as any)
         }
 
-        return () => {
-            const rootStyle = computed(() => ({
-                fontSize: `${pxTransform(parseInt(String(props.size)) * 2)}`,
-                color: props.color
-            }))
-    
-            const iconName = computed(() => props.value
-                ? `${props.prefixClass}-${props.value}`
-                : ''
-            )
-            
-            const mergedStyle = mergeStyle(rootStyle.value, props.customStyle as object)
-    
-            const rootClass = computed(() => classNames(
-                props.prefixClass,
-                iconName.value,
-                props.className
-            ))
-            
-            return h(Text, {
+        return () => (            
+            h(Text, mergeProps(attrs, {
                 class: rootClass.value,
-                style: mergedStyle,
+                style: rootStyle.value,
                 onTap: handleClick.bind(this)
-            })
-        }
+            }))
+        )
     }
 })
 

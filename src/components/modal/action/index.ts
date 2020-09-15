@@ -1,36 +1,31 @@
-import { h, defineComponent, computed } from 'vue'
-import classNames from 'classnames'
+import { h, defineComponent, computed, mergeProps } from 'vue'
 import { View } from '@tarojs/components'
 import { AtModalActionProps } from 'types/modal'
-import AtComponentWithDefaultProps from '@/components/mixins'
 
-const AtModalAction = defineComponent ({
+const AtModalAction = defineComponent({
 
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtModalAction",
 
     props: {
         isSimple: { type: Boolean, default: false, required: true }
     },
 
-    setup(props: AtModalActionProps, { slots }){
+    setup(props: AtModalActionProps, { attrs, slots }) {
 
-        return () => {
-            const rootClass = computed(() => classNames(
-                'at-modal__footer',
-                {
-                    'at-modal__footer--simple': props.isSimple
-                },
-                props.className
-            ))
-    
-            return (
-                h(View, { class: rootClass.value }, [
-                    h(View, {
-                        class: 'at-modal__action'
-                    }, slots.default && slots.default())
-                ])
-            )
-        }        
+        const rootClass = computed(() => ({
+            'at-modal__footer': true,
+            'at-modal__footer--simple': props.isSimple
+        }))
+
+        return () => (
+            h(View, mergeProps(attrs, {
+                class: rootClass.value
+            }), [
+                h(View, {
+                    class: 'at-modal__action'
+                }, slots.default && slots.default())
+            ])
+        )
     }
 })
 

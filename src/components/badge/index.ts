@@ -1,31 +1,31 @@
-import { h, defineComponent } from "vue"
+import { h, defineComponent, mergeProps, computed } from "vue"
 import { View } from "@tarojs/components"
 import { AtBadgeProps } from "types/badge";
-import classNames from "classnames"
-import AtComponentWithDefaultProps from "../mixins";
 
 const AtBadge = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtBadge",
 
     props: {
-        dot: { 
-            type: Boolean, 
-            default: false 
+        dot: {
+            type: Boolean,
+            default: false
         },
-        value: { 
-            type: [String, Number], 
-            default: '' 
+        value: {
+            type: [String, Number],
+            default: ''
         },
-        maxValue: { 
+        maxValue: {
             type: Number,
-            default: 99 
+            default: 99
         }
     },
 
-    setup(props: AtBadgeProps, { slots }) {
+    setup(props: AtBadgeProps, { attrs, slots }) {
+
+        const formatedValue = computed(() => formatValue(props.value, props.maxValue!))
 
         function formatValue(
-            value: string | number | undefined, 
+            value: string | number | undefined,
             maxValue: number
         ): string | number {
             if (value === '' || value === null || value === undefined) return ''
@@ -35,24 +35,22 @@ const AtBadge = defineComponent({
             if (Number.isNaN(numValue)) {
                 return value
             }
-            
+
             return numValue > maxValue ? `${maxValue}+` : numValue
         }
 
-        return () => {
-            const rootClass = classNames(
-                'at-badge',
-                props.className
-            )
-            const val = formatValue(props.value, props.maxValue!)
-            
-            return h(View, { class: rootClass, style: props.customStyle }, [
+        return () => (
+            h(View, mergeProps(attrs, {
+                class: 'at-badge'
+            }), [
                 slots.default && slots.default(),
-                props.dot 
-                    ? h(View, { class: 'at-badge__dot'})
-                    : val !== '' && h(View, { class: 'at-badge__num'}, val),
+                props.dot
+                    ? h(View, { class: 'at-badge__dot' })
+                    : formatedValue.value !== '' && (
+                        h(View, { class: 'at-badge__num' }, formatedValue.value)
+                    )
             ])
-        }
+        )
     }
 })
 

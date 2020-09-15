@@ -1,9 +1,8 @@
-import { h, defineComponent, computed, reactive, watch } from 'vue'
-import classNames from 'classnames'
+import { h, defineComponent, computed, reactive, watch, mergeProps } from 'vue'
 import { Text, View } from '@tarojs/components'
 import { AtPaginationProps, AtPaginationState } from 'types/pagination'
 import AtButton from '../button/index'
-import AtComponentWithDefaultProps from '../mixins'
+
 
 const MIN_MAXPAGE = 1
 const getMaxPage = (maxPage = 0): number => {
@@ -17,7 +16,7 @@ const createPickerRange = (max: number): number[] => {
 }
 
 const AtPagination = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtPagination",
 
     props: {
         total: { type: Number, default: 0, required: true },
@@ -27,7 +26,7 @@ const AtPagination = defineComponent({
         onPageChange: Function as unknown as () => AtPaginationProps['onPageChange'],
     },
 
-    setup(props: AtPaginationProps, { slots }) {
+    setup(props: AtPaginationProps, { attrs, slots }) {
 
         const maxPage = computed(() => getMaxPage(Math.ceil(props.total / props.pageSize!)))
         const state = reactive<AtPaginationState>({
@@ -35,6 +34,14 @@ const AtPagination = defineComponent({
             maxPage: maxPage.value,
             pickerRange: createPickerRange(maxPage.value)
         })
+
+        const prevDisabled = computed(() => state.maxPage === MIN_MAXPAGE || state.currentPage === 1)
+        const nextDisabled = computed(() => state.maxPage === MIN_MAXPAGE || state.currentPage === state.maxPage)
+
+        const rootClass = computed(() => ({
+            'at-pagination': true,
+            'at-pagination--icon': props.icon
+        }))
 
         function onPrev(): void {
             let { currentPage } = state
@@ -82,107 +89,92 @@ const AtPagination = defineComponent({
         //   state.currentPage = current
         // }
 
-        return () => {
-
-            const prevDisabled = computed(() => state.maxPage === MIN_MAXPAGE || state.currentPage === 1)
-            const nextDisabled = computed(() => state.maxPage === MIN_MAXPAGE || state.currentPage === state.maxPage)
-            const rootClass = computed(() => classNames(
-                'at-pagination',
-                {
-                    'at-pagination--icon': props.icon
-                },
-                props.className
-            ))
-
-            return (
+        return () => (
+            h(View, mergeProps(attrs, {
+                class: rootClass.value
+            }), [
+                // btn prev
                 h(View, {
-                    class: rootClass.value,
-                    style: props.customStyle,
-                }, {
-                    default: () => [
-                        // btn prev
-                        h(View, { class: 'at-pagination__btn-prev' }, {
+                    class: 'at-pagination__btn-prev'
+                }, [
+                    props.icon && (
+                        h(AtButton, {
+                            size: 'small',
+                            disabled: prevDisabled.value,
+                            onClick: onPrev,
+                        }, {
                             default: () => [
-                                props.icon && (
-                                    h(AtButton, {
-                                        onClick: onPrev,
-                                        size: 'small',
-                                        disabled: prevDisabled.value
-                                    }, {
-                                        default: () => [
-                                            h(Text, { class: 'at-icon at-icon-chevron-left' })
-                                        ]
-                                    })
-                                ),
+                                h(Text, { class: 'at-icon at-icon-chevron-left' })
+                            ]
+                        })
+                    ),
 
-                                !props.icon && (
-                                    h(AtButton, {
-                                        onClick: onPrev,
-                                        size: 'small',
-                                        disabled: prevDisabled.value
-                                    }, { default: () => '上一页' })
-                                )
-                            ]
-                        }),
-                        // pagination number
-                        h(View, {
-                            class: 'at-pagination__number'
+                    !props.icon && (
+                        h(AtButton, {
+                            size: 'small',
+                            disabled: prevDisabled.value,
+                            onClick: onPrev,
+                        }, { default: () => '上一页' })
+                    )
+                ]),
+
+                // pagination number
+                h(View, {
+                    class: 'at-pagination__number'
+                }, [
+                    h(Text, {
+                        class: 'at-pagination__number-current'
+                    }, state.currentPage),
+                    h(Text, null, '/'),
+                    h(Text, null, state.maxPage)
+                ]),
+
+                // btn next
+                h(View, {
+                    class: 'at-pagination__btn-next'
+                }, [
+                    props.icon && (
+                        h(AtButton, {
+                            size: 'small',
+                            disabled: nextDisabled.value,
+                            onClick: onNext
                         }, {
                             default: () => [
-                                h(Text, { class: 'at-pagination__number-current' }, state.currentPage),
-                                h(Text, null, '/'),
-                                h(Text, null, state.maxPage)
+                                h(Text, { class: 'at-icon at-icon-chevron-right' })
                             ]
-                        }),
-                        // btn next
-                        h(View, {
-                            class: 'at-pagination__btn-next'
-                        }, {
-                            default: () => [
-                                props.icon && (
-                                    h(AtButton, {
-                                        onClick: onNext,
-                                        size: 'small',
-                                        disabled: nextDisabled.value,
-                                    }, {
-                                        default: () => [
-                                            h(Text, { class: 'at-icon at-icon-chevron-right' })
-                                        ]
-                                    })
-                                ),
-                                !props.icon && (
-                                    h(AtButton, {
-                                        onClick: onNext,
-                                        size: 'small',
-                                        disabled: nextDisabled.value
-                                    }, { default: () => '下一页' })
-                                )
-                            ]
-                        }),
-                        // picker select
-                        /*
-                        pickerSelect && (
-                            h(View, { class: 'at-pagination__number' }, { default: () => [
-                                h(Picker, {
-                                    mode='selector'
-                                    range={pickerRange}
-                                    value={currentPage - 1}
-                                    onChange={onPickerChange}
-                                }, { default: () => [
-                                    h(Text, { class: 'at-pagination__number-current' }, currentPage ),
-                                    maxPage
-                                ]})
-                            ]})
-                        ),
-                        !pickerSelect && h(View, { class: 'at-pagination__number'}, { default: () => [
-                             h(Text, { class: 'at-pagination__number-current'}, currentPage),
-                             maxPage
+                        })
+                    ),
+                    !props.icon && (
+                        h(AtButton, {
+                            size: 'small',
+                            disabled: nextDisabled.value,
+                            onClick: onNext
+                        }, { default: () => '下一页' })
+                    )
+                ]),
+
+                // picker select
+                /*
+                pickerSelect && (
+                    h(View, { class: 'at-pagination__number' }, { default: () => [
+                        h(Picker, {
+                            mode='selector'
+                            range={pickerRange}
+                            value={currentPage - 1}
+                            onChange={onPickerChange}
+                        }, { default: () => [
+                            h(Text, { class: 'at-pagination__number-current' }, currentPage ),
+                            maxPage
                         ]})
-                        */
-                    ]
-                })
-            )
-        }
+                    ]})
+                ),
+                !pickerSelect && h(View, { class: 'at-pagination__number'}, { default: () => [
+                     h(Text, { class: 'at-pagination__number-current'}, currentPage),
+                     maxPage
+                ]})
+                */
+            ])
+        )
     }
 })
 

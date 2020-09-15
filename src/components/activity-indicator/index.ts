@@ -1,12 +1,10 @@
-import { h, defineComponent, computed } from "vue"
+import { h, defineComponent, computed, mergeProps } from "vue"
 import { Text, View } from "@tarojs/components"
 import { AtActivityIndicatorProps } from "types/activity-indicator";
-import classNames from "classnames"
 import AtLoading from "../loading"
-import AtComponentWithDefaultProps from "../mixins";
 
 const AtActivityIndicator = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtActivityIndicator",
 
     props: {
         size: {
@@ -31,25 +29,29 @@ const AtActivityIndicator = defineComponent({
         },
     },
 
-    setup(props: AtActivityIndicatorProps) {
+    setup(props: AtActivityIndicatorProps, { attrs }) {
 
-        return () => {
-            const rootClass = computed(() => classNames(
-                'at-activity-indicator',
-                {
-                    'at-activity-indicator--center': props.mode === 'center',
-                    'at-activity-indicator--isopened': props.isOpened,
-                },
-                props.className
-            ))
-            
-            return h(View, { class: rootClass.value }, [
-                h(View, { class: 'at-activity-indicator__body'}, [
-                    h(AtLoading, { size: props.size, color: props.color })
+        const rootClasses = computed(() => ({
+            'at-activity-indicator': true,
+            'at-activity-indicator--center': props.mode === 'center',
+            'at-activity-indicator--isopened': props.isOpened,
+        }))
+
+        return () => (
+            h(View, mergeProps(attrs, {
+                class: rootClasses.value
+            }), [
+                h(View, { class: 'at-activity-indicator__body' }, [
+                    h(AtLoading, {
+                        size: props.size,
+                        color: props.color
+                    })
                 ]),
-                props.content && h(Text, { class: 'at-activity-indicator__content' }, props.content),
+                props.content && h(Text, {
+                    class: 'at-activity-indicator__content'
+                }, props.content),
             ])
-        }
+        )
     }
 })
 

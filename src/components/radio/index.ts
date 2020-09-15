@@ -1,12 +1,10 @@
-import { h, defineComponent, computed } from 'vue'
-import classNames from 'classnames'
+import { h, defineComponent, computed, mergeProps } from 'vue'
 import { Text, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtRadioProps, RadioOption } from 'types/radio'
-import AtComponentWithDefaultProps from '../mixins'
 
 const AtRadio = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtRadio",
 
     props: {
         value: {
@@ -26,66 +24,59 @@ const AtRadio = defineComponent({
         },
     },
 
-    setup(props: AtRadioProps<any>, { slots }) {
+    setup(props: AtRadioProps<any>, { attrs, slots }) {
+
+        const genOptionClass = computed(() => (option) => ({
+            'at-radio__option': true,
+            'at-radio__option--disabled': option.disabled
+        }))
+
+        const genIconClass = computed(() => (option) => ({
+            'at-radio__icon': true,
+            'at-radio__icon--checked': props.value === option.value
+        }))
 
         function handleClick(option: RadioOption<any>, event: CommonEvent): void {
             if (option.disabled) return
             props.onClick(option.value, event)
         }
 
-        return () => {
-            const rootClass = computed(() => classNames('at-radio', props.className))
-
-            const optionNodes = props.options.map(option => {
-                const optionClass = computed(() => classNames({
-                    'at-radio__option': true,
-                    'at-radio__option--disabled': option.disabled
-                }))
-
-                const iconClass = computed(() => classNames({
-                    'at-radio__icon': true,
-                    'at-radio__icon--checked': props.value === option.value
-                }))
-
-                return (
-                    h(View, {
-                        key: option.value,
-                        class: optionClass.value,
-                        onTap: handleClick.bind(this, option)
-                    }, {
-                        default: () => [
-                            h(View, { class: 'at-radio__option-wrap' }, {
-                                default: () => [
-                                    h(View, { class: 'at-radio__option-container' }, {
-                                        default: () => [
-                                            // title label
-                                            h(View, { class: 'at-radio__title' }, option.label),
-                                            // icon
-                                            h(View, { class: iconClass.value }, {
-                                                default: () => [
-                                                    h(Text, { class: 'at-icon at-icon-check' })
-                                                ]
-                                            })
-                                        ]
-                                    }),
-                                    // description
-                                    option.desc && (
-                                        h(View, { class: 'at-radio__desc' }, option.desc)
-                                    )
-                                ]
-                            })
-                        ]
-                    })
-                )
-            })
-
-            return (
+        return () => (
+            h(View, mergeProps(attrs, {
+                class: 'at-radio'
+            }), props.options.map(option => (
                 h(View, {
-                    class: rootClass.value,
-                    style: props.customStyle
-                }, optionNodes)
-            )
-        }
+                    key: option.value,
+                    class: genOptionClass.value(option),
+                    onTap: handleClick.bind(this, option)
+                }, [
+                    h(View, {
+                        class: 'at-radio__option-wrap'
+                    }, [
+                        h(View, {
+                            class: 'at-radio__option-container'
+                        }, [
+                            // title label
+                            h(View, {
+                                class: 'at-radio__title'
+                            }, option.label),
+
+                            // icon
+                            h(View, {
+                                class: genIconClass.value(option)
+                            }, [
+                                h(Text, { class: 'at-icon at-icon-check' })
+                            ])
+                        ]),
+
+                        // description
+                        option.desc && (
+                            h(View, { class: 'at-radio__desc' }, option.desc)
+                        )
+                    ])
+                ])
+            )))
+        )
     }
 })
 

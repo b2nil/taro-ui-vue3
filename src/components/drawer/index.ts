@@ -1,16 +1,11 @@
-import { h, defineComponent, computed, reactive, onMounted, nextTick, watch } from "vue"
-
-import classNames from 'classnames'
-
+import { h, defineComponent, computed, reactive, onMounted, nextTick, watch, mergeProps } from "vue"
 import { View } from '@tarojs/components'
 import { AtDrawerProps, AtDrawerState } from 'types/drawer'
-
-import AtComponentWithDefaultProps from '../mixins'
 import AtList from "../list"
 import AtListItem from "../list/item"
 
 const AtDrawer = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtDrawer",
 
     props: {
         show: {
@@ -33,19 +28,38 @@ const AtDrawer = defineComponent({
         },
         onItemClick: {
             type: Function as unknown as () => AtDrawerProps['onItemClick'],
-            default: () => () => {}
+            default: () => () => { }
         },
         onClose: {
             type: Function as unknown as () => AtDrawerProps['onClose'],
-            default: () => () => {}
+            default: () => () => { }
         }
     },
 
-    setup(props: AtDrawerProps, { slots }) {
+    setup(props: AtDrawerProps, { attrs, slots }) {
         const state = reactive<AtDrawerState>({
             animShow: false,
             _show: props.show
         })
+
+        const rootClass = computed(() => ({
+            'at-drawer': true,
+            'at-drawer--show': state.animShow,
+            'at-drawer--right': props.right,
+            'at-drawer--left': !props.right
+        }))
+
+        const maskStyle = computed(() => ({
+            display: props.mask ? 'block' : 'none',
+            opacity: state.animShow ? 1 : 0
+        }))
+
+        const listStyle = computed(() => ({
+            width: props.width,
+            transition: state.animShow
+                ? 'all 225ms cubic-bezier(0, 0, 0.2, 1)'
+                : 'all 195ms cubic-bezier(0.4, 0, 0.6, 1)'
+        }))
 
         watch(() => props.show, (val) => {
             if (val !== state._show) {
@@ -90,41 +104,12 @@ const AtDrawer = defineComponent({
         }
 
         return () => {
-            const rootClass = computed(() => classNames(
-                'at-drawer',
-                {
-                    'at-drawer--show': state.animShow,
-                    'at-drawer--right': props.right,
-                    'at-drawer--left': !props.right
-                },
-                props.className
-            ))
-
-            const maskStyle = computed(() => ({
-                display: props.mask ? 'block' : 'none',
-                opacity: state.animShow ? 1 : 0
-            }))
-
-            const listStyle = computed(() => ({
-                width: props.width,
-                transition: state.animShow
-                    ? 'all 225ms cubic-bezier(0, 0, 0.2, 1)'
-                    : 'all 195ms cubic-bezier(0.4, 0, 0.6, 1)'
-            }))
-
-            const atListItemNodes = props.items?.map((name, index) => {
-                return h(AtListItem, {
-                    key: `${name}-${index}`,
-                    'data-index': index,
-                    title: name,
-                    arrow: 'right',
-                    onClick: handleItemClick.bind(this, index)
-                })
-            })
-
+            
             if (!state._show) return h(View)
 
-            return h(View, { class: rootClass.value }, [
+            return h(View, mergeProps(attrs, {
+                class: rootClass.value
+            }), [
                 // mask
                 h(View, {
                     class: 'at-drawer__mask',
@@ -136,7 +121,17 @@ const AtDrawer = defineComponent({
                     class: 'at-drawer__content',
                     style: listStyle.value
                 }, (!!props.items && props.items.length)
-                    ? [ h(AtList, null, { default: () => atListItemNodes })]
+                    ? [h(AtList, null, {
+                        default: () => props.items?.map((name, index) => (
+                            h(AtListItem, {
+                                key: `${name}-${index}`,
+                                'data-index': index,
+                                title: name,
+                                arrow: 'right',
+                                onClick: handleItemClick.bind(this, index)
+                            })
+                        ))
+                    })]
                     : slots.default && slots.default()
                 )
             ])

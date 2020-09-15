@@ -1,13 +1,11 @@
-import classNames from 'classnames'
+import { h, defineComponent, computed, mergeProps } from 'vue'
 import { Switch, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtSwitchProps } from 'types/switch'
 
-import { h, defineComponent, computed } from 'vue'
-import AtComponentWithDefaultProps from '../mixins'
 const AtSwitch = defineComponent({
 
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtSwitch",
 
     props: {
         title: {
@@ -33,8 +31,17 @@ const AtSwitch = defineComponent({
         onChange: Function as unknown as () => AtSwitchProps['onChange'],
     },
 
-    setup(props: AtSwitchProps, { slots }) {
+    setup(props: AtSwitchProps, { attrs, slots }) {
 
+        const rootClass = computed(() => ({
+            'at-switch': true,
+            'at-switch--without-border': !props.border
+        }))
+
+        const containerClass = computed(() => ({
+            'at-switch__container': true,
+            'at-switch--disabled': props.disabled
+        }))
 
         function handleChange(event: CommonEvent): void {
             const { value, checked } = event.detail
@@ -42,46 +49,32 @@ const AtSwitch = defineComponent({
             props.onChange && props.onChange(state)
         }
 
-        return () => {
-
-            const rootClass = computed(() => classNames(
-                'at-switch',
-                {
-                    'at-switch--without-border': !props.border
-                },
-                props.className
-            ))
-
-            const containerClass = computed(() => classNames('at-switch__container', {
-                'at-switch--disabled': props.disabled
-            }))
-
-            return (
+        return () => (
+            h(View, mergeProps(attrs, {
+                class: rootClass.value
+            }), [
+                // title
                 h(View, {
-                    class: rootClass.value,
-                    style: props.customStyle
-                }, {
-                    default: () => [
-                        // title
-                        h(View, { class: 'at-switch__title' }, props.title),
-                        // container
-                        h(View, { class: containerClass.value }, {
-                            default: () => [
-                                // mask
-                                h(View, { class: 'at-switch__mask' }),
-                                // switch
-                                h(Switch, {
-                                    class: 'at-switch__switch',
-                                    checked: props.checked,
-                                    color: props.color,
-                                    onChange: handleChange,
-                                })
-                            ]
-                        })
-                    ]
-                })
-            )
-        }
+                    class: 'at-switch__title'
+                }, props.title),
+
+                // container
+                h(View, {
+                    class: containerClass.value
+                }, [
+                    // mask
+                    h(View, { class: 'at-switch__mask' }),
+
+                    // switch
+                    h(Switch, {
+                        class: 'at-switch__switch',
+                        checked: props.checked,
+                        color: props.color,
+                        onChange: handleChange,
+                    })
+                ])
+            ])
+        )
     }
 })
 

@@ -1,4 +1,4 @@
-import { h, defineComponent, computed, ref, reactive, nextTick, watch, onMounted, onBeforeMount } from "vue"
+import { h, defineComponent, computed, ref, reactive, nextTick, watch, onMounted, onBeforeMount, mergeProps } from "vue"
 import {
     delayQuerySelector,
     isTest,
@@ -14,12 +14,11 @@ import { AtIndexesProps, AtIndexesState, Item } from 'types/indexes'
 import AtList from '../list'
 import AtListItem from '../list/item'
 import AtToast from '../toast'
-import AtComponentWithDefaultProps from '../mixins'
 
 const ENV = Taro.getEnv()
 
 const AtIndexes = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtIndexes",
 
     props: {
         // 参数
@@ -45,7 +44,7 @@ const AtIndexes = defineComponent({
         onScrollIntoView: Function as unknown as () => AtIndexesProps['onScrollIntoView']
     },
 
-    setup(props: AtIndexesProps, { slots }) {
+    setup(props: AtIndexesProps, { attrs, slots }) {
         const menuHeight = ref(0)
         const startTop = ref(0)
         const itemHeight = ref(0)
@@ -62,20 +61,15 @@ const AtIndexes = defineComponent({
             isWEB: Taro.getEnv() === Taro.ENV_TYPE.WEB
         })
 
+        const toastStyle = computed(() => ({
+            minWidth: pxTransform(100)
+        }))
+
         watch(() => props.list, (list, prevList) => {
             if (list.length !== prevList.length) {
                 initData()
             }
         })
-
-        const toastStyle = computed(() => ({
-            minWidth: pxTransform(100)
-        }))
-
-        const rootClass = computed(() => ({
-            'at-indexes': true,
-            [`${props.className}`]: true
-        }))
 
         function handleClick(item: Item) {
             props.onClick && props.onClick(item)
@@ -87,7 +81,6 @@ const AtIndexes = defineComponent({
 
             const pageY = e.touches[0].pageY
             const index = Math.floor((pageY - startTop.value) / itemHeight.value)
-
             if (index >= 0 && index <= props.list.length && currentIndex.value !== index) {
                 currentIndex.value = index
                 const key = index > 0 ? props.list[index - 1].key : 'top'
@@ -116,6 +109,7 @@ const AtIndexes = defineComponent({
                 })
                 return
             }
+
             updateState({
                 _scrollIntoView,
                 _tipText
@@ -163,6 +157,7 @@ const AtIndexes = defineComponent({
         function handleScroll(e: CommonEvent) {
             if (e && e.detail) {
                 state._scrollTop = e.detail.scrollTop
+                state._scrollIntoView = ''
             }
         }
 
@@ -177,76 +172,78 @@ const AtIndexes = defineComponent({
             props.onScrollIntoView && props.onScrollIntoView(__jumpTarget)
         })
 
-        const menuList = props.list.map((dataList, i) => {
-            const { key } = dataList
-            const targetView = `at-indexes__list-${key}`
-            return (
-                h(View, {
-                    class: 'at-indexes__menu-item',
-                    key: key,
-                    onTap: jumpTarget.bind(this, targetView, i + 1)
-                }, key)
-            )
-        })
-
-        const indexesList = props.list.map(dataList => {
-            return (
-                h(View, {
-                    id: `at-indexes__list-${dataList.key}`,
-                    class: 'at-indexes__list',
-                    key: dataList.key
-                }, [
-                    h(View, { class: 'at-indexes__list-title' }, dataList.title),
-                    h(AtList, null, {
-                        default: () => dataList.items && dataList.items.map(item => {
-                            return h(AtListItem, {
-                                key: item.name,
-                                title: item.name,
-                                onClick: handleClick.bind(this, item)
-                            })
-                        })
-                    })
-                ])
-            )
-        })
-
         return () => (
-            h(View, {
-                class: rootClass.value,
-                style: props.customStyle
-            }, [
-                h(AtToast, {
-                    isOpened: state._isShowToast,
-                    text: state._tipText,
-                    duration: 2000,
-                    customStyle: toastStyle.value
-                }),
+            h(View, mergeProps(attrs, {
+                class: 'at-indexes',
+            }), [
                 h(View, {
                     class: 'at-indexes__menu',
-                    onTouchMove: handleTouchMove,
-                    onTouchEnd: handleTouchEnd
+                    onTouchMove: (e) => handleTouchMove(e),
+                    onTouchEnd: handleTouchEnd.bind(this)
                 }, [
                     h(View, {
                         class: 'at-indexes__menu-item',
                         onTap: jumpTarget.bind(this, 'at-indexes__top', 0)
                     }, props.topKey),
-                    ...menuList
+
+                    ...props.list.map((dataList, i) => {
+                        const { key } = dataList
+                        const targetView = `at-indexes__list-${key}`
+                        return (
+                            h(View, {
+                                key: `${key}-${i}`,
+                                class: 'at-indexes__menu-item',
+                                onTap: jumpTarget.bind(this, targetView, i + 1)
+                            }, key)
+                        )
+                    })
                 ]),
+
                 h(ScrollView, {
                     class: 'at-indexes__body',
                     id: listId.value,
                     scrollY: true,
                     scrollWithAnimation: props.animation,
-                    scrollTop: state.isWEB ? state._scrollTop : undefined,
+                    scrollTop: state._scrollTop,
                     scrollIntoView: !state.isWEB ? state._scrollIntoView : '',
-                    onScroll: handleScroll
+                    onScroll: (e) => handleScroll(e)
                 }, [
                     h(View, {
+                        id: 'at-indexes__top',
                         class: 'at-indexes__content',
-                        id: 'at-indexes__top'
                     }, slots.default && slots.default()),
-                    ...indexesList
-                ])
+
+                    ...props.list.map(dataList => {
+                        return (
+                            h(View, {
+                                id: `at-indexes__list-${dataList.key}`,
+                                class: 'at-indexes__list',
+                                key: dataList.key
+                            }, [
+                                h(View, {
+                                    class: 'at-indexes__list-title'
+                                }, dataList.title),
+
+                                h(AtList, null, {
+                                    default: () => dataList.items && dataList.items.map(item => (
+                                        h(AtListItem, {
+                                            key: item.name,
+                                            title: item.name,
+                                            onClick: handleClick.bind(this, item)
+                                        })
+                                    ))
+                                })
+                            ])
+                        )
+                    })
+                ]),
+
+                h(AtToast, {
+                    isOpened: state._isShowToast,
+                    text: state._tipText,
+                    duration: 2000,
+                    style: toastStyle.value
+                }),
             ])
         )
     }

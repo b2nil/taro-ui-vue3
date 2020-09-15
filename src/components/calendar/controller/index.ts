@@ -3,46 +3,44 @@ import { Picker, Text, View } from "@tarojs/components"
 import { Calendar, AtCalendarControllerProps } from 'types/calendar'
 import { CommonEvent } from '@tarojs/components/types/common'
 import dayjs from 'dayjs'
-import classNames from "classnames"
-import AtComponentWithDefaultProps from "@/components/mixins"
 
 const AtCalendarController = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtCalendarController",
 
-    data: () => ({ addGlobalClass: true}),
+    data: () => ({ addGlobalClass: true }),
 
     props: {
-        generateDate: { 
+        generateDate: {
             type: Number || String,
-            default: Date.now() 
+            default: Date.now()
         },
-        minDate: { 
+        minDate: {
             type: (String || Number || Date) as () => Calendar.DateArg,
             default: () => ''
         },
-        maxDate: { 
-            type: (String || Number || Date) as () => Calendar.DateArg, 
+        maxDate: {
+            type: (String || Number || Date) as () => Calendar.DateArg,
             default: () => ''
         },
-        hideArrow: { 
+        hideArrow: {
             type: Boolean,
-            default: false 
+            default: false
         },
-        monthFormat: { 
+        monthFormat: {
             type: String,
-            default: 'YYYY年MM月' 
+            default: 'YYYY年MM月'
         },
-        onPreMonth:{ 
+        onPreMonth: {
             type: Function as unknown as () => () => void,
-            default: () => () => {} 
+            default: () => () => { }
         },
-        onNextMonth:{ 
+        onNextMonth: {
             type: Function as unknown as () => () => void,
-            default: () => () => {}
+            default: () => () => { }
         },
-        onSelectDate: { 
+        onSelectDate: {
             type: Function as unknown as () => (e: CommonEvent) => void,
-            default: () => () => {}
+            default: () => () => { }
         },
     },
 
@@ -52,45 +50,47 @@ const AtCalendarController = defineComponent({
         const dayjsMaxDate = computed(() => !!props.maxDate && dayjs(props.maxDate))
 
         const isMinMonth = computed(() => {
-            return dayjsMinDate.value && 
+            return dayjsMinDate.value &&
                 dayjsMinDate.value
                     .startOf('month')
                     .isSame(dayjsDate.value)
         })
 
         const isMaxMonth = computed(() => {
-            return dayjsMaxDate.value && 
+            return dayjsMaxDate.value &&
                 dayjsMaxDate.value
                     .startOf('month')
                     .isSame(dayjsDate.value)
         })
 
-        const minDateValue = computed(() => dayjsMinDate.value 
-            ? dayjsMinDate.value.format('YYYY-MM') 
+        const minDateValue = computed(() => dayjsMinDate.value
+            ? dayjsMinDate.value.format('YYYY-MM')
             : ''
         )
 
         const maxDateValue = computed(() => dayjsMaxDate.value
-            ? dayjsMaxDate.value.format('YYYY-MM') 
+            ? dayjsMaxDate.value.format('YYYY-MM')
             : ''
         )
 
-        return () => {
-            const rootClass = classNames('at-calendar__controller', 'controller')
+        const genArrowClass = (
+            direction: string,
+            disabled: boolean
+        ) => ({
+            'controller__arrow': true,
+            [`controller__arrow--${direction}`]: true,
+            'controller__arrow--disabled': disabled,
+        })
 
-            const genArrowClass = (
-                direction: string,
-                disabled: boolean
-            ): string => classNames(
-                `controller__arrow controller__arrow--${direction}`, 
-                { 'controller__arrow--disabled': disabled },
-            )
-
-            return h(View, { class: rootClass }, [
+        return () => (
+            h(View, {
+                class: 'at-calendar__controller controller'
+            }, [
                 !props.hideArrow && h(View, {
                     class: genArrowClass('left', isMinMonth.value),
                     onTap: props.onPreMonth.bind(this, isMinMonth.value)
                 }),
+
                 h(Picker, {
                     mode: 'date',
                     fields: 'month',
@@ -99,14 +99,17 @@ const AtCalendarController = defineComponent({
                     value: dayjsDate.value.format('YYYY-MM'),
                     onChange: props.onSelectDate
                 }, [
-                    h(Text, { class: 'controller__info' }, dayjsDate.value.format(props.monthFormat))
+                    h(Text, {
+                        class: 'controller__info'
+                    }, dayjsDate.value.format(props.monthFormat))
                 ]),
+                
                 !props.hideArrow && h(View, {
                     class: genArrowClass('right', isMaxMonth.value),
                     onTap: props.onNextMonth.bind(this, isMaxMonth.value)
                 })
             ])
-        }
+        )
     }
 })
 

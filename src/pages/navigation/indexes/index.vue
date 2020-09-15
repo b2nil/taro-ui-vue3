@@ -1,6 +1,9 @@
 <template>
-  <view class="page">
-    <view style="height: 100vh;">
+  <view
+    class="page"
+    style="height: 100vh;"
+  >
+    <view style="height: 100%;">
       <at-indexes
         topKey="Top"
         :list="mockdata"

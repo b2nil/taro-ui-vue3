@@ -1,99 +1,84 @@
-import { h, defineComponent, computed } from 'vue'
-import classNames from 'classnames'
+import { h, defineComponent, computed, mergeProps } from 'vue'
 import { Text, View } from '@tarojs/components'
 import { AtTimelineProps } from 'types/timeline'
-import AtComponentWithDefaultProps from '../mixins'
 
 const AtTimeline = defineComponent({
-  mixins: [AtComponentWithDefaultProps],
+    name: "AtTimeline",
 
-  props: {
-    pending: {
-      type: Boolean,
-      default: false
+    props: {
+        pending: {
+            type: Boolean,
+            default: false
+        },
+        items: {
+            type: Array as () => AtTimelineProps['items'],
+            default: []
+        },
     },
-    items: {
-      type: Array as () => AtTimelineProps['items'],
-      default: []
-    },
-  },
 
-  setup(props: AtTimelineProps, { slots }) {
+    setup(props: AtTimelineProps, { attrs, slots }) {
 
+        const rootClasses = computed(() => ({
+            'at-timeline': true,
+            'at-timeline--pending': props.pending
+        }))
 
-    return () => {
+        const iconClasses = computed(() => (item) => ({
+            'at-icon': true,
+            [`at-icon-${item.icon}`]: item.icon
+        }))
 
-      const rootClass = computed(() => {
-        const rootClassName = ['at-timeline']
-        if (props.pending) rootClassName.push('at-timeline--pending')
+        const itemRootClasses = computed(() => (item) => ({
+            'at-timeline-item': true,
+            [`${`at-timeline-item--${item.color}`}`]: item.color
+        }))
 
-        const rootClassObject = {
-          'at-timeline--pending': props.pending
-        }
+        const dotClass = computed(() => (item) => ({
+            'at-timeline-item__icon': item.icon,
+            'at-timeline-item__dot': !item.icon
+        }))
 
-        return classNames(rootClassName, rootClassObject, props.className)
-      })
+        return () => (
+            h(View, mergeProps(attrs, {
+                class: rootClasses.value
+            }), props.items.map((item, index) => (
+                h(View, {
+                    key: `at-timeline-item-${index}`,
+                    class: itemRootClasses.value(item),
+                }, [
+                    // item tail
+                    h(View, { class: 'at-timeline-item__tail' }),
 
-
-      const itemElems = props.items.map((item, index) => {
-        const { title = '', color, icon, content = [] } = item
-
-        const iconClass = classNames({
-          'at-icon': true,
-          [`at-icon-${icon}`]: icon
-        })
-
-        const itemRootClassName = ['at-timeline-item']
-        if (color) itemRootClassName.push(`at-timeline-item--${color}`)
-
-        const dotClass: string[] = []
-        if (icon) {
-          dotClass.push('at-timeline-item__icon')
-        } else {
-          dotClass.push('at-timeline-item__dot')
-        }
-
-        return (
-          h(View, {
-            class: classNames(itemRootClassName),
-            key: `at-timeline-item-${index}`,
-          }, {
-            default: () => [
-              // item tail
-              h(View, { class: 'at-timeline-item__tail' }),
-              // icon
-              h(View, { class: classNames(dotClass) }, {
-                default: () => [
-                  icon && h(Text, { class: iconClass })
-                ]
-              }),
-              // content
-              h(View, { class: 'at-timeline-item__content' }, {
-                default: () => [
-                  // title
-                  h(View, { class: 'at-timeline-item__content-item' }, title),
-                  // content items
-                  ...content.map((sub, subIndex) => (
+                    // icon
                     h(View, {
-                      key: subIndex,
-                      class: 'at-timeline-item__content-item at-timeline-item__content--sub',
-                    }, sub)
-                  ))
-                ]
-              })
-            ]
-          })
-        )
-      })
+                        class: dotClass.value(item)
+                    }, [
+                        item.icon && h(Text, { class: iconClasses.value(item) })
+                    ]),
 
-      return (
-        h(View, {
-          class: rootClass.value,
-          style: props.customStyle
-        }, { default: () => itemElems })
-      )
+                    // content
+                    h(View, {
+                        class: 'at-timeline-item__content'
+                    }, [
+                        // title
+                        h(View, {
+                            class: 'at-timeline-item__content-item'
+                        }, item.title),
+
+                        // content items
+                        item.content && (
+                            item.content!.map((sub, subIndex) => (
+                                h(View, {
+                                    key: subIndex,
+                                    class: 'at-timeline-item__content-item at-timeline-item__content--sub',
+                                }, sub)
+                            ))
+                        )
+                    ])
+                ])
+            )))
+        )
     }
-  }
 })
 
 export default AtTimeline

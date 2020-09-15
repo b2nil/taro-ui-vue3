@@ -100,7 +100,7 @@
           <at-indexes
             :list="mockData"
             topKey="top"
-            :customStyle="{height: '400px'}"
+            :style="{height: '400px'}"
           >
             <view class="custom-area">用户自定义内容</view>
           </at-indexes>

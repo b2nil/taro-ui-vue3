@@ -1,9 +1,7 @@
 import { h, defineComponent, computed } from "vue"
 import { Text, View } from "@tarojs/components"
 import { Calendar } from 'types/calendar'
-import classNames from "classnames"
 import * as constant from '../../common/constant'
-import AtComponentWithDefaultProps from "@/components/mixins"
 
 const MAP: { [key: number]: string } = {
     [constant.TYPE_PRE_MONTH]: 'pre',
@@ -18,9 +16,9 @@ export interface AtCalendarListProps {
 }
 
 const AtCalendarList = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtCalendarList",
 
-    data: () => ({ addGlobalClass: true}),
+    data: () => ({ addGlobalClass: true }),
 
     props: {
         list: {
@@ -29,15 +27,29 @@ const AtCalendarList = defineComponent({
         },
         onClick: {
             type: Function as unknown as () => (item: Calendar.Item) => void,
-            default: () => () => {}
+            default: () => () => { }
         },
         onLongClick: {
             type: Function as unknown as () => (item: Calendar.Item) => void,
-            default: () => () => {}
+            default: () => () => { }
         }
     },
 
     setup(props: AtCalendarListProps) {
+
+        const flexItemClass = computed(() => (item: Calendar.Item) => ({
+            'flex__item': true,
+            [`flex__item--${MAP[item.type]}`]: true,
+            'flex__item--today': item.isToday,
+            'flex__item--active': item.isActive,
+            'flex__item--selected': item.isSelected,
+            'flex__item--selected-head': item.isSelectedHead,
+            'flex__item--selected-tail': item.isSelectedTail,
+            'flex__item--blur':
+                item.isDisabled ||
+                item.type === constant.TYPE_PRE_MONTH ||
+                item.type === constant.TYPE_NEXT_MONTH
+        }))
 
         function handleClick(item: Calendar.Item) {
             if (typeof props.onClick === 'function') {
@@ -50,51 +62,44 @@ const AtCalendarList = defineComponent({
                 props.onLongClick(item)
             }
         }
-        
+
         if (!props.list || props.list.length === 0) return null
 
-        return () => {
-            const rootClass = classNames('at-calendar__list', 'flex')
-            
-            const flexItemClass = computed(() => (item: Calendar.Item) => {
-                return classNames('flex__item', `flex__item--${MAP[item.type]}`, {
-                    'flex__item--today': item.isToday,
-                    'flex__item--active': item.isActive,
-                    'flex__item--selected': item.isSelected,
-                    'flex__item--selected-head': item.isSelectedHead,
-                    'flex__item--selected-tail': item.isSelectedTail,
-                    'flex__item--blur': 
-                        item.isDisabled || 
-                        item.type === constant.TYPE_PRE_MONTH ||
-                        item.type === constant.TYPE_NEXT_MONTH
-                })
-            })
+        return () => (
+            h(View, {
+                class: 'at-calendar__list flex'
+            }, props.list.map((item: Calendar.Item, index: number) => (
+                h(View, {
+                    key: `list-item-${item.value}-${index}`,
+                    class: flexItemClass.value(item),
+                    onTap: handleClick.bind(this, item),
+                    onLongPress: handleLongClick.bind(this, item)
+                }, [
+                    h(View, {
+                        class: 'flex__item-container'
+                    }, [
+                        h(View, {
+                            class: 'container-text'
+                        }, item.text)
+                    ]),
 
-            return (
-                h(View, { class: rootClass },
-                    props.list.map((item: Calendar.Item, index: number) => {
-                        return h(View, {
-                            key: `list-item-${item.value}-${index}`,
-                            onTap: handleClick.bind(this, item),
-                            onLongPress: handleLongClick.bind(this, item),
-                            class: flexItemClass.value(item)
-                        }, [
-                            h(View, { class: 'flex__item-container'}, [
-                                h(View, { class: 'container-text' }, item.text)
-                            ]),
-                            h(View, { class: classNames('flex__item-extra', 'extra')}, [
-                                (item.marks && item.marks.length > 0) && 
-                                    h(View, { class: 'extra-marks' },                               
-                                        item.marks.map((mark, key) => {
-                                            return h(Text, { key: key, class: 'mark'}, String(mark))
-                                    })
-                                )
-                            ])
-                        ])
-                    })
-                )
-            )
-        }
+                    h(View, {
+                        class: 'flex__item-extra extra'
+                    }, [
+                        (item.marks && item.marks.length > 0) && (
+                            h(View, {
+                                class: 'extra-marks'
+                            }, item.marks.map((mark, key) => (
+                                h(Text, {
+                                    key: key,
+                                    class: 'mark'
+                                }, String(mark))
+                            )))
+                        )
+                    ])
+                ])
+            )))
+        )
     }
 })
 

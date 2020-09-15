@@ -1,5 +1,4 @@
-import { h, defineComponent, ref, reactive, watch, CSSProperties, computed, ComputedRef } from 'vue'
-import classNames from 'classnames'
+import { h, defineComponent, ref, reactive, watch, CSSProperties, computed, mergeProps } from 'vue'
 import _inRange from 'lodash/inRange'
 import _isEmpty from 'lodash/isEmpty'
 import { Text, View } from '@tarojs/components'
@@ -17,6 +16,8 @@ import {
 import AtSwipeActionOptions from './options/index'
 
 const AtSwipeAction = defineComponent({
+    name: "AtSwipeAction",
+
     props: {
         isOpened: { type: Boolean, default: false },
         disabled: { type: Boolean, default: false },
@@ -30,7 +31,7 @@ const AtSwipeAction = defineComponent({
         onClosed: Function as unknown as () => AtSwipeActionProps['onClosed'],
     },
 
-    setup(props: AtSwipeActionProps, { slots }) {
+    setup(props: AtSwipeActionProps, { attrs, slots }) {
 
         const endValue = ref<number>(0)
         const startX = ref<number>(0)
@@ -51,6 +52,30 @@ const AtSwipeAction = defineComponent({
             _isOpened: !!props.isOpened
         })
 
+        const transformStyle = computed(() => {
+            const transform = computeTransform(state.offsetSize)
+
+            return transform
+                ? { transform: transform }
+                : {} as CSSProperties
+        })
+
+        const actionContentClass = computed(() => ({
+            'at-swipe-action__content': true,
+            animtion: !isTouching.value
+        }))
+
+        const genActionItemClass = computed(() => (item) => ({
+            'at-swipe-action__option': true,
+            [`${item.className}`]: Boolean(item.className)
+        }))
+
+        watch(() => props.isOpened, (isOpened) => {
+            if (isOpened !== state._isOpened) {
+                _reset(!!isOpened) // TODO: Check behavior
+            }
+        })
+
         function getDomInfo(): Promise<void> {
             return Promise.all([
                 delayGetClientRect({
@@ -64,12 +89,6 @@ const AtSwipeAction = defineComponent({
                 domInfo.value = rect[0]
             })
         }
-
-        watch(() => props.isOpened, (isOpened) => {
-            if (isOpened !== state._isOpened) {
-                _reset(!!isOpened) // TODO: Check behavior
-            }
-        })
 
         function _reset(isOpened: boolean): void {
             isMoving.value = false
@@ -192,57 +211,44 @@ const AtSwipeAction = defineComponent({
         }
 
         return () => {
-            const { offsetSize, componentId } = state
-            const rootClass = computed(() => classNames('at-swipe-action', props.className))
-            const transform = computed(() => computeTransform(offsetSize))
-
-            const transformStyle: ComputedRef<CSSProperties> = computed(() => transform
-                ? { transform: transform.value! }
-                : {} as CSSProperties
-            )
-
-            const actionContentClass = computed(() => classNames('at-swipe-action__content', {
-                animtion: !isTouching.value
-            }))
 
             return (
-                h(View, {
-                    id: `swipeAction-${componentId}`,
-                    class: rootClass.value,
+                h(View, mergeProps(attrs, {
+                    id: `swipeAction-${state.componentId}`,
+                    class: 'at-swipe-action',
                     onTouchMove: handleTouchMove,
                     onTouchEnd: handleTouchEnd,
                     onTouchStart: handleTouchStart
-                }, {
-                    default: () => [
-                        // action content
-                        h(View, {
-                            class: actionContentClass.value,
-                            style: transformStyle.value
-                        }, slots.default && slots.default()),
-                        // action options
-                        Array.isArray(props.options) && props.options.length > 0 && (
-                            h(AtSwipeActionOptions, {
-                                options: props.options,
-                                componentId: componentId,
-                                onQueryedDom: handleDomInfo,
-                            }, {
-                                default: () =>
-                                    props.options!.map((item, key) => {
-                                        return h(View, {
-                                            key: `${item.text}-${key}`,
-                                            class: classNames('at-swipe-action__option', item.className),
-                                            style: item.style,
-                                            onTap: (e) => handleClick(item, key, e)
-                                        }, {
-                                            default: () => [
-                                                h(Text, { class: 'option__text' }, item.text)
-                                            ]
-                                        })
-                                    })
-                            })
-                        ),
-                    ]
-                })
+                }), [
+                    // action content
+                    h(View, {
+                        class: actionContentClass.value,
+                        style: transformStyle.value
+                    }, slots.default && slots.default()),
+
+                    // action options
+                    Array.isArray(props.options) && props.options.length > 0 && (
+                        h(AtSwipeActionOptions, {
+                            options: props.options,
+                            componentId: state.componentId,
+                            onQueryedDom: handleDomInfo,
+                        }, {
+                            default: () =>
+                                props.options!.map((item, key) => (
+                                    h(View, {
+                                        key: `${item.text}-${key}`,
+                                        class: genActionItemClass.value(item),
+                                        style: item.style,
+                                        onTap: (e) => handleClick(item, key, e)
+                                    }, [
+                                        h(Text, {
+                                            class: 'option__text'
+                                        }, item.text)
+                                    ])
+                                ))
+                        })
+                    )
+                ])
             )
         }
     }

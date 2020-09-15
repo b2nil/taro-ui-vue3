@@ -1,9 +1,7 @@
-import { h, defineComponent, reactive, computed, CSSProperties } from 'vue'
-import classNames from 'classnames'
+import { h, defineComponent, reactive, computed, CSSProperties, mergeProps } from 'vue'
 import { Input, Text, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtSearchBarProps, AtSearchBarState } from 'types/search-bar'
-import AtComponentWithDefaultProps from '../mixins'
 
 type ExtendEvent = {
     target: {
@@ -12,7 +10,7 @@ type ExtendEvent = {
 }
 
 const AtSearchBar = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtSearchBar",
 
     props: {
         value: {
@@ -64,11 +62,58 @@ const AtSearchBar = defineComponent({
         onClear: Function as unknown as () => AtSearchBarProps['onClear'],
     },
 
-    setup(props: AtSearchBarProps, { slots }) {
+    setup(props: AtSearchBarProps, { attrs, slots }) {
 
         const state = reactive<AtSearchBarState>({
             isFocus: !!props.focus
         })
+
+        const fontSize = 14
+
+        const rootClass = computed(() => ({
+            'at-search-bar': true,
+            'at-search-bar--fixed': props.fixed
+        }))
+
+        const placeholderWrapStyle = computed(() => {
+            const placeholderWrapStyle: CSSProperties = {}
+
+            if (state.isFocus || (!state.isFocus && props.value)) {
+                placeholderWrapStyle.flexGrow = 0
+            } else if (!state.isFocus && !props.value) {
+                placeholderWrapStyle.flexGrow = 1
+            }
+
+            return placeholderWrapStyle
+        })
+
+        const actionStyle = computed(() => {
+            const actionStyle: CSSProperties = {}
+
+            if (state.isFocus || (!state.isFocus && props.value)) {
+                actionStyle.opacity = 1
+                actionStyle.marginRight = `0`
+            } else if (!state.isFocus && !props.value) {
+                actionStyle.opacity = 0
+                actionStyle.marginRight = `-${(props.actionName!.length + 1) * fontSize + fontSize / 2 + 10
+                    }px`
+            }
+
+            if (props.showActionButton) {
+                actionStyle.opacity = 1
+                actionStyle.marginRight = `0`
+            }
+
+            return actionStyle
+        })
+
+        const clearIconStyle = computed(() => ({
+            display: !props.value.length ? 'none' : 'flex'
+        }))
+
+        const placeholderStyle = computed(() => ({
+            visibility: !props.value.length ? 'visible' : 'hidden'
+        }))
 
         function handleFocus(event: CommonEvent): void {
             state.isFocus = true
@@ -100,120 +145,60 @@ const AtSearchBar = defineComponent({
             props.onActionClick && props.onActionClick(event)
         }
 
-        return () => {
-            const { isFocus } = state
-            const fontSize = 14
-
-            const rootClass = computed(() => classNames(
-                'at-search-bar',
-                {
-                    'at-search-bar--fixed': props.fixed
-                },
-                props.className
-            ))
-
-            const { placeholderWrapStyle, actionStyle } = computed(() => {
-                const placeholderWrapStyle: CSSProperties = {}
-                const actionStyle: CSSProperties = {}
-
-                if (isFocus || (!isFocus && props.value)) {
-                    actionStyle.opacity = 1
-                    actionStyle.marginRight = `0`
-                    placeholderWrapStyle.flexGrow = 0
-                } else if (!isFocus && !props.value) {
-                    placeholderWrapStyle.flexGrow = 1
-                    actionStyle.opacity = 0
-                    actionStyle.marginRight = `-${
-                        (props.actionName!.length + 1) * fontSize + fontSize / 2 + 10
-                        }px`
-                }
-
-                if (props.showActionButton) {
-                    actionStyle.opacity = 1
-                    actionStyle.marginRight = `0`
-                }
-
-                return {
-                    placeholderWrapStyle,
-                    actionStyle
-                }
-
-            }).value
-
-            const { clearIconStyle, placeholderStyle } = computed(() => {
-                const clearIconStyle: CSSProperties = { display: 'flex' }
-                const placeholderStyle: CSSProperties = { visibility: 'hidden' }
-
-                if (!props.value.length) {
-                    clearIconStyle.display = 'none'
-                    placeholderStyle.visibility = 'visible'
-                }
-
-                return {
-                    clearIconStyle,
-                    placeholderStyle
-                }
-
-            }).value
-
-            return (
-                h(View, {
-                    class: rootClass.value,
-                    style: props.customStyle
-                }, {
-                    default: () => [
-                        // searchbar input
-                        h(View, { class: 'at-search-bar__input-cnt' }, {
-                            default: () => [
-                                // placeholder
-                                h(View, {
-                                    class: 'at-search-bar__placeholder-wrap',
-                                    style: placeholderWrapStyle
-                                }, {
-                                    default: () => [
-                                        h(Text, { class: 'at-icon at-icon-search' }),
-                                        h(Text, {
-                                            class: 'at-search-bar__placeholder',
-                                            style: placeholderStyle
-                                        }, isFocus ? '' : props.placeholder)
-                                    ]
-                                }),
-                                // input
-                                h(Input, {
-                                    class: 'at-search-bar__input',
-                                    type: props.inputType,
-                                    confirmType: 'search',
-                                    value: props.value,
-                                    focus: isFocus,
-                                    disabled: props.disabled,
-                                    maxlength: props.maxLength,
-                                    onInput: handleChange,
-                                    onFocus: handleFocus,
-                                    onBlur: handleBlur,
-                                    onConfirm: handleConfirm,
-                                }),
-                                // clear icon
-                                h(View, {
-                                    class: 'at-search-bar__clear',
-                                    style: clearIconStyle,
-                                    onTouchStart: handleClear
-                                }, {
-                                    default: () => [
-                                        h(Text, { class: 'at-icon at-icon-close-circle' })
-                                    ]
-                                })
-                            ]
-                        }),
-                        // searchbar action
+        return () => (
+            h(View, mergeProps(attrs, {
+                class: rootClass.value
+            }), {
+                default: () => [
+                    // searchbar input
+                    h(View, {
+                        class: 'at-search-bar__input-cnt'
+                    }, [
+                        // placeholder
                         h(View, {
-                            class: 'at-search-bar__action',
-                            style: actionStyle,
-                            onTap: handleActionClick
-                        }, props.actionName)
-                    ]
-                })
-            )
-        }
+                            class: 'at-search-bar__placeholder-wrap',
+                            style: placeholderWrapStyle.value
+                        }, [
+                            h(Text, { class: 'at-icon at-icon-search' }),
+                            h(Text, {
+                                class: 'at-search-bar__placeholder',
+                                style: placeholderStyle.value
+                            }, state.isFocus ? '' : props.placeholder)
+                        ]),
+
+                        // input
+                        h(Input, {
+                            class: 'at-search-bar__input',
+                            type: props.inputType,
+                            confirmType: 'search',
+                            value: props.value,
+                            focus: state.isFocus,
+                            disabled: props.disabled,
+                            maxlength: props.maxLength,
+                            onBlur: handleBlur,
+                            onFocus: handleFocus,
+                            onInput: handleChange,
+                            onConfirm: handleConfirm,
+                        }),
+                        // clear icon
+                        h(View, {
+                            class: 'at-search-bar__clear',
+                            style: clearIconStyle.value,
+                            onTouchStart: handleClear
+                        }, [
+                            h(Text, { class: 'at-icon at-icon-close-circle' })
+                        ])
+                    ]),
+
+                    // searchbar action
+                    h(View, {
+                        class: 'at-search-bar__action',
+                        style: actionStyle.value,
+                        onTap: handleActionClick
+                    }, props.actionName)
+                ]
+            })
+        )
     }
 })
 

@@ -1,14 +1,9 @@
-import { h, defineComponent, computed } from "vue"
-
-import classNames from 'classnames'
-
+import { h, defineComponent, mergeProps } from "vue"
 import { Text, View } from '@tarojs/components'
 import { AtCheckboxProps } from 'types/checkbox'
 
-import AtComponentWithDefaultProps from '../mixins'
-
 const AtCheckbox = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtCheckbox",
 
     props: {
         // 参数
@@ -29,7 +24,13 @@ const AtCheckbox = defineComponent({
         }
     },
 
-    setup(props: AtCheckboxProps<any>) {        
+    setup(props: AtCheckboxProps<any>, { attrs }) {
+
+        const genOptionClass = (option) => ({
+            'at-checkbox__option': true,
+            'at-checkbox__option--disabled': option.disabled,
+            'at-checkbox__option--selected': props.selectedList.includes(option.value)
+        })
 
         function handleClick(idx: number) {
             const option = props.options[idx]
@@ -37,43 +38,39 @@ const AtCheckbox = defineComponent({
             if (disabled) return
 
             const selectedSet = new Set(props.selectedList)
-            if(!selectedSet.has(value)) {
+            if (!selectedSet.has(value)) {
                 selectedSet.add(value)
             } else {
                 selectedSet.delete(value)
             }
             props.onChange([...selectedSet])
-        }        
+        }
 
-        return () => {
-            const rootClass = computed(() => classNames('at-checkbox', props.className))
-
-            const optionNodes = props.options.map((option, idx) => {
-                const { value, disabled, label, desc } = option
-                const optionClass = classNames('at-checkbox__option', {
-                    'at-checkbox__option--disabled': disabled,
-                    'at-checkbox__option--selected': props.selectedList.includes(value)
-                })
-
-                return h(View, {
-                    class: optionClass,
-                    key: value,
+        return () => (
+            h(View, mergeProps(attrs, {
+                class: 'at-checkbox'
+            }), props.options.map((option, idx) => (
+                h(View, {
+                    class: genOptionClass(option),
+                    key: option.value,
                     onTap: handleClick.bind(this, idx)
                 }, [
-                    h(View, { class: 'at-checkbox__option-wrap'}, [
-                        h(View, { class: 'at-checkbox__option-cnt'}, [
-                            h(View, { class: 'at-checkbox__icon-cnt'}, [
-                                h(Text, { class: 'at-icon at-icon-check'})
+                    h(View, { class: 'at-checkbox__option-wrap' }, [
+                        h(View, { class: 'at-checkbox__option-cnt' }, [
+                            h(View, { class: 'at-checkbox__icon-cnt' }, [
+                                h(Text, { class: 'at-icon at-icon-check' })
                             ]),
-                            h(View, { class: 'at-checkbox__title'}, label)
+                            h(View, {
+                                class: 'at-checkbox__title'
+                            }, option.label)
                         ]),
-                        desc && h(View, { class: 'at-checkbox__desc' }, desc)
+                        option.desc && h(View, {
+                            class: 'at-checkbox__desc'
+                        }, option.desc)
                     ])
                 ])
-            })
-
-            return h(View, { class: rootClass.value, style: props.customStyle }, optionNodes)
-        }
+            )))
+        )
     }
 })
 

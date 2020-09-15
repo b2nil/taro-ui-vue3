@@ -1,15 +1,10 @@
-import { h, defineComponent, computed, CSSProperties } from "vue"
-
-import classNames from 'classnames'
-
+import { h, defineComponent, computed, mergeProps } from "vue"
 import { View } from '@tarojs/components'
 import { AtDividerProps } from 'types/divider'
-
-import AtComponentWithDefaultProps from '../mixins'
-import { pxTransform, mergeStyle } from "@/utils/common"
+import { pxTransform } from "@/utils/common"
 
 const AtDivider = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtDivider",
 
     props: {
         // 参数
@@ -35,26 +30,25 @@ const AtDivider = defineComponent({
         }
     },
 
-    setup(props: AtDividerProps, { slots }) {
-        return () => {
-            const rootStyle = computed(() => ({
-                height: props.height ? `${pxTransform(Number(props.height))}` : ''
-            }))
+    setup(props: AtDividerProps, { attrs, slots }) {
+        const rootStyle = computed(() => ({
+            height: props.height ? `${pxTransform(Number(props.height))}` : ''
+        }))
 
-            const fontStyle = computed(() => ({
-                color: props.fontColor,
-                fontSize: props.fontSize ? `${pxTransform(Number(props.fontSize))}` : ''
-            }))
+        const fontStyle = computed(() => ({
+            color: props.fontColor,
+            fontSize: props.fontSize ? `${pxTransform(Number(props.fontSize))}` : ''
+        }))
 
-            const lineStyle = computed<CSSProperties>(() => ({
-                backgroundColor: props.lineColor
-            }))
+        const lineStyle = computed(() => ({
+            backgroundColor: props.lineColor
+        }))
 
-
-            return h(View, {
-                class: classNames('at-divider', props.className),
-                style: mergeStyle(rootStyle.value, props.customStyle as object)
-            }, [
+        return () => (
+            h(View, mergeProps(attrs, {
+                class: 'at-divider',
+                style: rootStyle.value
+            }), [
                 h(View, {
                     class: 'at-divider__content',
                     style: fontStyle.value
@@ -67,7 +61,7 @@ const AtDivider = defineComponent({
                     style: lineStyle.value
                 })
             ])
-        }
+        )
     }
 })
 

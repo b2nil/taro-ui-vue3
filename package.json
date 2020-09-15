@@ -71,9 +71,10 @@
   ],
   "dependencies": {
     "@babel/runtime": "^7.7.7",
-    "classnames": "^2.2.6",
     "dayjs": "^1.8.29",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.19"    
+  },
+  "peerDependencies": {
     "vue": "^3.0.0-rc.10"
   },
   "devDependencies": {

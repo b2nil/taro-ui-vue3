@@ -1,19 +1,17 @@
-import { h, defineComponent } from "vue"
+import { h, defineComponent, mergeProps } from "vue"
 import { View } from "@tarojs/components"
 import { AtActionSheetBodyProps } from "types/action-sheet";
-import classNames from "classnames"
-import AtComponentWithDefaultProps from "@/components/mixins";
 
 const AtActionSheetBody = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
-    
-    setup(props: AtActionSheetBodyProps, { slots }) {
-        
-        return () => {
-            const rootClass = classNames('at-action-sheet__body', props.className)
+    name: "AtActionSheetBody",
 
-            return h(View, { class: rootClass }, slots.default && slots.default())
-        }
+    setup(props: AtActionSheetBodyProps, { attrs, slots }) {
+
+        return () => (
+            h(View, mergeProps(attrs, {
+                class: 'at-action-sheet__body'
+            }), slots.default && slots.default())
+        )
     }
 })
 

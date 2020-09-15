@@ -1,14 +1,9 @@
-import { h, defineComponent, computed } from "vue"
-
-import classNames from 'classnames'
-
+import { h, defineComponent, computed, mergeProps } from "vue"
 import { Image, Text, View } from '@tarojs/components'
 import { AtCardProps } from 'types/card'
 
-import AtComponentWithDefaultProps from '../mixins'
-
 const AtCard = defineComponent({
-    mixins: [AtComponentWithDefaultProps],
+    name: "AtCard",
 
     props: {
         // 参数
@@ -42,17 +37,14 @@ const AtCard = defineComponent({
         }
     },
 
-    setup(props: AtCardProps, { slots }) {
+    setup(props: AtCardProps, { attrs, slots }) {
 
-        const rootClass = computed(() => classNames(
-            'at-card',
-            {
-                'at-card--full': props.isFull
-            },
-            props.className
-        ))
+        const rootClass = computed(() => ({
+            'at-card': true,
+            'at-card--full': props.isFull
+        }))
 
-        const iconClass = computed(() => classNames({
+        const iconClass = computed(() => ({
             'at-icon': true,
             [`at-icon-${props.icon && props.icon.value}`]: props.icon && props.icon.value,
             'at-card__header-icon': true
@@ -67,16 +59,16 @@ const AtCard = defineComponent({
             if (typeof props.onClick === 'function') {
                 props.onClick(args)
             }
-        }        
+        }
 
         return () => (
-            h(View, {
+            h(View, mergeProps(attrs, {
                 class: rootClass.value,
                 onTap: handleClick
-            }, [
+            }), [
                 // header
-                h(View, { class: 'at-card__header'}, [
-                    props.thumb && h(View, { class: 'at-card__header-thumb'}, [
+                h(View, { class: 'at-card__header' }, [
+                    props.thumb && h(View, { class: 'at-card__header-thumb' }, [
                         h(Image, {
                             class: 'at-card__header-thumb-info',
                             mode: 'scaleToFill',
@@ -88,7 +80,7 @@ const AtCard = defineComponent({
                         class: iconClass.value,
                         style: iconStyle.value
                     }),
-                    h(Text, { class: 'at-card__header-title'}, props.title),
+                    h(Text, { class: 'at-card__header-title' }, props.title),
                     props.extra && h(Text, {
                         class: 'at-card__header-extra',
                         style: { ...props.extraStyle }

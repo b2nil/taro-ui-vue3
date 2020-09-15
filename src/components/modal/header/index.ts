@@ -1,23 +1,17 @@
-import { defineComponent, computed, h } from 'vue'
-import classNames from 'classnames'
+import { defineComponent, h, mergeProps } from 'vue'
 import { View } from '@tarojs/components'
 import { AtModalHeaderProps } from 'types/modal'
-import AtComponentWithDefaultProps from '@/components/mixins'
 
 const AtModalHeader = defineComponent({
-    mixins: [ AtComponentWithDefaultProps ],
+    name: "AtModalHeader",
 
-    setup(props: AtModalHeaderProps, { slots }) {
-        return () => {
-            const rootClass = computed(() => classNames(
-                'at-modal__header',
-                props.className
-            ))
+    setup(props: AtModalHeaderProps, { attrs, slots }) {
 
-            return h(View, {
-                class: rootClass.value
-            }, slots.default && slots.default())
-        }
+        return () => (
+            h(View, mergeProps(attrs, {
+                class:'at-modal__header'
+            }), slots.default && slots.default())
+        )
     }
 })
 
