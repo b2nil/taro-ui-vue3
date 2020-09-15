@@ -3,8 +3,9 @@ import { AtButton, AtCurtain } from '@/components/index'
 import { Image, Text } from '@tarojs/components'
 import { Page, Panel, ExampleItem } from '../../components/demo-page'
 
-import curtainPng from '@/assets/images/curtain.png'
 import './index.scss'
+
+const curtainPng = require('@/assets/images/curtain.png')
 
 interface TagPageState {
   isOpened: boolean
