@@ -1,6 +1,6 @@
 {
   "name": "taro-ui-vue3",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "description": "Taro UI Rewritten in Vue 3.0",
   "browser": "dist/index.umd.js",
   "module": "dist/index.esm.js",
@@ -72,9 +72,7 @@
   "dependencies": {
     "@babel/runtime": "^7.7.7",
     "dayjs": "^1.8.29",
-    "lodash": "^4.17.19"    
-  },
-  "peerDependencies": {
+    "lodash": "^4.17.19",
     "vue": "^3.0.0-rc.10"
   },
   "devDependencies": {
