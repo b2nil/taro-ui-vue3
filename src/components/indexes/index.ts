@@ -9,7 +9,7 @@ import {
 import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
 import { CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
-import { AtIndexesProps, AtIndexesState, Item } from 'types/indexes'
+import { AtIndexesProps, AtIndexesState, Item, ListItem } from 'types/indexes'
 
 import AtList from '../list'
 import AtListItem from '../list/item'
@@ -48,6 +48,7 @@ const AtIndexes = defineComponent({
         const menuHeight = ref(0)
         const startTop = ref(0)
         const itemHeight = ref(0)
+        const scrollItemHeights = ref<number[]>([])
         const currentIndex = ref(-1)
         const listId = ref(isTest() ? 'indexes-list-AOTU2018' : `list-${uuid()}`)
         const timeoutTimer = ref<NodeJS.Timeout | number | null>(null)
@@ -64,6 +65,16 @@ const AtIndexes = defineComponent({
         const toastStyle = computed(() => ({
             minWidth: pxTransform(100)
         }))
+
+        const activeIndexStyle = computed(() => (i) => {
+            return currentIndex.value === i
+                ? {
+                    color: 'white',
+                    backgroundColor: 'rgba(97, 144, 232, 1)', // rgba($color: $at-calendar-main-color, $alpha: 0.7)
+                    borderRadius: '40px'
+                }
+                : {}
+        })
 
         watch(() => props.list, (list, prevList) => {
             if (list.length !== prevList.length) {
@@ -111,6 +122,7 @@ const AtIndexes = defineComponent({
             }
 
             updateState({
+                _scrollTop: scrollItemHeights.value[idx],
                 _scrollIntoView,
                 _tipText
             })
@@ -143,8 +155,8 @@ const AtIndexes = defineComponent({
             }
         }
 
-        function initData() {
-            delayQuerySelector(this, '.at-indexes__menu', 30).then(rect => {
+        async function initData() {
+            await delayQuerySelector(this, '.at-indexes__menu', 30).then(rect => {
                 const len = props.list.length
                 // @ts-ignore
                 menuHeight.value = rect[0].height
@@ -152,12 +164,74 @@ const AtIndexes = defineComponent({
                 startTop.value = rect[0].top
                 itemHeight.value = Math.floor(menuHeight.value / (len + 1))
             })
+
+            if (props.list.length > 0) {
+                await _getScrollListItemHeights(props.list).then(res => {
+                    scrollItemHeights.value = [...res]
+                })
+            }
+        }
+
+        function _getHeight(selector: string, delay?: number): Promise<number> {
+            // 默认延时 500 毫秒，确保获取到所有高度
+            if (!delay) {
+                delay = 500
+            }
+
+            return new Promise<number>((resolve) => {
+                delayQuerySelector(this, selector, delay).then(rect => {
+                    // @ts-ignore
+                    if (rect && rect[0]) {
+                        // @ts-ignore
+                        resolve(rect[0].height)
+                    }
+                })
+            })
+        }
+
+        function _getScrollListItemHeights(list: Array<ListItem>): Promise<number[]> {
+            return new Promise<number[]>((resolve) => {
+                if (list.length > 0) {
+                    let rawHeights: Promise<number>[] = []
+                    let itemHeights: number[] = []
+
+                    // 获取 #at-indexes__top 的高度              
+                    rawHeights.push(_getHeight(`#at-indexes__top`))
+
+                    // 获取 #at-indexes——list-${key} 的高度
+                    list.forEach((item) => {
+                        rawHeights.push(_getHeight(`#at-indexes__list-${item.key}`))
+                    })
+
+                    Promise.all(rawHeights).then(res => {
+                        let height = 0
+                        itemHeights.push(height)
+
+                        for (let i = 0; i < res.length; i++) {
+                            height += res[i]
+                            itemHeights.push(height)
+                        }
+
+                        resolve(itemHeights)
+                    })
+                }
+            })
         }
 
         function handleScroll(e: CommonEvent) {
             if (e && e.detail) {
-                state._scrollTop = e.detail.scrollTop
+                // state._scrollTop = e.detail.scrollTop
                 state._scrollIntoView = ''
+
+                for (let i = 0; i < scrollItemHeights.value.length - 1; i++) {
+                    let h1 = scrollItemHeights.value[i]
+                    let h2 = scrollItemHeights.value[i + 1]
+
+                    if (e.detail.scrollTop >= h1 && e.detail.scrollTop < h2) {
+                        currentIndex.value = i
+                        return
+                    }
+                }
             }
         }
 
@@ -183,6 +257,7 @@ const AtIndexes = defineComponent({
                 }, [
                     h(View, {
                         class: 'at-indexes__menu-item',
+                        style: activeIndexStyle.value(0),
                         onTap: jumpTarget.bind(this, 'at-indexes__top', 0)
                     }, props.topKey),
 
@@ -193,6 +268,7 @@ const AtIndexes = defineComponent({
                             h(View, {
                                 key: `${key}-${i}`,
                                 class: 'at-indexes__menu-item',
+                                style: activeIndexStyle.value(i + 1),
                                 onTap: jumpTarget.bind(this, targetView, i + 1)
                             }, key)
                         )
@@ -203,6 +279,7 @@ const AtIndexes = defineComponent({
                     class: 'at-indexes__body',
                     id: listId.value,
                     scrollY: true,
+                    enableBackToTop: true,
                     scrollWithAnimation: props.animation,
                     scrollTop: state._scrollTop,
                     scrollIntoView: !state.isWEB ? state._scrollIntoView : '',
