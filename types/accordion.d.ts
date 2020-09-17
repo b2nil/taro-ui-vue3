@@ -39,5 +39,5 @@ export interface AtAccordionProps extends AtComponent {
 }
 
 export interface AtAccordionState {
-  wrapperHeight: number;
+  wrapperHeight: number | 'unset';
 }

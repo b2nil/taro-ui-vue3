@@ -38,11 +38,12 @@ const AtAccordion = defineComponent({
     setup(props: AtAccordionProps, { attrs, slots }) {
         const isCompleted = ref(true)
         const startOpen = ref(false)
-        const state = reactive<AtAccordionState>({ wrapperHeight: 0 })
+        const contentID = ref('content')
+        const state = reactive<AtAccordionState>({ wrapperHeight: 'unset' })
 
         const iconClass = computed(() => ({
             [`${props.icon!.prefixClass || 'at-icon'}`]: Boolean(props.icon),
-            [`${props.icon!.prefixClass || 'at-icon'}-${props.icon!.value}`]: props.icon && props.icon.value,
+            [`${props.icon!.prefixClass || 'at-icon'}-${props.icon!.value}`]: Boolean(props.icon && props.icon.value),
             'at-accordion__icon': true
         }))
 
@@ -62,12 +63,16 @@ const AtAccordion = defineComponent({
         }))
 
         const iconStyle = computed(() => ({
-            color: (props.icon && props.icon.color && props.icon.color) || '',
-            fontSize: (props.icon && props.icon.size && `${props.icon.size}px`) || ''
+            color: (props.icon && props.icon.color) ? props.icon.color : '',
+            fontSize: (props.icon && props.icon.size) ? `${props.icon.size}px` : ''
         }))
 
         const contentStyle = computed(() => ({
-            height: isCompleted.value ? '' : `${state.wrapperHeight}px`
+            height: isCompleted.value
+                ? ''
+                : state.wrapperHeight === 'unset'
+                    ? state.wrapperHeight
+                    : `${state.wrapperHeight}px`
         }))
 
         watch(() => props.open, (val) => {
@@ -76,6 +81,8 @@ const AtAccordion = defineComponent({
         })
 
         function handleClick(e: CommonEvent) {
+            contentID.value = 'content' + e.target.id
+            
             if (!isCompleted.value) return
 
             props.onClick && props.onClick(!props.open, e)
@@ -85,7 +92,7 @@ const AtAccordion = defineComponent({
             if (!isCompleted.value || !props.isAnimation) return
 
             isCompleted.value = false
-            delayQuerySelector(this, '.at-accordion__body', 0).then((rect) => {
+            delayQuerySelector(this, `#${contentID.value}.at-accordion__body`, 0).then((rect) => {
                 // @ts-ignore
                 const height = parseInt(rect[0].height.toString())
                 const startHeight = props.open ? 0 : height
@@ -142,6 +149,7 @@ const AtAccordion = defineComponent({
                     style: contentStyle.value
                 }, [
                     h(View, {
+                        id: contentID.value,
                         class: 'at-accordion__body'
                     }, slots.default && slots.default())
                 ])
