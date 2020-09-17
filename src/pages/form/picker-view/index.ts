@@ -40,10 +40,10 @@ export default defineComponent({
       years,
       year: date.getFullYear(),
       months,
-      month: date.getMonth(),
+      month: date.getMonth()+1,
       days,
-      day: date.getDay(),
-      value: [date.getFullYear(), date.getMonth(), date.getDay()],
+      day: date.getDate(),
+      value: [30, date.getMonth(), date.getDate()-1],
       isWeapp: false,
       isAlipay: false
     })
@@ -56,18 +56,15 @@ export default defineComponent({
 
     const handleChange = (e: CommonEvent): void => {
       const val = e.detail.value
-
+      state.value = val
       state.year = state.years[val[0]]
       state.month = state.months[val[1]]
       state.day = state.days[val[2]]
-      state.value = val
     }
 
     return () => (
       h(Page, { headerTitle: 'Picker View 滚动选择器' }, {
         default: () => [
-
-          /* 基础用法*/
           h(Panel, { title: '基础用法', }, {
             default: () => [
               h(ExampleItem, null, {
@@ -76,43 +73,40 @@ export default defineComponent({
 
                   state.isWeapp || state.isAlipay
                     ? (
-                      h(View, null, {
-                        default: () => [
-                          h(View, { class: 'title-date' }, `${state.year} 年 ${state.month} 月 ${state.day} 日`),
+                      h(View, null, [
+                        h(View, {
+                          class: 'title-date'
+                        }, `${state.year} 年 ${state.month} 月 ${state.day} 日`),
 
-                          h(PickerView, {
-                            class: 'picker',
-                            indicatorStyle: 'height: 50px;',
-                            style: 'width: 100%; height: 300px; text-align: center;',
-                            value: state.value,
-                            onChange: handleChange,
-                          }, {
-                            default: () => [
-                              h(PickerViewColumn, null, {
-                                default: () =>
-                                  state.years.map((item, idx) => (
-                                    h(View, { key: `years-${idx}`, style: 'line-height: 50px' }, `${item} 年`)
-                                  ))
-                              }),
+                        h(PickerView, {
+                          class: 'picker',
+                          indicatorStyle: 'height: 50px;',
+                          style: 'width: 100%; height: 300px; text-align: center;',
+                          value: state.value,
+                          onChange: handleChange,
+                        }, [
+                          h(PickerViewColumn, null, state.years.map((item, idx) => (
+                            h(View, {
+                              key: `years-${idx}`,
+                              style: 'line-height: 50px; '
+                            }, `${item} 年`)
+                          ))),
 
-                              h(PickerViewColumn, null, {
-                                default: () =>
-                                  state.months.map((item, idx) => (
-                                    h(View, { key: `months-${idx}`, style: 'line-height: 50px' }, `${item} 月`)
-                                  ))
+                          h(PickerViewColumn, null, state.months.map((item, idx) => (
+                            h(View, {
+                              key: `months-${idx}`,
+                              style: 'line-height: 50px;'
+                            }, `${item} 月`)
+                          ))),
 
-                              }),
-
-                              h(PickerViewColumn, null, {
-                                default: () =>
-                                  state.days.map((item, idx) => (
-                                    h(View, { key: `days-${idx}`, style: 'line-height: 50px' }, `${item} 日`)
-                                  ))
-                              }),
-                            ]
-                          })
-                        ]
-                      })
+                          h(PickerViewColumn, null, state.days.map((item, idx) => (
+                            h(View, {
+                              key: `days-${idx}`,
+                              style: 'line-height: 50px;'
+                            }, `${item} 日`)
+                          ))),
+                        ])
+                      ])
                     )
                     : (
                       h(View, { class: 'title-date' }, '暂时仅支持微信小程序')
