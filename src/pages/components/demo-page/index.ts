@@ -1,4 +1,4 @@
-import { h, defineComponent, computed } from "vue"
+import { h, defineComponent, computed, mergeProps } from "vue"
 import { View } from "@tarojs/components"
 import "./index.scss"
 
@@ -59,10 +59,9 @@ const Panel = defineComponent({
 const ExampleItem = defineComponent({
 
   setup(props, { slots, attrs }) {
-    return () => h(View, {
-      class: `example-item ${attrs.class ? attrs.class : ''}`,
-      style: attrs.style
-    }, slots.default && slots.default())
+    return () => h(View, mergeProps(attrs, {
+      class: 'example-item'
+    }), slots.default && slots.default())
   }
 })
 
