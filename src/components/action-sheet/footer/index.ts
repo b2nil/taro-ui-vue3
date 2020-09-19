@@ -7,7 +7,7 @@ const AtActionSheetFooter = defineComponent({
 
     props: {
         onClick: {
-            type: Function as unknown as () => () => {},
+            type: Function as unknown as () => AtActionSheetFooterProps['onClick'],
             default: () => () => { }
         },
     },
