@@ -1,8 +1,7 @@
-import { h, defineComponent, computed, reactive, watch, onMounted, ref, nextTick, mergeProps } from "vue"
+import { h, defineComponent, computed, reactive, watch, onMounted, ref, nextTick } from "vue"
 import { Swiper, SwiperItem, View } from "@tarojs/components"
 import { BaseEventOrig, ITouch, ITouchEvent } from '@tarojs/components/types/common'
 import { AtCalendarBodyListGroup, AtCalendarBodyProps, Calendar, AtCalendarBodyState } from 'types/calendar'
-import Taro from '@tarojs/taro'
 import dayjs from 'dayjs'
 import { delayQuerySelector } from '../../../utils/common'
 import generateCalendarGroup from '../common/helper'
@@ -261,12 +260,6 @@ const AtCalendarBody = defineComponent({
                 : clientX - swipeStartPoint.value > 0
         }
 
-        function handleSwipeTouchMove(e: ITouchEvent & { changedTouches: Array<ITouch> }) {
-            e.preventDefault()
-            e.stopPropagation()
-            return
-        }
-
         onMounted(() => {
             delayQuerySelector(this, '.at-calendar-slider__main', 100).then(res => {
                 // @ts-ignore
@@ -339,25 +332,21 @@ const AtCalendarBody = defineComponent({
                 ])
             }
 
-            const animationEndorFinish = Taro.getEnv() === Taro.ENV_TYPE.ALIPAY
-                ? { onAnimationEnd: handleAnimateFinish }
-                : { onAnimationFinish: handleAnimateFinish }
-
             return h(View, {
                 class: rootClass.value
             }, [
                 h(AtCalendarDayList),
-                h(Swiper, mergeProps(animationEndorFinish, {
+                h(Swiper, {
                     class: 'main__body',
                     circular: true,
                     vertical: props.isVertical,
                     skipHiddenItemLayout: true,
                     current: 1,
                     onChange: handleChange,
-                    onTouchMove: handleSwipeTouchMove,
                     onTouchEnd: handleSwipeTouchEnd,
                     onTouchStart: handleSwipeTouchStart,
-                }), state.listGroup.map((item, key) => (
+                    onAnimationFinish: handleAnimateFinish,
+                }, state.listGroup.map((item, key) => (
                     h(SwiperItem, {
                         // wrong key may cause the following issue:
                         // TypeError: Cannot read property '$$' of undefined at HTMLElement._attached._touchstartHandlerForDevtools
