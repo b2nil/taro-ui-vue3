@@ -1,5 +1,5 @@
 import { h, defineComponent, computed, mergeProps } from 'vue'
-import { Textarea, View } from '@tarojs/components'
+import { Textarea, Text, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import Taro from '@tarojs/taro'
 import { AtTextareaProps } from 'types/textarea'
@@ -62,6 +62,7 @@ const AtTextarea = defineComponent({
     },
 
     setup(props: AtTextareaProps, { attrs, slots }) {
+        const isAlipay = Taro.getEnv() === Taro.ENV_TYPE.ALIPAY
 
         const _maxLength = computed(() => parseInt(props.maxLength!.toString()))
 
@@ -85,6 +86,11 @@ const AtTextarea = defineComponent({
             'placeholder': true,
             [`${props.placeholderClass}`]: props.placeholderClass !== ''
         }))
+
+        const alipayShowCount = computed(() => isAlipay
+            ? { showCount: props.count }
+            : {}
+        )
 
         function handleInput(event: CommonEvent & ExtendEvent): void {
             props.onChange(event.target.value, event)
@@ -110,7 +116,7 @@ const AtTextarea = defineComponent({
             h(View, mergeProps(attrs, {
                 class: rootClasses.value
             }), [
-                h(Textarea, {
+                h(Textarea, mergeProps(alipayShowCount.value, {
                     class: 'at-textarea__textarea',
                     style: textareaStyle.value,
                     placeholderstyle: props.placeholderStyle,
@@ -131,11 +137,13 @@ const AtTextarea = defineComponent({
                     onBlur: handleBlur,
                     onConfirm: handleConfirm,
                     onLineChange: handleLinechange,
-                }),
-                
-                props.count && h(View, {
-                    class: 'at-textarea__counter'
-                }, `${props.value.length} / ${_maxLength.value}`)
+                })),
+
+                props.count && !isAlipay && (
+                    h(View, {
+                        class: 'at-textarea__counter'
+                    }, `${props.value.length} / ${_maxLength.value}`)
+                )
             ])
         )
     }

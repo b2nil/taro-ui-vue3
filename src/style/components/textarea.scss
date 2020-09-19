@@ -39,6 +39,7 @@ $at-textarea-bg-color: $color-bg;
   }
 
   &--WEB,
+  &--ALIPAY,
   &--WEAPP {
     #{$component}__textarea {
       line-height: $line-height-base;
