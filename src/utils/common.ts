@@ -34,7 +34,13 @@ function pxTransform(size: number): string {
 
 function delay(delayTime = 500): Promise<null> {
     return new Promise((resolve) => {
-        if ([Taro.ENV_TYPE.WEB, Taro.ENV_TYPE.SWAN, Taro.ENV_TYPE.WEAPP, Taro.ENV_TYPE.ALIPAY].includes(ENV)) {
+        if ([
+            Taro.ENV_TYPE.WEB,
+            Taro.ENV_TYPE.SWAN,
+            Taro.ENV_TYPE.WEAPP,
+            Taro.ENV_TYPE.ALIPAY,
+            Taro.ENV_TYPE.TT,
+        ].includes(ENV)) {
             setTimeout(() => {
                 resolve()
             }, delayTime)
