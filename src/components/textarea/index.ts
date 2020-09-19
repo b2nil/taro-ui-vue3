@@ -82,10 +82,7 @@ const AtTextarea = defineComponent({
             'at-textarea--error': _maxLength.value < props.value.length
         }))
 
-        const placeholderClasses = computed(() => ({
-            'placeholder': true,
-            [`${props.placeholderClass}`]: props.placeholderClass !== ''
-        }))
+        const placeholderClasses = computed(() => `placeholder ${props.placeholderClass}`)
 
         const alipayShowCount = computed(() => isAlipay
             ? { showCount: props.count }

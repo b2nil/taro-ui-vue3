@@ -127,8 +127,6 @@ export default {
     })
 
     function handleClick(params) {
-      console.log("params: ", params)
-      console.log("state.isOpened: ", state.isOpened)
       if (state.isOpened) {
         return Object.assign(state, {
           image: '',
@@ -153,7 +151,6 @@ export default {
         },
         params
       )
-      console.log("state: ", state)
     }
 
     function handleClose() {

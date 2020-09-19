@@ -1,4 +1,4 @@
-import { h, defineComponent, reactive, computed, CSSProperties, mergeProps } from 'vue'
+import { h, defineComponent, reactive, computed, CSSProperties, mergeProps, ref, watch } from 'vue'
 import { Input, Text, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtSearchBarProps, AtSearchBarState } from 'types/search-bar'
@@ -68,6 +68,8 @@ const AtSearchBar = defineComponent({
             isFocus: !!props.focus
         })
 
+        const inputValue = ref(props.value)
+
         const fontSize = 14
 
         const rootClass = computed(() => ({
@@ -115,6 +117,12 @@ const AtSearchBar = defineComponent({
             visibility: !props.value.length ? 'visible' : 'hidden'
         }))
 
+        watch(() => props.value, (val, preVal) => {
+            if(preVal !== val) {
+                inputValue.value = val
+            }
+        })
+
         function handleFocus(event: CommonEvent): void {
             state.isFocus = true
             props.onFocus && props.onFocus(event)
@@ -130,7 +138,7 @@ const AtSearchBar = defineComponent({
         }
 
         function handleClear(event: CommonEvent): void {
-            if (props.onClear) {
+            if (typeof props.onClear === 'function') {
                 props.onClear(event)
             } else {
                 props.onChange('', event)
@@ -171,7 +179,7 @@ const AtSearchBar = defineComponent({
                             class: 'at-search-bar__input',
                             type: props.inputType,
                             confirmType: 'search',
-                            value: props.value,
+                            value: inputValue.value,
                             focus: state.isFocus,
                             disabled: props.disabled,
                             maxlength: props.maxLength,

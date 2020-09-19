@@ -118,6 +118,7 @@ const AtTabs = defineComponent({
                 switch (ENV) {
                     case Taro.ENV_TYPE.WEAPP:
                     case Taro.ENV_TYPE.ALIPAY:
+                    case Taro.ENV_TYPE.TT:
                     case Taro.ENV_TYPE.SWAN: {
                         const index = Math.max(idx - 1, 0)
                         state._scrollIntoView = `tab${_tabId.value}${index}`
