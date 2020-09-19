@@ -1,4 +1,4 @@
-import { h, defineComponent, ref, computed, mergeProps } from "vue"
+import { h, defineComponent, ref, computed, mergeProps, watch } from "vue"
 import { Input, Text, View, Label } from "@tarojs/components";
 import { BaseEventOrig, ITouchEvent } from "@tarojs/components/types/common"
 import { InputProps } from "@tarojs/components/types/Input"
@@ -131,7 +131,7 @@ const AtInput = defineComponent({
     },
 
     setup(props: AtInputProps, { attrs, slots }) {
-        const inputClearing = ref(false)
+        const inputValue = ref(props.value)
 
         const inputProps = computed(() => getInputProps(props))
 
@@ -151,15 +151,18 @@ const AtInput = defineComponent({
             'at-input__overlay--hidden': !inputProps.value.disabled
         }))
 
-        const placeholderClasses = computed(() => ({
-            'placeholder': true,
-            [`${props.placeholderClass}`]: props.placeholderClass !== ''
-        }))
+        const placeholderClasses = computed(() => `placeholder ${props.placeholderClass}`)
 
         const titleClasses = computed(() => ({
             'at-input__title': true,
             'at-input__title--required': props.required
         }))
+
+        watch(() => props.value, (val, preVal) => {
+            if (val !== preVal) {
+                inputValue.value = val
+            }
+        })
 
         function handleInput(e: BaseEventOrig<InputEventDetail>) {
             props.onChange(e.detail.value, e)
@@ -175,13 +178,6 @@ const AtInput = defineComponent({
             if (typeof props.onBlur === 'function') {
                 props.onBlur(e.detail.value, e)
             }
-
-            if (e.type === 'blur' && inputClearing.value) {
-                // fix # 583 AtInput 不触发 onChange 的问题
-                props.onChange(e.detail.value, e as BaseEventOrig<InputEventDetail>)
-            }
-            // 还原状态
-            inputClearing.value = false
         }
 
         function handleConfirm(e: BaseEventOrig<ConfirmEventDetail>) {
@@ -197,7 +193,6 @@ const AtInput = defineComponent({
         }
 
         function handleClearValue(e: ITouchEvent) {
-            inputClearing.value = true
             props.onChange('', e)
         }
 
@@ -248,7 +243,7 @@ const AtInput = defineComponent({
                             maxlength: inputProps.value.maxlength,
                             autoFocus: props.autoFocus,
                             focus: props.focus,
-                            value: props.value,
+                            value: inputValue.value,
                             confirmType: props.confirmType,
                             cursor: props.cursor,
                             selectionStart: props.selectionStart,
@@ -264,7 +259,7 @@ const AtInput = defineComponent({
                         (props.clear && props.value) && (
                             h(View, {
                                 class: 'at-input__icon',
-                                onTouchEnd: handleClearValue
+                                onTouchStart: handleClearValue
                             }, [
                                 h(Text, {
                                     class: 'at-icon at-icon-close-circle at-input__icon-close'
