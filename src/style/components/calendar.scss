@@ -175,7 +175,12 @@
 
   &--weapp,
   &--alipay,
-  &--swan {
+  &--swan,
+  &--tt,
+  &--qq,
+  &--jd,
+  &--quickapp,
+  &--rn {
     .main__body {
       height: 480px;
     }
