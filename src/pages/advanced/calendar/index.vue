@@ -7,8 +7,11 @@
       <at-calendar @month-change="handleMonthChange" />
     </panel>
 
-    <panel title="跳转到制定日期">
-      <at-calendar :currentDate="now" />
+    <panel title="跳转到指定日期">
+      <at-calendar
+        :currentDate="now"
+        @day-click="handleDayClick"
+      />
       <view class="body_controllers">
         <at-button
           size="small"
