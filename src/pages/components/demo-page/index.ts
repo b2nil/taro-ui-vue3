@@ -3,6 +3,8 @@ import { View } from "@tarojs/components"
 import "./index.scss"
 
 const Page = defineComponent({
+  name: "Page",
+
   props: {
     headerTitle: {
       type: String,
@@ -28,6 +30,8 @@ const Page = defineComponent({
 
 
 const Panel = defineComponent({
+  name: "Panel",
+
   props: {
     title: {
       type: String,
@@ -57,6 +61,7 @@ const Panel = defineComponent({
 })
 
 const ExampleItem = defineComponent({
+  name: "ExampleItem",
 
   setup(props, { slots, attrs }) {
     return () => h(View, mergeProps(attrs, {
