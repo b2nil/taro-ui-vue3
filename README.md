@@ -10,15 +10,11 @@
 
 采用 `Vue 3.0` 重写的 [Taro UI](https://github.com/NervJS/taro-ui) 组件库。
 
-> 本项目属于学习模仿项目，旨在学习 `Vue 3.0` 和 `Taro 3.0` 这两个最新发布的框架，同时为个人小程序项目提供基于 `Vue 3.0` 的组件。
-
-> 所有组件样式和类型均复用了 `Taro UI` 已有的样式和类型定义，体验使用时，可参考 [Taro UI 的文档](https://taro-ui.jd.com/#/docs/introduction)。
+> 组件样式和类型复用了 `Taro UI` 已有的样式和类型定义，体验使用时，可参考 [Taro UI 的文档](https://taro-ui.jd.com/#/docs/introduction)。
 
 > 所有组件均采用 `Vue 3.0` 的渲染函数写成，未使用 `Vue Template` 或 `jsx`。
 
-> 本项目还参考了 [taro-ui-vue](https://github.com/psaren/taro-ui-vue)。
-
-> 目前组件只在微信小程序端试用过，其他端的使用仍然存在问题。
+> 目前组件只在小程序端试用过，h5 端的使用仍然存在问题。
 
 ### 安装
 ```bash
@@ -70,3 +66,7 @@ yarn add taro-ui-vue3
 
 ## License
 [MIT](./LICENSE)
+
+## Credits
+- [Taro UI](https://github.com/NervJS/taro-ui)
+- [taro-ui-vue](https://github.com/psaren/taro-ui-vue)
