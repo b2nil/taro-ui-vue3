@@ -84,6 +84,8 @@ const AtCalendarBody = defineComponent({
         const currentSwiperIndex = ref(1)
         const isTouching = ref(false)
         const isPreMonth = ref(false)
+        const isWeb = ref(Taro.getEnv() === Taro.ENV_TYPE.WEB)
+        const isAlipay = ref(Taro.getEnv() === Taro.ENV_TYPE.ALIPAY)
 
         let generateFunc = generateCalendarGroup({
             validDates: props.validDates,
@@ -297,7 +299,7 @@ const AtCalendarBody = defineComponent({
             }
 
             /* 需要 Taro 组件库维护 Swiper 使 小程序 和 H5 的表现保持一致  */
-            if (process.env.TARO_ENV === 'h5') {
+            if (isWeb.value) {
                 return h(View, {
                     class: rootClass.value,
                     onTouchEnd: handleTouchEnd,
@@ -339,7 +341,8 @@ const AtCalendarBody = defineComponent({
                 ])
             }
 
-            const animationEndorFinish = Taro.getEnv() === Taro.ENV_TYPE.ALIPAY
+            // 支付宝 Swiper 组件无 onAnimationFinish 属性，应改为 onAnimationEnd
+            const animationEndOrFinish = isAlipay.value
                 ? { onAnimationEnd: handleAnimateFinish }
                 : { onAnimationFinish: handleAnimateFinish }
 
@@ -347,7 +350,7 @@ const AtCalendarBody = defineComponent({
                 class: rootClass.value
             }, [
                 h(AtCalendarDayList),
-                h(Swiper, mergeProps(animationEndorFinish, {
+                h(Swiper, mergeProps(animationEndOrFinish, {
                     class: 'main__body',
                     circular: true,
                     vertical: props.isVertical,
@@ -360,7 +363,8 @@ const AtCalendarBody = defineComponent({
                 }), state.listGroup.map((item, key) => (
                     h(SwiperItem, {
                         // wrong key may cause the following issue:
-                        // TypeError: Cannot read property '$$' of undefined at HTMLElement._attached._touchstartHandlerForDevtools
+                        // TypeError: Cannot read property '$$' of undefined
+                        // at HTMLElement._attached._touchstartHandlerForDevtools
                         key: key.toString(),
                         itemId: key.toString()
                     }, [
