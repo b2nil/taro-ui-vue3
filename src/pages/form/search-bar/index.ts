@@ -20,13 +20,13 @@ export default defineComponent({
       value4: ''
     })
 
-    function onChange(stateName: string, value: string): void {
-      state[stateName] = value
+    function onChange(stateName: string, value: string | number): void {
+      state[stateName] = value as string
     }
 
-    function onActionClick(): void {
+    function onActionClick(stateName: string): void {
       Taro.showToast({
-        title: '开始搜索',
+        title: `开始搜索: ${state[stateName]}`,
         icon: 'success',
         duration: 2000
       })
@@ -43,8 +43,8 @@ export default defineComponent({
                   default: () => [
                     h(AtSearchBar, {
                       value: state.value1,
-                      onChange: onChange.bind(this, 'value1'),
-                      onActionClick: onActionClick.bind(this),
+                      onChange: (e) => onChange('value1', e),
+                      onActionClick: onActionClick.bind(this, 'value1'),
                     })
                   ]
                 }),
@@ -59,8 +59,8 @@ export default defineComponent({
                     h(AtSearchBar, {
                       actionName: '搜一下',
                       value: state.value2,
-                      onChange: onChange.bind(this, 'value2'),
-                      onActionClick: onActionClick.bind(this),
+                      onChange: (e) => onChange('value2', e),
+                      onActionClick: onActionClick.bind(this, 'value2'),
                     })
                   ]
                 }),
@@ -76,8 +76,8 @@ export default defineComponent({
                       placeholder: '请输入ISBN号',
                       showActionButton: true,
                       value: state.value3,
-                      onChange: onChange.bind(this, 'value3'),
-                      onActionClick: onActionClick.bind(this),
+                      onChange: (e) => onChange('value3', e),
+                      onActionClick: onActionClick.bind(this, 'value3'),
                     })
                   ]
                 }),
@@ -93,8 +93,8 @@ export default defineComponent({
                       placeholder: '请输入数字',
                       inputType: 'number',
                       value: state.value4,
-                      onChange: onChange.bind(this, 'value4'),
-                      onActionClick: onActionClick.bind(this),
+                      onChange: (e) => onChange('value4', e),
+                      onActionClick: onActionClick.bind(this, 'value4'),
                     })
                   ]
                 }),
