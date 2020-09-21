@@ -14,7 +14,7 @@
 
 > 所有组件均采用 `Vue 3.0` 的渲染函数写成，未使用 `Vue Template` 或 `jsx`。
 
-> 目前组件只在小程序端试用过，h5 端的使用仍然存在问题。
+> 组件只在小程序端试用过，目前百度小程序适配问题较多，h5 端的使用仍然存在问题。
 
 ### 安装
 ```bash
@@ -51,18 +51,17 @@ yarn add taro-ui-vue3
 
 ## TODOs
  - [] 组件展示页面
-   - [x] basic
-   - [x] view
-   - [x] action
-   - [x] form
-   - [x] layout
-   - [x] navigation
    - [] theme
-   - [x] advanced
 
  - [] 兼容 h5
     - 部分组件功能异常，打开浏览器开发工具后才能正常工作，如 `AtInput`, `AtSearchBar`, `AtSlider` 等
     - Vue3 H5 中使用 render 函数渲染节点时, onTap 不能触发点击事件 [Taro issue #7329](https://github.com/NervJS/taro/issues/7329)
+
+## 已知问题
+- Alipay 小程序端
+  - `AtCalendar`: 由于 Taro 的 `Swiper` 组件暂不支持支付宝内置 `Swiper` 组件的 `onAnimationEnd` 属性， 编译后，需手动修改 `base.axml` 中的 `<template  name="tmpl_0_swiper">` 基础模板, 将 `swiper` 节点中的 `onAnimationFinish` 修改为 `onAnimationEnd`， 否则滑动切换时不能更新月份
+
+  - `AtTextarea`: 由于 Taro 的 `Textarea` 组件不支持支付宝 `textarea` 组件的 `show-count` 属性，所以字数统计不能通过设置 :count="false" 直接关闭， 需要手动修改编译后的 `base.axml`, 在 `<template name="tmpl_0_textarea_focus">` 和 `<template name="tmpl_0_textarea_blur">` 基础模板下的 `textarea` 节点中添加 `show-count="{{i.showCount}}"`
 
 ## License
 [MIT](./LICENSE)
