@@ -1,4 +1,4 @@
-const isAlipay = process.env.TARO_ENV === 'alipay'
+const pOrP = process.env.TARO_ENV === 'alipay' || process.env.TARO_ENV === 'swan'
 
 const subpackages = [
   {
@@ -103,7 +103,7 @@ export default {
     // theme
     // 'pages/theme/index'
   ],
-  [`${isAlipay ? 'subPackages' : 'subpackages'}`]: subpackages,
+  [`sub${pOrP ? 'P' : 'p'}ackages`]: subpackages,
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#fff',
