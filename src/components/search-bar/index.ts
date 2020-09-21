@@ -1,13 +1,7 @@
 import { h, defineComponent, reactive, computed, CSSProperties, mergeProps, ref, watch } from 'vue'
 import { Input, Text, View } from '@tarojs/components'
-import { CommonEvent } from '@tarojs/components/types/common'
+import { BaseEventOrig, CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
 import { AtSearchBarProps, AtSearchBarState } from 'types/search-bar'
-
-type ExtendEvent = {
-    target: {
-        value: string
-    }
-}
 
 const AtSearchBar = defineComponent({
     name: "AtSearchBar",
@@ -123,21 +117,21 @@ const AtSearchBar = defineComponent({
             }
         })
 
-        function handleFocus(event: CommonEvent): void {
+        function handleFocus(event: BaseEventOrig<any>): void {
             state.isFocus = true
-            props.onFocus && props.onFocus(event)
+            props.onFocus && props.onFocus(event.detail.value, event)
         }
 
-        function handleBlur(event: CommonEvent): void {
+        function handleBlur(event: BaseEventOrig<any>): void {
             state.isFocus = false
-            props.onBlur && props.onBlur(event)
+            props.onBlur && props.onBlur(event.detail.value, event)
         }
 
-        function handleChange(e: CommonEvent & ExtendEvent): void {
-            props.onChange(e.target.value, e)
+        function handleChange(e: BaseEventOrig<any>): void {
+            props.onChange(e.detail.value, e)
         }
 
-        function handleClear(event: CommonEvent): void {
+        function handleClear(event: ITouchEvent): void {
             if (typeof props.onClear === 'function') {
                 props.onClear(event)
             } else {
@@ -188,8 +182,11 @@ const AtSearchBar = defineComponent({
                             onInput: handleChange,
                             onConfirm: handleConfirm,
                         }),
+
                         // clear icon
-                        h(View, {
+                        // v-if="props.value" is necessary, otherwise
+                        // value cannot be cleared from screen in alipay
+                        props.value && h(View, {
                             class: 'at-search-bar__clear',
                             style: clearIconStyle.value,
                             onTouchStart: handleClear

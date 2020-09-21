@@ -2,6 +2,7 @@
 import { CommonEventFunction, CommonEvent } from '@tarojs/components/types/common'
 
 import AtComponent from './base'
+import AtSearchBarProps, { AtInputProps } from './input'
 
 export interface AtSearchBarProps extends AtComponent {
   /**
@@ -62,16 +63,16 @@ export interface AtSearchBarProps extends AtComponent {
    * 输入框值改变时触发的事件
    * @description 必填，开发者需要通过 onChange 事件来更新 value 值变化
    */
-  onChange: (value: string, event: CommonEvent) => void
+  onChange: AtInputProps['onChange']
   /**
    * 输入框聚焦时触发
    * @description height 参数在基础库 1.9.90 起支持
    */
-  onFocus?: CommonEventFunction
+  onFocus?: AtInputProps['onFocus']
   /**
    * 输入框值失去焦点时触发的事件
    */
-  onBlur?: CommonEventFunction
+  onBlur?: AtInputProps['onBlur']
   /**
    * 点击清除按钮时触发事件
    * @description 若不传，则默认传空字符串调用 onChange 函数，Taro UI 2.0.3 起支持
