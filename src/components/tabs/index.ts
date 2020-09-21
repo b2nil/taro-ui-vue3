@@ -228,7 +228,9 @@ const AtTabs = defineComponent({
                     class: tabItemClass.value(idx),
                     onTap: handleClick.bind(this, idx)
                 }, [
-                    h(Text, null, item.title),
+                    h(Text, {
+                        style: "white-space: nowrap;"
+                    }, item.title),
                     h(View, { class: 'at-tabs__item-underline' }),
                 ])
             ))
