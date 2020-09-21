@@ -36,9 +36,7 @@ const AtNoticebar = defineComponent({
             _close: props.marquee ? false : props.close,
             show: true,
             animElemId: `J_${Math.ceil(Math.random() * 10e5).toString(36)}`,
-            animationData: {
-                actions: [{}]
-            },
+            animationData: { actions: [{}] },
             dura: 15,
             isWEAPP: Taro.getEnv() === Taro.ENV_TYPE.WEAPP,
             isALIPAY: Taro.getEnv() === Taro.ENV_TYPE.ALIPAY,
@@ -110,23 +108,19 @@ const AtNoticebar = defineComponent({
 
                             const animation = Taro.createAnimation({
                                 duration: dura * 1000,
-                                timingFunction: 'linear'
                             })
 
                             const resetAnimation = Taro.createAnimation({
                                 duration: 0,
-                                timingFunction: 'linear'
                             })
 
                             const resetOpacityAnimation = Taro.createAnimation({
                                 duration: 0,
-                                timingFunction: 'linear'
                             })
 
                             const animBody = (): void => {
                                 resetOpacityAnimation.opacity(0).step()
                                 state.animationData = resetOpacityAnimation.export()
-
                                 setTimeout(() => {
                                     resetAnimation.translateX(0).step()
                                     state.animationData = resetAnimation.export()
