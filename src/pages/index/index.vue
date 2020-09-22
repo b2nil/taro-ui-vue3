@@ -1,5 +1,8 @@
 <template>
-  <view class="page page-index">
+  <view
+    class="page page-index"
+    :style="rootStyle"
+  >
     <!-- logo -->
     <view class="logo">
       <image
@@ -38,7 +41,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs } from 'vue'
+import { computed, defineComponent, reactive, toRefs } from 'vue'
 import Taro from '@tarojs/taro'
 import iconAction from '@/assets/images/icon-list-action.png'
 import iconBasic from '@/assets/images/icon-list-basic.png'
@@ -102,6 +105,15 @@ export default defineComponent({
       ]
     })
 
+    const rootStyle = computed(() => {
+      return Taro.getEnv() === Taro.ENV_TYPE.WEB
+        ? {
+          width: '50%',
+          margin: 'auto'
+        }
+        : null
+    })
+
     function onShareAppMessage() {
       return {
         title: 'Taro UI Vue3',
@@ -120,6 +132,7 @@ export default defineComponent({
     return {
       ...toRefs(state),
       logoImg,
+      rootStyle,
       gotoPanel,
       onShareAppMessage
     }

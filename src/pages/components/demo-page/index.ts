@@ -1,5 +1,6 @@
 import { h, defineComponent, computed, mergeProps } from "vue"
 import { View } from "@tarojs/components"
+import Taro from "@tarojs/taro"
 import "./index.scss"
 
 const Page = defineComponent({
@@ -14,13 +15,39 @@ const Page = defineComponent({
   },
 
   setup(props, { slots, attrs }) {
+    const rootClasses = computed(() => ({
+      'page': true,
+      [`${attrs.class}`]: Boolean(attrs.class)
+    }))
+
+    const rootStyle = computed(() => {
+      return Taro.getEnv() === Taro.ENV_TYPE.WEB
+        ? {
+          width: '50%',
+          margin: 'auto'
+        }
+        : null
+    })
+
     return () => (
-      h(View, { class: `page ${attrs.class ? attrs.class : ''}` }, {
+      h(View, {
+        class: rootClasses.value,
+        style: rootStyle.value
+      }, {
         default: () => [
-          h(View, { class: 'doc-header' }, [
-            h(View, { class: 'doc-header__title' }, props.headerTitle)
+          h(View, {
+            class: 'doc-header'
+          }, [
+            h(View, {
+              class: 'doc-header__title'
+            }, props.headerTitle)
           ]),
-          h(View, { class: 'doc-body', style: attrs.style }, slots.default && slots.default()),
+
+          h(View, {
+            class: 'doc-body',
+            style: attrs.style
+          }, slots.default && slots.default()),
+
           slots.extra && slots.extra(),
         ]
       })
@@ -47,10 +74,16 @@ const Panel = defineComponent({
       'no-padding': props.noPadding
     }))
 
-    return () => h(View, { class: 'panel' }, {
+    return () => h(View, {
+      class: 'panel'
+    }, {
       default: () => [
-        props.title && h(View, { class: 'panel__title' }, props.title),
+        props.title && h(View, {
+          class: 'panel__title'
+        }, props.title),
+
         slots.controller && slots.controller(),
+
         h(View, {
           class: contentClass.value,
           style: attrs.style

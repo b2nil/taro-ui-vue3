@@ -1,5 +1,8 @@
 <template>
-  <view class="page">
+  <view
+    class="page"
+    :style="rootStyle"
+  >
     <!-- S Header -->
     <view class="panel-header">
       <view class="panel-header__icon">
@@ -307,6 +310,15 @@ export default defineComponent({
       currentId: ''
     })
 
+    const rootStyle = computed(() => {
+      return Taro.getEnv() === Taro.ENV_TYPE.WEB
+        ? {
+          width: '50%',
+          margin: 'auto'
+        }
+        : null
+    })
+
     const itemList = computed(() => state.list[state.currentId] || [])
 
     const title = computed(() => {
@@ -334,6 +346,7 @@ export default defineComponent({
 
     return {
       ...toRefs(state),
+      rootStyle,
       itemList,
       title,
       icon,
