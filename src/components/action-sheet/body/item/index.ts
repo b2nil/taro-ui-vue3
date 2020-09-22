@@ -1,5 +1,6 @@
 import { h, defineComponent, mergeProps } from "vue"
-import { View, CommonEvent } from "@tarojs/components"
+import { View } from '@tarojs/components'
+import { CommonEvent } from "@tarojs/components/types"
 import { AtActionSheetItemProps } from "types/action-sheet";
 
 const AtActionSheetItem = defineComponent({

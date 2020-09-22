@@ -1,5 +1,5 @@
 import { h, defineComponent, mergeProps } from "vue"
-import { Form } from "@tarojs/components"
+import { Form } from '@tarojs/components'
 import { AtFormProps } from "types/form"
 
 const AtForm = defineComponent({

@@ -1,5 +1,5 @@
 import { h, defineComponent, mergeProps, computed } from "vue"
-import { View } from "@tarojs/components"
+import { View } from '@tarojs/components'
 import { AtBadgeProps } from "types/badge";
 
 const AtBadge = defineComponent({

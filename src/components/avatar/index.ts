@@ -1,5 +1,5 @@
 import { h, defineComponent, mergeProps, computed } from 'vue'
-import { Image, OpenData, Text, View } from "@tarojs/components"
+import { Image, OpenData, Text, View } from '@tarojs/components'
 import { AtAvatarProps } from "types/avatar";
 import { getEnvs } from '../../utils/common'
 

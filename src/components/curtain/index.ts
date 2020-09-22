@@ -1,5 +1,6 @@
 import { h, defineComponent, computed, mergeProps } from "vue"
-import { View, CommonEvent } from '@tarojs/components'
+import { View } from '@tarojs/components'
+import { CommonEvent } from '@tarojs/components/types'
 import { AtCurtainProps } from 'types/curtain'
 
 const AtCurtain = defineComponent({

@@ -1,7 +1,8 @@
 import { h, defineComponent, computed, mergeProps } from 'vue'
-import { Button, View, Form, CommonEventFunction } from '@tarojs/components'
-import { ButtonProps } from "@tarojs/components/types/Button";
-import { AtButtonProps } from "types/button";
+import { Button, View, Form } from '@tarojs/components'
+import { CommonEventFunction} from "@tarojs/components/types/common"
+import { ButtonProps } from "@tarojs/components/types/Button"
+import { AtButtonProps } from "types/button"
 import AtLoading from '../loading/index'
 import { getEnvs } from '../../utils/common'
 import Taro from '@tarojs/taro'

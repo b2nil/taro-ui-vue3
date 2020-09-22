@@ -1,5 +1,5 @@
 import { defineComponent, computed, h, mergeProps } from "vue"
-import { Text } from "@tarojs/components"
+import { Text } from '@tarojs/components'
 import { AtIconProps } from "types/icon"
 import { pxTransform } from "@/utils/common"
 

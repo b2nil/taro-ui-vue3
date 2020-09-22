@@ -1,5 +1,5 @@
 import { h, defineComponent, computed } from "vue"
-import { Text, View } from "@tarojs/components"
+import { Text, View } from '@tarojs/components'
 import { Calendar } from 'types/calendar'
 import * as constant from '../../common/constant'
 

@@ -1,5 +1,5 @@
 import { h, defineComponent, computed, reactive, watch, onMounted, ref, nextTick, mergeProps } from "vue"
-import { Swiper, SwiperItem, View } from "@tarojs/components"
+import { Swiper, SwiperItem, View } from '@tarojs/components'
 import { BaseEventOrig, ITouch, ITouchEvent } from '@tarojs/components/types/common'
 import { AtCalendarBodyListGroup, AtCalendarBodyProps, Calendar, AtCalendarBodyState } from 'types/calendar'
 import Taro from '@tarojs/taro'

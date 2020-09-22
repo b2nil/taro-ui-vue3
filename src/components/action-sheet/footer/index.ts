@@ -1,5 +1,5 @@
 import { h, defineComponent, mergeProps } from "vue"
-import { View } from "@tarojs/components"
+import { View } from '@tarojs/components'
 import { AtActionSheetFooterProps } from "types/action-sheet"
 
 const AtActionSheetFooter = defineComponent({

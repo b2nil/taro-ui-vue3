@@ -1,5 +1,6 @@
 import { h, defineComponent, nextTick, computed, reactive, watch } from "vue"
-import { Image, Text, View, CommonEvent } from "@tarojs/components"
+import { Image, Text, View } from '@tarojs/components'
+import { CommonEvent } from "@tarojs/components/types"
 import { AtToastProps } from "types/toast"
 
 import statusImg from './img.json'

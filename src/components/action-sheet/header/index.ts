@@ -1,5 +1,5 @@
 import { h, defineComponent, mergeProps } from "vue"
-import { View } from "@tarojs/components"
+import { View } from '@tarojs/components'
 import { AtActionSheetHeaderProps } from "types/action-sheet"
 
 const AtActionSheetHeader = defineComponent({

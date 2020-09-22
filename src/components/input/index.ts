@@ -1,5 +1,5 @@
 import { h, defineComponent, ref, computed, mergeProps, watch } from "vue"
-import { Input, Text, View, Label } from "@tarojs/components";
+import { Input, Text, View, Label } from '@tarojs/components';
 import { BaseEventOrig, ITouchEvent } from "@tarojs/components/types/common"
 import { InputProps } from "@tarojs/components/types/Input"
 import {

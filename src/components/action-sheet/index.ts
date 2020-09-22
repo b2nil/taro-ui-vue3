@@ -1,5 +1,5 @@
 import { h, defineComponent, watch, ref, computed, mergeProps } from "vue"
-import { View } from "@tarojs/components"
+import { View } from '@tarojs/components'
 import { CommonEvent } from "@tarojs/components/types/common"
 import { AtActionSheetProps } from "types/action-sheet"
 

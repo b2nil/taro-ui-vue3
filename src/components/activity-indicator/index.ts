@@ -1,5 +1,5 @@
 import { h, defineComponent, computed, mergeProps } from "vue"
-import { Text, View } from "@tarojs/components"
+import { Text, View } from '@tarojs/components'
 import { AtActivityIndicatorProps } from "types/activity-indicator";
 import AtLoading from "../loading"
 
