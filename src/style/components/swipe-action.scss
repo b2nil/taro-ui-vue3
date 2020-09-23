@@ -12,7 +12,7 @@
     background-color: $at-swipe-action-bg-color;
     z-index: 2;
 
-    &.animtion {
+    &.animation {
       transition: transform 300ms $timing-func;
     }
   }

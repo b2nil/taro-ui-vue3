@@ -62,7 +62,7 @@ const AtSwipeAction = defineComponent({
 
         const actionContentClass = computed(() => ({
             'at-swipe-action__content': true,
-            animtion: !isTouching.value
+            'animation': !isTouching.value
         }))
 
         const genActionItemClass = computed(() => (item) => ({
