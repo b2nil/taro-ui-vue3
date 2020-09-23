@@ -3,6 +3,7 @@ import { Input, Text, View } from '@tarojs/components'
 import { BaseEventOrig, CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
 import { AtSearchBarProps, AtSearchBarState } from 'types/search-bar'
 import { ENV_TYPE, getEnv } from '@tarojs/taro'
+import { uuid } from '@/utils/common'
 
 const AtSearchBar = defineComponent({
     name: "AtSearchBar",
@@ -62,9 +63,9 @@ const AtSearchBar = defineComponent({
         const state = reactive<AtSearchBarState>({
             isFocus: !!props.focus
         })
-        
-        const inputID = ref('weui-input')
 
+        const isWEB = ref(getEnv() === ENV_TYPE.WEB)
+        const inputID = ref('weui-input' + uuid())
         const inputValue = ref(props.value)
 
         const fontSize = 14
@@ -115,17 +116,19 @@ const AtSearchBar = defineComponent({
         }))
 
         watch(() => props.value, (val, preVal) => {
-            if(preVal !== val) {
+            if (preVal !== val) {
                 inputValue.value = val
             }
         })
 
         function handleFocus(event: BaseEventOrig<any>): void {
+            if (isWEB.value) {
+                // hack fix: h5 点击清除按钮后，input value 在数据层被清除，但视图层仍未清除
+                inputID.value = 'weui-input' + String(event.timeStamp).replace('.', '')
+            }
+
             state.isFocus = true
             props.onFocus && props.onFocus(event.detail.value, event)
-
-            // hack fix: h5 点击清除按钮后，input value 在数据层被清除，但视图层仍未清除
-            inputID.value = 'weui-input' + String(event.timeStamp).replace('.', '')
         }
 
         function handleBlur(event: BaseEventOrig<any>): void {
@@ -138,7 +141,6 @@ const AtSearchBar = defineComponent({
         }
 
         function handleClear(event: ITouchEvent): void {
-
             if (typeof props.onClear === 'function') {
                 props.onClear(event)
             } else {
@@ -146,7 +148,7 @@ const AtSearchBar = defineComponent({
             }
 
             // hack fix: h5 点击清除按钮后，input value 在数据层被清除，但视图层仍未清除
-            if (getEnv() === ENV_TYPE.WEB) {
+            if (isWEB.value) {
                 const inputNode = document.querySelector<HTMLInputElement>(`#${inputID.value} > .weui-input`)
                 inputNode!.value = ''
             }
@@ -182,8 +184,7 @@ const AtSearchBar = defineComponent({
                         ]),
 
                         // input
-                        h(Input, {
-                            id: inputID.value,
+                        h(Input, mergeProps(isWEB.value ? { id: inputID.value } : {}, {
                             class: 'at-search-bar__input',
                             type: props.inputType,
                             confirmType: 'search',
@@ -195,7 +196,7 @@ const AtSearchBar = defineComponent({
                             onFocus: handleFocus,
                             onInput: handleChange,
                             onConfirm: handleConfirm,
-                        }),
+                        })),
 
                         // clear icon
                         // v-if="props.value" is necessary, otherwise

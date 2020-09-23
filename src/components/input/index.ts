@@ -11,6 +11,7 @@ import {
     KeyboardHeightEventDetail,
 } from "types/input"
 import { ENV_TYPE, getEnv } from "@tarojs/taro"
+import { uuid } from "@/utils/common"
 
 type PickAtInputProps = Pick<AtInputProps, 'maxlength' | 'disabled' | 'password'>
 type GetInputPropsReturn = PickAtInputProps & Pick<InputProps, 'type'>
@@ -133,7 +134,8 @@ const AtInput = defineComponent({
 
     setup(props: AtInputProps, { attrs, slots }) {
         const inputValue = ref(props.value)
-        const inputID = ref('weui-input')
+        const inputID = ref('weui-input' + uuid())
+        const isWEB = ref(getEnv() === ENV_TYPE.WEB)
 
         const inputProps = computed(() => getInputProps(props))
 
@@ -174,9 +176,10 @@ const AtInput = defineComponent({
             if (typeof props.onFocus === 'function') {
                 props.onFocus(e.detail.value, e)
             }
-
-            // hack fix: h5 点击清除按钮后，input value 在数据层被清除，但视图层仍未清除
-            inputID.value = 'weui-input' + String(e.timeStamp).replace('.', '')
+            if (isWEB.value) {
+                // hack fix: h5 点击清除按钮后，input value 在数据层被清除，但视图层仍未清除
+                inputID.value = 'weui-input' + String(e.timeStamp).replace('.', '')
+            }
         }
 
         function handleBlur(e: BaseEventOrig<BlurEventDetail>) {
@@ -201,7 +204,7 @@ const AtInput = defineComponent({
             props.onChange('', e)
 
             // hack fix: h5 点击清除按钮后，input value 在数据层被清除，但视图层仍未清除
-            if (getEnv() === ENV_TYPE.WEB) {
+            if (isWEB.value) {
                 const inputNode = document.querySelector<HTMLInputElement>(`#${inputID.value} > .weui-input`)
                 inputNode!.value = ''
             }
@@ -242,9 +245,8 @@ const AtInput = defineComponent({
                             }, props.title)
                         ),
 
-                        h(Input, {
+                        h(Input, mergeProps(isWEB.value ? { id: inputID.value } : {}, {
                             class: 'at-input__input',
-                            id: inputID.value,
                             name: props.name,
                             type: inputProps.value.type,
                             password: inputProps.value.password,
@@ -266,7 +268,7 @@ const AtInput = defineComponent({
                             onFocus: handleFocus,
                             onConfirm: handleConfirm,
                             onKeyboardHeightChange: handleKeyboardHeightChange,
-                        }),
+                        })),
 
                         (props.clear && props.value) && (
                             h(View, {
