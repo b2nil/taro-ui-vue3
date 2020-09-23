@@ -1,7 +1,7 @@
 import { h, defineComponent, reactive, ref, watch, computed, mergeProps } from 'vue'
 import { Text, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
-import { AtAccordionProps, AtAccordionState } from "types/accordion";
+import { AtAccordionProps, AtAccordionState } from "types/accordion"
 import { delayQuerySelector } from '../../utils/common'
 
 const AtAccordion = defineComponent({
@@ -81,7 +81,7 @@ const AtAccordion = defineComponent({
         })
 
         function handleClick(e: CommonEvent) {
-            contentID.value = 'content' + e.target.id
+            contentID.value = 'content' + String(e.timeStamp).replace('.', '')
             
             if (!isCompleted.value) return
 
@@ -92,7 +92,7 @@ const AtAccordion = defineComponent({
             if (!isCompleted.value || !props.isAnimation) return
 
             isCompleted.value = false
-            delayQuerySelector(this, `#${contentID.value}.at-accordion__body`, 0).then((rect) => {
+            delayQuerySelector(this, `#${contentID.value}.at-accordion__body`, 30).then((rect) => {
                 // @ts-ignore
                 const height = parseInt(rect[0].height.toString())
                 const startHeight = props.open ? 0 : height
@@ -114,7 +114,7 @@ const AtAccordion = defineComponent({
         return () => (
             h(View, mergeProps(attrs, {
                 class: 'at-accordion'
-            }), [
+            }), {default: () => [
                 h(View, {
                     class: headerClass.value,
                     onTap: handleClick
@@ -153,7 +153,7 @@ const AtAccordion = defineComponent({
                         class: 'at-accordion__body'
                     }, slots.default && slots.default())
                 ])
-            ])
+            ]})
         )
     }
 })
