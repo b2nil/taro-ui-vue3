@@ -10,6 +10,7 @@ import {
     InputEventDetail,
     KeyboardHeightEventDetail,
 } from "types/input"
+import { ENV_TYPE, getEnv } from "@tarojs/taro"
 
 type PickAtInputProps = Pick<AtInputProps, 'maxlength' | 'disabled' | 'password'>
 type GetInputPropsReturn = PickAtInputProps & Pick<InputProps, 'type'>
@@ -132,6 +133,7 @@ const AtInput = defineComponent({
 
     setup(props: AtInputProps, { attrs, slots }) {
         const inputValue = ref(props.value)
+        const inputID = ref('weui-input')
 
         const inputProps = computed(() => getInputProps(props))
 
@@ -172,6 +174,9 @@ const AtInput = defineComponent({
             if (typeof props.onFocus === 'function') {
                 props.onFocus(e.detail.value, e)
             }
+
+            // hack fix: h5 点击清除按钮后，input value 在数据层被清除，但视图层仍未清除
+            inputID.value = 'weui-input' + String(e.timeStamp).replace('.', '')
         }
 
         function handleBlur(e: BaseEventOrig<BlurEventDetail>) {
@@ -194,6 +199,13 @@ const AtInput = defineComponent({
 
         function handleClearValue(e: ITouchEvent) {
             props.onChange('', e)
+
+            // hack fix: h5 点击清除按钮后，input value 在数据层被清除，但视图层仍未清除
+            if (getEnv() === ENV_TYPE.WEB) {
+                const inputNode = document.querySelector<HTMLInputElement>(`#${inputID.value} > .weui-input`)
+                inputNode!.value = ''
+            }
+
         }
 
         function handleKeyboardHeightChange(
@@ -232,7 +244,7 @@ const AtInput = defineComponent({
 
                         h(Input, {
                             class: 'at-input__input',
-                            id: props.name,
+                            id: inputID.value,
                             name: props.name,
                             type: inputProps.value.type,
                             password: inputProps.value.password,
