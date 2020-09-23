@@ -311,9 +311,10 @@ export default defineComponent({
     })
 
     const rootStyle = computed(() => {
+      const deviceWidth = Taro.getSystemInfoSync().windowWidth
       return Taro.getEnv() === Taro.ENV_TYPE.WEB
         ? {
-          width: '50%',
+          width: deviceWidth >= 1024 ? '75%' : '100%',
           margin: 'auto'
         }
         : null

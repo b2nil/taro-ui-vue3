@@ -41,7 +41,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, reactive, toRefs } from 'vue'
+import { computed, defineComponent, reactive, ref, toRefs } from 'vue'
 import Taro from '@tarojs/taro'
 import iconAction from '@/assets/images/icon-list-action.png'
 import iconBasic from '@/assets/images/icon-list-basic.png'
@@ -105,10 +105,14 @@ export default defineComponent({
       ]
     })
 
+
+
     const rootStyle = computed(() => {
+      const deviceWidth = Taro.getSystemInfoSync().windowWidth
+
       return Taro.getEnv() === Taro.ENV_TYPE.WEB
         ? {
-          width: '50%',
+          width: deviceWidth >= 1024 ? '75%' : '100%',
           margin: 'auto'
         }
         : null
