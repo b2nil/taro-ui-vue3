@@ -1,4 +1,4 @@
-import { h, defineComponent, computed, mergeProps } from "vue"
+import { h, defineComponent, computed, mergeProps, PropType } from "vue"
 import _forEach from 'lodash/forEach'
 import { View } from '@tarojs/components'
 import { AtFlexProps } from 'types/flex'
@@ -6,58 +6,59 @@ import { AtFlexProps } from 'types/flex'
 import './index.scss'
 
 const AtFlex = defineComponent({
-    name: "AtFlex",
+  name: "AtFlex",
 
-    props: {
-        wrap: {
-            type: String as () => AtFlexProps['wrap'],
-            default: 'no-wrap',
-        },
-        align: {
-            type: String as () => AtFlexProps['align'],
-            default: 'stretch',
-        },
-        justify: {
-            type: String as () => AtFlexProps['justify'],
-            default: 'start',
-        },
-        direction: {
-            type: String as () => AtFlexProps['direction'],
-            default: 'row',
-        },
-        alignContent: {
-            type: String as () => AtFlexProps['alignContent'],
-        },
+  props: {
+    wrap: {
+      type: String as PropType<AtFlexProps['wrap']>,
+      default: 'no-wrap',
     },
+    align: {
+      type: String as PropType<AtFlexProps['align']>,
+      default: 'stretch',
+    },
+    justify: {
+      type: String as PropType<AtFlexProps['justify']>,
+      default: 'start',
+    },
+    direction: {
+      type: String as PropType<AtFlexProps['direction']>,
+      default: 'row',
+    },
+    alignContent: {
+      type: String as PropType<AtFlexProps['alignContent']>,
+      default: 'center'
+    },
+  },
 
-    setup(props: AtFlexProps, { attrs, slots }) {
+  setup(props: AtFlexProps, { attrs, slots }) {
 
-        const rootClass = computed(() => {
-            const root = { 'at-row': true }
+    const rootClass = computed(() => {
+      const root = { 'at-row': true }
 
-            _forEach(props, (value, key) => {
-                switch (key) {
-                    case 'wrap':
-                        root[`at-row--${value}`] = true
-                        return
-                    case 'alignContent':
-                        root[`at-row__align-content--${value}`] = true
-                        return
-                    default:
-                        root[`at-row__${key}--${value}`] = true
-                        return
-                }
-            })
+      _forEach(props, (value, key) => {
+        switch (key) {
+          case 'wrap':
+            root[`at-row--${value}`] = true
+            return
+          case 'alignContent':
+            root[`at-row__align-content--${value}`] = true
+            return
+          default:
+            root[`at-row__${key}--${value}`] = true
+            return
+        }
+      })
 
-            return root
-        })
+      return root
+    })
 
-        return () => (
-            h(View, mergeProps(attrs, {
-                class: rootClass.value
-            }), slots.default && slots.default())
-        )
-    }
+    return () => (
+      h(View, mergeProps(attrs, {
+        class: rootClass.value
+      }), { default: () => slots.default && slots.default() })
+    )
+  }
 })
 
 export default AtFlex

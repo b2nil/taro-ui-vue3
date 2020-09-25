@@ -4,29 +4,31 @@ import { AtModalActionProps } from 'types/modal'
 
 const AtModalAction = defineComponent({
 
-    name: "AtModalAction",
+  name: "AtModalAction",
 
-    props: {
-        isSimple: { type: Boolean, default: false, required: true }
-    },
+  props: {
+    isSimple: { type: Boolean, default: false, required: true }
+  },
 
-    setup(props: AtModalActionProps, { attrs, slots }) {
+  setup(props: AtModalActionProps, { attrs, slots }) {
 
-        const rootClass = computed(() => ({
-            'at-modal__footer': true,
-            'at-modal__footer--simple': props.isSimple
-        }))
+    const rootClass = computed(() => ({
+      'at-modal__footer': true,
+      'at-modal__footer--simple': props.isSimple
+    }))
 
-        return () => (
-            h(View, mergeProps(attrs, {
-                class: rootClass.value
-            }), [
-                h(View, {
-                    class: 'at-modal__action'
-                }, slots.default && slots.default())
-            ])
-        )
-    }
+    return () => (
+      h(View, mergeProps(attrs, {
+        class: rootClass.value
+      }), {
+        default: () => [
+          h(View, {
+            class: 'at-modal__action'
+          }, { default: () => slots.default && slots.default() })
+        ]
+      })
+    )
+  }
 })
 
 export default AtModalAction

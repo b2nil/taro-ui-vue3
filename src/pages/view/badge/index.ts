@@ -28,7 +28,7 @@ export default defineComponent({
                           default: () => [
                             h(AtButton, { size: 'small', circle: true }, {
                               default: () => [
-                                h(Text, null, '按钮')
+                                h(Text, null, { default: () => '按钮' })
                               ]
                             }),
                           ]
@@ -41,7 +41,7 @@ export default defineComponent({
                           default: () => [
                             h(AtButton, { size: 'small', }, {
                               default: () => [
-                                h(Text, null, '按钮')
+                                h(Text, null, { default: () => '按钮' })
                               ]
                             }),
                           ]
@@ -67,7 +67,7 @@ export default defineComponent({
                               circle: true
                             }, {
                               default: () => [
-                                h(Text, null, '按钮')
+                                h(Text, null, { default: () => '按钮' })
                               ]
                             }),
                           ]
@@ -80,7 +80,7 @@ export default defineComponent({
                           default: () => [
                             h(AtButton, { size: 'small', }, {
                               default: () => [
-                                h(Text, null, '按钮')
+                                h(Text, null, { default: () => '按钮' })
                               ]
                             }),
                           ]
@@ -105,7 +105,7 @@ export default defineComponent({
                               size: 'small', circle: true
                             }, {
                               default: () => [
-                                h(Text, null, '按钮')
+                                h(Text, null, { default: () => '按钮' })
                               ]
                             }),
                           ]
@@ -117,7 +117,7 @@ export default defineComponent({
                         h(AtBadge, { value: 'NEW', }, {
                           default: () => [
                             h(AtButton, { size: 'small', }, {
-                              default: () => [h(Text, null, '按钮')]
+                              default: () => [h(Text, null, { default: () => '按钮' })]
                             }),
                           ]
                         }),
@@ -141,7 +141,7 @@ export default defineComponent({
                               size: 'small', circle: true
                             }, {
                               default: () => [
-                                h(Text, null, '按钮')
+                                h(Text, null, { default: () => '按钮' })
                               ]
                             }),
                           ]
@@ -154,7 +154,7 @@ export default defineComponent({
                           default: () => [
                             h(AtButton, { size: 'small', }, {
                               default: () => [
-                                h(Text, null, '按钮')
+                                h(Text, null, { default: () => '按钮' })
                               ]
                             }),
                           ]

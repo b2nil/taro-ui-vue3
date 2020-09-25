@@ -124,7 +124,7 @@ export default defineComponent({
                             onClick: handleHollowClick.bind(this),
                           }, {
                             default: () => [
-                              h(Text, null, '标签')
+                              h(Text, null, { default: () => '标签' })
                             ]
                           })
                         ]
@@ -150,7 +150,7 @@ export default defineComponent({
                             onClick: handleSolidClick.bind(this),
                           }, {
                             default: () => [
-                              h(Text, null, '标签')
+                              h(Text, null, { default: () => '标签' })
                             ]
                           })
                         ]
@@ -176,7 +176,7 @@ export default defineComponent({
                             onClick: onClick.bind(this),
                           }, {
                             default: () => [
-                              h(Text, null, `tag-${index + 1}`)
+                              h(Text, null, { default: () => `tag-${index + 1}` })
                             ]
                           })
                         ]
@@ -191,20 +191,20 @@ export default defineComponent({
               default: () => [
                 h(ExampleItem, null, {
                   default: () => [
-                    h(View, { class: 'subitem' }, [
+                    h(View, { class: 'subitem' }, { default: () => [
                       h(AtTag, { type: 'primary', circle: true, disabled: true }, {
                         default: () => [
-                          h(Text, null, '标签')
+                          h(Text, null, { default: () => '标签' })
                         ]
                       })
-                    ]),
-                    h(View, { class: 'subitem' }, [
+                    ]}),
+                    h(View, { class: 'subitem' }, { default: () => [
                       h(AtTag, { type: 'primary', disabled: true }, {
                         default: () => [
-                          h(Text, null, '标签')
+                          h(Text, null, { default: () => '标签' })
                         ]
                       })
-                    ]),
+                    ]}),
                   ]
                 })
               ]
@@ -226,7 +226,7 @@ export default defineComponent({
                             onClick: handleHollowSmallClick.bind(this),
                           }, {
                             default: () => [
-                              h(Text, null, '标签')
+                              h(Text, null, { default: () => '标签' })
                             ]
                           })
                         ]
@@ -254,7 +254,7 @@ export default defineComponent({
                             onClick: handleSolidSmallClick.bind(this),
                           }, {
                             default: () => [
-                              h(Text, null, '标签')
+                              h(Text, null, { default: () => '标签' })
                             ]
                           })
                         ]
@@ -269,20 +269,20 @@ export default defineComponent({
               default: () => [
                 h(ExampleItem, null, {
                   default: () => [
-                    h(View, { class: 'subitem' }, [
+                    h(View, { class: 'subitem' }, { default: () => [
                       h(AtTag, { size: 'small', type: 'primary', circle: true, disabled: true }, {
                         default: () => [
-                          h(Text, null, '标签')
+                          h(Text, null, { default: () => '标签' })
                         ]
                       })
-                    ]),
-                    h(View, { class: 'subitem' }, [
+                    ]}),
+                    h(View, { class: 'subitem' }, { default: () => [
                       h(AtTag, { size: 'small', type: 'primary', disabled: true }, {
                         default: () => [
-                          h(Text, null, '标签')
+                          h(Text, null, { default: () => '标签' })
                         ]
                       })
-                    ]),
+                    ]}),
                   ]
                 }),
               ]

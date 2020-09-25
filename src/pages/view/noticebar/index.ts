@@ -39,7 +39,7 @@ export default defineComponent({
                 default: () => [
                   h(AtNoticebar, { single: true }, {
                     default: () => [
-                      h(Text, { 'user-select': true }, singleLineText),
+                      h(Text, { 'user-select': true }, { default: () => singleLineText }),
                     ]
                   })
                 ]
@@ -48,7 +48,7 @@ export default defineComponent({
                 default: () => [
                   h(AtNoticebar, null, {
                     default: () => [
-                      h(Text, { 'user-select': true }, multiLineText),
+                      h(Text, { 'user-select': true }, { default: () => multiLineText }),
                     ]
                   })
                 ]
@@ -66,7 +66,7 @@ export default defineComponent({
                       h(Text, {
                         'user-select': true,
                         style: 'white-space: nowrap;'
-                      }, textOnly)
+                      }, { default: () => textOnly })
                     ]
                   })
                 ]
@@ -81,7 +81,7 @@ export default defineComponent({
                       h(Text, {
                         'user-select': true,
                         style: 'white-space: nowrap;'
-                      }, textWithIcon)
+                      }, { default: () => textWithIcon })
                     ]
                   })
                 ]
@@ -94,7 +94,7 @@ export default defineComponent({
                       h(Text, {
                         'user-select': true,
                         style: 'white-space: nowrap;'
-                      }, superLongText)
+                      }, { default: () => superLongText })
                     ]
                   })
                 ]
@@ -109,7 +109,7 @@ export default defineComponent({
                 default: () => [
                   h(AtNoticebar, { icon: 'volume-plus', single: true }, {
                     default: () => [
-                      h(Text, { 'user-select': true }, singleLineText)
+                      h(Text, { 'user-select': true }, { default: () => singleLineText })
                     ]
                   })
                 ]
@@ -120,7 +120,7 @@ export default defineComponent({
                     icon: 'volume-plus'
                   }, {
                     default: () => [
-                      h(Text, { 'user-select': true }, multiLineText)
+                      h(Text, { 'user-select': true }, { default: () => multiLineText })
                     ]
                   })
                 ]
@@ -139,7 +139,7 @@ export default defineComponent({
                     onGotoMore: onGotoMore.bind(this)
                   }, {
                     default: () => [
-                      h(Text, { 'user-select': true }, singleLineText)
+                      h(Text, { 'user-select': true }, { default: () => singleLineText })
                     ]
                   })
                 ]
@@ -154,7 +154,7 @@ export default defineComponent({
                     onGotoMore: onGotoMore.bind(this)
                   }, {
                     default: () => [
-                      h(Text, { 'user-select': true }, singleLineText)
+                      h(Text, { 'user-select': true }, { default: () => singleLineText })
                     ]
                   })
                 ]
@@ -167,7 +167,7 @@ export default defineComponent({
                     onGotoMore: onGotoMore.bind(this)
                   }, {
                     default: () => [
-                      h(Text, { 'user-select': true }, multiLineText)
+                      h(Text, { 'user-select': true }, { default: () => multiLineText })
                     ]
                   })
                 ]
@@ -183,7 +183,7 @@ export default defineComponent({
                   },
                     {
                       default: () => [
-                        h(Text, { 'user-select': true }, multiLineText)
+                        h(Text, { 'user-select': true }, { default: () => multiLineText })
                       ]
                     })
                 ]
@@ -198,7 +198,7 @@ export default defineComponent({
                 default: () => [
                   h(AtNoticebar, { close: true, single: true }, {
                     default: () => [
-                      h(Text, { 'user-select': true }, singleLineText)
+                      h(Text, { 'user-select': true }, { default: () => singleLineText })
                     ]
                   })
                 ]
@@ -208,7 +208,7 @@ export default defineComponent({
                 default: () => [
                   h(AtNoticebar, { close: true, icon: 'volume-plus', single: true }, {
                     default: () => [
-                      h(Text, { 'user-select': true }, singleLineText)
+                      h(Text, { 'user-select': true }, { default: () => singleLineText })
                     ]
                   })
                 ]
@@ -222,7 +222,7 @@ export default defineComponent({
                     onGotoMore: onGotoMore.bind(this),
                   }, {
                     default: () => [
-                      h(Text, { 'user-select': true }, singleLineText)
+                      h(Text, { 'user-select': true }, { default: () => singleLineText })
                     ]
                   })
                 ]
@@ -238,7 +238,7 @@ export default defineComponent({
                     onGotoMore: onGotoMore.bind(this),
                   }, {
                     default: () => [
-                      h(Text, { 'user-select': true }, singleLineText)
+                      h(Text, { 'user-select': true }, { default: () => singleLineText })
                     ]
                   })
                 ]
@@ -248,7 +248,7 @@ export default defineComponent({
                 default: () => [
                   h(AtNoticebar, { close: true }, {
                     default: () => [
-                      h(Text, { 'user-select': true }, multiLineText)
+                      h(Text, { 'user-select': true }, { default: () => multiLineText })
                     ]
                   })
                 ]
@@ -258,7 +258,7 @@ export default defineComponent({
                 default: () => [
                   h(AtNoticebar, { close: true }, {
                     default: () => [
-                      h(Text, { 'user-select': true }, multiLineText)
+                      h(Text, { 'user-select': true }, { default: () => multiLineText })
                     ]
                   })
                 ]
@@ -271,7 +271,7 @@ export default defineComponent({
                     icon: 'volume-plus'
                   }, {
                     default: () => [
-                      h(Text, { 'user-select': true }, multiLineText)
+                      h(Text, { 'user-select': true }, { default: () => multiLineText })
                     ]
                   })
                 ]

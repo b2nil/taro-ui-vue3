@@ -3,16 +3,16 @@ import { View } from '@tarojs/components'
 import { AtActionSheetHeaderProps } from "types/action-sheet"
 
 const AtActionSheetHeader = defineComponent({
-    name: "AtActionSheetHeader",
+  name: "AtActionSheetHeader",
 
-    setup(props: AtActionSheetHeaderProps, { attrs, slots }) {
-        
-        return () => (
-            h(View, mergeProps(attrs, {
-                class: 'at-action-sheet__header'
-            }), slots.default && slots.default())
-        )
-    }
+  setup(props: AtActionSheetHeaderProps, { attrs, slots }) {
+
+    return () => (
+      h(View, mergeProps(attrs, {
+        class: 'at-action-sheet__header'
+      }), { default: () => slots.default && slots.default() })
+    )
+  }
 })
 
 export default AtActionSheetHeader

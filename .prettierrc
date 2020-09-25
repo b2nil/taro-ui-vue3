@@ -1,5 +1,8 @@
 trailingComma: "none"
-tabWidth: 4
+tabWidth: 2
 semi: false
 singleQuote: true
+arrowParens: "always"
+bracketSpacing: true
+jsxBracketSameLine: false
 vueIndentScriptAndStyle: false

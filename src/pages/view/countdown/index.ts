@@ -26,37 +26,45 @@ export default defineComponent({
             /* 一般用法*/
             h(Panel, { title: '一般用法' }, {
               default: () => [
-                h(View, { class: 'panel__content' }, [
-                  h(AtCountdown, {
-                    minutes: 1,
-                    seconds: 10,
-                  })
-                ]),
+                h(View, { class: 'panel__content' }, {
+                  default: () => [
+                    h(AtCountdown, {
+                      minutes: 1,
+                      seconds: 10,
+                    })
+                  ]
+                }),
 
-                h(View, { class: 'panel__content' }, [
-                  h(AtCountdown, {
-                    hours: 48,
-                    minutes: 0,
-                    seconds: 3,
-                  })
-                ]),
+                h(View, { class: 'panel__content' }, {
+                  default: () => [
+                    h(AtCountdown, {
+                      hours: 48,
+                      minutes: 0,
+                      seconds: 3,
+                    })
+                  ]
+                }),
 
-                h(View, { class: 'panel__content' }, [
-                  h(AtCountdown, {
-                    isShowDay: true,
-                    hours: 1,
-                    minutes: 1,
-                    seconds: 10,
-                  })
-                ]),
+                h(View, { class: 'panel__content' }, {
+                  default: () => [
+                    h(AtCountdown, {
+                      isShowDay: true,
+                      hours: 1,
+                      minutes: 1,
+                      seconds: 10,
+                    })
+                  ]
+                }),
 
-                h(View, { class: 'panel__content' }, [
-                  h(AtCountdown, {
-                    isShowHour: false,
-                    minutes: 1,
-                    seconds: 10,
-                  })
-                ])
+                h(View, { class: 'panel__content' }, {
+                  default: () => [
+                    h(AtCountdown, {
+                      isShowHour: false,
+                      minutes: 1,
+                      seconds: 10,
+                    })
+                  ]
+                })
               ]
             }),
 
@@ -74,24 +82,28 @@ export default defineComponent({
             /* 卡片式*/
             h(Panel, { title: '卡片式' }, {
               default: () => [
-                h(View, { class: 'panel__content' }, [
-                  h(AtCountdown, {
-                    isCard: true,
-                    minutes: 1,
-                    seconds: 10
-                  })
-                ]),
+                h(View, { class: 'panel__content' }, {
+                  default: () => [
+                    h(AtCountdown, {
+                      isCard: true,
+                      minutes: 1,
+                      seconds: 10
+                    })
+                  ]
+                }),
 
-                h(View, { class: 'panel__content' }, [
-                  h(AtCountdown, {
-                    isCard: true,
-                    isShowDay: true,
-                    day: 1,
-                    minutes: 1,
-                    seconds: 10,
-                    format: { day: '天', hours: ':', minutes: ':', seconds: '' },
-                  })
-                ])
+                h(View, { class: 'panel__content' }, {
+                  default: () => [
+                    h(AtCountdown, {
+                      isCard: true,
+                      isShowDay: true,
+                      day: 1,
+                      minutes: 1,
+                      seconds: 10,
+                      format: { day: '天', hours: ':', minutes: ':', seconds: '' },
+                    })
+                  ]
+                })
               ]
             }),
 

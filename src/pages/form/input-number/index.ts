@@ -41,7 +41,7 @@ export default defineComponent({
             default: () => [
               h(ExampleItem, null, {
                 default: () => [
-                  h(View, { class: 'example-item__desc' }, 'min=0, max=10, step=1'),
+                  h(View, { class: 'example-item__desc' }, { default: () => 'min=0, max=10, step=1' }),
                   h(AtInputNumber, {
                     min: 0,
                     max: 10,
@@ -59,7 +59,7 @@ export default defineComponent({
             default: () => [
               h(ExampleItem, null, {
                 default: () => [
-                  h(View, { class: 'example-item__desc' }, 'min = 0, max = 10, step = 0.1'),
+                  h(View, { class: 'example-item__desc' }, { default: () => 'min = 0, max = 10, step = 0.1' }),
                   h(AtInputNumber, {
                     type: 'digit',
                     min: 0,
