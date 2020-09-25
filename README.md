@@ -40,8 +40,17 @@ yarn add taro-ui-vue3
 ### 体验 UI Demo
 - `clone` 项目到本地
 - 运行 `yarn install` 安装依赖
-- 运行 `yarn dev:weapp`
-- 在微信开发工具中导入 `dist/weapp`
+- 根据希望体验的平台，运行相关命令：
+  ```json
+  "dev:weapp": "taro build --type weapp --watch",
+  "dev:swan": "npm run build:swan -- --watch",
+  "dev:alipay": "npm run build:alipay -- --watch",
+  "dev:tt": "npm run build:tt -- --watch",
+  "dev:h5": "npm run build:h5 -- --watch",
+  "dev:qq": "npm run build:qq -- --watch",
+  "dev:jd": "npm run build:jd -- --watch",
+  ```
+- 在微信/百度/Alipay/QQ/京东/浏览器等开发工具中导入编译后的相关项目
 
 ### 与 Taro UI 的差异
 - 移除了 Taro UI 组件的 `className` 和 `customStyle` 属性参数，如需通过原 `className` 和 `customStyle` 的方式自定义组件样式，可直接给组件传入 `class` 和 `style` 属性

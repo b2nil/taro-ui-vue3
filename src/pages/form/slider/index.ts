@@ -16,7 +16,7 @@ export default defineComponent({
             default: () => [
               h(ExampleItem, null, {
                 default: () => [
-                  h(View, { class: 'example-item__desc' }, 'step=1'),
+                  h(View, { class: 'example-item__desc' }, { default: () => 'step=1' }),
                   h(AtSlider, { step: 1, value: 50, })
                 ]
               }),
@@ -28,7 +28,7 @@ export default defineComponent({
             default: () => [
               h(ExampleItem, null, {
                 default: () => [
-                  h(View, { class: 'example-item__desc' }, 'step=1'),
+                  h(View, { class: 'example-item__desc' }, { default: () => 'step=1' }),
                   h(AtSlider, { step: 1, value: 50, showValue: true })
                 ]
               }),
@@ -40,7 +40,7 @@ export default defineComponent({
             default: () => [
               h(ExampleItem, null, {
                 default: () => [
-                  h(View, { class: 'example-item__desc' }, 'step = 1, min = 50, max = 200'),
+                  h(View, { class: 'example-item__desc' }, { default: () => 'step = 1, min = 50, max = 200' }),
                   h(AtSlider, {
                     step: 1,
                     value: 100,
@@ -58,7 +58,7 @@ export default defineComponent({
             default: () => [
               h(ExampleItem, null, {
                 default: () => [
-                  h(View, { class: 'example-item__desc' }, 'step = 1, blockSize = 24'),
+                  h(View, { class: 'example-item__desc' }, { default: () => 'step = 1, blockSize = 24' }),
                   h(AtSlider, {
                     step: 1,
                     value: 50,
@@ -77,7 +77,7 @@ export default defineComponent({
             default: () => [
               h(ExampleItem, null, {
                 default: () => [
-                  h(View, { class: 'example-item__desc' }, 'step = 1, blockSize = 24'),
+                  h(View, { class: 'example-item__desc' }, { default: () => 'step = 1, blockSize = 24' }),
                   h(AtSlider, { step: 1, value: 50, showValue: true, disabled: true })
                 ]
               }),

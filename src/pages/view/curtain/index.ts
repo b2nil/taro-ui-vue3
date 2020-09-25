@@ -68,7 +68,7 @@ export default defineComponent({
                       )
                     }, {
                       default: () => [
-                        h(Text, null, '顶部关闭幕帘')
+                        h(Text, null, { default: () => '顶部关闭幕帘' })
                       ]
                     })
                   ]
@@ -89,7 +89,7 @@ export default defineComponent({
                       )
                     }, {
                       default: () => [
-                        h(Text, null, '底部关闭幕帘')
+                        h(Text, null, { default: () => '底部关闭幕帘' })
                       ]
                     })
                   ]
@@ -110,7 +110,7 @@ export default defineComponent({
                       )
                     }, {
                       default: () => [
-                        h(Text, null, '左上关闭幕帘')
+                        h(Text, null, { default: () => '左上关闭幕帘' })
                       ]
                     })
                   ]
@@ -131,7 +131,7 @@ export default defineComponent({
                       )
                     }, {
                       default: () => [
-                        h(Text, null, '右上关闭幕帘')
+                        h(Text, null, { default: () => '右上关闭幕帘' })
                       ]
                     })
                   ]
@@ -152,7 +152,7 @@ export default defineComponent({
                       )
                     }, {
                       default: () => [
-                        h(Text, null, '左下关闭幕帘')
+                        h(Text, null, { default: () => '左下关闭幕帘' })
                       ]
                     })
                   ]
@@ -173,7 +173,7 @@ export default defineComponent({
                       )
                     }, {
                       default: () => [
-                        h(Text, null, '右下关闭幕帘')
+                        h(Text, null, { default: () => '右下关闭幕帘' })
                       ]
                     })
                   ]

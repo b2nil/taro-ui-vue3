@@ -1,4 +1,4 @@
-import { h, defineComponent, computed, mergeProps } from "vue"
+import { h, defineComponent, computed, mergeProps, PropType } from "vue"
 import _chunk from 'lodash/chunk'
 import { Image, View, Text } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types'
@@ -11,11 +11,11 @@ const AtGrid = defineComponent({
   props: {
     // 参数
     data: {
-      type: Array as () => AtGridProps['data'],
+      type: Array as PropType<AtGridProps['data']>,
       default: () => [],
     },
     columnNum: {
-      type: Number as () => AtGridProps['columnNum'],
+      type: Number as PropType<AtGridProps['columnNum']>,
       default: 3,
     },
     hasBorder: {
@@ -23,12 +23,12 @@ const AtGrid = defineComponent({
       default: true,
     },
     mode: {
-      type: String as () => AtGridProps['mode'],
-      default: 'square' as AtGridProps['mode'],
+      type: String as PropType<AtGridProps['mode']>,
+      default: 'square',
     },
     onClick: {
-      type: Function as unknown as () => AtGridProps['onClick'],
-      default: () => (item: AtGridItem, index: number, event: CommonEvent) => { }
+      type: Function as PropType<AtGridProps['onClick']>,
+      default: () => () => { }
     }
   },
 
@@ -135,11 +135,11 @@ const AtGrid = defineComponent({
 
                           h(Text, {
                             class: 'content-inner__text'
-                          }, { default: () => [ childItem.value ]})
+                          }, { default: () => [childItem.value] })
                         ]
-                      })
+                      }),
                     ]
-                  })
+                  }),
                 ]
               })
             ))

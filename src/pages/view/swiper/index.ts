@@ -134,7 +134,7 @@ export default defineComponent({
                               default: () => [
                                 h(View, { class: 'slider-list__item-header' }, {
                                   default: () => [
-                                    h(Text, null, '幻灯片切换时长(ms)')
+                                    h(Text, null, { default: () => '幻灯片切换时长(ms)' })
                                   ]
                                 }),
                                 h(View, { class: 'slider-list__item-body' }, {
@@ -156,7 +156,7 @@ export default defineComponent({
                               default: () => [
                                 h(View, { class: 'slider-list__item-header' }, {
                                   default: () => [
-                                    h(Text, null, '自动播放间隔时长(ms)')
+                                    h(Text, null, { default: () => '自动播放间隔时长(ms)' })
                                   ]
                                 }),
                                 h(View, { class: 'slider-list__item-body' }, {

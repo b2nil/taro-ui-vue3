@@ -17,12 +17,12 @@ export default defineComponent({
                 default: () => [
                   h(View, { class: 'at-article__h1' }, {
                     default: () => [
-                      h(Text, null, '这是一级标题这是一级标题')
+                      h(Text, null, { default: () => '这是一级标题这是一级标题' })
                     ]
                   }),
                   h(View, { class: 'at-article__info' }, {
                     default: () => [
-                      h(Text, null, '2017 - 05 - 07 & nbsp;& nbsp;& nbsp; 这是作者')
+                      h(Text, null, { default: () => '2017 - 05 - 07 & nbsp;& nbsp;& nbsp; 这是作者' })
                     ]
                   }),
                   h(View, { class: 'at-article__content' }, {
@@ -31,22 +31,22 @@ export default defineComponent({
                         default: () => [
                           h(View, { class: 'at-article__h2' }, {
                             default: () => [
-                              h(Text, null, '这是二级标题')
+                              h(Text, null, { default: () => '这是二级标题' })
                             ]
                           }),
                           h(View, { class: 'at-article__h3' }, {
                             default: () => [
-                              h(Text, null, '这是三级标题')
+                              h(Text, null, { default: () => '这是三级标题' })
                             ]
                           }),
                           h(View, { class: 'at-article__p' }, {
                             default: () => [
-                              h(Text, null, '这是文本段落。这是文本段落。这是文本段落。这是文本段落。这是文本段落。这是文本段落。这是文本段落。这是文本段落。这是文本段落。1234567890123456789012345678901234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+                              h(Text, null, { default: () => '这是文本段落。这是文本段落。这是文本段落。这是文本段落。这是文本段落。这是文本段落。这是文本段落。这是文本段落。这是文本段落。1234567890123456789012345678901234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ' })
                             ]
                           }),
                           h(View, { class: 'at-article__p' }, {
                             default: () => [
-                              h(Text, null, '这是文本段落。这是文本段落。')
+                              h(Text, null, { default: () => '这是文本段落。这是文本段落。' })
                             ]
                           }),
                           h(Image, {
@@ -61,17 +61,17 @@ export default defineComponent({
                         default: () => [
                           h(View, { class: 'at-article__h2' }, {
                             default: () => [
-                              h(Text, null, '这是二级标题')
+                              h(Text, null, { default: () => '这是二级标题' })
                             ]
                           }),
                           h(View, { class: 'at-article__h3' }, {
                             default: () => [
-                              h(Text, null, '这是三级标题')
+                              h(Text, null, { default: () => '这是三级标题' })
                             ]
                           }),
                           h(View, { class: 'at-article__p' }, {
                             default: () => [
-                              h(Text, null, '这是文本段落。这是文本段落。这是文本段落。这是文本段落。这是文本段落。这是文本段落。这是文本段落。这是文本段落。这是文本段落。1234567890123456789012345678901234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+                              h(Text, null, { default: () => '这是文本段落。这是文本段落。这是文本段落。这是文本段落。这是文本段落。这是文本段落。这是文本段落。这是文本段落。这是文本段落。1234567890123456789012345678901234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ' })
                             ]
                           }),
                           h(Image, {

@@ -38,16 +38,16 @@ const Page = defineComponent({
         default: () => [
           h(View, {
             class: 'doc-header'
-          }, [
+          }, { default: () => [
             h(View, {
               class: 'doc-header__title'
-            }, props.headerTitle)
-          ]),
+            }, { default: () => props.headerTitle })
+          ]}),
 
           h(View, {
             class: 'doc-body',
             style: attrs.style
-          }, slots.default && slots.default()),
+          }, { default: () => slots.default && slots.default() }),
 
           slots.extra && slots.extra(),
         ]
@@ -81,14 +81,14 @@ const Panel = defineComponent({
       default: () => [
         props.title && h(View, {
           class: 'panel__title'
-        }, props.title),
+        }, { default: () => props.title }),
 
         slots.controller && slots.controller(),
 
         h(View, {
           class: contentClass.value,
           style: attrs.style
-        }, slots.default && slots.default())
+        }, { default: () => slots.default && slots.default() })
       ]
     })
   }
@@ -100,7 +100,7 @@ const ExampleItem = defineComponent({
   setup(props, { slots, attrs }) {
     return () => h(View, mergeProps(attrs, {
       class: 'example-item'
-    }), slots.default && slots.default())
+    }), { default: () => slots.default && slots.default() })
   }
 })
 

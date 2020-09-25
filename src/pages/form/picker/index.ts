@@ -84,7 +84,7 @@ export default defineComponent({
                       default: () => [
                         h(View, { class: 'demo-list-item' }, {
                           default: () => [
-                            h(View, { class: 'demo-list-item__label' }, '国家地区'),
+                            h(View, { class: 'demo-list-item__label' }, { default: () => '国家地区' }),
                             h(View, { class: 'demo-list-item__value' }, {
                               default: () =>
                                 selector[selectorValue]

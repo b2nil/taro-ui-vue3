@@ -3,16 +3,16 @@ import { View } from '@tarojs/components'
 import { AtActionSheetBodyProps } from "types/action-sheet";
 
 const AtActionSheetBody = defineComponent({
-    name: "AtActionSheetBody",
+  name: "AtActionSheetBody",
 
-    setup(props: AtActionSheetBodyProps, { attrs, slots }) {
+  setup(props: AtActionSheetBodyProps, { attrs, slots }) {
 
-        return () => (
-            h(View, mergeProps(attrs, {
-                class: 'at-action-sheet__body'
-            }), slots.default && slots.default())
-        )
-    }
+    return () => (
+      h(View, mergeProps(attrs, {
+        class: 'at-action-sheet__body'
+      }), { default: () => slots.default && slots.default() })
+    )
+  }
 })
 
 export default AtActionSheetBody

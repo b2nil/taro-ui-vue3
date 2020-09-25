@@ -93,7 +93,7 @@ export default defineComponent({
               default: () => [
                 h(ExampleItem, null, {
                   default: () => [
-                    h(View, null, '评分: 3.5'),
+                    h(View, null, { default: () => '评分: 3.5' }),
                     h(View, null, {
                       default: () => [
                         h(AtRate, { value: 3.5 })
