@@ -11,7 +11,7 @@ const AtCurtain = defineComponent({
     isOpened: Boolean,
     closeBtnPosition: {
       type: String as PropType<AtCurtainProps['closeBtnPosition']>,
-      default: 'bottom' as PropType<AtCurtainProps['closeBtnPosition']>
+      default: 'bottom'
     },
     // 事件
     onClose: {
