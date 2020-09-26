@@ -76,10 +76,9 @@ yarn add taro-ui-vue3
   - Taro Issue [#7293](https://github.com/NervJS/taro/issues/7293): Taro 3 百度小程序每次 setData 都会导致页面全量重新渲染，导致图片闪烁、输入框无法正常使用等问题
 
 - H5 端
-  - Taro 的适配 Vue 3.0 的组件全部通过 `app.component` 注册为全局组件 `taro-xxx`，但使用 render 函数渲染 `taro-xxx-core` 或 `taro-xxx` 组件节点后, onTap 不能触发点击事件 [Taro issue #7329](https://github.com/NervJS/taro/issues/7329)
-  - 已经向 Taro 方面提交 [PR #7699](https://github.com/NervJS/taro/pull/7699)，希望 Taro 能够将适配 Vue 3.0 的组件全部导出，按需引用。
+  - Taro 适配 Vue 3.0 的组件, 在 `@tarojs/components/dist-h5/vue3/index.js` 中通过 `initVue3Components` 方法以 `taro-xxx` 的标签注册为全局组件。使用 `render` 函数渲染节点时，需要引用 vue 3.0 提供的 `resolveComponent` 方法，先将标签 `taro-xxx` 解析为组件实例： `h(resolveComponent('taro-xxx'))`。但是 `taro-ui-vue3` 暂时没有采用 `resolveComponent` 对 h5 进行适配。
 
-  - 若开发者使用 `taro-ui-vue3` 时有兼容 h5 的需求，在 Taro 官方没有正式采纳 PR 或采用别的方式解决问题之前，可采用以下 h5 编译配置方案：
+  - 为了方便起见，使用 `taro-ui-vue3` 的项目编译至 h5 时，暂时需要使用脚本先修改 `@tarojs/components/dist-h5/vue3/index.js`， 将所有组件导出，方便按需引用。然后通过 webpack 配置 `alias` 将 `@tarojs/components$` 指向  `@tarojs/components/dist-h5/vue3/index.js`。 具体 h5 编译配置方案如下：
 
       - 在项目的 config 目录下增加一个 h5 构建脚本: [h5-building-script.js](./config/h5-building-script.js)
 
@@ -88,11 +87,19 @@ yarn add taro-ui-vue3
 
       - 在 [config/index.js](./config/index.js) 中的 `h5` 下添加 webpack `alias` 设置：
       ```typescript
-      webpackChain(chain) {
-        chain.resolve.alias
-          .set('@tarojs/components$', path.resolve(__dirname, '..','node_modules/@tarojs/components/dist-h5/vue3/index.js'))
-          .set('@tarojs/components/dist/taro-components/taro-components.css', path.resolve(__dirname, '..','node_modules/@tarojs/components/dist/taro-components/taro-components.css'))
-      }
+      h5: {
+        webpackChain(chain) {
+          chain.resolve.alias
+            .set(
+              '@tarojs/components$', 
+              path.resolve(__dirname, '..','node_modules/@tarojs/components/dist-h5/vue3/index.js')
+            )
+            .set(
+              '@tarojs/components/dist/taro-components/taro-components.css',
+              path.resolve(__dirname, '..','node_modules/@tarojs/components/dist/taro-components/taro-components.css')
+            )
+        }
+      }      
       ```
   
 

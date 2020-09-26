@@ -1,4 +1,4 @@
-import { h, defineComponent, computed, mergeProps } from "vue"
+import { h, defineComponent, computed, mergeProps, resolveComponent } from "vue"
 import { View } from "@tarojs/components"
 import Taro from "@tarojs/taro"
 import "./index.scss"
@@ -29,7 +29,6 @@ const Page = defineComponent({
         }
         : null
     })
-
     return () => (
       h(View, {
         class: rootClasses.value,
