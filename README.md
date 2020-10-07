@@ -10,11 +10,9 @@
 
 采用 `Vue 3.0` 重写的 [Taro UI](https://github.com/NervJS/taro-ui) 组件库。
 
-> 组件样式和类型复用了 `Taro UI` 已有的样式和类型定义，体验使用时，可参考 [Taro UI 的文档](https://taro-ui.jd.com/#/docs/introduction)。
+> 组件样式和类型复用了 `Taro UI` 已有的样式和类型定义，体验使用时，可参考 [文档](https://b2nil.github.io/taro-ui-vue3/docs/introduction)。
 
-> 所有组件均采用 `Vue 3.0` 的渲染函数写成，未使用 `Vue Template` 或 `jsx`。
-
-> 组件只在小程序端试用过，目前百度小程序适配问题较多，h5 端的使用仍然存在问题。
+> 所有组件均采用 `Vue 3.0` 的渲染函数编写，未使用 `Vue Template` 或 `jsx`。
 
 ### 安装
 ```bash
@@ -34,7 +32,7 @@ yarn add taro-ui-vue3
   }
   ```
 - 语法遵照 `vue 3.0` 的语法
-- 目前没有单独文档，除了[与 Taro UI 有差异](#与-Taro-UI-的差异)的地方外, 具体参数可参考 [Taro UI 的文档](https://taro-ui.jd.com/#/docs/introduction)
+- 具体参数可参考 [文档](https://b2nil.github.io/taro-ui-vue3/docs/introduction)
 - 亦可参考 [Demo Pages](./src/pages) 的写法
 
 ### 体验 UI Demo
@@ -67,9 +65,11 @@ yarn add taro-ui-vue3
 
 ## 已知问题
 - Alipay 小程序端
-  - `AtCalendar`: 由于 Taro 的 `Swiper` 组件暂不支持支付宝内置 `Swiper` 组件的 `onAnimationEnd` 属性， 编译后，需手动修改 `base.axml` 中的 `<template  name="tmpl_0_swiper">` 基础模板, 将 `swiper` 节点中的 `onAnimationFinish` 修改为 `onAnimationEnd`， 否则滑动切换时不能更新月份
+  - `AtCalendar`:
+    - 由于 Taro 的 `Swiper` 组件暂不支持支付宝内置 `Swiper` 组件的 `onAnimationEnd` 属性， 编译后，需手动修改 `base.axml` 中的 `<template  name="tmpl_0_swiper">` 基础模板, 将 `swiper` 节点中的 `onAnimationFinish` 修改为 `onAnimationEnd`， 否则滑动切换时不能更新月份
 
-  - `AtTextarea`: 由于 Taro 的 `Textarea` 组件不支持支付宝 `textarea` 组件的 `show-count` 属性，所以字数统计不能通过设置 :count="false" 直接关闭， 需要手动修改编译后的 `base.axml`, 在 `<template name="tmpl_0_textarea_focus">` 和 `<template name="tmpl_0_textarea_blur">` 基础模板下的 `textarea` 节点中添加 `show-count="{{i.showCount}}"`
+  - `AtTextarea`: 
+    - 由于 Taro 的 `Textarea` 组件不支持支付宝 `textarea` 组件的 `show-count` 属性，所以字数统计不能通过设置 `:count="false"` 直接关闭， 需要手动修改编译后的 `base.axml`, 在 `<template name="tmpl_0_textarea_focus">` 和 `<template name="tmpl_0_textarea_blur">` 基础模板下的 `textarea` 节点中添加 `show-count="{{i.showCount}}"`
 
 - 百度 Swan 小程序端 (问题较多，影响体验)
   - 部分样式失效
