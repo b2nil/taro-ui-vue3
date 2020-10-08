@@ -85,6 +85,9 @@ const config = {
       chain.resolve.alias
         .set('@tarojs/components$', path.resolve(__dirname, '..','node_modules/@tarojs/components/dist-h5/vue3/index.js'))
         .set('@tarojs/components/dist/taro-components/taro-components.css', path.resolve(__dirname, '..','node_modules/@tarojs/components/dist/taro-components/taro-components.css'))
+    },
+    router: {
+      mode: 'browser'
     }
   }
 }
