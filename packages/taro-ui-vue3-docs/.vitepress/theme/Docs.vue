@@ -114,8 +114,10 @@ export default {
     const siteData = useSiteData()
     const curDemoPath = computed(() => getDemoPath())
 
-    watch(() => curDemoPath, () => {
-      atMarkdownRef.value.scrollTo(0, 0)
+    watch(() => route.path, (path, prevPath) => {
+      if (prevPath !== path) {
+        atMarkdownRef.value.scrollTop = 0
+      }
     })
 
     function getDemoPath() {
