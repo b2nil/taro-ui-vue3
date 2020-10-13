@@ -26,7 +26,7 @@ import { AtIndexes } from 'taro-ui-vue3'
 * AtIndexes 需要父节点设置高度，如果想整个高度屏幕高度都铺满，设置 `height: 100vh`。
 
 
-```vue
+```html
 <template>
   <view class="page" style="height: 100vh;">
     <!-- 基础用法 -->
@@ -59,7 +59,7 @@ import { AtIndexes } from 'taro-ui-vue3'
 
 ##### html
 
-```vue
+```html
 <template>
   <view>
     <AtIndexes

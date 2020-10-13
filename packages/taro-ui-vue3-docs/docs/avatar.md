@@ -25,7 +25,7 @@ import { AtAvatar } from 'taro-ui-vue3'
 ## 用法
 
 
-```vue
+```html
 <template>
   <view>
     <AtAvatar image='https://jdc.jd.com/img/200'></AtAvatar>

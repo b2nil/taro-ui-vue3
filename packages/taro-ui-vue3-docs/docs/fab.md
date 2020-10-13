@@ -28,7 +28,7 @@ import { AtFab } from 'taro-ui-vue3'
 
 > 浮动按钮默认不会脱离文档流，请自行包含一个父元素并设置 `fixed` 定位
 
-```vue
+```html
 <AtFab>
   <text class='at-fab__icon at-icon at-icon-menu'></text>
 </AtFab>
@@ -36,7 +36,7 @@ import { AtFab } from 'taro-ui-vue3'
 
 ## 点击事件
 
-```vue
+```html
 <AtFab @click="onButtonClick">
   <text class='at-fab__icon at-icon at-icon-menu'></text>
 </AtFab>

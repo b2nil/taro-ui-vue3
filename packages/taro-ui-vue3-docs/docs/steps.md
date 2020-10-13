@@ -24,7 +24,7 @@ import { AtSteps } from 'taro-ui-vue3'
 * 该组件为受控组件，开发者需要通过 onChange 事件来更新 current 值变化，current 与 onChange 函数必填
 
 
-``` vue
+```html
 <template>
   <view class='example-item'>
     <AtSteps
@@ -62,7 +62,7 @@ export default {
 ## 自定义图标
 
 
-```vue
+```html
 <template>
   <view class='example-item'>
     <AtSteps
@@ -126,7 +126,7 @@ export default {
 ## 状态步骤条
 
 
-```vue
+```html
 <template>
   <view class='example-item'>
     <AtSteps

@@ -33,7 +33,7 @@ import { AtTabBar } from 'taro-ui-vue3'
 * 该组件为受控组件，开发者需要通过 onClick 事件来更新 current 值变化，current 与 onClick 函数必填
 
 
-```vue
+```html
 <template>
   <view>
     <AtTabBar

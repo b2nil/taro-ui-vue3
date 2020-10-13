@@ -33,7 +33,7 @@ import { AtImagePicker } from 'taro-ui-vue3'
 * 开发者可以获取 files 数据并通过 [Taro.uploadFile](https://developers.weixin.qq.com/miniprogram/dev/api/network/upload/wx.uploadFile.html) 上传图片
 
 
-``` vue
+```html
 <template>
   <view>
     <AtImagePicker
@@ -86,7 +86,7 @@ export default {
 ## 多选图片
 
 
-```vue
+```html
 <template>
   <view>
     <AtImagePicker
@@ -104,7 +104,7 @@ export default {
 ## 自定义数量
 
 
-```vue
+```html
 <template>
   <view>
     <AtImagePicker
@@ -123,7 +123,7 @@ export default {
 ## 多种图片预览模式
 
 
-```vue
+```html
 <template>
   <view>
     <AtImagePicker

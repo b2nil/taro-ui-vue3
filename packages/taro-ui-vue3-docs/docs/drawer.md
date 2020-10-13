@@ -21,7 +21,7 @@ import { AtDrawer } from 'taro-ui-vue3'
 
 ## 用法
 
-```vue
+```html
 <AtDrawer 
   :show="show" 
   mask 
@@ -32,7 +32,7 @@ import { AtDrawer } from 'taro-ui-vue3'
 
 ## 右边弹出
 
-```vue
+```html
 <AtDrawer 
   :show="show" 
   right 
@@ -44,7 +44,7 @@ import { AtDrawer } from 'taro-ui-vue3'
 
 ## 自定义内容
 
-```vue
+```html
 <AtDrawer
   :show="show"
   mask

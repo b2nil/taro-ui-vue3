@@ -20,7 +20,7 @@ import { AtBadge } from 'taro-ui-vue3'
 
 ## 用法
 
-```vue
+```html
 <template>
   <AtBadge :value="10" :maxValue="99">
     <AtButton size='small'>按钮</AtButton>
@@ -30,7 +30,7 @@ import { AtBadge } from 'taro-ui-vue3'
 
 ## 小红点与文本
 
-```vue
+```html
 <template>
   <view>
     <AtBadge dot>

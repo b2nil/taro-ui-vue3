@@ -32,7 +32,7 @@ import { AtSearchBar } from 'taro-ui-vue3'
 * 由于此组件是基于小程序的 Input 进行封装，该组件是原生组件，使用前请阅读[使用限制](https://developers.weixin.qq.com/miniprogram/dev/component/native-component.html)
 
 
-```vue
+```html
 <template>
   <AtSearchBar
     :value="value1"
@@ -64,7 +64,7 @@ export default {
 ## 自定义按钮文字和点击事件
 
 
-```vue
+```html
 <template>
   <AtSearchBar
     actionName='搜一下'
@@ -97,7 +97,7 @@ export default {
 ## 一直显示按钮
 
 
-```vue
+```html
 <template>
    <AtSearchBar
       placeholder='请输入ISBN号'
@@ -131,7 +131,7 @@ export default {
 ## 自定义输入框类型
 
 
-```vue
+```html
 <template>
   <AtSearchBar
     placeholder='请输入数字'

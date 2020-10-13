@@ -55,7 +55,7 @@
           </div>
         </div>
 
-        <Content />
+        <Content class="theme" />
 
         <div
           v-if="curDemoPath"
@@ -84,12 +84,10 @@
 
 <script>
 import { computed, watch, ref } from 'vue'
-import { useRoute } from 'vitepress'
+import { useRoute, useSiteData } from 'vitepress'
 import QrcodeVue from "./components/QrcodeVue.js"
 import NavBar from './components/NavBar.vue'
 import SideBar from './components/SideBar.vue'
-
-import hljs from "highlight.js"
 
 import navsConfig from '../nav.config.json'
 import { default as pathMap } from '../page-route'
@@ -108,15 +106,12 @@ export default {
     QrcodeVue
   },
 
-  mounted() {
-    hljs.initHighlightingOnLoad()
-  },
-
   setup(props) {
     const fixed = ref(false)
     const atMarkdownRef = ref(null)
     const data = ref(navsConfig.components)
     const route = useRoute()
+    const siteData = useSiteData()
     const curDemoPath = computed(() => getDemoPath())
 
     watch(() => curDemoPath, () => {
@@ -126,12 +121,14 @@ export default {
     function getDemoPath() {
       const pathname = route.path.replace(".html", "")
       const result = pathname.split('/')
-      const curDemoPath = result.length > 1 ? pathMap[result[3]] : ''
+      const index = siteData.value.base === '/' ? 2 : 3
+      const curDemoPath = result.length > 1 ? pathMap[result[index]] : ''
       return curDemoPath
     }
 
     function getIframeURL() {
-      // const host = process.env.NODE_ENV !== 'production' ? 'http://localhost:10086' : 'http://taro-ui-vue3-demo.com'
+      // TODO: deploy a H5 build and add host URL here
+      // Use taro-ui.aotu.io for the time being
       const host = 'https://taro-ui.aotu.io/h5/index.html#'
       const curDemoPath = getDemoPath()
       return `${host}/pages/${curDemoPath}/index`

@@ -26,7 +26,7 @@ import { AtProgress } from 'taro-ui-vue3'
 ## 一般用法
 
 
-```vue
+```html
 <template>
   <AtProgress />
 </template>
@@ -41,7 +41,7 @@ export default {
 ## 传入当前进度
 
 
-```vue
+```html
 <template>
  <view>
   <AtProgress :percent="25" />
@@ -60,7 +60,7 @@ export default {
 ## 是否隐藏信息
 
 
-```vue
+```html
 <template>
  <view>
   <AtProgress :percent="25" isHidePercent />
@@ -73,7 +73,7 @@ export default {
 ## 自定义进度条的线宽
 
 
-```vue
+```html
 <template>
  <view>
   <AtProgress :percent="25" :strokeWidth="6" />
@@ -87,7 +87,7 @@ export default {
 ## 自定义进度条颜色
 
 
-```vue
+```html
 <template>
  <view>
   <AtProgress :percent="25" color='#FF4949' />
@@ -101,7 +101,7 @@ export default {
 ## 传入不同的状态
 
 
-```vue
+```html
 <template>
  <view>
   <AtProgress :percent="75" status='error' />

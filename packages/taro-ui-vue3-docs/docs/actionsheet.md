@@ -25,7 +25,7 @@ import { AtActionSheet, AtActionSheetItem } from 'taro-ui-vue3'
 ## 一般用法
 
 
-```vue
+```html
 <template>
   <AtActionSheet
     :isOpened="isOpened1"
@@ -77,7 +77,7 @@ export default {
 ## 添加标题和底部取消按钮
 
 
-```vue
+```html
 <template>
   <AtActionSheet
     cancelText='取消'
@@ -102,7 +102,7 @@ export default {
 ## 添加监听事件
 
 
-```vue
+```html
 <template>
   <AtActionSheet
     cancelText='取消'

@@ -19,7 +19,7 @@ import { AtForm } from 'taro-ui-vue3'
 
 ## 一般用法
 
-```vue
+```html
 <template>
   <view>
     <AtForm>

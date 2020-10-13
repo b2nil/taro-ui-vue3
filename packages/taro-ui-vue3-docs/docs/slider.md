@@ -24,7 +24,7 @@ import { AtSlider } from 'taro-ui-vue3'
 ## 一般用法
 
 
-```vue
+```html
 <template>
  <view>
   <AtSlider />
@@ -36,7 +36,7 @@ import { AtSlider } from 'taro-ui-vue3'
 ## 传入当前值
 
 
-```vue
+```html
 <template>
  <view>
   <AtSlider :value="50" />
@@ -50,7 +50,7 @@ import { AtSlider } from 'taro-ui-vue3'
 取值必须大于 0，并且可被(max - min)整除
 
 
-```vue
+```html
 <template>
  <view>
   <AtSlider :step="2" />
@@ -62,7 +62,7 @@ import { AtSlider } from 'taro-ui-vue3'
 ## 设置取值范围
 
 
-```vue
+```html
 <template>
  <view>
   <AtSlider :min="2" :max="60" />
@@ -74,7 +74,7 @@ import { AtSlider } from 'taro-ui-vue3'
 ## 自定义样式
 
 
-```vue
+```html
 <template>
  <view>
   <AtSlider :step="1" :value="50" :blockSize="24 activeColor='#4285F4' backgroundColor='#BDBDBD' blockColor='#4285F4'/>
@@ -86,7 +86,7 @@ import { AtSlider } from 'taro-ui-vue3'
 ## 禁用状态
 
 
-```vue
+```html
 <template>
  <view>
   <AtSlider :step="1" :value="50" :blockSize="24 showValue disabled/>

@@ -9,10 +9,16 @@
 用于标识品牌颜色
 
 <div class="row no-gutter">
-  <div class="col-sm-12 col-md-6 col-lg-5">
-    <div class="at-color-container" style="background-color: #6190E8;">
-      <p class="color-name">Brand Color</p>
-      <p class="color-value">#6190E8</p>
+  <div class="color-list">
+    <div class="color-item" >
+      <div class="color-item__circle" style="background: #6190E8;">
+        <div class="inner-circle-1" />
+        <div class="inner-circle-2"/>
+      </div>
+      <div class="color-item__info">
+        <p class="color-name">Brand Color</p>
+        <p class="color-value">#6190E8</p>
+      </div>
     </div>
   </div>
 </div>
@@ -22,28 +28,56 @@
 用于标识状态的按钮等
 
 <div class="row no-gutter">
-  <div class="col-sm-12 col-md-6 col-lg-5">
-    <div class="at-color-container" style="background-color: #13CE66;">
-      <p class="color-name">Green - Positive</p>
-      <p class="color-value">#13CE66</p>
+  <!-- Green - Positive -->
+  <div class="color-list">
+    <div class="color-item" >
+      <div class="color-item__circle" style="background: #13CE66;">
+        <div class="inner-circle-1" />
+        <div class="inner-circle-2"/>
+      </div>
+      <div class="color-item__info">
+        <p class="color-name">Green - Positive</p>
+        <p class="color-value">#13CE66</p>
+      </div>
     </div>
   </div>
-  <div class="col-sm-12 col-md-6 col-lg-5">
-    <div class="at-color-container" style="background-color: #FF4949;">
-      <p class="color-name">Red - Negative</p>
-      <p class="color-value">#FF4949</p>
+  <!-- Red - negative -->
+  <div class="color-list">
+    <div class="color-item" >
+      <div class="color-item__circle" style="background: #FF4949;">
+        <div class="inner-circle-1" />
+        <div class="inner-circle-2"/>
+      </div>
+      <div class="color-item__info">
+        <p class="color-name">Red - Negative</p>
+        <p class="color-value">#FF4949</p>
+      </div>
     </div>
   </div>
-  <div class="col-sm-12 col-md-6 col-lg-5">
-    <div class="at-color-container" style="background-color: #FFC82C;">
-      <p class="color-name c-dark">Yellow - Warning</p>
-      <p class="color-value c-dark">#FFC82C</p>
+  <!-- Yellow - Warning -->
+  <div class="color-list">
+    <div class="color-item" >
+      <div class="color-item__circle" style="background: #FFC82C;">
+        <div class="inner-circle-1" />
+        <div class="inner-circle-2"/>
+      </div>
+      <div class="color-item__info">
+        <p class="color-name">Yellow - Warning</p>
+        <p class="color-value">#FFC82C</p>
+      </div>
     </div>
   </div>
-  <div class="col-sm-12 col-md-6 col-lg-5">
-    <div class="at-color-container" style="background-color: #78A4FA;">
-      <p class="color-name">Blue - Info</p>
-      <p class="color-value">#78A4FA</p>
+  <!-- Blue - Info -->
+  <div class="color-list">
+    <div class="color-item" >
+      <div class="color-item__circle" style="background: #78A4FA;">
+        <div class="inner-circle-1" />
+        <div class="inner-circle-2"/>
+      </div>
+      <div class="color-item__info">
+        <p class="color-name">Blue - Info</p>
+        <p class="color-value">#78A4FA</p>
+      </div>
     </div>
   </div>
 </div>
@@ -53,28 +87,52 @@
 用于不那么重要的信息等
 
 <div class="row no-gutter">
-  <div class="col-sm-12 col-md-6 col-lg-5">
-    <div class="at-color-container" style="background-color: #C2ABC7;">
-      <p class="color-name">Roof</p>
-      <p class="color-value">#C2ABC7</p>
+  <div class="color-list">
+    <div class="color-item" >
+      <div class="color-item__circle" style="background: #C2ABC7;">
+        <div class="inner-circle-1" />
+        <div class="inner-circle-2"/>
+      </div>
+      <div class="color-item__info">
+        <p class="color-name">Roof</p>
+        <p class="color-value">#C2ABC7</p>
+      </div>
     </div>
   </div>
-  <div class="col-sm-12 col-md-6 col-lg-5">
-    <div class="at-color-container" style="background-color: #F0D0D5;">
-      <p class="color-name c-dark">Curtain</p>
-      <p class="color-value c-dark">#F0D0D5</p>
+  <div class="color-list">
+    <div class="color-item" >
+      <div class="color-item__circle" style="background: #F0D0D5;">
+        <div class="inner-circle-1" />
+        <div class="inner-circle-2"/>
+      </div>
+      <div class="color-item__info">
+        <p class="color-name">Curtain</p>
+        <p class="color-value">#F0D0D5</p>
+      </div>
     </div>
   </div>
-  <div class="col-sm-12 col-md-6 col-lg-5">
-    <div class="at-color-container" style="background-color: #F1E4ED;">
-      <p class="color-name c-dark">Door</p>
-      <p class="color-value c-dark">#F1E4ED</p>
+  <div class="color-list">
+    <div class="color-item" >
+      <div class="color-item__circle" style="background: #F1E4ED;">
+        <div class="inner-circle-1" />
+        <div class="inner-circle-2"/>
+      </div>
+      <div class="color-item__info">
+        <p class="color-name">Door</p>
+        <p class="color-value">#F1E4ED</p>
+      </div>
     </div>
   </div>
-  <div class="col-sm-12 col-md-6 col-lg-5">
-    <div class="at-color-container" style="background-color: #EEF0F0;">
-      <p class="color-name c-dark">Wall</p>
-      <p class="color-value c-dark">#EEF0F0</p>
+  <div class="color-list">
+    <div class="color-item" >
+      <div class="color-item__circle" style="background: #EEF0F0;">
+        <div class="inner-circle-1" />
+        <div class="inner-circle-2"/>
+      </div>
+      <div class="color-item__info">
+        <p class="color-name">Wall</p>
+        <p class="color-value">#EEF0F0</p>
+      </div>
     </div>
   </div>
 </div>
@@ -84,46 +142,88 @@
 用于文本、背景和边框
 
 <div class="row no-gutter">
-  <div class="col-sm-12 col-md-6 col-lg-5">
-    <div class="at-color-container" style="background-color: #2C405A;">
-      <p class="color-name">Header 标题</p>
-      <p class="color-value">#2C405A</p>
+  <div class="color-list">
+    <div class="color-item" >
+      <div class="color-item__circle" style="background: #2C405A;">
+        <div class="inner-circle-1" />
+        <div class="inner-circle-2"/>
+      </div>
+      <div class="color-item__info">
+        <p class="color-name">Header 标题</p>
+        <p class="color-value">#2C405A</p>
+      </div>
     </div>
   </div>
-  <div class="col-sm-12 col-md-6 col-lg-5">
-    <div class="at-color-container" style="background-color: #3F536E;">
-      <p class="color-name">正文字体 - 黑</p>
-      <p class="color-value">#3F536E</p>
+  <div class="color-list">
+    <div class="color-item" >
+      <div class="color-item__circle" style="background: #3F536E;">
+        <div class="inner-circle-1" />
+        <div class="inner-circle-2"/>
+      </div>
+      <div class="color-item__info">
+        <p class="color-name">正文字体 - 黑</p>
+        <p class="color-value">#3F536E</p>
+      </div>
     </div>
   </div>
-  <div class="col-sm-12 col-md-6 col-lg-5">
-    <div class="at-color-container" style="background-color: #8DABC4;">
-      <p class="color-name">正文字体 - 灰</p>
-      <p class="color-value">#8DABC4</p>
+  <div class="color-list">
+    <div class="color-item" >
+      <div class="color-item__circle" style="background: #8DABC4;">
+        <div class="inner-circle-1" />
+        <div class="inner-circle-2"/>
+      </div>
+      <div class="color-item__info">
+        <p class="color-name">正文字体 - 灰</p>
+        <p class="color-value">#8DABC4</p>
+      </div>
     </div>
   </div>
-  <div class="col-sm-12 col-md-6 col-lg-5">
-    <div class="at-color-container" style="background-color: #A8C6DF;">
-      <p class="color-name">图标</p>
-      <p class="color-value">#A8C6DF</p>
+  <div class="color-list">
+    <div class="color-item" >
+      <div class="color-item__circle" style="background: #A8C6DF;">
+        <div class="inner-circle-1" />
+        <div class="inner-circle-2"/>
+      </div>
+      <div class="color-item__info">
+        <p class="color-name">图标</p>
+        <p class="color-value">#A8C6DF</p>
+      </div>
     </div>
   </div>
-  <div class="col-sm-12 col-md-6 col-lg-5">
-    <div class="at-color-container" style="background-color: #C5D9E8;">
-      <p class="color-name">边框</p>
-      <p class="color-value">#C5D9E8</p>
+  <div class="color-list">
+    <div class="color-item" >
+      <div class="color-item__circle" style="background: #C5D9E8;">
+        <div class="inner-circle-1" />
+        <div class="inner-circle-2"/>
+      </div>
+      <div class="color-item__info">
+        <p class="color-name">边框</p>
+        <p class="color-value">#C5D9E8</p>
+      </div>
     </div>
   </div>
-  <div class="col-sm-12 col-md-6 col-lg-5">
-    <div class="at-color-container" style="background-color: #ECF5FD;">
-      <p class="color-name c-dark">背景色 - 浅蓝</p>
-      <p class="color-value c-dark">#ECF5FD</p>
+  <div class="color-list">
+    <div class="color-item" >
+      <div class="color-item__circle" style="background: #ECF5FD;">
+        <div class="inner-circle-1" />
+        <div class="inner-circle-2"/>
+      </div>
+      <div class="color-item__info">
+        <p class="color-name">背景色 - 浅蓝</p>
+        <p class="color-value">#ECF5FD</p>
+      </div>
     </div>
   </div>
-  <div class="col-sm-12 col-md-6 col-lg-5">
-    <div class="at-color-container" style="background-color: #FAFBFC;">
-      <p class="color-name c-dark">背景色 - 米白</p>
-      <p class="color-value c-dark">#FAFBFC</p>
+  <div class="color-list">
+    <div class="color-item" >
+      <div class="color-item__circle" style="background: #FAFBFC;">
+        <div class="inner-circle-1" />
+        <div class="inner-circle-2"/>
+      </div>
+      <div class="color-item__info">
+        <p class="color-name">背景色 - 米白</p>
+        <p class="color-value">#FAFBFC</p>
+      </div>
     </div>
   </div>
 </div>

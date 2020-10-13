@@ -22,12 +22,11 @@
   ],
   "dependencies": {
     "at-ui-style": "^1.5.1",
-    "highlight.js": "^10.2.0",
     "qr.js": "^0.0.0",
-    "vue": "3.0.0"
+    "vue": "^3.0.0"
   },
   "devDependencies": {
-    "@vue/compiler-sfc": "3.0.0",
+    "@vue/compiler-sfc": "^3.0.0",
     "@vue/server-renderer": "^3.0.0",
     "vitepress": "^0.6.0"
   }

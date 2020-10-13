@@ -22,7 +22,7 @@ import { AtMessage } from 'taro-ui-vue3'
 * 必须在页面引入 `<AtMessage />`，使用 `Taro.atMessage` 函数进行调用传参数，参数 `Options` 为 `Object` 类型，见下表
 
 
-```vue
+```html
 <template>
   <view>
     <view class='example-item'>

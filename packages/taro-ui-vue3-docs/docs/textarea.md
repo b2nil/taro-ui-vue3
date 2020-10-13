@@ -30,7 +30,7 @@ import { AtTextarea } from 'taro-ui-vue3'
 * 由于此组件是基于小程序的 Textarea 进行封装，该组件是原生组件，使用前请阅读[使用限制](https://developers.weixin.qq.com/miniprogram/dev/component/native-component.html)
 
 
-```vue
+```html
 <template>
   <view class='example-item'>
     <AtTextarea

@@ -22,7 +22,7 @@ import { AtCountdown } from 'taro-ui-vue3'
 说明： 开发者可以设置 onTimeUp 倒计时时间到回调事件
 
 
-```vue
+```html
 <template>
   <view>
     <AtCountdown
@@ -52,7 +52,7 @@ export default {
 
 ## 显示天数
 
-```vue
+```html
 <AtCountdown
   isShowDay
   :day="2"
@@ -65,7 +65,7 @@ export default {
 ## 自定义格式化
 
 
-```vue
+```html
 <AtCountdown
   isShowDay
   :format="{ hours: ':', minutes: ':', seconds: '' }"
@@ -81,7 +81,7 @@ export default {
 ## 卡片式
 
 
-```vue
+```html
 <AtCountdown
   isCard
   :minutes="1"

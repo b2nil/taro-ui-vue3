@@ -22,7 +22,7 @@ import { AtActivityIndicator } from 'taro-ui-vue3'
 ## 一般用法
 
 
-```vue
+```html
 <template>
   <AtActivityIndicator></AtActivityIndicator>
 </template>
@@ -32,7 +32,7 @@ import { AtActivityIndicator } from 'taro-ui-vue3'
 ## 自定义尺寸
 
 
-```vue
+```html
 <template>
   <AtActivityIndicator :size="32"></AtActivityIndicator>
 </template>
@@ -42,7 +42,7 @@ import { AtActivityIndicator } from 'taro-ui-vue3'
 ## 自定义颜色
 
 
-```vue
+```html
 <template>
   <AtActivityIndicator color='#13CE66'></AtActivityIndicator>
 </template>
@@ -52,7 +52,7 @@ import { AtActivityIndicator } from 'taro-ui-vue3'
 ## 自定义需要展示的文字
 
 
-```vue
+```html
 <template>
   <AtActivityIndicator content='加载中...'></AtActivityIndicator>
 </template>
@@ -62,7 +62,7 @@ import { AtActivityIndicator } from 'taro-ui-vue3'
 ## 状态切换
 
 
-```vue
+```html
 <template>
   <AtActivityIndicator :isOpened="true"></AtActivityIndicator>
 </template>
@@ -72,7 +72,7 @@ import { AtActivityIndicator } from 'taro-ui-vue3'
 ## 垂直水平居中（当设置 center 时需要给父容器提供 position: relative 属性）
 
 
-```vue
+```html
 <template>
   <AtActivityIndicator mode='center'></AtActivityIndicator>
 </template>

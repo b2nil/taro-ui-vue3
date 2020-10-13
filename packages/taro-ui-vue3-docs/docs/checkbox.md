@@ -26,7 +26,7 @@ import { AtCheckbox } from 'taro-ui-vue3'
 
 * 由于小程序组件化的限制，AtCheckbox 嵌套在 AtForm 或原生小程序组件 Form 中的时候，onSubmit 事件获得的 event 中的 event.detail.value 始终为空对象，开发者要获取数据，可以自行在页面的 state 中获取
 
-``` vue
+```html
 <template>
   <view>
     <AtCheckbox

@@ -20,40 +20,36 @@
 
 
 ```html
-<view class='at-row'>
-  <view class='at-col'>A</view>
-  <view class='at-col'>B</view>
-  <view class='at-col'>C</view>
-</view>
+<at-flex>
+  <at-flex-item>A</at-flex-item>
+  <at-flex-item>B</at-flex-item>
+  <at-flex-item>C</at-flex-item>
+</at-flex>
 ```
 
 
-## 使用栅格化（长度）
+## 使用栅格化（自定义长度）
 
 
 ```html
-<view class='at-row'>
-  <view class='at-col at-col-3'>A</view>
-  <view class='at-col at-col-6'>B</view>
-  <view class='at-col at-col-2'>C</view>
-  <view class='at-col at-col-1'>D</view>
-</view>
+<at-flex>
+  <at-flex-item :size="3">A</at-flex-item>
+  <at-flex-item :size="6">B</at-flex-item>
+  <at-flex-item :size="2">C</at-flex-item>
+  <at-flex-item :size="1">D</at-flex-item>
+</at-flex>
 ```
 
 
-## 使用栅格化（偏移）
+## 使用栅格化（自定义偏移）
 
 
 ```html
-<view class='at-row'>
-  <view class='at-col at-col__offset-2'>
-    A
-  </view>
-  <view class='at-col at-col__offset-3'>
-    B
-  </view>
-  <view class='at-col'>C</view>
-</view>
+<at-flex>
+  <at-flex-item :offset="2">A</at-flex-item>
+  <at-flex-item :offset="3">B</at-flex-item>
+  <at-flex-item>C</at-flex-item>
+</at-flex>
 ```
 
 
@@ -61,13 +57,13 @@
 
 
 ```html
-<view class='at-row at-row--wrap'>
-  <view class='at-col at-col-4'>A</view>
-  <view class='at-col at-col-4'>B</view>
-  <view class='at-col at-col-4'>C</view>
-  <view class='at-col at-col-4'>D</view>
-  <view class='at-col at-col-4'>E</view>
-</view>
+<at-flex wrap="wrap">
+  <at-flex-item :size="4">A</at-flex-item>
+  <at-flex-item :size="4">B</at-flex-item>
+  <at-flex-item :size="4">C</at-flex-item>
+  <at-flex-item :size="4">D</at-flex-item>
+  <at-flex-item :size="4">E</at-flex-item>
+</at-flex>
 ```
 
 
@@ -75,12 +71,13 @@
 
 
 ```html
-<view class='at-row'>
-  <view class='at-col at-col-1 at-col--auto'>
-    被内容撑开
-  </view>
-  <view class='at-col'>B</view>
-</view>
+<at-flex>
+  <at-flex-item
+    is-auto
+    :size="1"
+  >被内容撑开</at-flex-item>
+  <at-flex-item>B</at-flex-item>
+</at-flex>
 ```
 
 
@@ -88,12 +85,13 @@
 
 
 ```html
-<view class='at-row'>
-  <view class='at-col at-col-1 at-col--wrap'>
-    内容自动换行
-  </view>
-  <view class='at-col'>B</view>
-</view>
+<at-flex>
+  <at-flex-item
+    is-wrap
+    :size="1"
+  >内容自动换行</at-flex-item>
+  <at-flex-item>B</at-flex-item>
+</at-flex>
 ```
 
 
@@ -101,47 +99,74 @@
 
 
 ```html
-<view class='at-row'>
-  <view style='height:100px' class='at-col'>A</view>
-  <view class='at-col'>默认对齐方式 -- stretch</view>
-</view>
-<view class='at-row at-row__align--start'>
-  <view style='height:100px' class='at-col'>B</view>
-  <view class='at-col'>顶部对齐 -- start</view>
-</view>
-<view class='at-row at-row__align--center'>
-  <view style='height:100px' class='at-col'>C</view>
-  <view class='at-col'>居中对齐 -- center</view>
-</view>
-<view class='at-row at-row__align--end'>
-  <view style='height:100px' class='at-col'>D</view>
-  <view class='at-col'>底部对齐 -- end</view>
-</view>
-```
+<at-flex>
+  <at-flex-item
+    :size="5"
+    :style="{height: '100px'}"
+  >A</at-flex-item>
+  <at-flex-item is-auto>默认对齐方式 -- stretch</at-flex-item>
+</at-flex>
+
+<at-flex align="start">
+  <at-flex-item
+    :size="5"
+    :style="{height: '100px'}"
+  >B</at-flex-item>
+  <at-flex-item is-auto>顶部对齐 -- start</at-flex-item>
+</at-flex>
+
+<at-flex align="center">
+  <at-flex-item
+    :size="5"
+    :style="{height: '100px'}"
+  >C</at-flex-item>
+  <at-flex-item is-auto>居中对齐 -- center</at-flex-item>
+</at-flex>
+
+<at-flex align="end">
+  <at-flex-item
+    :size="5"
+    :style="{height: '100px'}"
+  >D</at-flex-item>
+  <at-flex-item is-auto>底部对齐 -- end</at-flex-item>
+</at-flex>
+
+<at-flex align="baseline">
+  <at-flex-item
+    :size="5"
+    :style="{height: '100px'}"
+  >E</at-flex-item>
+  <at-flex-item is-auto>基线对齐 -- baseline</at-flex-item>
+</at-flex>
+``
 
 
 ## 主轴方向的排列方式
 
 
 ```html
-<view class='at-row'>
-  <view class='at-col at-col-5'>默认</view>
-  <view class='at-col at-col-5'>Start</view>
-</view>
-<view class='at-row at-row__justify--end'>
-  <view class='at-col at-col-5'>底部排列</view>
-  <view class='at-col at-col-5'>End</view>
-</view>
-<view class='at-row at-row__justify--center'>
-  <view class='at-col at-col-5'>居中排列</view>
-  <view class='at-col at-col-5'>Center</view>
-</view>
-<view class='at-row at-row__justify--between'>
-  <view class='at-col at-col-5'>左右排列</view>
-  <view class='at-col at-col-5'>Between</view>
-</view>
-<view class='at-row at-row__justify--around'>
-  <view class='at-col at-col-5'>平均排列</view>
-  <view class='at-col at-col-5'>Around</view>
-</view>
+<at-flex>
+  <at-flex-item :size="5">默认</at-flex-item>
+  <at-flex-item :size="5">start</at-flex-item>
+</at-flex>
+
+<at-flex justify="end">
+  <at-flex-item :size="5">底部排列</at-flex-item>
+  <at-flex-item :size="5">end</at-flex-item>
+</at-flex>
+
+<at-flex justify="center">
+  <at-flex-item :size="5">居中排列</at-flex-item>
+  <at-flex-item :size="5">center</at-flex-item>
+</at-flex>
+
+<at-flex justify="between">
+  <at-flex-item :size="5">左右排列</at-flex-item>
+  <at-flex-item :size="5">between</at-flex-item>
+</at-flex>
+
+<at-flex justify="around">
+  <at-flex-item :size="5">平均排列</at-flex-item>
+  <at-flex-item :size="5">around</at-flex-item>
+</at-flex>
 ```

@@ -31,7 +31,7 @@
 
 ## 使用举例
 
-```vue
+```html
 <template>
   <view class='at-article'>
     <view class='at-article__h1'>这是一级标题这是一级标题</view>

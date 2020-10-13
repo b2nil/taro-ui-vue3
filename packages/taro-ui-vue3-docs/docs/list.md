@@ -22,7 +22,7 @@ import { AtList, AtListItem } from 'taro-ui-vue3'
 ## 一般用法
 
 
-```vue
+```html
 <AtList>
   <AtListItem title='标题文字' @click="handleClick" />
   <AtListItem title='标题文字' arrow='right' />
@@ -35,7 +35,7 @@ import { AtList, AtListItem } from 'taro-ui-vue3'
 ## 带描述信息
 
 
-```vue
+```html
 <AtList>
   <AtListItem title='标题文字' note='描述信息' />
   <AtListItem title='标题文字' note='描述信息' arrow='right' />

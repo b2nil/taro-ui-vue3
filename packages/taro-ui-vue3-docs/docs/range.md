@@ -19,7 +19,7 @@ import { AtRange } from 'taro-ui-vue3'
 ## 一般用法
 
 
-```vue
+```html
 <template>
   <view class='panel__content'>
     <view class='example-item'>

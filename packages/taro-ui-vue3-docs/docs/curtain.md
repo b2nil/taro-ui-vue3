@@ -22,7 +22,7 @@ import { AtCurtain } from 'taro-ui-vue3'
 
 * 该组件为受控组件，组件的开关状态由 isOpened 来控制，开发者需要通过 onClose 事件来更新 isOpened 值变化,从而关闭幕帘。
 
-```vue
+```html
 <template>
   <view>
     <AtCurtain

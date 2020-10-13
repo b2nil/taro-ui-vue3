@@ -24,7 +24,7 @@ import { AtLoadMore } from 'taro-ui-vue3'
 说明: 开发者自行控制 `status` 来控制展示的状态
 
 
-``` vue
+```html
 <template>
   <view>
     <AtLoadMore

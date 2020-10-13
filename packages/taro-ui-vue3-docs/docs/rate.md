@@ -34,7 +34,7 @@ import { AtRate } from 'taro-ui-vue3'
 ## 自定义星星大小
 
 
-```vue
+```html
 <template>
  <view>
   <AtRate :max="15" />
@@ -46,7 +46,7 @@ import { AtRate } from 'taro-ui-vue3'
 ## 自定义评分数
 
 
-```vue
+```html
 <template>
  <view>
   <AtRate :max="10" />
@@ -58,7 +58,7 @@ import { AtRate } from 'taro-ui-vue3'
 ## 只读
 
 
-```vue
+```html
 <template>
  <view>
   <AtRate

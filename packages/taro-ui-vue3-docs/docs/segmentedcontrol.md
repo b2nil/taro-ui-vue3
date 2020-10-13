@@ -24,7 +24,7 @@ import { AtSegmentedControl } from 'taro-ui-vue3'
 
 
 
-```vue
+```html
 <template>
   <view>
     <AtSegmentedControl

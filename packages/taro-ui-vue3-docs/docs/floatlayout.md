@@ -20,16 +20,17 @@ import { AtFloatLayout } from 'taro-ui-vue3'
 
 ## 一般用法
 
-```vue
+```html
 <template>
   <view>
-      <AtFloatLayout 
+    <AtFloatLayout 
       isOpened 
       title="这是个标题" 
-      @close="handleClose">
-    这是内容区 随你怎么写这是内容区 随你怎么写这是内容区 随你怎么写这是内容区
-    随你怎么写这是内容区 随你怎么写这是内容区 随你怎么写
-  </AtFloatLayout>
+      @close="handleClose"
+    >
+      这是内容区 随你怎么写这是内容区 随你怎么写这是内容区 随你怎么写这是内容区
+      随你怎么写这是内容区 随你怎么写这是内容区 随你怎么写
+    </AtFloatLayout>
   </view>
 </template>
 ```

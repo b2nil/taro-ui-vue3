@@ -10,7 +10,7 @@
 
 ## 示例
 
-``` vue
+```html
 <template>
   <view>
     <swiper

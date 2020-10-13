@@ -35,7 +35,7 @@ import { AtTabs, AtTabsPane } from 'taro-ui-vue3'
 * 边框下划线有些组件是使用 `::after` 伪类，在微信开发者工具审查不到，但是实际是存在的，建议用 H5 模式审查样式。
 
 
-```vue
+```html
 <template>
   <view class='panel__content'>
     <AtTabs

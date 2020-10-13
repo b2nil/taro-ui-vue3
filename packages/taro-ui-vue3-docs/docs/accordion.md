@@ -27,7 +27,7 @@ import { AtAccordion } from 'taro-ui-vue3'
 * 该组件为受控组件，开发者通过 open 来控制组件开关状态，可通过触发 onClick 函数时修改 open 实现状态切换
 
 
-``` vue
+```html
 <template>
   <AtAccordion
     @click="onClick"
@@ -76,7 +76,7 @@ export default {
 ## 带图标
 
 
-``` vue
+```html
 <template>
   <view class='example-item'>
     <AtAccordion

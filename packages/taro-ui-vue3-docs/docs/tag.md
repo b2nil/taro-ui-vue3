@@ -25,7 +25,7 @@ import { AtTag } from 'taro-ui-vue3'
 ## 用法
 
 
-```vue
+```html
 <template>
  <view>
   <AtTag>空心标签</AtTag>
@@ -48,7 +48,7 @@ export default {
 
 ```html
 <!-- 点击返回当前标签名字和是否选中 -->
-```vue
+```html
 <template>
  <view>
   <AtTag

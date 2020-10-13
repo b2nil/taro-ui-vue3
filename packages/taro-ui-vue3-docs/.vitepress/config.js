@@ -43,14 +43,27 @@ module.exports = {
   ],
 
   logo: "/taro-ui-vue3/_assets/taro-ui-vue3-logo.png",
-  // nav: "", //NavItem
-  // sidebar: "", // SideBarConfig | MultiSideBarConfig
-  // search: "", // SearchConfig
+
+  /**
+   * NavItem
+   * / 
+  // nav: "",
+
+  /**
+   * SideBarConfig | MultiSideBarConfig
+   * /
+  // sidebar: "",
+
+  /**
+   * SearchConfig
+   * /
+  // search: "",
 
   /**
   * GitHub repository following the format <user>/<project>.
   */
   repo: "b2nil/taro-ui-vue3",
+
   /**
    * Customize the header label. Defaults to GitHub/Gitlab/Bitbucket depending
    * on the provided repo
@@ -63,6 +76,7 @@ module.exports = {
    * @example `"vuejs/docs-next"`
    */
   // docsRepo?: string
+
   /**
    * If your docs are not at the root of the repo.
    *

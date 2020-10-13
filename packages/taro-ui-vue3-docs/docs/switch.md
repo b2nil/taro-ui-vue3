@@ -24,7 +24,7 @@ import { AtForm, AtSwitch } from 'taro-ui-vue3'
 * 该组件为受控组件，开发者能通过 checked 来初始化组件开关状态，切换开关时会触发 onChange 函数
 
 
-```vue
+```html
 <template>
   <view>
     <AtForm>
@@ -58,7 +58,7 @@ export default {
 
 
 ## 禁用状态
-``` vue
+```html
 <template>
   <view class='example-item'>
     <AtForm>

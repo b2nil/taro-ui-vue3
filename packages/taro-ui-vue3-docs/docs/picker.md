@@ -15,7 +15,7 @@
 ## 示例
 
 
-```vue
+```html
 <template>
   <view>
     <view class='example-item'>

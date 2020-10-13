@@ -8,6 +8,24 @@
 <div class="row changelog">
   <div class="at-timeline">
     <!-- v1.0.0-alpha.6 -->
+    <div class="at-timeline__item at-timeline__item--last at-timeline__item--custom at-timeline__item--error">
+      <div class="at-timeline__tail"></div>
+      <div class="at-timeline__dot">
+        <i class="at-icon at-icon-tag"></i>
+      </div>
+      <div class="at-timeline__content">
+        <p class="head">v1.0.0-alpha.7</p>
+        <p class="time">
+          <span>2020-10-08</span>
+        </p>
+        <ul class="content">
+          <li>修复 AtCurtain closeBtnPosition 默认类型错误</li>
+          <li>导出 AtFlex 和 AtFlexItem</li>
+          <li>更新与 H5 相关的 Readme、Config 等内容</li>
+        </ul>
+      </div>
+    </div>
+    <!-- v1.0.0-alpha.6 -->
       <div class="at-timeline__item at-timeline__item--last at-timeline__item--custom at-timeline__item--error">
       <div class="at-timeline__tail"></div>
       <div class="at-timeline__dot">

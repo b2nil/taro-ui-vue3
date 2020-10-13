@@ -6,53 +6,55 @@
     >
       <h2 class="at-nav__title">{{ item.title }}</h2>
       <ul class="at-nav__items">
-        <li
-          v-if="item.items"
-          v-for="(navItem, itemIndex) in item.items"
-          class="at-nav__item"
-          :key="navItem.name"
-        >
-          <a
-            :id="`${navItem.name}-${itemIndex}`"
-            :class="routeLinkClasses(item, navItem.name, itemIndex)"
-            :href="`${siteData.base + item.name.toLowerCase()}/${navItem.name.toLowerCase()}.html`"
-            @click="handleRouteLinkClick(`${navItem.name}-${itemIndex}`, $event)"
-          >{{ navItem.title }}</a>
-        </li>
-        <li
-          v-if="item.groups"
-          v-for="(group, idx) in item.groups"
-          class="at-nav__item active"
-          :key="group.title"
-        >
-          <a
-            class="at-nav__group"
-            @click="toggleMenu(idx)"
+        <template v-if="item.items">
+          <li
+            v-for="(navItem, itemIndex) in item.items"
+            class="at-nav__item"
+            :key="navItem.name"
           >
-            {{ group.title }}
-            <i :class="iconClasses(idx)" />
-          </a>
-          <collapse-transition :is-show="currentOpenMenu.includes(idx)">
-            <ul class="at-nav__child-items">
-              {{ ' ' }}
-              <li
-                class="at-nav__child-item"
-                v-for="(navItem, itemIndex) in group.items"
-                :key="navItem.name"
-              >
-                <a
-                  :id="`${navItem.name}-${itemIndex}`"
-                  :class="routeLinkClasses(item, navItem.name, itemIndex)"
-                  :href="`${siteData.base}docs/${navItem.name.toLowerCase()}.html`"
-                  @click="handleRouteLinkClick(`${navItem.name}-${itemIndex}`, $event)"
+            <a
+              :id="`${navItem.name}-${itemIndex}`"
+              :class="routeLinkClasses(item, navItem.name, itemIndex)"
+              :href="`${siteData.base + item.name.toLowerCase()}/${navItem.name.toLowerCase()}.html`"
+              @click="handleRouteLinkClick(`${navItem.name}-${itemIndex}`, $event)"
+            >{{ navItem.title }}</a>
+          </li>
+        </template>
+        <template v-if="item.groups">
+          <li
+            v-for="(group, idx) in item.groups"
+            class="at-nav__item active"
+            :key="group.title"
+          >
+            <a
+              class="at-nav__group"
+              @click="toggleMenu(idx)"
+            >
+              {{ group.title }}
+              <i :class="iconClasses(idx)" />
+            </a>
+            <collapse-transition :is-show="currentOpenMenu.includes(idx)">
+              <ul class="at-nav__child-items">
+                {{ ' ' }}
+                <li
+                  class="at-nav__child-item"
+                  v-for="(navItem, itemIndex) in group.items"
+                  :key="navItem.name"
                 >
-                  {{ navItem.name }}
-                  <span>{{ navItem.title }}</span>
-                </a>
-              </li>
-            </ul>
-          </collapse-transition>
-        </li>
+                  <a
+                    :id="`${navItem.name}-${itemIndex}`"
+                    :class="routeLinkClasses(item, navItem.name, itemIndex)"
+                    :href="`${siteData.base}docs/${navItem.name.toLowerCase()}.html`"
+                    @click="handleRouteLinkClick(`${navItem.name}-${itemIndex}`, $event)"
+                  >
+                    {{ navItem.name }}
+                    <span>{{ navItem.title }}</span>
+                  </a>
+                </li>
+              </ul>
+            </collapse-transition>
+          </li>
+        </template>
       </ul>
     </div>
   </nav>

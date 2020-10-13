@@ -84,7 +84,7 @@ import 'taro-ui/dist/style/index.scss' // 引入组件样式 - 方式一
 在 `/myApp/src/pages/index/index.tsx` 文件添加以下代码
 
 
-```vue
+```html
 <template>
   <view class='index'>
     <AtButton type='primary' @click="handleClick">按钮文案</AtButton>
