@@ -49,7 +49,7 @@ const AtListItem = defineComponent({
     const iconClasses = computed(() => ({
       [`${props.iconInfo!.prefixClass || 'at-icon'}`]: true,
       [`${props.iconInfo!.prefixClass || 'at-icon'}-${props.iconInfo!.value}`]: Boolean(props.iconInfo!.value),
-      [`${props.iconInfo!.className}`]: Boolean(props.iconInfo!.className)
+      [`${props.iconInfo!.class}`]: Boolean(props.iconInfo!.class)
     }))
 
     const iconStyle = computed(() => mergeStyle(
@@ -57,7 +57,7 @@ const AtListItem = defineComponent({
         color: props.iconInfo!.color || '',
         fontSize: `${props.iconInfo!.size || 24}px`,
       },
-      props.iconInfo!.customStyle!
+      props.iconInfo!.style! as Object
     ))
 
     const arrowClasses = computed(() => ({
