@@ -138,7 +138,7 @@
   >E</at-flex-item>
   <at-flex-item is-auto>基线对齐 -- baseline</at-flex-item>
 </at-flex>
-``
+```
 
 
 ## 主轴方向的排列方式
