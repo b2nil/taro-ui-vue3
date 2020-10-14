@@ -1,4 +1,4 @@
-
+import { Component } from '@vue/runtime-core'
 import { CommonEventFunction } from '@tarojs/components/types/common'
 
 import AtComponent, { AtIconBaseProps } from './base'
@@ -10,6 +10,8 @@ export interface AtListProps extends AtComponent {
    */
   hasBorder?: boolean
 }
+
+export declare const AtList: Component<AtListProps>
 
 export interface AtListItemProps extends AtComponent {
   /**
@@ -70,3 +72,5 @@ export interface AtListItemProps extends AtComponent {
    */
   onSwitchChange?: CommonEventFunction
 }
+
+export declare const AtListItem: Component<AtListItemProps>

@@ -1,4 +1,4 @@
-import { MouseEvent, ComponentClass } from "react"
+import { Component } from "@vue/runtime-core"
 import { CommonEventFunction } from "@tarojs/components/types/common"
 
 import AtComponent from "./base"
@@ -53,10 +53,11 @@ export interface AtModalActionProps extends AtComponent {
   isSimple: boolean
 }
 
-export interface AtModalContentProps extends AtComponent {}
+export interface AtModalContentProps extends AtComponent { }
 
-export interface AtModalHeaderProps extends AtComponent {}
+export interface AtModalHeaderProps extends AtComponent { }
 
-declare const AtModal: ComponentClass<AtModalProps>
-
-export default AtModal
+export declare const AtModal: Component<AtModalProps>
+export declare const AtModalAction: Component<AtModalActionProps>
+export declare const AtModalContent: Component<AtModalContentProps>
+export declare const AtModalHeader: Component<AtModalHeaderProps>

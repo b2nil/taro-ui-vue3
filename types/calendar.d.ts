@@ -1,5 +1,6 @@
 import dayjs from 'dayjs'
 import { CommonEvent } from '@tarojs/components/types/common'
+import { Component } from '@vue/runtime-core'
 
 // #region Calendar
 declare namespace Calendar {
@@ -75,7 +76,6 @@ declare namespace Calendar {
   }
 }
 
-export default Calendar
 export { Calendar }
 // #endregion
 
@@ -130,6 +130,8 @@ export type AtCalendarProps =
   | AtCalendarSingleSelectedProps
   | AtCalendarMutilSelectedProps
 
+export declare const AtCalendar: Component<AtCalendarProps>
+
 export interface AtCalendarDefaultProps {
   format: string
 
@@ -181,7 +183,7 @@ export interface AtCalendarControllerProps {
   onSelectDate: (e: CommonEvent) => void
 }
 
-export interface AtCalendarControllerState {}
+export interface AtCalendarControllerState { }
 // #endregion
 
 // #region AtCalendarBody

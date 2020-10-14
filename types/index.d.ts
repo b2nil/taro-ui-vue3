@@ -1,23 +1,23 @@
 
-import { Props } from '../src/components/calendar/interface'
-
-export { default as AtActionSheet, AtActionSheetItem } from './action-sheet'
+export { AtActionSheet, AtActionSheetItem } from './action-sheet'
 export { default as AtActivityIndicator } from './activity-indicator'
 export { default as AtAvatar } from './avatar'
 export { default as AtBadge } from './badge'
 export { default as AtButton } from './button'
 export { default as AtCard } from './card'
+export { AtCalendar, Calendar } from './calendar'
 export { default as AtCheckbox } from './checkbox'
 export { default as AtDrawer } from './drawer'
 export { default as AtFab } from './fab'
+export { AtFlex, AtFlexItem } from './flex'
 export { default as AtFloatLayout } from './float-layout'
 export { default as AtForm } from './form'
 export { default as AtGrid } from './grid'
 export { default as AtIcon } from './icon'
 export { default as AtInputNumber } from './input-number'
 export { default as AtInput } from './input'
-export { default as AtListItem, AtList } from './list'
-export { default as AtModal } from './modal'
+export { AtList, AtListItem } from './list'
+export { AtModal, AtModalAction, AtModalHeader, AtModalContent } from './modal'
 export { default as AtNavBar } from './nav-bar'
 export { default as AtNoticebar } from './noticebar'
 export { default as AtPagination } from './pagination'
@@ -42,14 +42,8 @@ export { default as AtCountdown } from './countdown'
 export { default as AtSteps } from './steps'
 export { default as AtCurtain } from './curtain'
 export { default as AtSlider } from './slider'
-export { AtMessage, message } from './message'
+export { default as AtMessage, message } from './message'
 export { default as AtImagePicker } from './image-picker'
 export { default as AtIndexes } from './indexes'
 export { default as AtRange } from './range'
 export { default as AtFloatButton } from './float-button'
-
-export declare const AtCalendar: ComponentClass<Props>
-
-export declare const AtModalHeader: ComponentClass
-export declare const AtModalAction: ComponentClass
-export declare const AtModalContent: ComponentClass

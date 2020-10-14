@@ -1,9 +1,7 @@
-import { CSSProperties } from '../global'
+import { AllowedComponentProps } from '@vue/runtime-core'
 
-export interface AtComponent {
-  className?: string;
+export interface AtComponent extends AllowedComponentProps {
 
-  customStyle?: string | CSSProperties;
 }
 
 export interface AtIconBaseProps2 extends AtComponent {

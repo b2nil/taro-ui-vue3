@@ -1,3 +1,4 @@
+import { Component } from '@vue/runtime-core'
 import { CommonEvent } from '@tarojs/components/types/common'
 
 import AtComponent from './base'
@@ -26,17 +27,19 @@ export interface AtActionSheetProps extends AtComponent {
   onCancel?: (event?: CommonEvent) => void
 }
 
+export declare const AtActionSheet: Component<AtActionSheetProps>
+
 export interface AtActionSheetState {
   _isOpened: boolean
 }
 
-export interface AtActionSheetHeaderProps extends AtComponent {}
+export interface AtActionSheetHeaderProps extends AtComponent { }
 
 export interface AtActionSheetFooterProps extends AtComponent {
   onClick?: Function
 }
 
-export interface AtActionSheetBodyProps extends AtComponent {}
+export interface AtActionSheetBodyProps extends AtComponent { }
 
 export interface AtActionSheetItemProps extends AtComponent {
   /**
@@ -44,4 +47,7 @@ export interface AtActionSheetItemProps extends AtComponent {
    */
   onClick?: (event?: CommonEvent) => void
 }
+
+export declare const AtActionSheetItem: Component<AtActionSheetItemProps>
+
 
