@@ -7,7 +7,24 @@
 
 <div class="row changelog">
   <div class="at-timeline">
-    <!-- v1.0.0-alpha.6 -->
+    <!-- v1.0.0-alpha.8 -->
+    <div class="at-timeline__item at-timeline__item--last at-timeline__item--custom at-timeline__item--error">
+      <div class="at-timeline__tail"></div>
+      <div class="at-timeline__dot">
+        <i class="at-icon at-icon-tag"></i>
+      </div>
+      <div class="at-timeline__content">
+        <p class="head">v1.0.0-alpha.8</p>
+        <p class="time">
+          <span>2020-10-14</span>
+        </p>
+        <ul class="content">
+          <li>修复 AtTabs 不能正常显示 Slot 内容 (<a href="https://github.com/b2nil/taro-ui-vue3/issues/35">#35</a>)</li>
+          <li>移除 types 与 React 相关的依赖</li>
+        </ul>
+      </div>
+    </div>
+    <!-- v1.0.0-alpha.7 -->
     <div class="at-timeline__item at-timeline__item--last at-timeline__item--custom at-timeline__item--error">
       <div class="at-timeline__tail"></div>
       <div class="at-timeline__dot">
