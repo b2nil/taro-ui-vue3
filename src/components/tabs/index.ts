@@ -278,7 +278,7 @@ const AtTabs = defineComponent({
                   class: 'at-tabs__underline',
                   style: underlineStyle.value
                 }),
-                { default: () => slots.default && slots.default() }
+                slots.default && slots.default()
               ]
             })
           ]
