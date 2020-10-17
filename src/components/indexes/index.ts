@@ -14,21 +14,18 @@ import {
 
 import {
   delayQuerySelector,
-  isTest,
   pxTransform,
-  uuid
 } from "@/utils/common"
 
 import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
-import { CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
+import { CommonEvent } from '@tarojs/components/types/common'
 import { AtIndexesProps, AtIndexesState, Item, ListItem } from 'types/indexes'
 
 import AtList from '../list'
 import AtListItem from '../list/item'
 import AtToast from '../toast'
 
-const ENV = Taro.getEnv()
 
 const AtIndexes = defineComponent({
   name: "AtIndexes",
@@ -58,14 +55,9 @@ const AtIndexes = defineComponent({
   },
 
   setup(props: AtIndexesProps, { attrs, slots }) {
-    const menuHeight = ref(0)
-    const startTop = ref(0)
-    const itemHeight = ref(0)
     const scrollItemHeights = ref<number[]>([])
-    const currentIndex = ref(-1)
-    const listId = ref(isTest() ? 'indexes-list-AOTU2018' : `list-${uuid()}`)
+    const currentIndex = ref(0)  // Set intital index at 0 so that active style is applied
     const timeoutTimer = ref<NodeJS.Timeout | number | null>(null)
-    const listRef = ref<any>(null)
 
     const state = reactive<AtIndexesState>({
       _scrollIntoView: '',
@@ -99,45 +91,13 @@ const AtIndexes = defineComponent({
       props.onClick && props.onClick(item)
     }
 
-    function handleTouchMove(e: ITouchEvent) {
-      e.stopPropagation()
-      e.preventDefault()
-
-      const pageY = e.touches[0].pageY
-      const index = Math.floor((pageY - startTop.value) / itemHeight.value)
-      if (index >= 0 && index <= props.list.length && currentIndex.value !== index) {
-        currentIndex.value = index
-        const key = index > 0 ? props.list[index - 1].key : 'top'
-        const touchView = `at-indexes__list-${key}`
-        jumpTarget(touchView, index)
-      }
-    }
-
-    function handleTouchEnd() {
-      currentIndex.value = -1
-    }
-
     function jumpTarget(_scrollIntoView: string, idx: number) {
-      const _tipText = idx === 0 ? props.topKey : props.list[idx - 1].key
-
-      if (ENV === Taro.ENV_TYPE.WEB) {
-        delayQuerySelector(this, '.at-indexes', 0).then(rect => {
-          const targetOffsetTop = listRef.value.childNodes[idx].offsetTop
-          // @ts-ignore
-          const _scrollTop = targetOffsetTop - rect[0].top
-          updateState({
-            _scrollTop,
-            _scrollIntoView,
-            _tipText
-          })
-        })
-        return
-      }
+      currentIndex.value = idx
 
       updateState({
-        _scrollTop: scrollItemHeights.value[idx],
         _scrollIntoView,
-        _tipText
+        _scrollTop: scrollItemHeights.value[idx],
+        _tipText: idx === 0 ? props.topKey : props.list[idx - 1].key
       })
     }
 
@@ -160,7 +120,7 @@ const AtIndexes = defineComponent({
         timeoutTimer.value = setTimeout(() => {
           state._tipText = ''
           state._isShowToast = false
-        }, 3000)
+        }, 1000)
       })
 
       if (props.isVibrate) {
@@ -169,15 +129,6 @@ const AtIndexes = defineComponent({
     }
 
     async function initData() {
-      await delayQuerySelector(this, '.at-indexes__menu', 30).then(rect => {
-        const len = props.list.length
-        // @ts-ignore
-        menuHeight.value = rect[0].height
-        // @ts-ignore
-        startTop.value = rect[0].top
-        itemHeight.value = Math.floor(menuHeight.value / (len + 1))
-      })
-
       if (props.list.length > 0) {
         await _getScrollListItemHeights(props.list).then(res => {
           scrollItemHeights.value = [...res]
@@ -233,12 +184,12 @@ const AtIndexes = defineComponent({
 
     function handleScroll(e: CommonEvent) {
       if (e && e.detail) {
-        // state._scrollTop = e.detail.scrollTop
         state._scrollIntoView = ''
 
         for (let i = 0; i < scrollItemHeights.value.length - 1; i++) {
-          let h1 = scrollItemHeights.value[i]
-          let h2 = scrollItemHeights.value[i + 1]
+          // Use Math.floor to make sure that currentIndex is accurate
+          let h1 = Math.floor(scrollItemHeights.value[i])
+          let h2 = Math.floor(scrollItemHeights.value[i + 1])
 
           if (e.detail.scrollTop >= h1 && e.detail.scrollTop < h2) {
             currentIndex.value = i
@@ -249,9 +200,6 @@ const AtIndexes = defineComponent({
     }
 
     onMounted(() => {
-      if (ENV === Taro.ENV_TYPE.WEB) {
-        listRef.value = document.getElementById(listId.value)
-      }
       initData()
     })
 
@@ -266,8 +214,6 @@ const AtIndexes = defineComponent({
         default: () => [
           h(View, {
             class: 'at-indexes__menu',
-            onTouchMove: (e) => handleTouchMove(e),
-            onTouchEnd: handleTouchEnd.bind(this)
           }, {
             default: () => [
               h(View, {
@@ -293,7 +239,6 @@ const AtIndexes = defineComponent({
 
           h(ScrollView, {
             class: 'at-indexes__body',
-            id: listId.value,
             scrollY: true,
             enableBackToTop: true,
             scrollWithAnimation: props.animation,
@@ -338,7 +283,7 @@ const AtIndexes = defineComponent({
           h(AtToast, {
             isOpened: state._isShowToast,
             text: state._tipText,
-            duration: 2000,
+            duration: 1000,
             style: toastStyle.value
           }),
         ]
