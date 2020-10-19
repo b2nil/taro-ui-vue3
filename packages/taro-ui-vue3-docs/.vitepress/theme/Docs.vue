@@ -129,7 +129,7 @@ export default {
     }
 
     function getIframeURL() {
-      const host = 'https://b2nil.github.io/taro-ui-vue3-demo/'
+      const host = 'https://b2nil.github.io/taro-ui-vue3-demo'
       const curDemoPath = getDemoPath()
       return `${host}/${curDemoPath}`
     }
