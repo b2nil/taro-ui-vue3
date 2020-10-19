@@ -70,7 +70,7 @@
           />
           <iframe
             v-else
-            src="./h5/index.html"
+            src="./taro-ui-vue3-demo/"
             :frame-border="0"
             :style="{ borderWidth: '0px' }"
           />
@@ -129,11 +129,9 @@ export default {
     }
 
     function getIframeURL() {
-      // TODO: deploy a H5 build and add host URL here
-      // Use taro-ui.aotu.io for the time being
-      const host = 'https://taro-ui.aotu.io/h5/index.html#'
+      const host = 'https://b2nil.github.io/taro-ui-vue3-demo/'
       const curDemoPath = getDemoPath()
-      return `${host}/pages/${curDemoPath}/index`
+      return `${host}/${curDemoPath}`
     }
 
     return {
