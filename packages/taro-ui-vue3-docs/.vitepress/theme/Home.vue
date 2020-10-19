@@ -19,7 +19,7 @@
           >开始使用</a>
           <a
             class="btn btn-start btn-start--h5"
-            href="https://nervjs.github.io/taro-ui/h5/index.html"
+            href="https://b2nil.github.io/taro-ui-vue3-demo/index"
           >开始使用</a>
           <a
             class="btn btn-github"
