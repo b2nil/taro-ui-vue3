@@ -7,6 +7,26 @@
 
 <div class="row changelog">
   <div class="at-timeline">
+    <!-- v1.0.0-alpha.9 -->
+    <div class="at-timeline__item at-timeline__item--last at-timeline__item--custom at-timeline__item--error">
+      <div class="at-timeline__tail"></div>
+      <div class="at-timeline__dot">
+        <i class="at-icon at-icon-tag"></i>
+      </div>
+      <div class="at-timeline__content">
+        <p class="head">v1.0.0-alpha.9</p>
+        <p class="time">
+          <span>2020-10-19</span>
+        </p>
+        <ul class="content">
+          <li>修复 AtListItem className 和 customStyle 未定义的问题 </li>
+          <li>修复 H5 中 AtIndexes 点击字母索引跳转失效(<a href="https://github.com/b2nil/taro-ui-vue3/issues/38">#38</a>)</li>
+          <li>修复 H5 中 AtSearchBar 点击搜索按钮后，不能彻底清空搜索内容(<a href="https://github.com/b2nil/taro-ui-vue3/issues/41">#41</a>)</li>
+          <li>增强: 小程序以及 H5 AtSearchBar 的 onActionClick 事件默认清空搜索内容</li>
+          <li>构建配置：修复 #40 H5 使用 Taro.xxx 接口的组件报错：Taro__default.default.xxx is not a function h5 (Thanks to @ljquan )(<a href="https://github.com/b2nil/taro-ui-vue3/issues/40">#40</a>)</li>
+        </ul>
+      </div>
+    </div>
     <!-- v1.0.0-alpha.8 -->
     <div class="at-timeline__item at-timeline__item--last at-timeline__item--custom at-timeline__item--error">
       <div class="at-timeline__tail"></div>
