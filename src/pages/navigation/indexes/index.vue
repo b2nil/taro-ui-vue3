@@ -65,7 +65,6 @@ export default defineComponent({
       }
 
       scrollIntoView.value(searchbarValue.value.toUpperCase())
-      searchbarValue.value = ''
     }
 
     function handleChange(value) {

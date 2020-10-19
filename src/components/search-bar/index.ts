@@ -138,6 +138,16 @@ const AtSearchBar = defineComponent({
 
     function handleChange(e: BaseEventOrig<any>): void {
       props.onChange(e.detail.value, e)
+
+      if (isWEB.value && e.detail.value === '') {
+        clearInputNodeValue()
+      }
+    }
+
+    // hack fix: h5 点击清除按钮后，input value 在数据层被清除，但视图层仍未清除
+    function clearInputNodeValue() {
+      const inputNode = document.querySelector<HTMLInputElement>(`#${inputID.value} > .weui-input`)
+      inputNode!.value = ''
     }
 
     function handleClear(event: ITouchEvent): void {
@@ -147,10 +157,8 @@ const AtSearchBar = defineComponent({
         props.onChange('', event)
       }
 
-      // hack fix: h5 点击清除按钮后，input value 在数据层被清除，但视图层仍未清除
       if (isWEB.value) {
-        const inputNode = document.querySelector<HTMLInputElement>(`#${inputID.value} > .weui-input`)
-        inputNode!.value = ''
+        clearInputNodeValue()
       }
     }
 
@@ -160,6 +168,12 @@ const AtSearchBar = defineComponent({
 
     function handleActionClick(event: CommonEvent): void {
       props.onActionClick && props.onActionClick(event)
+
+      // default to clear value after action click
+      props.onChange('', event)
+      if (isWEB.value) {
+        clearInputNodeValue()
+      }
     }
 
     return () => (
