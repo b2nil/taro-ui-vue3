@@ -19,11 +19,11 @@
           >开始使用</a>
           <a
             class="btn btn-start btn-start--h5"
-            href="https://b2nil.github.io/taro-ui-vue3-demo/index"
+            href="https://b2nil.github.io/taro-ui-vue3-demo/"
           >开始使用</a>
           <a
             class="btn btn-github"
-            href="https://github.com/b2nil/taro-ui-vue3"
+            href="https://github.com/b2nil/taro-ui-vue3/"
           >GitHub</a>
         </div>
       </div>
