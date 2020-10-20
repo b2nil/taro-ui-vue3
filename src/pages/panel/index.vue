@@ -304,6 +304,10 @@ export default defineComponent({
           {
             id: 'Calendar',
             name: '日历'
+          },
+          {
+            id: 'Virtual-Scroll',
+            name: '长列表'
           }
         ]
       },
