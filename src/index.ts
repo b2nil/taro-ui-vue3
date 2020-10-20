@@ -51,6 +51,8 @@ export { default as AtSearchBar } from './components/search-bar'
 export { default as AtSteps } from './components/steps'
 export { default as AtRange } from './components/range'
 export { default as AtToast } from './components/toast'
+export { default as AtVirtualScroll } from './components/virtual-scroll'
+
 
 /* 私有的组件  */
 export { default as AtLoading } from './components/loading'

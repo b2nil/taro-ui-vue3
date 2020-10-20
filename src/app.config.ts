@@ -92,6 +92,7 @@ const subpackages = [
     pages: [
       // advanced
       'calendar/index',
+      'virtual-scroll/index',
     ]
   },
 ]
