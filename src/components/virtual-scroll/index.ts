@@ -1,9 +1,13 @@
 import "./index.scss"
 
-import { h, defineComponent, computed, ref, PropType, watch, onMounted } from "vue"
-import { ScrollView, View } from "@tarojs/components"
-import { AtVirtualScrollProps } from "types/virtual-scroll"
+import { h, defineComponent, computed, ref, PropType, watch, onMounted, warn, mergeProps } from "vue"
 import Taro from "@tarojs/taro"
+import { ScrollView, View } from "@tarojs/components"
+
+// types
+import { ScrollViewProps } from "@tarojs/components/types/ScrollView"
+import { BaseEventOrig } from "@tarojs/components/types/common"
+import { AtVirtualScrollProps } from "types/virtual-scroll"
 
 
 function convertToUnit(str: string | number | null | undefined, unit = 'px'): string | undefined {
@@ -38,6 +42,17 @@ const AtVirtualScroll = defineComponent({
     minHeight: [Number, String] as PropType<AtVirtualScrollProps['minHeight']>,
     minWidth: [Number, String] as PropType<AtVirtualScrollProps['minWidth']>,
     width: [Number, String] as PropType<AtVirtualScrollProps['width']>,
+    scrollIntoItem: [Number, String] as PropType<AtVirtualScrollProps['scrollIntoItem']>,
+    reachTopThreshold: {
+      type: [Number, String] as PropType<AtVirtualScrollProps['reachTopThreshold']>,
+      default: 50
+    },
+    reachBottomThreshold: {
+      type: [Number, String] as PropType<AtVirtualScrollProps['reachBottomThreshold']>,
+      default: 50
+    },
+    onReachTop: Function as PropType<AtVirtualScrollProps['onReachTop']>,
+    onReachBottom: Function as PropType<AtVirtualScrollProps['onReachBottom']>,
   },
 
   setup(props: AtVirtualScrollProps, { slots }) {
@@ -85,6 +100,15 @@ const AtVirtualScroll = defineComponent({
 
     watch(() => props.height, updateFirstAndLast)
     watch(() => props.itemHeight, updateFirstAndLast)
+    watch(() => props.scrollIntoItem, (index, prevIndex) => {
+      const parsedIndex = parseInt(`${index}`, 10)
+      if (parsedIndex >= 0 && parsedIndex < props.items.length) {
+        scrollTop.value = parsedIndex * __itemHeight.value
+        updateFirstAndLast()
+      } else {
+        warn(`index should not exceed the length of items: ${index}`)
+      }
+    })
 
     onMounted(() => {
       last.value = getLast(0)
@@ -104,6 +128,7 @@ const AtVirtualScroll = defineComponent({
 
       return h(View, {
         key: index,
+        id: `item-${index}`,
         class: 'at-virtual-scroll__item',
         style: { top },
       }, { default: () => slots.default && slots.default({ index, item }) })
@@ -124,11 +149,10 @@ const AtVirtualScroll = defineComponent({
       last.value = getLast(first.value)
     }
 
-    function handleScroll(e) {
+    function handleScroll(e: BaseEventOrig<ScrollViewProps.onScrollDetail>) {
       scrollTop.value = isWeb.value
         ? elRef.value.$el.scrollTop
         : e.detail.scrollTop
-
       updateFirstAndLast()
     }
 
@@ -140,14 +164,26 @@ const AtVirtualScroll = defineComponent({
         }
       }, { default: () => getChildren() })
 
-      return h(ScrollView, {
-        scrollY: true,
-        scrollwithAnimation: true,
-        class: 'at-virtual-scroll',
-        style: measurableStyles.value,
-        ref: (e) => { elRef.value = e },
-        onScroll: (e) => handleScroll(e)
-      }, { default: () => [content] })
+      return h(ScrollView, mergeProps(
+        isWeb.value
+          ? {
+            scrollTop: scrollTop.value
+          }
+          : {
+            scrollIntoView: `item-${props.scrollIntoItem}`
+          },
+        {
+          scrollY: true,
+          scrollwithAnimation: true,
+          class: 'at-virtual-scroll',
+          style: measurableStyles.value,
+          upperThreshold: parseInt(`${props.reachTopThreshold}`, 10),
+          lowerThreshold: parseInt(`${props.reachBottomThreshold}`, 10),
+          ref: (e) => { elRef.value = e },
+          onScroll: handleScroll,
+          onScrollToUpper: props.onReachTop,
+          onScrollToLower: props.onReachBottom,
+        }), { default: () => [content] })
     }
   }
 })

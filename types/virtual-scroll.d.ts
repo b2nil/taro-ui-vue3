@@ -1,51 +1,77 @@
+import { CommonEventFunction } from '@tarojs/components/types/common'
 import AtComponent from './base'
 
 export interface AtVirtualScrollProps extends AtComponent {
   /*
-  * The number of items outside the user view that are rendered
-  * (even if they are not viewable);
-  * to help prevent empty white space when scrolling fast.
+  * 列表单项渲染提前量，即在可视区域之外提前渲染的列表单项数量。
+  * 值设置得越高，快速滚动时出现白屏的概率就越小；相应地，每次滚动的性能会变得越差。
   * @default 0
   */
   bench?: number | string;
   /*
-  * Height in pixels of the items to display
+  * 列表单项高度，用于计算列表单项的 top 样式值，单位 px。必填
   * @default undefined
+  * @required true
   */
   itemHeight: number | string;
   /*
-  * The array of items to display
+  * 渲染数据，必填
   * @default []
   */
   items: any[];
   /*
- * Height of the component as a css value
+ * 列表的高度，作为 css 样式值，单位 px
  * @default undefined
  */
   height?: number | string;
   /*
-  * Sets the maximum height for the component.
+  * 设置组件的最大高度
   * @default undefined
   */
   maxHeight?: number | string;
   /*
-  * Sets the maximum width for the component.
+  * 设置组件的最大宽度
   * @default undefined
   */
   maxWidth?: number | string;
   /*
-  * Sets the minimum height for the component.
+  * 设置组件的最小高度
   * @default undefined
   */
   minHeight?: number | string;
   /*
-  * Sets the minimum width for the component.
+  * 设置组件的最小宽度
   * @default undefined
   */
   minWidth?: number | string;
   /*
-  * Sets the width for the component.
+  * 设置组件的宽度
   * @default undefined
   */
   width?: number | string;
+  /*
+  * 列表单项的索引值，设置后，可视区域滚动至该单项所在区域
+  * @default undefined
+  */
+  scrollIntoItem?: number | string;
+  /*
+  * 触顶阈值，距顶部多远时（单位 px），触发 onReachTop 事件
+  * @default 50
+  */
+  reachTopThreshold?: number | string;
+  /*
+  * 触底阈值，距底部多远时（单位 px），触发 onReachBottom 事件
+  * @default 50
+  */
+  reachBottomThreshold?: number | string;
+  /*
+  * 滚动到顶部时触发事件
+  * @default 50
+  */
+  onReachTop?: CommonEventFunction;
+  /*
+  * 滚动到底部时触发事件
+  * @default 50
+  */
+  onReachBottom?: CommonEventFunction;
 }
