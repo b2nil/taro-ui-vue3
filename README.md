@@ -36,7 +36,11 @@ yarn add taro-ui-vue3
 - 亦可参考 [Demo Pages](./src/pages) 的写法
 
 ### 体验 UI Demo
-- `clone` 项目到本地
+
+可用手机访问 https://b2nil.github.io/taro-ui-vue3-demo/ 体验 `h5` 版本。
+
+或者：
+- `clone` [taro-ui-vue3-demo](https://b2nil.github.io/taro-ui-vue3) 项目到本地
 - 运行 `yarn install` 安装依赖
 - 根据希望体验的平台，运行相关命令：
   ```json
@@ -61,7 +65,7 @@ yarn add taro-ui-vue3
    - [] theme
 
  - [] 将组件所需的 style 文件移动至组件所在目录，按需引用时，只需引用组件即可，无需再额外引用样式
- - [] VirtualList (视需要)
+ - [x] VirtualList
  - [] Skeleton (视需要)
 
 ## 已知问题
@@ -93,11 +97,7 @@ yarn add taro-ui-vue3
           chain.resolve.alias
             .set(
               '@tarojs/components$', 
-              path.resolve(__dirname, '..','node_modules/@tarojs/components/dist-h5/vue3/index.js')
-            )
-            .set(
-              '@tarojs/components/dist/taro-components/taro-components.css',
-              path.resolve(__dirname, '..','node_modules/@tarojs/components/dist/taro-components/taro-components.css')
+              '@tarojs/components/dist-h5/vue3/index.js'
             )
         }
       }      
