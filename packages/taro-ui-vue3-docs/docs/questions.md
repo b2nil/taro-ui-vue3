@@ -10,26 +10,32 @@
 
 ## H5 模式下编译报错？
 
-如果出现类似 `You may need an appropriate loader to handle this file type` 的问题，如下：
-```bash
-./node_modules/_taro-ui@1.5.4@taro-ui/dist/h5/components/pagination/index.js 101
-:11
-Module parse failed: Unexpected token (101:11)
-You may need an appropriate loader to handle this file type.
-|     };
-|
->     return <view class={classNames(rootClassName, classObject, this.props.
-className)} style={customStyle}>
-|         <view class="at-pagination__operate">
-|           <view class="at-pagination__btns">
-```
-
-请在 `config/index.js` 文件中添加如下配置项：
+如果出现类似 `Could not find module View in @tarojs/components` 的问题，请在进行如下设置：
+- 在项目的 `config` 目录下增加一个 h5 构建脚本: [h5-building-script.js](https://github.com/b2nil/taro-ui-vue3/blob/master/config/h5-building-script.js)
+- 将项目 `package.json` 下的 `build:h5` 命令修改为： `"build:h5": "node ./config/h5-building-script.js && taro build --type h5"`
+-  在 `config/index.js` 中的 `h5` 下添加 webpack `alias` 设置：
 ```typescript
 h5: {
-  esnextModules: ['taro-ui-vue3']
+  webpackChain(chain) {
+    chain.resolve.alias
+      .set(
+        '@tarojs/components$', 
+        '@tarojs/components/dist-h5/vue3/index.js'
+      )
+  }
 }
 ```
+
+## 支付宝小程序端部分组件功能异常
+
+- AtCalendar:
+
+  - 由于 Taro 的 `Swiper` 组件暂不支持支付宝内置 `Swiper` 组件的 `onAnimationEnd` 属性， 编译后，需手动修改 `base.axml` 中的 `<template name="tmpl_0_swiper">` 基础模板, 将 `swiper` 节点中的 `onAnimationFinish` 修改为 `onAnimationEnd`， 否则滑动切换时不能更新月份
+
+- AtTextarea:
+
+  - 由于 Taro 的 `Textarea` 组件不支持支付宝 `textarea` 组件的 `show-count` 属性，所以字数统计不能通过设置 `:count="false"` 直接关闭， 需要手动修改编译后的 `base.axml`, 在 `<template name="tmpl_0_textarea_focus">` 和 `<template name="tmpl_0_textarea_blur">` 基础模板下的 `textarea` 节点中添加 `show-count="{ { i.showCount } }"`
+
 
 ## 如何自定义样式？
 
