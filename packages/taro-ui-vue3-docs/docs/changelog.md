@@ -20,6 +20,7 @@
         </p>
         <ul class="content">
           <li>新增 AtVirtualScroll 虚拟列表组件 (2c523d8558cfd05886c45a0301ce886ba4dbfd88) </li>
+        </ul>
       </div>
     </div>
     <!-- v1.0.0-alpha.9 -->
