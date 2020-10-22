@@ -3,11 +3,16 @@ import AtComponent from './base'
 
 export interface AtVirtualScrollProps extends AtComponent {
   /*
-  * 列表单项渲染提前量，即在可视区域之外提前渲染的列表单项数量。
+  * 列表渲染提前量，即在可视区域之外提前渲染的列表行数。
   * 值设置得越高，快速滚动时出现白屏的概率就越小；相应地，每次滚动的性能会变得越差。
   * @default 0
   */
   bench?: number | string;
+  /*
+  * 可视区域渲染的列表行数
+  * @default 5
+  */
+  viewport?: number | string;
   /*
   * 列表单项高度，用于计算列表单项的 top 样式值，单位 px。必填
   * @default undefined

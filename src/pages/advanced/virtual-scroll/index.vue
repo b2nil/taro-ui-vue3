@@ -63,7 +63,7 @@
     </panel>
     <panel title="触底和触顶事件">
       <at-virtual-scroll
-        bench="10"
+        bench="5"
         height="300"
         :item-height="directoryItemHeight"
         :items="directoryItems"
