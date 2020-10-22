@@ -10,7 +10,9 @@ cd .vitepress/dist
 touch .nojekyll
 
 # copy favicon to .vitepress/dist/_assets
-cp ../../assets/favicon.png _assets/favicon.png
+cp '../../assets/favicon.png' '_assets/favicon.png'
+cp '../../assets/virtual-scroll props.png' '_assets/virtual-scroll props.png'
+cp '../../assets/virtual-scroll animation.gif' '_assets/virtual-scroll animation.gif'
 
 # git ops
 git init
