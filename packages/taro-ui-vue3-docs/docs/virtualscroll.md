@@ -44,6 +44,7 @@ interface DataItem {
 }
 
 export default defineComponent({
+  components: { AtVirtualScroll },
   setup() {
     const itemHeight = ref(64)
     const items: Array<DataItem> = getData()
@@ -92,6 +93,7 @@ interface DataItem {
 }
 
 export default defineComponent({
+  components: { AtVirtualScroll },
   setup() {
     const itemHeight = ref(64)
     const items: Array<DataItem> = getData()
@@ -173,6 +175,7 @@ interface DataItem {
 }
 
 export default defineComponent({
+  components: { AtVirtualScroll },
   setup() {
     const toItem = ref(0)
     const items: Array<DataItem> = getData()
@@ -198,31 +201,30 @@ export default defineComponent({
 
 | 参数     | 说明                                     | 类型    | 可选值                        | 默认值  |
 | -------- | ---------------------------------------- | ------- | ----------------------------- | ------- |
-| bench     | 列表单项渲染提前量，即在可视区域之外提前渲染的列表单项数量。 值设置得越高，快速滚动时出现白屏的概率就越小；相应地，每次滚动的性能会变得越差。                              | `Number | String`  | -                             | `0`       |
-| itemHeight     | 列表单项高度，用于计算列表单项的 `top` 样式值，单位 `px`。必填                              | `Number | String`  | -                             | -       |
-| items    | 渲染数据，必填                           | `Array<any>`  | -                             | -       |
-| height   | 列表的高度，作为 css 样式值，单位 `px`                               | `Number | String`  | - | -       |
-| maxHeight | 置组件的最大高度                             | `Number | String` | -                             | - |
-| minHeight | 设置组件的最小高度                           | `Number | String`  | -                             | -  |
-| maxWidth  | 设置组件的最大宽度 | `Number | String` | -                             | -       |
-| minWidth  | 设置组件的最小宽度 | `Number | String` | -                             | -       |
-| width  | 设置组件的宽度 | `Number | String` | -                             | -       |
-| scrollIntoItem  | 列表单项的索引值，设置后，可视区域滚动至该单项所在区域 | `Number | String` | -                             | -       |
-| reachTopThreshold  | 触顶阈值，距顶部多远时（单位 `px`），触发 `onReachTop` 事件 | `Number | String` | -                             | `50`       |
-| reachBottomThreshold  | 触底阈值，距底部多远时（单位 `px`），触发 `onReachBottom` 事件 | `Number | String` | -                             | `50`       |
-<br/>
+| bench     | 列表渲染提前量，即在可视区域之外提前渲染的列表行数。 值设置得越高，快速滚动时出现白屏的概率就越小；相应地，每次滚动的性能会变得越差。                              | `Number | String`  | -                             | `0`       |
+| viewport  | 可视区域渲染的列表行数。                                                | `Number | String`  | -     | `5`       |
+| itemHeight     | 列表单项高度，用于计算列表单项的 `top` 样式值，单位 `px`。必填          | `Number | String` | -      | -       |
+| items    | 渲染数据，必填                                                          | `Array<any>`     | -     | -       |
+| height   | 列表的高度，作为 css 样式值，单位 `px`                                    | `Number | String` | -        | -      |
+| maxHeight | 置组件的最大高度                                                       | `Number | String` | -        | -      |
+| minHeight | 设置组件的最小高度                                                     | `Number | String`  | -        | -      |
+| maxWidth  | 设置组件的最大宽度                                                     | `Number | String` | -         | -      |
+| minWidth  | 设置组件的最小宽度                                                     | `Number | String` | -         | -      |
+| width     | 设置组件的宽度                                                         | `Number | String` | -      | -       |
+| scrollIntoItem  | 列表单项的索引值，设置后，可视区域滚动至该单项所在区域 | `Number | String` | -       | -       |
+| reachTopThreshold  | 触顶阈值，距顶部多远时（单位 `px`），触发 `onReachTop` 事件 | `Number | String` | -        | `50`       |
+| reachBottomThreshold  | 触底阈值，距底部多远时（单位 `px`），触发 `onReachBottom` 事件 | `Number | String` | -  | `50`       |
+
 
 ## AtVirtualScroll 事件
-<br/>
 
 | 事件名称 | 说明                     | 返回参数 |
 | -------- | ------------------------ | -------- |
 | onReachTop  | 滚动到顶部时触发的事件 | -        |
 | onReachBottom  | 滚动到底部时触发的事件 | -        |
-<br/>
+
 
 ## AtVirtualScroll 插槽
-<br/>
 
 | 插槽名称       | 说明                     |  参数 |
 | --------     | -----------------------  | --------  |

@@ -266,6 +266,10 @@
             {
               "title": "日历",
               "name": "Calendar"
+            },
+            {
+              "title": "长列表",
+              "name": "VirtualScroll"
             }
           ]
         }
