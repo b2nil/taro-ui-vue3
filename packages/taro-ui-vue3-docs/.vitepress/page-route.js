@@ -47,6 +47,6 @@ export default {
   tabs: 'navigation/tabs',
   indexes: 'navigation/indexes',
   calendar: 'advanced/calendar',
-  calendar: 'advanced/virtual-scroll',
+  virtualscroll: 'advanced/virtual-scroll',
   form: 'form/form'
 }
