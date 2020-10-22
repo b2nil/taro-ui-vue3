@@ -2,7 +2,12 @@
 
 ---
 
-虚拟列表组件，提供长列表渲染性能
+虚拟列表组件，提供长列表渲染性能。
+
+<p align="center">
+<image src="../assets/virtual-scroll props.png" />
+<image src="../assets/virtual-scroll animation.gif" />
+</p>
 
 ## 使用指南
 
