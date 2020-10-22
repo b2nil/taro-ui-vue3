@@ -7,6 +7,23 @@
 
 <div class="row changelog">
   <div class="at-timeline">
+    <!-- v1.0.0-alpha.11 -->
+    <div class="at-timeline__item at-timeline__item--last at-timeline__item--custom at-timeline__item--error">
+      <div class="at-timeline__tail"></div>
+      <div class="at-timeline__dot">
+        <i class="at-icon at-icon-tag"></i>
+      </div>
+      <div class="at-timeline__content">
+        <p class="head">v1.0.0-alpha.11</p>
+        <p class="time">
+          <span>2020-10-22</span>
+        </p>
+        <ul class="content">
+          <li>修复 AtVirtualScroll 滚动时发生抖动(<a href="https://github.com/b2nil/taro-ui-vue3/issues/44">#44</a>) (4677951) </li>
+          <li>新增 AtVirtualScroll viewport 属性 (e09a78c) </li>
+        </ul>
+      </div>
+    </div>
     <!-- v1.0.0-alpha.10 -->
     <div class="at-timeline__item at-timeline__item--last at-timeline__item--custom at-timeline__item--error">
       <div class="at-timeline__tail"></div>
