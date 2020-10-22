@@ -1,5 +1,3 @@
-import "./index.scss"
-
 import { h, defineComponent, computed, ref, PropType, watch, onMounted, warn, mergeProps } from "vue"
 import Taro from "@tarojs/taro"
 import { ScrollView, View } from "@tarojs/components"
