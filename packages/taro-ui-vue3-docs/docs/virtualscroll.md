@@ -17,6 +17,12 @@
 import { AtVirtualScroll } from 'taro-ui-vue3'
 ```
 
+**组件依赖的样式文件（仅按需引用时需要）**
+
+```scss
+@import "taro-ui-vue3/dist/style/components/virtual-scroll.scss";
+```
+
 ### 一般用法
 所有参数均可动态绑定。可配合 `AtListItem`、 `AtCard`、 `AtSwipeAction` 等组件使用。
 
@@ -138,8 +144,8 @@ export default defineComponent({
 ```
 
 
-### 跳转至指定列表单项
-组件提供了 `scrollIntoItem` 参数，该参数应为 `列表单项的索引值`，即传入默认插槽的 `index`。设置该参数后，可视区域会滚动至该单项所在的区域。
+### 跳转至指定列表行数
+组件提供了 `scrollIntoItem` 参数，该参数应为 `列表行数的索引值`，即传入默认插槽的 `index`。设置该参数后，可视区域会滚动至该单项所在的区域。
 
 ```html
 <!-- template -->
@@ -202,6 +208,32 @@ export default defineComponent({
 })
 ```
 
+### 自定义虚拟列表顶部或底部内容
+组件提供了 `header` 和 `footer` 插槽，可用于自定义虚拟列表顶部或底部的内容。
+
+```html
+ <at-virtual-scroll
+    bench="5"
+    height="300"
+    item-height="64"
+    :items="items"
+    :scroll-into-item="toItem"
+  >
+    <template #header>
+      <!-- 虚拟列表顶部区域 -->
+      <!-- 可自定义用于控制虚拟列表的控制组件：如搜索、跳转等等 -->
+    </template>
+    <template #default="{ index, item }">
+      <!-- 虚拟列表区域 -->
+    </template>
+    <template #header>
+      <!-- 虚拟列表底部区域 -->
+      <!-- 可结合 reachBottomThreshold, onReachBottom 自定义加载组件 -->
+      <!-- 或显示列表之外的内容 -->
+    </template>
+  </at-virtual-scroll>
+```
+
 ## AtVirtualScroll 参数
 
 | 参数     | 说明                                     | 类型    | 可选值                        | 默认值  |
@@ -234,3 +266,5 @@ export default defineComponent({
 | 插槽名称       | 说明                     |  参数 |
 | --------     | -----------------------  | --------  |
 | default      | 用于自定义列表项目的默认 `scoped` 插槽| `{ index: number, item: any }` |
+| header       | 用于自定义`列表顶部`内容的插槽 | `-` |
+| footer       | 用于自定义`列表底部`内容的插槽 | `-` |
