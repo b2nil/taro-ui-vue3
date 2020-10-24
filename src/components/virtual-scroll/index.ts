@@ -163,14 +163,23 @@ const AtVirtualScroll = defineComponent({
     }
 
     return () => {
-      const content = h(View, {
-        class: 'at-virtual-scroll__container',
-        style: {
-          height: convertToUnit((props.items.length * __itemHeight.value)),
-        }
-      }, { default: () => getChildren() })
+      const content = h(View, null, {
+        default: () => [
+          h(View, {
+            class: 'at-virtual-scroll__container',
+            style: {
+              height: convertToUnit((props.items.length * __itemHeight.value)),
+            }
+          }, { default: () => getChildren() }),
 
-      return h(ScrollView, mergeProps(
+          h(View, {
+            class: 'at-virtual-scroll__footer'
+          }, { default: () => slots.footer && slots.footer() }),
+        ]
+      })
+
+
+      const scrollViewNode = h(ScrollView, mergeProps(
         isWeb.value
           ? {
             scrollTop: scrollTop.value
@@ -190,6 +199,15 @@ const AtVirtualScroll = defineComponent({
           onScrollToUpper: props.onReachTop,
           onScrollToLower: props.onReachBottom,
         }), { default: () => [content] })
+
+      return h(View, null, {
+        default: () => [
+          h(View, {
+            class: 'at-virtual-scroll__header',
+          }, { default: () => slots.header && slots.header() }),
+          scrollViewNode,
+        ]
+      })
     }
   }
 })
