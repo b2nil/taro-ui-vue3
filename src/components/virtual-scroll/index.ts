@@ -106,18 +106,24 @@ const AtVirtualScroll = defineComponent({
 
     watch(() => props.height, updateFirstAndLast)
     watch(() => props.itemHeight, updateFirstAndLast)
-    watch(() => props.scrollIntoItem, (index, prevIndex) => {
-      const parsedIndex = parseInt(`${index}`, 10)
-      if (parsedIndex >= 0 && parsedIndex < props.items.length) {
-        scrollTop.value = parsedIndex * __itemHeight.value
-        updateFirstAndLast()
-      } else {
-        warn(`index should not exceed the length of items: ${index}`)
-      }
+    watch(() => props.scrollIntoItem, (itemIndex, prevItemIndex) => {
+      let parsedIndex = parseInt(`${itemIndex || 0}`, 10)
+
+      // make sure index is within length of items
+      parsedIndex = Math.min(props.items.length - 1, Math.max(0, parsedIndex))
+
+      scrollTop.value = parsedIndex * __itemHeight.value
+      updateFirstAndLast()
     })
 
     onMounted(() => {
-      last.value = getLast(0)
+      if (Boolean(props.scrollIntoItem)) {
+        let parsedIndex = parseInt(`${props.scrollIntoItem || 0}`, 10)
+        scrollTop.value = parsedIndex * __itemHeight.value
+        updateFirstAndLast()
+      } else {
+        last.value = getLast(0)
+      }
     })
 
     function getChildren() {
