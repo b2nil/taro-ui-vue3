@@ -7,6 +7,25 @@
 
 <div class="row changelog">
   <div class="at-timeline">
+    <!-- v1.0.0-alpha.12 -->
+    <div class="at-timeline__item at-timeline__item--last at-timeline__item--custom at-timeline__item--error">
+      <div class="at-timeline__tail"></div>
+      <div class="at-timeline__dot">
+        <i class="at-icon at-icon-tag"></i>
+      </div>
+      <div class="at-timeline__content">
+        <p class="head">v1.0.0-alpha.12</p>
+        <p class="time">
+          <span>2020-10-24</span>
+        </p>
+        <ul class="content">
+          <li>修复 pxTransform 未处理 h5 样式转换的问题 (<a href="https://github.com/b2nil/taro-ui-vue3/issues/47">#47</a>) </li>
+          <li>修复 AtDivider height, fontSize 传入 string 时类型校验失败(<a href="https://github.com/b2nil/taro-ui-vue3/issues/48">#48</a>)</li>
+          <li>修复 AtVirtualScroll 初始视图未跳转至 scrollIntoItem 对应的列表行(<a href="https://github.com/b2nil/taro-ui-vue3/issues/49">#49</a>)</li>
+          <li>AtVirtualScroll 增加 header 和 footer 插槽</li>
+        </ul>
+      </div>
+    </div>
     <!-- v1.0.0-alpha.11 -->
     <div class="at-timeline__item at-timeline__item--last at-timeline__item--custom at-timeline__item--error">
       <div class="at-timeline__tail"></div>
