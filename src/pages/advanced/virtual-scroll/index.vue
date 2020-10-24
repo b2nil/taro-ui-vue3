@@ -151,6 +151,10 @@
           @reach-bottom="handleReachBottom"
         >
           <template #header>
+            <view
+              class="example-item__desc"
+              style="text-align: center;"
+            > 初始 scrollIntoItem 索引设置: 10 </view>
             <at-search-bar
               action-name="跳转"
               placeholder="header 插槽: 输入需跳转的列表索引"
@@ -253,7 +257,7 @@ export default defineComponent({
   setup() {
     const benched = ref(5)
     const viewportRows = ref(5)
-    const length = ref(200)
+    const length = ref(20)
     const itemHeight = ref(80)
     const height = ref(300)
     const toItem = ref(10)
@@ -356,7 +360,7 @@ export default defineComponent({
             const randIndex = genRandomIndex(colors.value.length)
             names.value.push(names.value[randIndex])
             surnames.value.push(surnames.value[randIndex])
-            length.value = 200
+            length.value = 20
           }
         })
       } else {
@@ -378,9 +382,9 @@ export default defineComponent({
           icon: 'loading',
           duration: genRandomIndex(3000),
           success: (_) => {
-            // 模拟加载数据 -> 附加 100 条数据
+            // 模拟加载数据 -> 附加 10 条数据
             setTimeout(() => {
-              length.value += 100
+              length.value += 10
               loadMore.value.show = false
             }, 3000)
           }
