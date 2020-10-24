@@ -13,7 +13,7 @@ const AtDivider = defineComponent({
       default: '',
     },
     height: {
-      type: Number as PropType<AtDividerProps['height']>,
+      type: [Number, String] as PropType<AtDividerProps['height']>,
       default: 0,
     },
     fontColor: {
@@ -21,7 +21,7 @@ const AtDivider = defineComponent({
       default: '',
     },
     fontSize: {
-      type: Number as PropType<AtDividerProps['fontSize']>,
+      type: [Number, String] as PropType<AtDividerProps['fontSize']>,
       default: 0,
     },
     lineColor: {

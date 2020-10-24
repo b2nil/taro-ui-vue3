@@ -6,7 +6,15 @@
   overflow: auto;
   position: relative;
 
+  &__header {
+    display: block;
+  }
+
   &__container {
+    display: block;
+  }
+
+  &__footer {
     display: block;
   }
 

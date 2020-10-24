@@ -19,17 +19,14 @@ const getEnvs = (): ENVS => {
     }
 }
 
-function pxTransform(size: number): string {
+function pxTransform(size: number, designWidth?: number): string {
     if (!size) return ''
 
-    const designWidth = 750
-    const deviceRatio = {
-        640: 2.34 / 2,
-        750: 1,
-        828: 1.81 / 2,
+    if (!designWidth) {
+        designWidth = 750
     }
 
-    return `${size / deviceRatio[designWidth]}rpx`
+    return Taro.pxTransform(size, designWidth)
 }
 
 function delay(delayTime = 500): Promise<null> {

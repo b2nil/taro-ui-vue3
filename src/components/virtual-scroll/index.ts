@@ -106,18 +106,24 @@ const AtVirtualScroll = defineComponent({
 
     watch(() => props.height, updateFirstAndLast)
     watch(() => props.itemHeight, updateFirstAndLast)
-    watch(() => props.scrollIntoItem, (index, prevIndex) => {
-      const parsedIndex = parseInt(`${index}`, 10)
-      if (parsedIndex >= 0 && parsedIndex < props.items.length) {
-        scrollTop.value = parsedIndex * __itemHeight.value
-        updateFirstAndLast()
-      } else {
-        warn(`index should not exceed the length of items: ${index}`)
-      }
+    watch(() => props.scrollIntoItem, (itemIndex, prevItemIndex) => {
+      let parsedIndex = parseInt(`${itemIndex || 0}`, 10)
+
+      // make sure index is within length of items
+      parsedIndex = Math.min(props.items.length - 1, Math.max(0, parsedIndex))
+
+      scrollTop.value = parsedIndex * __itemHeight.value
+      updateFirstAndLast()
     })
 
     onMounted(() => {
-      last.value = getLast(0)
+      if (Boolean(props.scrollIntoItem)) {
+        let parsedIndex = parseInt(`${props.scrollIntoItem || 0}`, 10)
+        scrollTop.value = parsedIndex * __itemHeight.value
+        updateFirstAndLast()
+      } else {
+        last.value = getLast(0)
+      }
     })
 
     function getChildren() {
@@ -163,14 +169,23 @@ const AtVirtualScroll = defineComponent({
     }
 
     return () => {
-      const content = h(View, {
-        class: 'at-virtual-scroll__container',
-        style: {
-          height: convertToUnit((props.items.length * __itemHeight.value)),
-        }
-      }, { default: () => getChildren() })
+      const content = h(View, null, {
+        default: () => [
+          h(View, {
+            class: 'at-virtual-scroll__container',
+            style: {
+              height: convertToUnit((props.items.length * __itemHeight.value)),
+            }
+          }, { default: () => getChildren() }),
 
-      return h(ScrollView, mergeProps(
+          h(View, {
+            class: 'at-virtual-scroll__footer'
+          }, { default: () => slots.footer && slots.footer() }),
+        ]
+      })
+
+
+      const scrollViewNode = h(ScrollView, mergeProps(
         isWeb.value
           ? {
             scrollTop: scrollTop.value
@@ -190,6 +205,15 @@ const AtVirtualScroll = defineComponent({
           onScrollToUpper: props.onReachTop,
           onScrollToLower: props.onReachBottom,
         }), { default: () => [content] })
+
+      return h(View, null, {
+        default: () => [
+          h(View, {
+            class: 'at-virtual-scroll__header',
+          }, { default: () => slots.header && slots.header() }),
+          scrollViewNode,
+        ]
+      })
     }
   }
 })
