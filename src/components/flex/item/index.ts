@@ -2,7 +2,6 @@ import { h, defineComponent, computed, mergeProps, PropType } from "vue"
 import _forEach from 'lodash/forEach'
 import { View } from '@tarojs/components'
 import { AtFlexItemProps } from 'types/flex'
-import './index.scss'
 
 const AtFlexItem = defineComponent({
   name: "AtFlexItem",

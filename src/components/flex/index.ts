@@ -3,8 +3,6 @@ import _forEach from 'lodash/forEach'
 import { View } from '@tarojs/components'
 import { AtFlexProps } from 'types/flex'
 
-import './index.scss'
-
 const AtFlex = defineComponent({
   name: "AtFlex",
 
