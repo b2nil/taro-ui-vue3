@@ -39,7 +39,9 @@ const AtSwipeActionOptions = defineComponent({
         100
       ).then(res => {
         const arr = [...res]
-        props.onQueryedDom(arr[0])
+        if (Boolean(arr[0])) {
+          props.onQueryedDom(arr[0])
+        }
       })
     }
 
