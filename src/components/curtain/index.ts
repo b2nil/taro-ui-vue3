@@ -50,7 +50,7 @@ const AtCurtain = defineComponent({
                 class: 'at-curtain__body'
               }, {
                 default: () => [
-                  { default: () => slots.default && slots.default() },
+                  slots.default?.(),
 
                   h(View, {
                     class: btnCloseClass.value,
