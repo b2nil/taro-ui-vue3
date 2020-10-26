@@ -5,6 +5,7 @@
   max-width: 100%;
   overflow: auto;
   position: relative;
+  overflow-anchor: auto;
 
   &__header {
     display: block;
