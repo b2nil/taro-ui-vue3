@@ -1,7 +1,5 @@
 import { h, defineComponent, computed, mergeProps, PropType } from 'vue'
 import { Button, View, Form } from '@tarojs/components'
-import { CommonEventFunction } from "@tarojs/components/types/common"
-import { ButtonProps } from "@tarojs/components/types/Button"
 import { AtButtonProps } from "types/button"
 import AtLoading from '../loading/index'
 import { getEnvs } from '../../utils/common'
@@ -164,18 +162,19 @@ const AtButton = defineComponent({
     }
 
     interface miniAppEventHandleProps {
-      error?: typeof props.onError
+      onError?: typeof props.onError
       onContact?: typeof props.onContact
       onOpenSetting?: typeof props.onOpenSetting
-      getphonenumber?: typeof props.onGetPhoneNumber
-      getuserinfo?: typeof props.onGetUserInfo
+      onGetPhoneNumber?: typeof props.onGetPhoneNumber
+      onGetUserInfo?: typeof props.onGetUserInfo
+      onGetAuthorize?: typeof props.onGetAuthorize
       onLaunchapp?: typeof props.onLaunchapp
     }
 
     function getWxButtonProps(): miniAppEventHandleProps {
       if (!props.openType) return {}
 
-      const wxButtonProps: miniAppEventHandleProps = { error: handleError }
+      const wxButtonProps: miniAppEventHandleProps = {}
 
       switch (props.openType) {
         case 'contact':
@@ -185,12 +184,18 @@ const AtButton = defineComponent({
           wxButtonProps.onOpenSetting = handleOpenSetting
           break
         case 'getPhoneNumber':
-          wxButtonProps.getphonenumber = handleGetPhoneNumber
+          wxButtonProps.onGetPhoneNumber = handleGetPhoneNumber
           break
         case 'getUserInfo':
-          wxButtonProps.getuserinfo = handleGetUserInfo
+          wxButtonProps.onGetUserInfo = handleGetUserInfo
           break
-        case 'launchApp': wxButtonProps.onLaunchapp = handleLaunchapp
+        case 'getAuthorize':
+          wxButtonProps.onGetAuthorize = handleGetAuthorize
+          break
+        case 'launchApp':
+          wxButtonProps.onLaunchapp = handleLaunchapp
+          wxButtonProps.onError = handleError
+          break
         default:
           break
       }
@@ -215,7 +220,7 @@ const AtButton = defineComponent({
       sendMessageImg: props.sendMessageImg,
       showMessageCard: props.showMessageCard,
       appParameter: props.appParameter,
-      ...{ on: getWxButtonProps() }
+      ...getWxButtonProps()
     })
 
     return () => (
