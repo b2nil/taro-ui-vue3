@@ -146,7 +146,6 @@
           :items="directoryItems"
           :scroll-into-item="toItem"
           :item-height="itemHeight"
-          :reach-bottom-threshold="5"
           @reach-top="handleReachTop"
           @reach-bottom="handleReachBottom"
         >
@@ -172,27 +171,29 @@
               :style="{ marginBottom: '5px' }"
               @click="(item, key) => handleClick(item, key, index)"
             >
-              <at-flex
-                :style="{ border: 'solid 1px gray'}"
-                wrap="wrap"
-              >
-                <at-flex-item :size="2">
-                  <at-fab
-                    size="small"
-                    :style="{ backgroundColor: item.color }"
-                  >{{ item.initials }}</at-fab>
-                </at-flex-item>
-                <at-flex-item>
-                  <view style="font-weight: bolder;">{{ item.fullName }}</view>
-                  <view style="font-size: smaller;">第 {{index+1}} 条/共 {{ length }} 条</view>
-                </at-flex-item>
-                <at-flex-item
-                  :size="3"
-                  :style="{ whiteSpace: 'normal', fontSize: 'smaller'}"
-                >
-                  左滑看看
-                </at-flex-item>
-              </at-flex>
+              <view>
+                <at-flex :style="{ border: 'solid 1px gray'}">
+                  <at-flex-item :size="2">
+                    <at-fab
+                      size="small"
+                      :style="{ backgroundColor: item.color }"
+                    >{{ item.initials }}</at-fab>
+                  </at-flex-item>
+                  <at-flex-item :size="7">
+                    <view
+                      class="example-item__desc"
+                      :style="{fontWeight: 'bolder', marginBottom: 0}"
+                    >{{ item.fullName }}</view>
+                    <view
+                      class="example-item__desc"
+                      :style="{ marginTop: 0,}"
+                    >第 {{index+1}} 条/共 {{ length }} 条</view>
+                  </at-flex-item>
+                  <at-flex-item :size="3">
+                    <view class="example-item__desc">左滑看看</view>
+                  </at-flex-item>
+                </at-flex>
+              </view>
             </at-swipe-action>
           </template>
           <template #footer>
