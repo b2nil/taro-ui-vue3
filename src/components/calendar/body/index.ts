@@ -374,7 +374,7 @@ const AtCalendarBody = defineComponent({
             circular: true,
             vertical: props.isVertical,
             skipHiddenItemLayout: true,
-            current: 1,
+            current: currentSwiperIndex.value,
             onChange: handleChange,
             onTouchMove: handleSwipeTouchMove,
             onTouchEnd: handleSwipeTouchEnd,
