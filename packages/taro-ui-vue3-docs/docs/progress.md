@@ -19,7 +19,6 @@ import { AtProgress } from 'taro-ui-vue3'
 
 ```scss
 @import "taro-ui-vue3/dist/style/components/progress.scss";
-@import "taro-ui-vue3/dist/style/components/icon.scss";
 ```
 
 

@@ -18,7 +18,6 @@ import { AtRate } from 'taro-ui-vue3'
 
 ```scss
 @import "taro-ui-vue3/dist/style/components/rate.scss";
-@import "taro-ui-vue3/dist/style/components/icon.scss";
 ```
 
 

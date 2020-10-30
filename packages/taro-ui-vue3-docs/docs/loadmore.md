@@ -15,8 +15,6 @@ import { AtLoadMore } from 'taro-ui-vue3'
 
 ```scss
 @import "taro-ui-vue3/dist/style/components/load-more.scss";
-@import "taro-ui-vue3/dist/style/components/activity-indicator.scss";
-@import "taro-ui-vue3/dist/style/components/button.scss";
 ```
 
 ## 一般用法

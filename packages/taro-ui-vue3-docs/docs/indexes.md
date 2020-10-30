@@ -14,9 +14,7 @@ import { AtIndexes } from 'taro-ui-vue3'
 **组件依赖的样式文件（仅按需引用时需要）**
 
 ```scss
-@import "taro-ui-vue3/dist/style/components/toast.scss";
 @import "taro-ui-vue3/dist/style/components/indexes.scss";
-@import "taro-ui-vue3/dist/style/components/list.scss";
 ```
 
 ## 一般用法

@@ -18,7 +18,6 @@ import { AtImagePicker } from 'taro-ui-vue3'
 
 ```scss
 @import "taro-ui-vue3/dist/style/components/image-picker.scss";
-@import "taro-ui-vue3/dist/style/components/icon.scss";
 ```
 
 

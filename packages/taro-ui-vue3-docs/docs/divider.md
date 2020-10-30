@@ -15,7 +15,6 @@ import { AtDivider } from 'taro-ui-vue3'
 
 ```scss
 @import "taro-ui-vue3/dist/style/components/divider.scss";
-@import "taro-ui-vue3/dist/style/components/icon.scss";
 ```
 
 ## 一般用法

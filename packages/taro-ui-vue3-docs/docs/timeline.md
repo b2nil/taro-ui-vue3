@@ -16,7 +16,6 @@ import { AtTimeline } from 'taro-ui-vue3'
 
 ```scss
 @import "taro-ui-vue3/dist/style/components/timeline.scss";
-@import "taro-ui-vue3/dist/style/components/icon.scss";
 ```
 
 ## 用法

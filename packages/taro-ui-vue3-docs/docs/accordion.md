@@ -16,7 +16,6 @@ import { AtAccordion } from 'taro-ui-vue3'
 
 ```scss
 @import "taro-ui-vue3/dist/style/components/accordion.scss";
-@import "taro-ui-vue3/dist/style/components/icon.scss";
 ```
 
 

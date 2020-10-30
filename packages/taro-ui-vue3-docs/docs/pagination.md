@@ -16,8 +16,6 @@ import { AtPagination } from 'taro-ui-vue3'
 
 ```scss
 @import "taro-ui-vue3/dist/style/components/pagination.scss";
-@import "taro-ui-vue3/dist/style/components/button.scss";
-@import "taro-ui-vue3/dist/style/components/icon.scss";
 ```
 
 ## 用法

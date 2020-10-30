@@ -18,7 +18,6 @@ import { AtRadio } from 'taro-ui-vue3'
 
 ```scss
 @import "taro-ui-vue3/dist/style/components/radio.scss";
-@import "taro-ui-vue3/dist/style/components/icon.scss";
 ```
 
 

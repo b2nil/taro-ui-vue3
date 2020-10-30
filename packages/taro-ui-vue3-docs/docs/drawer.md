@@ -16,7 +16,6 @@ import { AtDrawer } from 'taro-ui-vue3'
 
 ```scss
 @import "taro-ui-vue3/dist/style/components/drawer.scss";
-@import "taro-ui-vue3/dist/style/components/list.scss";
 ```
 
 ## 用法

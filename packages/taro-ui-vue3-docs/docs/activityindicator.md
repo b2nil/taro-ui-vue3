@@ -16,7 +16,6 @@ import { AtActivityIndicator } from 'taro-ui-vue3'
 
 ```scss
 @import "taro-ui-vue3/dist/style/components/activity-indicator.scss";
-@import 'taro-ui-vue3/dist/style/components/loading.scss';
 ```
 
 ## 一般用法
