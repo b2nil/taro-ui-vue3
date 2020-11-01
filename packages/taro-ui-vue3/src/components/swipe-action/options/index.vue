@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     :id="`swipeActionOptions-${componentId}`"
   >
     <slot />
@@ -11,12 +11,12 @@
 import { defineComponent, onMounted, watch, computed, toRef } from 'vue'
 import { delayQuerySelector } from '../../../utils/common'
 import { AtSwipeActionOptionsProps } from 'types/swipe-action'
-import AtComponentWithDefaultProps from '../../mixins'
+
 
 export default defineComponent({
   name: "AtSwipeActionOptions",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     componentId: {
@@ -25,12 +25,12 @@ export default defineComponent({
       required: true
     },
     options: {
-      type: Array as () => AtSwipeActionOptionsProps['options'],
+      type: Array as PropType<AtSwipeActionOptionsProps['options']>,
       default: [],
       required: true
     },
     onQueryedDom: {
-      type: Function as unknown as () => AtSwipeActionOptionsProps['onQueryedDom'],
+      type: Function as PropType<AtSwipeActionOptionsProps['onQueryedDom']>,
       default: () => ({ width }: { width: number }) => { },
       required: true
     },
@@ -38,7 +38,7 @@ export default defineComponent({
 
   setup(props: AtSwipeActionOptionsProps, { slots }) {
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       'at-swipe-action__options': true,
     }))
@@ -66,7 +66,7 @@ export default defineComponent({
 
     return {
       componentId: toRef(props, "componentId"),
-      rootClass
+      rootClasses
     }
   }
 })

@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     :style="customStyle"
   >
     <at-activity-indicator
@@ -27,53 +27,53 @@
   </view>
 </template>
 <script lang="ts">
-import { defineComponent, computed, toRefs } from "vue"
+import { defineComponent, computed, toRefs, PropType } from "../../api"
 import { AtLoadMoreProps } from 'types/load-more'
 
-import AtComponentWithDefaultProps from '../mixins'
+
 import AtActivityIndicator from '../activity-indicator/index.vue'
 import AtButton from "../button/index.vue"
 
 export default defineComponent({
   name: "AtLoadMore",
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     // 参数
     noMoreTextStyle: {
-      type: String as () => AtLoadMoreProps['noMoreTextStyle'],
+      type: String as PropType<AtLoadMoreProps['noMoreTextStyle']>,
       default: ''
     },
     moreBtnStyle: {
-      type: String as () => AtLoadMoreProps['moreBtnStyle'],
+      type: String as PropType<AtLoadMoreProps['moreBtnStyle']>,
       default: ''
     },
     status: {
-      type: String as () => AtLoadMoreProps['status'],
+      type: String as PropType<AtLoadMoreProps['status']>,
       default: 'more' as AtLoadMoreProps['status']
     },
     loadingText: {
-      type: String as () => AtLoadMoreProps['loadingText'],
+      type: String as PropType<AtLoadMoreProps['loadingText']>,
       default: '加载中'
     },
     moreText: {
-      type: String as () => AtLoadMoreProps['moreText'],
+      type: String as PropType<AtLoadMoreProps['moreText']>,
       default: '查看更多'
     },
     noMoreText: {
-      type: String as () => AtLoadMoreProps['noMoreText'],
+      type: String as PropType<AtLoadMoreProps['noMoreText']>,
       default: '没有更多'
     },
     // 事件
     onClick: {
-      type: Function as unknown as () => AtLoadMoreProps['onClick'],
+      type: Function as PropType<AtLoadMoreProps['onClick']>,
       default: () => () => { }
     },
   },
 
   setup(props: AtLoadMoreProps) {
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       'at-load-more': true,
       [props.className]: true
     }))
@@ -84,7 +84,7 @@ export default defineComponent({
 
     return {
       ...toRefs(props),
-      rootClass,
+      rootClasses,
       handleClick
     }
   }

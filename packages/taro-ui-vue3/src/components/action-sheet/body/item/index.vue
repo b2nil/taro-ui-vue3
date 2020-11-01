@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     @tap="handleClick"
   >
     <slot />
@@ -8,26 +8,23 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue"
+import { defineComponent, computed, PropType } from "../../../../api"
 import { CommonEvent } from "@tarojs/components/types/common"
-import { AtActionSheetItemProps } from "types/action-sheet";
-import AtComponentWithDefaultProps from "../../../mixins";
+import { AtActionSheetItemProps } from "types/action-sheet"
 
 export default defineComponent({
   name: "AtActionSheetItem",
 
-  mixins: [AtComponentWithDefaultProps],
-
   props: {
     onClick: {
-      type: Function as unknown as () => (event?: CommonEvent) => void,
+      type: Function as PropType<(event?: CommonEvent) => void>,
       default: () => () => { }
     },
   },
 
   setup(props: AtActionSheetItemProps, { slots }) {
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       'at-action-sheet__item': true,
     }))
@@ -37,7 +34,7 @@ export default defineComponent({
     }
 
     return {
-      rootClass,
+      rootClasses,
       handleClick
     }
   }

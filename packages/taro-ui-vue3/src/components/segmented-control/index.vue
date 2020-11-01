@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     :style="rootStyle"
   >
     <view
@@ -18,12 +18,12 @@ import { defineComponent, computed, toRef } from 'vue'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtSegmentedControlProps } from 'types/segmented-control'
 import { mergeStyle, pxTransform } from '../../utils/common'
-import AtComponentWithDefaultProps from '../mixins'
+
 
 export default defineComponent({
   name: "AtSegmentedControl",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     current: {
@@ -48,12 +48,12 @@ export default defineComponent({
       default: false
     },
     values: {
-      type: Array as () => AtSegmentedControlProps['values'],
+      type: Array as PropType<AtSegmentedControlProps['values']>,
       default: [],
       required: true
     },
     onClick: {
-      type: Function as unknown as () => AtSegmentedControlProps['onClick'],
+      type: Function as PropType<AtSegmentedControlProps['onClick']>,
       default: () => (index: number, event: CommonEvent) => { },
       required: true
     },
@@ -61,7 +61,7 @@ export default defineComponent({
 
   setup(props: AtSegmentedControlProps, { slots }) {
 
-    const rootClass = computed(() => mergeStyle(props.customStyle, {
+    const rootClasses = computed(() => mergeStyle(props.customStyle, {
       'at-segmented-control': true,
       'at-segmented-control--disabled': props.disabled,
       [props.className]: true
@@ -91,7 +91,7 @@ export default defineComponent({
 
     return {
       values: toRef(props, 'values'),
-      rootClass,
+      rootClasses,
       rootStyle,
       itemClass,
       itemStyle,

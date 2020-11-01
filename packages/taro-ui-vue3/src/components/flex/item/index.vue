@@ -1,19 +1,19 @@
 <template>
-  <view :class="rootClass">
+  <view :class="rootClasses">
     <slot />
   </view>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue"
+import { defineComponent, computed, PropType } from "../../api"
 import { AtFlexItemProps } from 'types/flex'
-import AtComponentWithDefaultProps from '../../mixins'
+
 import './index.scss'
 
 export default defineComponent({
   name: "AtFlexItem",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     isAuto: {
@@ -25,15 +25,15 @@ export default defineComponent({
       default: false,
     },
     align: {
-      type: String as () => AtFlexItemProps['align'],
+      type: String as PropType<AtFlexItemProps['align']>,
       default: 'center',
     },
     size: {
-      type: Number as () => AtFlexItemProps['size'],
+      type: Number as PropType<AtFlexItemProps['size']>,
       default: 0,
     },
     offset: {
-      type: Number as () => AtFlexItemProps['offset'],
+      type: Number as PropType<AtFlexItemProps['offset']>,
       default: 0,
     },
   },
@@ -41,7 +41,7 @@ export default defineComponent({
   setup(props: AtFlexItemProps, { slots }) {
 
     return () => {
-      const rootClass = computed(() => ({
+      const rootClasses = computed(() => ({
         [`at-col__align--${props.align}`]: true,
         [`at-col__offset-${props.offset}`]: true,
         [`at-col-${props.size}`]: true,
@@ -52,7 +52,7 @@ export default defineComponent({
       }))
 
       return {
-        rootClass
+        rootClasses
       }
     }
   }

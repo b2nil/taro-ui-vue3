@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     :style="customStyle"
   >
     <!-- left-view -->
@@ -58,7 +58,7 @@ import { defineComponent, computed, toRefs } from 'vue'
 import { ITouchEvent } from '@tarojs/components/types/common'
 import { AtNavBarProps } from 'types/nav-bar'
 import { mergeStyle, pxTransform } from '../../utils/common'
-import AtComponentWithDefaultProps from '../mixins'
+
 
 export default defineComponent({
   name: "AtNavBar",
@@ -69,7 +69,7 @@ export default defineComponent({
 
   props: {
     title: {
-      type: String as () => AtNavBarProps['title'],
+      type: String as PropType<AtNavBarProps['title']>,
       default: ''
     },
     fixed: Boolean,
@@ -78,28 +78,28 @@ export default defineComponent({
       default: true
     },
     color: {
-      type: String as () => AtNavBarProps['color'],
+      type: String as PropType<AtNavBarProps['color']>,
       default: '#6190E8'
     },
     leftIconType: {
-      type: [String, Object] as unknown as () => AtNavBarProps['leftIconType'],
+      type: [String, Object] as PropType<AtNavBarProps['leftIconType']>,
       default: ''
     },
     leftText: {
-      type: String as () => AtNavBarProps['leftText'],
+      type: String as PropType<AtNavBarProps['leftText']>,
       default: ''
     },
     rightFirstIconType: {
-      type: [String, Object] as unknown as () => AtNavBarProps['rightFirstIconType'],
+      type: [String, Object] as PropType<AtNavBarProps['rightFirstIconType']>,
       default: ''
     },
     rightSecondIconType: {
-      type: [String, Object] as unknown as () => AtNavBarProps['rightFirstIconType'],
+      type: [String, Object] as PropType<AtNavBarProps['rightFirstIconType']>,
       default: ''
     },
     // events
-    onClickLeftIcon: Function as unknown as () => AtNavBarProps['onClickLeftIcon'],
-    onClickRgIconSt: Function as unknown as () => AtNavBarProps['onClickRgIconSt'],
+    onClickLeftIcon: Function as PropType<AtNavBarProps['onClickLeftIcon']>,
+    onClickRgIconSt: Function as PropType<AtNavBarProps['onClickRgIconSt']>,
     onClickRgIconNd: Function as unknown as () => AtNavBarProps['onClickRgIconNd']
   },
 
@@ -152,7 +152,7 @@ export default defineComponent({
       [rightSecondIconInfo.value.className]: true,
     }))
 
-    const rootClass = computed(() => (
+    const rootClasses = computed(() => (
       {
         [props.className]: true,
         'at-nav-bar--fixed': props.fixed,
@@ -211,7 +211,7 @@ export default defineComponent({
 
     return {
       ...toRefs(props),
-      rootClass,
+      rootClasses,
       linkStyle,
       containerClass,
       leftIconClass,

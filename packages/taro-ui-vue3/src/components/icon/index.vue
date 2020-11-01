@@ -1,41 +1,41 @@
 <template>
   <text
-    :class="rootClass"
+    :class="rootClasses"
     :style="rootStyle"
     @tap="handleClick"
   />
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, h } from "vue"
+import { defineComponent, computed, h, PropType } from "../../api"
 import { AtIconProps } from "types/icon"
 import { pxTransform, mergeStyle } from "../../utils/common"
-import AtComponentWithDefaultProps from "../mixins"
+
 
 export default defineComponent({
   name: "AtIcon",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     prefixclass: {
-      type: String as () => AtIconProps['prefixClass'],
+      type: String as PropType<AtIconProps['prefixClass']>,
       default: 'at-icon'
     },
     value: {
-      type: String as () => AtIconProps['value'],
+      type: String as PropType<AtIconProps['value']>,
       default: ''
     },
     color: {
-      type: String as () => AtIconProps['color'],
+      type: String as PropType<AtIconProps['color']>,
       default: ''
     },
     size: {
-      type: [String, Number] as unknown as () => AtIconProps['size'],
+      type: [String, Number] as PropType<AtIconProps['size']>,
       default: 24
     },
     onClick: {
-      type: Function as unknown as () => AtIconProps['onClick'],
+      type: Function as PropType<AtIconProps['onClick']>,
       default: () => () => { }
     }
   },
@@ -47,7 +47,7 @@ export default defineComponent({
       : ''
     )
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.prefixClass]: true,
       [props.className]: true,
       [iconName.value]: true,
@@ -63,7 +63,7 @@ export default defineComponent({
     }
 
     return {
-      rootClass,
+      rootClasses,
       rootStyle,
       handleClick
     }

@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     :style="customStyle"
     @tap="handleClick"
   >
@@ -12,7 +12,7 @@
 import { defineComponent, computed, toRef } from 'vue'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtTagProps } from 'types/tag'
-import AtComponentWithDefaultProps from '../mixins'
+
 
 const SIZE_CLASS = {
   normal: 'normal',
@@ -26,16 +26,16 @@ const TYPE_CLASS = {
 export default defineComponent({
   name: "AtTag",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     size: {
-      type: String as () => AtTagProps['size'],
+      type: String as PropType<AtTagProps['size']>,
       default: 'normal' as AtTagProps['size'],
       validator: (val: string) => ['normal', 'small'].includes(val)
     },
     type: {
-      type: String as () => AtTagProps['type'],
+      type: String as PropType<AtTagProps['type']>,
       default: '',
       validator: (val: string) => ['', 'primary'].includes(val)
     },
@@ -55,12 +55,12 @@ export default defineComponent({
       type: Boolean,
       default: false
     },
-    onClick: Function as unknown as () => AtTagProps['onClick'],
+    onClick: Function as PropType<AtTagProps['onClick']>,
   },
 
   setup(props: AtTagProps, { slots }) {
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       'at-tag': true,
       [`at-tag--${SIZE_CLASS[props.size!]}`]: SIZE_CLASS[props.size!],
       [`at-tag--${props.type}`]: TYPE_CLASS[props.type!],
@@ -87,7 +87,7 @@ export default defineComponent({
 
     return {
       customStyle: toRef(props, 'customStyle'),
-      rootClass,
+      rootClasses,
       handleClick
     }
   }

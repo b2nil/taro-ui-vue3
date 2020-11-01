@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     :style="customStyle"
     @tap="handleClick"
   >
@@ -42,29 +42,29 @@ import {
   getEventDetail,
   mergeStyle
 } from '../../utils/common'
-import AtComponentWithDefaultProps from '../mixins'
+
 import { nextTick } from '@tarojs/taro'
 
 export default defineComponent({
   name: "AtRange",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     sliderStyle: {
-      type: [Object, String] as unknown as () => AtRangeProps['sliderStyle'],
+      type: [Object, String] as PropType<AtRangeProps['sliderStyle']>,
       default: ''
     },
     railStyle: {
-      type: [Object, String] as unknown as () => AtRangeProps['railStyle'],
+      type: [Object, String] as PropType<AtRangeProps['railStyle']>,
       default: ''
     },
     trackStyle: {
-      type: [Object, String] as unknown as () => AtRangeProps['trackStyle'],
+      type: [Object, String] as PropType<AtRangeProps['trackStyle']>,
       default: ''
     },
     value: {
-      type: Array as unknown as () => AtRangeProps['value'],
+      type: Array as PropType<AtRangeProps['value']>,
       default: [0, 0] as AtRangeProps['value']
     },
     min: {
@@ -83,8 +83,8 @@ export default defineComponent({
       type: Boolean,
       default: false
     },
-    onChange: Function as unknown as () => AtRangeProps['onChange'],
-    onAfterChange: Function as unknown as () => AtRangeProps['onAfterChange'],
+    onChange: Function as PropType<AtRangeProps['onChange']>,
+    onAfterChange: Function as PropType<AtRangeProps['onAfterChange']>,
   },
 
   setup(props: AtRangeProps, { slots }) {
@@ -99,7 +99,7 @@ export default defineComponent({
       bX: 0
     })
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       'at-range--disabled': props.disabled,
       'at-range': true,
@@ -216,7 +216,7 @@ export default defineComponent({
     })
 
     return {
-      rootClass,
+      rootClasses,
       handleClick,
       handleTouchMove,
       handleTouchEnd,

@@ -1,5 +1,5 @@
 <template>
-  <view :class="rootClass">
+  <view :class="rootClasses">
     <view class="at-modal__action">
       <slot />
     </view>
@@ -9,12 +9,12 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
 import { AtModalActionProps } from 'types/modal'
-import AtComponentWithDefaultProps from '../../mixins'
+
 
 export default defineComponent({
   name: "AtModalAction",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     isSimple: { type: Boolean, default: false, required: true }
@@ -22,14 +22,14 @@ export default defineComponent({
 
   setup(props: AtModalActionProps, { slots }) {
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       'at-modal__footer--simple': props.isSimple,
       'at-modal__footer': true,
     }))
 
     return {
-      rootClass
+      rootClasses
     }
   }
 })

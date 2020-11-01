@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     :style="customStyle"
   >
     <view
@@ -27,14 +27,14 @@
   </view>
 </template>
 <script lang="ts">
-import { defineComponent, computed, toRef } from "vue"
+import { defineComponent, computed, toRef, PropType } from "../../api"
 
 import _toString from 'lodash/toString'
 import { pxTransform } from "../../utils/common";
 import { CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
 import { AtInputNumberProps, InputError } from 'types/input-number'
 
-import AtComponentWithDefaultProps from '../mixins'
+
 
 // TODO: Check all types
 
@@ -76,49 +76,49 @@ type ExtendEvent = {
 export default defineComponent({
   name: "AtInputNumber",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     // 参数
     type: {
-      type: String as () => AtInputNumberProps['type'],
+      type: String as PropType<AtInputNumberProps['type']>,
       default: 'number' as AtInputNumberProps['type']
     },
     value: {
-      type: [Number, String] as unknown as () => AtInputNumberProps['value'],
+      type: [Number, String] as PropType<AtInputNumberProps['value']>,
       default: 1,
       required: true
     },
-    style: String as () => AtInputNumberProps['style'],
+    style: String as PropType<AtInputNumberProps['style']>,
     min: {
-      type: Number as () => AtInputNumberProps['min'],
+      type: Number as PropType<AtInputNumberProps['min']>,
       default: 0
     },
     max: {
-      type: Number as () => AtInputNumberProps['max'],
+      type: Number as PropType<AtInputNumberProps['max']>,
       default: 100
     },
     step: {
-      type: Number as () => AtInputNumberProps['step'],
+      type: Number as PropType<AtInputNumberProps['step']>,
       default: 1
     },
     size: {
-      type: String as () => AtInputNumberProps['size'],
+      type: String as PropType<AtInputNumberProps['size']>,
       default: 'normal' as AtInputNumberProps['size']
     },
     width: {
-      type: Number as () => AtInputNumberProps['width'],
+      type: Number as PropType<AtInputNumberProps['width']>,
       default: 120
     },
     disabled: Boolean,
     disabledInput: Boolean,
     // 事件
     onChange: {
-      type: Function as unknown as () => AtInputNumberProps['onChange'],
+      type: Function as PropType<AtInputNumberProps['onChange']>,
       default: () => () => { },
       required: true
     },
-    onBlur: Function as unknown as () => AtInputNumberProps['onBlur'],
+    onBlur: Function as PropType<AtInputNumberProps['onBlur']>,
     onErrorInput: Function as unknown as () => AtInputNumberProps['onErrorInput']
   },
 
@@ -130,7 +130,7 @@ export default defineComponent({
       width: props.width ? `${pxTransform(props.width)}` : ''
     }))
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       'at-input-number--lg': props.size! === 'large',
       'at-input-number': true,
@@ -228,7 +228,7 @@ export default defineComponent({
       disabled: toRef(props, 'disabled'),
       customStyle: toRef(props, 'customStyle'),
       disabledInput: toRef(props, 'disabledInput'),
-      rootClass,
+      rootClasses,
       inputStyle,
       inputValue,
       minusBtnClass,

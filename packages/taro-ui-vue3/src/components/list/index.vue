@@ -1,5 +1,5 @@
 <template>
-  <view :class="rootClass">
+  <view :class="rootClasses">
     <slot />
   </view>
 </template>
@@ -16,14 +16,14 @@ export default defineComponent({
 
   setup(props: AtListProps, { slots }) {
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       'at-list--no-border': !props.hasBorder,
       'at-list': true,
     }))
 
     return {
-      rootClass
+      rootClasses
     }
   }
 })

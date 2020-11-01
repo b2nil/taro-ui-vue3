@@ -1,7 +1,7 @@
 <template>
   <view
     v-if="show"
-    :class="rootClass"
+    :class="rootClasses"
     :style="customStyle"
   >
     <!-- close icon -->
@@ -64,7 +64,7 @@ export default defineComponent({
     single: Boolean,
     marquee: Boolean,
     speed: {
-      type: Number as () => AtNoticeBarProps['speed'],
+      type: Number as PropType<AtNoticeBarProps['speed']>,
       default: 100
     },
     moreText: {
@@ -72,9 +72,9 @@ export default defineComponent({
       default: '查看详情'
     },
     showMore: { type: Boolean, default: false },
-    icon: String as () => AtNoticeBarProps['icon'],
+    icon: String as PropType<AtNoticeBarProps['icon']>,
     // events
-    onClose: Function as unknown as () => AtNoticeBarProps['onClose'],
+    onClose: Function as PropType<AtNoticeBarProps['onClose']>,
     onGotoMore: Function as unknown as () => AtNoticeBarProps['onGotoMore']
   },
 
@@ -98,7 +98,7 @@ export default defineComponent({
       isWEB: Taro.getEnv() === Taro.ENV_TYPE.WEB
     })
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       'at-noticebar--marquee': props.marquee,
       'at-noticebar--weapp': props.marquee && (state.isWEAPP || state.isALIPAY),
@@ -206,7 +206,7 @@ export default defineComponent({
     return {
       ...toRefs(state),
       ...toRefs(props),
-      rootClass,
+      rootClasses,
       iconClass,
       innerContentClass,
       animationStyle,

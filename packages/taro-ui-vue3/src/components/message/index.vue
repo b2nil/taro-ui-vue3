@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     :style="customStyle"
   >{{ _message }}</view>
 </template>
@@ -9,12 +9,12 @@
 import { defineComponent, ref, reactive, onMounted, onUnmounted, nextTick, computed, toRef } from 'vue'
 import Taro from '@tarojs/taro'
 import { AtMessageProps, AtMessageState } from 'types/message'
-import AtComponentWithDefaultProps from "../mixins"
+
 
 export default defineComponent({
   name: "AtMessage",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   onHide() {
     Taro.eventCenter.off('atMessage')
@@ -35,7 +35,7 @@ export default defineComponent({
       _duration: 3000
     })
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       [`at-message--${state._type}`]: true,
       'at-message--show': state._isOpened,
@@ -79,7 +79,7 @@ export default defineComponent({
     return {
       customStyle: toRef(props, 'customStyle'),
       _message: toRef(state, '_message'),
-      rootClass,
+      rootClasses,
       bindMessageListener,
     }
   }

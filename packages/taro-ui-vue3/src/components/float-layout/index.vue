@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     @touch-move="handleTouchMove"
   >
     <!-- overlay -->
@@ -46,16 +46,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref, nextTick, watch, toRefs } from "vue"
+import { defineComponent, computed, ref, nextTick, watch, toRefs, PropType } from "../../api"
 import { handleTouchScroll } from "../../utils/common"
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtFloatLayoutProps } from 'types/float-layout'
 
-import AtComponentWithDefaultProps from '../mixins'
+
 
 export default defineComponent({
   name: "AtFloatLayout",
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     // 参数
@@ -65,7 +65,7 @@ export default defineComponent({
       required: true
     },
     title: {
-      type: String as () => AtFloatLayoutProps['title'],
+      type: String as PropType<AtFloatLayoutProps['title']>,
       default: '',
     },
     scrollX: Boolean,
@@ -73,22 +73,22 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
-    scrollTop: Number as () => AtFloatLayoutProps['scrollTop'],
-    scrollLeft: Number as () => AtFloatLayoutProps['scrollLeft'],
-    upperThreshold: Number as () => AtFloatLayoutProps['upperThreshold'],
-    lowerThreshold: Number as () => AtFloatLayoutProps['lowerThreshold'],
+    scrollTop: Number as PropType<AtFloatLayoutProps['scrollTop']>,
+    scrollLeft: Number as PropType<AtFloatLayoutProps['scrollLeft']>,
+    upperThreshold: Number as PropType<AtFloatLayoutProps['upperThreshold']>,
+    lowerThreshold: Number as PropType<AtFloatLayoutProps['lowerThreshold']>,
     scrollWithAnimation: Boolean,
     // 事件
-    onClose: Function as unknown as () => AtFloatLayoutProps['onClose'],
-    onScroll: Function as unknown as () => AtFloatLayoutProps['onScroll'],
-    onScrollToUpper: Function as unknown as () => AtFloatLayoutProps['onScrollToUpper'],
-    onScrollToLower: Function as unknown as () => AtFloatLayoutProps['onScrollToLower'],
+    onClose: Function as PropType<AtFloatLayoutProps['onClose']>,
+    onScroll: Function as PropType<AtFloatLayoutProps['onScroll']>,
+    onScrollToUpper: Function as PropType<AtFloatLayoutProps['onScrollToUpper']>,
+    onScrollToLower: Function as PropType<AtFloatLayoutProps['onScrollToLower']>,
   },
 
   setup(props: AtFloatLayoutProps, { slots }) {
     const _isOpened = ref<boolean>(props.isOpened)
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       'at-float-layout--active': _isOpened.value,
       'at-float-layout': true,
@@ -122,7 +122,7 @@ export default defineComponent({
 
     return {
       ...toRefs(props),
-      rootClass,
+      rootClasses,
       close,
       handleTouchMove
     }

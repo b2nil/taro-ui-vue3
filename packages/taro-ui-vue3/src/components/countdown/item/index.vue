@@ -7,25 +7,25 @@
   </view>
 </template>
 <script lang="ts">
-import { defineComponent, toRefs } from "vue"
+import { defineComponent, toRefs, PropType } from "../../api"
 import { AtCountdownItemProps } from 'types/countdown'
 
-import AtComponentWithDefaultProps from '../../mixins'
+
 
 export default defineComponent({
   name: "AtCountdownItem",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     // 参数
     num: {
-      type: Number as () => AtCountdownItemProps['num'],
+      type: Number as PropType<AtCountdownItemProps['num']>,
       default: 0,
       required: true
     },
     separator: {
-      type: String as () => AtCountdownItemProps['separator'],
+      type: String as PropType<AtCountdownItemProps['separator']>,
       default: ':',
     },
   },

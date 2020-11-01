@@ -1,5 +1,5 @@
 <template>
-  <view :class="rootClass">
+  <view :class="rootClasses">
     <view class="at-progress__outer">
       <view class="at-progress__outer-inner">
         <view
@@ -24,27 +24,27 @@
 <script lang="ts">
 import { defineComponent, toRefs, computed, toRef } from 'vue'
 import { AtProgressProps } from 'types/progress'
-import AtComponentWithDefaultProps from '../mixins'
+
 
 export default defineComponent({
   name: "AtProgress",
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     color: {
-      type: String as () => AtProgressProps['color'],
+      type: String as PropType<AtProgressProps['color']>,
       default: ''
     },
     status: {
-      type: String as () => AtProgressProps['status'],
+      type: String as PropType<AtProgressProps['status']>,
       validator: (val: string) => ['progress', 'error', 'success'].includes(val)
     },
     percent: {
-      type: Number as () => AtProgressProps['percent'],
+      type: Number as PropType<AtProgressProps['percent']>,
       default: 0
     },
     strokeWidth: {
-      type: Number as () => AtProgressProps['strokeWidth'],
+      type: Number as PropType<AtProgressProps['strokeWidth']>,
       default: 10
     },
     isHidePercent: Boolean,
@@ -60,7 +60,7 @@ export default defineComponent({
       percent!.value = 100
     }
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       [`at-progress--${props.status}`]: !!props.status,
       'at-progress': true,
@@ -81,7 +81,7 @@ export default defineComponent({
     return {
       isHidePercent: toRef(props, 'isHidePercent'),
       status: toRef(props, 'status'),
-      rootClass,
+      rootClasses,
       iconClass,
       progressStyle,
       percent,

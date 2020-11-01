@@ -17,27 +17,27 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, toRef } from "vue"
+import { defineComponent, computed, toRef, PropType } from "../../api"
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtCurtainProps } from 'types/curtain'
 
-import AtComponentWithDefaultProps from '../mixins'
+
 
 export default defineComponent({
   name: "AtCurtain",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     // 参数
     isOpened: Boolean,
     closeBtnPosition: {
-      type: String as () => AtCurtainProps['closeBtnPosition'],
+      type: String as PropType<AtCurtainProps['closeBtnPosition']>,
       default: 'bottom' as AtCurtainProps['closeBtnPosition']
     },
     // 事件
     onClose: {
-      type: Function as unknown as () => AtCurtainProps['onClose'],
+      type: Function as PropType<AtCurtainProps['onClose']>,
       default: () => () => { }
     }
   },

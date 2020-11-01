@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     :id="`swipeAction-${componentId}`"
     @touch-move="handleTouchMove"
     @touch-end="handleTouchEnd"
@@ -61,12 +61,12 @@ export default defineComponent({
     disabled: { type: Boolean, default: false },
     autoClose: { type: Boolean, default: false },
     options: {
-      type: Array as () => AtSwipeActionProps['options'],
+      type: Array as PropType<AtSwipeActionProps['options']>,
       default: () => []
     },
-    onClick: Function as unknown as () => AtSwipeActionProps['onClick'],
-    onOpened: Function as unknown as () => AtSwipeActionProps['onOpened'],
-    onClosed: Function as unknown as () => AtSwipeActionProps['onClosed'],
+    onClick: Function as PropType<AtSwipeActionProps['onClick']>,
+    onOpened: Function as PropType<AtSwipeActionProps['onOpened']>,
+    onClosed: Function as PropType<AtSwipeActionProps['onClosed']>,
   },
 
   setup(props: AtSwipeActionProps, { slots }) {
@@ -90,7 +90,7 @@ export default defineComponent({
       _isOpened: !!props.isOpened
     })
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       'at-swipe-action': true,
     }))
@@ -256,7 +256,7 @@ export default defineComponent({
     return {
       options: toRef(props, 'options'),
       componentId: toRef(state, 'componentId'),
-      rootClass,
+      rootClasses,
       actionContentClass,
       transformStyle,
       optionClass,

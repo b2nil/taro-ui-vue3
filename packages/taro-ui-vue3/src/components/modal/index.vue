@@ -1,6 +1,6 @@
 <template>
   <view
-    class="rootClass"
+    class="rootClasses"
     v-if="title || content"
   >
     <!-- overlay -->
@@ -44,7 +44,7 @@
     </view>
   </view>
   <view
-    class="rootClass"
+    class="rootClasses"
     v-else
     @touch-move="handleTouchMove"
   >
@@ -67,7 +67,7 @@ import Taro from '@tarojs/taro'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtModalProps, AtModalState } from 'types/modal'
 
-import AtComponentWithDefaultProps from '../mixins'
+
 import AtModalAction from './action/index.vue'
 import AtModalContent from './content/index.vue'
 import AtModalHeader from './header/index.vue'
@@ -75,7 +75,7 @@ import AtModalHeader from './header/index.vue'
 export default defineComponent({
   name: "AtModal",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   components: {
     AtModalAction,
@@ -84,22 +84,22 @@ export default defineComponent({
   },
 
   props: {
-    title: String as () => AtModalProps['title'],
+    title: String as PropType<AtModalProps['title']>,
     isOpened: {
       type: Boolean,
       default: false,
       required: true
     },
-    content: String as () => AtModalProps['content'],
+    content: String as PropType<AtModalProps['content']>,
     closeOnClickOverlay: {
       type: Boolean,
       default: true
     },
-    cancelText: String as () => AtModalProps['cancelText'],
-    confirmText: String as () => AtModalProps['confirmText'],
-    onClose: Function as unknown as () => AtModalProps['onClose'],
-    onConfirm: Function as unknown as () => AtModalProps['onConfirm'],
-    onCancel: Function as unknown as () => AtModalProps['onCancel'],
+    cancelText: String as PropType<AtModalProps['cancelText']>,
+    confirmText: String as PropType<AtModalProps['confirmText']>,
+    onClose: Function as PropType<AtModalProps['onClose']>,
+    onConfirm: Function as PropType<AtModalProps['onConfirm']>,
+    onCancel: Function as PropType<AtModalProps['onCancel']>,
   },
 
   setup(props: AtModalProps, { slots }) {
@@ -108,7 +108,7 @@ export default defineComponent({
       isWEB: Taro.getEnv() === Taro.ENV_TYPE.WEB
     })
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       'at-modal--active': state._isOpened,
       'at-modal': true,
@@ -157,7 +157,7 @@ export default defineComponent({
     return {
       ...toRefs(props),
       isWEB: toRef(state, 'isWEB'),
-      rootClass,
+      rootClasses,
       handleClickOverlay,
       handleCancel,
       handleConfirm,

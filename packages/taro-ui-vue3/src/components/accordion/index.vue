@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     :style="customStyle"
   >
     <!-- header -->
@@ -40,16 +40,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref, watch, computed, toRefs } from 'vue'
-import AtComponentWithDefaultProps from "../mixins";
+import { defineComponent, reactive, ref, watch, computed, toRefs, PropType } from "../../api"
 import { CommonEvent } from '@tarojs/components/types/common'
-import { AtAccordionProps, AtAccordionState } from "types/accordion";
+import { AtAccordionProps, AtAccordionState } from "types/accordion"
 import { delayQuerySelector } from '../../utils/common'
 
 export default defineComponent({
   name: "AtAccordion",
-
-  mixins: [AtComponentWithDefaultProps],
 
   emits: ['click'],
 
@@ -60,7 +57,7 @@ export default defineComponent({
       default: ''
     },
     icon: {
-      type: Object as () => AtAccordionProps['icon'],
+      type: Object as PropType<AtAccordionProps['icon']>,
       default: () => ({ value: '' })
     },
     hasBorder: {
@@ -76,7 +73,7 @@ export default defineComponent({
       default: ''
     },
     onClick: {
-      type: Function as unknown as () => AtAccordionProps['onClick'],
+      type: Function as PropType<AtAccordionProps['onClick']>,
       default: () => () => { }
     }
   },
@@ -87,7 +84,7 @@ export default defineComponent({
     const state = reactive<AtAccordionState>({ wrapperHeight: 0 })
 
     // computed classes
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       'at-accordion': true,
       [props.className]: true
     }))
@@ -167,7 +164,7 @@ export default defineComponent({
 
     return {
       ...toRefs(props),
-      rootClass,
+      rootClasses,
       headerClass,
       iconClass,
       arrowClass,

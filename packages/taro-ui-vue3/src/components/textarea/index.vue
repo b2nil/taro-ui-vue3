@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     :style="customStyle"
   >
     <textarea
@@ -38,7 +38,7 @@ import { CommonEvent } from '@tarojs/components/types/common'
 import Taro from '@tarojs/taro'
 import { AtTextareaProps } from 'types/textarea'
 import { pxTransform } from '../../utils/common'
-import AtComponentWithDefaultProps from '../mixins'
+
 
 type ExtendEvent = {
   target: {
@@ -60,7 +60,7 @@ const ENV = Taro.getEnv()
 
 export default defineComponent({
   name: "AtTextarea",
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     value: {
@@ -87,14 +87,14 @@ export default defineComponent({
     cursorSpacing: { type: Number, default: 100 },
     // event handlers
     onChange: {
-      type: Function as unknown as () => AtTextareaProps['onChange'],
+      type: Function as PropType<AtTextareaProps['onChange']>,
       default: () => (value: string, event?: CommonEvent) => { },
       required: true
     },
-    onFocus: Function as unknown as () => AtTextareaProps['onFocus'],
-    onBlur: Function as unknown as () => AtTextareaProps['onBlur'],
-    onConfirm: Function as unknown as () => AtTextareaProps['onConfirm'],
-    onLinechange: Function as unknown as () => AtTextareaProps['onLinechange'],
+    onFocus: Function as PropType<AtTextareaProps['onFocus']>,
+    onBlur: Function as PropType<AtTextareaProps['onBlur']>,
+    onConfirm: Function as PropType<AtTextareaProps['onConfirm']>,
+    onLinechange: Function as PropType<AtTextareaProps['onLinechange']>,
   },
 
   setup(props: AtTextareaProps, { slots }) {
@@ -111,7 +111,7 @@ export default defineComponent({
       : ''
     )
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       'at-textarea': true,
       [`at-textarea--${ENV}`]: true,
       'at-textarea--error': _maxLength.value < props.value.length,
@@ -146,7 +146,7 @@ export default defineComponent({
 
     return {
       ...toRefs(props),
-      rootClass,
+      rootClasses,
       textareaStyle,
       placeholderCls,
       _maxLength,

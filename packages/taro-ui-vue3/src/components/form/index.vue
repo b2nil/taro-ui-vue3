@@ -1,6 +1,6 @@
 <template>
   <form
-    :class="rootClass"
+    :class="rootClasses"
     :style="customStyle"
     :report-submit="reportSubmit"
     @submit="onSubmit"
@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs, computed } from "vue"
+import { defineComponent, toRefs, computed, PropType } from "../../api"
 import { AtFormProps } from "types/form"
 
 export default defineComponent({
@@ -35,14 +35,14 @@ export default defineComponent({
       }
     }
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       'at-form': true,
     }))
 
     return {
       ...toRefs(props),
-      rootClass,
+      rootClasses,
       onSubmit,
       onReset,
     }

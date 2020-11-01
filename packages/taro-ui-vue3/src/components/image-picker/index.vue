@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     :style="customStyle"
   >
     <view
@@ -45,12 +45,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, toRef } from "vue"
+import { defineComponent, computed, toRef, PropType } from "../../api"
 import Taro from '@tarojs/taro'
 import { uuid } from '../../utils/common'
 import { AtImagePickerProps, File } from 'types/image-picker'
 
-import AtComponentWithDefaultProps from '../mixins'
+
 
 interface MatrixFile extends Partial<File> {
   type: 'blank' | 'btn'
@@ -91,16 +91,16 @@ const ENV = Taro.getEnv()
 
 export default defineComponent({
   name: "AtImagePicker",
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     // 参数
     files: {
-      type: Array as () => AtImagePickerProps['files'],
+      type: Array as PropType<AtImagePickerProps['files']>,
       default: () => [],
     },
     mode: {
-      type: String as () => AtImagePickerProps['mode'],
+      type: String as PropType<AtImagePickerProps['mode']>,
       default: 'aspectFill' as AtImagePickerProps['mode']
     },
     showAddBtn: {
@@ -109,24 +109,24 @@ export default defineComponent({
     },
     multiple: Boolean,
     length: {
-      type: Number as () => AtImagePickerProps['length'],
+      type: Number as PropType<AtImagePickerProps['length']>,
       default: 4
     },
-    count: Number as () => AtImagePickerProps['count'],
-    sizeType: Array as () => AtImagePickerProps['sizeType'],
-    sourceType: Array as () => AtImagePickerProps['sourceType'],
+    count: Number as PropType<AtImagePickerProps['count']>,
+    sizeType: Array as PropType<AtImagePickerProps['sizeType']>,
+    sourceType: Array as PropType<AtImagePickerProps['sourceType']>,
     // 事件
     onChange: {
-      type: Function as unknown as () => AtImagePickerProps['onChange'],
+      type: Function as PropType<AtImagePickerProps['onChange']>,
       default: () => () => { },
       required: true
     },
     onImageClick: {
-      type: Function as unknown as () => AtImagePickerProps['onImageClick'],
+      type: Function as PropType<AtImagePickerProps['onImageClick']>,
       default: () => () => { }
     },
     onFail: {
-      type: Function as unknown as () => AtImagePickerProps['onFail'],
+      type: Function as PropType<AtImagePickerProps['onFail']>,
       default: () => () => { }
     },
   },
@@ -141,7 +141,7 @@ export default defineComponent({
       props.showAddBtn!
     ))
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       'at-image-picker': true,
       [props.className]: true
     }))
@@ -203,7 +203,7 @@ export default defineComponent({
       customStyle: toRef(props, 'customStyle'),
       length: toRef(props, 'length'),
       mode: toRef(props, 'mode'),
-      rootClass,
+      rootClasses,
       matrix,
       chooseFile,
       handleRemoveImg,

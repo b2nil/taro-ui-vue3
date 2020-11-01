@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     :style="customStyle"
     @tap="handleClick"
   >
@@ -86,7 +86,7 @@ import { ButtonProps } from "@tarojs/components/types/Button";
 import { AtButtonProps } from "types/button";
 import AtLoading from '../loading/index'
 import { getEnvs } from '../../utils/common'
-import AtComponentWithDefaultProps from '../mixins';
+
 import Taro from '@tarojs/taro'
 
 const SIZE_CLASS = {
@@ -102,7 +102,7 @@ const TYPE_CLASS = {
 export default defineComponent({
   name: "AtButton",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   components: {
     AtLoading
@@ -110,12 +110,12 @@ export default defineComponent({
 
   props: {
     size: {
-      type: String as () => 'normal' | 'small',
+      type: String as PropType<'normal' | 'small'>,
       default: 'normal' as 'normal' | 'small',
       validator: (prop: string) => ['normal', 'small'].includes(prop)
     },
     type: {
-      type: String as () => 'primary' | 'secondary' | undefined,
+      type: String as PropType<'primary' | 'secondary' | undefined>,
       default: '' as 'primary' | 'secondary' | undefined,
       validator: (prop: string) => ['primary', 'secondary', ''].includes(prop)
     },
@@ -136,17 +136,17 @@ export default defineComponent({
       default: false
     },
     onClick: {
-      type: Function as unknown as () => CommonEventFunction,
+      type: Function as PropType<CommonEventFunction>,
       default: () => () => { },
     },
     // Taro Button Props
     formType: {
-      type: String as () => keyof ButtonProps.formType,
+      type: String as PropType<keyof ButtonProps.formType>,
       default: undefined,
       validator: (prop: string) => ['submit', 'reset', ''].includes(prop)
     },
     openType: {
-      type: String as () => keyof ButtonProps.openType,
+      type: String as PropType<keyof ButtonProps.openType>,
       default: undefined,
       validator: (prop: string) => [
         'contact',
@@ -163,11 +163,11 @@ export default defineComponent({
       ].includes(prop),
     },
     lang: {
-      type: String as () => keyof ButtonProps.lang,
+      type: String as PropType<keyof ButtonProps.lang>,
       default: 'en' as keyof ButtonProps.lang
     },
     scope: { // alipay scope, 当 open-type 为 getAuthorize 时有效。
-      type: String as () => 'userInfo' | 'phoneNumber' | undefined,
+      type: String as PropType<'userInfo' | 'phoneNumber' | undefined>,
       default: undefined
     },
     sessionFrom: { type: String, default: '', },
@@ -178,35 +178,35 @@ export default defineComponent({
     showMessageCard: { type: Boolean, default: false, },
     // Taro Button Events
     onGetUserInfo: {
-      type: Function as unknown as () => CommonEventFunction<ButtonProps.onGetUserInfoEventDetail>,
+      type: Function as PropType<CommonEventFunction<ButtonProps.onGetUserInfoEventDetail>>,
       default: () => () => { }
     },
     onGetAuthrize: { // Alipay auth
-      type: Function as unknown as () => CommonEventFunction,
+      type: Function as PropType<CommonEventFunction>,
       default: () => () => { }
     },
     onContact: {
-      type: Function as unknown as () => CommonEventFunction<ButtonProps.onContactEventDetail>,
+      type: Function as PropType<CommonEventFunction<ButtonProps.onContactEventDetail>>,
       default: () => () => { }
     },
     onGetPhoneNumber: {
-      type: Function as unknown as () => CommonEventFunction<ButtonProps.onGetPhoneNumberEventDetail>,
+      type: Function as PropType<CommonEventFunction<ButtonProps.onGetPhoneNumberEventDetail>>,
       default: () => () => { }
     },
     onGetRealnameAuthInfo: {
-      type: Function as unknown as () => CommonEventFunction,
+      type: Function as PropType<CommonEventFunction>,
       default: () => () => { }
     },
     onError: {
-      type: Function as unknown as () => CommonEventFunction,
+      type: Function as PropType<CommonEventFunction>,
       default: () => () => { }
     },
     onOpenSetting: {
-      type: Function as unknown as () => CommonEventFunction<ButtonProps.onOpenSettingEventDetail>,
+      type: Function as PropType<CommonEventFunction<ButtonProps.onOpenSettingEventDetail>>,
       default: () => () => { }
     },
     onLaunchapp: {
-      type: Function as unknown as () => CommonEventFunction,
+      type: Function as PropType<CommonEventFunction>,
       default: () => () => { }
     }
   },
@@ -216,7 +216,7 @@ export default defineComponent({
     const loadingColor = computed(() => props.type === 'primary' ? '#fff' : '')
     const loadingSize = computed(() => props.size === 'small' ? '30' : '0')
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [`at-button--${SIZE_CLASS[props.size ? props.size : 'normal']}`]: SIZE_CLASS[props.size ? props.size : 'normal'],
       [`at-button--${props.type}`]: TYPE_CLASS[props.type ? props.type : ''],
       [props.className]: true,

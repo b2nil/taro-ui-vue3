@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     :style="customStyle"
   >
     <at-countdown-item
@@ -25,10 +25,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref, watch, reactive, onMounted, onUnmounted, toRefs } from "vue"
+import { defineComponent, computed, ref, watch, reactive, onMounted, onUnmounted, toRefs, PropType } from "../../api"
 import { AtCountDownProps, AtCountdownState } from 'types/countdown'
 
-import AtComponentWithDefaultProps from '../mixins'
+
 import AtCountdownItem from "./item"
 
 import './index.scss'
@@ -43,7 +43,7 @@ const toSeconds = (
 export default defineComponent({
   name: "AtCountdown",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     // 参数
@@ -51,7 +51,7 @@ export default defineComponent({
     isShowDay: Boolean,
     isShowHour: { type: Boolean, default: true },
     format: {
-      type: Object as () => AtCountDownProps['format'],
+      type: Object as PropType<AtCountDownProps['format']>,
       default: () => ({
         day: '天',
         hours: '时',
@@ -60,19 +60,19 @@ export default defineComponent({
       }),
     },
     day: {
-      type: Number as () => AtCountDownProps['day'],
+      type: Number as PropType<AtCountDownProps['day']>,
       default: 0,
     },
     hours: {
-      type: Number as () => AtCountDownProps['hours'],
+      type: Number as PropType<AtCountDownProps['hours']>,
       default: 0,
     },
     minutes: {
-      type: Number as () => AtCountDownProps['minutes'],
+      type: Number as PropType<AtCountDownProps['minutes']>,
       default: 0,
     },
     seconds: {
-      type: Number as () => AtCountDownProps['seconds'],
+      type: Number as PropType<AtCountDownProps['seconds']>,
       default: 0,
     },
     // 事件
@@ -173,7 +173,7 @@ export default defineComponent({
       clearTimer()
     })
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       'at-countdown': true,
       'at-countdown--card': props.isCard
@@ -183,7 +183,7 @@ export default defineComponent({
 
     return {
       ...toRefs(state),
-      rootClass,
+      rootClasses,
       customStyle,
       format,
       isShowDay,

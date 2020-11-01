@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     :style="customStyle"
   >
     <view
@@ -26,37 +26,37 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, toRef } from "vue"
+import { defineComponent, computed, toRef, PropType } from "../../api"
 import { AtCheckboxProps } from 'types/checkbox'
 
-import AtComponentWithDefaultProps from '../mixins'
+
 
 export default defineComponent({
   name: "AtCheckbox",
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     // 参数
     options: {
-      type: Array as () => AtCheckboxProps<any>['options'],
+      type: Array as PropType<AtCheckboxProps<any>['options']>,
       default: () => [],
       required: true
     },
     selectedList: {
-      type: Array as () => AtCheckboxProps<any>['selectedList'],
+      type: Array as PropType<AtCheckboxProps<any>['selectedList']>,
       default: () => [],
       required: true
     },
     // 事件
     onChange: {
-      type: Function as unknown as () => AtCheckboxProps<any>['onChange'],
+      type: Function as PropType<AtCheckboxProps<any>['onChange']>,
       default: () => () => { }
     }
   },
 
   setup(props: AtCheckboxProps<any>) {
 
-    const rootClass = computed(() => ({ 'at-checkbox': true, [props.className]: true }))
+    const rootClasses = computed(() => ({ 'at-checkbox': true, [props.className]: true }))
 
     const optionClass = computed(() => (option) => ({
       'at-checkbox__option': true,
@@ -81,7 +81,7 @@ export default defineComponent({
     return {
       options: toRef(props, 'options'),
       customStyle: toRef(props, 'customStyle'),
-      rootClass,
+      rootClasses,
       optionClass,
       handleClick,
     }

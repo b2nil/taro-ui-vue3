@@ -1,7 +1,7 @@
 <template>
   <view
     v-if="_show"
-    :class="rootClass"
+    :class="rootClasses"
   >
     <!-- mask -->
     <view
@@ -30,16 +30,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, reactive, onMounted, nextTick, watch, toRef } from "vue"
+import { defineComponent, computed, reactive, onMounted, nextTick, watch, toRef, PropType } from "../../api"
 import { AtDrawerProps, AtDrawerState } from 'types/drawer'
 
-import AtComponentWithDefaultProps from '../mixins'
+
 import AtList from "../list"
 import AtListItem from "../list/item"
 
 export default defineComponent({
   name: "AtDrawer",
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     show: {
@@ -52,20 +52,20 @@ export default defineComponent({
       default: true,
     },
     width: {
-      type: String as () => AtDrawerProps['width'],
+      type: String as PropType<AtDrawerProps['width']>,
       default: '',
     },
     right: Boolean,
     items: {
-      type: Array as () => AtDrawerProps['items'],
+      type: Array as PropType<AtDrawerProps['items']>,
       default: () => [],
     },
     onItemClick: {
-      type: Function as unknown as () => AtDrawerProps['onItemClick'],
+      type: Function as PropType<AtDrawerProps['onItemClick']>,
       default: () => () => { }
     },
     onClose: {
-      type: Function as unknown as () => AtDrawerProps['onClose'],
+      type: Function as PropType<AtDrawerProps['onClose']>,
       default: () => () => { }
     }
   },
@@ -118,7 +118,7 @@ export default defineComponent({
       hideAnimation()
     }
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       'at-drawer--show': state.animShow,
       'at-drawer--right': props.right,
@@ -141,7 +141,7 @@ export default defineComponent({
     return {
       _show: toRef(state, "_show"),
       items: toRef(props, "items"),
-      rootClass,
+      rootClasses,
       maskStyle,
       listStyle,
       handleMaskClick,

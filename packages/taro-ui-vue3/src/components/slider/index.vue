@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     :style="customStyle"
   >
     <view class="at-slider__inner">
@@ -76,11 +76,11 @@ export default defineComponent({
       default: false
     },
     onChange: {
-      type: Function as unknown as () => AtSliderProps['onChange'],
+      type: Function as PropType<AtSliderProps['onChange']>,
       default: () => (value: number) => { }
     },
     onChanging: {
-      type: Function as unknown as () => AtSliderProps['onChange'],
+      type: Function as PropType<AtSliderProps['onChange']>,
       default: () => (value: number) => { }
     },
   },
@@ -91,7 +91,7 @@ export default defineComponent({
       _value: clampNumber(props.value!, props.min!, props.max!)
     })
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       'at-slider--disabled': props.disabled,
       'at-slider': true,
@@ -133,7 +133,7 @@ export default defineComponent({
     return {
       ...toRefs(props),
       ...toRefs(state),
-      rootClass,
+      rootClasses,
       handleChanging,
       handleChange
     }

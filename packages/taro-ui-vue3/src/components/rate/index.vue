@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     :style="customStyle"
   >
     <view
@@ -29,12 +29,12 @@ import { defineComponent, computed, toRef } from 'vue'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtRateProps } from 'types/rate'
 import { pxTransform } from '../../utils/common'
-import AtComponentWithDefaultProps from '../mixins'
+
 
 export default defineComponent({
   name: "AtRate",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     size: {
@@ -58,7 +58,7 @@ export default defineComponent({
 
   setup(props: AtRateProps, { slots }) {
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       'at-rate': true,
       [props.className]: true,
     }))
@@ -94,7 +94,7 @@ export default defineComponent({
 
     return {
       customStyle: toRef(props, 'customStyle'),
-      rootClass,
+      rootClasses,
       iconStyle,
       starIconStyle,
       starColorClasses,

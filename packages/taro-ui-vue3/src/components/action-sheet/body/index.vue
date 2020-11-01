@@ -1,27 +1,25 @@
 <template>
-  <view :class="rootClass">
+  <view :class="rootClasses">
     <slot />
   </view>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue"
+import { defineComponent, computed, PropType } from "../../../api"
 import { AtActionSheetBodyProps } from "types/action-sheet";
-import AtComponentWithDefaultProps from "../../mixins";
+
 
 export default defineComponent({
   name: "AtActionSheetBody",
 
-  mixins: [AtComponentWithDefaultProps],
-
   setup(props: AtActionSheetBodyProps, { slots }) {
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       'at-action-sheet__body': true,
     }))
 
     return {
-      rootClass
+      rootClasses
     }
   }
 })

@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     @tap="handleClick"
   >
     <slot />
@@ -8,24 +8,24 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue"
+import { defineComponent, computed, PropType } from "../../api"
 import { AtActionSheetFooterProps } from "types/action-sheet";
-import AtComponentWithDefaultProps from "../../mixins";
+
 
 export default defineComponent({
   name: "AtActionSheetFooter",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     onClick: {
-      type: Function as unknown as () => () => {},
+      type: Function as PropType<() => {}>,
       default: () => () => { }
     },
   },
 
   setup(props: AtActionSheetFooterProps, { slots }) {
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       'at-action-sheet__footer': true,
     }))
@@ -35,7 +35,7 @@ export default defineComponent({
     }
 
     return {
-      rootClass,
+      rootClasses,
       handleClick
     }
   }

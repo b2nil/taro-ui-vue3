@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     :style="rootStyle"
   >
     <view
@@ -71,12 +71,12 @@ import { defineComponent, computed, toRef } from 'vue'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtTabBarProps, TabItem } from 'types/tab-bar'
 import { mergeStyle } from '../../utils/common'
-import AtComponentWithDefaultProps from '../mixins'
+
 import AtBadge from '../badge/index.vue'
 
 export default defineComponent({
   name: "AtTabBar",
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     fixed: {
@@ -109,11 +109,11 @@ export default defineComponent({
       default: '#6190E8'
     },
     tabList: {
-      type: Array as () => AtTabBarProps['tabList'],
+      type: Array as PropType<AtTabBarProps['tabList']>,
       default: []
     },
     onClick: {
-      type: Function as unknown as () => AtTabBarProps['onClick'],
+      type: Function as PropType<AtTabBarProps['onClick']>,
       default: () => (index: number, event: CommonEvent) => { },
       required: true
     },
@@ -121,7 +121,7 @@ export default defineComponent({
 
   setup(props: AtTabBarProps, { slots }) {
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       'at-tab-bar--fixed': props.fixed,
       'at-tab-bar': true,
@@ -163,11 +163,9 @@ export default defineComponent({
     const tabBarItemIconClass = computed(() => (item, i) => ({
       'at-icon': item.iconPrefixClass === undefined,
       [`${item.iconPrefixClass}`]: item.iconPrefixClass !== undefined,
-      [`${item.iconPrefixClass || 'at-icon'}-${
-        item.selectedIconType
+      [`${item.iconPrefixClass || 'at-icon'}-${item.selectedIconType
         }`]: props.current === i && item.selectedIconType,
-      [`${item.iconPrefixClass || 'at-icon'}-${
-        item.iconType
+      [`${item.iconPrefixClass || 'at-icon'}-${item.iconType
         }`]: !(props.current === i && item.selectedIconType)
     }))
 
@@ -188,7 +186,7 @@ export default defineComponent({
     return {
       tabList: toRef(props, 'tabList'),
       current: toRef(props, 'current'),
-      rootClass,
+      rootClasses,
       rootStyle,
       itemStyle,
       imgStyle,

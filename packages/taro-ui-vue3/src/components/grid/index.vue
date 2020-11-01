@@ -1,7 +1,7 @@
 <template>
   <view
     v-if="Array.isArray(data) && data.length > 0"
-    :class="rootClass"
+    :class="rootClasses"
   >
     <view
       class="at-grid__flex"
@@ -39,27 +39,27 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue"
+import { defineComponent, computed, PropType } from "../../api"
 import _chunk from 'lodash/chunk'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtGridProps, AtGridItem } from 'types/grid'
 
-import AtComponentWithDefaultProps from '../mixins'
+
 import { mergeStyle } from "../../utils/common"
 
 export default defineComponent({
   name: "AtGrid",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     // 参数
     data: {
-      type: Array as () => AtGridProps['data'],
+      type: Array as PropType<AtGridProps['data']>,
       default: () => [],
     },
     columnNum: {
-      type: Number as () => AtGridProps['columnNum'],
+      type: Number as PropType<AtGridProps['columnNum']>,
       default: 3,
     },
     hasBorder: {
@@ -67,11 +67,11 @@ export default defineComponent({
       default: true,
     },
     mode: {
-      type: String as () => AtGridProps['mode'],
+      type: String as PropType<AtGridProps['mode']>,
       default: 'square' as AtGridProps['mode'],
     },
     onClick: {
-      type: Function as unknown as () => AtGridProps['onClick'],
+      type: Function as PropType<AtGridProps['onClick']>,
       default: () => (item: AtGridItem, index: number, event: CommonEvent) => { }
     }
   },
@@ -80,7 +80,7 @@ export default defineComponent({
 
     const gridGroup = computed(() => _chunk(props.data, props.columnNum))
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       'at-grid': true
     }))
@@ -104,8 +104,7 @@ export default defineComponent({
     const iconInfoClass = computed(() => (childItem) => ({
       [childItem.iconInfo?.prefixClass]: childItem.iconInfo?.prefixClass !== undefined,
       'at-icon': childItem.iconInfo?.prefixClass === undefined,
-      [`${
-        childItem.iconInfo?.prefixClass || 'at-icon'
+      [`${childItem.iconInfo?.prefixClass || 'at-icon'
         }-${childItem.iconInfo?.value}`]: childItem.iconInfo?.value,
       [childItem.iconInfo?.className]: true
     }
@@ -133,7 +132,7 @@ export default defineComponent({
 
     return {
       gridGroup,
-      rootClass,
+      rootClasses,
       gridItemClass,
       flexStyle,
       iconInfoClass,

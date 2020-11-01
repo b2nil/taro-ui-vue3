@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     :style="customStyle"
   >
     <view
@@ -34,26 +34,26 @@
 import { defineComponent, computed, toRef } from 'vue'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtRadioProps, RadioOption } from 'types/radio'
-import AtComponentWithDefaultProps from '../mixins'
+
 
 export default defineComponent({
   name: "AtRadio",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     value: {
-      type: String as () => AtRadioProps<any>['value'],
+      type: String as PropType<AtRadioProps<any>['value']>,
       default: '',
       required: true
     },
     options: {
-      type: Array as () => AtRadioProps<any>['options'],
+      type: Array as PropType<AtRadioProps<any>['options']>,
       default: [],
       required: true
     },
     onClick: {
-      type: Function as unknown as () => AtRadioProps<any>['options'],
+      type: Function as PropType<AtRadioProps<any>['options']>,
       default: () => (vaule: any, event: CommonEvent) => { },
       required: true
     },
@@ -61,7 +61,7 @@ export default defineComponent({
 
   setup(props: AtRadioProps<any>, { slots }) {
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       'at-radio': true,
     }))
@@ -83,7 +83,7 @@ export default defineComponent({
 
     return {
       options: toRef(props, 'options'),
-      rootClass,
+      rootClasses,
       iconClass,
       optionClass,
       handleClick,

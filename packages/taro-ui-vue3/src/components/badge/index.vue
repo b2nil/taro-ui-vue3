@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     :style="customStyle"
   >
     <slot />
@@ -16,14 +16,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, toRefs } from "vue"
+import { defineComponent, computed, toRefs, PropType } from "../../api"
 import { AtBadgeProps } from "types/badge";
-import AtComponentWithDefaultProps from "../mixins";
+
 
 export default defineComponent({
   name: "AtBadge",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     dot: {
@@ -46,7 +46,7 @@ export default defineComponent({
 
     const val = computed(() => formatValue(props.value, props.maxValue!))
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       'at-badge': true,
     }))
@@ -70,7 +70,7 @@ export default defineComponent({
       dot,
       val,
       customStyle,
-      rootClass,
+      rootClasses,
     }
   }
 })

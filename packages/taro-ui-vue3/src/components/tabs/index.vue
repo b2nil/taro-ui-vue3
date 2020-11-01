@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     :style="rootStyle"
   >
     <!-- with scroll view -->
@@ -70,7 +70,7 @@ import { CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
 import Taro from '@tarojs/taro'
 import { AtTabsProps, AtTabsState } from 'types/tabs'
 import { isTest, mergeStyle, uuid } from '../../utils/common'
-import AtComponentWithDefaultProps from '../mixins'
+
 
 const ENV = Taro.getEnv()
 const MIN_DISTANCE = 100
@@ -78,11 +78,11 @@ const MAX_INTERVAL = 10
 
 export default defineComponent({
   name: "AtTabs",
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     tabDirection: {
-      type: String as () => AtTabsProps['tabDirection'],
+      type: String as PropType<AtTabsProps['tabDirection']>,
       default: 'horizontal' as AtTabsProps['tabDirection']
     },
     height: {
@@ -107,12 +107,12 @@ export default defineComponent({
       default: true
     },
     tabList: {
-      type: Array as () => AtTabsProps['tabList'],
+      type: Array as PropType<AtTabsProps['tabList']>,
       default: [],
       required: true
     },
     onClick: {
-      type: Function as unknown as () => AtTabsProps['onClick'],
+      type: Function as PropType<AtTabsProps['onClick']>,
       default: () => (index: number, event: CommonEvent) => { },
       required: true
     },
@@ -141,7 +141,7 @@ export default defineComponent({
     const scrollX = computed(() => props.tabDirection === 'horizontal')
     const scrollY = computed(() => props.tabDirection === 'vertical')
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       'at-tabs': true,
       'at-tabs--scroll': props.scroll,
       [`at-tabs--${props.tabDirection}`]: true,
@@ -295,7 +295,7 @@ export default defineComponent({
       _tabId,
       scrollX,
       scrollY,
-      rootClass,
+      rootClasses,
       rootStyle,
       bodyStyle,
       tabItemClass,

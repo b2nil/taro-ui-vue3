@@ -16,7 +16,7 @@
 import { defineComponent, computed } from 'vue'
 import { pxTransform } from '../../utils/common'
 import { AtComponent } from 'types/base'
-import AtComponentWithDefaultProps from '../mixins'
+
 
 interface AtLoadingProps extends AtComponent {
   size?: string | number
@@ -26,7 +26,7 @@ interface AtLoadingProps extends AtComponent {
 export default defineComponent({
   name: "AtLoading",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     size: { type: [String, Number], default: 0 },

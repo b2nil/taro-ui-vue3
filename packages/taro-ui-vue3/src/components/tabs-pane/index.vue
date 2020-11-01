@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     :style="customStyle"
   >
     <slot />
@@ -10,16 +10,16 @@
 <script lang="ts">
 import { defineComponent, computed, toRef } from 'vue'
 import { AtTabsPaneProps } from 'types/tabs-pane'
-import AtComponentWithDefaultProps from '../mixins'
+
 
 export default defineComponent({
   name: "AtTabsPane",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     tabDirection: {
-      type: String as () => AtTabsPaneProps['tabDirection'],
+      type: String as PropType<AtTabsPaneProps['tabDirection']>,
       default: 'horizontal' as AtTabsPaneProps['tabDirection'],
       required: true
     },
@@ -36,7 +36,7 @@ export default defineComponent({
   },
 
   setup(props: AtTabsPaneProps, { slots }) {
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       'at-tabs-pane': true,
       'at-tabs-pane--vertical': props.tabDirection === 'vertical',
       'at-tabs-pane--active': props.index === props.current,
@@ -46,7 +46,7 @@ export default defineComponent({
 
     return {
       customStyle: toRef(props, 'customStyle'),
-      rootClass
+      rootClasses
     }
   }
 })

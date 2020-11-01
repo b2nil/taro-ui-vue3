@@ -1,12 +1,12 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     :style="customStyle"
   >
     <view
       v-for="(item, index) in items"
       :key="`at-timeline-item-${index}`"
-      :class="itemRootClass(item)"
+      :class="itemrootClasses(item)"
     >
       <view class="at-timeline-item__tail" />
 
@@ -33,12 +33,12 @@
 <script lang="ts">
 import { defineComponent, computed, toRef } from 'vue'
 import { AtTimelineProps } from 'types/timeline'
-import AtComponentWithDefaultProps from '../mixins'
+
 
 export default defineComponent({
   name: "AtTimeline",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     pending: {
@@ -46,13 +46,13 @@ export default defineComponent({
       default: false
     },
     items: {
-      type: Array as () => AtTimelineProps['items'],
+      type: Array as PropType<AtTimelineProps['items']>,
       default: []
     },
   },
 
   setup(props: AtTimelineProps, { slots }) {
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       'at-timeline': true,
       'at-timeline--pending': props.pending,
       [props.className]: true,
@@ -63,7 +63,7 @@ export default defineComponent({
       [`at-icon-${item.icon}`]: item.icon
     }))
 
-    const itemRootClass = computed(() => (item) => ({
+    const itemrootClasses = computed(() => (item) => ({
       'at-timeline-item': true,
       [`at-timeline-item--${item.color}`]: item.color
     }))
@@ -78,10 +78,10 @@ export default defineComponent({
     return {
       customStyle: toRef(props, 'customStyle'),
       items: toRef(props, 'items'),
-      rootClass,
+      rootClasses,
       dotClass,
       iconClass,
-      itemRootClass,
+      itemrootClasses,
     }
   }
 })

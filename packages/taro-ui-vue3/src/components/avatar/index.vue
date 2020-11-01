@@ -23,7 +23,7 @@
 import { defineComponent, computed, toRefs } from 'vue'
 import { AtAvatarProps } from "types/avatar"
 import { getEnvs } from '../../utils/common'
-import AtComponentWithDefaultProps from '../mixins'
+
 
 const SIZE_CLASS = {
   large: 'large',
@@ -34,11 +34,11 @@ const SIZE_CLASS = {
 export default defineComponent({
   name: "AtAvatar",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     size: {
-      type: String as () => 'large' | 'normal' | 'small',
+      type: String as PropType<'large' | 'normal' | 'small'>,
       default: 'normal' as 'large' | 'normal' | 'small',
       validator: (prop: string) => ['large', 'normal', 'small'].includes(prop)
     },
@@ -55,7 +55,7 @@ export default defineComponent({
       default: ''
     },
     openData: {
-      type: Object as () => { type: 'userAvatarUrl' },
+      type: Object as PropType<{ type: 'userAvatarUrl' }>,
       default: undefined
     }
   },
@@ -69,7 +69,7 @@ export default defineComponent({
 
     const iconSize = SIZE_CLASS[props.size || 'normal']
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       [`at-avatar--${iconSize}`]: iconSize,
       'at-avatar--circle': props.circle,
@@ -82,7 +82,7 @@ export default defineComponent({
       openData,
       customStyle,
       letter,
-      rootClass
+      rootClasses
     }
   }
 })

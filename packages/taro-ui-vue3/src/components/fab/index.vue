@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     @tap="handleClick"
   >
     <slot />
@@ -16,19 +16,19 @@ export default defineComponent({
   name: "AtFab",
   props: {
     size: {
-      type: String as () => 'normal' | 'small',
+      type: String as PropType<'normal' | 'small'>,
       default: () => 'normal' as 'normal' | 'small',
       validator: (prop: string) => ['normal', 'small'].includes(prop)
     },
     onClick: {
-      type: Function as unknown as () => CommonEventFunction,
+      type: Function as PropType<CommonEventFunction>,
       default: () => () => { }
     }
   },
 
   setup(props: AtFabProps, { slots }) {
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [`at-fab--${props.size}`]: props.size,
       [props.className]: true,
       'at-fab': true,
@@ -41,7 +41,7 @@ export default defineComponent({
     }
 
     return {
-      rootClass,
+      rootClasses,
       handleClick
     }
   }

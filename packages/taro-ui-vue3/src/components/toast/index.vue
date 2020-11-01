@@ -1,7 +1,7 @@
 <template>
   <view
     v-if="_isOpened"
-    :class="rootClass"
+    :class="rootClasses"
   >
     <!-- mask layer -->
     <view
@@ -49,17 +49,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, nextTick, watch, computed, reactive, watchEffect, toRef } from "vue"
+import { defineComponent, nextTick, watch, computed, reactive, watchEffect, toRef, PropType } from "../../api"
 
 import { CommonEvent } from "@tarojs/components/types/common"
 import { AtToastProps } from "types/toast"
-import AtComponentWithDefaultProps from '../mixins'
+
 
 import statusImg from './img.json'
 
 export default defineComponent({
   name: "AtToast",
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     isOpened: { type: Boolean, default: false, required: true },
@@ -67,14 +67,14 @@ export default defineComponent({
     icon: { type: String, default: '' },
     image: { type: String, default: '' },
     status: {
-      type: String as () => AtToastProps['status'],
+      type: String as PropType<AtToastProps['status']>,
       default: '' as AtToastProps['status'],
       validator: (val: string) => ['', 'error', 'loading', 'success'].includes(val)
     },
     duration: { type: Number, default: 3000 },
     hasMask: Boolean,
-    onClick: Function as unknown as () => AtToastProps['onClick'],
-    onClose: Function as unknown as () => AtToastProps['onClick'],
+    onClick: Function as PropType<AtToastProps['onClick']>,
+    onClose: Function as PropType<AtToastProps['onClick']>,
   },
 
   setup(props: AtToastProps, { slots }) {
@@ -87,7 +87,7 @@ export default defineComponent({
     const realImg = computed(() => (props.image || statusImg[props.status!] || null))
     const isRenderIcon = computed(() => !!(props.icon && !(props.image || statusImg[props.status!])))
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       'at-toast': true,
       [props.className]: true,
     }))
@@ -175,7 +175,7 @@ export default defineComponent({
       customStyle: toRef(props, 'customStyle'),
       hasMask: toRef(props, 'hasMask'),
       text: toRef(props, 'text'),
-      rootClass,
+      rootClasses,
       bodyClass,
       iconClass,
       realImg,

@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     @touch-move="handleTouchMove"
   >
     <view
@@ -21,13 +21,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, watch, ref, computed, toRefs } from "vue"
+import { defineComponent, watch, ref, computed, toRefs, PropType } from "../../api"
 import { CommonEvent } from "@tarojs/components/types/common"
 import { AtActionSheetProps } from "types/action-sheet";
 import AtActionSheetHeader from "./header/index.vue"
 import AtActionSheetBody from "./body/index.vue"
 import AtActionSheetFooter from "./footer/index.vue"
-import AtComponentWithDefaultProps from "../mixins";
 
 export default defineComponent({
   name: "AtActionSheet",
@@ -37,8 +36,6 @@ export default defineComponent({
     AtActionSheetBody,
     AtActionSheetFooter
   },
-
-  mixins: [AtComponentWithDefaultProps],
 
   props: {
     isOpened: {
@@ -54,11 +51,11 @@ export default defineComponent({
       default: ''
     },
     onClose: {
-      type: Function as unknown as () => (event?: CommonEvent) => void,
+      type: Function as PropType<(event?: CommonEvent) => void>,
       default: () => () => { }
     },
     onCancel: {
-      type: Function as unknown as () => (event?: CommonEvent) => void,
+      type: Function as PropType<(event?: CommonEvent) => void>,
       default: () => () => { }
     },
   },
@@ -68,7 +65,7 @@ export default defineComponent({
 
     const { title, cancelText } = toRefs(props)
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       'at-action-sheet': true,
       'at-action-sheet--active': _isOpened.value,
@@ -103,7 +100,7 @@ export default defineComponent({
     return {
       title,
       cancelText,
-      rootClass,
+      rootClasses,
       close,
       handleCancel,
       handleTouchMove

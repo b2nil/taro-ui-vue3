@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     :style="customStyle"
   >
     <view class="at-switch__title">{{ title }}</view>
@@ -21,11 +21,11 @@ import { CommonEvent } from '@tarojs/components/types/common'
 import { AtSwitchProps } from 'types/switch'
 
 import { defineComponent, computed, toRefs } from 'vue'
-import AtComponentWithDefaultProps from '../mixins'
+
 export default defineComponent({
   name: "AtSwitch",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     title: {
@@ -48,12 +48,12 @@ export default defineComponent({
       type: Boolean,
       default: false
     },
-    onChange: Function as unknown as () => AtSwitchProps['onChange'],
+    onChange: Function as PropType<AtSwitchProps['onChange']>,
   },
 
   setup(props: AtSwitchProps, { slots }) {
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       'at-switch--without-border': !props.border,
       'at-switch': true,
@@ -72,7 +72,7 @@ export default defineComponent({
 
     return {
       ...toRefs(props),
-      rootClass,
+      rootClasses,
       containerClass,
       handleChange
 

@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     :style="customStyle"
   >
     <view :class="containerClass">
@@ -68,8 +68,8 @@
   </view>
 </template>
 <script lang="ts">
-import { defineComponent, ref, toRefs, computed } from "vue"
-import AtComponentWithDefaultProps from "../mixins"
+import { defineComponent, ref, toRefs, computed, PropType } from "../../api"
+
 import { BaseEventOrig, ITouchEvent } from "@tarojs/components/types/common"
 import { InputProps } from "@tarojs/components/types/Input"
 import {
@@ -115,20 +115,20 @@ function getInputProps(props: AtInputProps): GetInputPropsReturn {
 export default defineComponent({
   name: "AtInput",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     name: {
-      type: String as () => AtInputProps['name'],
+      type: String as PropType<AtInputProps['name']>,
       default: '',
       required: true
     },
     title: {
-      type: String as () => AtInputProps['title'],
+      type: String as PropType<AtInputProps['title']>,
       default: ''
     },
     type: {
-      type: String as () => AtInputProps['type'],
+      type: String as PropType<AtInputProps['type']>,
       default: 'text' as AtInputProps['type'],
       validator: (val: string) => ['text', 'number', 'password', 'phone', 'idcard', 'digit'].includes(val)
     },
@@ -140,19 +140,19 @@ export default defineComponent({
     },
     disabled: Boolean,
     value: {
-      type: String as () => AtInputProps['value'],
+      type: String as PropType<AtInputProps['value']>,
       default: ''
     },
     placeholder: {
-      type: String as () => AtInputProps['placeholder'],
+      type: String as PropType<AtInputProps['placeholder']>,
       default: ''
     },
     placeholderStyle: {
-      type: String as () => AtInputProps['placeholderStyle'],
+      type: String as PropType<AtInputProps['placeholderStyle']>,
       default: ''
     },
     placeholderClass: {
-      type: String as () => AtInputProps['placeholderClass'],
+      type: String as PropType<AtInputProps['placeholderClass']>,
       default: ''
     },
     editable: {
@@ -164,41 +164,41 @@ export default defineComponent({
     focus: Boolean,
     required: Boolean,
     cursorSpacing: {
-      type: Number as () => AtInputProps['cursorSpacing'],
+      type: Number as PropType<AtInputProps['cursorSpacing']>,
       default: 50
     },
     cursor: {
-      type: Number as () => AtInputProps['cursor'],
+      type: Number as PropType<AtInputProps['cursor']>,
       default: 0
     },
     selectionStart: {
-      type: Number as () => AtInputProps['selectionStart'],
+      type: Number as PropType<AtInputProps['selectionStart']>,
       default: -1
     },
     selectionEnd: {
-      type: Number as () => AtInputProps['selectionEnd'],
+      type: Number as PropType<AtInputProps['selectionEnd']>,
       default: -1
     },
     maxLength: {
-      type: Number as () => AtInputProps['maxLength'],
+      type: Number as PropType<AtInputProps['maxLength']>,
       default: 140
     },
     confirmType: {
-      type: String as () => AtInputProps["confirmType"],
+      type: String as PropType<AtInputProps["confirmType"]>,
       default: 'done' as AtInputProps["confirmType"],
       validator: (val: string) => ["done", "send", "search", "next", "go"].includes(val)
     },
     // events
     onChange: {
-      type: Function as unknown as () => AtInputProps['onChange'],
+      type: Function as PropType<AtInputProps['onChange']>,
       default: () => () => { },
       required: true
     },
-    onBlur: Function as unknown as () => AtInputProps['onBlur'],
-    onFocus: Function as unknown as () => AtInputProps['onFocus'],
-    onConfirm: Function as unknown as () => AtInputProps['onConfirm'],
-    onClick: Function as unknown as () => AtInputProps['onClick'],
-    onKeyboardHeightChange: Function as unknown as () => AtInputProps['onKeyboardHeightChange'],
+    onBlur: Function as PropType<AtInputProps['onBlur']>,
+    onFocus: Function as PropType<AtInputProps['onFocus']>,
+    onConfirm: Function as PropType<AtInputProps['onConfirm']>,
+    onClick: Function as PropType<AtInputProps['onClick']>,
+    onKeyboardHeightChange: Function as PropType<AtInputProps['onKeyboardHeightChange']>,
     onErrorClick: Function as unknown as () => AtInputProps['onErrorClick']
   },
 
@@ -207,7 +207,7 @@ export default defineComponent({
 
     const { type, maxlength, disabled, password } = computed(() => getInputProps(props)).value
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       'at-input--without-border': !props.border,
       'at-input': true,
@@ -337,7 +337,7 @@ export default defineComponent({
       adjustPosition,
       placeholderClass,
       placeholderStyle,
-      rootClass,
+      rootClasses,
       labelClass,
       overlayClass,
       containerClass,

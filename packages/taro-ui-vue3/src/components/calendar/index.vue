@@ -1,5 +1,5 @@
 <template>
-  <view :class="rootClass">
+  <view :class="rootClasses">
     <at-calendar-controller
       :min-date="minDate"
       :max-date="maxDate"
@@ -29,7 +29,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs, watch, nextTick, computed } from "vue"
+import { defineComponent, reactive, toRefs, watch, nextTick, computed, PropType } from "../../api"
 import dayjs, { Dayjs } from 'dayjs'
 
 import { CommonEvent } from '@tarojs/components/types/common'
@@ -42,12 +42,12 @@ import {
 
 import AtCalendarBody from './body/index.vue'
 import AtCalendarController from './controller/index.vue'
-import AtComponentWithDefaultProps from '../mixins';
+
 
 export default defineComponent({
   name: "AtCalendar",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   components: {
     AtCalendarBody,
@@ -59,15 +59,15 @@ export default defineComponent({
   props: {
     // 参数
     currentDate: {
-      type: [Number, String, Date, Object] as unknown as () => AtCalendarProps['currentDate'],
+      type: [Number, String, Date, Object] as PropType<AtCalendarProps['currentDate']>,
       default: Date.now() as Calendar.DateArg
     },
     minDate: {
-      type: [String, Number, Date] as unknown as () => AtCalendarProps['minDate'],
+      type: [String, Number, Date] as PropType<AtCalendarProps['minDate']>,
       default: () => ''
     },
     maxDate: {
-      type: [String, Number, Date] as unknown as () => AtCalendarProps['maxDate'],
+      type: [String, Number, Date] as PropType<AtCalendarProps['maxDate']>,
       default: () => ''
     },
     isSwiper: {
@@ -75,11 +75,11 @@ export default defineComponent({
       default: true
     },
     marks: {
-      type: Array as () => AtCalendarProps['marks'],
+      type: Array as PropType<AtCalendarProps['marks']>,
       default: () => []
     },
     validDates: {
-      type: Array as () => AtCalendarProps['validDates'],
+      type: Array as PropType<AtCalendarProps['validDates']>,
       default: () => []
     },
     format: {
@@ -94,32 +94,32 @@ export default defineComponent({
     isVertical: Boolean,
     isMultiSelect: Boolean,
     selectedDates: {
-      type: Array as () => AtCalendarPropsWithDefaults['selectedDates'],
+      type: Array as PropType<AtCalendarPropsWithDefaults['selectedDates']>,
       default: () => []
     },
     // 事件        
     onClickPreMonth: {
-      type: Function as unknown as () => AtCalendarProps['onClickPreMonth'],
+      type: Function as PropType<AtCalendarProps['onClickPreMonth']>,
       default: () => () => { }
     },
     onClickNextMonth: {
-      type: Function as unknown as () => AtCalendarProps['onClickNextMonth'],
+      type: Function as PropType<AtCalendarProps['onClickNextMonth']>,
       default: () => () => { }
     },
     onDayClick: {
-      type: Function as unknown as () => AtCalendarProps['onDayClick'],
+      type: Function as PropType<AtCalendarProps['onDayClick']>,
       default: () => () => { }
     },
     onDayLongClick: {
-      type: Function as unknown as () => AtCalendarProps['onDayLongClick'],
+      type: Function as PropType<AtCalendarProps['onDayLongClick']>,
       default: () => () => { }
     },
     onMonthChange: {
-      type: Function as unknown as () => AtCalendarProps['onMonthChange'],
+      type: Function as PropType<AtCalendarProps['onMonthChange']>,
       default: () => () => { }
     },
     onSelectDate: {
-      type: Function as unknown as () => AtCalendarProps['onSelectDate'],
+      type: Function as PropType<AtCalendarProps['onSelectDate']>,
       default: () => () => { }
     },
 
@@ -135,7 +135,7 @@ export default defineComponent({
       selectedDate
     })
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       'at-calendar': true,
       [`${props.className}`]: true,
     }))
@@ -351,7 +351,7 @@ export default defineComponent({
     return {
       ...toRefs(state),
       ...toRefs(props as AtCalendarPropsWithDefaults),
-      rootClass,
+      rootClasses,
       setMonth,
       handleDayClick,
       handleSelectDate,

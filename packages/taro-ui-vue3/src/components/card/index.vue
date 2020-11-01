@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     @tap="handleClick"
   >
     <!-- header -->
@@ -52,51 +52,51 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, toRefs } from "vue"
+import { defineComponent, computed, toRefs, PropType } from "../../api"
 import { AtCardProps } from 'types/card'
 
-import AtComponentWithDefaultProps from '../mixins'
+
 
 export default defineComponent({
   name: "AtCard",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     // 参数
     note: {
-      type: String as () => AtCardProps['note'],
+      type: String as PropType<AtCardProps['note']>,
       default: ''
     },
     isFull: Boolean,
     thumb: {
-      type: String as () => AtCardProps['thumb'],
+      type: String as PropType<AtCardProps['thumb']>,
       default: ''
     },
     title: {
-      type: String as () => AtCardProps['title'],
+      type: String as PropType<AtCardProps['title']>,
       default: ''
     },
     extra: {
-      type: String as () => AtCardProps['extra'],
+      type: String as PropType<AtCardProps['extra']>,
       default: ''
     },
     extraStyle: {
-      type: Object as () => AtCardProps['extraStyle'],
+      type: Object as PropType<AtCardProps['extraStyle']>,
       default: () => ({})
     },
-    icon: Object as () => AtCardProps['icon'],
-    renderIcon: Object as () => AtCardProps['renderIcon'],
+    icon: Object as PropType<AtCardProps['icon']>,
+    renderIcon: Object as PropType<AtCardProps['renderIcon']>,
     // 事件
     onClick: {
-      type: Function as unknown as () => AtCardProps['onClick'],
+      type: Function as PropType<AtCardProps['onClick']>,
       default: () => () => { }
     }
   },
 
   setup(props: AtCardProps, { slots }) {
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       'at-card--full': props.isFull,
       'at-card': true,
@@ -121,7 +121,7 @@ export default defineComponent({
 
     return {
       ...toRefs(props),
-      rootClass,
+      rootClasses,
       iconClass,
       iconStyle,
       handleClick

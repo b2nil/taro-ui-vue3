@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     @tap="handleClick"
   >
     <view class="at-list__item-container">
@@ -106,27 +106,27 @@ export default defineComponent({
     switchIsCheck: { type: Boolean, default: false },
     hasBorder: { type: Boolean, default: false },
     iconInfo: {
-      type: Object as () => AtIconBaseProps,
+      type: Object as PropType<AtIconBaseProps>,
       default: () => ({ value: '' } as AtIconBaseProps)
     },
     arrow: {
-      type: String as () => 'up' | 'down' | 'right' | undefined,
+      type: String as PropType<'up' | 'down' | 'right' | undefined>,
       default: '' as 'up' | 'down' | 'right' | undefined,
       validator: (prop: string) => ['up', 'down', 'right', ''].includes(prop)
     },
     onClick: {
-      type: Function as unknown as () => CommonEventFunction,
+      type: Function as PropType<CommonEventFunction>,
       default: () => () => { }
     },
     onSwitchChange: {
-      type: Function as unknown as () => CommonEventFunction,
+      type: Function as PropType<CommonEventFunction>,
       default: () => () => { }
     },
   },
 
   setup(props: AtListItemProps) {
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       'at-list__item': true,
       'at-list__item--thumb': props.thumb,
@@ -172,7 +172,7 @@ export default defineComponent({
 
     return {
       ...toRefs(props),
-      rootClass,
+      rootClasses,
       iconClass,
       iconStyle,
       extraIconClass,

@@ -29,16 +29,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, toRefs } from "vue"
+import { defineComponent, computed, toRefs, PropType } from "../../../api"
 import { AtCalendarControllerProps } from 'types/calendar'
 import { CommonEvent } from '@tarojs/components/types/common'
 import dayjs from 'dayjs'
-import AtComponentWithDefaultProps from "../../mixins"
+
 
 export default defineComponent({
   name: "AtCalendarController",
-
-  mixins: [AtComponentWithDefaultProps],
 
   data: () => ({ addGlobalClass: true }),
 
@@ -48,11 +46,11 @@ export default defineComponent({
       default: Date.now()
     },
     minDate: {
-      type: [String, Number, Date] as unknown as () => AtCalendarControllerProps['minDate'],
+      type: [String, Number, Date] as PropType<AtCalendarControllerProps['minDate']>,
       default: () => ''
     },
     maxDate: {
-      type: [String, Number, Date] as unknown as () => AtCalendarControllerProps['maxDate'],
+      type: [String, Number, Date] as PropType<AtCalendarControllerProps['maxDate']>,
       default: () => ''
     },
     hideArrow: {
@@ -64,15 +62,15 @@ export default defineComponent({
       default: 'YYYY 年 MM 月'
     },
     onPreMonth: {
-      type: Function as unknown as () => AtCalendarControllerProps['onPreMonth'],
+      type: Function as PropType<AtCalendarControllerProps['onPreMonth']>,
       default: () => () => { }
     },
     onNextMonth: {
-      type: Function as unknown as () => AtCalendarControllerProps['onNextMonth'],
+      type: Function as PropType<AtCalendarControllerProps['onNextMonth']>,
       default: () => () => { }
     },
     onSelectDate: {
-      type: Function as unknown as () => AtCalendarControllerProps['onSelectDate'],
+      type: Function as PropType<AtCalendarControllerProps['onSelectDate']>,
       default: () => () => { }
     },
   },

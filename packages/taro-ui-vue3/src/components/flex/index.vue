@@ -1,46 +1,46 @@
 <template>
-  <view :class="rootClass">
+  <view :class="rootClasses">
     <slot />
   </view>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue"
+import { defineComponent, computed, PropType } from "../../api"
 import { AtFlexProps } from 'types/flex'
 
-import AtComponentWithDefaultProps from '../mixins'
+
 import './index.scss'
 
 export default defineComponent({
   name: "AtFlex",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     wrap: {
-      type: String as () => AtFlexProps['wrap'],
+      type: String as PropType<AtFlexProps['wrap']>,
       default: 'no-wrap',
     },
     align: {
-      type: String as () => AtFlexProps['align'],
+      type: String as PropType<AtFlexProps['align']>,
       default: 'stretch',
     },
     justify: {
-      type: String as () => AtFlexProps['justify'],
+      type: String as PropType<AtFlexProps['justify']>,
       default: 'start',
     },
     direction: {
-      type: String as () => AtFlexProps['direction'],
+      type: String as PropType<AtFlexProps['direction']>,
       default: 'row',
     },
     alignContent: {
-      type: String as () => AtFlexProps['alignContent'],
+      type: String as PropType<AtFlexProps['alignContent']>,
     },
   },
 
   setup(props: AtFlexProps, { slots }) {
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [`at-row__align--${props.align}`]: true,
       [`at-row__align-content--${props.alignContent}`]: true,
       [`at-row__direction--${props.direction}`]: true,
@@ -51,7 +51,7 @@ export default defineComponent({
     }))
 
     return {
-      rootClass
+      rootClasses
     }
   }
 })

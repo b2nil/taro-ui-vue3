@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     :style="customStyle"
   >
     <!-- toast message -->
@@ -72,7 +72,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref, reactive, nextTick, watch, onMounted, onBeforeMount, toRefs } from "vue"
+import { defineComponent, computed, ref, reactive, nextTick, watch, onMounted, onBeforeMount, toRefs, PropType } from "../../api"
 
 import {
   delayQuerySelector,
@@ -89,13 +89,13 @@ import { AtIndexesProps, AtIndexesState, Item } from 'types/indexes'
 import AtList from '../list/index.vue'
 import AtListItem from '../list/item/index.vue'
 import AtToast from '../toast/index.vue'
-import AtComponentWithDefaultProps from '../mixins'
+
 
 const ENV = Taro.getEnv()
 
 export default defineComponent({
   name: "AtIndexes",
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     // 参数
@@ -109,15 +109,15 @@ export default defineComponent({
       default: true
     },
     topKey: {
-      type: String as () => AtIndexesProps['topKey'],
+      type: String as PropType<AtIndexesProps['topKey']>,
       default: 'Top' as AtIndexesProps['topKey']
     },
     list: {
-      type: Array as () => AtIndexesProps['list'],
+      type: Array as PropType<AtIndexesProps['list']>,
       default: () => []
     },
     // 事件
-    onClick: Function as unknown as () => AtIndexesProps['onClick'],
+    onClick: Function as PropType<AtIndexesProps['onClick']>,
     onScrollIntoView: Function as unknown as () => AtIndexesProps['onScrollIntoView']
   },
 
@@ -139,7 +139,7 @@ export default defineComponent({
       isWEB: Taro.getEnv() === Taro.ENV_TYPE.WEB
     })
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       'at-indexes': true,
       [props.className]: true,
     }))
@@ -260,7 +260,7 @@ export default defineComponent({
       ...toRefs(state),
       ...toRefs(props),
       listId,
-      rootClass,
+      rootClasses,
       toastStyle,
       jumpTarget,
       handleClick,

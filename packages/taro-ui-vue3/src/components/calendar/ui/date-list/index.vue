@@ -30,11 +30,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, toRef } from "vue"
+import { defineComponent, computed, toRef, PropType } from "../../api"
 import { Calendar } from 'types/calendar'
 import classNames from "classnames"
 import * as constant from '../../common/constant'
-import AtComponentWithDefaultProps from "../../../mixins"
+
 
 const MAP: { [key: number]: string } = {
   [constant.TYPE_PRE_MONTH]: 'pre',
@@ -51,21 +51,21 @@ export interface AtCalendarListProps {
 export default defineComponent({
   name: "AtCalendarList",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   data: () => ({ addGlobalClass: true }),
 
   props: {
     list: {
-      type: Array as () => Calendar.List<Calendar.Item>,
+      type: Array as PropType<Calendar.List<Calendar.Item>>,
       default: () => [] as Calendar.List<Calendar.Item>
     },
     onClick: {
-      type: Function as unknown as () => (item: Calendar.Item) => void,
+      type: Function as PropType<(item: Calendar.Item) => void>,
       default: () => () => { }
     },
     onLongClick: {
-      type: Function as unknown as () => (item: Calendar.Item) => void,
+      type: Function as PropType<(item: Calendar.Item) => void>,
       default: () => () => { }
     }
   },

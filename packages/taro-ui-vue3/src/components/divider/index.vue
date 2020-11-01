@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     :style="rootStyle"
   >
     <view
@@ -17,44 +17,44 @@
   </view>
 </template>
 <script lang="ts">
-import { defineComponent, computed, CSSProperties } from "vue"
+import { defineComponent, computed, CSSProperties, PropType } from "../../api"
 import { AtDividerProps } from 'types/divider'
 
-import AtComponentWithDefaultProps from '../mixins'
+
 import { pxTransform, mergeStyle } from "../../utils/common"
 
 export default defineComponent({
   name: "AtDivider",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     // 参数
     content: {
-      type: String as () => AtDividerProps['content'],
+      type: String as PropType<AtDividerProps['content']>,
       default: '',
     },
     height: {
-      type: Number as () => AtDividerProps['height'],
+      type: Number as PropType<AtDividerProps['height']>,
       default: 0,
     },
     fontColor: {
-      type: String as () => AtDividerProps['fontColor'],
+      type: String as PropType<AtDividerProps['fontColor']>,
       default: '',
     },
     fontSize: {
-      type: Number as () => AtDividerProps['fontSize'],
+      type: Number as PropType<AtDividerProps['fontSize']>,
       default: 0,
     },
     lineColor: {
-      type: String as () => AtDividerProps['lineColor'],
+      type: String as PropType<AtDividerProps['lineColor']>,
       default: '',
     }
   },
 
   setup(props: AtDividerProps, { slots }) {
     return () => {
-      const rootClass = computed(() => ({
+      const rootClasses = computed(() => ({
         [props.className]: true,
         'at-divider': true
       }))
@@ -73,7 +73,7 @@ export default defineComponent({
       }))
 
       return {
-        rootClass,
+        rootClasses,
         rootStyle,
         fontStyle,
         lineStyle

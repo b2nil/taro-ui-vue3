@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="rootClass"
+    :class="rootClasses"
     :style="customStyle"
   >
     <view v-if="!!items">
@@ -58,11 +58,11 @@
 import { defineComponent, computed, toRef } from 'vue'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtStepsProps } from 'types/steps'
-import AtComponentWithDefaultProps from '../mixins'
+
 
 export default defineComponent({
   name: "AtSteps",
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     current: {
@@ -71,11 +71,11 @@ export default defineComponent({
       required: true
     },
     items: {
-      type: Array as () => AtStepsProps['items'],
+      type: Array as PropType<AtStepsProps['items']>,
       default: []
     },
     onChange: {
-      type: Function as unknown as () => AtStepsProps['onChange'],
+      type: Function as PropType<AtStepsProps['onChange']>,
       default: () => (current: number, event: CommonEvent) => { },
       required: true
     },
@@ -83,7 +83,7 @@ export default defineComponent({
 
   setup(props: AtStepsProps, { slots }) {
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       'at-steps': true
     }))
@@ -117,7 +117,7 @@ export default defineComponent({
 
     return {
       items: toRef(props, 'items'),
-      rootClass,
+      rootClasses,
       stepItemClass,
       itemIconClass,
       itemStatusClass,

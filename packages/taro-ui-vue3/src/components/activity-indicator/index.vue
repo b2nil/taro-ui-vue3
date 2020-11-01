@@ -1,5 +1,5 @@
 <template>
-  <view :class="rootClass">
+  <view :class="rootClasses">
     <!-- loading -->
     <view class="at-activity-indicator__body">
       <at-loading
@@ -17,10 +17,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, toRefs } from "vue"
-import { AtActivityIndicatorProps } from "types/activity-indicator";
+import { defineComponent, computed, toRefs, PropType } from "../../api"
+import { AtActivityIndicatorProps } from "types/activity-indicator"
 import AtLoading from "../loading"
-import AtComponentWithDefaultProps from "../mixins";
 
 export default defineComponent({
   name: "AtActivityIndicator",
@@ -29,15 +28,13 @@ export default defineComponent({
     AtLoading
   },
 
-  mixins: [AtComponentWithDefaultProps],
-
   props: {
     size: {
       type: Number,
       default: 48
     },
     mode: {
-      type: String as () => 'center' | 'normal',
+      type: String as PropType<'center' | 'normal'>,
       default: 'normal' as 'center' | 'normal'
     },
     color: {
@@ -58,7 +55,7 @@ export default defineComponent({
 
     const { size, color, content } = toRefs(props)
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       'at-activity-indicator--center': props.mode === 'center',
       'at-activity-indicator--isopened': props.isOpened,
@@ -69,7 +66,7 @@ export default defineComponent({
       size,
       color,
       content,
-      rootClass
+      rootClasses
     }
   }
 })

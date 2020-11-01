@@ -1,6 +1,6 @@
 <template>
   <view
-    class="rootClass"
+    class="rootClasses"
     :style="customStyle"
   >
     <!-- searchbar input -->
@@ -54,7 +54,7 @@
 import { defineComponent, reactive, computed, CSSProperties, toRefs } from 'vue'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtSearchBarProps, AtSearchBarState } from 'types/search-bar'
-import AtComponentWithDefaultProps from '../mixins'
+
 
 type ExtendEvent = {
   target: {
@@ -65,7 +65,7 @@ type ExtendEvent = {
 export default defineComponent({
   name: "AtSearchBar",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   props: {
     value: {
@@ -102,19 +102,19 @@ export default defineComponent({
       default: '搜索'
     },
     inputType: {
-      type: String as () => AtSearchBarProps['inputType'],
+      type: String as PropType<AtSearchBarProps['inputType']>,
       default: 'text' as AtSearchBarProps['inputType']
     },
     onChange: {
-      type: Function as unknown as () => AtSearchBarProps['onChange'],
+      type: Function as PropType<AtSearchBarProps['onChange']>,
       default: () => (value: string, event: CommonEvent) => { },
       required: true
     },
-    onFocus: Function as unknown as () => AtSearchBarProps['onFocus'],
-    onBlur: Function as unknown as () => AtSearchBarProps['onBlur'],
-    onConfirm: Function as unknown as () => AtSearchBarProps['onConfirm'],
-    onActionClick: Function as unknown as () => AtSearchBarProps['onActionClick'],
-    onClear: Function as unknown as () => AtSearchBarProps['onClear'],
+    onFocus: Function as PropType<AtSearchBarProps['onFocus']>,
+    onBlur: Function as PropType<AtSearchBarProps['onBlur']>,
+    onConfirm: Function as PropType<AtSearchBarProps['onConfirm']>,
+    onActionClick: Function as PropType<AtSearchBarProps['onActionClick']>,
+    onClear: Function as PropType<AtSearchBarProps['onClear']>,
   },
 
   setup(props: AtSearchBarProps, { slots }) {
@@ -125,7 +125,7 @@ export default defineComponent({
 
     const fontSize = 14
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [props.className]: true,
       'at-search-bar--fixed': props.fixed,
       'at-search-bar': true,
@@ -145,8 +145,7 @@ export default defineComponent({
         actionStyle.marginRight = `0`
       } else if (!state.isFocus && !props.value) {
         actionStyle.opacity = 0
-        actionStyle.marginRight = `-${
-          (props.actionName!.length + 1) * fontSize + fontSize / 2 + 10
+        actionStyle.marginRight = `-${(props.actionName!.length + 1) * fontSize + fontSize / 2 + 10
           }px`
       }
 
@@ -200,7 +199,7 @@ export default defineComponent({
     return {
       ...toRefs(props),
       ...toRefs(state),
-      rootClass,
+      rootClasses,
       actionStyle,
       clearIconStyle,
       placeholderStyle,

@@ -1,7 +1,7 @@
 <template>
   <!-- not swiper -->
   <view
-    :class="rootClass"
+    :class="rootClasses"
     v-if="!isSwiper"
   >
     <at-calendar-day-list />
@@ -19,7 +19,7 @@
   <!-- h5, 需要 Taro 组件库维护 Swiper 使 小程序 和 H5 的表现保持一致 -->
   <view
     v-if="isWEB"
-    :class="rootClass"
+    :class="rootClasses"
     @touch-end="handleTouchEnd"
     @touch-move="handleTouchMove"
     @touch-start="handleTouchStart"
@@ -47,7 +47,7 @@
 
   <!-- swiper -->
   <view
-    :class="rootClass"
+    :class="rootClasses"
     v-if="isSwiper && !isWEB"
   >
     <at-calendar-day-list />
@@ -78,7 +78,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, reactive, watch, onMounted, ref, nextTick, toRef } from "vue"
+import { defineComponent, computed, reactive, watch, onMounted, ref, nextTick, toRef, PropType } from "../../api"
 import { BaseEventOrig, ITouch, ITouchEvent } from '@tarojs/components/types/common'
 import { AtCalendarBodyListGroup, AtCalendarBodyProps, Calendar, AtCalendarBodyState } from 'types/calendar'
 import { delayQuerySelector } from '../../../utils/common'
@@ -86,7 +86,7 @@ import dayjs from 'dayjs'
 import generateCalendarGroup from '../common/helper'
 import AtCalendarDateList from '../ui/date-list/index.vue'
 import AtCalendarDayList from '../ui/day-list/index.vue'
-import AtComponentWithDefaultProps from "../../mixins"
+
 
 
 const ANIMATE_DURATION: number = 300
@@ -94,7 +94,7 @@ const ANIMATE_DURATION: number = 300
 export default defineComponent({
   name: "AtCalendarBody",
 
-  mixins: [AtComponentWithDefaultProps],
+
 
   components: {
     AtCalendarDateList,
@@ -109,19 +109,19 @@ export default defineComponent({
       default: 'YYYY-MM-DD'
     },
     validDates: {
-      type: Array as () => AtCalendarBodyProps['validDates'],
+      type: Array as PropType<AtCalendarBodyProps['validDates']>,
       default: () => []
     },
     marks: {
-      type: Array as () => AtCalendarBodyProps['marks'],
+      type: Array as PropType<AtCalendarBodyProps['marks']>,
       default: () => []
     },
     minDate: {
-      type: [String, Number, Date] as unknown as () => AtCalendarBodyProps['minDate'],
+      type: [String, Number, Date] as PropType<AtCalendarBodyProps['minDate']>,
       default: () => ''
     },
     maxDate: {
-      type: [String, Number, Date] as unknown as () => AtCalendarBodyProps['maxDate'],
+      type: [String, Number, Date] as PropType<AtCalendarBodyProps['maxDate']>,
       default: () => ''
     },
     isSwiper: {
@@ -133,27 +133,27 @@ export default defineComponent({
       default: false
     },
     generateDate: {
-      type: [Number, String] as unknown as () => AtCalendarBodyProps['generateDate'],
+      type: [Number, String] as PropType<AtCalendarBodyProps['generateDate']>,
       default: Date.now()
     },
     selectedDate: {
-      type: Object as () => AtCalendarBodyProps['selectedDate'],
+      type: Object as PropType<AtCalendarBodyProps['selectedDate']>,
       default: () => ({ end: Date.now(), start: Date.now() })
     },
     selectedDates: {
-      type: Array as () => AtCalendarBodyProps['selectedDates'],
+      type: Array as PropType<AtCalendarBodyProps['selectedDates']>,
       default: () => []
     },
     onDayClick: {
-      type: Function as unknown as () => AtCalendarBodyProps['onDayClick'],
+      type: Function as PropType<AtCalendarBodyProps['onDayClick']>,
       default: () => () => { }
     },
     onLongClick: {
-      type: Function as unknown as () => AtCalendarBodyProps['onLongClick'],
+      type: Function as PropType<AtCalendarBodyProps['onLongClick']>,
       default: () => () => { }
     },
     onSwipeMonth: {
-      type: Function as unknown as () => AtCalendarBodyProps['onSwipeMonth'],
+      type: Function as PropType<AtCalendarBodyProps['onSwipeMonth']>,
       default: () => () => { }
     },
   },
@@ -330,7 +330,7 @@ export default defineComponent({
       })
     })
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       [`at-calendar-slider__main--${process.env.TARO_ENV}`]: true,
       'at-calendar-slider__main': true,
       'main': true,
@@ -357,7 +357,7 @@ export default defineComponent({
       onDayClick: toRef(props, 'onDayClick'),
       onLongClick: toRef(props, 'onLongClick'),
       isWEB,
-      rootClass,
+      rootClasses,
       h5MainBodyClass,
       h5MainBodyStyle,
       handleTouchEnd,
