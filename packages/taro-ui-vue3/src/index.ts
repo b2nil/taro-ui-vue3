@@ -52,3 +52,6 @@ export { default as AtToast } from './components/toast/index.vue'
 
 /* 私有的组件  */
 export { default as AtLoading } from './components/loading/index.vue'
+
+export const VERSION = __VERSION__
+export const VUE_VERSION: "2" | "3" = __VUE_2__ ? "2" : "3"

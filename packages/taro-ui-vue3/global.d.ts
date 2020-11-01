@@ -9,6 +9,9 @@ declare module '*.scss';
 declare module '*.sass';
 declare module '*.styl';
 
+declare var __VERSION__: string;
+declare var __VUE_2__: boolean;
+
 // @ts-ignore
 declare const process: {
   env: {
