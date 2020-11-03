@@ -21,6 +21,7 @@ const config = {
     '@/utils': path.resolve(__dirname, '..', 'src/utils'),
     '@/style': path.resolve(__dirname, '..', 'src/style'),
     '@/assets': path.resolve(__dirname, '..', 'src/assets'),
+    '@/composables': path.resolve(__dirname, '..', 'src/composables'),
   },
   copy: {
     patterns: [
@@ -54,14 +55,14 @@ const config = {
     webpackChain(chain) {
       chain.module
         .rule('typescript')
-          .test(/.\ts$/)
-          .use('ts-loader')
-            .loader('ts-loader')
-            .tap(options => ({
-              ...options, 
-              appendTsSuffixTo: [/\.vue$/]
-            }))
-            .end()
+        .test(/.\ts$/)
+        .use('ts-loader')
+        .loader('ts-loader')
+        .tap(options => ({
+          ...options,
+          appendTsSuffixTo: [/\.vue$/]
+        }))
+        .end()
     }
   },
   h5: {
@@ -83,8 +84,8 @@ const config = {
     },
     webpackChain(chain) {
       chain.resolve.alias
-        .set('@tarojs/components$', path.resolve(__dirname, '..','node_modules/@tarojs/components/dist-h5/vue3/index.js'))
-        .set('@tarojs/components/dist/taro-components/taro-components.css', path.resolve(__dirname, '..','node_modules/@tarojs/components/dist/taro-components/taro-components.css'))
+        .set('@tarojs/components$', path.resolve(__dirname, '..', 'node_modules/@tarojs/components/dist-h5/vue3/index.js'))
+        .set('@tarojs/components/dist/taro-components/taro-components.css', path.resolve(__dirname, '..', 'node_modules/@tarojs/components/dist/taro-components/taro-components.css'))
     },
     router: {
       mode: 'browser'
