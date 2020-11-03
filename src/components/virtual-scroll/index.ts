@@ -35,10 +35,6 @@ const AtVirtualScroll = defineComponent({
       type: [Number, String] as PropType<AtVirtualScrollProps['bench']>,
       default: 0,
     },
-    viewport: {
-      type: [Number, String] as PropType<AtVirtualScrollProps['viewport']>,
-      default: 5,
-    },
     itemHeight: {
       type: [Number, String] as PropType<AtVirtualScrollProps['itemHeight']>,
       required: true,
@@ -71,10 +67,6 @@ const AtVirtualScroll = defineComponent({
       return parseInt(`${props.bench}`, 10)
     })
 
-    const __viewport = computed<number>(() => {
-      return parseInt(`${props.viewport}`, 10) - 1
-    })
-
     const __itemHeight = computed<number>(() => {
       return parseInt(`${props.itemHeight}`, 10)
     })
@@ -84,7 +76,7 @@ const AtVirtualScroll = defineComponent({
     })
 
     const lastToRender = computed<number>(() => {
-      return Math.min(props.items.length, last.value + __viewport.value + __bench.value)
+      return Math.min(props.items.length, last.value + __bench.value)
     })
 
     const { dimensions } = useDimensions(props)
@@ -136,7 +128,7 @@ const AtVirtualScroll = defineComponent({
     }
 
     function getLast(first: number): number {
-      const height = parseInt(`${props.height || 0, 10}`) || elRef.value.$el.clientHeight
+      const height = parseInt(`${props.height || 0}`, 10) || elRef.value.$el.clientHeight
 
       return first + Math.ceil(height / __itemHeight.value)
     }
