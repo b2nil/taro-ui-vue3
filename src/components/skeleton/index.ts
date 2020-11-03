@@ -16,23 +16,14 @@ import {
 import { dimensionsFactory } from "@/composables/dimensions"
 import { makeElevationProps, useElevationClasses } from "@/composables/elevation"
 
+// types
+import {
+  AtSkeletonProps,
+  HTMLSkeletonElement
+} from "types/skeleton"
+
 const { makeDimensionsProps, useDimensions } = dimensionsFactory()
 
-export interface HTMLSkeletonElement extends HTMLElement {
-  _initialStyle?: {
-    display: string | null
-    transition: string
-  }
-}
-
-export interface AtSkeletonProps {
-  boilerplate: boolean
-  loading: boolean
-  tile: boolean
-  transition?: string
-  type?: string
-  types?: Record<string, string>
-}
 
 const AtSkeleton = defineComponent({
   name: "AtSkeleton",
@@ -51,7 +42,7 @@ const AtSkeleton = defineComponent({
     }
   },
 
-  setup(props, { slots, attrs }) {
+  setup(props: AtSkeletonProps, { slots, attrs }) {
 
     const { dimensions } = useDimensions(props)
     const { elevationClasses } = useElevationClasses(props)
@@ -82,6 +73,7 @@ const AtSkeleton = defineComponent({
     }))
 
     const rootTypes = computed(() => ({
+      ...props.types,
       actions: 'button@2',
       article: 'heading, paragraph',
       avatar: 'avatar',
@@ -111,8 +103,7 @@ const AtSkeleton = defineComponent({
       'table-row': 'table-cell@6',
       'table-cell': 'text',
       'table-tfoot': 'text@2, avatar@2',
-      text: 'text',
-      ...props.types,
+      text: 'text'
     }))
 
     function genBone(text: string, children: VNode[]) {
