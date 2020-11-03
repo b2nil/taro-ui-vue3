@@ -110,3 +110,4 @@ yarn add taro-ui-vue3
 ## Credits
 - [Taro UI](https://github.com/NervJS/taro-ui)
 - [taro-ui-vue](https://github.com/psaren/taro-ui-vue)
+- [vuetify](https://github.com/vuetifyjs/vuetify)
