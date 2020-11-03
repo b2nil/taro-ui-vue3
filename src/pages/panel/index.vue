@@ -343,8 +343,8 @@ export default defineComponent({
     })
 
     onMounted(() => {
-      const { id } = Taro.Current.router.params
-      state.currentId = id.toLowerCase() || ''
+      const { id } = Taro.Current!.router!.params
+      state.currentId = id?.toLowerCase() || ''
     })
 
     function gotoComponent(id, parent) {

@@ -41,7 +41,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, reactive, ref, toRefs } from 'vue'
+import { computed, defineComponent, reactive, toRefs } from 'vue'
 import Taro from '@tarojs/taro'
 import iconAction from '@/assets/images/icon-list-action.png'
 import iconBasic from '@/assets/images/icon-list-basic.png'
