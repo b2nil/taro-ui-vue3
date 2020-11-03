@@ -1,4 +1,4 @@
-import { h, defineComponent, computed, mergeProps, resolveComponent } from "vue"
+import { h, defineComponent, computed, mergeProps } from "vue"
 import { View } from "@tarojs/components"
 import Taro from "@tarojs/taro"
 import "./index.scss"
@@ -37,11 +37,13 @@ const Page = defineComponent({
         default: () => [
           h(View, {
             class: 'doc-header'
-          }, { default: () => [
-            h(View, {
-              class: 'doc-header__title'
-            }, { default: () => props.headerTitle })
-          ]}),
+          }, {
+            default: () => [
+              h(View, {
+                class: 'doc-header__title'
+              }, { default: () => props.headerTitle })
+            ]
+          }),
 
           h(View, {
             class: 'doc-body',
