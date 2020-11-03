@@ -307,8 +307,12 @@ export default defineComponent({
           },
           {
             id: 'Virtual-Scroll',
-            name: '长列表'
-          }
+            name: '虚拟列表'
+          },
+          {
+            id: 'Skeleton',
+            name: '骨架'
+          },
         ]
       },
       currentId: ''

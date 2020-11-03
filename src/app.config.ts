@@ -93,6 +93,7 @@ const subpackages = [
       // advanced
       'calendar/index',
       'virtual-scroll/index',
+      'skeleton/index',
     ]
   },
 ]

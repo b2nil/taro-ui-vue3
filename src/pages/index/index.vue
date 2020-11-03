@@ -99,7 +99,7 @@ export default defineComponent({
         {
           id: 'Advanced',
           title: '高阶组件',
-          content: '包含日历等',
+          content: '包含日历、虚拟列表、骨架等',
           icon: iconHOC
         }
       ]
