@@ -6,6 +6,7 @@ import AtComponent from './base'
 declare type OmitInputProps = Omit<
   InputProps,
   | 'className'
+  | 'style'
   | 'type'
   | 'onBlur'
   | 'onFocus'
