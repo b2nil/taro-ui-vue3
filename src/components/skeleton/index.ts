@@ -1,4 +1,4 @@
-import "@/style/components/skeleton.scss"
+import "./style/components/skeleton.scss"
 
 import {
   h,
