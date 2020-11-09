@@ -1,0 +1,9 @@
+{
+  "name": "@taro-ui-vue3/utils",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "common.js",
+  "peerDependencies": {
+    "@tarojs/taro": "^3.0.0"
+  }
+}
