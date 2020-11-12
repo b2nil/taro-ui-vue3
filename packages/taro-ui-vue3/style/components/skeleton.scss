@@ -1,0 +1,488 @@
+@import '../variables/default.scss';
+
+$border-radius-root: 4px * $hd !default;
+$skeleton-actions-button-margin: 12px * $hd !default;
+$skeleton-actions-padding: 16px * $hd 16px * $hd 8px * $hd !default;
+$skeleton-article-heading-margin-top-left: 16px * $hd !default;
+$skeleton-article-heading-margin-x: 16px * $hd !default;
+$skeleton-article-paragraph-padding: 16px * $hd !default;
+$skeleton-avatar-height: $at-avatar-size-lg !default;
+$skeleton-avatar-width: $at-avatar-size-lg !default;
+$skeleton-border-radius: $border-radius-root !default;
+$skeleton-button-border-radius: $border-radius-root !default;
+$skeleton-button-height: $at-button-height-sm !default;
+$skeleton-button-width: 64px * $hd !default;
+$skeleton-card-heading-heading-margin: 16px * $hd !default;
+$skeleton-card-text-padding: 16px * $hd !default;
+$skeleton-chip-border-radius: 16px * $hd !default;
+$skeleton-chip-height: 32px * $hd !default;
+$skeleton-chip-width: 96px * $hd !default;
+$skeleton-date-picker-border-radius: inherit !default;
+$skeleton-date-picker-days-height: 40px * $hd !default;
+$skeleton-date-picker-days-margin: 4px * $hd !default;
+$skeleton-date-picker-days-padding: 0 12px * $hd !default;
+$skeleton-date-picker-days-width: 40px * $hd !default;
+$skeleton-date-picker-options-avatar-child-margin: 8px * $hd !default;
+$skeleton-date-picker-options-avatar-height: 40px * $hd !default;
+$skeleton-date-picker-options-avatar-width: 40px * $hd !default;
+$skeleton-date-picker-options-padding: 16px * $hd !default;
+$skeleton-divider-border-radius: 1px * $hd !default;
+$skeleton-divider-height: 2px * $hd !default;
+$skeleton-heading-border-radius: 12px * $hd !default;
+$skeleton-heading-height: 24px * $hd !default;
+$skeleton-image-height: 200px * $hd !default;
+$skeleton-item-avatar-height: 40px * $hd !default;
+$skeleton-item-avatar-margin: 16px * $hd !default;
+$skeleton-item-avatar-width: 40px * $hd !default;
+$skeleton-item-padding: 0 16px * $hd !default;
+$skeleton-item-three-line-height: 88px * $hd !default;
+$skeleton-item-two-line-height: 72px * $hd !default;
+$skeleton-list-item-height: 48px * $hd !default;
+$skeleton-loading-animation: skeleton-loading 1.5s infinite !default;
+$skeleton-loading-transform: translateX(-100%) !default;
+$skeleton-table-cell-height: 48px * $hd !default;
+$skeleton-table-cell-width: 88px * $hd !default;
+$skeleton-table-heading-padding: 16px * $hd !default;
+$skeleton-table-tbody-padding: 16px * $hd 16px * $hd 0 !default;
+$skeleton-table-tfoot-avatar-height: 40px * $hd !default;
+$skeleton-table-tfoot-avatar-width: 40px * $hd !default;
+$skeleton-table-tfoot-children-margin: 8px * $hd !default;
+$skeleton-table-tfoot-padding: 16px * $hd !default;
+$skeleton-table-thead-heading-padding: 16px * $hd !default;
+$skeleton-table-thead-padding: 16px * $hd !default;
+$skeleton-text-border-radius: 6px * $hd !default;
+$skeleton-text-height: 12px * $hd !default;
+
+
+.at-skeleton {
+  border-radius: $skeleton-border-radius;
+  position: relative;
+  vertical-align: top;
+
+  &__actions {
+    padding: $skeleton-actions-padding;
+    text-align: right;
+
+    .at-skeleton__button {
+      display: inline-block;
+
+      &:first-child {
+        margin-right: $skeleton-actions-button-margin;
+      }
+    }
+  }
+
+  .at-skeleton__bone::after {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, .3), rgba(255, 255, 255, 0));
+  }
+  
+  .at-skeleton__avatar,
+  .at-skeleton__button,
+  .at-skeleton__chip,
+  .at-skeleton__divider,
+  .at-skeleton__heading,
+  .at-skeleton__image,
+  .at-skeleton__text {
+    background: rgba(0, 0, 0, 0.12);
+  }
+  
+  .at-skeleton__actions,
+  .at-skeleton__article,
+  .at-skeleton__card-heading,
+  .at-skeleton__card-text,
+  .at-skeleton__date-picker,
+  .at-skeleton__list-item,
+  .at-skeleton__list-item-avatar,
+  .at-skeleton__list-item-text,
+  .at-skeleton__list-item-two-line,
+  .at-skeleton__list-item-avatar-two-line,
+  .at-skeleton__list-item-three-line,
+  .at-skeleton__list-item-avatar-three-line,
+  .at-skeleton__table-heading,
+  .at-skeleton__table-thead,
+  .at-skeleton__table-tbody,
+  .at-skeleton__table-tfoot {
+    background: #FFFFFF;
+  }
+  
+  .at-skeleton__list-item,
+  .at-skeleton__list-item-avatar,
+  .at-skeleton__list-item-text,
+  .at-skeleton__list-item-two-line,
+  .at-skeleton__list-item-avatar-two-line,
+  .at-skeleton__list-item-three-line,
+  .at-skeleton__list-item-avatar-three-line {
+    border-radius: $skeleton-border-radius;
+  }
+
+  .at-skeleton__actions,
+  .at-skeleton__article,
+  .at-skeleton__card,
+  .at-skeleton__card-avatar,
+  .at-skeleton__card-heading,
+  .at-skeleton__card-text,
+  .at-skeleton__date-picker,
+  .at-skeleton__date-picker-options,
+  .at-skeleton__date-picker-days,
+  .at-skeleton__list-item,
+  .at-skeleton__list-item-avatar,
+  .at-skeleton__list-item-text,
+  .at-skeleton__list-item-two-line,
+  .at-skeleton__list-item-avatar-two-line,
+  .at-skeleton__list-item-three-line,
+  .at-skeleton__list-item-avatar-three-line,
+  .at-skeleton__paragraph,
+  .at-skeleton__sentences,
+  .at-skeleton__table,
+  .at-skeleton__table-cell,
+  .at-skeleton__table-heading,
+  .at-skeleton__table-thead,
+  .at-skeleton__table-tbody,
+  .at-skeleton__table-tfoot,
+  .at-skeleton__table-row,
+  .at-skeleton__table-row-divider {
+    &::after {
+      display: none;
+    }
+  }
+
+  &__article {
+    .at-skeleton__heading {
+      margin: $skeleton-article-heading-margin-top-left 0 $skeleton-article-heading-margin-x $skeleton-article-heading-margin-top-left;
+    }
+
+    .at-skeleton__paragraph {
+      padding: $skeleton-article-paragraph-padding;
+    }
+  }
+
+  &__bone {
+    border-radius: inherit;
+    overflow: hidden;
+    position: relative;
+
+    &::after {
+      animation: $skeleton-loading-animation;
+      content: "";
+      height: 100%;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transform: $skeleton-loading-transform;
+      z-index: 1;
+    }
+  }
+
+  &__avatar {
+    border-radius: $border-radius-circle;
+    height: $skeleton-avatar-height;
+    width: $skeleton-avatar-width;
+  }
+
+  &__button {
+    border-radius: $skeleton-button-border-radius;
+    height: $skeleton-button-height;
+    width: $skeleton-button-width;
+  }
+
+  &__card {
+    .at-skeleton__image {
+      border-radius: 0;
+    }
+  }
+
+  &__card-heading {
+    .at-skeleton__heading {
+      margin: $skeleton-card-heading-heading-margin;
+    }
+  }
+
+  &__card-text {
+    padding: $skeleton-card-text-padding;
+  }
+
+  &__chip {
+    border-radius: $skeleton-chip-border-radius;
+    height: $skeleton-chip-height;
+    width: $skeleton-chip-width;
+  }
+
+  &__date-picker {
+    border-radius: $skeleton-date-picker-border-radius;
+
+    .at-skeleton__list-item:first-child {
+      .at-skeleton__text {
+        max-width: 88px * $hd;
+        width: 20%;
+      }
+    }
+
+    .at-skeleton__heading {
+      max-width: 256px * $hd;
+      width: 40%;
+    }
+  }
+
+  &__date-picker-days {
+    display: flex;
+    flex-wrap: wrap;
+    padding: $skeleton-date-picker-days-padding;
+    margin: 0 auto;
+
+    .at-skeleton__avatar {
+      border-radius: $skeleton-border-radius;
+      flex: 1 1 auto;
+      margin: $skeleton-date-picker-days-margin;
+      height: $skeleton-date-picker-days-height;
+      width: $skeleton-date-picker-days-width;
+    }
+  }
+
+  &__date-picker-options {
+    align-items: center;
+    display: flex;
+    padding: $skeleton-date-picker-options-padding;
+
+    .at-skeleton__avatar {
+      height: $skeleton-date-picker-options-avatar-height;
+      width: $skeleton-date-picker-options-avatar-width;
+
+      &:nth-child(2) {
+        margin-left: auto;
+        margin-right: $skeleton-date-picker-options-avatar-child-margin;
+      }
+    }
+
+    .at-skeleton__text.at-skeleton__bone:first-child {
+      margin-bottom: 0px;
+      max-width: 50%;
+      width: 456px * $hd;
+    }
+  }
+
+  &__divider {
+    border-radius: $skeleton-divider-border-radius;
+    height: $skeleton-divider-height;
+  }
+
+  &__heading {
+    border-radius: $skeleton-heading-border-radius;
+    height: $skeleton-heading-height;
+    width: 45%;
+  }
+
+  &__image {
+    height: $skeleton-image-height;
+    border-radius: 0;
+
+    ~ .at-skeleton__card-heading {
+      border-radius: 0;
+    }
+
+    &::first-child, &::last-child {
+      border-radius: inherit;
+    }
+  }
+
+  &__list-item {
+    height: $skeleton-list-item-height;
+  }
+
+  &__list-item-three-line {
+    flex-wrap: wrap;
+
+    > view {
+      flex: 1 0 100%;
+      width: 100%;
+    }
+  }
+
+  &__list-item-avatar,
+  &__list-item-avatar-two-line,
+  &__list-item-avatar-three-line {
+    .at-skeleton__avatar {
+      height: $skeleton-item-avatar-height;
+      width: $skeleton-item-avatar-width;
+    }
+  }
+
+  &__list-item-avatar {
+    height: $skeleton-avatar-height;
+  }
+
+  &__list-item-two-line,
+  &__list-item-avatar-two-line {
+    height: $skeleton-item-two-line-height;
+  }
+
+  &__list-item-three-line,
+  &__list-item-avatar-three-line {
+    height: $skeleton-item-three-line-height;
+  }
+
+  &__list-item-avatar-three-line {
+    .at-skeleton__avatar {
+      align-self: flex-start;
+    }
+  }
+
+  &__list-item,
+  &__list-item-avatar,
+  &__list-item-two-line,
+  &__list-item-three-line,
+  &__list-item-avatar-two-line,
+  &__list-item-avatar-three-line {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    padding: $skeleton-item-padding;
+
+    .at-skeleton__avatar {
+      margin-right: $skeleton-item-avatar-margin;
+    }
+
+    .at-skeleton__text:last-child,
+    .at-skeleton__text:only-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__paragraph,
+  &__sentences {
+    flex: 1 0 auto;
+  }
+
+  &__paragraph {
+    &:not(:last-child) {
+      margin-bottom: 6px * $hd;
+    }
+
+    .at-skeleton__text:nth-child(1) {
+      max-width: 100%;
+    }
+
+    .at-skeleton__text:nth-child(2) {
+      max-width: 50%;
+    }
+
+    .at-skeleton__text:nth-child(3) {
+      max-width: 70%;
+    }
+  }
+
+  &__sentences {
+    .at-skeleton__text:nth-child(2) {
+      max-width: 70%;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 6px * $hd;
+    }
+  }
+
+  &__table-heading {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: $skeleton-table-heading-padding;
+
+    .at-skeleton__heading {
+      max-width: 15%;
+    }
+
+    .at-skeleton__text {
+      max-width: 40%;
+    }
+  }
+
+  &__table-thead {
+    display: flex;
+    justify-content: space-between;
+    padding: $skeleton-table-thead-padding;
+
+    .at-skeleton__heading {
+      max-width: 5%;
+    }
+  }
+
+  &__table-tbody {
+    padding: $skeleton-table-tbody-padding;
+  }
+
+  &__table-tfoot {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    padding: $skeleton-table-tfoot-padding;
+
+    > view {
+      margin-left: $skeleton-table-tfoot-children-margin;
+    }
+
+    .at-skeleton__avatar {
+      height: $skeleton-table-tfoot-avatar-height;
+      width: $skeleton-table-tfoot-avatar-width;
+    }
+
+    .at-skeleton__text {
+      margin-bottom: 0;
+
+      &:nth-child(1) {
+        max-width: 128px * $hd;
+      }
+
+      &:nth-child(2) {
+        max-width: 64px * $hd;
+      }
+    }
+  }
+
+  &__table-row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__table-cell {
+    align-items: center;
+    display: flex;
+    height: $skeleton-table-cell-height;
+    width: $skeleton-table-cell-width;
+
+    .at-skeleton__text {
+      margin-bottom: 0;
+    }
+  }
+
+  &__text {
+    border-radius: $skeleton-text-border-radius;
+    flex: 1 0 auto;
+    height: $skeleton-text-height;
+    margin-bottom: 6px * $hd;
+  }
+
+  &--boilerplate {
+    .at-skeleton__bone:after {
+      display: none;
+    }
+  }
+
+  &--is-loading {
+    overflow: hidden;
+  }
+
+  &--tile {
+    border-radius: 0;
+
+    .at-skeleton__bone {
+      border-radius: 0;
+    }
+  }
+}
+
+@keyframes skeleton-loading {
+  100% {
+    transform: translateX(100%);
+  }
+}
