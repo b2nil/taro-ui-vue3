@@ -1,6 +1,5 @@
-import { h, defineComponent, reactive } from 'vue'
-import { AtRate } from 'taro-ui-vue3'
-import { View } from '@tarojs/components'
+import { h, defineComponent, reactive, resolveComponent } from 'vue'
+import { AtRate } from "taro-ui-vue3"
 import { Page, Panel, ExampleItem } from '@/components/index'
 import './index.scss'
 
@@ -19,12 +18,8 @@ export default defineComponent({
       rateValue4: 3
     })
 
-    function handleRateChange(stateName: string, value: number): void {
-      state[stateName] = value
-    }
-
     return () => {
-      const { rateValue1, rateValue2, rateValue3, rateValue4 } = state
+      const View = resolveComponent(process.env.TARO_ENV === 'h5' ? 'taro-view' : 'view')
 
       return (
         h(Page, { headerTitle: 'Rate 评分' }, {
@@ -35,8 +30,8 @@ export default defineComponent({
                 h(ExampleItem, null, {
                   default: () => [
                     h(AtRate, {
-                      value: rateValue1,
-                      onChange: handleRateChange.bind(this, 'rateValue1'),
+                      modelValue: state.rateValue1,
+                      'onUpdate:modelValue': (e) => state.rateValue1 = e
                     })
                   ]
                 }),
@@ -50,8 +45,8 @@ export default defineComponent({
                   default: () => [
                     h(AtRate, {
                       size: 16,
-                      value: rateValue2,
-                      onChange: handleRateChange.bind(this, 'rateValue2'),
+                      modelValue: state.rateValue2,
+                      'onUpdate:modelValue': (e) => state.rateValue2 = e
                     })
                   ]
                 }),
@@ -65,8 +60,8 @@ export default defineComponent({
                   default: () => [
                     h(AtRate, {
                       max: 10,
-                      value: rateValue3,
-                      onChange: handleRateChange.bind(this, 'rateValue3'),
+                      modelValue: state.rateValue3,
+                      'onUpdate:modelValue': (e) => state.rateValue3 = e
                     })
                   ]
                 }),
@@ -80,8 +75,8 @@ export default defineComponent({
                   default: () => [
                     h(AtRate, {
                       margin: 15,
-                      value: rateValue4,
-                      onChange: handleRateChange.bind(this, 'rateValue4'),
+                      modelValue: state.rateValue4,
+                      'onUpdate:modelValue': (e) => state.rateValue4 = e
                     })
                   ]
                 }),
@@ -93,10 +88,10 @@ export default defineComponent({
               default: () => [
                 h(ExampleItem, null, {
                   default: () => [
-                    h(View, null, '评分: 3.5'),
+                    h(View, null, { default: () => '评分: 3.5' }),
                     h(View, null, {
                       default: () => [
-                        h(AtRate, { value: 3.5 })
+                        h(AtRate, { modelValue: 3.5 })
                       ]
                     })
                   ]

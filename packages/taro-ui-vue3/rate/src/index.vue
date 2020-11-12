@@ -8,7 +8,7 @@
       :key="i"
       :class="cls"
       :style="iconStyle"
-      @tap="handleClick(i+1)"
+      @tap="$emit('update:modelValue', i+1)"
     >
       <text
         class="at-icon at-icon-star-2"
@@ -26,7 +26,6 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
-import { CommonEvent } from '@tarojs/components/types/common'
 import { AtRateProps } from "@taro-ui-vue3/types/rate"
 import { pxTransform } from "@taro-ui-vue3/utils/common"
 
@@ -54,7 +53,9 @@ export default defineComponent({
     }
   },
 
-  setup(props: AtRateProps, { emit }) {
+  setup(props: AtRateProps) {
+
+    const modelValue = computed(() => props.modelValue)
 
     const iconStyle = computed(() => ({
       marginRight: pxTransform(props.margin!)
@@ -67,8 +68,8 @@ export default defineComponent({
     // 生成星星颜色 className 数组，方便在jsx中直接map
     const starColorClasses = computed(() => {
       const classNameArr: string[] = []
-      const floorValue = Math.floor(props.modelValue!)
-      const ceilValue = Math.ceil(props.modelValue!)
+      const floorValue = Math.floor(modelValue.value)
+      const ceilValue = Math.ceil(modelValue.value)
       for (let i = 0; i < props.max!; i++) {
         if (floorValue > i) {
           classNameArr.push('at-rate__icon at-rate__icon--on')
@@ -81,15 +82,10 @@ export default defineComponent({
       return classNameArr
     })
 
-    function handleClick(event: CommonEvent): void {
-      emit('update:modelValue', event.target.value)
-    }
-
     return {
       iconStyle,
       starIconStyle,
-      starColorClasses,
-      handleClick
+      starColorClasses
     }
   }
 })
