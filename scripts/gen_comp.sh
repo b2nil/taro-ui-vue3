@@ -33,12 +33,13 @@ mkdir -p "$DIRNAME/__tests__"
 cat > $DIRNAME/src/index.vue <<EOF
 <template>
   <view>
-    <slot></slot>
+    <slot />
   </view>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref, toRefs } from 'vue'
+import { defineComponent, computed, ref, toRefs, PropType } from 'vue'
+import { ${IMPORT_NAME}Props } from "@taro-ui-vue3/types"
 
 export default defineComponent({
   name: '${IMPORT_NAME}',
@@ -62,8 +63,13 @@ EOF
 cat <<EOF >"$DIRNAME/index.ts"
 import { App } from 'vue'
 import ${IMPORT_NAME} from './src/index.vue'
+
 export default (app: App): void => {
   app.component(${IMPORT_NAME}.name, ${IMPORT_NAME})
+}
+
+export {
+  ${IMPORT_NAME}
 }
 EOF
 
@@ -73,9 +79,13 @@ cat > $DIRNAME/package.json <<EOF
   "version": "0.0.0",
   "main": "dist/index.js",
   "license": "MIT",
+  "dependencies": {},
   "peerDependencies": {
     "vue": "^3.0.0",
-    "@tarojs/taro": "^3.0.0"
+    "@tarojs/taro": "^3.0.0",
+    "@tarojs/components": "^3.0.0",
+    "@taro-ui-vue3/utils": "^0.0.0",
+    "@taro-ui-vue3/types": "^0.0.0"
   },
   "devDependencies": {
     "@vue/test-utils": "^2.0.0-beta.3"
