@@ -1,4 +1,4 @@
-import * as CSS from 'csstype'
+export { CSSProperties } from 'vue'
 
 declare module '*.png';
 declare module '*.gif';
@@ -18,5 +18,3 @@ declare const process: {
     [key: string]: any;
   }
 }
-
-export type CSSProperties = CSS.Properties<string | number>

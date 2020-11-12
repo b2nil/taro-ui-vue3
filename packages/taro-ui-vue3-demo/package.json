@@ -42,7 +42,7 @@
     "@tarojs/runtime": "^3.0.7",
     "@tarojs/taro": "^3.0.7",
     "taro-ui-vue3": "file:../taro-ui-vue3",
-    "vue": "^3.0.0-rc.5"
+    "vue": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",
@@ -51,7 +51,7 @@
     "@types/webpack-env": "^1.13.6",
     "@typescript-eslint/eslint-plugin": "^2.x",
     "@typescript-eslint/parser": "^2.x",
-    "@vue/compiler-sfc": "^3.0.0-rc.5",
+    "@vue/compiler-sfc": "^3.0.0",
     "babel-preset-taro": "^3.0.5",
     "@babel/runtime": "^7.7.7",
     "csstype": "^2.6.11",
