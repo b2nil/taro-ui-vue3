@@ -1,7 +1,6 @@
-import { h, defineComponent, reactive } from 'vue'
-import { AtRadio } from 'taro-ui-vue3'
+import { h, defineComponent, reactive, resolveComponent } from 'vue'
+import { AtRadio } from "taro-ui-vue3"
 import { RadioOption } from 'taro-ui-vue3/types/radio'
-import { View } from '@tarojs/components'
 import { Page, Panel } from '@/components/index'
 import './index.scss'
 
@@ -47,14 +46,16 @@ export default defineComponent({
     function handleRadioChange(value: string): void {
       state.radioValue1 = value
     }
-    function handleRadioChangeScnd(value: string): void {
+    function handleRadioChange2nd(value: string): void {
       state.radioValue2 = value
     }
-    function handleRadioChangeThd(value: string): void {
+    function handleRadioChange3rd(value: string): void {
       state.radioValue3 = value
     }
 
     return () => {
+      const View = resolveComponent(process.env.TARO_ENV === 'h5' ? 'taro-view' : 'view')
+
       return (
         h(Page, { headerTitle: 'Radio 单选框' }, {
           default: () => [
@@ -67,7 +68,7 @@ export default defineComponent({
                     h(AtRadio, {
                       options: state.radioOptions1,
                       value: state.radioValue1,
-                      onClick: handleRadioChange.bind(this),
+                      onClick: handleRadioChange,
                     })
                   ]
                 }),
@@ -82,7 +83,7 @@ export default defineComponent({
                     h(AtRadio, {
                       options: state.radioOptions2,
                       value: state.radioValue2,
-                      onClick: handleRadioChangeScnd.bind(this),
+                      onClick: handleRadioChange2nd,
                     })
                   ]
                 }),
@@ -97,7 +98,7 @@ export default defineComponent({
                     h(AtRadio, {
                       options: state.radioOptions3,
                       value: state.radioValue3,
-                      onClick: handleRadioChangeThd.bind(this),
+                      onClick: handleRadioChange3rd,
                     })
                   ]
                 }),

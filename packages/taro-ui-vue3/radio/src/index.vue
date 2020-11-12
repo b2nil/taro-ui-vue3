@@ -32,15 +32,14 @@
 
 <script lang="ts">
 import { defineComponent, computed, toRef, PropType } from 'vue'
-import { CommonEvent } from '@tarojs/components/types/common'
 import { AtRadioProps, RadioOption } from "@taro-ui-vue3/types/radio"
 
 export default defineComponent({
   name: "AtRadio",
 
   emits: {
-    'click'(value: any, event: CommonEvent) {
-      return !!(value && event && typeof event === 'object')
+    'click'(value: any) {
+      return !!(value)
     }
   },
 
@@ -69,9 +68,9 @@ export default defineComponent({
       'at-radio__icon--checked': props.value === option.value
     }))
 
-    function handleClick(option: RadioOption<any>, event: CommonEvent): void {
+    function handleClick(option: RadioOption<any>): void {
       if (option.disabled) return
-      emit('click', option.value, event)
+      emit('click', option.value)
     }
 
     return {
