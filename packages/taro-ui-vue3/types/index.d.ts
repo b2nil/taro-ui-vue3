@@ -1,6 +1,4 @@
 
-import { Props } from '../src/components/calendar/interface'
-
 export { default as AtActionSheet, AtActionSheetItem } from './action-sheet'
 export { default as AtActivityIndicator } from './activity-indicator'
 export { default as AtAvatar } from './avatar'
@@ -47,6 +45,8 @@ export { default as AtImagePicker } from './image-picker'
 export { default as AtIndexes } from './indexes'
 export { default as AtRange } from './range'
 export { default as AtFloatButton } from './float-button'
+export { default as AtVirtualScroll } from './virtual-scroll'
+export { default as AtSkeleton } from './skeleton'
 
 export declare const AtCalendar: ComponentClass<Props>
 

@@ -12,7 +12,7 @@ export interface AtRateProps extends AtComponent {
   /**
    * 当前评分,开发者需要通过 onChange 事件来更新 value 值，必填
    */
-  value?: number
+  modelValue?: number
   /**
    * 最大评分
    * @default 5

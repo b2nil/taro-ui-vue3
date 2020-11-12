@@ -9,7 +9,7 @@ export interface AtSearchBarProps extends AtComponent {
    * @type {string}
    * @description 必填，开发者需要通过 onChange 事件来更新 value 值
    */
-  value: string
+  modelValue: string
   /**
    * 输入框占位符
    * @type {string}

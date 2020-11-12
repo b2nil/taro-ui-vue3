@@ -9,7 +9,7 @@ export interface AtTextareaProps extends AtComponent {
   /**
    * 输入框当前值，用户需要通过 onChange 事件的 event.target.value 来更新 value 值，必填
    */
-  value: string
+  modelValue: string
   /**
    * 最大长度
    * @default 200

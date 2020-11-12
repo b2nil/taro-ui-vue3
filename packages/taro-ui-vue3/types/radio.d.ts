@@ -35,6 +35,6 @@ export interface AtRadioProps<T> extends AtComponent {
   /**
    * 点击选项触发事件,开发者需要通过此事件来更新 value，onClick 函数必填
    */
-  onClick: (vaule: T, event: CommonEvent) => void
+  onClick: (value: T, event: CommonEvent) => void
 }
 
