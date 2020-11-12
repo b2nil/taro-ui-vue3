@@ -4,6 +4,7 @@
   "license": "MIT",
   "main": "common.js",
   "peerDependencies": {
+    "vue": "^3.0.0",
     "@tarojs/taro": "^3.0.0"
   }
 }

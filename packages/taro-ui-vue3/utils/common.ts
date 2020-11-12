@@ -19,28 +19,21 @@ const getEnvs = (): ENVS => {
   }
 }
 
-function pxTransform(size: number): string {
+function pxTransform(size: number, designWidth?: number): string {
   if (!size) return ''
 
-  const designWidth = 750
-  const deviceRatio = {
-    640: 2.34 / 2,
-    750: 1,
-    828: 1.81 / 2,
+  if (!designWidth) {
+    designWidth = 750
   }
 
-  return `${size / deviceRatio[designWidth]}rpx`
+  return Taro.pxTransform(size, designWidth)
 }
 
 function delay(delayTime = 500): Promise<null> {
   return new Promise((resolve) => {
-    if ([Taro.ENV_TYPE.WEB, Taro.ENV_TYPE.SWAN, Taro.ENV_TYPE.WEAPP].includes(ENV)) {
-      setTimeout(() => {
-        resolve()
-      }, delayTime)
-      return
-    }
-    resolve()
+    setTimeout(() => {
+      resolve()
+    }, delayTime)
   })
 }
 
@@ -248,6 +241,19 @@ function delayGetClientRect({ selectorStr, delayTime = 500 }): Promise<any[]> {
   })
 }
 
+function convertToUnit(str: string | number | null | undefined, unit = 'px'): string | undefined {
+  if (str == null || str === '') {
+    return undefined
+  } else if (isNaN(+str!)) {
+    return String(str)
+  } else {
+    return `${Number(str)}${unit}`
+  }
+}
+
+function keys<O>(o: O) {
+  return Object.keys(o) as (keyof O)[]
+}
 
 export {
   pxTransform,
@@ -260,4 +266,6 @@ export {
   getEventDetail,
   delayGetClientRect,
   delayGetScrollOffset,
+  convertToUnit,
+  keys
 }
