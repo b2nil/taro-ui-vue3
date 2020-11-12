@@ -1,5 +1,4 @@
-import { h, defineComponent, reactive, onMounted } from 'vue'
-import { Picker, View } from '@tarojs/components'
+import { h, defineComponent, reactive, onMounted, resolveComponent } from 'vue'
 import { CommonEvent } from '@tarojs/components/types/common'
 import Taro from '@tarojs/taro'
 import { Page, Panel, ExampleItem } from '@/components/index'
@@ -64,6 +63,9 @@ export default defineComponent({
         isAlipay
       } = state
 
+      const View = resolveComponent(process.env.TARO_ENV === 'h5' ? 'taro-view' : 'view')
+      const Picker = resolveComponent(process.env.TARO_ENV === 'h5' ? 'taro-picker' : 'picker')
+
       return (
         h(Page, {
           class: 'picker__page',
@@ -84,7 +86,7 @@ export default defineComponent({
                       default: () => [
                         h(View, { class: 'demo-list-item' }, {
                           default: () => [
-                            h(View, { class: 'demo-list-item__label' }, '国家地区'),
+                            h(View, { class: 'demo-list-item__label' }, { default: () => '国家地区' }),
                             h(View, { class: 'demo-list-item__value' }, {
                               default: () =>
                                 selector[selectorValue]
@@ -116,8 +118,7 @@ export default defineComponent({
                               h(View, { class: 'demo-list-item__label' }, { default: () => '请选择早餐' }),
                               h(View, { class: 'demo-list-item__value' }, {
                                 default: () => [
-                                  `${
-                                  multiSelector[0][mulitSelectorValues[0]]
+                                  `${multiSelector[0][mulitSelectorValues[0]]
                                   } & ${multiSelector[1][mulitSelectorValues[1]]}`
                                 ]
                               }),
