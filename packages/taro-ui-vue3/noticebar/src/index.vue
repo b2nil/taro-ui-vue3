@@ -6,7 +6,7 @@
   >
     <!-- close icon -->
     <view
-      v-if="_close"
+      v-if="close_"
       class="at-noticebar__close"
       @tap="handleClose"
     >
@@ -37,7 +37,7 @@
 
         <!-- show more content -->
         <view
-          v-if="_showMore"
+          v-if="showMore_"
           class="at-noticebar__more"
           @tap="onGotoMore"
         >
@@ -93,8 +93,8 @@ export default defineComponent({
     const interval: Ref<NodeJS.Timer | null> = ref(null)
 
     const state = reactive({
-      _showMore: !props.single ? false : props.showMore,
-      _close: props.marquee ? false : props.close,
+      showMore_: !props.single ? false : props.showMore,
+      close_: props.marquee ? false : props.close,
       show: true,
       animElemId: `J_${Math.ceil(Math.random() * 10e5).toString(36)}`,
       animationData: { actions: [{}] },
