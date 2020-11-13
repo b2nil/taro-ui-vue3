@@ -5,20 +5,20 @@
   >
     <at-countdown-item
       v-if="isShowDay"
-      :num="_day"
+      :num="day"
       :separator="format.day"
     />
     <at-countdown-item
       v-if="isShowHour"
-      :num="_hours"
+      :num="hours"
       :separator="format.hours"
     />
     <at-countdown-item
-      :num="_minutes"
+      :num="minutes"
       :separator="format.minutes"
     />
     <at-countdown-item
-      :num="_seconds"
+      :num="seconds"
       :separator="format.seconds"
     />
   </view>
@@ -103,7 +103,6 @@ export default defineComponent({
   setup(props: AtCountDownProps, { emit }) {
 
     const { format, isShowDay, isShowHour } = toRefs(props)
-    const state = reactive<AtCountdownState>(calculateTime())
     const timer = ref<NodeJS.Timeout | number | null>(null)
 
     const secondsRef = ref<number>(toSeconds(
@@ -112,6 +111,8 @@ export default defineComponent({
       props.minutes!,
       props.seconds!
     ))
+
+    const state = reactive<AtCountdownState>(calculateTime())
 
     const rootClasses = computed(() => ({
       'at-countdown--card': props.isCard,
@@ -145,27 +146,27 @@ export default defineComponent({
     }
 
     function calculateTime(): AtCountdownState {
-      let [_day, _hours, _minutes, _seconds] = [0, 0, 0, 0]
+      let [day, hours, minutes, seconds] = [0, 0, 0, 0]
 
       if (secondsRef.value > 0) {
-        _day = props.isShowDay
+        day = props.isShowDay
           ? Math.floor(secondsRef.value / (60 * 60 * 24))
           : 0
 
-        _hours = Math.floor(secondsRef.value / (60 * 60)) - _day * 24
-        _minutes = Math.floor(secondsRef.value / 60) - _day * 24 * 60 - _hours * 60
-        _seconds =
+        hours = Math.floor(secondsRef.value / (60 * 60)) - day * 24
+        minutes = Math.floor(secondsRef.value / 60) - day * 24 * 60 - hours * 60
+        seconds =
           Math.floor(secondsRef.value) -
-          _day * 24 * 60 * 60 -
-          _hours * 60 * 60 -
-          _minutes * 60
+          day * 24 * 60 * 60 -
+          hours * 60 * 60 -
+          minutes * 60
       }
 
       return {
-        _day,
-        _hours,
-        _minutes,
-        _seconds
+        day,
+        hours,
+        minutes,
+        seconds
       }
     }
 
