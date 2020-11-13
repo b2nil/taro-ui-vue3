@@ -3,7 +3,7 @@
     v-bind="$attrs"
     class="at-steps"
   >
-    <view v-if="!!items">
+    <template v-if="!!items">
       <view
         v-for="(item, i) in items"
         :key="`${item.title}-${i}`"
@@ -50,7 +50,7 @@
         <!-- desc -->
         <view class="at-steps__desc">{{ item.desc }}</view>
       </view>
-    </view>
+    </template>
   </view>
 </template>
 
@@ -103,9 +103,9 @@ export default defineComponent({
     }))
 
     const genItemIconClasses = computed(() => (item) => ({
+      [`at-icon-${item.icon.value}`]: Boolean(item.icon && item.icon.value),
       'at-icon': true,
-      [`at-icon-${item.icon.value}`]: item.icon.value,
-      'at-steps__circle-icon': true
+      'at-steps__circle-icon': true,
     }))
 
     function handleClick(current: number, event: CommonEvent): void {
@@ -114,9 +114,9 @@ export default defineComponent({
 
     return {
       items: toRef(props, 'items'),
+      genItemIconClasses,
       genStepItemClasses,
       genItemStatusClasses,
-      genItemIconClasses,
       handleClick
     }
   }
