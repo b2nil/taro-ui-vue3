@@ -5,8 +5,8 @@
   >
     <!-- toast message -->
     <at-toast
-      :is-opened="_isShowToast"
-      :text="_tipText"
+      :is-opened="isShowToast_"
+      :text="tipText_"
       :duration="1000"
       :style="toastStyle"
     />
@@ -20,7 +20,7 @@
       <!-- top key -->
       <view
         class="at-indexes__menu-item"
-        :style="activeIndexStyle.value(0)"
+        :style="activeIndexStyle(0)"
         @tap="jumpTarget('at-indexes__top', 0)"
       >{{ topKey }}</view>
 
@@ -29,19 +29,18 @@
         v-for="(dataList, i) in list"
         :key="`${dataList.key}-${i+1}`"
         class="at-indexes__menu-item"
-        :style="activeIndexStyle.value(i+1)"
+        :style="activeIndexStyle(i+1)"
         @tap="jumpTarget(`at-indexes__list-${dataList.key}`, i + 1)"
       >{{ dataList.key }}</view>
     </view>
 
     <!-- scroll view of indexes -->
     <scroll-view
-      :id="listId"
       class="at-indexes__body"
       scroll-y
       enable-back-to-top
-      :scroll-top="_scrollTop"
-      :scrill-into-view="!isWEB ? _scrollIntoView : ''"
+      :scroll-top="scrollTop_"
+      :scrill-into-view="!isWEB ? scrollIntoView_ : ''"
       :scroll-with-animation="animation"
       @scroll="handleScroll"
     >
@@ -150,10 +149,10 @@ export default defineComponent({
     const timeoutTimer = ref<NodeJS.Timeout | number | null>(null)
 
     const state = reactive<AtIndexesState>({
-      _scrollIntoView: '',
-      _scrollTop: 0,
-      _tipText: '',
-      _isShowToast: false,
+      scrollIntoView_: '',
+      scrollTop_: 0,
+      tipText_: '',
+      isShowToast_: false,
       isWEB: Taro.getEnv() === Taro.ENV_TYPE.WEB
     })
 
@@ -201,13 +200,13 @@ export default defineComponent({
       // currentIndex.value = -1
     }
 
-    function jumpTarget(_scrollIntoView: string, idx: number) {
+    function jumpTarget(scrollIntoView_: string, idx: number) {
       currentIndex.value = idx
 
       updateState({
-        _scrollIntoView,
-        _scrollTop: scrollItemHeights.value[idx],
-        _tipText: idx === 0 ? props.topKey : props.list[idx - 1].key
+        scrollIntoView_,
+        scrollTop_: scrollItemHeights.value[idx],
+        tipText_: idx === 0 ? props.topKey : props.list[idx - 1].key
       })
     }
 
@@ -218,19 +217,19 @@ export default defineComponent({
     }
 
     function updateState(stateValue: Partial<AtIndexesState>) {
-      const { _scrollIntoView, _tipText, _scrollTop } = stateValue
+      const { scrollIntoView_, tipText_, scrollTop_ } = stateValue
 
-      state._scrollIntoView = _scrollIntoView!
-      state._tipText = _tipText!
-      state._scrollTop = _scrollTop!
-      state._isShowToast = props.isShowToast!
+      state.scrollIntoView_ = scrollIntoView_!
+      state.tipText_ = tipText_!
+      state.scrollTop_ = scrollTop_!
+      state.isShowToast_ = props.isShowToast!
 
       nextTick(() => {
         clearTimeout(timeoutTimer.value as number)
 
         timeoutTimer.value = setTimeout(() => {
-          state._tipText = ''
-          state._isShowToast = false
+          state.tipText_ = ''
+          state.isShowToast_ = false
         }, 1000)
       })
 
@@ -305,7 +304,7 @@ export default defineComponent({
 
     function handleScroll(e: CommonEvent) {
       if (e && e.detail) {
-        state._scrollIntoView = ''
+        state.scrollIntoView_ = ''
 
         for (let i = 0; i < scrollItemHeights.value.length - 1; i++) {
           // Use Math.floor to ensure currentIndex is accurate
