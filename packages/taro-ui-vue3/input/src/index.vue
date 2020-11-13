@@ -22,7 +22,7 @@
         class="at-input__input"
         :id="inputID"
         :name="name"
-        v-model="inputValue"
+        :value="inputValue"
         :type="actualInputProps.type"
         :password="actualInputProps.password"
         :maxlength="actualInputProps.maxLength"
@@ -152,7 +152,7 @@ export default defineComponent({
     },
     disabled: Boolean,
     modelValue: {
-      type: String as PropType<AtInputProps['value']>,
+      type: String as PropType<AtInputProps['modelValue']>,
       default: ''
     },
     placeholder: {
@@ -203,7 +203,7 @@ export default defineComponent({
   },
 
   setup(props: AtInputProps, { emit }) {
-    const inputValue = ref(props.value)
+    const inputValue = ref(props.modelValue)
     const inputID = ref('weui-input' + uuid())
     const isWEB = ref(getEnv() === ENV_TYPE.WEB)
 
@@ -235,7 +235,7 @@ export default defineComponent({
       'at-input__title--required': props.required
     }))
 
-    watch(() => props.value, (val, preVal) => {
+    watch(() => props.modelValue, (val, preVal) => {
       if (val !== preVal) {
         inputValue.value = val
       }
