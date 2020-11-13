@@ -188,7 +188,7 @@ export default defineComponent({
     }
 
     function handleImageClick(idx: number) {
-      emit('image-pick', idx, props.files[idx])
+      emit('image-click', idx, props.files[idx])
     }
 
     function handleRemoveImg(idx: number) {
