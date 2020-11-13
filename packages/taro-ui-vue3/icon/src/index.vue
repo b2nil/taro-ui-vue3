@@ -23,7 +23,7 @@ export default defineComponent({
   },
 
   props: {
-    prefixclass: {
+    prefixClass: {
       type: String as PropType<AtIconProps['prefixClass']>,
       default: 'at-icon'
     },
