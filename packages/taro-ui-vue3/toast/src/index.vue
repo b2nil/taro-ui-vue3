@@ -1,6 +1,6 @@
 <template>
   <view
-    v-if="_isOpened"
+    v-if="isOpened_"
     :class="rootClasses"
   >
     <!-- mask layer -->
@@ -88,10 +88,10 @@ export default defineComponent({
 
   setup(props: AtToastProps, { attrs, emit }) {
     const state = reactive({
-      _timer: props.isOpened
+      timer_: props.isOpened
         ? makeTimer(props.duration || 0)
         : null as NodeJS.Timeout | null,
-      _isOpened: props.isOpened
+      isOpened_: props.isOpened
     })
 
     const realImg = computed(() => (props.image || statusImg[props.status!] || null))
@@ -123,8 +123,8 @@ export default defineComponent({
         return
       }
 
-      if (!state._isOpened) {
-        state._isOpened = true
+      if (!state.isOpened_) {
+        state.isOpened_ = true
       } else {
         clearTimer()
       }
@@ -133,23 +133,23 @@ export default defineComponent({
     })
 
     function clearTimer() {
-      if (state._timer) {
-        clearTimeout(state._timer)
-        state._timer = null
+      if (state.timer_) {
+        clearTimeout(state.timer_)
+        state.timer_ = null
       }
     }
 
     function makeTimer(duration: number) {
       if (duration === 0) return
 
-      state._timer = setTimeout(() => {
+      state.timer_ = setTimeout(() => {
         close()
       }, +duration)
     }
 
     function close() {
-      if (state._isOpened) {
-        state._isOpened = false
+      if (state.isOpened_) {
+        state.isOpened_ = false
         nextTick(handleClose)
         clearTimer()
       }
@@ -170,7 +170,7 @@ export default defineComponent({
     }
 
     return {
-      _isOpened: toRef(state, '_isOpened'),
+      isOpened_: toRef(state, 'isOpened_'),
       hasMask: toRef(props, 'hasMask'),
       text: toRef(props, 'text'),
       rootClasses,
