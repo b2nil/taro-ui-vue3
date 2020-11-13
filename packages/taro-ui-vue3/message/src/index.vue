@@ -2,7 +2,7 @@
   <view
     v-bind="$attrs"
     :class="rootClasses"
-  >{{ _message }}</view>
+  >{{ message_ }}</view>
 </template>
 
 <script lang="ts">
@@ -38,9 +38,9 @@ export default defineComponent({
   setup() {
     const _timer = ref<NodeJS.Timeout | number | null>(null)
 
-    const state = reactive<AtMessageState>({
+    const state = reactive({
       _isOpened: false,
-      _message: '',
+      message_: '',
       _type: 'info',
       _duration: 3000
     })
@@ -58,7 +58,7 @@ export default defineComponent({
 
         const newState = {
           _isOpened: true,
-          _message: message,
+          message_: message,
           _type: type,
           _duration: duration || state._duration
         }
@@ -89,7 +89,7 @@ export default defineComponent({
     })
 
     return {
-      _message: toRef(state, '_message'),
+      message_: toRef(state, 'message_'),
       rootClasses,
       bindMessageListener
     }
