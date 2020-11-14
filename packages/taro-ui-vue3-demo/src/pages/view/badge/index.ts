@@ -1,16 +1,18 @@
 
-import { h, defineComponent } from 'vue'
-import { AtBadge, AtButton } from 'taro-ui-vue3'
-import { View, Text } from '@tarojs/components'
+import { h, defineComponent, resolveComponent } from 'vue'
+import { AtBadge, AtButton } from "taro-ui-vue3"
 import { Page, Panel } from '@/components/index'
 import './index.scss'
 
 export default defineComponent({
+  name: "BadgeDemo",
 
   setup() {
 
     return () => {
       const dot = '···'
+      const View = resolveComponent(process.env.TARO_ENV === 'h5' ? 'taro-view' : 'view')
+      const Text = resolveComponent(process.env.TARO_ENV === 'h5' ? 'taro-text' : 'text')
 
       return (
         h(Page, { headerTitle: 'Badge 徽标' }, {
@@ -27,7 +29,7 @@ export default defineComponent({
                           default: () => [
                             h(AtButton, { size: 'small', circle: true }, {
                               default: () => [
-                                h(Text, null, '按钮')
+                                h(Text, null, { default: () => '按钮' })
                               ]
                             }),
                           ]
@@ -40,7 +42,7 @@ export default defineComponent({
                           default: () => [
                             h(AtButton, { size: 'small', }, {
                               default: () => [
-                                h(Text, null, '按钮')
+                                h(Text, null, { default: () => '按钮' })
                               ]
                             }),
                           ]
@@ -66,7 +68,7 @@ export default defineComponent({
                               circle: true
                             }, {
                               default: () => [
-                                h(Text, null, '按钮')
+                                h(Text, null, { default: () => '按钮' })
                               ]
                             }),
                           ]
@@ -79,7 +81,7 @@ export default defineComponent({
                           default: () => [
                             h(AtButton, { size: 'small', }, {
                               default: () => [
-                                h(Text, null, '按钮')
+                                h(Text, null, { default: () => '按钮' })
                               ]
                             }),
                           ]
@@ -104,7 +106,7 @@ export default defineComponent({
                               size: 'small', circle: true
                             }, {
                               default: () => [
-                                h(Text, null, '按钮')
+                                h(Text, null, { default: () => '按钮' })
                               ]
                             }),
                           ]
@@ -116,7 +118,7 @@ export default defineComponent({
                         h(AtBadge, { value: 'NEW', }, {
                           default: () => [
                             h(AtButton, { size: 'small', }, {
-                              default: () => [h(Text, null, '按钮')]
+                              default: () => [h(Text, null, { default: () => '按钮' })]
                             }),
                           ]
                         }),
@@ -140,7 +142,7 @@ export default defineComponent({
                               size: 'small', circle: true
                             }, {
                               default: () => [
-                                h(Text, null, '按钮')
+                                h(Text, null, { default: () => '按钮' })
                               ]
                             }),
                           ]
@@ -153,7 +155,7 @@ export default defineComponent({
                           default: () => [
                             h(AtButton, { size: 'small', }, {
                               default: () => [
-                                h(Text, null, '按钮')
+                                h(Text, null, { default: () => '按钮' })
                               ]
                             }),
                           ]

@@ -1,5 +1,5 @@
 import { h, defineComponent, reactive } from 'vue'
-import { AtRange } from 'taro-ui-vue3'
+import { AtRange } from "taro-ui-vue3"
 import { Page, Panel, ExampleItem } from '@/components/index'
 import './index.scss'
 

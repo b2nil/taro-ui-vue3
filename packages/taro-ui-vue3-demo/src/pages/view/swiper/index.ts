@@ -1,14 +1,6 @@
 
-import { h, defineComponent, reactive } from 'vue'
-import { AtList, AtListItem } from 'taro-ui-vue3'
-import {
-  Image,
-  Slider,
-  Swiper,
-  SwiperItem,
-  Text,
-  View
-} from '@tarojs/components'
+import { h, defineComponent, reactive, resolveComponent } from 'vue'
+import { AtList, AtListItem } from "taro-ui-vue3"
 import { CommonEvent } from '@tarojs/components/types/common'
 import { Page, Panel, ExampleItem } from '@/components/index'
 import './index.scss'
@@ -24,6 +16,7 @@ interface SwiperPageState {
 }
 
 export default defineComponent({
+  name: "SwiperDemo",
 
   setup() {
 
@@ -32,7 +25,7 @@ export default defineComponent({
       duration: 500,
       interval: 5000,
       isCircular: false,
-      isAutoplay: false,
+      isAutoplay: true,
       hasIndicatorDots: true,
       imgUrls: [
         'https://img10.360buyimg.com/babel/s700x360_jfs/t25855/203/725883724/96703/5a598a0f/5b7a22e1Nfd6ba344.jpg!q90!cc_350x180',
@@ -71,6 +64,13 @@ export default defineComponent({
         hasIndicatorDots,
         imgUrls
       } = state
+
+      const View = resolveComponent(process.env.TARO_ENV === 'h5' ? 'taro-view' : 'view')
+      const Image = resolveComponent(process.env.TARO_ENV === 'h5' ? 'taro-image' : 'image')
+      const Slider = resolveComponent(process.env.TARO_ENV === 'h5' ? 'taro-slider' : 'slider')
+      const Swiper = resolveComponent(process.env.TARO_ENV === 'h5' ? 'taro-swiper' : 'swiper')
+      const SwiperItem = resolveComponent(process.env.TARO_ENV === 'h5' ? 'taro-swiper-item' : 'swiper-item')
+      const Text = resolveComponent(process.env.TARO_ENV === 'h5' ? 'taro-text' : 'text')
 
       return (
         h(Page, { headerTitle: 'Swiper 滑块视图容器' }, {
@@ -133,7 +133,7 @@ export default defineComponent({
                               default: () => [
                                 h(View, { class: 'slider-list__item-header' }, {
                                   default: () => [
-                                    h(Text, null, '幻灯片切换时长(ms)')
+                                    h(Text, null, { default: () => '幻灯片切换时长(ms)' })
                                   ]
                                 }),
                                 h(View, { class: 'slider-list__item-body' }, {
@@ -155,7 +155,7 @@ export default defineComponent({
                               default: () => [
                                 h(View, { class: 'slider-list__item-header' }, {
                                   default: () => [
-                                    h(Text, null, '自动播放间隔时长(ms)')
+                                    h(Text, null, { default: () => '自动播放间隔时长(ms)' })
                                   ]
                                 }),
                                 h(View, { class: 'slider-list__item-body' }, {

@@ -46,10 +46,13 @@
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs, ref } from "vue"
-import { AtSegmentedControl } from 'taro-ui-vue3'
+import { AtSegmentedControl } from "taro-ui-vue3"
 import { Page, Panel, ExampleItem } from '@/components/index'
 
+import "./index.scss"
+
 export default defineComponent({
+  name: "SegmentedControlDemo",
 
   components: {
     AtSegmentedControl,
@@ -81,12 +84,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style lang="scss">
-.tab-content {
-  padding: 100px 50px;
-  font-size: 30px;
-  text-align: center;
-  background-color: #fafbfc;
-}
-</style>

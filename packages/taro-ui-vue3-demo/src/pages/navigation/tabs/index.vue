@@ -108,10 +108,13 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref, toRefs } from "vue"
-import { AtTabs, AtTabsPane } from 'taro-ui-vue3'
+import { AtTabs, AtTabsPane } from "taro-ui-vue3"
 import { Page, Panel } from '@/components/index'
 
+import "./index.scss"
+
 export default defineComponent({
+  name: "TabsDemo",
 
   components: {
     AtTabs,
@@ -158,21 +161,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style lang="scss">
-.tab-content {
-  padding: 100px 50px;
-  font-size: 30px;
-  text-align: center;
-  background-color: #fafbfc;
-}
-
-.tab-content--vertical {
-  height: 200px;
-  padding: 100px 50px;
-  font-size: 30px;
-  text-align: center;
-  box-sizing: border-box;
-  background-color: #fafbfc;
-}
-</style>

@@ -1,3 +1,3 @@
 export default {
-    navigationBarTitleText: 'Taro UI Rewritten In Vue3'
+    navigationBarTitleText: 'Taro UI Vue3'
 }

@@ -76,8 +76,10 @@
 <script lang="ts">
 import { defineComponent, reactive, toRefs, computed } from "vue"
 import Taro from "@tarojs/taro"
-import { AtBadge, AtButton, AtDrawer, AtIcon } from 'taro-ui-vue3'
-import { Page, Panel, ExampleItem } from "@/components/index"
+import { AtBadge, AtButton, AtDrawer, AtIcon } from "taro-ui-vue3"
+import { Page, Panel, ExampleItem } from '@/components/index'
+
+import "./index.scss"
 
 export default defineComponent({
 
@@ -154,47 +156,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style lang="scss">
-.page {
-  background-color: #fff;
-}
-
-.example {
-  margin-bottom: 15px;
-  text-align: center;
-}
-
-.drawer-item {
-  height: 80px;
-  line-height: 80px;
-  margin: 0 25px;
-  color: #666;
-  font-size: 30px;
-  border-bottom: 1px solid #eee;
-  position: relative;
-
-  .at-icon {
-    position: absolute;
-    right: 5px;
-    top: 25px;
-  }
-
-  .at-badge {
-    position: absolute;
-    right: 5px;
-    top: 25px;
-
-    .at-icon {
-      position: static;
-      margin-top: -45px;
-    }
-  }
-
-  &--sub {
-    font-size: 26px;
-    margin-left: 50px;
-    color: #999;
-  }
-}
-</style>

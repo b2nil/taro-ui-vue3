@@ -155,13 +155,17 @@
 <script lang="ts">
 import { defineComponent, ref, reactive, toRefs } from "vue"
 import Taro from "@tarojs/taro"
-import { AtButton } from 'taro-ui-vue3'
-import { AtList } from 'taro-ui-vue3'
-import { AtListItem } from 'taro-ui-vue3'
-import { AtSwipeAction } from 'taro-ui-vue3'
+import { AtButton } from "taro-ui-vue3"
+import { AtList } from "taro-ui-vue3"
+import { AtListItem } from "taro-ui-vue3"
+import { AtSwipeAction } from "taro-ui-vue3"
 import { Page, Panel, ExampleItem } from "@/components/index"
 
+import "./index.scss"
+
 export default defineComponent({
+  name: "SwipeActionDemo",
+
   components: {
     Page,
     Panel,
@@ -285,23 +289,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style lang="scss">
-.swipe-action-page {
-  .panel__controller {
-    text-align: center;
-  }
-
-  .normal {
-    padding: 0 24px;
-    line-height: 88px;
-  }
-
-  .example-item--border {
-    /* prettier-ignore */
-    border: 1PX solid #e2ecf4;
-    border-left: none;
-    border-right: none;
-  }
-}
-</style>

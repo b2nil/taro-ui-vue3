@@ -1,7 +1,6 @@
-import { h, defineComponent, reactive } from 'vue'
-import { AtButton, AtCheckbox, AtForm, AtInput, AtToast } from 'taro-ui-vue3'
-import { CheckboxOption } from 'taro-ui-vue3/types/checkbox'
-import { View } from '@tarojs/components'
+import { h, defineComponent, reactive, resolveComponent } from 'vue'
+import { AtButton, AtCheckbox, AtForm, AtInput, AtToast } from "taro-ui-vue3"
+import { CheckboxOption } from 'types/checkbox'
 import { Page, Panel } from '@/components/index'
 import './index.scss'
 
@@ -59,85 +58,86 @@ export default defineComponent({
       closeToast()
     }
 
-    return () => (
-      h(Page, { headerTitle: 'Form 表单' }, {
-        default: () => [
-          /* 表单提交与重置*/
-          h(Panel, { title: '表单提交与重置', noPadding: true }, {
-            default: () => [
-              h(View, { class: 'component-item' }, {
-                default: () => [
-                  h(AtForm, {
-                    onSubmit: handleSubmit.bind(this),
-                    onReset: handleReset.bind(this),
-                  }, {
-                    default: () => [
-                      h(AtInput, {
-                        required: true,
-                        name: 'value1',
-                        title: '文本',
-                        type: 'text',
-                        placeholder: '单行文本',
-                        value: state.value1,
-                        onChange: handleChange.bind(this, 'value1'),
-                      }),
+    return () => {
 
-                      h(AtInput, {
-                        required: true,
-                        name: 'value2',
-                        title: '密码',
-                        type: 'password',
-                        placeholder: '请输入密码',
-                        value: state.value2,
-                        onChange: handleChange.bind(this, 'value2'),
-                      }),
+      const View = resolveComponent(process.env.TARO_ENV === 'h5' ? 'taro-view' : 'view')
 
-                      h(AtCheckbox, {
-                        options:
-                          [
-                            { label: 'iPhone X', value: 'iPhone X' },
-                            { label: 'HUAWEI P20', value: 'HUAWEI P20' }
-                          ],
-                        selectedList: state.value3,
-                        onChange: handleChange.bind(this, 'value3'),
-                      }),
+      return (
+        h(Page, { headerTitle: 'Form 表单' }, {
+          default: () => [
+            /* 表单提交与重置*/
+            h(Panel, { title: '表单提交与重置', noPadding: true }, {
+              default: () => [
+                h(View, { class: 'component-item' }, {
+                  default: () => [
+                    h(AtForm, {
+                      onSubmit: handleSubmit,
+                      onReset: handleReset,
+                    }, {
+                      default: () => [
+                        h(AtInput, {
+                          required: true,
+                          name: 'value1',
+                          title: '文本',
+                          type: 'text',
+                          placeholder: '单行文本',
+                          modelValue: state.value1,
+                          'onUpdate:modelValue': (e) => state.value1 = e
+                        }),
 
-                      h(View, { class: 'component-item__btn-group' }, {
-                        default: () => [
-                          h(View, { class: 'component-item__btn-group__btn-item' }, {
-                            default: () => [
-                              h(AtButton, {
-                                type: 'primary',
-                                formType: 'submit',
-                                onClick: handleSubmit
-                              }, { default: () => '提交' })
-                            ]
-                          }),
+                        h(AtInput, {
+                          required: true,
+                          name: 'value2',
+                          title: '密码',
+                          type: 'password',
+                          placeholder: '请输入密码',
+                          modelValue: state.value2,
+                          'onUpdate:modelValue': (e) => state.value2 = e
+                        }),
 
-                          h(View, { class: 'component-item__btn-group__btn-item' }, {
-                            default: () => [
-                              h(AtButton, {
-                                formType: 'reset',
-                                onClick: handleReset
-                              }, { default: () => '重置' })
-                            ]
-                          }),
-                        ]
-                      }),
-                    ]
-                  })
-                ]
-              }),
-            ]
-          }),
-        ],
-        extra: () => [
-          h(AtToast, {
-            text: state.text,
-            isOpened: state.isOpened,
-          })
-        ]
-      })
-    )
+                        h(AtCheckbox, {
+                          options:
+                            [
+                              { label: 'iPhone X', value: 'iPhone X' },
+                              { label: 'HUAWEI P20', value: 'HUAWEI P20' }
+                            ],
+                          selectedList: state.value3,
+                          onChange: handleChange.bind(this, 'value3'),
+                        }),
+
+                        h(View, { class: 'component-item__btn-group' }, {
+                          default: () => [
+                            h(View, { class: 'component-item__btn-group__btn-item' }, {
+                              default: () => [
+                                h(AtButton, {
+                                  type: 'primary',
+                                  formType: 'submit'
+                                }, { default: () => '提交' })
+                              ]
+                            }),
+
+                            h(View, { class: 'component-item__btn-group__btn-item' }, {
+                              default: () => [
+                                h(AtButton, { formType: 'reset' }, { default: () => '重置' })
+                              ]
+                            }),
+                          ]
+                        }),
+                      ]
+                    })
+                  ]
+                }),
+              ]
+            }),
+          ],
+          extra: () => [
+            h(AtToast, {
+              text: state.text,
+              isOpened: state.isOpened,
+            })
+          ]
+        })
+      )
+    }
   }
 })

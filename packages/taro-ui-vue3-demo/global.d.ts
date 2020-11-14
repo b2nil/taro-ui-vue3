@@ -1,5 +1,3 @@
-export { CSSProperties } from 'vue'
-
 declare module '*.png';
 declare module '*.gif';
 declare module '*.jpg';

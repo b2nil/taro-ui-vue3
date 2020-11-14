@@ -9,7 +9,7 @@
           :total="20"
           :pageSize="10"
           :current="1"
-        ></at-pagination>
+        />
       </example-item>
     </panel>
 
@@ -23,7 +23,7 @@
           :total="20"
           :pageSize="10"
           :current="1"
-        ></at-pagination>
+        />
       </example-item>
     </panel>
 
@@ -38,7 +38,7 @@
           :total="20"
           :pageSize="10"
           :current="1"
-        ></at-pagination>
+        />
       </example-item>
     </panel>
 
@@ -53,7 +53,7 @@
           :pageSize="pageSize"
           :current="current"
           @page-change="onPage"
-        ></at-pagination>
+        />
         <view class="btn-item">
           当前页：{{current}}，当前数据：{{len}}条，分页大小：
           {{pageSize}}
@@ -75,10 +75,13 @@
 <script lang="ts">
 import { defineComponent, reactive, toRefs, computed } from "vue"
 import Taro from "@tarojs/taro"
-import { AtButton, AtPagination } from 'taro-ui-vue3'
+import { AtButton, AtPagination } from "taro-ui-vue3"
 import { Page, Panel, ExampleItem } from '@/components/index'
 
+import "./index.scss"
+
 export default defineComponent({
+  name: "PaginationDemo",
 
   components: {
     AtButton,
@@ -126,12 +129,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style lang="scss">
-.btn-item {
-  margin-top: 30px;
-  color: #666;
-  font-size: 24px;
-  text-align: center;
-}
-</style>

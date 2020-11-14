@@ -1,5 +1,5 @@
 import { h, defineComponent, reactive } from 'vue'
-import { AtTextarea } from 'taro-ui-vue3'
+import { AtTextarea } from "taro-ui-vue3"
 import { Page, Panel, ExampleItem } from '@/components/index'
 import './index.scss'
 
@@ -8,19 +8,15 @@ interface IndexState {
 }
 
 export default defineComponent({
+  name: "TextareaDemo",
+
   setup() {
-
-
     const state = reactive<IndexState>({
       value1: '',
       value2: '',
       value3: '',
       value4: ''
     })
-
-    function handleChange(stateName: string, value: string): void {
-      state[stateName] = value
-    }
 
     return () => (
       h(Page, { headerTitle: 'Textarea 多行文本框' }, {
@@ -31,8 +27,7 @@ export default defineComponent({
               h(ExampleItem, null, {
                 default: () => [
                   h(AtTextarea, {
-                    value: state.value1,
-                    onChange: handleChange.bind(this, 'value1'),
+                    modelmodelValue: state.value1,
                     maxLength: 200,
                     placeholder: '你的问题是...'
                   })
@@ -47,8 +42,7 @@ export default defineComponent({
                 default: () => [
                   h(AtTextarea, {
                     count: false,
-                    value: state.value2,
-                    onChange: handleChange.bind(this, 'value2'),
+                    modelValue: state.value2,
                     maxLength: 200,
                     placeholder: '你的问题是...'
                   })
@@ -63,8 +57,7 @@ export default defineComponent({
                 default: () => [
                   h(AtTextarea, {
                     textOverflowForbidden: false,
-                    value: state.value3,
-                    onChange: handleChange.bind(this, 'value3'),
+                    modelValue: state.value3,
                     maxLength: 200,
                     placeholder: '你的问题是...'
                   })
@@ -79,8 +72,7 @@ export default defineComponent({
                 default: () => [
                   h(AtTextarea, {
                     height: '300',
-                    value: state.value4,
-                    onChange: handleChange.bind(this, 'value4'),
+                    modelValue: state.value4,
                     maxLength: 200,
                     placeholder: '你的问题是...'
                   })

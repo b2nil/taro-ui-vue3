@@ -1,7 +1,6 @@
 
-import { AtTag } from 'taro-ui-vue3'
-import { h, defineComponent, reactive } from 'vue'
-import { View, Text } from '@tarojs/components'
+import { AtTag } from "taro-ui-vue3"
+import { h, defineComponent, reactive, resolveComponent } from 'vue'
 import Taro from '@tarojs/taro'
 import { Page, Panel, ExampleItem } from '@/components/index'
 import './index.scss'
@@ -20,6 +19,7 @@ interface TagPageState {
 }
 
 export default defineComponent({
+  name: "TagDemo",
 
   setup() {
 
@@ -105,6 +105,9 @@ export default defineComponent({
     }
 
     return () => {
+      const View = resolveComponent(process.env.TARO_ENV === 'h5' ? 'taro-view' : 'view')
+      const Text = resolveComponent(process.env.TARO_ENV === 'h5' ? 'taro-text' : 'text')
+
       return (
         h(Page, { headerTitle: 'Tag 标签' }, {
           default: () => [
@@ -123,7 +126,7 @@ export default defineComponent({
                             onClick: handleHollowClick.bind(this),
                           }, {
                             default: () => [
-                              h(Text, null, '标签')
+                              h(Text, null, { default: () => '标签' })
                             ]
                           })
                         ]
@@ -149,7 +152,7 @@ export default defineComponent({
                             onClick: handleSolidClick.bind(this),
                           }, {
                             default: () => [
-                              h(Text, null, '标签')
+                              h(Text, null, { default: () => '标签' })
                             ]
                           })
                         ]
@@ -175,7 +178,7 @@ export default defineComponent({
                             onClick: onClick.bind(this),
                           }, {
                             default: () => [
-                              h(Text, null, `tag-${index + 1}`)
+                              h(Text, null, { default: () => `tag-${index + 1}` })
                             ]
                           })
                         ]
@@ -190,20 +193,24 @@ export default defineComponent({
               default: () => [
                 h(ExampleItem, null, {
                   default: () => [
-                    h(View, { class: 'subitem' }, [
-                      h(AtTag, { type: 'primary', circle: true, disabled: true }, {
-                        default: () => [
-                          h(Text, null, '标签')
-                        ]
-                      })
-                    ]),
-                    h(View, { class: 'subitem' }, [
-                      h(AtTag, { type: 'primary', disabled: true }, {
-                        default: () => [
-                          h(Text, null, '标签')
-                        ]
-                      })
-                    ]),
+                    h(View, { class: 'subitem' }, {
+                      default: () => [
+                        h(AtTag, { type: 'primary', circle: true, disabled: true }, {
+                          default: () => [
+                            h(Text, null, { default: () => '标签' })
+                          ]
+                        })
+                      ]
+                    }),
+                    h(View, { class: 'subitem' }, {
+                      default: () => [
+                        h(AtTag, { type: 'primary', disabled: true }, {
+                          default: () => [
+                            h(Text, null, { default: () => '标签' })
+                          ]
+                        })
+                      ]
+                    }),
                   ]
                 })
               ]
@@ -225,7 +232,7 @@ export default defineComponent({
                             onClick: handleHollowSmallClick.bind(this),
                           }, {
                             default: () => [
-                              h(Text, null, '标签')
+                              h(Text, null, { default: () => '标签' })
                             ]
                           })
                         ]
@@ -253,7 +260,7 @@ export default defineComponent({
                             onClick: handleSolidSmallClick.bind(this),
                           }, {
                             default: () => [
-                              h(Text, null, '标签')
+                              h(Text, null, { default: () => '标签' })
                             ]
                           })
                         ]
@@ -268,20 +275,24 @@ export default defineComponent({
               default: () => [
                 h(ExampleItem, null, {
                   default: () => [
-                    h(View, { class: 'subitem' }, [
-                      h(AtTag, { size: 'small', type: 'primary', circle: true, disabled: true }, {
-                        default: () => [
-                          h(Text, null, '标签')
-                        ]
-                      })
-                    ]),
-                    h(View, { class: 'subitem' }, [
-                      h(AtTag, { size: 'small', type: 'primary', disabled: true }, {
-                        default: () => [
-                          h(Text, null, '标签')
-                        ]
-                      })
-                    ]),
+                    h(View, { class: 'subitem' }, {
+                      default: () => [
+                        h(AtTag, { size: 'small', type: 'primary', circle: true, disabled: true }, {
+                          default: () => [
+                            h(Text, null, { default: () => '标签' })
+                          ]
+                        })
+                      ]
+                    }),
+                    h(View, { class: 'subitem' }, {
+                      default: () => [
+                        h(AtTag, { size: 'small', type: 'primary', disabled: true }, {
+                          default: () => [
+                            h(Text, null, { default: () => '标签' })
+                          ]
+                        })
+                      ]
+                    }),
                   ]
                 }),
               ]

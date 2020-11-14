@@ -135,12 +135,16 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue"
-import { AtButton } from 'taro-ui-vue3'
-import { AtIcon } from 'taro-ui-vue3'
-import { AtProgress } from 'taro-ui-vue3'
+import { AtButton } from "taro-ui-vue3"
+import { AtIcon } from "taro-ui-vue3"
+import { AtProgress } from "taro-ui-vue3"
 import { Page, Panel, ExampleItem } from "@/components/index"
 
+import "./index.scss"
+
 export default defineComponent({
+  name: "ProgressDemo",
+
   components: {
     Page,
     Panel,
@@ -170,7 +174,6 @@ export default defineComponent({
         : percent.value + OFFSET
     }
 
-
     return {
       percent,
       reduce,
@@ -179,20 +182,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style lang="scss">
-.progress-page .example-item {
-  &__buttons {
-    margin-top: 20px;
-
-    .btn {
-      display: inline-block;
-      margin-left: 12px;
-
-      &:first-child {
-        margin-left: 0;
-      }
-    }
-  }
-}
-</style>

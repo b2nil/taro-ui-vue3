@@ -1,6 +1,6 @@
 
 import { h, defineComponent, reactive } from "vue"
-import { AtLoadMore } from 'taro-ui-vue3'
+import { AtLoadMore } from "taro-ui-vue3"
 import { Page, Panel } from '@/components/index'
 import './index.scss'
 
@@ -9,6 +9,7 @@ interface LoadMorePageState {
 }
 
 export default defineComponent({
+  name: "LoadMoreDemo",
 
   setup() {
 

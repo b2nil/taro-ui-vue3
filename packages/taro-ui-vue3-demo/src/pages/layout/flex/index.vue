@@ -68,48 +68,68 @@
     <panel title="侧轴方向的对齐方式">
       <example-item>
         <at-flex>
-          <at-flex-item
-            :size="5"
-            :style="{height: '100px'}"
-          >A</at-flex-item>
-          <at-flex-item is-auto>默认对齐方式 -- stretch</at-flex-item>
+          <at-flex-item :style="{height: '100px'}">A</at-flex-item>
+          <at-flex-item>默认对齐方式 -- stretch</at-flex-item>
         </at-flex>
+        <view class='at-row'>
+          <view
+            style='height:100px'
+            class='at-col'
+          >A</view>
+          <view class='at-col'>默认对齐方式 -- stretch</view>
+        </view>
       </example-item>
       <example-item>
         <at-flex align="start">
-          <at-flex-item
-            :size="5"
-            :style="{height: '100px'}"
-          >B</at-flex-item>
-          <at-flex-item is-auto>顶部对齐 -- start</at-flex-item>
+          <at-flex-item :style="{height: '100px'}">B</at-flex-item>
+          <at-flex-item>顶部对齐 -- start</at-flex-item>
         </at-flex>
+        <view class='at-row at-row__align--start'>
+          <view
+            style='height:100px'
+            class='at-col'
+          >B</view>
+          <view class='at-col'>顶部对齐 -- start</view>
+        </view>
       </example-item>
       <example-item>
         <at-flex align="center">
-          <at-flex-item
-            :size="5"
-            :style="{height: '100px'}"
-          >C</at-flex-item>
-          <at-flex-item is-auto>居中对齐 -- center</at-flex-item>
+          <at-flex-item :style="{height: '100px'}">C</at-flex-item>
+          <at-flex-item>居中对齐 -- center</at-flex-item>
         </at-flex>
+        <view class='at-row at-row__align--center'>
+          <view
+            style='height:100px'
+            class='at-col'
+          >C</view>
+          <view class='at-col'>居中对齐 -- center</view>
+        </view>
       </example-item>
       <example-item>
         <at-flex align="end">
-          <at-flex-item
-            :size="5"
-            :style="{height: '100px'}"
-          >D</at-flex-item>
-          <at-flex-item is-auto>底部对齐 -- end</at-flex-item>
+          <at-flex-item :style="{height: '100px'}">D</at-flex-item>
+          <at-flex-item>底部对齐 -- end</at-flex-item>
         </at-flex>
+        <view class='at-row at-row__align--end'>
+          <view
+            style='height:100px'
+            class='at-col'
+          >D</view>
+          <view class='at-col'>底部对齐 -- end</view>
+        </view>
       </example-item>
       <example-item>
         <at-flex align="baseline">
-          <at-flex-item
-            :size="5"
-            :style="{height: '100px'}"
-          >E</at-flex-item>
-          <at-flex-item is-auto>基线对齐 -- baseline</at-flex-item>
+          <at-flex-item :style="{height: '100px'}">E</at-flex-item>
+          <at-flex-item>基线对齐 -- baseline</at-flex-item>
         </at-flex>
+        <view class='at-row at-row__align--baseline'>
+          <view
+            style='height:100px'
+            class='at-col'
+          >D</view>
+          <view class='at-col'>基线对齐 -- baseline</view>
+        </view>
       </example-item>
     </panel>
     <panel title="主轴方向的排列方式">
@@ -149,11 +169,14 @@
 
 <script lang="ts">
 import { defineComponent } from "vue"
-import { AtFlex } from 'taro-ui-vue3'
-import { AtFlexItem } from 'taro-ui-vue3'
+import { AtFlex } from "taro-ui-vue3"
+import { AtFlexItem } from "taro-ui-vue3"
 import { Page, Panel, ExampleItem } from "@/components/index"
 
+import "./index.scss"
+
 export default defineComponent({
+  name: "FlexDemo",
 
   components: {
     Page,
@@ -164,28 +187,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style lang="scss">
-@import '~taro-ui-vue3/dist/style/variables/default.scss';
-@import '~taro-ui-vue3/dist/style/components/flex.scss';
-
-.flex-page .at-row {
-  margin-bottom: 40px;
-  height: 100%;
-
-  .at-col {
-    padding: $spacing-v-md $spacing-h-md;
-    color: $color-white;
-    font-size: $font-size-base;
-    text-align: center;
-
-    &:nth-child(odd) {
-      background-color: $color-brand-light;
-    }
-
-    &:nth-child(even) {
-      background-color: tint($color-brand-light, 20%);
-    }
-  }
-}
-</style>

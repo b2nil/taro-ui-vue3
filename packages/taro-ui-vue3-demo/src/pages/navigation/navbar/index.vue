@@ -122,10 +122,13 @@
 <script lang="ts">
 import { defineComponent } from "vue"
 import Taro from "@tarojs/taro"
-import { AtNavBar } from 'taro-ui-vue3'
+import { AtNavBar } from "taro-ui-vue3"
 import { Page, Panel, ExampleItem } from '@/components/index'
 
+import "./index.scss"
+
 export default defineComponent({
+  name: "NavbarDemo",
 
   components: {
     AtNavBar,
@@ -178,14 +181,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style lang="scss">
-.example__body {
-  background-color: #f8f8f8;
-  min-height: 100px;
-
-  .item {
-    margin-bottom: 10px;
-  }
-}
-</style>

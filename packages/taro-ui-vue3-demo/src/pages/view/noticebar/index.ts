@@ -1,12 +1,13 @@
 
-import { h, defineComponent } from 'vue'
-import { AtNoticebar } from 'taro-ui-vue3'
+import { h, defineComponent, resolveComponent } from 'vue'
+import { AtNoticebar } from "taro-ui-vue3"
 import { View, Text } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import { Page, Panel } from '@/components/index'
 import './index.scss'
 
 export default defineComponent({
+  name: "NoticebarDemo",
 
   setup() {
 
@@ -28,248 +29,262 @@ export default defineComponent({
       })
     }
 
-    return () => (
-      h(Page, { headerTitle: 'NoticeBar 通告栏' }, {
-        default: () => [
-          // 文字
-          h(Panel, { title: '文字', class: 'panel__content' }, {
-            default: () => [
-              h(View, { class: 'bar-item' }, {
-                default: () => [
-                  h(AtNoticebar, { single: true }, {
-                    default: () => [
-                      h(Text, null, singleLineText),
-                    ]
-                  })
-                ]
-              }),
-              h(View, { class: 'bar-item' }, {
-                default: () => [
-                  h(AtNoticebar, null, {
-                    default: () => [
-                      h(Text, null, multiLineText),
-                    ]
-                  })
-                ]
-              }),
-            ]
-          }),
+    return () => {
+      const View = resolveComponent(process.env.TARO_ENV === 'h5' ? 'taro-view' : 'view')
+      const Text = resolveComponent(process.env.TARO_ENV === 'h5' ? 'taro-text' : 'text')
 
-          /* 跑马灯*/
-          h(Panel, { title: '跑马灯', class: 'panel__content' }, {
-            default: () => [
-              h(View, { class: 'bar-item' }, {
-                default: () => [
-                  h(AtNoticebar, { marquee: true }, {
-                    default: () => [
-                      h(Text, null, textOnly)
-                    ]
-                  })
-                ]
-              }),
-              h(View, { class: 'bar-item' }, {
-                default: () => [
-                  h(AtNoticebar, {
-                    marquee: true,
-                    icon: 'volume-plus'
-                  }, {
-                    default: () => [
-                      h(Text, null, textWithIcon)
-                    ]
-                  })
-                ]
-              }),
-
-              h(View, { class: 'bar-item' }, {
-                default: () => [
-                  h(AtNoticebar, { marquee: true }, {
-                    default: () => [
-                      h(Text, null, superLongText)
-                    ]
-                  })
-                ]
-              }),
-            ]
-          }),
-
-          /* 图标*/
-          h(Panel, { title: '图标', class: 'panel__content' }, {
-            default: () => [
-              h(View, { class: 'bar-item' }, {
-                default: () => [
-                  h(AtNoticebar, { icon: 'volume-plus', single: true }, {
-                    default: () => [
-                      h(Text, null, singleLineText)
-                    ]
-                  })
-                ]
-              }),
-              h(View, { class: 'bar-item' }, {
-                default: () => [
-                  h(AtNoticebar, {
-                    icon: 'volume-plus'
-                  }, {
-                    default: () => [
-                      h(Text, null, multiLineText)
-                    ]
-                  })
-                ]
-              }),
-            ]
-          }),
-
-          /* 查看更多*/
-          h(Panel, { title: '查看更多', class: 'panel__content' }, {
-            default: () => [
-              h(View, { class: 'bar-item' }, {
-                default: () => [
-                  h(AtNoticebar, {
-                    showMore: true,
-                    single: true,
-                    onGotoMore: onGotoMore.bind(this)
-                  }, {
-                    default: () => [
-                      h(Text, null, singleLineText)
-                    ]
-                  })
-                ]
-              }),
-
-              h(View, { class: 'bar-item' }, {
-                default: () => [
-                  h(AtNoticebar, {
-                    showMore: true,
-                    single: true,
-                    icon: 'volume-plus',
-                    onGotoMore: onGotoMore.bind(this)
-                  }, {
-                    default: () => [
-                      h(Text, null, singleLineText)
-                    ]
-                  })
-                ]
-              }),
-              h(View, { class: 'bar-item' }, {
-                default: () => [
-                  h(AtNoticebar, {
-                    showMore: true,
-                    moreText: '更多内容',
-                    onGotoMore: onGotoMore.bind(this)
-                  }, {
-                    default: () => [
-                      h(Text, null, multiLineText)
-                    ]
-                  })
-                ]
-              }),
-
-              h(View, { class: 'bar-item' }, {
-                default: () => [
-                  h(AtNoticebar, {
-                    showMore: true,
-                    moreText: '更多内容',
-                    icon: 'volume-plus',
-                    onGotoMore: onGotoMore.bind(this)
-                  },
-                    {
+      return (
+        h(Page, { headerTitle: 'NoticeBar 通告栏' }, {
+          default: () => [
+            // 文字
+            h(Panel, { title: '文字', class: 'panel__content' }, {
+              default: () => [
+                h(View, { class: 'bar-item' }, {
+                  default: () => [
+                    h(AtNoticebar, { single: true }, {
                       default: () => [
-                        h(Text, null, multiLineText)
+                        h(Text, { 'user-select': true }, { default: () => singleLineText }),
                       ]
                     })
-                ]
-              })
-            ]
-          }),
+                  ]
+                }),
+                h(View, { class: 'bar-item' }, {
+                  default: () => [
+                    h(AtNoticebar, null, {
+                      default: () => [
+                        h(Text, { 'user-select': true }, { default: () => multiLineText }),
+                      ]
+                    })
+                  ]
+                }),
+              ]
+            }),
 
-          /* 关闭按钮*/
-          h(Panel, { title: '关闭按钮', class: 'panel__content' }, {
-            default: () => [
-              h(View, { class: 'bar-item' }, {
-                default: () => [
-                  h(AtNoticebar, { close: true, single: true }, {
-                    default: () => [
-                      h(Text, null, singleLineText)
-                    ]
-                  })
-                ]
-              }),
+            /* 跑马灯*/
+            h(Panel, { title: '跑马灯', class: 'panel__content' }, {
+              default: () => [
+                h(View, { class: 'bar-item' }, {
+                  default: () => [
+                    h(AtNoticebar, { marquee: true }, {
+                      default: () => [
+                        h(Text, {
+                          'user-select': true,
+                          style: 'white-space: nowrap;'
+                        }, { default: () => textOnly })
+                      ]
+                    })
+                  ]
+                }),
+                h(View, { class: 'bar-item' }, {
+                  default: () => [
+                    h(AtNoticebar, {
+                      marquee: true,
+                      icon: 'volume-plus'
+                    }, {
+                      default: () => [
+                        h(Text, {
+                          'user-select': true,
+                          style: 'white-space: nowrap;'
+                        }, { default: () => textWithIcon })
+                      ]
+                    })
+                  ]
+                }),
 
-              h(View, { class: 'bar-item' }, {
-                default: () => [
-                  h(AtNoticebar, { close: true, icon: 'volume-plus', single: true }, {
-                    default: () => [
-                      h(Text, null, singleLineText)
-                    ]
-                  })
-                ]
-              }),
-              h(View, { class: 'bar-item' }, {
-                default: () => [
-                  h(AtNoticebar, {
-                    close: true,
-                    single: true,
-                    showMore: true,
-                    onGotoMore: onGotoMore.bind(this),
-                  }, {
-                    default: () => [
-                      h(Text, null, singleLineText)
-                    ]
-                  })
-                ]
-              }),
+                h(View, { class: 'bar-item' }, {
+                  default: () => [
+                    h(AtNoticebar, { marquee: true }, {
+                      default: () => [
+                        h(Text, {
+                          'user-select': true,
+                          style: 'white-space: nowrap;'
+                        }, { default: () => superLongText })
+                      ]
+                    })
+                  ]
+                }),
+              ]
+            }),
 
-              h(View, { class: 'bar-item' }, {
-                default: () => [
-                  h(AtNoticebar, {
-                    close: true,
-                    single: true,
-                    showMore: true,
-                    icon: 'volume-plus',
-                    onGotoMore: onGotoMore.bind(this),
-                  }, {
-                    default: () => [
-                      h(Text, null, singleLineText)
-                    ]
-                  })
-                ]
-              }),
+            /* 图标*/
+            h(Panel, { title: '图标', class: 'panel__content' }, {
+              default: () => [
+                h(View, { class: 'bar-item' }, {
+                  default: () => [
+                    h(AtNoticebar, { icon: 'volume-plus', single: true }, {
+                      default: () => [
+                        h(Text, { 'user-select': true }, { default: () => singleLineText })
+                      ]
+                    })
+                  ]
+                }),
+                h(View, { class: 'bar-item' }, {
+                  default: () => [
+                    h(AtNoticebar, {
+                      icon: 'volume-plus'
+                    }, {
+                      default: () => [
+                        h(Text, { 'user-select': true }, { default: () => multiLineText })
+                      ]
+                    })
+                  ]
+                }),
+              ]
+            }),
 
-              h(View, { class: 'bar-item' }, {
-                default: () => [
-                  h(AtNoticebar, { close: true }, {
-                    default: () => [
-                      h(Text, null, multiLineText)
-                    ]
-                  })
-                ]
-              }),
+            /* 查看更多*/
+            h(Panel, { title: '查看更多', class: 'panel__content' }, {
+              default: () => [
+                h(View, { class: 'bar-item' }, {
+                  default: () => [
+                    h(AtNoticebar, {
+                      showMore: true,
+                      single: true,
+                      onGotoMore: onGotoMore.bind(this)
+                    }, {
+                      default: () => [
+                        h(Text, { 'user-select': true }, { default: () => singleLineText })
+                      ]
+                    })
+                  ]
+                }),
 
-              h(View, { class: 'bar-item' }, {
-                default: () => [
-                  h(AtNoticebar, { close: true }, {
-                    default: () => [
-                      h(Text, null, multiLineText)
-                    ]
-                  })
-                ]
-              }),
+                h(View, { class: 'bar-item' }, {
+                  default: () => [
+                    h(AtNoticebar, {
+                      showMore: true,
+                      single: true,
+                      icon: 'volume-plus',
+                      onGotoMore: onGotoMore.bind(this)
+                    }, {
+                      default: () => [
+                        h(Text, { 'user-select': true }, { default: () => singleLineText })
+                      ]
+                    })
+                  ]
+                }),
+                h(View, { class: 'bar-item' }, {
+                  default: () => [
+                    h(AtNoticebar, {
+                      showMore: true,
+                      moreText: '更多内容',
+                      onGotoMore: onGotoMore.bind(this)
+                    }, {
+                      default: () => [
+                        h(Text, { 'user-select': true }, { default: () => multiLineText })
+                      ]
+                    })
+                  ]
+                }),
 
-              h(View, { class: 'bar-item' }, {
-                default: () => [
-                  h(AtNoticebar, {
-                    close: true,
-                    icon: 'volume-plus'
-                  }, {
-                    default: () => [
-                      h(Text, null, multiLineText)
-                    ]
-                  })
-                ]
-              }),
-            ]
-          })
-        ]
-      })
-    )
+                h(View, { class: 'bar-item' }, {
+                  default: () => [
+                    h(AtNoticebar, {
+                      showMore: true,
+                      moreText: '更多内容',
+                      icon: 'volume-plus',
+                      onGotoMore: onGotoMore.bind(this)
+                    },
+                      {
+                        default: () => [
+                          h(Text, { 'user-select': true }, { default: () => multiLineText })
+                        ]
+                      })
+                  ]
+                })
+              ]
+            }),
+
+            /* 关闭按钮*/
+            h(Panel, { title: '关闭按钮', class: 'panel__content' }, {
+              default: () => [
+                h(View, { class: 'bar-item' }, {
+                  default: () => [
+                    h(AtNoticebar, { close: true, single: true }, {
+                      default: () => [
+                        h(Text, { 'user-select': true }, { default: () => singleLineText })
+                      ]
+                    })
+                  ]
+                }),
+
+                h(View, { class: 'bar-item' }, {
+                  default: () => [
+                    h(AtNoticebar, { close: true, icon: 'volume-plus', single: true }, {
+                      default: () => [
+                        h(Text, { 'user-select': true }, { default: () => singleLineText })
+                      ]
+                    })
+                  ]
+                }),
+                h(View, { class: 'bar-item' }, {
+                  default: () => [
+                    h(AtNoticebar, {
+                      close: true,
+                      single: true,
+                      showMore: true,
+                      onGotoMore: onGotoMore.bind(this),
+                    }, {
+                      default: () => [
+                        h(Text, { 'user-select': true }, { default: () => singleLineText })
+                      ]
+                    })
+                  ]
+                }),
+
+                h(View, { class: 'bar-item' }, {
+                  default: () => [
+                    h(AtNoticebar, {
+                      close: true,
+                      single: true,
+                      showMore: true,
+                      icon: 'volume-plus',
+                      onGotoMore: onGotoMore.bind(this),
+                    }, {
+                      default: () => [
+                        h(Text, { 'user-select': true }, { default: () => singleLineText })
+                      ]
+                    })
+                  ]
+                }),
+
+                h(View, { class: 'bar-item' }, {
+                  default: () => [
+                    h(AtNoticebar, { close: true }, {
+                      default: () => [
+                        h(Text, { 'user-select': true }, { default: () => multiLineText })
+                      ]
+                    })
+                  ]
+                }),
+
+                h(View, { class: 'bar-item' }, {
+                  default: () => [
+                    h(AtNoticebar, { close: true }, {
+                      default: () => [
+                        h(Text, { 'user-select': true }, { default: () => multiLineText })
+                      ]
+                    })
+                  ]
+                }),
+
+                h(View, { class: 'bar-item' }, {
+                  default: () => [
+                    h(AtNoticebar, {
+                      close: true,
+                      icon: 'volume-plus'
+                    }, {
+                      default: () => [
+                        h(Text, { 'user-select': true }, { default: () => multiLineText })
+                      ]
+                    })
+                  ]
+                }),
+              ]
+            })
+          ]
+        })
+      )
+    }
   }
 })

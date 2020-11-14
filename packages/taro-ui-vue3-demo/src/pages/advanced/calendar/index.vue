@@ -7,34 +7,51 @@
       <at-calendar @month-change="handleMonthChange" />
     </panel>
 
-    <panel title="跳转到制定日期">
-      <at-calendar :currentDate="now" />
+    <panel title="跳转到指定日期">
+      <at-calendar
+        :currentDate="now"
+        @day-click="handleDayClick"
+      />
       <view class="body_controllers">
-        <at-button
-          size="small"
-          @click="handleClick('now', '2018/01/01')"
-        >跳转到 2018/01/01</at-button>
-        <at-button
-          size="small"
-          @click="handleClick('now', '2018/06/18')"
-        >跳转到 2018/6/18</at-button>
+        <at-flex>
+          <at-flex-item>
+            <at-button
+              size="small"
+              @click="handleClick('now', '2018/01/01')"
+            >跳转到 2018/01/01</at-button>
+          </at-flex-item>
+          <at-flex-item :size="2" />
+          <at-flex-item>
+            <at-button
+              size="small"
+              @click="handleClick('now', '2018/06/18')"
+            >跳转到 2018/6/18</at-button>
+          </at-flex-item>
+        </at-flex>
       </view>
     </panel>
 
     <panel title="指定最小日期和最大日期">
       <at-calendar
-        :minDate="minDate"
-        :maxDate="maxDate"
+        :min-date="minDate"
+        :max-date="maxDate"
       />
       <view class="body_controllers">
-        <at-button
-          size="small"
-          @click="handleClick('minDate', '2018/01/01')"
-        >设置最小值 2018/1/1</at-button>
-        <at-button
-          size="small"
-          @click="handleClick('maxDate', '2019/12/31')"
-        >设置最大值 2019/12/31</at-button>
+        <at-flex>
+          <at-flex-item>
+            <at-button
+              size="small"
+              @click="handleClick('minDate', '2018/01/01')"
+            >设置最小值 2018/1/1</at-button>
+          </at-flex-item>
+          <at-flex-item :size="2" />
+          <at-flex-item>
+            <at-button
+              size="small"
+              @click="handleClick('maxDate', '2019/12/31')"
+            >设置最大值 2019/12/31</at-button>
+          </at-flex-item>
+        </at-flex>
       </view>
     </panel>
 
@@ -51,9 +68,9 @@
 
     <panel title="范围选择">
       <at-calendar
+        is-multi-select
+        :current-date="multiCurrentDate"
         @select-date="handleDateChange"
-        :currentDate="multiCurrentDate"
-        isMultiSelect
       />
       <view class="body_controllers">
         <at-button
@@ -76,7 +93,7 @@
     </panel>
 
     <panel title="有效时间组">
-      <at-calendar :validDates="validDates" />
+      <at-calendar :valid-dates="validDates" />
     </panel>
   </page>
 </template>
@@ -85,17 +102,21 @@
 import { ref, computed, reactive, toRefs, onMounted, onBeforeMount } from 'vue'
 import Taro from '@tarojs/taro'
 
-import { AtButton } from 'taro-ui-vue3'
-import { AtCalendar } from 'taro-ui-vue3'
+import { AtButton, AtCalendar, AtFlex, AtFlexItem } from "taro-ui-vue3"
 import { Page, Panel } from '@/components/index'
+
+import "./index.scss"
 
 export default {
   components: {
     AtButton,
     AtCalendar,
+    AtFlex,
+    AtFlexItem,
     Page,
     Panel
   },
+
   setup() {
     const state = reactive({
       now: Date.now(),
@@ -160,36 +181,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.calendar-page .body_controllers {
-  margin-top: 20px;
-  text-align: center;
-
-  .at-button {
-    font-size: 24px;
-    border-radius: 0;
-
-    + .at-button {
-      border-left: none;
-    }
-
-    &:first-child {
-      border-top-left-radius: 8px;
-      border-bottom-left-radius: 8px;
-
-      // prettier-ignore
-      border-left: 1PX solid #dcdfe6;
-    }
-
-    &:last-child {
-      border-top-right-radius: 8px;
-      border-bottom-right-radius: 8px;
-    }
-  }
-}
-
-.test {
-  margin-left: 20px;
-}
-</style>

@@ -1,6 +1,6 @@
 import { h, defineComponent, reactive, ref } from 'vue'
-import { AtSteps } from 'taro-ui-vue3'
-import { Item } from 'taro-ui-vue3/types/steps'
+import { AtSteps } from "taro-ui-vue3"
+import { Item } from '@taro-ui-vue3/types/steps'
 import { Page, Panel, ExampleItem } from '@/components/index'
 import './index.scss'
 
@@ -9,6 +9,7 @@ interface TimelinePageState {
 }
 
 export default defineComponent({
+  name: "StepsDemo",
 
   setup() {
 
@@ -20,21 +21,21 @@ export default defineComponent({
       current5: 1
     })
 
-    const items1= ref<Item[]>([ { title: '步骤一' }, { title: '步骤二' }])
+    const items1 = ref<Item[]>([{ title: '步骤一' }, { title: '步骤二' }])
 
-    const items2= ref<Item[]>([ 
+    const items2 = ref<Item[]>([
       { title: '步骤一' },
       { title: '步骤二' },
       { title: '步骤三' }
     ])
 
-    const items3= ref<Item[]>([ 
+    const items3 = ref<Item[]>([
       { title: '步骤一', desc: '这里是额外的信息，最多两行' },
       { title: '步骤二', desc: '这里是额外的信息，最多两行' },
       { title: '步骤三', desc: '这里是额外的信息，最多两行' }
     ])
 
-    const items4= ref<Item[]>([ 
+    const items4 = ref<Item[]>([
       {
         title: '步骤一',
         desc: '这里是额外的信息，最多两行',
@@ -67,7 +68,7 @@ export default defineComponent({
       }
     ])
 
-    const items5= ref<Item[]>([ 
+    const items5 = ref<Item[]>([
       {
         title: '步骤一',
         desc: '这里是额外的信息，最多两行',

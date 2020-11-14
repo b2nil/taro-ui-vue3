@@ -71,10 +71,10 @@
           note="小Tips"
           extra="2019/01/23 22:33:33"
           :extraStyle="{
-                                fontSize: '12px',
-                                maxWidth: '200px',
-                                color: '#6190e8',
-                            }"
+            fontSize: '12px',
+            maxWidth: '200px',
+            color: '#6190e8',
+          }"
           title="这是个标题"
           thumb="http://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png"
         >这也是内容区 可以随意定义功能</at-card>
@@ -102,10 +102,11 @@
 import { h, defineComponent } from "vue"
 import Taro from "@tarojs/taro"
 import { Page, Panel, ExampleItem } from '@/components/index'
-import { AtIcon } from 'taro-ui-vue3'
-import { AtCard } from 'taro-ui-vue3'
+import { AtIcon } from "taro-ui-vue3"
+import { AtCard } from "taro-ui-vue3"
 
 export default defineComponent({
+  name: "CardDemo",
 
   components: {
     Page,
@@ -121,7 +122,7 @@ export default defineComponent({
       value: 'home',
       size: 16,
       color: '#6190e8',
-      customStyle: { marginRight: '10px' }
+      style: { marginRight: '10px' }
     })
 
     function handleClick() {
@@ -138,6 +139,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style lang='scss'>
-</style>

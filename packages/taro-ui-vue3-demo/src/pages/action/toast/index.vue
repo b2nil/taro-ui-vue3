@@ -15,69 +15,59 @@
 
     <panel title="自定义图片">
       <example-item>
-        <at-button
-          @click="
-                        handleClick({
-                            text: '凸实验室',
-                            image: 'http://storage.360buyimg.com/mtd/home/group-21533885306540.png',
-                        })
-                    "
-        >自定义图片 Toast</at-button>
+        <at-button @click="
+            handleClick({
+              text: '凸实验室',
+              image: 'http://storage.360buyimg.com/mtd/home/group-21533885306540.png',
+            })
+          ">自定义图片 Toast</at-button>
       </example-item>
     </panel>
 
     <panel title="添加遮罩层">
       <example-item>
-        <at-button
-          @click="
-                        handleClick({
-                            text: '透明遮罩层的作用在于不可点击下面的元素',
-                            hasMask: true,
-                        })
-                    "
-        >添加遮罩层 Toast</at-button>
+        <at-button @click="
+            handleClick({
+                text: '透明遮罩层的作用在于不可点击下面的元素',
+                hasMask: true,
+            })
+          ">添加遮罩层 Toast</at-button>
       </example-item>
     </panel>
 
     <panel title="Error Toast">
       <example-item>
-        <at-button
-          @click="
-                        handleClick({
-                            text: '错误提示',
-                            hasMask: true,
-                            status: 'error',
-                        })
-                    "
-        >错误提示 Toast</at-button>
+        <at-button @click="
+            handleClick({
+                text: '错误提示',
+                hasMask: true,
+                status: 'error',
+            })
+          ">错误提示 Toast</at-button>
       </example-item>
     </panel>
 
     <panel title="Success Toast">
       <example-item>
-        <at-button
-          @click="
-                        handleClick({
-                            text: '正确提示',
-                            hasMask: true,
-                            status: 'success',
-                        })
-                    "
-        >正确提示 Toast</at-button>
+        <at-button @click="
+            handleClick({
+                text: '正确提示',
+                hasMask: true,
+                status: 'success',
+            })
+          ">正确提示 Toast</at-button>
       </example-item>
     </panel>
 
     <panel title="Loading Toast">
       <example-item>
-        <at-button
-          @tap="
-                        handleClick({
-                            text: '正在加载…',
-                            hasMask: true,
-                            status: 'loading',
-                        })
-                    "
-        >加载中 Toast</at-button>
+        <at-button @click="
+            handleClick({
+                text: '正在加载...',
+                hasMask: true,
+                status: 'loading',
+            })
+          ">加载中 Toast</at-button>
       </example-item>
     </panel>
 
@@ -98,12 +88,14 @@
 
 <script>
 import { reactive, toRefs } from 'vue'
-import { AtButton } from 'taro-ui-vue3'
-import { AtToast } from 'taro-ui-vue3'
+import { AtButton } from "taro-ui-vue3"
+import { AtToast } from "taro-ui-vue3"
 import { Page, Panel, ExampleItem } from "@/components/index"
 
+import "./index.scss"
+
 export default {
-  name: 'ToastPage',
+  name: 'ToastDemo',
 
   components: {
     AtButton,
@@ -160,14 +152,6 @@ export default {
       handleClick,
       handleClose,
     }
-  },
-}
-</script>
-
-<style lang="scss">
-.toast-page .example__body {
-  &-button {
-    display: inline-block;
   }
 }
-</style>
+</script>

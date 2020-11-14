@@ -1,7 +1,7 @@
-import { h, defineComponent, reactive } from 'vue'
-import { AtSearchBar } from 'taro-ui-vue3'
-import { View } from '@tarojs/components'
+import { h, defineComponent, reactive, resolveComponent } from 'vue'
+import { AtSearchBar } from "taro-ui-vue3"
 import Taro from '@tarojs/taro'
+import { View as TaroView } from '@tarojs/components'
 import { Page, Panel } from '@/components/index'
 import './index.scss'
 
@@ -20,19 +20,21 @@ export default defineComponent({
       value4: ''
     })
 
-    function onChange(stateName: string, value: string): void {
-      state[stateName] = value
+    function onChange(stateName: string, value: string | number): void {
+      state[stateName] = value as string
     }
 
-    function onActionClick(): void {
+    function onActionClick(stateName: string): void {
       Taro.showToast({
-        title: '开始搜索',
+        title: `开始搜索: ${state[stateName]}`,
         icon: 'success',
         duration: 2000
       })
     }
 
     return () => {
+      const View = process.env.TARO_ENV === 'h5' ? resolveComponent('taro-view') : TaroView
+
       return (
         h(Page, { headerTitle: 'SearchBar 搜索栏' }, {
           default: () => [
@@ -42,9 +44,9 @@ export default defineComponent({
                 h(View, { class: 'component-item' }, {
                   default: () => [
                     h(AtSearchBar, {
-                      value: state.value1,
-                      onChange: onChange.bind(this, 'value1'),
-                      onActionClick: onActionClick.bind(this),
+                      modelValue: state.value1,
+                      'onUpdate:modelValue': (e) => state.value1 = e,
+                      onActionClick: onActionClick.bind(this, 'value1'),
                     })
                   ]
                 }),
@@ -58,9 +60,9 @@ export default defineComponent({
                   default: () => [
                     h(AtSearchBar, {
                       actionName: '搜一下',
-                      value: state.value2,
-                      onChange: onChange.bind(this, 'value2'),
-                      onActionClick: onActionClick.bind(this),
+                      modelValue: state.value2,
+                      'onUpdate:modelValue': (e) => state.value2 = e,
+                      onActionClick: onActionClick.bind(this, 'value2'),
                     })
                   ]
                 }),
@@ -75,9 +77,9 @@ export default defineComponent({
                     h(AtSearchBar, {
                       placeholder: '请输入ISBN号',
                       showActionButton: true,
-                      value: state.value3,
-                      onChange: onChange.bind(this, 'value3'),
-                      onActionClick: onActionClick.bind(this),
+                      modelValue: state.value3,
+                      'onUpdate:modelValue': (e) => state.value3 = e,
+                      onActionClick: onActionClick.bind(this, 'value3'),
                     })
                   ]
                 }),
@@ -92,9 +94,9 @@ export default defineComponent({
                     h(AtSearchBar, {
                       placeholder: '请输入数字',
                       inputType: 'number',
-                      value: state.value4,
-                      onChange: onChange.bind(this, 'value4'),
-                      onActionClick: onActionClick.bind(this),
+                      modelValue: state.value4,
+                      'onUpdate:modelValue': (e) => state.value4 = e,
+                      onActionClick: onActionClick.bind(this, 'value4'),
                     })
                   ]
                 }),

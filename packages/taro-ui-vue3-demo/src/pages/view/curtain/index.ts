@@ -1,9 +1,10 @@
-import { h, defineComponent, reactive } from 'vue'
-import { AtButton, AtCurtain } from 'taro-ui-vue3'
-import { Image, Text } from '@tarojs/components'
-import curtainPng from '@/assets/images/curtain.png'
+import { h, defineComponent, reactive, resolveComponent } from 'vue'
+import { AtButton, AtCurtain } from "taro-ui-vue3"
 import { Page, Panel, ExampleItem } from '@/components/index'
+
 import './index.scss'
+
+const curtainPng = require('@/assets/images/curtain.png')
 
 interface TagPageState {
   isOpened: boolean
@@ -18,6 +19,7 @@ interface TagPageState {
 }
 
 export default defineComponent({
+  name: "CurtainDemo",
 
   setup() {
 
@@ -37,6 +39,8 @@ export default defineComponent({
 
     return () => {
       const { isOpened, closeBtnPosition } = state
+      const Text = resolveComponent(process.env.TARO_ENV === 'h5' ? 'taro-text' : 'text')
+      const Image = resolveComponent(process.env.TARO_ENV === 'h5' ? 'taro-image' : 'image')
 
       return (
         h(Page, { headerTitle: 'Curtain 幕帘' }, {
@@ -65,7 +69,7 @@ export default defineComponent({
                       )
                     }, {
                       default: () => [
-                        h(Text, null, '顶部关闭幕帘')
+                        h(Text, null, { default: () => '顶部关闭幕帘' })
                       ]
                     })
                   ]
@@ -86,7 +90,7 @@ export default defineComponent({
                       )
                     }, {
                       default: () => [
-                        h(Text, null, '底部关闭幕帘')
+                        h(Text, null, { default: () => '底部关闭幕帘' })
                       ]
                     })
                   ]
@@ -107,7 +111,7 @@ export default defineComponent({
                       )
                     }, {
                       default: () => [
-                        h(Text, null, '左上关闭幕帘')
+                        h(Text, null, { default: () => '左上关闭幕帘' })
                       ]
                     })
                   ]
@@ -128,7 +132,7 @@ export default defineComponent({
                       )
                     }, {
                       default: () => [
-                        h(Text, null, '右上关闭幕帘')
+                        h(Text, null, { default: () => '右上关闭幕帘' })
                       ]
                     })
                   ]
@@ -149,7 +153,7 @@ export default defineComponent({
                       )
                     }, {
                       default: () => [
-                        h(Text, null, '左下关闭幕帘')
+                        h(Text, null, { default: () => '左下关闭幕帘' })
                       ]
                     })
                   ]
@@ -170,7 +174,7 @@ export default defineComponent({
                       )
                     }, {
                       default: () => [
-                        h(Text, null, '右下关闭幕帘')
+                        h(Text, null, { default: () => '右下关闭幕帘' })
                       ]
                     })
                   ]

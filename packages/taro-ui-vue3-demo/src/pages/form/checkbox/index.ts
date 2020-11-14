@@ -1,7 +1,6 @@
-import { h, defineComponent, reactive } from 'vue'
-import { AtCheckbox } from 'taro-ui-vue3'
-import { CheckboxOption } from 'taro-ui-vue3/types/checkbox'
-import { View } from '@tarojs/components'
+import { h, defineComponent, reactive, resolveComponent } from 'vue'
+import { AtCheckbox } from "taro-ui-vue3"
+import { CheckboxOption } from 'types/checkbox'
 import { Page, Panel, ExampleItem } from '@/components/index'
 import './index.scss'
 
@@ -84,67 +83,71 @@ export default defineComponent({
       state.checkedList3 = value
     }
 
-    return () => (
-      h(Page, { headerTitle: 'Checkbox 复选框' }, {
-        default: () => [
-          /* 基础用法*/
-          h(Panel, { title: '基础用法', noPadding: true }, {
-            default: () => [
-              h(ExampleItem, null, {
-                default: () => [
-                  h(View, { class: 'checkbox-container' }, {
-                    default: () => [
-                      h(AtCheckbox, {
-                        options: state.checkboxOption1,
-                        selectedList: state.checkedList1,
-                        onChange: handleChange.bind(this),
-                      })
-                    ]
-                  }),
-                ]
-              }),
-            ]
-          }),
+    return () => {
+      const View = resolveComponent(process.env.TARO_ENV === 'h5' ? 'taro-view' : 'view')
 
-          /* 含描述信息*/
-          h(Panel, { title: '含描述信息', noPadding: true }, {
-            default: () => [
-              h(ExampleItem, null, {
-                default: () => [
-                  h(View, { class: 'checkbox-container' }, {
-                    default: () => [
-                      h(AtCheckbox, {
-                        options: state.checkboxOption2,
-                        selectedList: state.checkedList2,
-                        onChange: handleChangeSnd.bind(this),
-                      })
-                    ]
-                  }),
-                ]
-              }),
-            ]
-          }),
+      return (
+        h(Page, { headerTitle: 'Checkbox 复选框' }, {
+          default: () => [
+            /* 基础用法*/
+            h(Panel, { title: '基础用法', noPadding: true }, {
+              default: () => [
+                h(ExampleItem, null, {
+                  default: () => [
+                    h(View, { class: 'checkbox-container' }, {
+                      default: () => [
+                        h(AtCheckbox, {
+                          options: state.checkboxOption1,
+                          selectedList: state.checkedList1,
+                          onChange: handleChange.bind(this),
+                        })
+                      ]
+                    }),
+                  ]
+                }),
+              ]
+            }),
 
-          /* 选项禁用*/
-          h(Panel, { title: '选项禁用', noPadding: true }, {
-            default: () => [
-              h(ExampleItem, null, {
-                default: () => [
-                  h(View, { class: 'checkbox-container' }, {
-                    default: () => [
-                      h(AtCheckbox, {
-                        options: state.checkboxOption3,
-                        selectedList: state.checkedList3,
-                        onChange: handleChangeThd.bind(this),
-                      })
-                    ]
-                  }),
-                ]
-              }),
-            ]
-          }),
-        ]
-      })
-    )
+            /* 含描述信息*/
+            h(Panel, { title: '含描述信息', noPadding: true }, {
+              default: () => [
+                h(ExampleItem, null, {
+                  default: () => [
+                    h(View, { class: 'checkbox-container' }, {
+                      default: () => [
+                        h(AtCheckbox, {
+                          options: state.checkboxOption2,
+                          selectedList: state.checkedList2,
+                          onChange: handleChangeSnd.bind(this),
+                        })
+                      ]
+                    }),
+                  ]
+                }),
+              ]
+            }),
+
+            /* 选项禁用*/
+            h(Panel, { title: '选项禁用', noPadding: true }, {
+              default: () => [
+                h(ExampleItem, null, {
+                  default: () => [
+                    h(View, { class: 'checkbox-container' }, {
+                      default: () => [
+                        h(AtCheckbox, {
+                          options: state.checkboxOption3,
+                          selectedList: state.checkedList3,
+                          onChange: handleChangeThd.bind(this),
+                        })
+                      ]
+                    }),
+                  ]
+                }),
+              ]
+            }),
+          ]
+        })
+      )
+    }
   }
 })

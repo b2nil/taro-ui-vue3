@@ -7,7 +7,7 @@
       <at-tab-bar
         :tab-list="tabList1"
         :current="current1"
-        @click="handleClick.bind(this, 1)"
+        @click="handleClick(1, $event)"
       />
     </panel>
     <panel
@@ -17,7 +17,7 @@
       <at-tab-bar
         :tab-list="tabList2"
         :current="current2"
-        @click="handleClick.bind(this, 2)"
+        @click="handleClick(2, $event)"
       />
     </panel>
     <panel
@@ -30,7 +30,7 @@
         background-color="#FAFBFC"
         :tab-list="tabList2"
         :current="current3"
-        @click="handleClick.bind(this,3)"
+        @click="handleClick(3, $event)"
       />
     </panel>
     <panel
@@ -41,7 +41,7 @@
       <at-tab-bar
         :tab-list="tabList3"
         :current="current5"
-        @click="handleClick.bind(this,5)"
+        @click="handleClick(5, $event)"
       />
     </panel>
     <panel
@@ -53,7 +53,7 @@
         fixed
         :tab-list="tabList2"
         :current="current4"
-        @click="handleClick.bind(this, 4)"
+        @click="handleClick(4, $event)"
       />
     </panel>
   </page>
@@ -61,10 +61,13 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref, toRefs } from "vue"
-import { AtTabBar } from 'taro-ui-vue3'
+import { AtTabBar } from "taro-ui-vue3"
 import { Page, Panel, ExampleItem } from '@/components/index'
 
+import "./index.scss"
+
 export default defineComponent({
+  name: "TabbarDemo",
 
   components: {
     AtTabBar,
@@ -132,23 +135,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style lang="scss">
-.example__body {
-  background-color: #f8f8f8;
-  min-height: 100px;
-  padding: 30px 10px 80px;
-
-  .item {
-    margin-bottom: 10px;
-  }
-
-  .tab-content {
-    font-size: 25px;
-    padding: 20px;
-    text-align: center;
-    border-top: 2px solid #f8f8f8;
-    background-color: #fff;
-  }
-}
-</style>

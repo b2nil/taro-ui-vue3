@@ -1,18 +1,19 @@
 
-import { h, defineComponent } from 'vue'
-import { AtAvatar } from 'taro-ui-vue3'
-import { View } from '@tarojs/components'
+import { h, defineComponent, resolveComponent } from 'vue'
+import { AtAvatar } from "taro-ui-vue3"
 import Taro from '@tarojs/taro'
 import { Page, Panel, ExampleItem } from '@/components/index'
 import './index.scss'
 
 export default defineComponent({
+  name: "AvatarDemo",
 
   setup() {
 
     return () => {
       const avatarImg =
         'http://storage.360buyimg.com/mtd/home/32443566_635798770100444_2113947400891531264_n1533825816008.jpg'
+      const View = resolveComponent(process.env.TARO_ENV === 'h5' ? 'taro-view' : 'view')
 
       return (
         h(Page, { headerTitle: 'Avatar 头像' }, {

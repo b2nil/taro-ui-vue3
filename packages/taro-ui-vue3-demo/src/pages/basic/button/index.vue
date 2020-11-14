@@ -309,7 +309,10 @@
     >
       <view class="at-article__p">右侧是浮动操作按钮👉</view>
       <view class="btn-demo-fab">
-        <at-fab @click="handleButtonClick">
+        <at-fab
+          size="small"
+          @click="handleButtonClick"
+        >
           <text class="at-fab__icon at-icon at-icon-menu"></text>
         </at-fab>
       </view>
@@ -320,12 +323,16 @@
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from "vue"
 import Taro from "@tarojs/taro"
-import { AtButton } from 'taro-ui-vue3'
-import { AtFab } from 'taro-ui-vue3'
-import { AtForm } from 'taro-ui-vue3'
+import { AtButton } from "taro-ui-vue3"
+import { AtFab } from "taro-ui-vue3"
+import { AtForm } from "taro-ui-vue3"
 import { Page, Panel, ExampleItem } from "@/components/index"
 
+import "./index.scss"
+
 export default defineComponent({
+  name: "ButtonDemo",
+
   components: {
     Page,
     Panel,
@@ -413,41 +420,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style lang="scss">
-.my-button.at-button {
-  color: red;
-}
-
-.panel__content {
-  &.demo-button {
-    .at-form {
-      padding-left: 0;
-    }
-  }
-
-  .btn-demo-fab {
-    position: fixed;
-    right: 32px;
-    bottom: 32px;
-    z-index: 1100;
-  }
-
-  .btn-item {
-    margin-bottom: 20px;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-
-    .subitem {
-      display: inline-block;
-      margin-left: 24px;
-
-      &:first-child {
-        margin-left: 0;
-      }
-    }
-  }
-}
-</style>

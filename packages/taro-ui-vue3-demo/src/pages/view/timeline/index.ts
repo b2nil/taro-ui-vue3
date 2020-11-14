@@ -1,10 +1,11 @@
 
 import { h, defineComponent } from 'vue'
-import { AtTimeline } from 'taro-ui-vue3'
+import { AtTimeline } from "taro-ui-vue3"
 import { Page, Panel, ExampleItem } from '@/components/index'
 import './index.scss'
 
 export default defineComponent({
+  name: "TimelineDemo",
 
   setup() {
 

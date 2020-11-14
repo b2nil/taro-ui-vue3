@@ -27,11 +27,14 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue"
-import { AtIcon } from 'taro-ui-vue3'
+import { AtIcon } from "taro-ui-vue3"
 import { Page, Panel } from "@/components/index"
 import ICONS from "./icons"
 
+import "./index.scss"
+
 export default defineComponent({
+  name: "IconDemo",
 
   components: {
     Page,
@@ -61,25 +64,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style lang="scss">
-.icon-list {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-wrap: wrap;
-
-  &__item {
-    margin-bottom: 60px;
-    width: 33%;
-    text-align: center;
-  }
-
-  &__name {
-    margin-top: 20px;
-    color: #88889c;
-    font-size: 20px;
-    text-align: center;
-  }
-}
-</style>

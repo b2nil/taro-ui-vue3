@@ -88,10 +88,10 @@
             note="描述信息"
             arrow="right"
             :iconInfo="{
-                            size: 25,
-                            color: '#78A4FA',
-                            value: 'calendar'
-                        }"
+              size: 25,
+              color: '#78A4FA',
+              value: 'calendar'
+            }"
           />
           <at-list-item
             title="标题文字"
@@ -99,10 +99,10 @@
             extraText="详细信息"
             arrow="right"
             :iconInfo="{
-                            size: 25,
-                            color: '#FF4949',
-                            value: 'bookmark'
-                        }"
+              size: 25,
+              color: '#FF4949',
+              value: 'bookmark'
+            }"
           />
         </at-list>
       </example-item>
@@ -162,11 +162,12 @@
 <script lang="ts">
 import { defineComponent } from "vue"
 import Taro from "@tarojs/taro"
-import { AtList } from 'taro-ui-vue3'
-import { AtListItem } from 'taro-ui-vue3'
+import { AtList } from "taro-ui-vue3"
+import { AtListItem } from "taro-ui-vue3"
 import { Page, Panel, ExampleItem } from "@/components/index"
 
 export default defineComponent({
+  name: "ListDemo",
 
   components: {
     Page,
@@ -198,6 +199,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style lang="scss">
-</style>

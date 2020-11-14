@@ -1,12 +1,12 @@
 
-import { h, defineComponent } from 'vue'
-import { AtCountdown } from 'taro-ui-vue3'
+import { h, defineComponent, resolveComponent } from 'vue'
+import { AtCountdown } from "taro-ui-vue3"
 import Taro from '@tarojs/taro'
 import { Page, Panel } from '@/components/index'
 import './index.scss'
-import { View } from '@tarojs/components'
 
 export default defineComponent({
+  name: "CountdownDemo",
 
   setup() {
 
@@ -19,43 +19,53 @@ export default defineComponent({
     }
 
     return () => {
+      const View = resolveComponent(process.env.TARO_ENV === 'h5' ? 'taro-view' : 'view')
+
       return (
         h(Page, { headerTitle: 'CountDown 倒计时' }, {
           default: () => [
             /* 一般用法*/
             h(Panel, { title: '一般用法' }, {
               default: () => [
-                h(View, { class: 'panel__content' }, [
-                  h(AtCountdown, {
-                    minutes: 1,
-                    seconds: 10,
-                  })
-                ]),
+                h(View, { class: 'panel__content' }, {
+                  default: () => [
+                    h(AtCountdown, {
+                      minutes: 1,
+                      seconds: 10,
+                    })
+                  ]
+                }),
 
-                h(View, { class: 'panel__content' }, [
-                  h(AtCountdown, {
-                    hours: 48,
-                    minutes: 0,
-                    seconds: 3,
-                  })
-                ]),
+                h(View, { class: 'panel__content' }, {
+                  default: () => [
+                    h(AtCountdown, {
+                      hours: 48,
+                      minutes: 0,
+                      seconds: 3,
+                    })
+                  ]
+                }),
 
-                h(View, { class: 'panel__content' }, [
-                  h(AtCountdown, {
-                    isShowDay: true,
-                    hours: 1,
-                    minutes: 1,
-                    seconds: 10,
-                  })
-                ]),
+                h(View, { class: 'panel__content' }, {
+                  default: () => [
+                    h(AtCountdown, {
+                      isShowDay: true,
+                      hours: 1,
+                      minutes: 1,
+                      seconds: 10,
+                    })
+                  ]
+                }),
 
-                h(View, { class: 'panel__content' }, [
-                  h(AtCountdown, {
-                    isShowHour: false,
-                    minutes: 1,
-                    seconds: 10,
-                  })
-                ])
+                h(View, { class: 'panel__content' }, {
+                  default: () => [
+                    h(AtCountdown, {
+                      isShowHour: false,
+                      minutes: 1,
+                      seconds: 10,
+                    })
+                  ]
+                })
               ]
             }),
 
@@ -73,24 +83,28 @@ export default defineComponent({
             /* 卡片式*/
             h(Panel, { title: '卡片式' }, {
               default: () => [
-                h(View, { class: 'panel__content' }, [
-                  h(AtCountdown, {
-                    isCard: true,
-                    minutes: 1,
-                    seconds: 10
-                  })
-                ]),
+                h(View, { class: 'panel__content' }, {
+                  default: () => [
+                    h(AtCountdown, {
+                      isCard: true,
+                      minutes: 1,
+                      seconds: 10
+                    })
+                  ]
+                }),
 
-                h(View, { class: 'panel__content' }, [
-                  h(AtCountdown, {
-                    isCard: true,
-                    isShowDay: true,
-                    day: 1,
-                    minutes: 1,
-                    seconds: 10,
-                    format: { day: '天', hours: ':', minutes: ':', seconds: '' },
-                  })
-                ])
+                h(View, { class: 'panel__content' }, {
+                  default: () => [
+                    h(AtCountdown, {
+                      isCard: true,
+                      isShowDay: true,
+                      day: 1,
+                      minutes: 1,
+                      seconds: 10,
+                      format: { day: '天', hours: ':', minutes: ':', seconds: '' },
+                    })
+                  ]
+                })
               ]
             }),
 

@@ -100,7 +100,7 @@
           <at-indexes
             :list="mockData"
             topKey="top"
-            :customStyle="{height: '400px'}"
+            :style="{height: '400px'}"
           >
             <view class="custom-area">用户自定义内容</view>
           </at-indexes>
@@ -113,16 +113,18 @@
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from "vue"
 import Taro from "@tarojs/taro"
-import { AtButton } from 'taro-ui-vue3'
-import { AtIndexes } from 'taro-ui-vue3'
-import { AtModal } from 'taro-ui-vue3'
-import { AtModalAction } from 'taro-ui-vue3'
-import { AtModalContent } from 'taro-ui-vue3'
-import { AtModalHeader } from 'taro-ui-vue3'
+import { AtButton } from "taro-ui-vue3"
+import { AtIndexes } from "taro-ui-vue3"
+import { AtModal } from "taro-ui-vue3"
+import { AtModalAction } from "taro-ui-vue3"
+import { AtModalContent } from "taro-ui-vue3"
+import { AtModalHeader } from "taro-ui-vue3"
 import { Page, Panel, ExampleItem } from "@/components/index"
 import mockData from '../../navigation/indexes/mock-data'
 
 export default defineComponent({
+  name: "ModalDemo",
+
   components: {
     Page,
     Panel,
@@ -174,6 +176,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style lang="scss">
-</style>

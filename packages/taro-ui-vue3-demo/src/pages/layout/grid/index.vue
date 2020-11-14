@@ -13,13 +13,12 @@
         <at-grid
           mode="rect"
           :data="[
-                        ...data,
-                        {
-                            image:
-                                'https://img30.360buyimg.com/jdphoto/s72x72_jfs/t5770/97/5184449507/2423/294d5f95/595c3b4dNbc6bc95d.png',
-                            value: '手机馆'
-                        }
-                    ]"
+            ...data,
+            {
+                image: 'https://img30.360buyimg.com/jdphoto/s72x72_jfs/t5770/97/5184449507/2423/294d5f95/595c3b4dNbc6bc95d.png',
+                value: '手机馆'
+            }
+          ]"
           @click="handleClick"
         ></at-grid>
       </example-item>
@@ -30,13 +29,12 @@
           mode="rect"
           :has-border="false"
           :data="[
-                        ...data,
-                        {
-                            image:
-                                'https://img30.360buyimg.com/jdphoto/s72x72_jfs/t5770/97/5184449507/2423/294d5f95/595c3b4dNbc6bc95d.png',
-                            value: '手机馆'
-                        }
-                    ]"
+            ...data,
+            {
+                image: 'https://img30.360buyimg.com/jdphoto/s72x72_jfs/t5770/97/5184449507/2423/294d5f95/595c3b4dNbc6bc95d.png',
+                value: '手机馆'
+            }
+          ]"
           @click="handleClick"
         ></at-grid>
       </example-item>
@@ -47,10 +45,12 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import Taro from '@tarojs/taro'
-import { AtGrid } from 'taro-ui-vue3'
+import { AtGrid } from "taro-ui-vue3"
 import { Page, Panel, ExampleItem } from '@/components/index'
 
 export default defineComponent({
+  name: "GridDemo",
+
   components: {
     Page,
     Panel,
@@ -111,5 +111,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style lang="scss"></style>
