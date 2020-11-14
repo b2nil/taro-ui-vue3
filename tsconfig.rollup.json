@@ -13,9 +13,10 @@
     "sourceMap": true,
     "strictNullChecks": true,
     "resolveJsonModule": true,
-    "target": "es2017",
+    "target": "es5",
     "module": "es6",
-    "outDir": "./lib",
+    "downlevelIteration": true,
+    "baseUrl": ".",
     "types": [
       "node"
     ],
@@ -23,7 +24,6 @@
       "types",
       "./global.d.ts"
     ],
-    "baseUrl": ".",
     "paths": {
       "@/components/*": [
         "./src/components/*"

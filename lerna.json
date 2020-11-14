@@ -1,6 +1,6 @@
 {
   "packages": [
-    "packages/taro-ui-vue3"
+    "packages/taro-ui-vue3/*"
   ],
   "command": {
     "publish": {
@@ -11,7 +11,7 @@
       "license": "MIT"
     }
   },
-  "version": "0.0.1",
+  "version": "1.0.0-alpha.13",
   "npmClient": "yarn",
   "useWorkspaces": true
 }
