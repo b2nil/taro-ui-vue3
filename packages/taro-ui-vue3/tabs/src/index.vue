@@ -7,20 +7,20 @@
     <!-- with scroll view -->
     <scroll-view
       v-if="scroll"
-      :id="_tabId"
+      :id="tabId"
       class="at-tabs__header"
       scroll-with-animation
       :style="heightStyle"
       :scroll-x="scrollX"
       :scroll-y="scrollY"
-      :scroll-top="_scrollTop"
-      :scroll-left="_scrollLeft"
-      :scroll-into-view="_scrollIntoView"
+      :scroll-top="scrollTop"
+      :scroll-left="scrollLeft"
+      :scroll-into-view="scrollIntoView"
     >
       <view
         v-for="(item, idx) in tabList"
-        :key="`${item.title}-${i}`"
-        :id="`tab${_tabId}${idx}`"
+        :key="`${item.title}-${idx}`"
+        :id="`tab${tabId}${idx}`"
         :class="genTabItemClasses(idx)"
         @tap="handleClick(idx, $event)"
       >
@@ -32,13 +32,13 @@
     <!-- without scroll view -->
     <view
       v-else
-      :id="_tabId"
+      :id="tabId"
       class="at-tabs__header"
     >
       <view
         v-for="(item, idx) in tabList"
-        :key="`${item.title}-${i}`"
-        :id="`tab${_tabId}${idx}`"
+        :key="`${item.title}-${idx}`"
+        :id="`tab${tabId}${idx}`"
         :class="genTabItemClasses(idx)"
         @tap="handleClick(idx, $event)"
       >
@@ -132,7 +132,7 @@ export default defineComponent({
 
   setup(props: AtTabsProps, { emit }) {
 
-    const _tabId = ref<string>(isTest() ? 'tabs-AOTU2018' : uuid())
+    const tabId = ref<string>(isTest() ? 'tabs-AOTU2018' : uuid())
     // 触摸时的原点
     const _touchDot = ref<number>(0)
     // 定时器
@@ -144,9 +144,9 @@ export default defineComponent({
     const tabHeaderRef = ref<any>(null)
 
     const state = reactive<AtTabsState>({
-      _scrollLeft: 0,
-      _scrollTop: 0,
-      _scrollIntoView: ''
+      scrollLeft: 0,
+      scrollTop: 0,
+      scrollIntoView: ''
     })
 
     const scrollX = computed(() => props.tabDirection === 'horizontal')
@@ -225,14 +225,14 @@ export default defineComponent({
           case Taro.ENV_TYPE.TT:
           case Taro.ENV_TYPE.SWAN: {
             const index = Math.max(idx - 1, 0)
-            state._scrollIntoView = `tab${_tabId.value}${index}`
+            state.scrollIntoView = `tab${tabId.value}${index}`
             break
           }
           case Taro.ENV_TYPE.WEB: {
             const index = Math.max(idx - 1, 0)
             const prevTabItem = tabHeaderRef.value.childNodes[index]
             if (prevTabItem) {
-              state._scrollTop = prevTabItem.offsetTop
+              state.scrollTop = prevTabItem.offsetTop
               state._scrollLeft = prevTabItem.offsetLeft
             }
             break
@@ -295,14 +295,14 @@ export default defineComponent({
 
     function getTabHeaderRef(): void {
       if (ENV === Taro.ENV_TYPE.WEB) {
-        tabHeaderRef.value = document.getElementById(_tabId.value)
+        tabHeaderRef.value = document.getElementById(tabId.value)
       }
     }
 
     return {
       ...toRefs(props),
       ...toRefs(state),
-      _tabId,
+      tabId,
       scrollX,
       scrollY,
       bodyStyle,

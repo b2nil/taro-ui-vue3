@@ -47,7 +47,7 @@
     <!-- action -->
     <view
       class="at-search-bar__action"
-      :style="actionStye"
+      :style="actionStyle"
       @tap="handleActionClick"
     >{{ actionName }}</view>
   </view>
@@ -229,6 +229,7 @@ export default defineComponent({
     return {
       ...toRefs(props),
       ...toRefs(state),
+      isWEB,
       inputID,
       inputValue,
       rootClasses,

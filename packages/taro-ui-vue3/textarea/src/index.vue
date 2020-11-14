@@ -29,7 +29,7 @@
     <view
       v-if="count && !isAlipay"
       class="at-textarea__counter"
-    >{{`${inputValue.length} / ${_maxLength}` }}</view>
+    >{{`${inputValue.length} / ${max_length}` }}</view>
   </view>
 </template>
 
@@ -99,10 +99,10 @@ export default defineComponent({
 
     const isAlipay = Taro.getEnv() === Taro.ENV_TYPE.ALIPAY
 
-    const _maxLength = computed(() => parseInt(props.maxLength!.toString()))
+    const max_length = computed(() => parseInt(props.maxLength!.toString()))
 
     const actualMaxLength = computed(() => getMaxLength(
-      _maxLength.value,
+      max_length.value,
       props.textOverflowForbidden!
     ))
 
@@ -114,7 +114,7 @@ export default defineComponent({
     const rootClasses = computed(() => ({
       'at-textarea': true,
       [`at-textarea--${ENV}`]: true,
-      'at-textarea--error': _maxLength.value < props.modelValue.length
+      'at-textarea--error': max_length.value < inputValue.value.length
     }))
 
     const placeholderClasses = computed(() => ({
@@ -154,7 +154,7 @@ export default defineComponent({
       textareaStyle,
       placeholderClasses,
       inputValue,
-      _maxLength,
+      max_length,
       actualMaxLength,
       alipayShowCount,
       handleBlur,

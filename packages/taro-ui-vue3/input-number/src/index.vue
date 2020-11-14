@@ -14,7 +14,7 @@
       class="at-input-number__input"
       :style="inputStyle"
       :type="type"
-      v-model="inputValue"
+      :value="inputValue"
       :disabled="disabledInput || disabled"
       @input="handleInput"
       @blur="handleBlur"
@@ -30,7 +30,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, toRef, PropType } from "vue"
+import { defineComponent, computed, ref, toRef, watch, PropType } from "vue"
 
 import _toString from 'lodash/toString'
 import { pxTransform } from "@taro-ui-vue3/utils/common"
@@ -127,7 +127,7 @@ export default defineComponent({
 
   setup(props: AtInputNumberProps, { emit }) {
 
-    const inputValue = computed(() => Number(handleValue(props.modelValue)))
+    const inputValue = ref(Number(handleValue(props.modelValue)))
 
     const inputStyle = computed(() => ({
       width: props.width ? `${pxTransform(props.width)}` : ''
@@ -148,13 +148,19 @@ export default defineComponent({
       'at-input-number--disabled': inputValue.value >= props.max! || props.disabled
     }))
 
+    watch(() => props.modelValue, (val, preVal) => {
+      if (val !== preVal) {
+        inputValue.value = Number(handleValue(val))
+      }
+    }, { immediate: true })
+
     function handleClick(clickType: 'minus' | 'plus', e: CommonEvent) {
-      const belowMin = clickType === 'minus' && inputValue <= props.min!
-      const overMax = clickType === 'plus' && inputValue >= props.max!
+      const belowMin = clickType === 'minus' && inputValue.value <= props.min!
+      const overMax = clickType === 'plus' && inputValue.value >= props.max!
 
       if (belowMin || overMax || props.disabled) {
         const deltaValue = clickType === 'minus' ? -props.step! : props.step!
-        const errorValue = addNum(Number(inputValue), deltaValue)
+        const errorValue = addNum(Number(inputValue.value), deltaValue)
 
         if (props.disabled) {
           handleError({
@@ -171,8 +177,9 @@ export default defineComponent({
       }
 
       const deltaValue = clickType === 'minus' ? -props.step! : props.step!
-      let newValue = addNum(Number(inputValue), deltaValue)
+      let newValue = addNum(Number(inputValue.value), deltaValue)
       newValue = Number(handleValue(newValue))
+      inputValue.value = newValue
       emit('update:modelValue', newValue)
     }
 

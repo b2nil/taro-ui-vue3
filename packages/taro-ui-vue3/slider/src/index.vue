@@ -8,7 +8,7 @@
         :min="min"
         :max="max"
         :step="step"
-        :value="_value"
+        :value="value_"
         :disabled="disabled"
         :block-size="blockSize"
         :block-color="blockColor"
@@ -22,7 +22,7 @@
     <view
       v-if="showValue"
       class="at-slider__text"
-    >{{ `${_value}` }}</view>
+    >{{ `${value_}` }}</view>
   </view>
 </template>
 
@@ -34,14 +34,7 @@ import { AtSliderProps, AtSliderState } from "@taro-ui-vue3/types/slider"
 export default defineComponent({
   name: "AtSlider",
 
-  emits: {
-    'change'(value: number) {
-      return !!(value && typeof value === 'number')
-    },
-    'changing'(value: number) {
-      return !!(value && typeof value === 'number')
-    }
-  },
+  emits: ['change', 'changing'],
 
   props: {
     min: {
@@ -90,7 +83,7 @@ export default defineComponent({
   setup(props: AtSliderProps, { emit }) {
 
     const state = reactive<AtSliderState>({
-      _value: clampNumber(props.value!, props.min!, props.max!)
+      value_: clampNumber(props.value!, props.min!, props.max!)
     })
 
     const rootClasses = computed(() => ({
@@ -103,7 +96,7 @@ export default defineComponent({
       props.min,
       props.max
     ], ([value, min, max]) => {
-      state._value = clampNumber(value!, min!, max!)
+      state.value_ = clampNumber(value!, min!, max!)
     })
 
     function clampNumber(
@@ -115,11 +108,11 @@ export default defineComponent({
     }
 
     function handleChanging(e: CommonEvent): void {
-      const { _value } = state
+      const { value_ } = state
       const { value }: { value: number } = e.detail
 
-      if (value !== _value) {
-        state._value = value
+      if (value !== value_) {
+        state.value_ = value
       }
 
       emit('changing', value)
@@ -128,7 +121,7 @@ export default defineComponent({
     function handleChange(e: CommonEvent): void {
       const { value } = e.detail
 
-      state._value = value
+      state.value_ = value
       emit('change', value)
     }
 

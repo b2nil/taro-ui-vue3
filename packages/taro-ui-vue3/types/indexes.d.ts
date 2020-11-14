@@ -63,10 +63,10 @@ export interface AtIndexesProps extends AtComponent {
 }
 
 export interface AtIndexesState {
-  _scrollIntoView: string
-  _scrollTop: number
-  _tipText: string
-  _isShowToast: boolean
+  scrollIntoView_: string
+  scrollTop_: number
+  tipText_: string
+  isShowToast_: boolean
   isWEB: boolean
 }
 

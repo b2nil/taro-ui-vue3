@@ -21,15 +21,12 @@ export default defineComponent({
     },
     align: {
       type: String as PropType<AtFlexProps['align']>,
-      default: 'stretch',
     },
     justify: {
       type: String as PropType<AtFlexProps['justify']>,
-      default: 'start',
     },
     direction: {
       type: String as PropType<AtFlexProps['direction']>,
-      default: 'row',
     },
     alignContent: {
       type: String as PropType<AtFlexProps['alignContent']>,

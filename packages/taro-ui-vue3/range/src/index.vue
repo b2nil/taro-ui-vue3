@@ -1,7 +1,7 @@
 <template>
   <view
+    v-bind="$attrs"
     :class="rootClasses"
-    :style="customStyle"
     @tap="handleClick"
   >
     <view
@@ -19,14 +19,14 @@
         <view
           class="at-range__slider"
           :style="sliderAStyle"
-          @touch-move="handleTouchMove('aX')"
-          @touch-end="handleTouchEnd('aX')"
+          @touch-move="handleTouchMove('aX', $event)"
+          @touch-end="handleTouchEnd('aX', $event)"
         />
         <view
           class="at-range__slider"
           :style="sliderBStyle"
-          @touch-move="handleTouchMove('bX')"
-          @touch-end="handleTouchEnd('bX')"
+          @touch-move="handleTouchMove('bX', $event)"
+          @touch-end="handleTouchEnd('bX', $event)"
         />
       </view>
     </view>
@@ -34,7 +34,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref, watch, onMounted, computed, PropType } from 'vue'
+import { defineComponent, reactive, ref, watch, onMounted, nextTick, computed, PropType } from 'vue'
 import { CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
 import { AtRangeProps, AtRangeState } from "@taro-ui-vue3/types/range"
 import {
@@ -42,8 +42,6 @@ import {
   getEventDetail,
   mergeStyle
 } from "@taro-ui-vue3/utils/common"
-
-import { nextTick } from '@tarojs/taro'
 
 export default defineComponent({
   name: "AtRange",
@@ -193,7 +191,7 @@ export default defineComponent({
 
       if (funcName) {
         state[sliderName] = sliderValue
-        nextTick(() => triggerEvent(funcName))
+        nextTick(() => { triggerEvent(funcName) })
       } else {
         state[sliderName] = sliderValue
       }

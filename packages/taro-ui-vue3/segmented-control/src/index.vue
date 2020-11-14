@@ -7,7 +7,7 @@
     <view
       v-for="(value, i) in values"
       :key="i"
-      :class="genItemClass(i)"
+      :class="genItemClasses(i)"
       :style="current === i ? selectedItemStyle : itemStyle"
       @tap="handleClick(i, $event)"
     >{{ value }}</view>

@@ -71,10 +71,10 @@ export interface AtCountDownProps extends AtComponent {
 }
 
 export interface AtCountdownState {
-  _day: number
-  _hours: number
-  _minutes: number
-  _seconds: number
+  day: number
+  hours: number
+  minutes: number
+  seconds: number
 }
 
 export interface AtCountdownItemProps extends AtComponent {
