@@ -66,7 +66,7 @@ yarn add taro-ui-vue3
 
  - [] 将组件所需的 style 文件移动至组件所在目录，按需引用时，只需引用组件即可，无需再额外引用样式
  - [x] VirtualList
- - [] Skeleton (视需要)
+ - [x] Skeleton
 
 ## 已知问题
 - Alipay 小程序端
@@ -110,3 +110,4 @@ yarn add taro-ui-vue3
 ## Credits
 - [Taro UI](https://github.com/NervJS/taro-ui)
 - [taro-ui-vue](https://github.com/psaren/taro-ui-vue)
+- [vuetify](https://github.com/vuetifyjs/vuetify)

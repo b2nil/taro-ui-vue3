@@ -9,11 +9,6 @@ export interface AtVirtualScrollProps extends AtComponent {
   */
   bench?: number | string;
   /*
-  * 可视区域渲染的列表行数
-  * @default 5
-  */
-  viewport?: number | string;
-  /*
   * 列表单项高度，用于计算列表单项的 top 样式值，单位 px。必填
   * @default undefined
   * @required true

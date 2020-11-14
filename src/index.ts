@@ -52,6 +52,8 @@ export { default as AtSteps } from './components/steps'
 export { default as AtRange } from './components/range'
 export { default as AtToast } from './components/toast'
 export { default as AtVirtualScroll } from './components/virtual-scroll'
+export { default as AtSkeleton } from './components/skeleton'
+
 
 
 /* 私有的组件  */

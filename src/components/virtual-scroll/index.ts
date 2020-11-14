@@ -1,34 +1,39 @@
-import { h, defineComponent, computed, ref, PropType, watch, onMounted, warn, mergeProps } from "vue"
 import Taro from "@tarojs/taro"
-import { ScrollView, View } from "@tarojs/components"
+import {
+  h,
+  defineComponent,
+  computed,
+  ref,
+  watch,
+  onMounted,
+  mergeProps,
+  PropType
+} from "vue"
+
+import {
+  ScrollView,
+  View
+} from "@tarojs/components"
+
+// utils
+import { convertToUnit } from "@/utils/common"
+import { dimensionsFactory } from "@/composables/dimensions"
 
 // types
 import { ScrollViewProps } from "@tarojs/components/types/ScrollView"
 import { BaseEventOrig } from "@tarojs/components/types/common"
 import { AtVirtualScrollProps } from "types/virtual-scroll"
 
-
-function convertToUnit(str: string | number | null | undefined, unit = 'px'): string | undefined {
-  if (str == null || str === '') {
-    return undefined
-  } else if (isNaN(+str!)) {
-    return String(str)
-  } else {
-    return `${Number(str)}${unit}`
-  }
-}
+const { useDimensions, makeDimensionsProps } = dimensionsFactory()
 
 const AtVirtualScroll = defineComponent({
   name: "AtVirtualScroll",
 
   props: {
+    ...makeDimensionsProps(),
     bench: {
       type: [Number, String] as PropType<AtVirtualScrollProps['bench']>,
       default: 0,
-    },
-    viewport: {
-      type: [Number, String] as PropType<AtVirtualScrollProps['viewport']>,
-      default: 5,
     },
     itemHeight: {
       type: [Number, String] as PropType<AtVirtualScrollProps['itemHeight']>,
@@ -38,12 +43,6 @@ const AtVirtualScroll = defineComponent({
       type: Array as PropType<AtVirtualScrollProps['items']>,
       default: () => [],
     },
-    height: [Number, String] as PropType<AtVirtualScrollProps['height']>,
-    maxHeight: [Number, String] as PropType<AtVirtualScrollProps['maxHeight']>,
-    maxWidth: [Number, String] as PropType<AtVirtualScrollProps['maxWidth']>,
-    minHeight: [Number, String] as PropType<AtVirtualScrollProps['minHeight']>,
-    minWidth: [Number, String] as PropType<AtVirtualScrollProps['minWidth']>,
-    width: [Number, String] as PropType<AtVirtualScrollProps['width']>,
     scrollIntoItem: [Number, String] as PropType<AtVirtualScrollProps['scrollIntoItem']>,
     reachTopThreshold: {
       type: [Number, String] as PropType<AtVirtualScrollProps['reachTopThreshold']>,
@@ -68,10 +67,6 @@ const AtVirtualScroll = defineComponent({
       return parseInt(`${props.bench}`, 10)
     })
 
-    const __viewport = computed<number>(() => {
-      return parseInt(`${props.viewport}`, 10) - 1
-    })
-
     const __itemHeight = computed<number>(() => {
       return parseInt(`${props.itemHeight}`, 10)
     })
@@ -81,28 +76,10 @@ const AtVirtualScroll = defineComponent({
     })
 
     const lastToRender = computed<number>(() => {
-      return Math.min(props.items.length, last.value + __viewport.value + __bench.value)
+      return Math.min(props.items.length, last.value + __bench.value)
     })
 
-    const measurableStyles = computed<Record<string, string>>(() => {
-      const styles: Record<string, string> = {}
-
-      const height = convertToUnit(props.height)
-      const minHeight = convertToUnit(props.minHeight)
-      const minWidth = convertToUnit(props.minWidth)
-      const maxHeight = convertToUnit(props.maxHeight)
-      const maxWidth = convertToUnit(props.maxWidth)
-      const width = convertToUnit(props.width)
-
-      if (height) styles.height = height
-      if (minHeight) styles.minHeight = minHeight
-      if (minWidth) styles.minWidth = minWidth
-      if (maxHeight) styles.maxHeight = maxHeight
-      if (maxWidth) styles.maxWidth = maxWidth
-      if (width) styles.width = width
-
-      return styles
-    })
+    const { dimensions } = useDimensions(props)
 
     watch(() => props.height, updateFirstAndLast)
     watch(() => props.itemHeight, updateFirstAndLast)
@@ -151,7 +128,7 @@ const AtVirtualScroll = defineComponent({
     }
 
     function getLast(first: number): number {
-      const height = parseInt(`${props.height || 0, 10}`) || elRef.value.$el.clientHeight
+      const height = parseInt(`${props.height || 0}`, 10) || elRef.value.$el.clientHeight
 
       return first + Math.ceil(height / __itemHeight.value)
     }
@@ -197,7 +174,7 @@ const AtVirtualScroll = defineComponent({
           scrollY: true,
           scrollwithAnimation: true,
           class: 'at-virtual-scroll',
-          style: measurableStyles.value,
+          style: dimensions.value.style,
           upperThreshold: parseInt(`${props.reachTopThreshold}`, 10),
           lowerThreshold: parseInt(`${props.reachBottomThreshold}`, 10),
           ref: (e) => { elRef.value = e },
