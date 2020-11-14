@@ -2,6 +2,8 @@ import { h, defineComponent, computed, mergeProps } from "vue"
 import { View } from "@tarojs/components"
 import Taro from "@tarojs/taro"
 import "./index.scss"
+import { AtFlex } from "@/components/index"
+import { AtFlexItem } from "@/components/index"
 
 const Page = defineComponent({
   name: "Page",
@@ -105,8 +107,50 @@ const ExampleItem = defineComponent({
   }
 })
 
+
+const PropItem = defineComponent({
+  name: "PropItem",
+
+  props: {
+    prop: String,
+    desc: String
+  },
+
+  setup(props, { slots }) {
+
+    return () => (
+      h(AtFlex, {
+        direction: 'column'
+      }, {
+        default: () => [
+          h(AtFlexItem, {
+            isWrap: true
+          }, {
+            default: () => [
+              h(View, {
+                class: 'example-item__desc'
+              }, {
+                default: () => [
+                  h(View, {
+                    style: 'color: red; font-style: italic;'
+                  }, { default: () => props.prop }),
+
+                  h(View, null, { default: () => props.desc })
+                ]
+              })
+            ]
+          }),
+
+          h(AtFlexItem, null, { default: () => slots.default?.() })
+        ]
+      })
+    )
+  }
+})
+
 export {
   Page,
   Panel,
+  PropItem,
   ExampleItem
 }
