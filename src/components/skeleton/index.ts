@@ -1,5 +1,3 @@
-import "@/style/components/skeleton.scss"
-
 import {
   h,
   defineComponent,
