@@ -13,7 +13,7 @@ import {
 import { ENV_TYPE, getEnv } from "@tarojs/taro"
 import { uuid } from "@/utils/common"
 
-type PickAtInputProps = Pick<AtInputProps, 'maxlength' | 'disabled' | 'password'>
+type PickAtInputProps = Pick<AtInputProps, 'maxLength' | 'disabled' | 'password'>
 type GetInputPropsReturn = PickAtInputProps & Pick<InputProps, 'type'>
 
 function getInputProps(props: AtInputProps): GetInputPropsReturn {
@@ -256,7 +256,7 @@ const AtInput = defineComponent({
                   placeholderClass: placeholderClasses.value,
                   placeholder: props.placeholder,
                   cursorSpacing: props.cursorSpacing,
-                  maxlength: inputProps.value.maxlength,
+                  maxlength: inputProps.value.maxLength,
                   autoFocus: props.autoFocus,
                   focus: props.focus,
                   value: inputValue.value,
