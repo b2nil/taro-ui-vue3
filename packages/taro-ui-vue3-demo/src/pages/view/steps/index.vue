@@ -1,3 +1,25 @@
+<template>
+  <page header-title="NoticeBar 通告栏">
+    <template v-for="(panel, i) in panels">
+      <panel
+        :key="i"
+        :title="panel.title"
+        class="panel__content"
+      >
+        <example-item>
+          <template v-for="(attr, j) in panel.attrs">
+            <at-steps
+              :key="j"
+              v-bind="attr"
+            />
+          </template>
+        </example-item>
+      </panel>
+    </template>
+  </page>
+</template>
+
+<script lang="ts">
 import { h, defineComponent, reactive, ref } from 'vue'
 import { AtSteps } from "taro-ui-vue3"
 import { Item } from '@taro-ui-vue3/types/steps'
@@ -85,79 +107,62 @@ export default defineComponent({
       }
     ])
 
+    const panels = [
+      {
+        title: "基础用法",
+        attrs: [
+          {
+            items: items1.value,
+            current: state.current1,
+            onChange: onChange.bind(this, 'current1')
+          },
+          {
+            items: items2.value,
+            current: state.current2,
+            onChange: onChange.bind(this, 'current2'),
+          }
+        ]
+      },
+      {
+        title: "带附加信息",
+        attrs: [
+          {
+            items: items3.value,
+            current: state.current3,
+            onChange: onChange.bind(this, 'current3'),
+          }
+        ]
+      },
+      {
+        title: "自定义图标",
+        attrs: [
+          {
+            items: items4.value,
+            current: state.current4,
+            onChange: onChange.bind(this, 'current4')
+          }
+        ]
+      },
+      {
+        title: "状态步骤条",
+        attrs: [
+          {
+            items: items5.value,
+            current: state.current5,
+            onChange: onChange.bind(this, 'current5')
+          }
+        ]
+      },
+    ]
+
     function onChange(stateName: string, current: number): void {
       state[stateName] = current
     }
 
-    return () => (
-      h(Page, { class: 'page', headerTitle: 'Steps 步骤条' }, {
-        default: () => [
-          /* 基础用法*/
-          h(Panel, { title: '基础用法', class: 'panel__content' }, {
-            default: () => [
-              h(ExampleItem, null, {
-                default: () => [
-                  h(AtSteps, {
-                    items: items1.value,
-                    current: state.current1,
-                    onChange: onChange.bind(this, 'current1'),
-                  }),
-                  h(AtSteps, {
-                    items: items2.value,
-                    current: state.current2,
-                    onChange: onChange.bind(this, 'current2'),
-                  }),
-                ]
-              })
-            ]
-          }),
-
-          /* 带附加信息*/
-          h(Panel, { title: '带附加信息', class: 'panel__content' }, {
-            default: () => [
-              h(ExampleItem, null, {
-                default: () => [
-                  h(AtSteps, {
-                    items: items3.value,
-                    current: state.current3,
-                    onChange: onChange.bind(this, 'current3'),
-                  })
-                ]
-              })
-            ]
-          }),
-
-          /* 自定义图标*/
-          h(Panel, { title: '自定义图标', class: 'panel__content' }, {
-            default: () => [
-              h(ExampleItem, null, {
-                default: () => [
-                  h(AtSteps, {
-                    items: items4.value,
-                    current: state.current4,
-                    onChange: onChange.bind(this, 'current4'),
-                  })
-                ]
-              })
-            ]
-          }),
-
-          /* 状态步骤条*/
-          h(Panel, { title: '状态步骤条', class: 'panel__content' }, {
-            default: () => [
-              h(ExampleItem, null, {
-                default: () => [
-                  h(AtSteps, {
-                    items: items5.value,
-                    current: state.current5,
-                    onChange: onChange.bind(this, 'current5'),
-                  })
-                ]
-              })
-            ]
-          }),
-        ]
-      })
-    )
+    return {
+      panels
+    }
   }
 })
+
+</script>

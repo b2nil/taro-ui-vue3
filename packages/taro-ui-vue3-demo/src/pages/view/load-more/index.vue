@@ -1,5 +1,19 @@
+<template>
+  <page header-title="LoadMore 页面提示">
+    <panel
+      no-padding
+      title="一般用法"
+    >
+      <at-load-more
+        @click="handleClick"
+        :status="status"
+      ></at-load-more>
+    </panel>
+  </page>
+</template>
 
-import { h, defineComponent, reactive } from "vue"
+<script lang="ts">
+import { defineComponent, reactive, toRefs } from "vue"
 import { AtLoadMore } from "taro-ui-vue3"
 import { Page, Panel } from '@/components/index'
 import './index.scss'
@@ -10,6 +24,12 @@ interface LoadMorePageState {
 
 export default defineComponent({
   name: "LoadMoreDemo",
+
+  components: {
+    AtLoadMore,
+    Page,
+    Panel
+  },
 
   setup() {
 
@@ -24,21 +44,10 @@ export default defineComponent({
       }, 2000)
     }
 
-    return () => (
-
-      h(Page, { headerTitle: 'LoadMore 页面提示 ' }, {
-        default: () => [
-          /* 文字*/
-          h(Panel, { title: '一般用法', noPadding: true }, {
-            default: () => [
-              h(AtLoadMore, {
-                onClick: handleClick.bind(this),
-                status: state.status,
-              })
-            ]
-          })
-        ]
-      })
-    )
+    return {
+      ...toRefs(state),
+      handleClick
+    }
   }
 })
+</script>
