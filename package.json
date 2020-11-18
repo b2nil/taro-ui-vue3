@@ -26,8 +26,7 @@
   ],
   "files": [
     "lib",
-    "dist",
-    "types"
+    "dist"
   ],
   "scripts": {
     "gen": "bash ./scripts/gen_comp.sh",
@@ -37,15 +36,22 @@
     "publish": "lerna publish from-git --yes",
     "dev": "yarn dev:lib",
     "dev:lib": "tsc --project ./tsconfig.build.json --watch --incremental",
-    "build": "yarn build:rollup && yarn build:lib",
-    "build:lib": "tsc --project ./tsconfig.build.json",
-    "build:lib-dev": "cross-env LIB_ENV=dev rollup --config ./config/rollup.config.js",
-    "build:rollup": "rollup --config ./build/rollup.config.js",
+    "build": "yarn build:bundle && yarn build:lib",
+    "build:lib": "node ./build/bincomp.js",
+    "build:lib-dev": "cross-env LIB_ENV=dev node ./build/bincomp.js",
+    "build:bundle": "rollup --config ./build/rollup.config.bundle.js",
+    "build:bundle-dev": "cross-env LIB_ENV=dev rollup --config ./build/rollup.config.bundle.js",
     "test:analyze": "rollup --config ./build/rollup.config.analyze.js",
-    "rollup:test": "node tests/transform-component.js && rollup --config ./config/rollup-test.config.js",
     "clean": "rimraf dist lib",
     "clog": "conventional-changelog -p angular -i CHANGELOG.md -s -r",
     "test": "node ./tests/transform-component.js && cross-env NODE_ENV=test && jest --coverage"
+  },
+  "dependencies": {
+    "dayjs": "^1.8.29",
+    "lodash": "^4.17.19"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",
@@ -67,22 +73,22 @@
     "babel-preset-taro": "^3.0.7",
     "conventional-changelog-cli": "^2.0.31",
     "cross-env": "^7.0.2",
-    "eslint": "^6.8.0",
-    "eslint-import-resolver-custom-alias": "^1.2.0",
-    "eslint-plugin-import": "^2.20.2",
     "lerna": "^3.20.2",
     "rimraf": "^3.0.2",
     "rollup": "^2.33.1",
     "rollup-plugin-copy": "^3.3.0",
     "rollup-plugin-sass": "^1.2.2",
+    "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.27.1",
-    "rollup-plugin-uglify": "^6.0.4",
     "rollup-plugin-visualizer": "^4.0.4",
     "rollup-plugin-vue": "^6.0.0-beta.8",
-    "stylelint": "^13.3.0",
-    "stylelint-config-standard": "^20.0.0",
-    "stylelint-scss": "^3.16.0",
     "typescript": "^3.7.0",
+    "stylelint": "^13.3.0",
+    "stylelint-scss": "^3.16.0",
+    "stylelint-config-standard": "^20.0.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-import-resolver-custom-alias": "^1.2.0",
     "vue-loader": "^16.0.0-beta.3"
   },
   "husky": {
