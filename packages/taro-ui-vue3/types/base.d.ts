@@ -1,9 +1,9 @@
-import { CSSProperties } from 'vue'
+import { CSSProperties } from 'typings/global'
+import { AllowedComponentProps } from 'vue'
 
-export interface AtComponent {
-  className?: string;
-
-  customStyle?: string | CSSProperties;
+export interface AtComponent extends AllowedComponentProps {
+  class?: string,
+  style?: CSSProperties
 }
 
 export interface AtIconBaseProps2 extends AtComponent {
