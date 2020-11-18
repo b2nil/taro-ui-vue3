@@ -43,103 +43,126 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref, watch, computed, toRefs, PropType } from "vue"
-import { CommonEvent } from '@tarojs/components/types/common'
-import { AtAccordionProps, AtAccordionState } from "@taro-ui-vue3/types/accordion"
+import {
+  defineComponent,
+  reactive,
+  ref,
+  watch,
+  computed,
+  toRefs,
+  PropType,
+} from "vue"
+import { CommonEvent } from "@tarojs/components/types/common"
+import {
+  AtAccordionProps,
+  AtAccordionState,
+} from "@taro-ui-vue3/types/accordion"
 import { delayQuerySelector } from "@taro-ui-vue3/utils/common"
 
 export default defineComponent({
   name: "AtAccordion",
 
-  emits: ['click'],
+  emits: ["click"],
 
   props: {
     open: Boolean,
     title: {
       type: String,
-      default: ''
+      default: "",
     },
     icon: {
-      type: Object as PropType<AtAccordionProps['icon']>,
-      default: () => ({ value: '' })
+      type: Object as PropType<AtAccordionProps["icon"]>,
+      default: () => ({ value: "" }),
     },
     hasBorder: {
       type: Boolean,
-      default: true
+      default: true,
     },
     isAnimation: {
       type: Boolean,
-      default: true
+      default: true,
     },
     note: {
       type: String,
-      default: ''
-    }
+      default: "",
+    },
   },
 
   setup(props: AtAccordionProps, { emit }) {
     const startOpen = ref(false)
     const isCompleted = ref(true)
-    const contentID = ref('content')
+    const contentID = ref("content")
 
     const state = reactive<AtAccordionState>({ wrapperHeight: 0 })
 
     // computed classes
     const iconClasses = computed(() => ({
-      [`${props.icon!.prefixClass || 'at-icon'}`]: Boolean(props.icon),
-      [`${props.icon!.prefixClass || 'at-icon'}-${props.icon!.value}`]: Boolean(props.icon && props.icon.value),
-      'at-accordion__icon': true
+      [`${props.icon!.prefixClass || "at-icon"}`]: Boolean(props.icon),
+      [`${props.icon!.prefixClass || "at-icon"}-${props.icon!.value}`]: Boolean(
+        props.icon && props.icon.value
+      ),
+      "at-accordion__icon": true,
     }))
 
     const headerClasses = computed(() => ({
-      'at-accordion__header': true,
-      'at-accordion__header--noborder': !props.hasBorder
+      "at-accordion__header": true,
+      "at-accordion__header--noborder": !props.hasBorder,
     }))
 
     const arrowClasses = computed(() => ({
-      'at-accordion__arrow': true,
-      'at-accordion__arrow--folded': !!props.open
+      "at-accordion__arrow": true,
+      "at-accordion__arrow--folded": !!props.open,
     }))
 
     const contentClasses = computed(() => ({
-      'at-accordion__content': true,
-      'at-accordion__content--inactive': (!props.open && isCompleted.value) || startOpen.value
+      "at-accordion__content": true,
+      "at-accordion__content--inactive":
+        (!props.open && isCompleted.value) || startOpen.value,
     }))
 
     // computed styles
     const iconStyle = computed(() => ({
-      color: Boolean(props.icon && props.icon.color) ? props.icon!.color : '',
-      fontSize: Boolean(props.icon && props.icon.size) ? `${props.icon!.size}px` : ''
+      color: Boolean(props.icon && props.icon.color) ? props.icon!.color : "",
+      fontSize: Boolean(props.icon && props.icon.size)
+        ? `${props.icon!.size}px`
+        : "",
     }))
 
     const contentStyle = computed(() => ({
       height: isCompleted.value
-        ? ''
-        : state.wrapperHeight === 'unset'
+        ? ""
+        : state.wrapperHeight === "unset"
           ? state.wrapperHeight
-          : `${state.wrapperHeight}px`
+          : `${state.wrapperHeight}px`,
     }))
 
     // watcher
-    watch(() => props.open, (val) => {
-      startOpen.value = !!val && !!props.isAnimation
-      toggleWithAnimation()
-    })
+    watch(
+      () => props.open,
+      (val) => {
+        startOpen.value = !!val && !!props.isAnimation
+        toggleWithAnimation()
+      }
+    )
 
     // methods
     function handleClick(e: CommonEvent) {
-      contentID.value = 'content' + String(e.timeStamp).replace('.', '')
+      contentID.value = "content" + String(e.timeStamp).replace(".", "")
 
       if (!isCompleted.value) return
 
-      emit('click', !props.open, e)
+      emit("click", !props.open, e)
     }
 
     function toggleWithAnimation() {
       if (!isCompleted.value || !props.isAnimation) return
 
       isCompleted.value = false
-      delayQuerySelector(this, `#${contentID.value}.at-accordion__body`, 30).then((rect) => {
+      delayQuerySelector(
+        this,
+        `#${contentID.value}.at-accordion__body`,
+        30
+      ).then((rect) => {
         // @ts-ignore
         const height = parseInt(rect[0].height.toString())
         const startHeight = props.open ? 0 : height
@@ -167,7 +190,7 @@ export default defineComponent({
       contentStyle,
       iconStyle,
       contentID,
-      handleClick
+      handleClick,
     }
   }
 })
