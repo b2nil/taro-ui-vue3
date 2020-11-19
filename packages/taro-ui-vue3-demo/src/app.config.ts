@@ -96,7 +96,11 @@ export default {
     // advanced
     {
       root: 'pages/advanced',
-      pages: ['calendar/index']
+      pages: [
+        'calendar/index',
+        'virtual-scroll/index',
+        'skeleton/index'
+      ]
     }
   ],
   window: {
