@@ -19,7 +19,6 @@ export default defineComponent({
     isWrap: Boolean,
     align: {
       type: String as PropType<AtFlexItemProps['align']>,
-      default: 'center',
     },
     size: {
       type: Number as PropType<AtFlexItemProps['size']>,

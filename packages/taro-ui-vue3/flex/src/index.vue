@@ -17,7 +17,6 @@ export default defineComponent({
   props: {
     wrap: {
       type: String as PropType<AtFlexProps['wrap']>,
-      default: 'no-wrap',
     },
     align: {
       type: String as PropType<AtFlexProps['align']>,
