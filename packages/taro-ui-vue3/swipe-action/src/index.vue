@@ -83,8 +83,8 @@ export default defineComponent({
       return !!(
         item && item.text &&
         typeof item.text === 'string' &&
-        index && typeof index === 'number' &&
-        event && typeof event === 'number'
+        typeof index === 'number' &&
+        event && typeof event === 'object'
       )
     }
   },
