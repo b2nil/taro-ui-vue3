@@ -20,7 +20,7 @@
       <!-- input -->
       <input
         class="at-search-bar__input"
-        :id="isWEB ? inputID : null"
+        :id="inputID"
         :type="inputType"
         :focus="isFocus"
         :disabled="disabled"
@@ -60,6 +60,7 @@ import {
   computed,
   CSSProperties,
   ref,
+  watch,
   toRefs,
   PropType
 } from 'vue'
@@ -170,6 +171,12 @@ export default defineComponent({
     const placeholderStyle = computed(() => ({
       visibility: !props.modelValue.length ? 'visible' : 'hidden'
     }))
+
+    watch(() => props.modelValue, (val, preVal) => {
+      if (val !== preVal) {
+        inputValue.value = val
+      }
+    })
 
     function handleFocus(event: CommonEvent): void {
       if (isWEB.value) {
