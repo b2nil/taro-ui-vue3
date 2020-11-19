@@ -58,9 +58,8 @@
       <view
         class="at-tabs__underline"
         :style="underlineStyle"
-      >
-        <slot />
-      </view>
+      />
+      <slot />
     </view>
   </view>
 </template>
@@ -77,6 +76,7 @@ import {
   CSSProperties,
   computed,
   toRefs,
+  warn,
   PropType
 } from 'vue'
 import { CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
@@ -93,10 +93,11 @@ export default defineComponent({
 
   emits: {
     'click'(index: number, event: CommonEvent) {
-      return !!(
-        index && typeof index === 'number' &&
-        event && typeof event === 'object'
-      )
+      if (typeof index === 'number') return true
+      else {
+        warn("index should be type number, but actual type is: ", typeof index)
+        return false
+      }
     }
   },
 
@@ -233,7 +234,7 @@ export default defineComponent({
             const prevTabItem = tabHeaderRef.value.childNodes[index]
             if (prevTabItem) {
               state.scrollTop = prevTabItem.offsetTop
-              state._scrollLeft = prevTabItem.offsetLeft
+              state.scrollLeft = prevTabItem.offsetLeft
             }
             break
           }
