@@ -77,7 +77,7 @@ export default defineComponent({
     'page-change'(data: PageChangeData) {
       return !!(
         data && data.type &&
-        ['prev', 'next'].includes(typeof data.type) &&
+        ['prev', 'next'].includes(data.type) &&
         data.current && typeof data.current === 'number'
       )
     }
