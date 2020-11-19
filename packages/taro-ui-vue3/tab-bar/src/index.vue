@@ -82,7 +82,7 @@ export default defineComponent({
   emits: {
     'click'(index: number, event: CommonEvent) {
       return !!(
-        index && typeof index === 'number' &&
+        typeof index === 'number' &&
         event && typeof event === 'object'
       )
     }
