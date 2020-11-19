@@ -1,6 +1,6 @@
 <template>
   <view
-    v-if="_show"
+    v-if="show"
     v-bind="$attrs"
     :class="rootClasses"
   >
@@ -48,7 +48,7 @@ export default defineComponent({
   emits: {
     'close': null,
     'item-click'(index: number) {
-      return !!(index && typeof index === 'number')
+      return !!(typeof index === 'number')
     }
   },
 
@@ -141,7 +141,7 @@ export default defineComponent({
     }
 
     return {
-      _show: toRef(state, "_show"),
+      show: toRef(state, "_show"),
       items: toRef(props, "items"),
       rootClasses,
       maskStyle,
