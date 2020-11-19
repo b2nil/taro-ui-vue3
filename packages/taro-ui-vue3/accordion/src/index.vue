@@ -93,7 +93,7 @@ export default defineComponent({
     const isCompleted = ref(true)
     const contentID = ref("content")
 
-    const state = reactive<AtAccordionState>({ wrapperHeight: 0 })
+    const state = reactive<AtAccordionState>({ wrapperHeight: 'unset' })
 
     // computed classes
     const iconClasses = computed(() => ({
@@ -128,13 +128,16 @@ export default defineComponent({
         : "",
     }))
 
-    const contentStyle = computed(() => ({
-      height: isCompleted.value
-        ? ""
-        : state.wrapperHeight === "unset"
-          ? state.wrapperHeight
-          : `${state.wrapperHeight}px`,
-    }))
+    const contentStyle = computed(() => {
+      const style = {
+        height: isCompleted.value
+          ? ""
+          : state.wrapperHeight === 'unset'
+            ? state.wrapperHeight
+            : `${state.wrapperHeight}px`,
+      }
+      return style
+    })
 
     // watcher
     watch(
@@ -156,7 +159,6 @@ export default defineComponent({
 
     function toggleWithAnimation() {
       if (!isCompleted.value || !props.isAnimation) return
-
       isCompleted.value = false
       delayQuerySelector(
         this,
@@ -170,7 +172,6 @@ export default defineComponent({
 
         startOpen.value = false
         state.wrapperHeight = startHeight
-
         setTimeout(() => {
           state.wrapperHeight = endHeight
         }, 100)
