@@ -58,7 +58,7 @@
       <example-item>
         <view>评分: 3.5</view>
         <view>
-          <at-rate v-model="3.5" />
+          <at-rate value="3.5" />
         </view>
       </example-item>
     </panel>

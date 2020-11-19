@@ -16,8 +16,11 @@
           :indicatorDots="hasIndicatorDots"
           previousMargin="20"
         >
-          <template v-for="(item, idx) in imgUrls">
-            <swiper-item :key="idx">
+          <template
+            v-for="(item, idx) in imgUrls"
+            :key="idx"
+          >
+            <swiper-item>
               <image
                 :src="item"
                 class="slide-image"
@@ -31,7 +34,7 @@
             <at-list-item
               isSwitch
               title="指示点"
-              switchIsCheck="hasIndicatorDots"
+              :switchIsCheck="hasIndicatorDots"
               @switch-change="setIndicatorDots"
             />
             <at-list-item
@@ -89,7 +92,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue'
+import { defineComponent, reactive, toRefs } from 'vue'
 import { AtList, AtListItem } from "taro-ui-vue3"
 import { CommonEvent } from '@tarojs/components/types/common'
 import { Page, Panel, ExampleItem } from '@/components/index'

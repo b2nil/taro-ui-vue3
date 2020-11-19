@@ -1,4 +1,54 @@
-import { h, defineComponent, reactive, resolveComponent } from 'vue'
+<template>
+  <page header-title="Checkbox 复选框">
+    <panel
+      title="基础用法"
+      no-padding
+    >
+      <example-item>
+        <view class="checkbox-container">
+          <at-checkbox
+            :options="checkboxOption1"
+            :selected-list="checkedList1"
+            @change="handleChange"
+          />
+        </view>
+      </example-item>
+    </panel>
+
+    <panel
+      title="含描述信息"
+      no-padding
+    >
+      <example-item>
+        <view class="checkbox-container">
+          <at-checkbox
+            :options="checkboxOption2"
+            :selected-list="checkedList2"
+            @change="handleChangeSnd"
+          />
+        </view>
+      </example-item>
+    </panel>
+
+    <panel
+      title="选项禁用"
+      no-padding
+    >
+      <example-item>
+        <view class="checkbox-container">
+          <at-checkbox
+            :options="checkboxOption3"
+            :selected-list="checkedList3"
+            @change="handleChangeThd"
+          />
+        </view>
+      </example-item>
+    </panel>
+  </page>
+</template>
+
+<script lang="ts">
+import { defineComponent, reactive, toRefs } from 'vue'
 import { AtCheckbox } from "taro-ui-vue3"
 import { CheckboxOption } from 'types/checkbox'
 import { Page, Panel, ExampleItem } from '@/components/index'
@@ -14,6 +64,11 @@ interface IndexState {
 }
 
 export default defineComponent({
+  name: "CheckboxDemo",
+
+  components: {
+    AtCheckbox, Page, Panel, ExampleItem
+  },
 
   setup() {
 
@@ -83,71 +138,12 @@ export default defineComponent({
       state.checkedList3 = value
     }
 
-    return () => {
-      const View = resolveComponent(process.env.TARO_ENV === 'h5' ? 'taro-view' : 'view')
-
-      return (
-        h(Page, { headerTitle: 'Checkbox 复选框' }, {
-          default: () => [
-            /* 基础用法*/
-            h(Panel, { title: '基础用法', noPadding: true }, {
-              default: () => [
-                h(ExampleItem, null, {
-                  default: () => [
-                    h(View, { class: 'checkbox-container' }, {
-                      default: () => [
-                        h(AtCheckbox, {
-                          options: state.checkboxOption1,
-                          selectedList: state.checkedList1,
-                          onChange: handleChange.bind(this),
-                        })
-                      ]
-                    }),
-                  ]
-                }),
-              ]
-            }),
-
-            /* 含描述信息*/
-            h(Panel, { title: '含描述信息', noPadding: true }, {
-              default: () => [
-                h(ExampleItem, null, {
-                  default: () => [
-                    h(View, { class: 'checkbox-container' }, {
-                      default: () => [
-                        h(AtCheckbox, {
-                          options: state.checkboxOption2,
-                          selectedList: state.checkedList2,
-                          onChange: handleChangeSnd.bind(this),
-                        })
-                      ]
-                    }),
-                  ]
-                }),
-              ]
-            }),
-
-            /* 选项禁用*/
-            h(Panel, { title: '选项禁用', noPadding: true }, {
-              default: () => [
-                h(ExampleItem, null, {
-                  default: () => [
-                    h(View, { class: 'checkbox-container' }, {
-                      default: () => [
-                        h(AtCheckbox, {
-                          options: state.checkboxOption3,
-                          selectedList: state.checkedList3,
-                          onChange: handleChangeThd.bind(this),
-                        })
-                      ]
-                    }),
-                  ]
-                }),
-              ]
-            }),
-          ]
-        })
-      )
+    return {
+      ...toRefs(state),
+      handleChange,
+      handleChangeSnd,
+      handleChangeThd
     }
   }
 })
+</script>

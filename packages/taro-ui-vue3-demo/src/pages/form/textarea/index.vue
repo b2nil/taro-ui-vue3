@@ -1,9 +1,9 @@
 <template>
   <page header-title="Textarea 多行文本框">
-    <template v-for="(panel, i) in panels">
+    <template v-for="(panel, i) in panels" :key="i">
       <panel
         :title="panel.title"
-        :key="i"
+        
       >
         <example-item>
           <at-textarea v-bind="panel.attrs" />
@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue'
+import { h, defineComponent, reactive } from 'vue'
 import { AtTextarea } from "taro-ui-vue3"
 import { Page, Panel, ExampleItem } from '@/components/index'
 import './index.scss'

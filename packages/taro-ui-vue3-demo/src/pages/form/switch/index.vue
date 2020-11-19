@@ -30,7 +30,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from 'vue'
+import { defineComponent, reactive, toRefs } from 'vue'
 import { AtForm, AtSwitch } from "taro-ui-vue3"
 import { Page, Panel, ExampleItem } from '@/components/index'
 import './index.scss'

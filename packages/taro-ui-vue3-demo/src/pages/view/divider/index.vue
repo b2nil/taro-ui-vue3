@@ -33,9 +33,11 @@ import './index.scss'
 export default defineComponent({
   name: "DividerDemo",
 
-  computed: {
-    AtDivider, AtIcon,
-    Page, Panel
+  components: {
+    AtDivider,
+    AtIcon,
+    Page,
+    Panel
   },
 
   setup() {

@@ -1,17 +1,19 @@
 <template>
   <page header-title="NoticeBar 通告栏">
-    <template v-for="(panel, i) in panels">
+    <template
+      v-for="(panel, i) in panels"
+      :key="i"
+    >
       <panel
-        :key="i"
         :title="panel.title"
         class="panel__content"
       >
         <example-item>
-          <template v-for="(attr, j) in panel.attrs">
-            <at-steps
-              :key="j"
-              v-bind="attr"
-            />
+          <template
+            v-for="(attr, j) in panel.attrs"
+            :key="j"
+          >
+            <at-steps v-bind="attr" />
           </template>
         </example-item>
       </panel>
@@ -20,7 +22,7 @@
 </template>
 
 <script lang="ts">
-import { h, defineComponent, reactive, ref } from 'vue'
+import { defineComponent, reactive, ref } from 'vue'
 import { AtSteps } from "taro-ui-vue3"
 import { Item } from '@taro-ui-vue3/types/steps'
 import { Page, Panel, ExampleItem } from '@/components/index'
@@ -32,6 +34,11 @@ interface TimelinePageState {
 
 export default defineComponent({
   name: "StepsDemo",
+
+  components: {
+    AtSteps,
+    Page, Panel, ExampleItem
+  },
 
   setup() {
 

@@ -1,8 +1,10 @@
 <template>
   <page header-title="NoticeBar 通告栏">
-    <template v-for="(panel, i) in panels">
+    <template
+      v-for="(panel, i) in panels"
+      :key="i"
+    >
       <panel
-        :key="i"
         :title="panel.title"
         class="panel__content"
       >
@@ -11,12 +13,12 @@
           :key="j"
           class="bar-item"
         >
-          <at-boticebar v-bind="barItem.attrs">
+          <at-noticebar v-bind="barItem.attrs">
             <text
               user-select
               :style="barItem.attrs.marquee ? 'white-space: nowrap;' : ''"
             >{{ barItem.text }}</text>
-          </at-boticebar>
+          </at-noticebar>
         </view>
       </panel>
     </template>
@@ -26,13 +28,18 @@
 <script lang="ts">
 import { h, defineComponent, resolveComponent } from 'vue'
 import { AtNoticebar } from "taro-ui-vue3"
-import { View, Text } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import { Page, Panel } from '@/components/index'
 import './index.scss'
 
 export default defineComponent({
   name: "NoticebarDemo",
+
+  components: {
+    AtNoticebar,
+    Page,
+    Panel
+  },
 
   setup() {
 

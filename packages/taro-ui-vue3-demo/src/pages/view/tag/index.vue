@@ -1,7 +1,7 @@
 <template>
   <page header-title="Tag 标签">
     <panel title="空心标签">
-      <exampe-item>
+      <example-item>
         <view
           v-for="(item, index) in hollowTagList"
           :key="`at-tag-${index}`"
@@ -16,14 +16,14 @@
             <text>标签</text>
           </at-tag>
         </view>
-      </exampe-item>
+      </example-item>
     </panel>
 
     <panel
       title="实心标签"
       class="panel__content"
     >
-      <exampe-item>
+      <example-item>
         <view
           v-for="(item, index) in solidTagList"
           :key="`at-tag-${index}`"
@@ -39,14 +39,14 @@
             <text>标签</text>
           </at-tag>
         </view>
-      </exampe-item>
+      </example-item>
     </panel>
 
     <panel
       title="点击事件"
       class="panel__content"
     >
-      <exampe-item>
+      <example-item>
         <view
           v-for="(item, index) in tagList"
           :key="`at-tag-${index}`"
@@ -62,14 +62,14 @@
             <text>{{  `tag-${index + 1}` }}</text>
           </at-tag>
         </view>
-      </exampe-item>
+      </example-item>
     </panel>
 
     <panel
       title="不可点击态"
       class="panel__content"
     >
-      <exampe-item>
+      <example-item>
         <view class="subitem">
           <at-tag
             circle
@@ -87,14 +87,14 @@
             <text>标签</text>
           </at-tag>
         </view>
-      </exampe-item>
+      </example-item>
     </panel>
 
     <panel
       title="空心标签（小）"
       class="panel__content"
     >
-      <exampe-item>
+      <example-item>
         <view
           v-for="(item, index) in hollowTagList2"
           :key="`at-tag-${index}`"
@@ -110,16 +110,16 @@
             <text>标签</text>
           </at-tag>
         </view>
-      </exampe-item>
+      </example-item>
     </panel>
 
     <panel
       title="实心标签（小）"
       class="panel__content"
     >
-      <exampe-item>
+      <example-item>
         <view
-          v-for="(item, index) in hollowTagList2"
+          v-for="(item, index) in solidTagList2"
           :key="`at-tag-${index}`"
           class="subitem"
         >
@@ -134,14 +134,14 @@
             <text>标签</text>
           </at-tag>
         </view>
-      </exampe-item>
+      </example-item>
     </panel>
 
     <panel
       title="不可点击态（小）"
       class="panel__content"
     >
-      <exampe-item>
+      <example-item>
         <view class="subitem">
           <at-tag
             circle
@@ -161,15 +161,15 @@
             <text>标签</text>
           </at-tag>
         </view>
-      </exampe-item>
+      </example-item>
     </panel>
   </page>
 </template>
 
 <script lang="ts">
-import { AtTag } from "taro-ui-vue3"
-import { h, defineComponent, reactive, resolveComponent } from 'vue'
 import Taro from '@tarojs/taro'
+import { AtTag } from "taro-ui-vue3"
+import { defineComponent, reactive, toRefs } from 'vue'
 import { Page, Panel, ExampleItem } from '@/components/index'
 import './index.scss'
 
@@ -190,8 +190,11 @@ export default defineComponent({
   name: "TagDemo",
 
   components: {
-    AtTag, Page, Panel, ExampleItem
-  }
+    AtTag,
+    Page,
+    Panel,
+    ExampleItem
+  },
 
   setup() {
 
