@@ -13,7 +13,7 @@
       </example-item>
     </panel>
 
-    <panel title="定义长度">
+    <panel title="定义长度 (AtFlexItem - size)">
       <example-item>
         <at-flex>
           <at-flex-item :size="3">A</at-flex-item>
@@ -23,7 +23,7 @@
         </at-flex>
       </example-item>
     </panel>
-    <panel title="定义偏移">
+    <panel title="定义偏移 (AtFlexItem - offset)">
       <example-item>
         <at-flex>
           <at-flex-item :offset="2">A</at-flex-item>
@@ -32,7 +32,7 @@
         </at-flex>
       </example-item>
     </panel>
-    <panel title="超出换行">
+    <panel title="超出换行 (AtFlex - wrap)">
       <example-item>
         <at-flex wrap="wrap">
           <at-flex-item :size="4">A</at-flex-item>
@@ -43,7 +43,7 @@
         </at-flex>
       </example-item>
     </panel>
-    <panel title="宽度根据内容撑开">
+    <panel title="宽度根据内容撑开 (AtFlexItem - isAuto)">
       <example-item>
         <at-flex>
           <at-flex-item
@@ -54,7 +54,7 @@
         </at-flex>
       </example-item>
     </panel>
-    <panel title="内容自动换行">
+    <panel title="内容自动换行 (AtFlexItem - isWrap)">
       <example-item>
         <at-flex>
           <at-flex-item
@@ -65,7 +65,7 @@
         </at-flex>
       </example-item>
     </panel>
-    <panel title="侧轴方向的对齐方式">
+    <panel title="侧轴方向的对齐方式 (AtFlex - align)">
       <example-item>
         <at-flex>
           <at-flex-item
@@ -112,7 +112,7 @@
         </at-flex>
       </example-item>
     </panel>
-    <panel title="主轴方向的排列方式">
+    <panel title="主轴方向的排列方式 (AtFlex - justify)">
       <example-item>
         <at-flex>
           <at-flex-item :size="5">默认</at-flex-item>
