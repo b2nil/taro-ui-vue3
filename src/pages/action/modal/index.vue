@@ -95,7 +95,10 @@
       />
 
       <!-- 城市索引 -->
-      <at-modal :isOpened="isOpened5">
+      <at-modal
+        :isOpened="isOpened5"
+        @close="closeModal(5, 'Modal 被关闭了')"
+      >
         <at-modal-content>
           <at-indexes
             :list="mockData"
