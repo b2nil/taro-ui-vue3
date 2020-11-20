@@ -33,17 +33,6 @@ export default [
         file: resolveFile(pkg.module),
         format: 'es',
         sourcemap: true
-      },
-      {
-        file: resolveFile(pkg.browser),
-        format: 'umd',
-        name: 'taro-ui-vue3',
-        sourcemap: true,
-        globals: {
-          'vue': 'vue',
-          '@tarojs/components': 'components',
-          '@tarojs/taro': 'Taro',
-        }
       }
     ],
     external: externalPackages,
