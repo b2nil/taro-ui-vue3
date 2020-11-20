@@ -78,7 +78,7 @@ const AtButton = defineComponent({
 
     // Taro Button Events
     onGetUserInfo: Function as PropType<AtButtonProps['onGetUserInfo']>,
-    onGetAuthrize: Function as PropType<AtButtonProps['onGetAuthorize']>, // Alipay auth
+    onGetAuthorize: Function as PropType<AtButtonProps['onGetAuthorize']>, // Alipay auth
     onContact: Function as PropType<AtButtonProps['onContact']>,
     onGetPhoneNumber: Function as PropType<AtButtonProps['onGetPhoneNumber']>,
     onGetRealnameAuthInfo: Function as PropType<AtButtonProps['onGetRealnameAuthInfo']>,
