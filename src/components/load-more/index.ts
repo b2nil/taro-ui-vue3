@@ -68,7 +68,7 @@ const AtLoadMore = defineComponent({
                     h(AtButton, {
                       full: true,
                       style: props.moreBtnStyle,
-                      onTap: handleClick.bind(this)
+                      onClick: handleClick.bind(this)
                     }, { default: () => props.moreText })
                   ]
                 })
