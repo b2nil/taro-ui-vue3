@@ -1,5 +1,4 @@
 import { h, defineComponent, computed, mergeProps, PropType } from "vue"
-import _forEach from 'lodash/forEach'
 import { View } from '@tarojs/components'
 import { AtFlexItemProps } from 'types/flex'
 
@@ -7,14 +6,8 @@ const AtFlexItem = defineComponent({
   name: "AtFlexItem",
 
   props: {
-    isAuto: {
-      type: Boolean,
-      default: false,
-    },
-    isWrap: {
-      type: Boolean,
-      default: false,
-    },
+    isAuto: Boolean,
+    isWrap: Boolean,
     align: {
       type: String as PropType<AtFlexItemProps['align']>,
       default: 'center',
@@ -31,48 +24,19 @@ const AtFlexItem = defineComponent({
 
   setup(props: AtFlexItemProps, { attrs, slots }) {
 
-    const rootClass = computed(() => {
-      const root = { 'at-col': true }
-
-      _forEach(props, (value, key) => {
-        switch (key) {
-          case 'isAuto':
-            if (value) {
-              root['at-col--auto'] = true
-              return
-            }
-            return
-          case 'isWrap':
-            if (value) {
-              root[`at-col--wrap`] = true
-              return
-            }
-            return
-          case 'size':
-            if (value) {
-              root[`at-col-${value}`] = true
-              return
-            }
-            return
-          case 'offset':
-            if (value != 0) {
-              root[`at-col__offset-${value}`] = true
-              return
-            }
-            return
-          default:
-            root[`at-col__${key}--${value}`] = true
-            return
-        }
-      })
-
-      return root
-    })
+    const rootClasses = computed(() => ({
+      [`at-col-${props.size}`]: Boolean(props.size),
+      [`at-col__align--${props.align}`]: Boolean(props.align),
+      [`at-col__offset-${props.offset}`]: Boolean(props.offset),
+      'at-col--auto': Boolean(props.isAuto),
+      'at-col--wrap': Boolean(props.isWrap),
+      'at-col': true,
+    }))
 
     return () => (
       h(View, mergeProps(attrs, {
-        class: rootClass.value
-      }), { default: () => slots.default && slots.default() })
+        class: rootClasses.value
+      }), { default: () => slots.default?.() })
     )
   }
 })
