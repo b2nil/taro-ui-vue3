@@ -1,15 +1,37 @@
 import { mount } from '@vue/test-utils'
 import AtFab from '../src/index.vue'
 
-const AXIOM = 'Rem is the best girl'
+const factory = (values = {}, slots = { default: ['按钮'] }) => {
+  return mount(AtFab, {
+    components: {},
+    slots,
+    props: { ...values },
+  })
+}
 
-describe('AtFab.vue', () => {
-  test('render test', () => {
-    const wrapper = mount(AtFab, {
-      slots: {
-        default: AXIOM,
-      },
-    })
-    expect(wrapper.text()).toEqual(AXIOM)
+describe('AtFab Snap', () => {
+  it('render AtFab -- default props', () => {
+    const wrapper = factory()
+    expect(wrapper.element).toMatchSnapshot()
+  })
+
+  it('render AtFab -- props className', () => {
+    const wrapper = factory({ className: 'button' })
+    expect(wrapper.element).toMatchSnapshot()
+  })
+
+  it('render AtFab -- props size small', () => {
+    const wrapper = factory({ size: 'small' })
+    expect(wrapper.element).toMatchSnapshot()
+  })
+})
+
+describe('AtFab Event', () => {
+  it('AtFab onClick', () => {
+    const onClick = jest.fn()
+    const wrapper = factory({ onClick: onClick })
+
+    wrapper.find('.at-fab').trigger('tap')
+    expect(onClick).toBeCalled()
   })
 })

@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtForm Snap render initial AtForm 1`] = `
+<form
+  class="at-form"
+  report-submit="false"
+>
+  
+  
+</form>
+`;
+
+exports[`AtForm Snap render initial AtForm 2`] = `
+<form
+  class="at-form"
+  report-submit="true"
+>
+  
+  
+</form>
+`;

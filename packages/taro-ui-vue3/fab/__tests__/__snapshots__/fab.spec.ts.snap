@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtFab Snap render AtFab -- default props 1`] = `
+<view
+  class="at-fab--normal at-fab"
+>
+  
+  按钮
+  
+</view>
+`;
+
+exports[`AtFab Snap render AtFab -- props className 1`] = `
+<view
+  class="at-fab--normal at-fab"
+>
+  
+  按钮
+  
+</view>
+`;
+
+exports[`AtFab Snap render AtFab -- props size small 1`] = `
+<view
+  class="at-fab--small at-fab"
+>
+  
+  按钮
+  
+</view>
+`;

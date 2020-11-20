@@ -26,7 +26,21 @@ function pxTransform(size: number, designWidth?: number): string {
     designWidth = 750
   }
 
-  return Taro.pxTransform(size, designWidth)
+  const deviceRatio = {
+    640: 2.34 / 2,
+    750: 1,
+    828: 1.81 / 2
+  }
+
+  if (!(designWidth in deviceRatio)) {
+    throw new Error(`deviceRatio 配置中不存在 ${designWidth} 的设置！`)
+  }
+
+  if (process.env.TARO_ENV === 'h5') {
+    return Math.ceil((((size / 40) * 640) / designWidth) * 10000) / 10000 + 'rem'
+  }
+
+  return (size * deviceRatio[designWidth]) + 'rpx'
 }
 
 function delay(delayTime = 500): Promise<null> {

@@ -1,15 +1,37 @@
 import { mount } from '@vue/test-utils'
 import AtForm from '../src/index.vue'
 
-const AXIOM = 'Rem is the best girl'
+const factory = (values = {}, slots = { default: [] }) => {
+  return mount(AtForm, {
+    slots,
+    props: { ...values },
+  })
+}
 
-describe('AtForm.vue', () => {
-  test('render test', () => {
-    const wrapper = mount(AtForm, {
-      slots: {
-        default: AXIOM,
-      },
-    })
-    expect(wrapper.text()).toEqual(AXIOM)
+describe('AtForm Snap', () => {
+  it('render initial AtForm', () => {
+    const wrapper = factory()
+    expect(wrapper.element).toMatchSnapshot()
+  })
+
+  it('render initial AtForm', () => {
+    const wrapper = factory({ reportSubmit: true })
+    expect(wrapper.element).toMatchSnapshot()
+  })
+})
+
+describe('AtForm Event', () => {
+  it('AtForm onSubmit', () => {
+    const onSubmit = jest.fn()
+    const wrapper = factory({ onSubmit: onSubmit })
+    wrapper.find('.at-form').trigger('submit')
+    expect(onSubmit).toBeCalled()
+  })
+
+  it('AtForm onReset', () => {
+    const onReset = jest.fn()
+    const wrapper = factory({ onReset: onReset })
+    wrapper.find('.at-form').trigger('reset')
+    expect(onReset).toBeCalled()
   })
 })

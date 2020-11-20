@@ -1,15 +1,27 @@
 import { mount } from '@vue/test-utils'
-import AtLoading from '../src/index.vue'
+import AtLoading from '../../src/components/loading/index.vue'
 
-const AXIOM = 'Rem is the best girl'
+const factory = (values = {}, slots = { default: [] }) => {
+  return mount(AtLoading, {
+    components: {},
+    slots,
+    props: { ...values },
+  })
+}
 
-describe('AtLoading.vue', () => {
-  test('render test', () => {
-    const wrapper = mount(AtLoading, {
-      slots: {
-        default: AXIOM,
-      },
-    })
-    expect(wrapper.text()).toEqual(AXIOM)
+describe('AtLoading Snap', () => {
+  it('render initial AtLoading', () => {
+    const wrapper = factory()
+    expect(wrapper.element).toMatchSnapshot()
+  })
+
+  it('render AtLoading -- props size', () => {
+    const wrapper = factory({ size: 15 })
+    expect(wrapper.element).toMatchSnapshot()
+  })
+
+  it('render AtLoading -- props color', () => {
+    const wrapper = factory({ color: '#fff' })
+    expect(wrapper.element).toMatchSnapshot()
   })
 })

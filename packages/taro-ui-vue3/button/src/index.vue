@@ -29,7 +29,7 @@
         :show-message-card="showMessageCard"
         :send-message-path="sendMessagePath"
         :send-message-title="sendMessageTitle"
-        v-bind="getButtonEventHandlers()"
+        v-bind="eventHandles"
       />
     </form>
 
@@ -47,7 +47,7 @@
       :show-message-card="showMessageCard"
       :send-message-path="sendMessagePath"
       :send-message-title="sendMessageTitle"
-      v-bind="getButtonEventHandlers()"
+      v-bind="eventHandles"
     />
 
     <!-- loading && icon -->
@@ -147,7 +147,7 @@ export default defineComponent({
 
     // Taro Button Events
     onGetUserInfo: Function as PropType<AtButtonProps['onGetUserInfo']>,
-    onGetAuthrize: Function as PropType<AtButtonProps['onGetAuthorize']>, // Alipay auth
+    onGetAuthorize: Function as PropType<AtButtonProps['onGetAuthorize']>, // Alipay auth
     onContact: Function as PropType<AtButtonProps['onContact']>,
     onGetPhoneNumber: Function as PropType<AtButtonProps['onGetPhoneNumber']>,
     onGetRealnameAuthInfo: Function as PropType<AtButtonProps['onGetRealnameAuthInfo']>,
@@ -171,6 +171,8 @@ export default defineComponent({
 
     const loadingColor = computed(() => props.type === 'primary' ? '#fff' : '')
     const loadingSize = computed(() => props.size === 'small' ? '30' : '0')
+
+    const eventHandles = computed(() => getButtonEventHandlers())
 
     function handleClick(event) {
       if (!props.disabled) {
@@ -287,7 +289,7 @@ export default defineComponent({
       handleClick,
       handleReset,
       handleSubmit,
-      getButtonEventHandlers
+      eventHandles
     }
   }
 })

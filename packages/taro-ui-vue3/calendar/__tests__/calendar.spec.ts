@@ -1,15 +1,16 @@
 import { mount } from '@vue/test-utils'
 import AtCalendar from '../src/index.vue'
 
-const AXIOM = 'Rem is the best girl'
+const factory = (values = {}, slots = { default: [] }) => {
+  return mount(AtCalendar, {
+    slots,
+    props: { ...values },
+  })
+}
 
-describe('AtCalendar.vue', () => {
-  test('render test', () => {
-    const wrapper = mount(AtCalendar, {
-      slots: {
-        default: AXIOM,
-      },
-    })
-    expect(wrapper.text()).toEqual(AXIOM)
+describe('AtCalendar Snap', () => {
+  it('render initial AtCalendar', () => {
+    const wrapper = factory()
+    expect(wrapper.element).toMatchSnapshot()
   })
 })

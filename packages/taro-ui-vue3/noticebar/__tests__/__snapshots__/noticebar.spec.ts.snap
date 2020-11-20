@@ -1,0 +1,193 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtNoticebar Snap render AtNoticebar -- props icon 1`] = `
+<view
+  class="at-noticebar"
+>
+  <!-- close icon -->
+  <!--v-if-->
+  <!-- content -->
+  <view
+    class="at-noticebar__content"
+  >
+    <!-- icon -->
+    <view
+      class="at-noticebar__content-icon"
+    >
+      <text
+        class="at-icon at-icon-volume-plus"
+      />
+    </view>
+    <!-- text -->
+    <view
+      class="at-noticebar__content-text"
+    >
+      <!-- default content slot -->
+      <view
+        animation="[object Object]"
+        class="at-noticebar__content-inner"
+        id="J_fibw"
+      >
+        
+        这是内容
+        
+      </view>
+      <!-- show more content -->
+      <!--v-if-->
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtNoticebar Snap render AtNoticebar -- props moreText & showMore 1`] = `
+<view
+  class="at-noticebar at-noticebar--single"
+>
+  <!-- close icon -->
+  <!--v-if-->
+  <!-- content -->
+  <view
+    class="at-noticebar__content"
+  >
+    <!-- icon -->
+    <!--v-if-->
+    <!-- text -->
+    <view
+      class="at-noticebar__content-text"
+    >
+      <!-- default content slot -->
+      <view
+        animation="[object Object]"
+        class="at-noticebar__content-inner"
+        id="J_fafs"
+      >
+        
+        这是内容
+        
+      </view>
+      <!-- show more content -->
+      <view
+        class="at-noticebar__more"
+      >
+        <text
+          class="text"
+        >
+          查看更多
+        </text>
+        <view
+          class="at-noticebar__more-icon"
+        >
+          <text
+            class="at-icon at-icon-chevron-right"
+          />
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtNoticebar Snap render AtNoticebar -- props show 1`] = `
+<view
+  class="at-noticebar"
+>
+  <!-- close icon -->
+  <view
+    class="at-noticebar__close"
+  >
+    <text
+      class="at-icon at-icon-close"
+    />
+  </view>
+  <!-- content -->
+  <view
+    class="at-noticebar__content"
+  >
+    <!-- icon -->
+    <!--v-if-->
+    <!-- text -->
+    <view
+      class="at-noticebar__content-text"
+    >
+      <!-- default content slot -->
+      <view
+        animation="[object Object]"
+        class="at-noticebar__content-inner"
+        id="J_7nr0"
+      >
+        
+        这是内容
+        
+      </view>
+      <!-- show more content -->
+      <!--v-if-->
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtNoticebar Snap render AtNoticebar -- props single 1`] = `
+<view
+  class="at-noticebar at-noticebar--single"
+>
+  <!-- close icon -->
+  <!--v-if-->
+  <!-- content -->
+  <view
+    class="at-noticebar__content"
+  >
+    <!-- icon -->
+    <!--v-if-->
+    <!-- text -->
+    <view
+      class="at-noticebar__content-text"
+    >
+      <!-- default content slot -->
+      <view
+        animation="[object Object]"
+        class="at-noticebar__content-inner"
+        id="J_bc46"
+      >
+        
+        这是内容
+        
+      </view>
+      <!-- show more content -->
+      <!--v-if-->
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtNoticebar Snap render AtNoticebar -- props speed 1`] = `
+<view
+  class="at-noticebar"
+>
+  <!-- close icon -->
+  <!--v-if-->
+  <!-- content -->
+  <view
+    class="at-noticebar__content"
+  >
+    <!-- icon -->
+    <!--v-if-->
+    <!-- text -->
+    <view
+      class="at-noticebar__content-text"
+    >
+      <!-- default content slot -->
+      <view
+        animation="[object Object]"
+        class="at-noticebar__content-inner"
+        id="J_e1uj"
+      >
+        
+        这是内容
+        
+      </view>
+      <!-- show more content -->
+      <!--v-if-->
+    </view>
+  </view>
+</view>
+`;

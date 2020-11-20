@@ -1,0 +1,849 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtImagePicker Snap render AtImagePicker -- props className 1`] = `
+<view
+  class="at-image-picker"
+>
+  
+  <view
+    class="at-image-picker__flex-box"
+  >
+    
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      
+      <!-- + add bar: choose button -->
+      <view
+        class="at-image-picker__item at-image-picker__choose-btn"
+      >
+        
+        <view
+          class="add-bar"
+        />
+        <view
+          class="add-bar"
+        />
+        
+      </view>
+      
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <!--v-if-->
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <!--v-if-->
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <!--v-if-->
+    </view>
+    
+  </view>
+  
+</view>
+`;
+
+exports[`AtImagePicker Snap render AtImagePicker -- props customStyle 1`] = `
+<view
+  class="at-image-picker"
+  customstyle="color:red;"
+>
+  
+  <view
+    class="at-image-picker__flex-box"
+  >
+    
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      
+      <!-- + add bar: choose button -->
+      <view
+        class="at-image-picker__item at-image-picker__choose-btn"
+      >
+        
+        <view
+          class="add-bar"
+        />
+        <view
+          class="add-bar"
+        />
+        
+      </view>
+      
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <!--v-if-->
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <!--v-if-->
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <!--v-if-->
+    </view>
+    
+  </view>
+  
+</view>
+`;
+
+exports[`AtImagePicker Snap render AtImagePicker -- props files 1`] = `
+<view
+  class="at-image-picker"
+>
+  
+  <view
+    class="at-image-picker__flex-box"
+  >
+    
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <view
+        class="at-image-picker__item"
+      >
+        <view
+          class="at-image-picker__remove-btn"
+        />
+        <image
+          class="at-image-picker__preview-img"
+          mode="aspectFill"
+          src="https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg"
+        />
+      </view>
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <view
+        class="at-image-picker__item"
+      >
+        <view
+          class="at-image-picker__remove-btn"
+        />
+        <image
+          class="at-image-picker__preview-img"
+          mode="aspectFill"
+          src="https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg"
+        />
+      </view>
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <view
+        class="at-image-picker__item"
+      >
+        <view
+          class="at-image-picker__remove-btn"
+        />
+        <image
+          class="at-image-picker__preview-img"
+          mode="aspectFill"
+          src="https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg"
+        />
+      </view>
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <view
+        class="at-image-picker__item"
+      >
+        <view
+          class="at-image-picker__remove-btn"
+        />
+        <image
+          class="at-image-picker__preview-img"
+          mode="aspectFill"
+          src="https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg"
+        />
+      </view>
+    </view>
+    
+  </view>
+  <view
+    class="at-image-picker__flex-box"
+  >
+    
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <view
+        class="at-image-picker__item"
+      >
+        <view
+          class="at-image-picker__remove-btn"
+        />
+        <image
+          class="at-image-picker__preview-img"
+          mode="aspectFill"
+          src="https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg"
+        />
+      </view>
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      
+      <!-- + add bar: choose button -->
+      <view
+        class="at-image-picker__item at-image-picker__choose-btn"
+      >
+        
+        <view
+          class="add-bar"
+        />
+        <view
+          class="add-bar"
+        />
+        
+      </view>
+      
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <!--v-if-->
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <!--v-if-->
+    </view>
+    
+  </view>
+  
+</view>
+`;
+
+exports[`AtImagePicker Snap render AtImagePicker -- props length 1`] = `
+<view
+  class="at-image-picker"
+>
+  
+  <view
+    class="at-image-picker__flex-box"
+  >
+    
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <view
+        class="at-image-picker__item"
+      >
+        <view
+          class="at-image-picker__remove-btn"
+        />
+        <image
+          class="at-image-picker__preview-img"
+          mode="aspectFill"
+          src="https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg"
+        />
+      </view>
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <view
+        class="at-image-picker__item"
+      >
+        <view
+          class="at-image-picker__remove-btn"
+        />
+        <image
+          class="at-image-picker__preview-img"
+          mode="aspectFill"
+          src="https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg"
+        />
+      </view>
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <view
+        class="at-image-picker__item"
+      >
+        <view
+          class="at-image-picker__remove-btn"
+        />
+        <image
+          class="at-image-picker__preview-img"
+          mode="aspectFill"
+          src="https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg"
+        />
+      </view>
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <view
+        class="at-image-picker__item"
+      >
+        <view
+          class="at-image-picker__remove-btn"
+        />
+        <image
+          class="at-image-picker__preview-img"
+          mode="aspectFill"
+          src="https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg"
+        />
+      </view>
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <view
+        class="at-image-picker__item"
+      >
+        <view
+          class="at-image-picker__remove-btn"
+        />
+        <image
+          class="at-image-picker__preview-img"
+          mode="aspectFill"
+          src="https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg"
+        />
+      </view>
+    </view>
+    
+  </view>
+  <view
+    class="at-image-picker__flex-box"
+  >
+    
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      
+      <!-- + add bar: choose button -->
+      <view
+        class="at-image-picker__item at-image-picker__choose-btn"
+      >
+        
+        <view
+          class="add-bar"
+        />
+        <view
+          class="add-bar"
+        />
+        
+      </view>
+      
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <!--v-if-->
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <!--v-if-->
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <!--v-if-->
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <!--v-if-->
+    </view>
+    
+  </view>
+  
+</view>
+`;
+
+exports[`AtImagePicker Snap render AtImagePicker -- props mode 1`] = `
+<view
+  class="at-image-picker"
+>
+  
+  <view
+    class="at-image-picker__flex-box"
+  >
+    
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <view
+        class="at-image-picker__item"
+      >
+        <view
+          class="at-image-picker__remove-btn"
+        />
+        <image
+          class="at-image-picker__preview-img"
+          mode="top"
+          src="https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg"
+        />
+      </view>
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <view
+        class="at-image-picker__item"
+      >
+        <view
+          class="at-image-picker__remove-btn"
+        />
+        <image
+          class="at-image-picker__preview-img"
+          mode="top"
+          src="https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg"
+        />
+      </view>
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <view
+        class="at-image-picker__item"
+      >
+        <view
+          class="at-image-picker__remove-btn"
+        />
+        <image
+          class="at-image-picker__preview-img"
+          mode="top"
+          src="https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg"
+        />
+      </view>
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <view
+        class="at-image-picker__item"
+      >
+        <view
+          class="at-image-picker__remove-btn"
+        />
+        <image
+          class="at-image-picker__preview-img"
+          mode="top"
+          src="https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg"
+        />
+      </view>
+    </view>
+    
+  </view>
+  <view
+    class="at-image-picker__flex-box"
+  >
+    
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <view
+        class="at-image-picker__item"
+      >
+        <view
+          class="at-image-picker__remove-btn"
+        />
+        <image
+          class="at-image-picker__preview-img"
+          mode="top"
+          src="https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg"
+        />
+      </view>
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      
+      <!-- + add bar: choose button -->
+      <view
+        class="at-image-picker__item at-image-picker__choose-btn"
+      >
+        
+        <view
+          class="add-bar"
+        />
+        <view
+          class="add-bar"
+        />
+        
+      </view>
+      
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <!--v-if-->
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <!--v-if-->
+    </view>
+    
+  </view>
+  
+</view>
+`;
+
+exports[`AtImagePicker Snap render AtImagePicker -- props multiple 1`] = `
+<view
+  class="at-image-picker"
+>
+  
+  <view
+    class="at-image-picker__flex-box"
+  >
+    
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <view
+        class="at-image-picker__item"
+      >
+        <view
+          class="at-image-picker__remove-btn"
+        />
+        <image
+          class="at-image-picker__preview-img"
+          mode="aspectFill"
+          src="https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg"
+        />
+      </view>
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <view
+        class="at-image-picker__item"
+      >
+        <view
+          class="at-image-picker__remove-btn"
+        />
+        <image
+          class="at-image-picker__preview-img"
+          mode="aspectFill"
+          src="https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg"
+        />
+      </view>
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <view
+        class="at-image-picker__item"
+      >
+        <view
+          class="at-image-picker__remove-btn"
+        />
+        <image
+          class="at-image-picker__preview-img"
+          mode="aspectFill"
+          src="https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg"
+        />
+      </view>
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <view
+        class="at-image-picker__item"
+      >
+        <view
+          class="at-image-picker__remove-btn"
+        />
+        <image
+          class="at-image-picker__preview-img"
+          mode="aspectFill"
+          src="https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg"
+        />
+      </view>
+    </view>
+    
+  </view>
+  <view
+    class="at-image-picker__flex-box"
+  >
+    
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <view
+        class="at-image-picker__item"
+      >
+        <view
+          class="at-image-picker__remove-btn"
+        />
+        <image
+          class="at-image-picker__preview-img"
+          mode="aspectFill"
+          src="https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg"
+        />
+      </view>
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      
+      <!-- + add bar: choose button -->
+      <view
+        class="at-image-picker__item at-image-picker__choose-btn"
+      >
+        
+        <view
+          class="add-bar"
+        />
+        <view
+          class="add-bar"
+        />
+        
+      </view>
+      
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <!--v-if-->
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <!--v-if-->
+    </view>
+    
+  </view>
+  
+</view>
+`;
+
+exports[`AtImagePicker Snap render AtImagePicker -- props showAddBtn 1`] = `
+<view
+  class="at-image-picker"
+>
+  
+  <view
+    class="at-image-picker__flex-box"
+  >
+    
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <view
+        class="at-image-picker__item"
+      >
+        <view
+          class="at-image-picker__remove-btn"
+        />
+        <image
+          class="at-image-picker__preview-img"
+          mode="aspectFill"
+          src="https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg"
+        />
+      </view>
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <view
+        class="at-image-picker__item"
+      >
+        <view
+          class="at-image-picker__remove-btn"
+        />
+        <image
+          class="at-image-picker__preview-img"
+          mode="aspectFill"
+          src="https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg"
+        />
+      </view>
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <view
+        class="at-image-picker__item"
+      >
+        <view
+          class="at-image-picker__remove-btn"
+        />
+        <image
+          class="at-image-picker__preview-img"
+          mode="aspectFill"
+          src="https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg"
+        />
+      </view>
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <view
+        class="at-image-picker__item"
+      >
+        <view
+          class="at-image-picker__remove-btn"
+        />
+        <image
+          class="at-image-picker__preview-img"
+          mode="aspectFill"
+          src="https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg"
+        />
+      </view>
+    </view>
+    
+  </view>
+  <view
+    class="at-image-picker__flex-box"
+  >
+    
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <view
+        class="at-image-picker__item"
+      >
+        <view
+          class="at-image-picker__remove-btn"
+        />
+        <image
+          class="at-image-picker__preview-img"
+          mode="aspectFill"
+          src="https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg"
+        />
+      </view>
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <!--v-if-->
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <!--v-if-->
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <!--v-if-->
+    </view>
+    
+  </view>
+  
+</view>
+`;
+
+exports[`AtImagePicker Snap render initial AtImagePicker 1`] = `
+<view
+  class="at-image-picker"
+>
+  
+  <view
+    class="at-image-picker__flex-box"
+  >
+    
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      
+      <!-- + add bar: choose button -->
+      <view
+        class="at-image-picker__item at-image-picker__choose-btn"
+      >
+        
+        <view
+          class="add-bar"
+        />
+        <view
+          class="add-bar"
+        />
+        
+      </view>
+      
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <!--v-if-->
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <!--v-if-->
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!-- image thumb -->
+      <!--v-if-->
+    </view>
+    
+  </view>
+  
+</view>
+`;

@@ -1,0 +1,287 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtAccordion.vue render AtAccordion -- no props 1`] = `
+<view
+  class="at-accordion"
+>
+  <!-- header -->
+  <view
+    class="at-accordion__header"
+  >
+    <!-- icon -->
+    <!--v-if-->
+    <!-- info -->
+    <view
+      class="at-accordion__info"
+    >
+      <view
+        class="at-accordion__info__title"
+      />
+      <view
+        class="at-accordion__info__note"
+      />
+    </view>
+    <!-- arrow -->
+    <view
+      class="at-accordion__arrow"
+    >
+      <text
+        class="at-icon at-icon-chevron-down"
+      />
+    </view>
+  </view>
+  <!-- content -->
+  <view
+    class="at-accordion__content at-accordion__content--inactive"
+  >
+    <view
+      class="at-accordion__body"
+      id="content"
+    >
+      
+      按钮
+      
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtAccordion.vue render AtAccordion -- props icon 1`] = `
+<view
+  class="at-accordion"
+>
+  <!-- header -->
+  <view
+    class="at-accordion__header"
+  >
+    <!-- icon -->
+    <text
+      class="at-icon at-icon-chevron-down at-accordion__icon"
+      style="color: red;"
+    />
+    <!-- info -->
+    <view
+      class="at-accordion__info"
+    >
+      <view
+        class="at-accordion__info__title"
+      />
+      <view
+        class="at-accordion__info__note"
+      />
+    </view>
+    <!-- arrow -->
+    <view
+      class="at-accordion__arrow"
+    >
+      <text
+        class="at-icon at-icon-chevron-down"
+      />
+    </view>
+  </view>
+  <!-- content -->
+  <view
+    class="at-accordion__content at-accordion__content--inactive"
+  >
+    <view
+      class="at-accordion__body"
+      id="content"
+    >
+      
+      &lt;view&gt;&lt;/view&gt;
+      
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtAccordion.vue render AtAccordion -- props icon prefixClass 1`] = `
+<view
+  class="at-accordion"
+>
+  <!-- header -->
+  <view
+    class="at-accordion__header"
+  >
+    <!-- icon -->
+    <text
+      class="prefixClass prefixClass-star at-accordion__icon"
+      style="color: red;"
+    />
+    <!-- info -->
+    <view
+      class="at-accordion__info"
+    >
+      <view
+        class="at-accordion__info__title"
+      />
+      <view
+        class="at-accordion__info__note"
+      />
+    </view>
+    <!-- arrow -->
+    <view
+      class="at-accordion__arrow"
+    >
+      <text
+        class="at-icon at-icon-chevron-down"
+      />
+    </view>
+  </view>
+  <!-- content -->
+  <view
+    class="at-accordion__content at-accordion__content--inactive"
+  >
+    <view
+      class="at-accordion__body"
+      id="content"
+    >
+      
+      &lt;view&gt;&lt;/view&gt;
+      
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtAccordion.vue render AtAccordion -- props note 1`] = `
+<view
+  class="at-accordion"
+>
+  <!-- header -->
+  <view
+    class="at-accordion__header"
+  >
+    <!-- icon -->
+    <!--v-if-->
+    <!-- info -->
+    <view
+      class="at-accordion__info"
+    >
+      <view
+        class="at-accordion__info__title"
+      />
+      <view
+        class="at-accordion__info__note"
+      >
+        note
+      </view>
+    </view>
+    <!-- arrow -->
+    <view
+      class="at-accordion__arrow"
+    >
+      <text
+        class="at-icon at-icon-chevron-down"
+      />
+    </view>
+  </view>
+  <!-- content -->
+  <view
+    class="at-accordion__content at-accordion__content--inactive"
+  >
+    <view
+      class="at-accordion__body"
+      id="content"
+    >
+      
+      &lt;view&gt;&lt;/view&gt;
+      
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtAccordion.vue render AtAccordion -- props open 1`] = `
+<view
+  class="at-accordion"
+>
+  <!-- header -->
+  <view
+    class="at-accordion__header"
+  >
+    <!-- icon -->
+    <!--v-if-->
+    <!-- info -->
+    <view
+      class="at-accordion__info"
+    >
+      <view
+        class="at-accordion__info__title"
+      />
+      <view
+        class="at-accordion__info__note"
+      />
+    </view>
+    <!-- arrow -->
+    <view
+      class="at-accordion__arrow at-accordion__arrow--folded"
+    >
+      <text
+        class="at-icon at-icon-chevron-down"
+      />
+    </view>
+  </view>
+  <!-- content -->
+  <view
+    class="at-accordion__content"
+  >
+    <view
+      class="at-accordion__body"
+      id="content"
+    >
+      
+      按钮
+      
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtAccordion.vue render AtAccordion -- props title 1`] = `
+<view
+  class="at-accordion"
+>
+  <!-- header -->
+  <view
+    class="at-accordion__header"
+  >
+    <!-- icon -->
+    <!--v-if-->
+    <!-- info -->
+    <view
+      class="at-accordion__info"
+    >
+      <view
+        class="at-accordion__info__title"
+      >
+        title
+      </view>
+      <view
+        class="at-accordion__info__note"
+      />
+    </view>
+    <!-- arrow -->
+    <view
+      class="at-accordion__arrow"
+    >
+      <text
+        class="at-icon at-icon-chevron-down"
+      />
+    </view>
+  </view>
+  <!-- content -->
+  <view
+    class="at-accordion__content at-accordion__content--inactive"
+  >
+    <view
+      class="at-accordion__body"
+      id="content"
+    >
+      
+      按钮
+      
+    </view>
+  </view>
+</view>
+`;
