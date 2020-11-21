@@ -82,6 +82,8 @@ function generatePath(modules, margin = 0) {
 
 // @vue/component
 const QrcodeVue = defineComponent({
+  name: "QrcodeVue",
+
   props: {
     value: {
       type: String,

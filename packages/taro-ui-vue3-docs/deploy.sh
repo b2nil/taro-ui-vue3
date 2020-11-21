@@ -13,6 +13,7 @@ touch .nojekyll
 cp '../../assets/favicon.png' '_assets/favicon.png'
 cp '../../assets/virtual-scroll props.png' '_assets/virtual-scroll props.png'
 cp '../../assets/virtual-scroll animation.gif' '_assets/virtual-scroll animation.gif'
+cp '../../assets/h5.png' '_assets/h5.png'
 
 # git ops
 git init

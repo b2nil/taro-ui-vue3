@@ -6,9 +6,10 @@
 
 ## 使用指南
 
-如果已经全局引入了 `taro-ui-vue3` 的样式文件，则无需再次引入
-
-> 由于 `app.js` 添加的样式文件 在小程序上只能影响 `page` 样式,不能影响 `component` 的样式，所以在使用自定义组件时，你可能需要再次引入
+按需引入组件
+```typescript
+import { AtFlex, AtFlexItem } from 'taro-ui-vue3'
+```
 
 **组件依赖的样式文件（仅按需引用时需要）**
 
@@ -83,7 +84,6 @@
 
 ## 内容自动换行
 
-
 ```html
 <at-flex>
   <at-flex-item
@@ -96,7 +96,6 @@
 
 
 ## 侧轴方向的对齐方式
-
 
 ```html
 <at-flex>
@@ -143,7 +142,6 @@
 
 ## 主轴方向的排列方式
 
-
 ```html
 <at-flex>
   <at-flex-item :size="5">默认</at-flex-item>
@@ -170,3 +168,23 @@
   <at-flex-item :size="5">around</at-flex-item>
 </at-flex>
 ```
+
+## AtFlex 参数
+| 参数     | 说明                                     | 类型    | 可选值                        | 默认值  |
+| -------- | ---------------------------------------- | ------- | ----------------------------- | ------- |
+| wrap    | 是否允需要换行, 即 CSS `flex-wrap` 属性  | `String`  | `'no-wrap' | 'wrap' | 'wrap-reverse'`                   | `'no-wrap'`       |
+| align    | flex 项在交叉轴（垂直于主轴）上的对齐方式, 即 CSS `align-items` 属性   | `String`  | `'start' | 'end' | 'center' | 'stretch' | 'baseline'`                   | `'stretch'`       |
+| justify    | flex 项沿主轴方向的对齐方式, 即 CSS `justify-content` 属性  | `String`  | `'start' | 'end' | 'center' | 'between' | 'around'`                   | `'start'`       |
+| direction | 主轴的方向, 即 CSS `flex-direction` 属性   | `String`  | `'row' | 'column' | 'row-reverse' | 'column-reverse'`                   | `'row'`       |
+| alignContent    | 设置当交叉轴上有剩余空间时，flex 容器中的`行`在交叉轴上分配剩余空间的对齐方式，即 CSS `align-content` 属性  | `String`  | `'start' | 'end' | 'center' | 'stretch' | 'between' | 'around'`                   | `'strech'`       |
+
+
+## AtFlexItem 参数
+| 参数     | 说明                                     | 类型    | 可选值                        | 默认值  |
+| -------- | ---------------------------------------- | ------- | ----------------------------- | ------- |
+| isAuto    | 内容是否自动设置宽度  | `Boolean`  | `-`                   | `false`       |
+| isWrap    | 内容是否自动换行  | `Boolean`  | `-`                   | `false`       |
+| align    | 允许某个单独的 flex 项覆盖默认的对齐方式，即 CSS `align-self` 属性  | `String`  | `'top' | 'bottom' | 'center'`                   | `-`       |
+| size    | 栅格宽度  | `String`  | `1~12`       | `-`       |
+| offset    | 栅格偏移距离  | `String`  | `1~12`     | `-`       |
+

@@ -48,5 +48,6 @@ export default {
   indexes: 'navigation/indexes',
   calendar: 'advanced/calendar',
   virtualscroll: 'advanced/virtual-scroll',
+  skeleton: 'advanced/skeleton',
   form: 'form/form'
 }

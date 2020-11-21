@@ -268,8 +268,12 @@
               "name": "Calendar"
             },
             {
-              "title": "长列表",
+              "title": "虚拟列表",
               "name": "VirtualScroll"
+            },
+            {
+              "title": "骨架",
+              "name": "Skeleton"
             }
           ]
         }

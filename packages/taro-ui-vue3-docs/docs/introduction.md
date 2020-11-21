@@ -18,11 +18,16 @@ Taro 是由 [京东·凹凸实验室](https://aotu.io) 倾力打造的多端开�
 
 ## 体验
 
---
+<div class="qrcode-modal">
+  <h6>扫描二维码查看 H5 演示效果</h6>
+  <div class="code-image">
+    <image src="../_assets/h5.png" />
+  </div>
+</div>
 
 ## 官方示例
 
---
+[taro-ui-vue3-demo](https://github.com/b2nil/taro-ui-vue3-demo)
 
 ## 版本
 
