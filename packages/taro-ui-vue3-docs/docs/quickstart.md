@@ -45,7 +45,7 @@ h5: {
 }
 ```
 
-### 4. 使用 Taro UI
+### 4. 使用 Taro UI Vue3
 
 #### 引入所需组件
 
@@ -84,16 +84,21 @@ import 'taro-ui/dist/style/index.scss' // 引入组件样式 - 方式一
 在 `/myApp/src/pages/index/index.tsx` 文件添加以下代码
 
 
-```html
+```vue
 <template>
   <view class='index'>
     <AtButton type='primary' @click="handleClick">按钮文案</AtButton>
   </view>
 </template>
 <script>
+import { AtButton } from "taro-ui-vue3"
 import './index.scss'
+
 export default {
   name: 'Index',
+  component: {
+    AtButton
+  },
   methods: {
     handleClick () {
       console.log('click button)
@@ -156,6 +161,29 @@ $ npx taro build --type swan --watch
 ```
 
 **H5 编译预览模式**
+
+使用 `taro-ui-vue3` 的项目编译至 h5 时，暂时需要使用脚本先修改 `@tarojs/components/dist-h5/vue3/index.js`， 将所有组件导出，方便按需引用。然后通过 webpack 配置 `alias` 将 `@tarojs/components$` 指向 `@tarojs/components/dist-h5/vue3/index.js`。 
+
+具体 h5 编译配置方案如下：
+
+- 在项目的 `config` 目录下增加一个 h5 构建脚本: [h5-building-script.js](https://raw.githubusercontent.com/b2nil/taro-ui-vue3/master/config/h5-building-script.js)
+
+- 将 `package.json` 下的 `build:h5` 命令修改为： `"build:h5": "node ./config/h5-building-script.js && taro build --type h5"`
+
+- 在 `config/index.js` 中的 `h5` 下添加 webpack alias 设置：
+  ```ts
+  h5: {
+    webpackChain(chain) {
+      chain.resolve.alias
+        .set(
+          '@tarojs/components$',
+          '@tarojs/components/dist-h5/vue3/index.js'
+        )
+    }
+  }
+  ```
+
+然后运行下列命令之一进行编译：
 
 ```bash
 # npm script
