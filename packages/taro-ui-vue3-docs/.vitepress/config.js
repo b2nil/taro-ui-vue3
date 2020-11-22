@@ -42,7 +42,7 @@ module.exports = {
     ],
   ],
 
-  logo: "/taro-ui-vue3/_assets/taro-ui-vue3-logo.png",
+  logo: "/_assets/taro-ui-vue3-logo.png",
 
   /**
    * NavItem
