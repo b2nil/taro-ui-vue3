@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { ref } from "vue"
+import { computed } from "vue"
 import { useRoute, useSiteData } from 'vitepress'
 
 import Home from "./Home.vue"
@@ -28,7 +28,7 @@ export default {
   setup() {
     const route = useRoute()
     const siteData = useSiteData()
-    const isHome = ref(route.path === siteData.value.base)
+    const isHome = computed(() => route.path === siteData.value.base)
 
     return {
       isHome
