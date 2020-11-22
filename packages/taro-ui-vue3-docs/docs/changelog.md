@@ -5,12 +5,24 @@
 
 项目遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范
 
+### v1.0.0-alpha.15 (2020-11-20)
+* 修复 `AtFlex` 样式失效问题 ([#7](https://github.com/b2nil/taro-ui-vue3/issues/7)) (c40d5a8, a4f2185)
+* 修复 `AtButton` `onGetAuthorize` 笔误 ([#61](https://github.com/b2nil/taro-ui-vue3/issues/61)) (1dff28f)
+* 修复 `AtLoadMore` `AtButton` 点击事件 (45bfaed)
+
+
+### v1.0.0-alpha.14 (2020-10-30)
+* 新增 `AtSkeleton` 骨架组件 (4caf076)
+* 移除 `AtVirtualScroll`  viewport 属性，并修复可视区域的计算逻辑 (d76edcd)
+* 修复 `AtInput` `style` 属性冲突以及 `maxlength` 属性失效 (25fcb4f, 36c9b97)
+
 
 ### v1.0.0-alpha.13 (2020-10-30)
 * 修复 `AtSwipeAction` `could not find width of null` 的错误 ([#51](https://github.com/b2nil/taro-ui-vue3/issues/51)) (3050c68)
 * 修复 `AtCurtain` `Invalid VNode type: undefined` 的错误 ([#53](https://github.com/b2nil/taro-ui-vue3/issues/53)) (1510079)
 * 修复 `AtCalendar` 页面重新渲染后无法切换月份 ([#55](https://github.com/b2nil/taro-ui-vue3/issues/55)) (e4271f2)
 * 修复 `AtButton` `onGetUserInfo` 等事件失效的问题 ([#56](https://github.com/b2nil/taro-ui-vue3/issues/56)) (fcefbbf)
+* 优化组件依赖的样式的引入方式，按需引用时，一个组件只需引入一个样式文件即可，([#54](https://github.com/b2nil/taro-ui-vue3/issues/54)) (d8fdd9f)
 
 
 ### v1.0.0-alpha.12 (2020-10-24)
