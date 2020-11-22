@@ -77,7 +77,7 @@ import 'taro-ui/dist/style/index.scss' // 引入组件样式 - 方式一
 @import "taro-ui-vue3/dist/style/components/button.scss"; // 引入所需的组件样式 - 方式三
 ```
 
-> 具体的组件样式文件请查看 [组件样式列表](https://github.com/NervJS/taro-ui/tree/dev/src/style/components)
+> 具体的组件样式文件请查看 [组件样式列表](https://github.com/b2nil/taro-ui-vue3/tree/master/src/style/components)
 
 ## 示例
 
