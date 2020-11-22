@@ -11,7 +11,7 @@
 * 修复 `AtLoadMore` `AtButton` 点击事件 (45bfaed)
 
 
-### v1.0.0-alpha.14 (2020-10-30)
+### v1.0.0-alpha.14 (2020-11-14)
 * 新增 `AtSkeleton` 骨架组件 (4caf076)
 * 移除 `AtVirtualScroll`  viewport 属性，并修复可视区域的计算逻辑 (d76edcd)
 * 修复 `AtInput` `style` 属性冲突以及 `maxlength` 属性失效 (25fcb4f, 36c9b97)
