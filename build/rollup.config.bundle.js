@@ -22,7 +22,7 @@ const externalPackages = [
 
 export default [
   {
-    input: resolveFile('packages/taro-ui-vue3/taro-ui-vue3/index.ts'),
+    input: resolveFile('packages/taro-ui-vue3/src/index.ts'),
     output: [
       {
         file: resolveFile(pkg.main),
@@ -64,7 +64,7 @@ export default [
       rollupCopyPlugin({
         targets: [
           {
-            src: 'packages/taro-ui-vue3/style',
+            src: 'packages/taro-ui-vue3/src/style',
             dest: 'dist'
           }
         ]

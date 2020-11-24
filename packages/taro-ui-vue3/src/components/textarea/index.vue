@@ -35,7 +35,7 @@
 
 <script lang="ts">
 import Taro from '@tarojs/taro'
-import { defineComponent, computed, toRefs, ref } from 'vue'
+import { defineComponent, computed, toRefs, ref, PropType } from 'vue'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtTextareaProps } from "types/textarea"
 import { pxTransform } from "@/utils/common"
@@ -91,7 +91,16 @@ export default defineComponent({
     fixed: { type: Boolean, default: false },
     textOverflowForbidden: { type: Boolean, default: true },
     height: { type: [String, Number], default: 100 },
-    cursorSpacing: { type: Number, default: 100 }
+    cursorSpacing: { type: Number, default: 100 },
+    onChange: {
+      type: Function as PropType<AtTextareaProps['onChange']>,
+      default: () => (value: string, event?: CommonEvent) => { },
+      required: true
+    },
+    onFocus: Function as PropType<AtTextareaProps['onFocus']>,
+    onBlur: Function as PropType<AtTextareaProps['onBlur']>,
+    onConfirm: Function as PropType<AtTextareaProps['onConfirm']>,
+    onLinechange: Function as PropType<AtTextareaProps['onLinechange']>
   },
 
   setup(props: AtTextareaProps, { emit }) {

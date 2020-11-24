@@ -18,12 +18,41 @@
     "baseUrl": ".",
     "rootDir": ".",
     "jsx": "preserve",
-    "lib": ["esnext", "dom"],
-    "types": ["node", "jest"],
-    "typeRoots": ["node_modules/@types", "typings"],
-    "paths": {}
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "types": [
+      "node",
+      "jest"
+    ],
+    "typeRoots": [
+      "node_modules/@types",
+      "typings"
+    ],
+    "paths": {
+      "@/components/*": [
+        "packages/taro-ui-vue3/src/components/*"
+      ],
+      "@/utils/*": [
+        "packages/taro-ui-vue3/src/utils/*"
+      ],
+      "@/style/*": [
+        "packages/taro-ui-vue3/src/style/*"
+      ],
+      "types/*": [
+        "packages/taro-ui-vue3/types/*"
+      ]
+    }
   },
-  "exclude": ["node_modules", "dist"],
-  "include": ["typings", "packages/taro-ui-vue3/**/*"],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+  "include": [
+    "typings",
+    "packages/taro-ui-vue3/types",
+    "packages/taro-ui-vue3/src/**/*"
+  ],
   "compileOnSave": false
 }

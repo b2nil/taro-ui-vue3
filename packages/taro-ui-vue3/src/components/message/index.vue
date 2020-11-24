@@ -19,11 +19,6 @@ import {
   toRef
 } from 'vue'
 
-import {
-  AtMessageState
-} from "types/message"
-
-
 export default defineComponent({
   name: "AtMessage",
 

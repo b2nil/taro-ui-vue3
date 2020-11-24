@@ -35,8 +35,8 @@
 <script lang="ts">
 import { defineComponent, computed, reactive, onMounted, nextTick, watch, toRef, PropType } from "vue"
 import { AtDrawerProps, AtDrawerState } from "types/drawer"
-import AtList from "@/components/list/index.vue"
-import AtListItem from "@/components/list/item/index.vue"
+import AtList from "../list/index.vue"
+import AtListItem from "../list/item/index.vue"
 
 export default defineComponent({
   name: "AtDrawer",
@@ -71,6 +71,14 @@ export default defineComponent({
     items: {
       type: Array as PropType<AtDrawerProps['items']>,
       default: () => [],
+    },
+    onItemClick: {
+      type: Function as PropType<AtDrawerProps['onItemClick']>,
+      default: () => () => { }
+    },
+    onClose: {
+      type: Function as PropType<AtDrawerProps['onClose']>,
+      default: () => () => { }
     }
   },
 

@@ -36,8 +36,8 @@
 <script lang="ts">
 import { defineComponent, toRefs, PropType } from "vue"
 import { AtLoadMoreProps } from "types/load-more"
-import AtActivityIndicator from '@/components/activity-indicator/index.vue'
-import AtButton from "@/components/button/index.vue"
+import AtActivityIndicator from '../activity-indicator/index.vue'
+import AtButton from "../button/index.vue"
 
 export default defineComponent({
   name: "AtLoadMore",
@@ -74,6 +74,10 @@ export default defineComponent({
     noMoreText: {
       type: String as PropType<AtLoadMoreProps['noMoreText']>,
       default: '没有更多'
+    },
+    onClick: {
+      type: Function as PropType<AtLoadMoreProps['onClick']>,
+      default: () => () => { }
     }
   },
 

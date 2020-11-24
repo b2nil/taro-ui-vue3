@@ -30,7 +30,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, watch, ref, computed, toRefs } from "vue"
+import { defineComponent, watch, ref, computed, toRefs, PropType } from "vue"
 import { CommonEvent } from "@tarojs/components/types/common"
 import { AtActionSheetProps } from "types/action-sheet"
 
@@ -61,6 +61,14 @@ export default defineComponent({
     cancelText: {
       type: String,
       default: ''
+    },
+    onClose: {
+      type: Function as PropType<(event?: CommonEvent) => void>,
+      default: () => () => { }
+    },
+    onCancel: {
+      type: Function as PropType<(event?: CommonEvent) => void>,
+      default: () => () => { }
     }
   },
 

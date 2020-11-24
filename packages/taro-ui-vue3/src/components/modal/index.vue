@@ -116,7 +116,10 @@ export default defineComponent({
       default: true
     },
     cancelText: String as PropType<AtModalProps['cancelText']>,
-    confirmText: String as PropType<AtModalProps['confirmText']>
+    confirmText: String as PropType<AtModalProps['confirmText']>,
+    onClose: Function as PropType<AtModalProps['onClose']>,
+    onConfirm: Function as PropType<AtModalProps['onConfirm']>,
+    onCancel: Function as PropType<AtModalProps['onCancel']>
   },
 
   setup(props: AtModalProps, { emit }) {

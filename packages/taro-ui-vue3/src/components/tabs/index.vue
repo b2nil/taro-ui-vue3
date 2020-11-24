@@ -128,6 +128,11 @@ export default defineComponent({
       type: Array as PropType<AtTabsProps['tabList']>,
       default: [],
       required: true
+    },
+    onClick: {
+      type: Function as PropType<AtTabsProps['onClick']>,
+      default: () => (index: number, event: CommonEvent) => { },
+      required: true
     }
   },
 

@@ -98,7 +98,10 @@ export default defineComponent({
     rightSecondIconType: {
       type: [String, Object] as PropType<AtNavBarProps['rightFirstIconType']>,
       default: ''
-    }
+    },
+    onClickLeftIcon: Function as PropType<AtNavBarProps['onClickLeftIcon']>,
+    onClickRightFirstIcon: Function as PropType<AtNavBarProps['onClickRgIconSt']>,
+    onClickRightSecondIcon: Function as PropType<AtNavBarProps['onClickRgIconNd']>
   },
 
   setup(props: AtNavBarProps, { emit }) {

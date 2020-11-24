@@ -1,6 +1,6 @@
 import AtAccordion from './components/accordion/index.vue'
 import AtActionSheet from './components/action-sheet/index.vue'
-import AtActionSheetItem from './components/action-sheet/item/index.vue'
+import AtActionSheetItem from './components/action-sheet/body/item/index.vue'
 import AtActivityIndicator from './components/activity-indicator/index.vue'
 import AtAvatar from './components/avatar/index.vue'
 import AtBadge from './components/badge/index.vue'

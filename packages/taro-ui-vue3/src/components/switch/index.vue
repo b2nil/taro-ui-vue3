@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, toRefs } from 'vue'
+import { defineComponent, computed, toRefs, PropType } from 'vue'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtSwitchProps } from "types/switch"
 
@@ -44,6 +44,7 @@ export default defineComponent({
     checked: Boolean,
     disabled: Boolean,
     border: Boolean,
+    onChange: Function as PropType<AtSwitchProps['onChange']>
   },
 
   setup(props: AtSwitchProps, { emit }) {

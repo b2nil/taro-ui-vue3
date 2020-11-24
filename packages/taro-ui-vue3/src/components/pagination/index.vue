@@ -50,9 +50,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, reactive, watch, toRefs, toRef } from 'vue'
+import { defineComponent, computed, reactive, watch, toRefs, toRef, PropType } from 'vue'
 import { AtPaginationProps, AtPaginationState, PageChangeData } from "types/pagination"
-import AtButton from "@/components/button/index.vue"
+import AtButton from "../button/index.vue"
 
 const MIN_MAXPAGE = 1
 const getMaxPage = (maxPage = 0): number => {
@@ -87,6 +87,7 @@ export default defineComponent({
     current: { type: Number, default: 1 },
     pageSize: { type: Number, default: 20 },
     icon: { type: Boolean, default: false },
+    onPageChange: Function as PropType<AtPaginationProps['onPageChange']>
   },
 
   setup(props: AtPaginationProps, { emit }) {

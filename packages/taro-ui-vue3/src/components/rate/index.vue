@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { defineComponent, computed, PropType } from 'vue'
 import { AtRateProps } from "types/rate"
 import { pxTransform } from "@/utils/common"
 
@@ -50,7 +50,8 @@ export default defineComponent({
     margin: {
       type: Number,
       default: 5
-    }
+    },
+    onChange: Function as PropType<AtRateProps['onChange']>
   },
 
   setup(props: AtRateProps) {

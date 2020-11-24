@@ -83,6 +83,10 @@ export default defineComponent({
     mode: {
       type: String as PropType<AtGridProps['mode']>,
       default: 'square'
+    },
+    onClick: {
+      type: Function as PropType<AtGridProps['onClick']>,
+      default: () => () => { }
     }
   },
 

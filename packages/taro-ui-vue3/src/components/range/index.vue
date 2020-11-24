@@ -79,7 +79,7 @@ export default defineComponent({
       default: ''
     },
     value: {
-      type: Array as PropType<AtRangeProps['value']>,
+      type: Array as unknown as PropType<AtRangeProps['value']>,
       default: [0, 0]
     },
     min: {
@@ -95,6 +95,8 @@ export default defineComponent({
       default: 0
     },
     disabled: Boolean,
+    onChange: Function as PropType<AtRangeProps['onChange']>,
+    onAfterChange: Function as PropType<AtRangeProps['onAfterChange']>
   },
 
   setup(props: AtRangeProps, { emit }) {

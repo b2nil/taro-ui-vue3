@@ -23,6 +23,10 @@ export default defineComponent({
       type: String as PropType<'normal' | 'small'>,
       default: 'normal',
       validator: (prop: string) => ['normal', 'small'].includes(prop)
+    },
+    onClick: {
+      type: Function as PropType<AtFabProps['onClick']>,
+      default: () => () => { }
     }
   },
 

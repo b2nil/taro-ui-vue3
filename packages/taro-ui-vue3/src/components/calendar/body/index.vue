@@ -185,6 +185,18 @@ export default defineComponent({
     selectedDates: {
       type: Array as PropType<AtCalendarBodyProps['selectedDates']>,
       default: () => []
+    },
+    onDayClick: {
+      type: Function as unknown as () => (item: Calendar.Item) => void,
+      default: () => () => { }
+    },
+    onLongClick: {
+      type: Function as unknown as () => (item: Calendar.Item) => void,
+      default: () => () => { }
+    },
+    onSwipeMonth: {
+      type: Function as unknown as () => (vectorCount: number) => void,
+      default: () => () => { }
     }
   },
 

@@ -26,10 +26,7 @@ const runBuild = async () => {
   const inputs = pkgs
     .map(pkg => pkg.name)
     .filter(name =>
-      name.includes('@taro-ui-vue3') &&
-      !name.includes('types') &&
-      !name.includes('utils') &&
-      !name.includes('style'),
+      name.includes('taro-ui-vue3')
     ).slice(process.argv[2], process.argv[3])
 
   build(inputs[index])

@@ -99,9 +99,9 @@ import {
 import { CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
 import { AtIndexesProps, AtIndexesState, Item, ListItem } from "types/indexes"
 
-import AtList from "@/components/list/index.vue"
-import AtListItem from "@/components/list/item/index.vue"
-import AtToast from '@/components/toast/index.vue'
+import AtList from "../list/index.vue"
+import AtListItem from "../list/item/index.vue"
+import AtToast from '../toast/index.vue'
 
 export default defineComponent({
   name: "AtIndexes",
@@ -138,7 +138,9 @@ export default defineComponent({
     list: {
       type: Array as PropType<AtIndexesProps['list']>,
       default: () => []
-    }
+    },
+    onClick: Function as PropType<AtIndexesProps['onClick']>,
+    onScrollIntoView: Function as PropType<AtIndexesProps['onScrollIntoView']>
   },
 
   setup(props: AtIndexesProps, { emit }) {

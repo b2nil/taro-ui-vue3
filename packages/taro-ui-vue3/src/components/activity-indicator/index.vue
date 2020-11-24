@@ -23,7 +23,7 @@
 <script lang="ts">
 import { defineComponent, computed, toRefs, PropType } from "vue"
 import { AtActivityIndicatorProps } from "types/activity-indicator"
-import AtLoading from "@/components/loading/index.vue"
+import AtLoading from "../loading/index.vue"
 
 export default defineComponent({
   name: "AtActivityIndicator",

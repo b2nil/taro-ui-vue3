@@ -94,7 +94,11 @@ export default defineComponent({
       default: () => ({})
     },
     icon: Object as PropType<AtCardProps['icon']>,
-    renderIcon: Object as PropType<AtCardProps['renderIcon']>
+    renderIcon: Object as PropType<AtCardProps['renderIcon']>,
+    onClick: {
+      type: Function as PropType<AtCardProps['onClick']>,
+      default: () => () => { }
+    }
   },
 
   setup(props: AtCardProps, { emit }) {

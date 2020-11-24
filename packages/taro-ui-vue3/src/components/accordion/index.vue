@@ -86,6 +86,10 @@ export default defineComponent({
       type: String,
       default: "",
     },
+    onClick: {
+      type: Function as PropType<AtAccordionProps['onClick']>,
+      default: () => () => { }
+    }
   },
 
   setup(props: AtAccordionProps, { emit }) {

@@ -134,7 +134,20 @@ export default defineComponent({
     },
     count: Number as PropType<AtImagePickerProps['count']>,
     sizeType: Array as PropType<AtImagePickerProps['sizeType']>,
-    sourceType: Array as PropType<AtImagePickerProps['sourceType']>
+    sourceType: Array as PropType<AtImagePickerProps['sourceType']>,
+    onChange: {
+      type: Function as PropType<AtImagePickerProps['onChange']>,
+      default: () => () => { },
+      required: true
+    },
+    onImageClick: {
+      type: Function as PropType<AtImagePickerProps['onImageClick']>,
+      default: () => () => { }
+    },
+    onFail: {
+      type: Function as PropType<AtImagePickerProps['onFail']>,
+      default: () => () => { }
+    }
   },
 
   setup(props: AtImagePickerProps, { emit }) {

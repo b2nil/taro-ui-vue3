@@ -33,6 +33,11 @@ export default defineComponent({
       type: Array as PropType<AtSwipeActionOptionsProps['options']>,
       default: [],
       required: true
+    },
+    onQueryedDom: {
+      type: Function as PropType<AtSwipeActionOptionsProps['onQueryedDom']>,
+      default: () => ({ width }: { width: number }) => { },
+      required: true
     }
   },
 

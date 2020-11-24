@@ -89,7 +89,8 @@ export default defineComponent({
     seconds: {
       type: Number as PropType<AtCountDownProps['seconds']>,
       default: 0,
-    }
+    },
+    onTimeUp: Function as PropType<AtCountDownProps['onTimeUp']>
   },
 
   onShow() {

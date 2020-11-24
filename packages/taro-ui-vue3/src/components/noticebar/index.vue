@@ -85,7 +85,9 @@ export default defineComponent({
       default: '查看详情'
     },
     showMore: Boolean,
-    icon: String as PropType<AtNoticeBarProps['icon']>
+    icon: String as PropType<AtNoticeBarProps['icon']>,
+    onClose: Function as PropType<AtNoticeBarProps['onClose']>,
+    onGotoMore: Function as PropType<AtNoticeBarProps['onGotoMore']>
   },
 
   setup(props: AtNoticeBarProps, { emit }) {

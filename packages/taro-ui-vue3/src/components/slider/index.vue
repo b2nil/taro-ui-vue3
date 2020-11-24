@@ -27,9 +27,9 @@
 </template>
 
 <script lang="ts">
-import { reactive, watch, computed, defineComponent, toRefs } from 'vue'
+import { reactive, watch, computed, defineComponent, toRefs, PropType } from 'vue'
 import { CommonEvent } from '@tarojs/components/types/common'
-import { AtSliderProps, AtSliderState } from "types/slider"
+import { AtSliderProps } from "types/slider"
 
 export default defineComponent({
   name: "AtSlider",
@@ -77,12 +77,20 @@ export default defineComponent({
     showValue: {
       type: Boolean,
       default: false
+    },
+    onChange: {
+      type: Function as PropType<AtSliderProps['onChange']>,
+      default: () => (value: number) => { }
+    },
+    onChanging: {
+      type: Function as PropType<AtSliderProps['onChange']>,
+      default: () => (value: number) => { }
     }
   },
 
   setup(props: AtSliderProps, { emit }) {
 
-    const state = reactive<AtSliderState>({
+    const state = reactive({
       value_: clampNumber(props.value!, props.min!, props.max!)
     })
 

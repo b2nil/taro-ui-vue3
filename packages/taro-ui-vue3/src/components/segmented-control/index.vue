@@ -55,6 +55,11 @@ export default defineComponent({
       type: Array as PropType<AtSegmentedControlProps['values']>,
       default: [],
       required: true
+    },
+    onClick: {
+      type: Function as PropType<AtSegmentedControlProps['onClick']>,
+      default: () => (index: number, event: CommonEvent) => { },
+      required: true
     }
   },
 

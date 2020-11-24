@@ -69,6 +69,14 @@ export default defineComponent({
     list: {
       type: Array as PropType<Calendar.List<Calendar.Item>>,
       default: () => [] as Calendar.List<Calendar.Item>
+    },
+    onClick: {
+      type: Function as PropType<AtCalendarListProps["onClick"]>,
+      default: () => () => { }
+    },
+    onLongClick: {
+      type: Function as PropType<AtCalendarListProps["onLongClick"]>,
+      default: () => () => { }
     }
   },
 

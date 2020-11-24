@@ -31,6 +31,10 @@ export default defineComponent({
     closeBtnPosition: {
       type: String as PropType<AtCurtainProps['closeBtnPosition']>,
       default: 'bottom'
+    },
+    onClose: {
+      type: Function as PropType<AtCurtainProps['onClose']>,
+      default: () => () => { }
     }
   },
 

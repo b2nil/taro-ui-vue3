@@ -84,6 +84,8 @@ export default defineComponent({
     },
     duration: { type: Number, default: 3000 },
     hasMask: Boolean,
+    onClick: Function as PropType<AtToastProps['onClick']>,
+    onClose: Function as PropType<AtToastProps['onClick']>
   },
 
   setup(props: AtToastProps, { attrs, emit }) {

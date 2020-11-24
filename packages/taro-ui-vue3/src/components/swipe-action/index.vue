@@ -96,7 +96,10 @@ export default defineComponent({
     options: {
       type: Array as PropType<AtSwipeActionProps['options']>,
       default: () => []
-    }
+    },
+    onClick: Function as PropType<AtSwipeActionProps['onClick']>,
+    onOpened: Function as PropType<AtSwipeActionProps['onOpened']>,
+    onClosed: Function as PropType<AtSwipeActionProps['onClosed']>
   },
 
   setup(props: AtSwipeActionProps, { emit }) {

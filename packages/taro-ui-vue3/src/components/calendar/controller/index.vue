@@ -80,6 +80,18 @@ export default defineComponent({
     monthFormat: {
       type: String,
       default: 'YYYY 年 MM 月'
+    },
+    onPreMonth: {
+      type: Function as PropType<AtCalendarControllerProps["onPreMonth"]>,
+      default: () => () => { }
+    },
+    onNextMonth: {
+      type: Function as PropType<AtCalendarControllerProps["onNextMonth"]>,
+      default: () => () => { }
+    },
+    onSelectDate: {
+      type: Function as PropType<AtCalendarControllerProps["onSelectDate"]>,
+      default: () => () => { }
     }
   },
 

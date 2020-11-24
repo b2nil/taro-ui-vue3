@@ -88,7 +88,11 @@ export default defineComponent({
     scrollLeft: Number as PropType<AtFloatLayoutProps['scrollLeft']>,
     upperThreshold: Number as PropType<AtFloatLayoutProps['upperThreshold']>,
     lowerThreshold: Number as PropType<AtFloatLayoutProps['lowerThreshold']>,
-    scrollWithAnimation: Boolean
+    scrollWithAnimation: Boolean,
+    onClose: Function as PropType<AtFloatLayoutProps['onClose']>,
+    onScroll: Function as PropType<AtFloatLayoutProps['onScroll']>,
+    onScrollToUpper: Function as PropType<AtFloatLayoutProps['onScrollToUpper']>,
+    onScrollToLower: Function as PropType<AtFloatLayoutProps['onScrollToLower']>
   },
 
   setup(props: AtFloatLayoutProps, { emit }) {

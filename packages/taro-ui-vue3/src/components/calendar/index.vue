@@ -123,6 +123,31 @@ export default defineComponent({
     selectedDates: {
       type: Array as PropType<AtCalendarPropsWithDefaults['selectedDates']>,
       default: () => []
+    },
+    // 事件        
+    onClickPreMonth: {
+      type: Function as PropType<AtCalendarProps['onClickPreMonth']>,
+      default: () => () => { }
+    },
+    onClickNextMonth: {
+      type: Function as PropType<AtCalendarProps['onClickNextMonth']>,
+      default: () => () => { }
+    },
+    onDayClick: {
+      type: Function as PropType<AtCalendarProps['onDayClick']>,
+      default: () => () => { }
+    },
+    onDayLongClick: {
+      type: Function as PropType<AtCalendarProps['onDayLongClick']>,
+      default: () => () => { }
+    },
+    onMonthChange: {
+      type: Function as PropType<AtCalendarProps['onMonthChange']>,
+      default: () => () => { }
+    },
+    onSelectDate: {
+      type: Function as PropType<AtCalendarProps['onSelectDate']>,
+      default: () => () => { }
     }
   },
 

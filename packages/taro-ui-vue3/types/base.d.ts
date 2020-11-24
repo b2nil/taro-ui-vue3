@@ -1,5 +1,4 @@
-import { CSSProperties } from 'typings/global'
-import { AllowedComponentProps } from 'vue'
+import { AllowedComponentProps, CSSProperties } from 'vue'
 
 export interface AtComponent extends AllowedComponentProps {
   class?: string,
@@ -7,19 +6,19 @@ export interface AtComponent extends AllowedComponentProps {
 }
 
 export interface AtIconBaseProps2 extends AtComponent {
-  value: string;
+  value: string
 
-  color?: string;
+  color?: string
 }
 
 export interface AtIconBaseProps extends AtComponent {
-  value: string;
+  value: string
 
-  color?: string;
+  color?: string
 
-  prefixClass?: string;
+  prefixClass?: string
 
-  size?: number | string;
+  size?: number | string
 }
 
 export type Classes = Record<string, boolean | undefined>

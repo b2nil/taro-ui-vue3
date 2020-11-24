@@ -53,7 +53,8 @@ export default defineComponent({
     },
     circle: Boolean,
     active: Boolean,
-    disabled: Boolean
+    disabled: Boolean,
+    onClick: Function as PropType<AtTagProps['onClick']>
   },
 
   setup(props: AtTagProps, { emit }) {

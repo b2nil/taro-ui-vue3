@@ -117,6 +117,14 @@ export default defineComponent({
       type: String as PropType<'up' | 'down' | 'right' | undefined>,
       default: '',
       validator: (prop: string) => ['up', 'down', 'right', ''].includes(prop)
+    },
+    onClick: {
+      type: Function as PropType<AtListItemProps['onClick']>,
+      default: () => () => { }
+    },
+    onSwitchChange: {
+      type: Function as PropType<AtListItemProps['onSwitchChange']>,
+      default: () => () => { }
     }
   },
 

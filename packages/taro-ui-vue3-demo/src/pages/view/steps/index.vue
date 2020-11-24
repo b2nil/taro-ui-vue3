@@ -24,7 +24,7 @@
 <script lang="ts">
 import { defineComponent, reactive, ref } from 'vue'
 import { AtSteps } from "taro-ui-vue3"
-import { Item } from '@taro-ui-vue3/types/steps'
+import { Item } from 'taro-ui-vue3/types/steps'
 import { Page, Panel, ExampleItem } from '@/components/index'
 import './index.scss'
 

@@ -94,7 +94,9 @@ export default defineComponent({
     reachBottomThreshold: {
       type: [Number, String] as PropType<AtVirtualScrollProps['reachBottomThreshold']>,
       default: 50
-    }
+    },
+    onReachTop: Function as PropType<AtVirtualScrollProps['onReachTop']>,
+    onReachBottom: Function as PropType<AtVirtualScrollProps['onReachBottom']>
   },
 
   setup(props: AtVirtualScrollProps) {

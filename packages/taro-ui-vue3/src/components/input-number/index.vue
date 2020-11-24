@@ -122,7 +122,14 @@ export default defineComponent({
       default: 120
     },
     disabled: Boolean,
-    disabledInput: Boolean
+    disabledInput: Boolean,
+    onChange: {
+      type: Function as PropType<AtInputNumberProps['onChange']>,
+      default: () => () => { },
+      required: true
+    },
+    onBlur: Function as PropType<AtInputNumberProps['onBlur']>,
+    onErrorInput: Function as PropType<AtInputNumberProps['onErrorInput']>
   },
 
   setup(props: AtInputNumberProps, { emit }) {

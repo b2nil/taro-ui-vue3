@@ -55,6 +55,10 @@ export default defineComponent({
       type: Array as PropType<AtCheckboxProps<any>['selectedList']>,
       default: () => [],
       required: true
+    },
+    onChange: {
+      type: Function as PropType<AtCheckboxProps<any>['onChange']>,
+      default: () => () => { }
     }
   },
 

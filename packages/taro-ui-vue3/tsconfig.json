@@ -20,7 +20,6 @@
     "jsx": "preserve",
     "lib": [
       "esnext",
-      "dom"
     ],
     "types": [
       "node",

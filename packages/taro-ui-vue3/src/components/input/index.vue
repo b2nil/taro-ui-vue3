@@ -199,7 +199,18 @@ export default defineComponent({
       type: String as PropType<AtInputProps["confirmType"]>,
       default: 'done',
       validator: (val: string) => ["done", "send", "search", "next", "go"].includes(val)
-    }
+    },
+    onChange: {
+      type: Function as PropType<AtInputProps['onChange']>,
+      default: () => () => { },
+      required: true
+    },
+    onBlur: Function as PropType<AtInputProps['onBlur']>,
+    onFocus: Function as PropType<AtInputProps['onFocus']>,
+    onConfirm: Function as PropType<AtInputProps['onConfirm']>,
+    onClick: Function as PropType<AtInputProps['onClick']>,
+    onKeyboardHeightChange: Function as PropType<AtInputProps['onKeyboardHeightChange']>,
+    onErrorClick: Function as PropType<AtInputProps['onErrorClick']>
   },
 
   setup(props: AtInputProps, { emit }) {

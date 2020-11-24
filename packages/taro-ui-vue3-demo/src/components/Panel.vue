@@ -31,7 +31,7 @@ export default defineComponent({
     noPadding: Boolean
   },
 
-  setup(props, { slots, attrs }) {
+  setup(props) {
 
     const contentClasses = computed(() => ({
       'panel__content': true,

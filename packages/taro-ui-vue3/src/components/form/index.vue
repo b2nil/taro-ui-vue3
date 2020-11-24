@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, toRef } from "vue"
+import { defineComponent, toRef, PropType } from "vue"
 import { CommonEvent } from "@tarojs/components/types/common"
 import { AtFormProps } from "types/form"
 
@@ -28,7 +28,9 @@ export default defineComponent({
   },
 
   props: {
-    reportSubmit: Boolean
+    reportSubmit: Boolean,
+    onSubmit: Function as PropType<AtFormProps['onSubmit']>,
+    onReset: Function as PropType<AtFormProps['onReset']>
   },
 
   setup(props: AtFormProps) {

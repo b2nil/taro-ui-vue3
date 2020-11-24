@@ -38,6 +38,10 @@ export default defineComponent({
     size: {
       type: [String, Number] as PropType<AtIconProps['size']>,
       default: 24
+    },
+    onClick: {
+      type: Function as PropType<AtIconProps['onClick']>,
+      default: () => () => { }
     }
   },
 

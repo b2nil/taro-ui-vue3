@@ -33,6 +33,7 @@
 <script lang="ts">
 import { defineComponent, computed, toRef, PropType } from 'vue'
 import { AtRadioProps, RadioOption } from "types/radio"
+import { CommonEvent } from "@tarojs/components/types/common"
 
 export default defineComponent({
   name: "AtRadio",
@@ -52,6 +53,11 @@ export default defineComponent({
     options: {
       type: Array as PropType<AtRadioProps<any>['options']>,
       default: [],
+      required: true
+    },
+    onClick: {
+      type: Function as unknown as () => AtRadioProps<any>['onClick'],
+      default: () => (vaule: any, event: CommonEvent) => { },
       required: true
     }
   },

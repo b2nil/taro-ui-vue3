@@ -112,7 +112,17 @@ export default defineComponent({
     inputType: {
       type: String as PropType<AtSearchBarProps['inputType']>,
       default: 'text'
-    }
+    },
+    onChange: {
+      type: Function as PropType<AtSearchBarProps['onChange']>,
+      default: () => (value: string, event: CommonEvent) => { },
+      required: true
+    },
+    onFocus: Function as PropType<AtSearchBarProps['onFocus']>,
+    onBlur: Function as PropType<AtSearchBarProps['onBlur']>,
+    onConfirm: Function as PropType<AtSearchBarProps['onConfirm']>,
+    onActionClick: Function as PropType<AtSearchBarProps['onActionClick']>,
+    onClear: Function as PropType<AtSearchBarProps['onClear']>
   },
 
   setup(props: AtSearchBarProps, { emit }) {

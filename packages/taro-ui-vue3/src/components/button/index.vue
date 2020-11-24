@@ -71,7 +71,7 @@
 <script lang="ts">
 import { defineComponent, computed, toRefs, PropType } from 'vue'
 import { AtButtonProps } from "types/button"
-import AtLoading from '@/components/loading/index.vue'
+import AtLoading from '../loading/index.vue'
 import { getEnvs } from "@/utils/common"
 
 import Taro from '@tarojs/taro'
@@ -93,7 +93,7 @@ export default defineComponent({
     AtLoading
   },
 
-  emits: ['click', 'submit', 'reset'],
+  emits: ['click'],
 
   props: {
     size: {
@@ -145,6 +145,10 @@ export default defineComponent({
     appParameter: String,
     scope: String as PropType<AtButtonProps['scope']>, // alipay scope
 
+    onClick: {
+      type: Function as PropType<AtButtonProps['onClick']>,
+      default: () => () => { },
+    },
     // Taro Button Events
     onGetUserInfo: Function as PropType<AtButtonProps['onGetUserInfo']>,
     onGetAuthorize: Function as PropType<AtButtonProps['onGetAuthorize']>, // Alipay auth

@@ -70,7 +70,7 @@
 import { defineComponent, computed, toRef, PropType } from 'vue'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtTabBarProps } from "types/tab-bar"
-import AtBadge from '@/components/badge/index.vue'
+import AtBadge from '../badge/index.vue'
 
 export default defineComponent({
   name: "AtTabBar",
@@ -118,6 +118,11 @@ export default defineComponent({
     tabList: {
       type: Array as PropType<AtTabBarProps['tabList']>,
       default: []
+    },
+    onClick: {
+      type: Function as PropType<AtTabBarProps['onClick']>,
+      default: () => (index: number, event: CommonEvent) => { },
+      required: true
     }
   },
 
