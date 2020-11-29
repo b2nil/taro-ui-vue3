@@ -3291,6 +3291,11 @@ data-urls@^1.1.0:
     whatwg-mimetype "^2.2.0"
     whatwg-url "^7.0.0"
 
+dayjs@^1.8.29:
+  version "1.9.6"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.9.6.tgz#6f0c77d76ac1ff63720dd1197e5cb87b67943d70"
+  integrity sha512-HngNLtPEBWRo8EFVmHFmSXAjtCX8rGNqeXQI0Gh7wCTSqwaKgPIDqu9m07wABVopNwzvOeCb+2711vQhDlcIXw==
+
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
@@ -9014,6 +9019,14 @@ tar@^6.0.2:
     minizlib "^2.1.1"
     mkdirp "^1.0.3"
     yallist "^4.0.0"
+
+taro-ui-vue3@1.0.0-dev.2:
+  version "1.0.0-dev.2"
+  resolved "https://registry.yarnpkg.com/taro-ui-vue3/-/taro-ui-vue3-1.0.0-dev.2.tgz#da0723584cca158eacd5c2618bbaf5631fa7b326"
+  integrity sha512-z+/6Wn7NBDePFROih6IN/Ym/0WZt7Qw+H6gV6gewAp1du3iQQdthkMVMRpwHYiSrdvTX/2Gw0zqxN0wY5f28GQ==
+  dependencies:
+    dayjs "^1.8.29"
+    lodash "^4.17.19"
 
 terser-webpack-plugin@^1.4.3:
   version "1.4.5"
