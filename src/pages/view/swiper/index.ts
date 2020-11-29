@@ -105,7 +105,7 @@ export default defineComponent({
 
                     h(View, { class: 'control-cnt' }, {
                       default: () => [
-                        h(AtList, {
+                        h(AtList, null, {
                           default: () => [
                             h(AtListItem, {
                               title: '指示点',
