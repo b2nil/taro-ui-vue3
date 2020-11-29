@@ -20,7 +20,7 @@ import {
 } from "types/skeleton"
 
 
-const View = Taro.getEnv() === Taro.ENV_TYPE.WEB ? 'taro-view' : 'view'
+const View: any = Taro.getEnv() === Taro.ENV_TYPE.WEB ? resolveComponent('taro-view') : 'view'
 const { makeDimensionsProps, useDimensions } = dimensionsFactory()
 
 const AtSkeleton = defineComponent({
@@ -105,7 +105,7 @@ const AtSkeleton = defineComponent({
     }))
 
     function genBone(text: string, children: VNode[]) {
-      return h(resolveComponent(View), {
+      return h(View, {
         class: `at-skeleton__${text} at-skeleton__bone`
       }, { default: () => children })
     }
@@ -189,7 +189,7 @@ const AtSkeleton = defineComponent({
     }
 
     return () => (
-      h(resolveComponent(View), {
+      h(View, {
         ..._attrs.value,
         class: classes.value,
         style: isLoading.value ? dimensions.value.style : undefined
