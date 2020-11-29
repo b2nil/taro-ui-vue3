@@ -18,8 +18,7 @@ const config = {
   },
   alias: {
     '@/components': path.resolve(__dirname, '..', 'src/components'),
-    '@/assets': path.resolve(__dirname, '..', 'src/assets'),
-    'taro-ui-vue3': path.resolve(__dirname, '../../..', 'dist/index.esm'),
+    '@/assets': path.resolve(__dirname, '..', 'src/assets')
   },
   copy: {
     patterns: [
