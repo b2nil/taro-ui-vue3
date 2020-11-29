@@ -64,6 +64,8 @@ const AtSlider = defineComponent({
       _value: clampNumber(props.value!, props.min!, props.max!)
     })
 
+    const precision = computed(() => 10 ** countDecimals(props.step))
+
     const rootClass = computed(() => ({
       'at-slider': true,
       'at-slider--disabled': props.disabled
@@ -77,9 +79,20 @@ const AtSlider = defineComponent({
       return Math.max(lower, Math.min(upper, value))
     }
 
+    function countDecimals(value: number) {
+      if (Math.floor(value) === value) return 0
+      return value.toString().split(".")[1].length || 0
+    }
+
+    function ensurePrecision(value: number) {
+      return Math.round((value + Number.EPSILON) * precision.value) / precision.value
+    }
+
     function handleChanging(e: CommonEvent): void {
       const { _value } = state
-      const { value }: { value: number } = e.detail
+      let { value }: { value: number } = e.detail
+
+      value = ensurePrecision(value)
 
       if (value !== _value) {
         state._value = value
@@ -88,7 +101,8 @@ const AtSlider = defineComponent({
     }
 
     function handleChange(e: CommonEvent): void {
-      const { value } = e.detail
+      let { value } = e.detail
+      value = ensurePrecision(value)
 
       state._value = value
       props.onChange && props.onChange(value)

@@ -28,8 +28,8 @@ export default defineComponent({
             default: () => [
               h(ExampleItem, null, {
                 default: () => [
-                  h(View, { class: 'example-item__desc' }, { default: () => 'step=1' }),
-                  h(AtSlider, { step: 1, value: 50, showValue: true })
+                  h(View, { class: 'example-item__desc' }, { default: () => 'step=0.1' }),
+                  h(AtSlider, { step: 0.1, value: 50, showValue: true })
                 ]
               }),
             ]
