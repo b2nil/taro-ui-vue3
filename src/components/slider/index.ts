@@ -64,7 +64,7 @@ const AtSlider = defineComponent({
       _value: clampNumber(props.value!, props.min!, props.max!)
     })
 
-    const precision = computed(() => 10 ** countDecimals(props.step))
+    const precision = computed(() => 10 ** countDecimals(props.step!))
 
     const rootClass = computed(() => ({
       'at-slider': true,
