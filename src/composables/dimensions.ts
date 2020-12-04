@@ -4,8 +4,8 @@ import { computed } from 'vue'
 import type { Prop } from 'vue'
 
 // Utils
-import { convertToUnit, keys } from '@/utils/common'
-import propsFactory from '@/utils/propsFactory'
+import { convertToUnit, keys } from '../utils/common'
+import propsFactory from '../utils/propsFactory'
 
 // Props
 const allDimensionsProps = {
