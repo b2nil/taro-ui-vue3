@@ -11,7 +11,7 @@ import {
   KeyboardHeightEventDetail,
 } from "types/input"
 import { ENV_TYPE, getEnv } from "@tarojs/taro"
-import { uuid } from "@/utils/common"
+import { uuid } from "../../utils/common"
 
 type PickAtInputProps = Pick<AtInputProps, 'maxLength' | 'disabled' | 'password'>
 type GetInputPropsReturn = PickAtInputProps & Pick<InputProps, 'type'>

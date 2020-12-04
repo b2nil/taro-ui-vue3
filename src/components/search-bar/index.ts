@@ -3,7 +3,7 @@ import { Input, Text, View } from '@tarojs/components'
 import { BaseEventOrig, CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
 import { AtSearchBarProps, AtSearchBarState } from 'types/search-bar'
 import { ENV_TYPE, getEnv } from '@tarojs/taro'
-import { uuid } from '@/utils/common'
+import { uuid } from '../../utils/common'
 
 const AtSearchBar = defineComponent({
   name: "AtSearchBar",

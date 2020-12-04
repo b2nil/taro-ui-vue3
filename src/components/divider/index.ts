@@ -1,7 +1,7 @@
 import { h, defineComponent, computed, mergeProps, PropType } from "vue"
 import { View } from '@tarojs/components'
 import { AtDividerProps } from 'types/divider'
-import { pxTransform } from "@/utils/common"
+import { pxTransform } from "../../utils/common"
 
 const AtDivider = defineComponent({
   name: "AtDivider",

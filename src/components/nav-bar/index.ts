@@ -2,7 +2,7 @@ import { h, defineComponent, computed, mergeProps, PropType } from 'vue'
 import { Text, View } from '@tarojs/components'
 import { ITouchEvent } from '@tarojs/components/types/common'
 import { AtNavBarProps } from 'types/nav-bar'
-import { mergeStyle, pxTransform } from '@/utils/common'
+import { mergeStyle, pxTransform } from '../../utils/common'
 
 const AtNavBar = defineComponent({
   name: "AtNavBar",

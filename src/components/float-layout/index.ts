@@ -1,5 +1,5 @@
 import { h, defineComponent, computed, ref, nextTick, watch, mergeProps, PropType } from "vue"
-import { handleTouchScroll } from "@/utils/common"
+import { handleTouchScroll } from "../../utils/common"
 
 import { ScrollView, Text, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'

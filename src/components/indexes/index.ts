@@ -15,7 +15,7 @@ import {
 import {
   delayQuerySelector,
   pxTransform,
-} from "@/utils/common"
+} from "../../utils/common"
 
 import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'

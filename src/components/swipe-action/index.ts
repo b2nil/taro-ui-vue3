@@ -12,7 +12,7 @@ import {
   delayGetClientRect,
   delayGetScrollOffset,
   uuid
-} from '@/utils/common'
+} from '../../utils/common'
 import AtSwipeActionOptions from './options/index'
 
 const AtSwipeAction = defineComponent({

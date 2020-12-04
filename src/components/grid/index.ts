@@ -3,7 +3,7 @@ import _chunk from 'lodash/chunk'
 import { Image, View, Text } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types'
 import { AtGridProps, AtGridItem } from 'types/grid'
-import { mergeStyle } from "@/utils/common"
+import { mergeStyle } from "../../utils/common"
 
 const AtGrid = defineComponent({
   name: "AtGrid",

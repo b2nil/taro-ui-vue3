@@ -1,6 +1,6 @@
 import { h, defineComponent, computed, mergeProps, PropType } from "vue"
 import _toString from 'lodash/toString'
-import { pxTransform } from "@/utils/common"
+import { pxTransform } from "../../utils/common"
 
 import { Input, Text, View } from '@tarojs/components'
 import { CommonEvent, ITouchEvent } from '@tarojs/components/types/common'

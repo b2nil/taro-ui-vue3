@@ -11,8 +11,8 @@ import {
   View
 } from "@tarojs/components"
 
-import { dimensionsFactory } from "@/composables/dimensions"
-import { makeElevationProps, useElevationClasses } from "@/composables/elevation"
+import { dimensionsFactory } from "../../composables/dimensions"
+import { makeElevationProps, useElevationClasses } from "../../composables/elevation"
 
 // types
 import {
