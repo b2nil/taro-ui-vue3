@@ -26,7 +26,7 @@ yarn add taro-ui-vue3
 - 按需引用组件和组件样式
 
   ```typescript
-  import { AtButton } from 'taro-ui-vue3'
+  import { AtButton } from 'taro-ui-vue3/lib'
   import 'taro-ui-vue3/dist/style/components/button.scss'
 
   export default {
