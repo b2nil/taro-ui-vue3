@@ -1,5 +1,5 @@
 import { h, defineComponent, computed, mergeProps, PropType } from "vue"
-import _chunk from 'lodash/chunk'
+import _chunk from 'lodash-es/chunk'
 import { Image, View, Text } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types'
 import { AtGridProps, AtGridItem } from 'types/grid'

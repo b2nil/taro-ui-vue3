@@ -1,6 +1,6 @@
 import { h, defineComponent, ref, reactive, watch, CSSProperties, computed, mergeProps, PropType } from 'vue'
-import _inRange from 'lodash/inRange'
-import _isEmpty from 'lodash/isEmpty'
+import _inRange from 'lodash-es/inRange'
+import _isEmpty from 'lodash-es/isEmpty'
 import { Text, View } from '@tarojs/components'
 import { CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
 import {

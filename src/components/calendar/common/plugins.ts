@@ -1,5 +1,5 @@
-import dayjs from 'dayjs'
-import _isEmpty from 'lodash/isEmpty'
+import dayjs from 'dayjs/esm/index'
+import _isEmpty from 'lodash-es/isEmpty'
 import { Calendar } from 'types/calendar'
 
 interface PluginArg {

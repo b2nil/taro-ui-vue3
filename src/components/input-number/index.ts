@@ -1,5 +1,5 @@
 import { h, defineComponent, computed, mergeProps, PropType } from "vue"
-import _toString from 'lodash/toString'
+import _toString from 'lodash-es/toString'
 import { pxTransform } from "../../utils/common"
 
 import { Input, Text, View } from '@tarojs/components'

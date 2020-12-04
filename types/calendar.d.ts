@@ -1,4 +1,4 @@
-import dayjs from 'dayjs'
+import dayjs from 'dayjs/esm/index'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { Component } from '@vue/runtime-core'
 
