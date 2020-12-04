@@ -1,4 +1,5 @@
 const path = require('path')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const config = {
   projectName: 'taro-ui-vue3',
@@ -20,6 +21,7 @@ const config = {
     '@/components': path.resolve(__dirname, '..', 'src/components'),
     '@/style': path.resolve(__dirname, '..', 'src/style'),
     '@/assets': path.resolve(__dirname, '..', 'src/assets'),
+    'taro-ui-vue3$': path.resolve(__dirname, '..', 'dist/index.esm.js')
   },
   copy: {
     patterns: [
@@ -51,16 +53,24 @@ const config = {
       }
     },
     webpackChain(chain) {
-      chain.module
-        .rule('typescript')
-        .test(/.\ts$/)
-        .use('ts-loader')
-        .loader('ts-loader')
-        .tap(options => ({
-          ...options,
-          appendTsSuffixTo: [/\.vue$/]
-        }))
-        .end()
+      chain.merge({
+        plugin: {
+          install: {
+            plugin: BundleAnalyzerPlugin,
+          },
+        },
+        optimization: {
+          usedExports: true,
+        },
+        module: {
+          rules: [
+            {
+              include: path.resolve('node_modules', 'taro-ui-vue3'),
+              sideEffects: false
+            }
+          ]
+        }
+      })
     }
   },
   h5: {
@@ -82,7 +92,26 @@ const config = {
     },
     webpackChain(chain) {
       chain.resolve.alias
-        .set('@tarojs/components$', path.resolve(__dirname, '..', 'node_modules/@tarojs/components/dist-h5/vue3/index.js'))
+        .set('@tarojs/components$', '@tarojs/components/dist-h5/vue3/index.js')
+
+      chain.merge({
+        plugin: {
+          install: {
+            plugin: BundleAnalyzerPlugin,
+          },
+        },
+        optimization: {
+          usedExports: true,
+        },
+        module: {
+          rules: [
+            {
+              include: path.resolve('node_modules', 'taro-ui-vue3'),
+              sideEffects: false
+            }
+          ]
+        }
+      })
     },
     router: {
       mode: 'browser'
