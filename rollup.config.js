@@ -29,17 +29,17 @@ export default {
       format: 'es',
       sourcemap: true
     },
-    {
-      file: resolveFile(Package.browser),
-      format: 'umd',
-      name: 'taro-ui-vue3',
-      sourcemap: true,
-      globals: {
-        'vue': 'vue',
-        '@tarojs/components': 'components',
-        '@tarojs/taro': 'Taro'
-      }
-    }
+    // {
+    //   file: resolveFile(Package.browser),
+    //   format: 'umd',
+    //   name: 'taro-ui-vue3',
+    //   sourcemap: true,
+    //   globals: {
+    //     'vue': 'vue',
+    //     '@tarojs/components': 'components',
+    //     '@tarojs/taro': 'Taro'
+    //   }
+    // }
   ],
   external: externalPackages,
   plugins: [
