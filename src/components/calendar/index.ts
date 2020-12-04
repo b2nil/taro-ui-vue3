@@ -1,5 +1,5 @@
 import { h, defineComponent, reactive, toRefs, watch, nextTick, mergeProps, PropType } from "vue"
-import dayjs, { Dayjs } from 'dayjs'
+import dayjs, { Dayjs } from 'dayjs/esm/index'
 
 import { View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'

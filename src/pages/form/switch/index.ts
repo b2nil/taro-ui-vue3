@@ -1,5 +1,5 @@
 import { h, defineComponent, reactive } from 'vue'
-import { AtForm, AtSwitch } from '@/components/index'
+import { AtForm, AtSwitch } from '../../../components/index'
 import { Page, Panel, ExampleItem } from '../../components/demo-page'
 import './index.scss'
 

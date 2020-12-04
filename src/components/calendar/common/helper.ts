@@ -1,5 +1,5 @@
-import dayjs, { Dayjs } from 'dayjs'
-import _flow from 'lodash/flow'
+import dayjs, { Dayjs } from 'dayjs/esm/index'
+import _flow from 'lodash-es/flow'
 import { Calendar } from 'types/calendar'
 import * as constant from './constant'
 import plugins from './plugins'
@@ -26,11 +26,11 @@ function getFullItem(
 export default function generateCalendarGroup(
   options: Calendar.GroupOptions
 ): (
-  generateDate: number,
-  selectedDate: Calendar.SelectedDate,
-  isShowStatus?: boolean
-) => Calendar.ListInfo<Calendar.Item> {
-  return function(
+    generateDate: number,
+    selectedDate: Calendar.SelectedDate,
+    isShowStatus?: boolean
+  ) => Calendar.ListInfo<Calendar.Item> {
+  return function (
     generateDate: number,
     selectedDate: Calendar.SelectedDate,
     isShowStatus?: boolean

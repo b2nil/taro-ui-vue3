@@ -16,8 +16,8 @@ import {
 } from "@tarojs/components"
 
 // utils
-import { convertToUnit } from "@/utils/common"
-import { dimensionsFactory } from "@/composables/dimensions"
+import { convertToUnit } from "../../utils/common"
+import { dimensionsFactory } from "../../composables/dimensions"
 
 // types
 import { ScrollViewProps } from "@tarojs/components/types/ScrollView"

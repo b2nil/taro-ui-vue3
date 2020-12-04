@@ -3,7 +3,7 @@ import { ScrollView, View, Text } from '@tarojs/components'
 import { CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
 import Taro from '@tarojs/taro'
 import { AtTabsProps, AtTabsState } from 'types/tabs'
-import { isTest, uuid } from '@/utils/common'
+import { isTest, uuid } from '../../utils/common'
 
 const ENV = Taro.getEnv()
 const MIN_DISTANCE = 100

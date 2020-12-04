@@ -3,7 +3,7 @@ import { Textarea, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import Taro from '@tarojs/taro'
 import { AtTextareaProps } from 'types/textarea'
-import { pxTransform } from '@/utils/common'
+import { pxTransform } from '../../utils/common'
 
 type ExtendEvent = {
   target: {

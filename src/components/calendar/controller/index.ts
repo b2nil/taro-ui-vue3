@@ -2,7 +2,7 @@ import { h, defineComponent, computed, PropType } from "vue"
 import { Picker, Text, View } from '@tarojs/components'
 import { Calendar, AtCalendarControllerProps } from 'types/calendar'
 import { CommonEvent } from '@tarojs/components/types/common'
-import dayjs from 'dayjs'
+import dayjs from 'dayjs/esm/index'
 
 const AtCalendarController = defineComponent({
   name: "AtCalendarController",

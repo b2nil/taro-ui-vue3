@@ -1,7 +1,7 @@
 import { defineComponent, computed, h, mergeProps, PropType } from "vue"
 import { Text } from '@tarojs/components'
 import { AtIconProps } from "types/icon"
-import { pxTransform } from "@/utils/common"
+import { pxTransform } from "../../utils/common"
 
 const AtIcon = defineComponent({
   name: "AtIcon",

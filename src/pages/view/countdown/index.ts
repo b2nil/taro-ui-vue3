@@ -1,6 +1,6 @@
 
 import { h, defineComponent } from 'vue'
-import { AtCountdown } from '@/components/index'
+import { AtCountdown } from '../../../components/index'
 import Taro from '@tarojs/taro'
 import { Page, Panel } from '../../components/demo-page'
 import './index.scss'

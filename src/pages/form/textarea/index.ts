@@ -1,5 +1,5 @@
 import { h, defineComponent, reactive } from 'vue'
-import { AtTextarea } from '@/components/index'
+import { AtTextarea } from '../../../components/index'
 import { Page, Panel, ExampleItem } from '../../components/demo-page'
 import './index.scss'
 
@@ -9,7 +9,7 @@ interface IndexState {
 
 export default defineComponent({
   name: "TextareaDemo",
-  
+
   setup() {
     const state = reactive<IndexState>({
       value1: '',

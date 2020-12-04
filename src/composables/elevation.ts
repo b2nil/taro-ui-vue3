@@ -1,5 +1,5 @@
 import { computed } from 'vue'
-import propsFactory from '@/utils/propsFactory'
+import propsFactory from '../utils/propsFactory'
 
 // Types
 export interface ElevationProps {

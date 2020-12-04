@@ -1,6 +1,6 @@
 import { defineComponent, reactive, nextTick, watch, h, computed, mergeProps, PropType } from 'vue'
 
-import { handleTouchScroll } from '@/utils/common'
+import { handleTouchScroll } from '../../utils/common'
 
 import Taro from '@tarojs/taro'
 import { Button, Text, View } from '@tarojs/components'

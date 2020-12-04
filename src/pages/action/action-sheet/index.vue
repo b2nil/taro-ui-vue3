@@ -28,8 +28,10 @@
         :isOpened="isOpened1"
         @close="handleClose(1)"
       >
-        <at-action-sheet-item @click="showToast('点击了按钮一')">按钮一</at-action-sheet-item>
-        <at-action-sheet-item @click="showToast('点击了按钮二')">按钮二</at-action-sheet-item>
+        <at-action-sheet-item @click="showToast('点击了按钮一')">按钮一
+        </at-action-sheet-item>
+        <at-action-sheet-item @click="showToast('点击了按钮二')">按钮二
+        </at-action-sheet-item>
       </at-action-sheet>
 
       <!-- action sheet 2 -->
@@ -39,8 +41,10 @@
         :isOpened="isOpened2"
         @close="handleClose(2)"
       >
-        <at-action-sheet-item @click="showToast('点击了按钮一')">按钮一</at-action-sheet-item>
-        <at-action-sheet-item @click="showToast('点击了按钮二')">按钮二</at-action-sheet-item>
+        <at-action-sheet-item @click="showToast('点击了按钮一')">按钮一
+        </at-action-sheet-item>
+        <at-action-sheet-item @click="showToast('点击了按钮二')">按钮二
+        </at-action-sheet-item>
       </at-action-sheet>
 
       <!-- action sheet 3 -->
@@ -51,8 +55,10 @@
         @close="handleClose(3)"
         @cancel="handleCancel"
       >
-        <at-action-sheet-item @click="showToast('点击了按钮一')">按钮一</at-action-sheet-item>
-        <at-action-sheet-item @click="showToast('点击了按钮二')">按钮二</at-action-sheet-item>
+        <at-action-sheet-item @click="showToast('点击了按钮一')">按钮一
+        </at-action-sheet-item>
+        <at-action-sheet-item @click="showToast('点击了按钮二')">按钮二
+        </at-action-sheet-item>
         <at-action-sheet-item @click="showToast('成功清除位置')">
           <text class="danger">清除位置信息并退出</text>
         </at-action-sheet-item>
@@ -66,9 +72,9 @@
 import { defineComponent, reactive, toRefs } from 'vue'
 import Taro from '@tarojs/taro'
 
-import AtActionSheet from '@/components/action-sheet'
-import AtActionSheetItem from '@/components/action-sheet/body/item'
-import AtButton from '@/components/button'
+import { AtActionSheet } from '../../../components/index'
+import { AtActionSheetItem } from '../../../components/index'
+import { AtButton } from '../../../components/index'
 import { Page, Panel, ExampleItem } from '../../components/demo-page'
 
 import './index.scss'

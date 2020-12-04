@@ -1,7 +1,7 @@
 import { h, defineComponent, computed, mergeProps, PropType } from "vue"
 import Taro from '@tarojs/taro'
 
-import { uuid } from '@/utils/common'
+import { uuid } from '../../utils/common'
 
 import { Image, View } from '@tarojs/components'
 import { AtImagePickerProps, File } from 'types/image-picker'

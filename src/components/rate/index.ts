@@ -2,7 +2,7 @@ import { h, defineComponent, computed, mergeProps, PropType } from 'vue'
 import { Text, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtRateProps } from 'types/rate'
-import { pxTransform } from '@/utils/common'
+import { pxTransform } from '../../utils/common'
 
 const AtRate = defineComponent({
   name: "AtRate",

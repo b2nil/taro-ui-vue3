@@ -1,6 +1,6 @@
 
 import { h, defineComponent, reactive } from "vue"
-import { AtLoadMore } from '@/components/index'
+import { AtLoadMore } from '../../../components/index'
 import { Page, Panel } from '../../components/demo-page'
 import './index.scss'
 

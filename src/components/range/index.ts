@@ -6,7 +6,7 @@ import {
   delayQuerySelector,
   getEventDetail,
   mergeStyle
-} from '@/utils/common'
+} from '../../utils/common'
 
 const AtRange = defineComponent({
   name: "AtRange",

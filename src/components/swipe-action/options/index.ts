@@ -1,6 +1,6 @@
 import { defineComponent, onMounted, watch, h, mergeProps, PropType } from 'vue'
 import { View } from '@tarojs/components'
-import { delayQuerySelector } from '@/utils/common'
+import { delayQuerySelector } from '../../../utils/common'
 import { AtSwipeActionOptionsProps } from 'types/swipe-action'
 
 const AtSwipeActionOptions = defineComponent({

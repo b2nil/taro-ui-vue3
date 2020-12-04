@@ -2,7 +2,7 @@ import { h, defineComponent, computed, mergeProps, PropType } from 'vue'
 import { View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtSegmentedControlProps } from 'types/segmented-control'
-import { pxTransform } from '@/utils/common'
+import { pxTransform } from '../../utils/common'
 
 const AtSegmentedControl = defineComponent({
 

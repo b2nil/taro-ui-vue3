@@ -4,8 +4,6 @@ import { AtCountDownProps, AtCountdownState } from 'types/countdown'
 
 import AtCountdownItem from "./item"
 
-import './index.scss'
-
 const toSeconds = (
   day: number,
   hours: number,

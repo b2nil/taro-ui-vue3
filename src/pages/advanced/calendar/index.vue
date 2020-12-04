@@ -88,8 +88,8 @@
 import { ref, computed, reactive, toRefs, onMounted, onBeforeMount } from 'vue'
 import Taro from '@tarojs/taro'
 
-import AtButton from '@/components/button'
-import AtCalendar from '@/components/calendar'
+import { AtButton } from '../../../components/index'
+import { AtCalendar } from '../../../components/index'
 import { Page, Panel } from '../../components/demo-page'
 
 import "./index.scss"

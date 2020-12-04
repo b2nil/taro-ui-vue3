@@ -2,7 +2,7 @@ import { h, defineComponent, computed, mergeProps, PropType } from 'vue'
 import { Image, Text, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtTabBarProps, TabItem } from 'types/tab-bar'
-import { mergeStyle } from '@/utils/common'
+import { mergeStyle } from '../../utils/common'
 
 import AtBadge from '../badge/index'
 

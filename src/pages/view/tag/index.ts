@@ -1,5 +1,5 @@
 
-import { AtTag } from '@/components/index'
+import { AtTag } from '../../../components/index'
 import { h, defineComponent, reactive } from 'vue'
 import { View, Text } from '@tarojs/components'
 import Taro from '@tarojs/taro'
@@ -191,20 +191,24 @@ export default defineComponent({
               default: () => [
                 h(ExampleItem, null, {
                   default: () => [
-                    h(View, { class: 'subitem' }, { default: () => [
-                      h(AtTag, { type: 'primary', circle: true, disabled: true }, {
-                        default: () => [
-                          h(Text, null, { default: () => '标签' })
-                        ]
-                      })
-                    ]}),
-                    h(View, { class: 'subitem' }, { default: () => [
-                      h(AtTag, { type: 'primary', disabled: true }, {
-                        default: () => [
-                          h(Text, null, { default: () => '标签' })
-                        ]
-                      })
-                    ]}),
+                    h(View, { class: 'subitem' }, {
+                      default: () => [
+                        h(AtTag, { type: 'primary', circle: true, disabled: true }, {
+                          default: () => [
+                            h(Text, null, { default: () => '标签' })
+                          ]
+                        })
+                      ]
+                    }),
+                    h(View, { class: 'subitem' }, {
+                      default: () => [
+                        h(AtTag, { type: 'primary', disabled: true }, {
+                          default: () => [
+                            h(Text, null, { default: () => '标签' })
+                          ]
+                        })
+                      ]
+                    }),
                   ]
                 })
               ]
@@ -269,20 +273,24 @@ export default defineComponent({
               default: () => [
                 h(ExampleItem, null, {
                   default: () => [
-                    h(View, { class: 'subitem' }, { default: () => [
-                      h(AtTag, { size: 'small', type: 'primary', circle: true, disabled: true }, {
-                        default: () => [
-                          h(Text, null, { default: () => '标签' })
-                        ]
-                      })
-                    ]}),
-                    h(View, { class: 'subitem' }, { default: () => [
-                      h(AtTag, { size: 'small', type: 'primary', disabled: true }, {
-                        default: () => [
-                          h(Text, null, { default: () => '标签' })
-                        ]
-                      })
-                    ]}),
+                    h(View, { class: 'subitem' }, {
+                      default: () => [
+                        h(AtTag, { size: 'small', type: 'primary', circle: true, disabled: true }, {
+                          default: () => [
+                            h(Text, null, { default: () => '标签' })
+                          ]
+                        })
+                      ]
+                    }),
+                    h(View, { class: 'subitem' }, {
+                      default: () => [
+                        h(AtTag, { size: 'small', type: 'primary', disabled: true }, {
+                          default: () => [
+                            h(Text, null, { default: () => '标签' })
+                          ]
+                        })
+                      ]
+                    }),
                   ]
                 }),
               ]
