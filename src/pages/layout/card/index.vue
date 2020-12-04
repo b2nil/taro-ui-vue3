@@ -102,8 +102,8 @@
 import { h, defineComponent } from "vue"
 import Taro from "@tarojs/taro"
 import { Page, Panel, ExampleItem } from '../../components/demo-page'
-import AtIcon from '@/components/icon'
-import AtCard from '@/components/card'
+import { AtIcon } from 'taro-ui-vue3'
+import { AtCard } from 'taro-ui-vue3'
 
 export default defineComponent({
   name: "CardDemo",

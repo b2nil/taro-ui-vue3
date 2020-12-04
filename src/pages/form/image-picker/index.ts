@@ -1,5 +1,5 @@
 import { h, defineComponent, reactive } from 'vue'
-import { AtImagePicker } from '@/components/index'
+import { AtImagePicker } from 'taro-ui-vue3'
 import Taro from '@tarojs/taro'
 import { Page, Panel, ExampleItem } from '../../components/demo-page'
 import './index.scss'

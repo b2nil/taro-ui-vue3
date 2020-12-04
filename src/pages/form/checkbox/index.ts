@@ -1,5 +1,5 @@
 import { h, defineComponent, reactive } from 'vue'
-import { AtCheckbox } from '@/components/index'
+import { AtCheckbox } from 'taro-ui-vue3'
 import { CheckboxOption } from 'types/checkbox'
 import { View } from '@tarojs/components'
 import { Page, Panel, ExampleItem } from '../../components/demo-page'

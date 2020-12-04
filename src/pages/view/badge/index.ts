@@ -1,6 +1,6 @@
 
 import { h, defineComponent } from 'vue'
-import { AtBadge, AtButton } from '@/components/index'
+import { AtBadge, AtButton } from 'taro-ui-vue3'
 import { View, Text } from '@tarojs/components'
 import { Page, Panel } from '../../components/demo-page'
 import './index.scss'

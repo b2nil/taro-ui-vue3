@@ -1,5 +1,5 @@
 import { h, defineComponent } from 'vue'
-import { AtSlider } from '@/components/index'
+import { AtSlider } from 'taro-ui-vue3'
 import { View } from '@tarojs/components'
 import { Page, Panel, ExampleItem } from '../../components/demo-page'
 import './index.scss'

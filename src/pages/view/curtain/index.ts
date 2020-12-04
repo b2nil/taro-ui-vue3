@@ -1,5 +1,5 @@
 import { h, defineComponent, reactive } from 'vue'
-import { AtButton, AtCurtain } from '@/components/index'
+import { AtButton, AtCurtain } from 'taro-ui-vue3'
 import { Image, Text } from '@tarojs/components'
 import { Page, Panel, ExampleItem } from '../../components/demo-page'
 

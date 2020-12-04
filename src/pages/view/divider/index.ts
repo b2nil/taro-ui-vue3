@@ -1,6 +1,6 @@
 
 import { h, defineComponent } from 'vue'
-import { AtDivider, AtIcon } from '@/components/index'
+import { AtDivider, AtIcon } from 'taro-ui-vue3'
 import { Page, Panel } from '../../components/demo-page'
 import './index.scss'
 
