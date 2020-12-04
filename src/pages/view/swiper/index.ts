@@ -1,6 +1,6 @@
 
 import { h, defineComponent, reactive } from 'vue'
-import { AtList, AtListItem } from 'taro-ui-vue3'
+import { AtList, AtListItem } from '../../../components/index'
 import {
   Image,
   Slider,

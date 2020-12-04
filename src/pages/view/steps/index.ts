@@ -1,5 +1,5 @@
 import { h, defineComponent, reactive, ref } from 'vue'
-import { AtSteps } from 'taro-ui-vue3'
+import { AtSteps } from '../../../components/index'
 import { Item } from 'types/steps'
 import { Page, Panel, ExampleItem } from '../../components/demo-page'
 import './index.scss'

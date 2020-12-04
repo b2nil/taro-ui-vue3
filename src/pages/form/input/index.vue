@@ -215,8 +215,8 @@
 import { defineComponent, reactive, toRefs } from 'vue'
 import Taro from '@tarojs/taro'
 
-import { AtForm } from 'taro-ui-vue3'
-import { AtInput } from 'taro-ui-vue3'
+import { AtForm } from '../../../components/index'
+import { AtInput } from '../../../components/index'
 import { Page, Panel, ExampleItem } from "../../components/demo-page"
 import verificationCode from '@/assets/images/verification_code.png'
 import './index.scss'

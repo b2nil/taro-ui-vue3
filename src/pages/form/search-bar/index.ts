@@ -1,5 +1,5 @@
 import { h, defineComponent, reactive } from 'vue'
-import { AtSearchBar } from 'taro-ui-vue3'
+import { AtSearchBar } from '../../../components/index'
 import { View } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import { Page, Panel } from '../../components/demo-page'

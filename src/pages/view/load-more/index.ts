@@ -1,6 +1,6 @@
 
 import { h, defineComponent, reactive } from "vue"
-import { AtLoadMore } from 'taro-ui-vue3'
+import { AtLoadMore } from '../../../components/index'
 import { Page, Panel } from '../../components/demo-page'
 import './index.scss'
 

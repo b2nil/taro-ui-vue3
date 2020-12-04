@@ -1,6 +1,6 @@
 
 import { h, defineComponent } from 'vue'
-import { AtTimeline } from 'taro-ui-vue3'
+import { AtTimeline } from '../../../components/index'
 import { Page, Panel, ExampleItem } from '../../components/demo-page'
 import './index.scss'
 

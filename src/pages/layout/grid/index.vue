@@ -45,7 +45,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import Taro from '@tarojs/taro'
-import { AtGrid } from 'taro-ui-vue3'
+import { AtGrid } from '../../../components/index'
 import { Page, Panel, ExampleItem } from '../../components/demo-page'
 
 export default defineComponent({
