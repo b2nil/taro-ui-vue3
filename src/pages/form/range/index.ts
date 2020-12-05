@@ -1,5 +1,5 @@
 import { h, defineComponent, reactive } from 'vue'
-import { AtRange } from '../../../components/index'
+import { AtRange } from '../../../index'
 import { Page, Panel, ExampleItem } from '../../components/demo-page'
 import './index.scss'
 

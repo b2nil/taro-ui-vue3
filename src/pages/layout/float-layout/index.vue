@@ -95,13 +95,12 @@
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from "vue"
 import Taro from '@tarojs/taro'
-import AtButton from "@/components/button"
-import AtFloatLayout from "@/components/float-layout"
+import { AtButton, AtFloatLayout } from "../../../index"
 import { Page, Panel, ExampleItem } from "../../components/demo-page"
 
 export default defineComponent({
   name: "FloatLayoutDemo",
-  
+
   components: {
     Page,
     Panel,

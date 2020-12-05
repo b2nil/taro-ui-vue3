@@ -27,8 +27,7 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue"
 import Taro from "@tarojs/taro"
-import AtIndexes from "@/components/indexes"
-import AtSearchBar from "@/components/search-bar"
+import { AtIndexes, AtSearchBar } from "../../../index"
 import mockData from './mock-data'
 
 import "./index.scss"

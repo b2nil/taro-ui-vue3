@@ -2,8 +2,7 @@ import { h, defineComponent, computed, mergeProps } from "vue"
 import { View } from "@tarojs/components"
 import Taro from "@tarojs/taro"
 import "./index.scss"
-import { AtFlex } from "@/components/index"
-import { AtFlexItem } from "@/components/index"
+import { AtFlex, AtFlexItem } from "../../../index"
 
 const Page = defineComponent({
   name: "Page",

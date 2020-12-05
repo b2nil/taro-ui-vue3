@@ -89,8 +89,7 @@
 
 <script>
 import { reactive, toRefs } from 'vue'
-import { AtButton } from '../../../components/index'
-import { AtToast } from '../../../components/index'
+import { AtButton, AtToast } from '../../../index'
 import { Page, Panel, ExampleItem } from "../../components/demo-page"
 
 import "./index.scss"

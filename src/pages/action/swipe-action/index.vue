@@ -122,7 +122,9 @@
           <at-swipe-action :options="OPTIONS">
             <at-list-item title="Item2" />
           </at-swipe-action>
-          <at-swipe-action :options="[{text: '警告', style: { backgroundColor: '#FFC82C' }}]">
+          <at-swipe-action
+            :options="[{text: '警告', style: { backgroundColor: '#FFC82C' }}]"
+          >
             <at-list-item title="Item3" />
           </at-swipe-action>
         </at-list>
@@ -155,10 +157,7 @@
 <script lang="ts">
 import { defineComponent, ref, reactive, toRefs } from "vue"
 import Taro from "@tarojs/taro"
-import AtButton from "@/components/button"
-import AtList from "@/components/list"
-import AtListItem from "@/components/list/item"
-import AtSwipeAction from "@/components/swipe-action"
+import { AtButton, AtList, AtListItem, AtSwipeAction } from "../../../index"
 import { Page, Panel, ExampleItem } from "../../components/demo-page"
 
 import "./index.scss"

@@ -149,8 +149,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue"
-import AtFlex from "@/components/flex"
-import AtFlexItem from "@/components/flex/item"
+import { AtFlex, AtFlexItem } from "../../../index"
 import { Page, Panel, ExampleItem } from "../../components/demo-page"
 
 import "./index.scss"

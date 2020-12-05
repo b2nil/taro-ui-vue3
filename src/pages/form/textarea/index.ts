@@ -1,5 +1,5 @@
 import { h, defineComponent, reactive } from 'vue'
-import { AtTextarea } from '../../../components/index'
+import { AtTextarea } from '../../../index'
 import { Page, Panel, ExampleItem } from '../../components/demo-page'
 import './index.scss'
 

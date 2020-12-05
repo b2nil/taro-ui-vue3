@@ -76,7 +76,7 @@
 <script lang="ts">
 import { defineComponent, reactive, toRefs, computed } from "vue"
 import Taro from "@tarojs/taro"
-import { AtBadge, AtButton, AtDrawer, AtIcon } from "@/components/index"
+import { AtBadge, AtButton, AtDrawer, AtIcon } from "../../../index"
 import { Page, Panel, ExampleItem } from '../../components/demo-page'
 
 import "./index.scss"
