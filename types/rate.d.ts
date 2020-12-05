@@ -10,7 +10,7 @@ export interface AtRateProps extends AtComponent {
    */
   size?: number
   /**
-   * 当前评分,开发者需要通过 onChange 事件来更新 value 值，必填
+   * 当前评分,开发者需要通过 onChange 事件或 v-model:value 来更新 value 值，必填
    */
   value?: number
   /**
