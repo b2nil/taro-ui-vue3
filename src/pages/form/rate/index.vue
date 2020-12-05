@@ -49,7 +49,29 @@
     <panel title="使用 vModel">
       <example-item>
         <at-rate
-          :style="{ color: 'blue' }"
+          :size="24"
+          :max="6"
+          v-model:value="rateValue5"
+        />
+      </example-item>
+    </panel>
+
+    <panel title="自定义图标颜色">
+      <example-item>
+        <at-rate
+          color="teal"
+          :size="24"
+          :max="6"
+          v-model:value="rateValue5"
+        />
+      </example-item>
+    </panel>
+
+    <panel title="自定义图标类型">
+      <example-item>
+        <at-rate
+          color="red"
+          icon="heart"
           :size="24"
           :max="6"
           v-model:value="rateValue5"
