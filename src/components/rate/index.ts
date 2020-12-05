@@ -3,6 +3,7 @@ import { Text, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtRateProps } from 'types/rate'
 import { pxTransform } from '../../utils/common'
+import { useModelValue } from '../../composables/model'
 
 const AtRate = defineComponent({
   name: "AtRate",
@@ -27,7 +28,9 @@ const AtRate = defineComponent({
     onChange: Function as PropType<AtRateProps['onChange']>
   },
 
-  setup(props: AtRateProps, { attrs, slots }) {
+  setup(props: AtRateProps, { attrs, emit }) {
+
+    const modelValue = useModelValue(props, emit, 'value')
 
     const iconStyle = computed(() => ({
       marginRight: pxTransform(props.margin!)
@@ -55,7 +58,11 @@ const AtRate = defineComponent({
     })
 
     function handleClick(event: CommonEvent): void {
-      props.onChange && props.onChange(event)
+      if (attrs['onUpdate:value']) {
+        modelValue.value = event
+      } else {
+        props.onChange && props.onChange(event)
+      }
     }
 
     return () => (
