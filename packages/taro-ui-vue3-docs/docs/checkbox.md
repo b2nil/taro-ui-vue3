@@ -106,3 +106,4 @@ export default {
 | 事件名称 | 说明                     | 返回参数          |
 | -------- | ------------------------ | ----------------- |
 | onChange | 选中选项时触发的事件，开发者可通过 `onChange` 事件来更新 selectedList 值变化，但若不使用 v-model，不填写 onChange 函数时，该组件只读 | 选中的 `CheckboxOption.value` 列表 |
+| onUpdate:selectedList | 使用 `v-model:selectedList` 时自动触发 | 选中的 `CheckboxOption.value` 列表 |
