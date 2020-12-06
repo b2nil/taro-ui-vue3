@@ -113,12 +113,12 @@ const AtInputNumber = defineComponent({
     }))
 
     function handleClick(clickType: 'minus' | 'plus', e: CommonEvent) {
-      const belowMin = clickType === 'minus' && props.value <= props.min!
-      const overMax = clickType === 'plus' && props.value >= props.max!
+      const belowMin = clickType === 'minus' && inputValue.value <= props.min!
+      const overMax = clickType === 'plus' && inputValue.value >= props.max!
 
       if (belowMin || overMax || props.disabled) {
         const deltaValue = clickType === 'minus' ? -props.step! : props.step!
-        const errorValue = addNum(Number(props.value), deltaValue)
+        const errorValue = addNum(inputValue.value, deltaValue)
 
         if (props.disabled) {
           handleError({
@@ -135,7 +135,7 @@ const AtInputNumber = defineComponent({
       }
 
       const deltaValue = clickType === 'minus' ? -props.step! : props.step!
-      let newValue = addNum(Number(props.value), deltaValue)
+      let newValue = addNum(inputValue.value, deltaValue)
       newValue = Number(handleValue(newValue))
 
       if (attrs['onUpdate:value']) {
