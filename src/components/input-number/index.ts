@@ -81,18 +81,17 @@ const AtInputNumber = defineComponent({
     disabled: Boolean,
     disabledInput: Boolean,
     // 事件
-    onChange: {
-      type: Function as PropType<AtInputNumberProps['onChange']>,
-      default: () => () => { },
-      required: true
-    },
+    onChange: Function as PropType<AtInputNumberProps['onChange']>,
     onBlur: Function as PropType<AtInputNumberProps['onBlur']>,
     onErrorInput: Function as PropType<AtInputNumberProps['onErrorInput']>
   },
 
-  setup(props: AtInputNumberProps, { attrs }) {
+  setup(props: AtInputNumberProps, { attrs, emit }) {
 
-    const inputValue = computed(() => Number(handleValue(props.value)))
+    const inputValue = computed({
+      get: () => Number(handleValue(props.value)),
+      set: (value) => emit('update:value', value)
+    })
 
     const inputStyle = computed(() => ({
       width: props.width ? `${pxTransform(props.width)}` : ''
@@ -138,7 +137,12 @@ const AtInputNumber = defineComponent({
       const deltaValue = clickType === 'minus' ? -props.step! : props.step!
       let newValue = addNum(Number(props.value), deltaValue)
       newValue = Number(handleValue(newValue))
-      props.onChange(newValue, e)
+
+      if (attrs['onUpdate:value']) {
+        inputValue.value = newValue
+      } else {
+        props.onChange?.(newValue, e)
+      }
     }
 
     function handleValue(value: string | number): string {
@@ -171,17 +175,21 @@ const AtInputNumber = defineComponent({
       return resultValue
     }
 
-    function handleInput(e: CommonEvent & ExtendEvent): string {
-      const { value } = e.target
-      if (props.disabled) return ''
+    function handleInput(e: CommonEvent & ExtendEvent) {
+      if (props.disabled) return
 
+      const { value } = e.target
       const newValue = handleValue(value)
-      props.onChange(Number(newValue), e)
-      return newValue
+
+      if (attrs['onUpdate:value']) {
+        inputValue.value = Number(newValue)
+      } else {
+        props.onChange?.(Number(newValue), e)
+      }
     }
 
     function handleBlur(e: ITouchEvent) {
-      props.onBlur && props.onBlur(e)
+      props.onBlur?.(e)
     }
 
     function handleError(errorValue: InputError) {
