@@ -8,6 +8,34 @@
 
 在提问前，建议升级 `taro` 和 `taro-ui-vue3` 至最新版本，仍有问题请按模板提交 [Issue](https://github.com/NervJS/taro-ui/issues/new/choose)
 
+## 从 `taro-ui-vue3/dist/index.esm.js` 中引用组件，组件没有按需引用，而是整个包都引入了？
+
+如需按需引用组件，请从 `taro-ui-vue3/lib` 目录中引用。
+样式按需引用，仍需从 `taro-ui-vue3/dist/style` 目录中引用。
+
+### 方式一
+```ts
+import { AtButton } from 'taro-ui-vue3/lib'
+import "taro-ui-vue3/dist/style/components/button.scss"
+```
+### 方式二
+
+在 webpack 配置中，将 `taro-ui-vue3` 的 `alias` 指向 `taro-ui-vue3/lib`
+
+```ts
+// config/index.js
+alias: {
+  'taro-ui-vue3$': 'taro-ui-vue3/lib'
+}
+```
+
+然后从 `taro-ui-vue3` 中引用组件
+
+```ts
+ import { AtButton } from 'taro-ui-vue3'
+ import "taro-ui-vue3/dist/style/components/button.scss"
+```
+
 ## H5 模式下编译报错？
 
 如果出现类似 `Could not find module View in @tarojs/components` 的问题，请在进行如下设置：

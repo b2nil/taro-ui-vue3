@@ -55,6 +55,9 @@ h5: {
 // page.js
 import { AtButton } from 'taro-ui-vue3'
 
+// 或者从 taro-ui-vue3/lib 中按需引入组件，在少量使用组件的情况下，可大幅减少打包大小
+import { AtButton } from 'taro-ui-vue3/lib'
+
 // 除了引入所需的组件，还需要手动引入组件样式
 // app.js
 import 'taro-ui/dist/style/index.scss' // 全局引入一次即可
