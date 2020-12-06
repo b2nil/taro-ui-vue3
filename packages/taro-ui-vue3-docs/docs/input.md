@@ -11,7 +11,7 @@
 在 Taro 文件中引入组件
 
 ```typescript
-import { AtInput, AtForm } from 'taro-ui-vue3'
+import { AtInput } from 'taro-ui-vue3'
 ```
 
 **组件依赖的样式文件（仅按需引用时需要）**
@@ -24,12 +24,12 @@ import { AtInput, AtForm } from 'taro-ui-vue3'
 
 说明：
 
-* 由于微信开发者工具的问题，Input 的 placeholder 在 value 存在的情况下，会出现重叠，在真机上不会出现此问题，可以忽略
-* 由于微信开发者工具的问题，输入法输入中文的时候，maxLength 会限制输入过程中的字符，导致无法输入完整的中文，在真机上不会出现此问题，可以忽略
-* 该组件为受控组件，开发者需要通过 onChange 事件来更新 value 值变化，value 与 onChange 函数必填。在小程序中，如果想改变 value 的值，需要 `return value` 从而改变输入框的当前值
-* 由于小程序组件化的限制，AtInput 嵌套在 AtForm 或原生小程序组件 Form 中的时候，onSubmit 事件获得的 event 中的 event.detail.value 始终为空对象，开发者要获取数据，可以自行在页面的 state 中获取
+* 由于微信开发者工具的问题，Input 的 `placeholder` 在 `value` 存在的情况下，会出现重叠，在真机上不会出现此问题，可以忽略
+* 由于微信开发者工具的问题，输入法输入中文的时候，`maxLength` 会限制输入过程中的字符，导致无法输入完整的中文，在真机上不会出现此问题，可以忽略
+* 该组件为受控组件，开发者需要通过 `onChange` 事件或 `v-model:value` 来更新 `value` 值变化。不使用 v-model 时，`value` 与 `onChange` 函数必填。在小程序中，如果想改变 `value` 的值，需要 `return value` 从而改变输入框的当前值
+* 由于小程序组件化的限制，AtInput 嵌套在 AtForm 或原生小程序组件 Form 中的时候，onSubmit 事件获得的 event 中的 `event.detail.value` 始终为空对象，开发者要获取数据，可以自行在页面的 state 中获取
 
-* 由于此组件是基于小程序的 Input 进行封装，该组件是原生组件，使用前请阅读[使用限制](https://developers.weixin.qq.com/miniprogram/dev/component/native-component.html)
+* 由于此组件是基于小程序的 `Input` 进行封装，该组件是原生组件，使用前请阅读[使用限制](https://developers.weixin.qq.com/miniprogram/dev/component/native-component.html)
   
 
 ```html
@@ -39,9 +39,17 @@ import { AtInput, AtForm } from 'taro-ui-vue3'
       name='value1'
       title='标准五个字'
       type='text'
-      placeholder='标准五个字'
+      placeholder='使用 onChange 更新 value 值'
       :value="value1"
       @change="handleInput"
+    />
+
+    <AtInput
+      name='value1'
+      title='标准五个字'
+      type='text'
+      placeholder='使用 v-model:value 更新 value 值'
+      v-model:value="value1"
     />
   </view>
 </template>
@@ -197,7 +205,7 @@ export default {
 | ---   | ----  | ---- | ---- | ------- | ------- | ------ |
 | name  | √ | √ | 输入框的唯一标识，有传入点击 title 会聚焦输入框 | String  | - | - |
 | type  | √ | √ | 输入框类型 | String | `text`,`number`,`password`,`phone`,`idcard`,`digit` | `text` |
-| value | √ | √ | 输入框当前值，开发者需要通过 onChange 事件来更新 value 值，必填 | String  | - | - |
+| value | √ | √ | 输入框当前值，支持 v-model, 开发者可通过 `onChange` 事件或 `v-model:value`来更新 value 值，必填 | String  | - | - |
 | placeholder | √ | √ | 占位符  | String  | - | - |
 | placeholderStyle | √ | x | 指定 placeholder 的样式，只在小程序有效  | String  | - | - |
 | placeholderClass | √ | x | 指定 placeholder 的样式类，只在小程序有效  | String | - | - |
@@ -222,7 +230,8 @@ export default {
 
 | 事件名称 |  微信小程序 |  h5 | 说明  | 返回参数  |
 |------- |---  |----- |---- | -------- |
-| onChange | √ | √ | 输入框值改变时触发的事件，开发者需要通过 onChange 事件来更新 value 值变化，onChange 函数必填。小程序中，如果想改变 value 的值，需要 `return value` 从而改变输入框的当前值, 可以获取 event 参数  | (value,event) => void  |
+| onChange | √ | √ | 输入框值改变时触发的事件，开发者可通过 onChange 事件来更新 value 值变化，不使用 v-model 时，onChange 函数必填。  | (value,event) => void  |
+| onUpdate:value | √ | √ | 使用 `v-model:value` 时自动触发  | (value,event) => void  |
 | onFocus | √ | √ | 输入框被选中时触发的事件，可以获取 event 参数 | (value,event) => void   |
 | onBlur | √ | √ | 输入框失去焦点时触发的事件，可以获取 event 参数 | (value,event) => void   |
 | onConfirm | √ | x | 点击完成按钮时触发，可以获取 event 参数 | (value,event) => void   |

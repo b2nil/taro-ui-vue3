@@ -25,21 +25,41 @@ import { AtRadio } from 'taro-ui-vue3'
 
 说明：
 
-* 该组件为受控组件，开发者需要通过 onClick 事件来更新 value 值变化，value 与 onClick 函数必填
+* 该组件为受控组件，开发者可通过 `onClick` 事件 `v-model:value` 来更新 `value` 值变化，`value` 与 `onClick` 函数必填
 
-* 由于小程序组件化的限制，AtRadio 嵌套在 AtForm 或原生小程序组件 Form 中的时候，onSubmit 事件获得的 event 中的 event.detail.value 始终为空对象，开发者要获取数据，可以自行在页面的 state 中获取
+* 由于小程序组件化的限制，`AtRadio` 嵌套在 `AtForm` 或原生小程序组件 `Form` 中的时候，`onSubmit` 事件获得的 event 中的 `event.detail.value` 始终为空对象，开发者要获取数据，可以自行在页面的 `state` 中获取
 
 
 ```html
 <template>
- <view>
-  <AtRadio
-    :options="radioOptions1"
-    :value="radioValue1"
-    @click="handleRadioChange"
-  />
- </view>
+  <page header-title="Radio 单选框">
+    <panel
+      title="基础用法"
+      no-padding
+    >
+      <view class="radio-container">
+        <at-radio
+          :options="radioOptions1"
+          :value="radioValue1"
+          @click="handleRadioChange"
+        />
+      </view>
+    </panel>
+
+    <panel
+      title="使用 v-model:value"
+      no-padding
+    >
+      <view class="radio-container">
+        <at-radio
+          :options="radioOptions1"
+          v-model:value="radioValue1"
+        />
+      </view>
+    </panel>
+  </page>
 </template>
+
 <script>
 export default {
   name: 'AtRadioDemo',
@@ -65,15 +85,15 @@ export default {
 
 ## 参数
 
-| 参数       | 说明                                   | 类型    | 可选    值                                                              | 默认值   |
-| ---------- | -------------------------------------- | ------- | ------------------------------------------------------------------- | -------- |
-| value | 输入框当前值，用户需要通过 onClick 事件来更新 value 值，必填   | String  | - | 0 |
-| options  | object 选项列表，object 字段详细看下表  | Array | - | - |
+| 参数       | 说明     | 类型    | 可选值     | 默认值   |
+| ---------- | ---------| ------- | ---------- | -------- |
+| value | 输入框当前值，支持 v-model，用户可通过 `onClick` 事件或 `v-model:value` 来更新 `value` 值，必填   | `String`  | - | - |
+| options  | `RadioOption<T>` 选项列表，`RadioOption<T>` 字段详细看下表  | `Array<RadioOption<T>>` | - | - |
 
-## options object 字段详解
+## `RadioOption` 字段详解
 
-| 参数       | 说明                                   | 类型    | 可选值                                                              | 默认值   | 可选或必填
-| ---------- | -------------------------------------- | ------- | ------------------------------------------------------------------- | -------- |-------- |
+| 参数  | 说明        | 类型    | 可选值   | 默认值   | 可选或必填
+| ---------- | ------- | ------- | ---- | -------- |-------- |
 | value | 选项标识符，必须保证唯一  | String  | - | - | 必填 |
 | label  | 选项标题  | String | - | - | 必填|
 | desc  | 选项描述，显示在标题下方的文字  | String | - | - | 可选|
@@ -83,4 +103,5 @@ export default {
 
 | 事件名称 | 说明          | 返回参数  |
 |---------- |-------------- |---------- |
-| onClick | 点击选项触发事件,开发者需要通过此事件来更新 value，onClick 函数必填 | 当前值 value  |
+| onClick | 点击选项触发事件,开发者可通过此事件来更新 value | 当前值 value  |
+| onUpdate:value | 使用 `v-model:value` 时自动触发 | 当前值 value  |

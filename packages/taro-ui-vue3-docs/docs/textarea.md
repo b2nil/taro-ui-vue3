@@ -3,7 +3,6 @@
 ---
 多行文本输入框，可控制是否显示当前字数，可自定义高度。
 
-> AtTextarea 的 onChange 事件与 AtInput 保持一致，接收两个参数，函数签名为 `onChange: (value: string, event?: CommonEvent | undefined) => void`，不再需要使用 `event.target.value` 获取输入的值。
 
 ## 使用指南
 
@@ -23,7 +22,7 @@ import { AtTextarea } from 'taro-ui-vue3'
 
 说明：
 
-* 该组件为受控组件，开发者需要通过 onChange 事件来更新 value 值变化，value 与 onChange 函数必填
+* 该组件为受控组件，开发者可通过 `onChange` 事件或 `v-model:value` 来更新 value 值变化。不使用 v-model 时，`value` 与 `onChange` 函数必填
 
 * 由于小程序组件化的限制，AtTextarea 嵌套在 AtForm 或原生小程序组件 Form 中的时候，onSubmit 事件获得的 event 中的 event.detail.value 始终为空对象，开发者要获取数据，可以自行在页面的 state 中获取
 
@@ -37,7 +36,13 @@ import { AtTextarea } from 'taro-ui-vue3'
       :value="value1"
       @change="handleChange"
       :maxLength="200"
-      placeholder='你的问题是...'
+      placeholder='使用 onChange 更新 value 值'
+    />
+
+    <AtTextarea
+      v-model:value="value1"
+      :maxLength="200"
+      placeholder='使用 v-model:value 更新 value 值'
     />
   </view>
 </template>
@@ -78,7 +83,7 @@ export default {
 
 | 参数   |  微信小程序 |  h5 | 说明   | 类型    | 可选值 | 默认值   |
 | ---   | ----  | ---- | ---- | ------- | ------- | ------ |
-| value | √ | √ | 输入框当前值，用户需要通过 onChange 事件的 event.target.value 来更新 value 值，必填 | String  | - | - |
+| value | √ | √ | 输入框当前值，支持 v-model，用户可通过 `onChange` 事件 或 `v-model:value` 来更新 `value` 值，必填 | String  | - | - |
 | maxLength | √ | √ | 最大长度  | Number  | - | 200 |
 | placeholder | √ | √ | 占位符  | String | - | - |
 | placeholderStyle | √ | x | 指定 placeholder 的样式，只在小程序有效  | String  | - | - |
@@ -99,7 +104,8 @@ export default {
 
 | 事件名称 |   微信小程序 |  h5 | 说明          | 返回参数  |
 |---------| ---  | --------| --------- |---------- |
-| onChange |  √ | √ | 输入框值改变时触发的事件，开发者需要通过 onChange 事件来更新 value 值变化，onChange 函数必填 | (value, event) => void  |
+| onChange |  √ | √ | 输入框值改变时触发的事件，开发者可通过 onChange 事件来更新 value 值变化，不使用 v-model 时，onChange 函数必填 | (value, event) => void  |
+| onUpdate:value |  √ | √ | 使用 `v-model:value` 时自动触发 | (value, event) => void  |
 | onFocus |  √ | √ | 输入框获得焦点时触发，event.detail = {'{value, height}'} ，height 为键盘高度| event  |
 | onBlur |  √ | √ | 输入框失去焦点时触发，event.detail = {'{ value, cursor }'}  | event  |
 | onConfirm |  √ | x | 点击完成时，触发 confirm 事件，event.detail = {'{ value: value }'}  | event  |
