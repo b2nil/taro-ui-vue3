@@ -10,8 +10,8 @@ import {
   InputEventDetail,
   KeyboardHeightEventDetail,
 } from "types/input"
-import { ENV_TYPE, getEnv } from "@tarojs/taro"
 import { uuid } from "../../utils/common"
+import { useModelValue } from "../../composables/model"
 
 type PickAtInputProps = Pick<AtInputProps, 'maxLength' | 'disabled' | 'password'>
 type GetInputPropsReturn = PickAtInputProps & Pick<InputProps, 'type'>
@@ -115,15 +115,11 @@ const AtInput = defineComponent({
     },
     confirmType: {
       type: String as () => AtInputProps["confirmType"],
-      default: 'done' as AtInputProps["confirmType"],
+      default: 'done',
       validator: (val: string) => ["done", "send", "search", "next", "go"].includes(val)
     },
     // events
-    onChange: {
-      type: Function as PropType<AtInputProps['onChange']>,
-      default: () => () => { },
-      required: true
-    },
+    onChange: Function as PropType<AtInputProps['onChange']>,
     onBlur: Function as PropType<AtInputProps['onBlur']>,
     onFocus: Function as PropType<AtInputProps['onFocus']>,
     onConfirm: Function as PropType<AtInputProps['onConfirm']>,
@@ -132,11 +128,9 @@ const AtInput = defineComponent({
     onErrorClick: Function as PropType<AtInputProps['onErrorClick']>
   },
 
-  setup(props: AtInputProps, { attrs, slots }) {
-    const inputValue = ref(props.value)
+  setup(props: AtInputProps, { attrs, slots, emit }) {
+    const inputValue = useModelValue(props, emit, 'value')
     const inputID = ref('weui-input' + uuid())
-    const isWEB = ref(getEnv() === ENV_TYPE.WEB)
-
     const inputProps = computed(() => getInputProps(props))
 
     const rootClasses = computed(() => ({
@@ -162,23 +156,27 @@ const AtInput = defineComponent({
       'at-input__title--required': props.required
     }))
 
-    watch(() => props.value, (val, preVal) => {
-      if (val !== preVal) {
-        inputValue.value = val
-      }
-    })
+    // watch(() => props.value, (val, preVal) => {
+    //   if (val !== preVal) {
+    //     inputValue.value = val
+    //   }
+    // })
 
     function handleInput(e: BaseEventOrig<InputEventDetail>) {
-      props.onChange(e.detail.value, e)
+      if (attrs['onUpdate:value']) {
+        inputValue.value = e.detail.value
+      } else {
+        props.onChange?.(e.detail.value, e)
+      }
     }
 
     function handleFocus(e: BaseEventOrig<FocusEventDetail>) {
       if (typeof props.onFocus === 'function') {
         props.onFocus(e.detail.value, e)
       }
-      if (isWEB.value) {
+      if (process.env.TARO_ENV === 'h5') {
         // hack fix: h5 点击清除按钮后，input value 在数据层被清除，但视图层仍未清除
-        inputID.value = 'weui-input' + String(e.timeStamp).replace('.', '')
+        inputID.value = 'weui-input' + uuid(10, 32)
       }
     }
 
@@ -201,14 +199,17 @@ const AtInput = defineComponent({
     }
 
     function handleClearValue(e: ITouchEvent) {
-      props.onChange('', e)
+      if (attrs['onUpdate:value']) {
+        inputValue.value = ''
+      } else {
+        props.onChange?.('', e)
+      }
 
       // hack fix: h5 点击清除按钮后，input value 在数据层被清除，但视图层仍未清除
-      if (isWEB.value) {
+      if (process.env.TARO_ENV === 'h5') {
         const inputNode = document.querySelector<HTMLInputElement>(`#${inputID.value} > .weui-input`)
         inputNode!.value = ''
       }
-
     }
 
     function handleKeyboardHeightChange(
@@ -247,8 +248,9 @@ const AtInput = defineComponent({
                   }, { default: () => props.title })
                 ),
 
-                h(Input, mergeProps(isWEB.value ? { id: inputID.value } : {}, {
+                h(Input, {
                   class: 'at-input__input',
+                  id: inputID.value,
                   name: props.name,
                   type: inputProps.value.type,
                   password: inputProps.value.password,
@@ -270,7 +272,7 @@ const AtInput = defineComponent({
                   onFocus: handleFocus,
                   onConfirm: handleConfirm,
                   onKeyboardHeightChange: handleKeyboardHeightChange,
-                })),
+                }),
 
                 (props.clear && props.value) && (
                   h(View, {
@@ -300,7 +302,7 @@ const AtInput = defineComponent({
 
                 h(View, {
                   class: 'at-input__children'
-                }, { default: () => slots.default && slots.default() })
+                }, { default: () => slots.default?.() })
               ]
             })
           ]
