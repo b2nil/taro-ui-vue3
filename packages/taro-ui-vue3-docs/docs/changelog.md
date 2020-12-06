@@ -5,6 +5,12 @@
 
 项目遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范
 
+### v1.0.0-alpha.16 (2020-12-4)
+* 修复 `AtSlider` 当 step < 1 时 value 精度不准确的问题 ([taro-ui #758](https://github.com/NervJS/taro-ui/issues/758)) (91c1612)
+* 修复 `taro-ui-vue3/lib` `@/utils` 和 `@/composables` 的引用路径问题 ([#63](https://github.com/b2nil/taro-ui-vue3/issues/63)) (b88d600)
+* 将 `dayjs` 和 `lodash` 依赖切换为兼容 es module 的依赖 (39fac1e, ca8192a)
+* 打包文件移除了 `umd` 格式，仅提供 `esm` 和 `cjs` 格式
+
 ### v1.0.0-alpha.15 (2020-11-20)
 * 修复 `AtFlex` 样式失效问题 ([#7](https://github.com/b2nil/taro-ui-vue3/issues/7)) (c40d5a8, a4f2185)
 * 修复 `AtButton` `onGetAuthorize` 笔误 ([#61](https://github.com/b2nil/taro-ui-vue3/issues/61)) (1dff28f)
