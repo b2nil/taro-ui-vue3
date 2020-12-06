@@ -8,7 +8,7 @@
 在 Taro 文件中引入组件
 
 ```typescript
-import { AtForm, AtSwitch } from 'taro-ui-vue3'
+import { AtSwitch } from 'taro-ui-vue3'
 ```
 
 **组件依赖的样式文件（仅按需引用时需要）**
@@ -21,52 +21,55 @@ import { AtForm, AtSwitch } from 'taro-ui-vue3'
 
 说明：
 
-* 该组件为受控组件，开发者能通过 checked 来初始化组件开关状态，切换开关时会触发 onChange 函数
+* 该组件为受控组件，开发者可通过 `checked` 来初始化组件开关状态，切换开关时会触发 `onChange` 事件
+* 若使用 `v-model:checked` 来初始化组件开关状态，则在切换开关时会触发 `onUpdate:checked` 事件
 
 
 ```html
-<template>
-  <view>
-    <AtForm>
-      <AtSwitch
-        title='开启中'
-        :checked="switchValue"
-        @change="handleChange"
-      />
-      <AtSwitch title='已关闭' :border="false" />
-    </AtForm>
-  </view>
-</template>
-<script>
-export default {
-  name: 'SwitchPage',
-  data() {
-    return {
-      switchValue: true
-    }
-  },
-  methods: {
-    handleChange (value) {
-      this.switchValue = value
-    }
-  }
-}
-</script>
+<example-item>
+  <at-switch
+    title="开启中"
+    checked
+  />
+  <at-switch
+    title="已关闭"
+    border
+  />
+</example-item>
 
+```
 
+## 使用 v-model 或 onChange 获取开关状态
+
+```html
+<example-item>
+  <at-switch
+    :title="`${switchValue ? '开启中' : '已关闭'}`"
+    :checked="switchValue"
+    @change="(e) => switchValue = e"
+  />
+  <at-switch
+    :title="`${switchValue2 ? '开启中' : '已关闭'}`"
+    v-model:checked="switchValue2"
+  />
+</example-item>
 ```
 
 
 ## 禁用状态
 ```html
-<template>
-  <view class='example-item'>
-    <AtForm>
-      <AtSwitch title='不可点击' checked disabled />
-      <AtSwitch title='不可点击' :border="false" disabled />
-    </AtForm>
-  </view>
-</template>
+<example-item>
+  <at-switch
+    title="不可点击： 无 border"
+    checked
+    disabled
+  />
+  <at-switch
+    title="不可点击： 有 border"
+    border
+    disabled
+  />
+</example-item>
 ```
 
 
@@ -80,11 +83,11 @@ $at-switch-title-size: $font-size-base !default; // 14px * 2
 
 ## 参数
 
-| 参数       | 说明                                   | 类型    | 可选值                                                              | 默认值   |
-| ---------- | -------------------------------------- | ------- | ------------------------------------------------------------------- | -------- |
+| 参数   | 说明      | 类型    | 可选值        | 默认值   |
+| ---------- | ------ | ------- | ------- | -------- |
 | title | 标签名 | String  | - | - |
 | color | 背景颜色  | String  | - | `#6190e8` |
-| checked     | 是否显示开启  | Boolean | - | false |
+| checked     | 是否显示开启， 支持 v-model  | Boolean | - | false |
 | disabled     | 是否禁止点击  | Boolean | - | false |
 | border     | 是否显示下划线边框  | Boolean | - | true |
 
@@ -93,3 +96,4 @@ $at-switch-title-size: $font-size-base !default; // 14px * 2
 | 事件名称 | 说明          | 返回参数  |
 |---------- |-------------- |---------- |
 | onChange | 输入框值改变时触发的事件 | 当前值 value  |
+| onUpdate:checked | 使用 `v-model:checked` 时自动触发 | 当前值 value  |
