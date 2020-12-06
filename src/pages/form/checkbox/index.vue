@@ -46,7 +46,7 @@
     </panel>
 
     <panel
-      title="使用 vModel"
+      title="使用 vModel：`v-model:selected-list`"
       no-padding
     >
       <example-item>

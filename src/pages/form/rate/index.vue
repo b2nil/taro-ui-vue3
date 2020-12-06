@@ -46,7 +46,7 @@
       </example-item>
     </panel>
 
-    <panel title="使用 vModel">
+    <panel title="使用 vModel：`v-model:value`">
       <example-item>
         <at-rate
           :size="24"
@@ -67,7 +67,7 @@
       </example-item>
     </panel>
 
-    <panel title="自定义图标类型">
+    <panel title="自定义图标类型： 支持 star 或 heart">
       <example-item>
         <at-rate
           color="red"
