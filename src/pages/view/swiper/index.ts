@@ -1,6 +1,6 @@
 
 import { h, defineComponent, reactive } from 'vue'
-import { AtList, AtListItem } from '../../../components/index'
+import { AtList, AtListItem } from '../../../index'
 import {
   Image,
   Slider,

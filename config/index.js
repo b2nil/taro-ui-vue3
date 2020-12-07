@@ -1,5 +1,4 @@
 const path = require('path')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const config = {
   projectName: 'taro-ui-vue3',
@@ -51,26 +50,6 @@ const config = {
           generateScopedName: '[name]__[local]___[hash:base64:5]'
         }
       }
-    },
-    webpackChain(chain) {
-      chain.merge({
-        plugin: {
-          install: {
-            plugin: BundleAnalyzerPlugin,
-          },
-        },
-        optimization: {
-          usedExports: true,
-        },
-        module: {
-          rules: [
-            {
-              include: path.resolve('node_modules', 'taro-ui-vue3'),
-              sideEffects: false
-            }
-          ]
-        }
-      })
     }
   },
   h5: {
@@ -93,25 +72,6 @@ const config = {
     webpackChain(chain) {
       chain.resolve.alias
         .set('@tarojs/components$', '@tarojs/components/dist-h5/vue3/index.js')
-
-      chain.merge({
-        plugin: {
-          install: {
-            plugin: BundleAnalyzerPlugin,
-          },
-        },
-        optimization: {
-          usedExports: true,
-        },
-        module: {
-          rules: [
-            {
-              include: path.resolve('node_modules', 'taro-ui-vue3'),
-              sideEffects: false
-            }
-          ]
-        }
-      })
     },
     router: {
       mode: 'browser'

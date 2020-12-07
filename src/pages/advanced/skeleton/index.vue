@@ -46,7 +46,7 @@ import {
   AtFlex,
   AtFlexItem,
   AtSwitch,
-} from '@/components/index'
+} from "../../../index"
 
 import {
   Page,

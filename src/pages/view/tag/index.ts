@@ -1,5 +1,5 @@
 
-import { AtTag } from '../../../components/index'
+import { AtTag } from '../../../index'
 import { h, defineComponent, reactive } from 'vue'
 import { View, Text } from '@tarojs/components'
 import Taro from '@tarojs/taro'

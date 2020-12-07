@@ -4,6 +4,7 @@ import { CommonEvent } from '@tarojs/components/types/common'
 import Taro from '@tarojs/taro'
 import { AtTextareaProps } from 'types/textarea'
 import { pxTransform } from '../../utils/common'
+import { useModelValue } from '../../composables/model'
 
 type ExtendEvent = {
   target: {
@@ -50,19 +51,15 @@ const AtTextarea = defineComponent({
     height: { type: [String, Number], default: 100 },
     cursorSpacing: { type: Number, default: 100 },
     // event handlers
-    onChange: {
-      type: Function as PropType<AtTextareaProps['onChange']>,
-      default: () => (value: string, event?: CommonEvent) => { },
-      required: true
-    },
+    onChange: Function as PropType<AtTextareaProps['onChange']>,
     onFocus: Function as PropType<AtTextareaProps['onFocus']>,
     onBlur: Function as PropType<AtTextareaProps['onBlur']>,
     onConfirm: Function as PropType<AtTextareaProps['onConfirm']>,
     onLinechange: Function as PropType<AtTextareaProps['onLinechange']>,
   },
 
-  setup(props: AtTextareaProps, { attrs, slots }) {
-    const isAlipay = Taro.getEnv() === Taro.ENV_TYPE.ALIPAY
+  setup(props: AtTextareaProps, { attrs, emit }) {
+    const inputValue = useModelValue(props, emit, 'value')
 
     const _maxLength = computed(() => parseInt(props.maxLength!.toString()))
 
@@ -79,34 +76,36 @@ const AtTextarea = defineComponent({
     const rootClasses = computed(() => ({
       'at-textarea': true,
       [`at-textarea--${ENV}`]: true,
-      'at-textarea--error': _maxLength.value < props.value.length
+      'at-textarea--error': _maxLength.value < inputValue.value.length
     }))
 
-    const placeholderClasses = computed(() => `placeholder ${props.placeholderClass}`)
-
-    const alipayShowCount = computed(() => isAlipay
-      ? { showCount: props.count }
-      : {}
-    )
+    const placeholderClasses = computed(() => ({
+      'placeholder': true,
+      [`${props.placeholderClass}`]: Boolean(props.placeholderClass)
+    }))
 
     function handleInput(event: CommonEvent & ExtendEvent): void {
-      props.onChange(event.target.value, event)
+      if (attrs['onUpdate:value']) {
+        inputValue.value = event.target.value
+      } else {
+        props.onChange?.(event.target.value, event)
+      }
     }
 
     function handleFocus(event: CommonEvent): void {
-      props.onFocus && props.onFocus(event)
+      props.onFocus?.(event)
     }
 
     function handleBlur(event: CommonEvent): void {
-      props.onBlur && props.onBlur(event)
+      props.onBlur?.(event)
     }
 
     function handleConfirm(event: CommonEvent): void {
-      props.onConfirm && props.onConfirm(event)
+      props.onConfirm?.(event)
     }
 
     function handleLinechange(event: CommonEvent): void {
-      props.onLinechange && props.onLinechange(event)
+      props.onLinechange?.(event)
     }
 
     return () => (
@@ -114,33 +113,35 @@ const AtTextarea = defineComponent({
         class: rootClasses.value
       }), {
         default: () => [
-          h(Textarea, mergeProps(alipayShowCount.value, {
-            class: 'at-textarea__textarea',
-            style: textareaStyle.value,
-            placeholderstyle: props.placeholderStyle,
-            placeholderClass: placeholderClasses.value,
-            cursorSpacing: props.cursorSpacing,
-            value: props.value,
-            maxlength: actualMaxLength.value,
-            placeholder: props.placeholder,
-            disabled: props.disabled,
-            autoFocus: props.autoFocus,
-            focus: props.focus,
-            fixed: props.fixed,
-            showConfirmBar: props.showConfirmBar,
-            selectionStart: props.selectionStart,
-            selectionEnd: props.selectionEnd,
-            onInput: handleInput,
-            onFocus: handleFocus,
-            onBlur: handleBlur,
-            onConfirm: handleConfirm,
-            onLineChange: handleLinechange,
-          })),
+          h(Textarea, mergeProps(
+            process.env.TARO_ENV === 'alipay' ? { showCount: props.count } : {},
+            {
+              class: 'at-textarea__textarea',
+              style: textareaStyle.value,
+              placeholderstyle: props.placeholderStyle,
+              placeholderClass: placeholderClasses.value,
+              cursorSpacing: props.cursorSpacing,
+              value: inputValue.value,
+              maxlength: actualMaxLength.value,
+              placeholder: props.placeholder,
+              disabled: props.disabled,
+              autoFocus: props.autoFocus,
+              focus: props.focus,
+              fixed: props.fixed,
+              showConfirmBar: props.showConfirmBar,
+              selectionStart: props.selectionStart,
+              selectionEnd: props.selectionEnd,
+              onInput: handleInput,
+              onFocus: handleFocus,
+              onBlur: handleBlur,
+              onConfirm: handleConfirm,
+              onLineChange: handleLinechange,
+            })),
 
-          props.count && !isAlipay && (
+          props.count && process.env.TARO_ENV !== 'alipay' && (
             h(View, {
               class: 'at-textarea__counter'
-            }, { default: () => `${props.value.length} / ${_maxLength.value}` })
+            }, { default: () => `${inputValue.value.length} / ${_maxLength.value}` })
           )
         ]
       })

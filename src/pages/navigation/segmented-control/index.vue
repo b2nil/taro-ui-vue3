@@ -46,7 +46,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs, ref } from "vue"
-import { AtSegmentedControl } from "@/components/index"
+import { AtSegmentedControl } from "../../../index"
 import { Page, Panel, ExampleItem } from '../../components/demo-page'
 
 import "./index.scss"

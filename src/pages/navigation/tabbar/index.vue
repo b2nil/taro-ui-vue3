@@ -61,7 +61,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref, toRefs } from "vue"
-import { AtTabBar } from "@/components/index"
+import { AtTabBar } from "../../../index"
 import { Page, Panel, ExampleItem } from '../../components/demo-page'
 
 import "./index.scss"

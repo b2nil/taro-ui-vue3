@@ -1,9 +1,9 @@
-import { h, defineComponent, reactive, computed, CSSProperties, mergeProps, ref, watch, PropType } from 'vue'
+import { h, defineComponent, reactive, computed, CSSProperties, mergeProps, ref, PropType } from 'vue'
 import { Input, Text, View } from '@tarojs/components'
 import { BaseEventOrig, CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
 import { AtSearchBarProps, AtSearchBarState } from 'types/search-bar'
-import { ENV_TYPE, getEnv } from '@tarojs/taro'
 import { uuid } from '../../utils/common'
+import { useModelValue } from '../../composables/model'
 
 const AtSearchBar = defineComponent({
   name: "AtSearchBar",
@@ -46,11 +46,7 @@ const AtSearchBar = defineComponent({
       type: String as PropType<AtSearchBarProps['inputType']>,
       default: 'text'
     },
-    onChange: {
-      type: Function as PropType<AtSearchBarProps['onChange']>,
-      default: () => (value: string, event: CommonEvent) => { },
-      required: true
-    },
+    onChange: Function as PropType<AtSearchBarProps['onChange']>,
     onFocus: Function as PropType<AtSearchBarProps['onFocus']>,
     onBlur: Function as PropType<AtSearchBarProps['onBlur']>,
     onConfirm: Function as PropType<AtSearchBarProps['onConfirm']>,
@@ -58,19 +54,18 @@ const AtSearchBar = defineComponent({
     onClear: Function as PropType<AtSearchBarProps['onClear']>,
   },
 
-  setup(props: AtSearchBarProps, { attrs, slots }) {
+  setup(props: AtSearchBarProps, { attrs, emit }) {
 
     const state = reactive<AtSearchBarState>({
       isFocus: !!props.focus
     })
 
-    const isWEB = ref(getEnv() === ENV_TYPE.WEB)
     const inputID = ref('weui-input' + uuid())
-    const inputValue = ref(props.value)
+    const inputValue = useModelValue(props, emit, 'value')
 
     const fontSize = 14
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       'at-search-bar': true,
       'at-search-bar--fixed': props.fixed
     }))
@@ -80,7 +75,7 @@ const AtSearchBar = defineComponent({
 
       if (state.isFocus || (!state.isFocus && props.value)) {
         placeholderWrapStyle.flexGrow = 0
-      } else if (!state.isFocus && !props.value) {
+      } else if (!state.isFocus && !inputValue.value) {
         placeholderWrapStyle.flexGrow = 1
       }
 
@@ -90,10 +85,10 @@ const AtSearchBar = defineComponent({
     const actionStyle = computed(() => {
       const actionStyle: CSSProperties = {}
 
-      if (state.isFocus || (!state.isFocus && props.value)) {
+      if (state.isFocus || (!state.isFocus && inputValue.value)) {
         actionStyle.opacity = 1
         actionStyle.marginRight = `0`
-      } else if (!state.isFocus && !props.value) {
+      } else if (!state.isFocus && !inputValue.value) {
         actionStyle.opacity = 0
         actionStyle.marginRight = `-${(props.actionName!.length + 1) * fontSize + fontSize / 2 + 10
           }px`
@@ -108,38 +103,36 @@ const AtSearchBar = defineComponent({
     })
 
     const clearIconStyle = computed(() => ({
-      display: !props.value.length ? 'none' : 'flex'
+      display: !inputValue.value.length ? 'none' : 'flex'
     }))
 
     const placeholderStyle = computed(() => ({
-      visibility: !props.value.length ? 'visible' : 'hidden'
+      visibility: !inputValue.value.length ? 'visible' : 'hidden'
     }))
 
-    watch(() => props.value, (val, preVal) => {
-      if (preVal !== val) {
-        inputValue.value = val
-      }
-    })
-
     function handleFocus(event: BaseEventOrig<any>): void {
-      if (isWEB.value) {
+      if (process.env.TARO_ENV === 'h5') {
         // hack fix: h5 点击清除按钮后，input value 在数据层被清除，但视图层仍未清除
-        inputID.value = 'weui-input' + String(event.timeStamp).replace('.', '')
+        inputID.value = 'weui-input' + uuid(10, 32)
       }
 
       state.isFocus = true
-      props.onFocus && props.onFocus(event.detail.value, event)
+      props.onFocus?.(event.detail.value, event)
     }
 
     function handleBlur(event: BaseEventOrig<any>): void {
       state.isFocus = false
-      props.onBlur && props.onBlur(event.detail.value, event)
+      props.onBlur?.(event.detail.value, event)
     }
 
     function handleChange(e: BaseEventOrig<any>): void {
-      props.onChange(e.detail.value, e)
+      if (attrs['onUpdate:value']) {
+        inputValue.value = e.detail.value
+      } else {
+        props.onChange?.(e.detail.value, e)
+      }
 
-      if (isWEB.value && e.detail.value === '') {
+      if (process.env.TARO_ENV === 'h5' && e.detail.value === '') {
         clearInputNodeValue()
       }
     }
@@ -154,10 +147,14 @@ const AtSearchBar = defineComponent({
       if (typeof props.onClear === 'function') {
         props.onClear(event)
       } else {
-        props.onChange('', event)
+        if (attrs['onUpdate:value']) {
+          inputValue.value = ''
+        } else {
+          props.onChange?.('', event)
+        }
       }
 
-      if (isWEB.value) {
+      if (process.env.TARO_ENV === 'h5') {
         clearInputNodeValue()
       }
     }
@@ -167,18 +164,23 @@ const AtSearchBar = defineComponent({
     }
 
     function handleActionClick(event: CommonEvent): void {
-      props.onActionClick && props.onActionClick(event)
+      props.onActionClick?.(event)
 
       // default to clear value after action click
-      props.onChange('', event)
-      if (isWEB.value) {
+      if (attrs['onUpdate:value']) {
+        inputValue.value = ''
+      } else {
+        props.onChange?.('', event)
+      }
+
+      if (process.env.TARO_ENV === 'h5') {
         clearInputNodeValue()
       }
     }
 
     return () => (
       h(View, mergeProps(attrs, {
-        class: rootClass.value
+        class: rootClasses.value
       }), {
         default: () => [
           // searchbar input
@@ -201,8 +203,9 @@ const AtSearchBar = defineComponent({
               }),
 
               // input
-              h(Input, mergeProps(isWEB.value ? { id: inputID.value } : {}, {
+              h(Input, {
                 class: 'at-search-bar__input',
+                id: inputID.value,
                 type: props.inputType,
                 confirmType: 'search',
                 value: inputValue.value,
@@ -213,12 +216,12 @@ const AtSearchBar = defineComponent({
                 onFocus: handleFocus,
                 onInput: handleChange,
                 onConfirm: handleConfirm,
-              })),
+              }),
 
               // clear icon
               // v-if="props.value" is necessary, otherwise
               // value cannot be cleared from screen in alipay
-              props.value && h(View, {
+              inputValue.value && h(View, {
                 class: 'at-search-bar__clear',
                 style: clearIconStyle.value,
                 onTouchStart: handleClear

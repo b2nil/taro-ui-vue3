@@ -7,7 +7,7 @@ import AtComponent from './base'
 
 export interface AtTextareaProps extends AtComponent {
   /**
-   * 输入框当前值，用户需要通过 onChange 事件的 event.target.value 来更新 value 值，必填
+   * 输入框当前值，支持 v-model，用户可通过 onChange 事件的 event.target.value 或 v-model:value 来更新 value 值，必填
    */
   value: string
   /**
@@ -86,10 +86,10 @@ export interface AtTextareaProps extends AtComponent {
   cursorSpacing?: number
   /**
    * 输入框值改变时触发的事件，
-   * 开发者需要通过 onChange 事件来更新 value 值变化，
-   * onChange 函数必填
+   * 开发者可通过 onChange 事件或 v-model:value 来更新 value 值变化，
+   * 不使用 v-model 时，onChange 函数必填
    */
-  onChange: (value: string, event?: CommonEvent) => void
+  onChange?: (value: string, event?: CommonEvent) => void
   /**
    * 输入框获得焦点时触发，height 为键盘高度，在基础库 1.9.90 起支持
    */

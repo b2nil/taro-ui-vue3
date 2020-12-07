@@ -116,12 +116,14 @@
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from "vue"
 import Taro from "@tarojs/taro"
-import AtButton from "@/components/button"
-import AtIndexes from "@/components/indexes"
-import AtModal from "@/components/modal"
-import AtModalAction from "@/components/modal/action"
-import AtModalContent from "@/components/modal/content"
-import AtModalHeader from "@/components/modal/header"
+import {
+  AtButton,
+  AtIndexes,
+  AtModal,
+  AtModalAction,
+  AtModalContent,
+  AtModalHeader
+} from "../../../index"
 import { Page, Panel, ExampleItem } from "../../components/demo-page"
 import mockData from '../../navigation/indexes/mock-data'
 

@@ -8,7 +8,7 @@ export interface AtSearchBarProps extends AtComponent {
   /**
    * 输入框当前值
    * @type {string}
-   * @description 必填，开发者需要通过 onChange 事件来更新 value 值
+   * @description 必填，支持 v-model， 开发者可通过 onChange 事件或 v-model:value 来更新 value 值
    */
   value: string
   /**
@@ -61,9 +61,9 @@ export interface AtSearchBarProps extends AtComponent {
   inputType?: 'text' | 'number' | 'idcard' | 'digit'
   /**
    * 输入框值改变时触发的事件
-   * @description 必填，开发者需要通过 onChange 事件来更新 value 值变化
+   * @description 开发者可通过 onChange 事件来更新 value 值变化, 不使用 v-model 时必填
    */
-  onChange: AtInputProps['onChange']
+  onChange?: AtInputProps['onChange']
   /**
    * 输入框聚焦时触发
    * @description height 参数在基础库 1.9.90 起支持

@@ -1,60 +1,115 @@
-export { default as AtAccordion } from './components/accordion'
-export { default as AtActionSheet } from './components/action-sheet'
-export { default as AtActionSheetItem } from './components/action-sheet/body/item'
-export { default as AtActivityIndicator } from './components/activity-indicator'
-export { default as AtAvatar } from './components/avatar'
-export { default as AtBadge } from './components/badge'
-export { default as AtButton } from './components/button'
-export { default as AtCard } from './components/card'
-export { default as AtCheckbox } from './components/checkbox'
-export { default as AtCalendar } from './components/calendar'
-export { default as AtCurtain } from './components/curtain'
-export { default as AtCountdown } from './components/countdown'
-export { default as AtDrawer } from './components/drawer'
-export { default as AtDivider } from './components/divider'
-export { default as AtFloatLayout } from './components/float-layout'
-export { default as AtForm } from './components/form'
-export { default as AtFab } from './components/fab'
-export { default as AtFlex } from './components/flex'
-export { default as AtFlexItem } from './components/flex/item'
-export { default as AtIndexes } from './components/indexes'
-export { default as AtImagePicker } from './components/image-picker'
-export { default as AtGrid } from './components/grid'
-export { default as AtIcon } from './components/icon'
-export { default as AtInput } from './components/input'
-export { default as AtInputNumber } from './components/input-number'
-export { default as AtList } from './components/list'
-export { default as AtListItem } from './components/list/item'
-export { default as AtLoadMore } from './components/load-more'
-export { default as AtModal } from './components/modal'
-export { default as AtModalHeader } from './components/modal/header'
-export { default as AtModalContent } from './components/modal/content'
-export { default as AtModalAction } from './components/modal/action'
-export { default as AtMessage } from './components/message'
-export { default as AtNavBar } from './components/nav-bar'
-export { default as AtNoticebar } from './components/noticebar'
-export { default as AtPagination } from './components/pagination'
-export { default as AtProgress } from './components/progress'
-export { default as AtRadio } from './components/radio'
-export { default as AtRate } from './components/rate'
-export { default as AtSegmentedControl } from './components/segmented-control'
-export { default as AtSwitch } from './components/switch'
-export { default as AtTabBar } from './components/tab-bar'
-export { default as AtTabs } from './components/tabs'
-export { default as AtTabsPane } from './components/tabs-pane'
-export { default as AtTag } from './components/tag'
-export { default as AtTextarea } from './components/textarea'
-export { default as AtTimeline } from './components/timeline'
-export { default as AtSlider } from './components/slider'
-export { default as AtSwipeAction } from './components/swipe-action'
-export { default as AtSearchBar } from './components/search-bar'
-export { default as AtSteps } from './components/steps'
-export { default as AtRange } from './components/range'
-export { default as AtToast } from './components/toast'
-export { default as AtVirtualScroll } from './components/virtual-scroll'
-export { default as AtSkeleton } from './components/skeleton'
+import AtAccordion from './components/accordion'
+import AtActionSheet from './components/action-sheet'
+import AtActionSheetItem from './components/action-sheet/body/item'
+import AtActivityIndicator from './components/activity-indicator'
+import AtAvatar from './components/avatar'
+import AtBadge from './components/badge'
+import AtButton from './components/button'
+import AtCalendar from './components/calendar'
+import AtCard from './components/card'
+import AtCheckbox from './components/checkbox'
+import AtCountdown from './components/countdown'
+import AtCurtain from './components/curtain'
+import AtDivider from './components/divider'
+import AtDrawer from './components/drawer'
+import AtFab from './components/fab'
+import AtFlex from './components/flex'
+import AtFlexItem from './components/flex/item'
+import AtFloatLayout from './components/float-layout'
+import AtForm from './components/form'
+import AtGrid from './components/grid'
+import AtIcon from './components/icon'
+import AtImagePicker from './components/image-picker'
+import AtIndexes from './components/indexes'
+import AtInput from './components/input'
+import AtInputNumber from './components/input-number'
+import AtList from './components/list'
+import AtListItem from './components/list/item'
+import AtLoadMore from './components/load-more'
+import AtLoading from './components/loading'
+import AtMessage from './components/message'
+import AtModal from './components/modal'
+import AtModalAction from './components/modal/action'
+import AtModalContent from './components/modal/content'
+import AtModalHeader from './components/modal/header'
+import AtNavBar from './components/nav-bar'
+import AtNoticebar from './components/noticebar'
+import AtPagination from './components/pagination'
+import AtProgress from './components/progress'
+import AtRadio from './components/radio'
+import AtRange from './components/range'
+import AtRate from './components/rate'
+import AtSearchBar from './components/search-bar'
+import AtSegmentedControl from './components/segmented-control'
+import AtSkeleton from './components/skeleton'
+import AtSlider from './components/slider'
+import AtSteps from './components/steps'
+import AtSwipeAction from './components/swipe-action'
+import AtSwitch from './components/switch'
+import AtTabBar from './components/tab-bar'
+import AtTabs from './components/tabs'
+import AtTabsPane from './components/tabs/pane'
+import AtTag from './components/tag'
+import AtTextarea from './components/textarea'
+import AtTimeline from './components/timeline'
+import AtToast from './components/toast'
+import AtVirtualScroll from './components/virtual-scroll'
 
-
-
-/* 私有的组件  */
-export { default as AtLoading } from './components/loading'
+export {
+  AtAccordion,
+  AtActionSheet,
+  AtActionSheetItem,
+  AtActivityIndicator,
+  AtAvatar,
+  AtBadge,
+  AtButton,
+  AtCalendar,
+  AtCard,
+  AtCheckbox,
+  AtCountdown,
+  AtCurtain,
+  AtDivider,
+  AtDrawer,
+  AtFab,
+  AtFlex,
+  AtFlexItem,
+  AtFloatLayout,
+  AtForm,
+  AtGrid,
+  AtIcon,
+  AtImagePicker,
+  AtIndexes,
+  AtInput,
+  AtInputNumber,
+  AtList,
+  AtListItem,
+  AtLoadMore,
+  AtLoading,
+  AtMessage,
+  AtModal,
+  AtModalAction,
+  AtModalContent,
+  AtModalHeader,
+  AtNavBar,
+  AtNoticebar,
+  AtPagination,
+  AtProgress,
+  AtRadio,
+  AtRange,
+  AtRate,
+  AtSearchBar,
+  AtSegmentedControl,
+  AtSkeleton,
+  AtSlider,
+  AtSteps,
+  AtSwipeAction,
+  AtSwitch,
+  AtTabBar,
+  AtTabs,
+  AtTabsPane,
+  AtTag,
+  AtTextarea,
+  AtTimeline,
+  AtToast,
+  AtVirtualScroll
+}

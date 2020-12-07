@@ -2,6 +2,8 @@ import { h, defineComponent, mergeProps, PropType } from "vue"
 import { Text, View } from '@tarojs/components'
 import { AtCheckboxProps } from 'types/checkbox'
 
+import { useModelValue } from "../../composables/model"
+
 const AtCheckbox = defineComponent({
   name: "AtCheckbox",
 
@@ -14,19 +16,17 @@ const AtCheckbox = defineComponent({
     },
     selectedList: {
       type: Array as PropType<AtCheckboxProps<any>['selectedList']>,
-      default: () => [],
-      required: true
+      default: () => []
     },
     // 事件
-    onChange: {
-      type: Function as PropType<AtCheckboxProps<any>['onChange']>,
-      default: () => () => { }
-    }
+    onChange: Function as PropType<AtCheckboxProps<any>['onChange']>
   },
 
-  setup(props: AtCheckboxProps<any>, { attrs }) {
+  setup(props: AtCheckboxProps<any>, { attrs, emit }) {
 
-    const genOptionClass = (option) => ({
+    const selectedList = useModelValue(props, emit, "selectedList")
+
+    const genOptionClasses = (option) => ({
       'at-checkbox__option': true,
       'at-checkbox__option--disabled': option.disabled,
       'at-checkbox__option--selected': props.selectedList.includes(option.value)
@@ -43,7 +43,13 @@ const AtCheckbox = defineComponent({
       } else {
         selectedSet.delete(value)
       }
-      props.onChange([...selectedSet])
+
+      // allows both v-model:selected-list and v-model:selectedList
+      if (attrs['onUpdate:selected-list'] || attrs['onUpdate:selectedList']) {
+        selectedList.value = [...selectedSet]
+      } else {
+        props.onChange?.([...selectedSet])
+      }
     }
 
     return () => (
@@ -52,7 +58,7 @@ const AtCheckbox = defineComponent({
       }), {
         default: () => props.options.map((option, idx) => (
           h(View, {
-            class: genOptionClass(option),
+            class: genOptionClasses(option),
             key: option.value,
             onTap: handleClick.bind(this, idx)
           }, {

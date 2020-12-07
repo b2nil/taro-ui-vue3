@@ -3,6 +3,7 @@ import { Text, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtRateProps } from 'types/rate'
 import { pxTransform } from '../../utils/common'
+import { useModelValue } from '../../composables/model'
 
 const AtRate = defineComponent({
   name: "AtRate",
@@ -24,17 +25,30 @@ const AtRate = defineComponent({
       type: Number,
       default: 5
     },
+    icon: {
+      type: String as PropType<AtRateProps['icon']>,
+      default: 'star'
+    },
+    color: String,
     onChange: Function as PropType<AtRateProps['onChange']>
   },
 
-  setup(props: AtRateProps, { attrs, slots }) {
+  setup(props: AtRateProps, { attrs, emit }) {
 
-    const iconStyle = computed(() => ({
+    const modelValue = useModelValue(props, emit, 'value')
+
+    const iconClasses = computed(() => ({
+      'at-icon': true,
+      [`at-icon-${props.icon!}-2`]: true
+    }))
+
+    const iconMarginStyle = computed(() => ({
       marginRight: pxTransform(props.margin!)
     }))
 
-    const starIconStyle = computed(() => ({
-      fontSize: props.size ? `${props.size}px` : ''
+    const iconStyle = computed(() => (cls) => ({
+      fontSize: props.size ? `${props.size}px` : '',
+      color: props.color && cls.includes('at-rate__icon--on') ? props.color : ''
     }))
 
     // 生成星星颜色 className 数组，方便在jsx中直接map
@@ -55,7 +69,11 @@ const AtRate = defineComponent({
     })
 
     function handleClick(event: CommonEvent): void {
-      props.onChange && props.onChange(event)
+      if (attrs['onUpdate:value']) {
+        modelValue.value = event
+      } else {
+        props.onChange && props.onChange(event)
+      }
     }
 
     return () => (
@@ -67,21 +85,21 @@ const AtRate = defineComponent({
             h(View, {
               key: `at-rate-star-${i}`,
               class: cls,
-              style: iconStyle.value,
+              style: iconMarginStyle.value,
               onTap: handleClick.bind(this, i + 1)
             }, {
               default: () => [
                 h(Text, {
-                  class: 'at-icon at-icon-star-2',
-                  style: starIconStyle.value
+                  class: iconClasses.value,
+                  style: iconStyle.value(cls)
                 }),
                 h(View, {
                   class: 'at-rate__left'
                 }, {
                   default: () => [
                     h(Text, {
-                      class: 'at-icon at-icon-star-2',
-                      style: starIconStyle.value
+                      class: iconClasses.value,
+                      style: iconStyle.value(cls)
                     })
                   ]
                 })

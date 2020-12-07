@@ -133,10 +133,10 @@ export interface AtInputProps extends AtComponent, OmitInputProps {
    */
   onFocus?: InputFunction<string | number, FocusEventDetail>
   /**
-   * 输入框值改变时触发的事件，开发者需要通过 onChange 事件来更新 value 值变化，onChange 函数必填。
+   * 输入框值改变时触发的事件，开发者可通过 onChange 事件或 v-model:value 来更新 value 值变化，使用 v-model 时，无需 onChange 函数。
    * 小程序中，如果想改变 value 的值，需要 return value 从而改变输入框的当前值, v2.0.3 版本可以获取 event 参数
    */
-  onChange: InputFunction<string | number, InputEventDetail, any>
+  onChange?: InputFunction<string | number, InputEventDetail, any>
   /**
    * 点击完成按钮时触发，v2.0.3 版本可以获取 event 参数
    */

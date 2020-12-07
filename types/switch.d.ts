@@ -13,7 +13,7 @@ export interface AtSwitchProps extends AtComponent {
    */
   color?: string
   /**
-   * 是否显示开启
+   * 是否显示开启，支持 v-model, 用户可通过 v-model:checked 或 onChange 获取开关状态
    * @default false
    */
   checked?: boolean

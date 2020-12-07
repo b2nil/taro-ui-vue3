@@ -2,6 +2,7 @@ import { h, defineComponent, computed, mergeProps, PropType } from 'vue'
 import { Switch, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtSwitchProps } from 'types/switch'
+import { useModelValue } from '../../composables/model'
 
 const AtSwitch = defineComponent({
 
@@ -16,29 +17,22 @@ const AtSwitch = defineComponent({
       type: String,
       default: '#6190e8'
     },
-    checked: {
-      type: Boolean,
-      default: false
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    border: {
-      type: Boolean,
-      default: false
-    },
+    checked: Boolean,
+    disabled: Boolean,
+    border: Boolean,
     onChange: Function as PropType<AtSwitchProps['onChange']>,
   },
 
-  setup(props: AtSwitchProps, { attrs, slots }) {
+  setup(props: AtSwitchProps, { attrs, emit }) {
 
-    const rootClass = computed(() => ({
+    const modelChecked = useModelValue(props, emit, 'checked')
+
+    const rootClasses = computed(() => ({
       'at-switch': true,
-      'at-switch--without-border': !props.border
+      'at-switch--without-border': !Boolean(props.border)
     }))
 
-    const containerClass = computed(() => ({
+    const containerClasses = computed(() => ({
       'at-switch__container': true,
       'at-switch--disabled': props.disabled
     }))
@@ -46,12 +40,17 @@ const AtSwitch = defineComponent({
     function handleChange(event: CommonEvent): void {
       const { value, checked } = event.detail
       const state = typeof value === 'undefined' ? checked : value
-      props.onChange && props.onChange(state)
+
+      if (attrs['onUpdate:checked']) {
+        modelChecked.value = state
+      } else {
+        props.onChange && props.onChange(state)
+      }
     }
 
     return () => (
       h(View, mergeProps(attrs, {
-        class: rootClass.value
+        class: rootClasses.value
       }), {
         default: () => [
           // title
@@ -61,7 +60,7 @@ const AtSwitch = defineComponent({
 
           // container
           h(View, {
-            class: containerClass.value
+            class: containerClasses.value
           }, {
             default: () => [
               // mask
@@ -70,7 +69,7 @@ const AtSwitch = defineComponent({
               // switch
               h(Switch, {
                 class: 'at-switch__switch',
-                checked: props.checked,
+                checked: modelChecked.value,
                 color: props.color,
                 onChange: handleChange,
               })

@@ -135,9 +135,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue"
-import AtButton from "@/components/button"
-import AtIcon from "@/components/icon"
-import AtProgress from "@/components/progress"
+import { AtButton, AtIcon, AtProgress } from "../../../index"
 import { Page, Panel, ExampleItem } from "../../components/demo-page"
 
 import "./index.scss"
