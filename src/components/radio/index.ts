@@ -1,44 +1,48 @@
-import { h, defineComponent, computed, mergeProps } from 'vue'
+import { h, defineComponent, computed, mergeProps, PropType } from 'vue'
 import { Text, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtRadioProps, RadioOption } from 'types/radio'
+import { useModelValue } from '../../composables/model'
 
 const AtRadio = defineComponent({
   name: "AtRadio",
 
   props: {
     value: {
-      type: String as () => AtRadioProps<any>['value'],
+      type: String as PropType<AtRadioProps<any>['value']>,
       default: '',
       required: true
     },
     options: {
-      type: Array as () => AtRadioProps<any>['options'],
+      type: Array as PropType<AtRadioProps<any>['options']>,
       default: [],
       required: true
     },
-    onClick: {
-      type: Function as unknown as () => AtRadioProps<any>['onClick'],
-      default: () => (vaule: any, event: CommonEvent) => { },
-      required: true
-    },
+    onClick: Function as PropType<AtRadioProps<any>['onClick']>
   },
 
-  setup(props: AtRadioProps<any>, { attrs, slots }) {
+  setup(props: AtRadioProps<any>, { attrs, emit }) {
 
-    const genOptionClass = computed(() => (option) => ({
+    const radioModelValue = useModelValue(props, emit, 'value')
+
+    const genOptionClasses = computed(() => (option) => ({
       'at-radio__option': true,
       'at-radio__option--disabled': option.disabled
     }))
 
-    const genIconClass = computed(() => (option) => ({
+    const genIconClasses = computed(() => (option) => ({
       'at-radio__icon': true,
       'at-radio__icon--checked': props.value === option.value
     }))
 
     function handleClick(option: RadioOption<any>, event: CommonEvent): void {
       if (option.disabled) return
-      props.onClick(option.value, event)
+
+      if (attrs['onUpdate:value']) {
+        radioModelValue.value = option.value
+      } else {
+        props.onClick?.(option.value, event)
+      }
     }
 
     return () => (
@@ -48,7 +52,7 @@ const AtRadio = defineComponent({
         default: () => props.options.map(option => (
           h(View, {
             key: option.value,
-            class: genOptionClass.value(option),
+            class: genOptionClasses.value(option),
             onTap: handleClick.bind(this, option)
           }, {
             default: () => [
@@ -67,7 +71,7 @@ const AtRadio = defineComponent({
 
                       // icon
                       h(View, {
-                        class: genIconClass.value(option)
+                        class: genIconClasses.value(option)
                       }, {
                         default: () => [
                           h(Text, { class: 'at-icon at-icon-check' })

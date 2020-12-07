@@ -320,9 +320,7 @@
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from "vue"
 import Taro from "@tarojs/taro"
-import AtButton from "@/components/button"
-import AtFab from "@/components/fab"
-import AtForm from "@/components/form"
+import { AtButton, AtFab, AtForm } from "../../../index"
 import { Page, Panel, ExampleItem } from "../../components/demo-page"
 
 import "./index.scss"

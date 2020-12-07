@@ -1,5 +1,5 @@
 
-import { CommonEvent } from "@tarojs/components/types/common";
+import { CommonEvent } from "@tarojs/components/types/common"
 
 import AtComponent from './base'
 
@@ -25,7 +25,7 @@ export interface RadioOption<T> {
 
 export interface AtRadioProps<T> extends AtComponent {
   /**
-   * 输入框当前值，用户需要通过 onClick 事件来更新 value 值，必填
+   * 输入框当前值，支持 v-model，用户可通过 v-model:value 或 onClick 事件来更新 value 值，必填
    */
   value: T
   /**
@@ -33,8 +33,8 @@ export interface AtRadioProps<T> extends AtComponent {
    */
   options: Array<RadioOption<T>>
   /**
-   * 点击选项触发事件,开发者需要通过此事件来更新 value，onClick 函数必填
+   * 点击选项触发事件,开发者可通过此事件来更新 value
    */
-  onClick: (vaule: T, event: CommonEvent) => void
+  onClick?: (vaule: T, event: CommonEvent) => void
 }
 

@@ -108,7 +108,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref, toRefs } from "vue"
-import { AtTabs, AtTabsPane } from "@/components/index"
+import { AtTabs, AtTabsPane } from "../../../index"
 import { Page, Panel } from '../../components/demo-page'
 
 import "./index.scss"

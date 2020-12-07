@@ -1,12 +1,24 @@
 <template>
-  <page class="virtual-scroll-page" header-title="VirtualScroll 虚拟列表">
-    <panel title="功能展示" style="padding: 0">
+  <page
+    class="virtual-scroll-page"
+    header-title="VirtualScroll 虚拟列表"
+  >
+    <panel
+      title="功能展示"
+      style="padding: 0"
+    >
       <template #controller>
-        <at-card style="margin: 5px" title="参数控制">
+        <at-card
+          style="margin: 5px"
+          title="参数控制"
+        >
           <example-item>
             <at-flex justify="between">
               <at-flex-item>
-                <prop-item prop="height" desc="组件的高度 (px)">
+                <prop-item
+                  prop="height"
+                  desc="组件的高度 (px)"
+                >
                   <at-slider
                     showValue
                     :min="200"
@@ -17,8 +29,14 @@
                   />
                 </prop-item>
               </at-flex-item>
-              <at-flex-item :size="4" style="margin-left: 10px">
-                <prop-item prop="bench" desc="提前渲染的行数">
+              <at-flex-item
+                :size="4"
+                style="margin-left: 10px"
+              >
+                <prop-item
+                  prop="bench"
+                  desc="提前渲染的行数"
+                >
                   <at-input-number
                     :min="0"
                     :max="10"
@@ -33,7 +51,10 @@
           <example-item>
             <at-flex justify="around">
               <at-flex-item>
-                <prop-item prop="itemHeight" desc="列表的行高 (px)">
+                <prop-item
+                  prop="itemHeight"
+                  desc="列表的行高 (px)"
+                >
                   <at-slider
                     showValue
                     :min="48"
@@ -44,8 +65,14 @@
                   />
                 </prop-item>
               </at-flex-item>
-              <at-flex-item :size="4" style="margin-left: 10px">
-                <prop-item prop="onReachTop" desc="触顶事件">
+              <at-flex-item
+                :size="4"
+                style="margin-left: 10px"
+              >
+                <prop-item
+                  prop="onReachTop"
+                  desc="触顶事件"
+                >
                   <at-switch
                     style="padding: 0"
                     :title="`${reachTopOn ? '启用' : '禁用'}`"
@@ -59,7 +86,10 @@
           <example-item>
             <at-flex justify="around">
               <at-flex-item>
-                <prop-item prop="items.length" desc="列表总行数">
+                <prop-item
+                  prop="items.length"
+                  desc="列表总行数"
+                >
                   <at-slider
                     showValue
                     :min="1"
@@ -70,8 +100,14 @@
                   />
                 </prop-item>
               </at-flex-item>
-              <at-flex-item :size="4" style="margin-left: 10px">
-                <prop-item prop="onReachBottom" desc="触底事件">
+              <at-flex-item
+                :size="4"
+                style="margin-left: 10px"
+              >
+                <prop-item
+                  prop="onReachBottom"
+                  desc="触底事件"
+                >
                   <at-switch
                     style="padding: 0"
                     :title="`${reachBottomOn ? '启用' : '禁用'}`"
@@ -84,7 +120,10 @@
           </example-item>
         </at-card>
       </template>
-      <at-card style="margin: 5px" title="列表展示">
+      <at-card
+        style="margin: 5px"
+        title="列表展示"
+      >
         <at-virtual-scroll
           :bench="benched"
           :height="height"
@@ -96,7 +135,10 @@
           @reach-bottom="handleReachBottom"
         >
           <template #header>
-            <view class="example-item__desc" style="text-align: center">
+            <view
+              class="example-item__desc"
+              style="text-align: center"
+            >
               初始 scrollIntoItem 索引设置: 10
             </view>
             <at-search-bar
@@ -125,18 +167,15 @@
                         backgroundColor: item.color,
                         boxShadow: 'unset'
                       }"
-                      >{{ item.initials }}</at-fab
-                    >
+                    >{{ item.initials }}</at-fab>
                   </at-flex-item>
                   <at-flex-item>
                     <view
                       class="example-item__desc"
                       style="font-weight: bolder"
-                      >{{ item.fullName }}</view
-                    >
-                    <view class="example-item__desc"
-                      >第 {{ index + 1 }} 条/共 {{ length }} 条</view
-                    >
+                    >{{ item.fullName }}</view>
+                    <view class="example-item__desc">第 {{ index + 1 }} 条/共
+                      {{ length }} 条</view>
                   </at-flex-item>
                   <at-flex-item :size="3">
                     <view class="example-item__desc">左滑看看</view>
@@ -146,7 +185,10 @@
             </at-swipe-action>
           </template>
           <template #footer>
-            <at-load-more v-if="loadMore.show" :status="loadMore.status" />
+            <at-load-more
+              v-if="loadMore.show"
+              :status="loadMore.status"
+            />
           </template>
         </at-virtual-scroll>
       </at-card>
@@ -172,7 +214,7 @@ import {
   AtVirtualScroll,
   AtSwipeAction,
   AtSearchBar
-} from '@/components/index'
+} from "../../../index"
 import { Page, Panel, ExampleItem, PropItem } from '../../components/demo-page'
 
 import Taro from '@tarojs/taro'

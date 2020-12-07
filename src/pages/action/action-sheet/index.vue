@@ -72,9 +72,7 @@
 import { defineComponent, reactive, toRefs } from 'vue'
 import Taro from '@tarojs/taro'
 
-import { AtActionSheet } from '../../../components/index'
-import { AtActionSheetItem } from '../../../components/index'
-import { AtButton } from '../../../components/index'
+import { AtActionSheet, AtActionSheetItem, AtButton } from '../../../index'
 import { Page, Panel, ExampleItem } from '../../components/demo-page'
 
 import './index.scss'

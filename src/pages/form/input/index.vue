@@ -11,16 +11,15 @@
             name="value1"
             title="标准五个字"
             type="text"
-            placeholder="标准五个字"
-            :value="value1"
-            @change="handleInput('value1', $event)"
+            placeholder="使用了 v-model:value 更新 value"
+            v-model:value="value1"
           />
           <at-input
             name="value2"
             title="标题实在特别长就换行"
-            placeholder="其他列保持正常间距"
-            :value="value2"
-            @change="handleInput('value2', $event)"
+            placeholder="使用了 onChange 更新 value"
+            :value="value1"
+            @change="handleInput('value1', $event)"
           />
           <at-input
             name="value3"
@@ -137,8 +136,7 @@
             title="清除按钮"
             type="text"
             placeholder="点击清除按钮清空内容"
-            :value="value13"
-            @change="handleInput('value13', $event)"
+            v-model:value="value13"
           />
           <at-input
             clear
@@ -148,8 +146,7 @@
             title="必填项"
             type="text"
             placeholder="必须填写内容"
-            :value="value16"
-            @change="handleInput('value16', $event)"
+            v-model:value="value16"
           />
           <at-input
             clear
@@ -158,8 +155,7 @@
             title="监听事件"
             type="text"
             placeholder="监听键盘高度事件"
-            :value="value17"
-            @change="handleInput('value17', $event)"
+            v-model:value="value17"
             @keyboard-height-change="handleKeyboardHeightChange"
           />
         </at-form>
@@ -181,10 +177,12 @@
             type="text"
             placeholder="验证码"
             :maxLength="4"
-            :value="value14"
-            @change="handleInput('value14', $event)"
+            v-model:value="value14"
           >
-            <image :src="verificationCode" />
+            <image
+              :src="verificationCode"
+              :style="imageStyle"
+            />
           </at-input>
           <at-input
             clear
@@ -192,8 +190,7 @@
             type="phone"
             placeholder="请输入手机号码"
             :border="false"
-            :value="value15"
-            @change="handleInput('value15', $event)"
+            v-model:value="value15"
           >
             <view
               :style="{
@@ -212,16 +209,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs } from 'vue'
+import { computed, defineComponent, reactive, toRefs } from 'vue'
 import Taro from '@tarojs/taro'
 
-import { AtForm } from '../../../components/index'
-import { AtInput } from '../../../components/index'
+import { AtForm, AtInput } from '../../../index'
 import { Page, Panel, ExampleItem } from "../../components/demo-page"
 import verificationCode from '@/assets/images/verification_code.png'
 import './index.scss'
-
-import "./index.scss"
 
 export default defineComponent({
   components: {
@@ -253,6 +247,15 @@ export default defineComponent({
       value17: '',
       disabled: false,
       second: 60,
+    })
+
+    const imageStyle = computed(() => {
+      if (process.env.TARO_ENV === 'h5') {
+        return {
+          width: 'unset',
+          height: 'unset',
+        }
+      }
     })
 
     function showTipText() {
@@ -306,6 +309,7 @@ export default defineComponent({
 
     return {
       ...toRefs(state),
+      imageStyle,
       verificationCode,
       handleInput,
       showTipText,

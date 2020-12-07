@@ -77,8 +77,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue"
-import AtActivityIndicator from "@/components/activity-indicator"
-import AtSwitch from "@/components/switch"
+import { AtActivityIndicator, AtSwitch } from "../../../index"
 import { Page, Panel, ExampleItem } from "../../components/demo-page"
 
 import "./index.scss"

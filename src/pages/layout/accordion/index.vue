@@ -112,9 +112,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from "vue"
-import AtAccordion from "@/components/accordion"
-import AtList from "@/components/list"
-import AtListItem from "@/components/list/item"
+import { AtAccordion, AtList, AtListItem } from "../../../index"
 import { Page, Panel, ExampleItem } from "../../components/demo-page"
 
 export default defineComponent({

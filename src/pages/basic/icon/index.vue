@@ -27,7 +27,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue"
-import AtIcon from "@/components/icon"
+import { AtIcon } from "../../../index"
 import { Page, Panel } from "../../components/demo-page"
 import ICONS from "./icons"
 
@@ -35,7 +35,7 @@ import "./index.scss"
 
 export default defineComponent({
   name: "IconDemo",
-  
+
   components: {
     Page,
     Panel,
