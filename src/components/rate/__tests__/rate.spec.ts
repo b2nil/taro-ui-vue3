@@ -14,13 +14,13 @@ describe('AtRate Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtRate -- props className', () => {
-    const wrapper = factory({ className: 'test' })
+  it('render AtRate -- props class', () => {
+    const wrapper = factory({ class: 'test' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtRate -- props customStyle', () => {
-    const wrapper = factory({ customStyle: 'color:red;' })
+  it('render AtRate -- props style', () => {
+    const wrapper = factory({ style: 'color:red;' })
     expect(wrapper.element).toMatchSnapshot()
   })
 

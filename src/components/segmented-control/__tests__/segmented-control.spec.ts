@@ -16,13 +16,13 @@ describe('AtSegmentedControl Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtSegmentedControl -- props customStyle', () => {
-    const wrapper = factory({ customStyle: 'color:red;' })
+  it('render AtSegmentedControl -- props style', () => {
+    const wrapper = factory({ style: 'color:red;' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtSegmentedControl -- props className', () => {
-    const wrapper = factory({ className: 'test' })
+  it('render AtSegmentedControl -- props class', () => {
+    const wrapper = factory({ class: 'test' })
     expect(wrapper.element).toMatchSnapshot()
   })
 

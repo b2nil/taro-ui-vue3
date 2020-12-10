@@ -28,13 +28,13 @@ describe('AtTabBar Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtTabBar -- props customStyle', () => {
-    const wrapper = factory({ customStyle: 'color:red;' })
+  it('render AtTabBar -- props style', () => {
+    const wrapper = factory({ style: 'color:red;' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtTabBar -- props className', () => {
-    const wrapper = factory({ className: 'test' })
+  it('render AtTabBar -- props class', () => {
+    const wrapper = factory({ class: 'test' })
     expect(wrapper.element).toMatchSnapshot()
   })
 

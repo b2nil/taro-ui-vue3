@@ -37,13 +37,13 @@ describe('AtImagePicker Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtImagePicker -- props className', () => {
-    const wrapper = factory({ className: 'test' })
+  it('render AtImagePicker -- props class', () => {
+    const wrapper = factory({ class: 'test' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtImagePicker -- props customStyle', () => {
-    const wrapper = factory({ customStyle: 'color:red;' })
+  it('render AtImagePicker -- props style', () => {
+    const wrapper = factory({ style: 'color:red;' })
     expect(wrapper.element).toMatchSnapshot()
   })
 

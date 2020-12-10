@@ -17,13 +17,13 @@ describe('AtNavBar Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtNavBar -- props className', () => {
-    const wrapper = factory({ className: 'test' })
+  it('render AtNavBar -- props class', () => {
+    const wrapper = factory({ class: 'test' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtNavBar -- props customStyle', () => {
-    const wrapper = factory({ customStyle: 'color:red;' })
+  it('render AtNavBar -- props style', () => {
+    const wrapper = factory({ style: 'color:red;' })
     expect(wrapper.element).toMatchSnapshot()
   })
 

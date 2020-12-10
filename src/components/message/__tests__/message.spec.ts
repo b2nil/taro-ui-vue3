@@ -17,13 +17,13 @@ describe('AtMessage Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtMessage -- props className', () => {
-    const wrapper = factory({ className: 'test' })
+  it('render AtMessage -- props class', () => {
+    const wrapper = factory({ class: 'test' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtMessage -- props customStyle', () => {
-    const wrapper = factory({ customStyle: 'color:red;' })
+  it('render AtMessage -- props style', () => {
+    const wrapper = factory({ style: 'color:red;' })
     expect(wrapper.element).toMatchSnapshot()
   })
 })

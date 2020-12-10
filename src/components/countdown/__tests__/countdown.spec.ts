@@ -17,13 +17,13 @@ describe('AtCountdown Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtCountdown -- props className', async () => {
-    const wrapper = await factory({ className: 'test' })
+  it('render AtCountdown -- props class', async () => {
+    const wrapper = await factory({ class: 'test' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtCountdown -- props customStyle', async () => {
-    const wrapper = await factory({ customStyle: 'color:red;' })
+  it('render AtCountdown -- props style', async () => {
+    const wrapper = await factory({ style: 'color:red;' })
     expect(wrapper.element).toMatchSnapshot()
   })
 

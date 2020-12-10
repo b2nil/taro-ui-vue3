@@ -14,13 +14,13 @@ describe('AtSearchBar Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtSearchBar -- props customStyle', () => {
-    const wrapper = factory({ customStyle: 'color:red;' })
+  it('render AtSearchBar -- props style', () => {
+    const wrapper = factory({ style: 'color:red;' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtSearchBar -- props className', () => {
-    const wrapper = factory({ className: 'test' })
+  it('render AtSearchBar -- props class', () => {
+    const wrapper = factory({ class: 'test' })
     expect(wrapper.element).toMatchSnapshot()
   })
 

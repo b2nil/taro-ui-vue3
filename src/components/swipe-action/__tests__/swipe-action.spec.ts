@@ -13,14 +13,14 @@ const MAX_OFFSET_SIZE = 101
 const OPTIONS = [
   {
     text: '取消',
-    className: 'cancel',
+    class: 'cancel',
     style: {
       backgroundColor: '#6190E8',
     },
   },
   {
     text: '确认',
-    className: 'confirm',
+    class: 'confirm',
     style: {
       backgroundColor: '#FF4949',
     },
@@ -49,8 +49,8 @@ describe('SwipeAction Snap', () => {
     const wrapper = mount({
       render() {
         return (
-          <AtSwipeAction disabled autoClose options = { OPTIONS } className = "swipe-action--test" >
-            <View className="normal" > AtSwipeAction 一般使用场景 < /View>
+          <AtSwipeAction disabled autoClose options = { OPTIONS } class = "swipe-action--test" >
+            <View class="normal" > AtSwipeAction 一般使用场景 < /View>
               < /AtSwipeAction>
         )
   },
@@ -68,8 +68,8 @@ it('render options -- isOpened', () => {
             disabled
       autoClose
       options = { OPTIONS }
-      className = "swipe-action--test" >
-        <View className="normal" > AtSwipeAction 一般使用场景 < /View>
+      class = "swipe-action--test" >
+        <View class="normal" > AtSwipeAction 一般使用场景 < /View>
           < /AtSwipeAction>
         )
 },

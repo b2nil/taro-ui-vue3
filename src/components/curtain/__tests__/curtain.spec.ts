@@ -17,18 +17,18 @@ describe('AtCurtain Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtCurtain -- prop className', () => {
-    const wrapper = factory({ className: 'test' })
+  it('render AtCurtain -- prop class', () => {
+    const wrapper = factory({ class: 'test' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtCurtain -- prop customStyle', () => {
-    const wrapper = factory({ customStyle: 'color:red;' })
+  it('render AtCurtain -- prop style', () => {
+    const wrapper = factory({ style: 'color:red;' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
   it('render AtCurtain -- prop isOpened', () => {
-    const wrapper = factory({ customStyle: 'color:red;' })
+    const wrapper = factory({ style: 'color:red;' })
     expect(wrapper.element).toMatchSnapshot()
   })
 

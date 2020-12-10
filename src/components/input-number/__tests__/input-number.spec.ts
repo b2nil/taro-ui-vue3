@@ -14,13 +14,13 @@ describe('AtInputNumber Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtInputNumber -- props customStyle', () => {
-    const wrapper = factory({ customStyle: 'color:red;' })
+  it('render AtInputNumber -- props style', () => {
+    const wrapper = factory({ style: 'color:red;' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtInputNumber -- props className', () => {
-    const wrapper = factory({ className: 'test' })
+  it('render AtInputNumber -- props class', () => {
+    const wrapper = factory({ class: 'test' })
     expect(wrapper.element).toMatchSnapshot()
   })
 

@@ -64,13 +64,13 @@ describe('AtSteps Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtSteps -- props customStyle', () => {
-    const wrapper = factory({ customStyle: 'color:red;' })
+  it('render AtSteps -- props style', () => {
+    const wrapper = factory({ style: 'color:red;' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtSteps -- props className', () => {
-    const wrapper = factory({ className: 'test' })
+  it('render AtSteps -- props class', () => {
+    const wrapper = factory({ class: 'test' })
     expect(wrapper.element).toMatchSnapshot()
   })
 

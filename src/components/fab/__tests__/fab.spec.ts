@@ -17,8 +17,8 @@ describe('AtFab Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtFab -- props className', () => {
-    const wrapper = factory({ className: 'button' })
+  it('render AtFab -- props class', () => {
+    const wrapper = factory({ class: 'button' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
