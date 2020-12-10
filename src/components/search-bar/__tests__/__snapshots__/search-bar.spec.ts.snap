@@ -1,0 +1,479 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtSearchBar Snap render AtSearchBar -- props actionName 1`] = `
+<view
+  class="at-search-bar"
+>
+  <view
+    class="at-search-bar__input-cnt"
+  >
+    <view
+      class="at-search-bar__placeholder-wrap"
+      style="flex-grow: 1;"
+    >
+      <text
+        class="at-icon at-icon-search"
+      />
+      <text
+        class="at-search-bar__placeholder"
+        style="visibility: visible;"
+      >
+        搜索
+      </text>
+    </view>
+    <input
+      class="at-search-bar__input"
+      confirmtype="search"
+      id="weui-inputOAHIDAPL"
+      maxlength="140"
+      type="text"
+    />
+    
+  </view>
+  <view
+    class="at-search-bar__action"
+    style="opacity: 0; margin-right: -171px;"
+  >
+    actionName
+  </view>
+</view>
+`;
+
+exports[`AtSearchBar Snap render AtSearchBar -- props className 1`] = `
+<view
+  class="at-search-bar"
+>
+  <view
+    class="at-search-bar__input-cnt"
+  >
+    <view
+      class="at-search-bar__placeholder-wrap"
+      style="flex-grow: 1;"
+    >
+      <text
+        class="at-icon at-icon-search"
+      />
+      <text
+        class="at-search-bar__placeholder"
+        style="visibility: visible;"
+      >
+        搜索
+      </text>
+    </view>
+    <input
+      class="at-search-bar__input"
+      confirmtype="search"
+      id="weui-inputBFJBKAKF"
+      maxlength="140"
+      type="text"
+    />
+    
+  </view>
+  <view
+    class="at-search-bar__action"
+    style="opacity: 0; margin-right: -59px;"
+  >
+    搜索
+  </view>
+</view>
+`;
+
+exports[`AtSearchBar Snap render AtSearchBar -- props customStyle 1`] = `
+<view
+  class="at-search-bar"
+  customstyle="color:red;"
+>
+  <view
+    class="at-search-bar__input-cnt"
+  >
+    <view
+      class="at-search-bar__placeholder-wrap"
+      style="flex-grow: 1;"
+    >
+      <text
+        class="at-icon at-icon-search"
+      />
+      <text
+        class="at-search-bar__placeholder"
+        style="visibility: visible;"
+      >
+        搜索
+      </text>
+    </view>
+    <input
+      class="at-search-bar__input"
+      confirmtype="search"
+      id="weui-inputCFFNDIHF"
+      maxlength="140"
+      type="text"
+    />
+    
+  </view>
+  <view
+    class="at-search-bar__action"
+    style="opacity: 0; margin-right: -59px;"
+  >
+    搜索
+  </view>
+</view>
+`;
+
+exports[`AtSearchBar Snap render AtSearchBar -- props disabled 1`] = `
+<view
+  class="at-search-bar"
+>
+  <view
+    class="at-search-bar__input-cnt"
+  >
+    <view
+      class="at-search-bar__placeholder-wrap"
+      style="flex-grow: 1;"
+    >
+      <text
+        class="at-icon at-icon-search"
+      />
+      <text
+        class="at-search-bar__placeholder"
+        style="visibility: visible;"
+      >
+        搜索
+      </text>
+    </view>
+    <input
+      class="at-search-bar__input"
+      confirmtype="search"
+      disabled=""
+      id="weui-inputGABPMMLE"
+      maxlength="140"
+      type="text"
+    />
+    
+  </view>
+  <view
+    class="at-search-bar__action"
+    style="opacity: 0; margin-right: -59px;"
+  >
+    搜索
+  </view>
+</view>
+`;
+
+exports[`AtSearchBar Snap render AtSearchBar -- props fixed 1`] = `
+<view
+  class="at-search-bar at-search-bar--fixed"
+>
+  <view
+    class="at-search-bar__input-cnt"
+  >
+    <view
+      class="at-search-bar__placeholder-wrap"
+      style="flex-grow: 1;"
+    >
+      <text
+        class="at-icon at-icon-search"
+      />
+      <text
+        class="at-search-bar__placeholder"
+        style="visibility: visible;"
+      >
+        搜索
+      </text>
+    </view>
+    <input
+      class="at-search-bar__input"
+      confirmtype="search"
+      id="weui-inputDOFIJOHF"
+      maxlength="140"
+      type="text"
+    />
+    
+  </view>
+  <view
+    class="at-search-bar__action"
+    style="opacity: 0; margin-right: -59px;"
+  >
+    搜索
+  </view>
+</view>
+`;
+
+exports[`AtSearchBar Snap render AtSearchBar -- props fucos 1`] = `
+<view
+  class="at-search-bar"
+  fucos="true"
+>
+  <view
+    class="at-search-bar__input-cnt"
+  >
+    <view
+      class="at-search-bar__placeholder-wrap"
+      style="flex-grow: 1;"
+    >
+      <text
+        class="at-icon at-icon-search"
+      />
+      <text
+        class="at-search-bar__placeholder"
+        style="visibility: visible;"
+      >
+        搜索
+      </text>
+    </view>
+    <input
+      class="at-search-bar__input"
+      confirmtype="search"
+      id="weui-inputKADBOGAN"
+      maxlength="140"
+      type="text"
+    />
+    
+  </view>
+  <view
+    class="at-search-bar__action"
+    style="opacity: 0; margin-right: -59px;"
+  >
+    搜索
+  </view>
+</view>
+`;
+
+exports[`AtSearchBar Snap render AtSearchBar -- props inputType number 1`] = `
+<view
+  class="at-search-bar"
+>
+  <view
+    class="at-search-bar__input-cnt"
+  >
+    <view
+      class="at-search-bar__placeholder-wrap"
+      style="flex-grow: 1;"
+    >
+      <text
+        class="at-icon at-icon-search"
+      />
+      <text
+        class="at-search-bar__placeholder"
+        style="visibility: visible;"
+      >
+        搜索
+      </text>
+    </view>
+    <input
+      class="at-search-bar__input"
+      confirmtype="search"
+      id="weui-inputKLOGAFIA"
+      maxlength="140"
+      type="number"
+    />
+    
+  </view>
+  <view
+    class="at-search-bar__action"
+    style="opacity: 0; margin-right: -59px;"
+  >
+    搜索
+  </view>
+</view>
+`;
+
+exports[`AtSearchBar Snap render AtSearchBar -- props maxLength 1`] = `
+<view
+  class="at-search-bar"
+>
+  <view
+    class="at-search-bar__input-cnt"
+  >
+    <view
+      class="at-search-bar__placeholder-wrap"
+      style="flex-grow: 1;"
+    >
+      <text
+        class="at-icon at-icon-search"
+      />
+      <text
+        class="at-search-bar__placeholder"
+        style="visibility: visible;"
+      >
+        搜索
+      </text>
+    </view>
+    <input
+      class="at-search-bar__input"
+      confirmtype="search"
+      id="weui-inputBENFCCPD"
+      maxlength="120"
+      type="text"
+    />
+    
+  </view>
+  <view
+    class="at-search-bar__action"
+    style="opacity: 0; margin-right: -59px;"
+  >
+    搜索
+  </view>
+</view>
+`;
+
+exports[`AtSearchBar Snap render AtSearchBar -- props placeholder 1`] = `
+<view
+  class="at-search-bar"
+>
+  <view
+    class="at-search-bar__input-cnt"
+  >
+    <view
+      class="at-search-bar__placeholder-wrap"
+      style="flex-grow: 1;"
+    >
+      <text
+        class="at-icon at-icon-search"
+      />
+      <text
+        class="at-search-bar__placeholder"
+        style="visibility: visible;"
+      >
+        placeholder
+      </text>
+    </view>
+    <input
+      class="at-search-bar__input"
+      confirmtype="search"
+      id="weui-inputEMMCDFDK"
+      maxlength="140"
+      type="text"
+    />
+    
+  </view>
+  <view
+    class="at-search-bar__action"
+    style="opacity: 0; margin-right: -59px;"
+  >
+    搜索
+  </view>
+</view>
+`;
+
+exports[`AtSearchBar Snap render AtSearchBar -- props showActionButton 1`] = `
+<view
+  class="at-search-bar"
+>
+  <view
+    class="at-search-bar__input-cnt"
+  >
+    <view
+      class="at-search-bar__placeholder-wrap"
+      style="flex-grow: 1;"
+    >
+      <text
+        class="at-icon at-icon-search"
+      />
+      <text
+        class="at-search-bar__placeholder"
+        style="visibility: visible;"
+      >
+        搜索
+      </text>
+    </view>
+    <input
+      class="at-search-bar__input"
+      confirmtype="search"
+      id="weui-inputHFJHHBHH"
+      maxlength="140"
+      type="text"
+    />
+    
+  </view>
+  <view
+    class="at-search-bar__action"
+    style="opacity: 1; margin-right: 0px;"
+  >
+    搜索
+  </view>
+</view>
+`;
+
+exports[`AtSearchBar Snap render AtSearchBar -- props value 1`] = `
+<view
+  class="at-search-bar"
+>
+  <view
+    class="at-search-bar__input-cnt"
+  >
+    <view
+      class="at-search-bar__placeholder-wrap"
+      style="flex-grow: 0;"
+    >
+      <text
+        class="at-icon at-icon-search"
+      />
+      <text
+        class="at-search-bar__placeholder"
+        style="visibility: hidden;"
+      >
+        搜索
+      </text>
+    </view>
+    <input
+      class="at-search-bar__input"
+      confirmtype="search"
+      id="weui-inputLCMILGLC"
+      maxlength="140"
+      type="text"
+    />
+    <view
+      class="at-search-bar__clear"
+      style="display: flex;"
+    >
+      <text
+        class="at-icon at-icon-close-circle"
+      />
+    </view>
+  </view>
+  <view
+    class="at-search-bar__action"
+    style="opacity: 1; margin-right: 0px;"
+  >
+    搜索
+  </view>
+</view>
+`;
+
+exports[`AtSearchBar Snap render initial AtSearchBar 1`] = `
+<view
+  class="at-search-bar"
+>
+  <view
+    class="at-search-bar__input-cnt"
+  >
+    <view
+      class="at-search-bar__placeholder-wrap"
+      style="flex-grow: 1;"
+    >
+      <text
+        class="at-icon at-icon-search"
+      />
+      <text
+        class="at-search-bar__placeholder"
+        style="visibility: visible;"
+      >
+        搜索
+      </text>
+    </view>
+    <input
+      class="at-search-bar__input"
+      confirmtype="search"
+      id="weui-inputBKOFMPHO"
+      maxlength="140"
+      type="text"
+    />
+    
+  </view>
+  <view
+    class="at-search-bar__action"
+    style="opacity: 0; margin-right: -59px;"
+  >
+    搜索
+  </view>
+</view>
+`;

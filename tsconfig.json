@@ -32,6 +32,9 @@
       "@/assets/*": [
         "./src/assets/*"
       ],
+      "@/mock/tarojs_components": [
+        "./tests/mock/mock/tarojs_components"
+      ]
     }
   },
   "exclude": [

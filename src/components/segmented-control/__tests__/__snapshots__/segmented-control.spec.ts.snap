@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtSegmentedControl Snap render AtSegmentedControl -- props className 1`] = `
+<view
+  class="at-segmented-control"
+  style="border-color: #6190e8;"
+/>
+`;
+
+exports[`AtSegmentedControl Snap render AtSegmentedControl -- props customStyle 1`] = `
+<view
+  class="at-segmented-control"
+  customstyle="color:red;"
+  style="border-color: #6190e8;"
+/>
+`;
+
+exports[`AtSegmentedControl Snap render initial AtSegmentedControl 1`] = `
+<view
+  class="at-segmented-control"
+  style="border-color: #6190e8;"
+/>
+`;

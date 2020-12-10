@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtTabsPane Snap render AtTabsPane -- props className 1`] = `
+<view
+  class="at-tabs-pane at-tabs-pane--active"
+>
+  
+</view>
+`;
+
+exports[`AtTabsPane Snap render AtTabsPane -- props customStyle 1`] = `
+<view
+  class="at-tabs-pane at-tabs-pane--active"
+  customstyle="color:red;"
+>
+  
+</view>
+`;
+
+exports[`AtTabsPane Snap render AtTabsPane -- props index current 1`] = `
+<view
+  class="at-tabs-pane at-tabs-pane--active"
+>
+  
+</view>
+`;
+
+exports[`AtTabsPane Snap render AtTabsPane -- props index current 2`] = `
+<view
+  class="at-tabs-pane at-tabs-pane--inactive"
+>
+  
+</view>
+`;
+
+exports[`AtTabsPane Snap render initial AtTabs 1`] = `
+<view
+  class="at-tabs-pane at-tabs-pane--active"
+>
+  test
+</view>
+`;

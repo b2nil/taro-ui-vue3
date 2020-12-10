@@ -1,0 +1,216 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtLoadMore Snap render AtLoadMore -- props className 1`] = `
+<view
+  class="at-load-more"
+>
+  <view
+    class="at-load-more__cnt"
+  >
+    <view
+      class="at-button--normal at-button--full at-button"
+    >
+      <button
+        class="at-button__wxbutton"
+        lang="en"
+      />
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        查看更多
+      </view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtLoadMore Snap render AtLoadMore -- props customStyle 1`] = `
+<view
+  class="at-load-more"
+  customstyle="color:red;"
+>
+  <view
+    class="at-load-more__cnt"
+  >
+    <view
+      class="at-button--normal at-button--full at-button"
+    >
+      <button
+        class="at-button__wxbutton"
+        lang="en"
+      />
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        查看更多
+      </view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtLoadMore Snap render AtLoadMore -- props moreBtnStyle 1`] = `
+<view
+  class="at-load-more"
+>
+  <view
+    class="at-load-more__cnt"
+  >
+    <view
+      class="at-button--normal at-button--full at-button"
+      style="color: red;"
+    >
+      <button
+        class="at-button__wxbutton"
+        lang="en"
+      />
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        查看更多
+      </view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtLoadMore Snap render AtLoadMore -- props moreText 1`] = `
+<view
+  class="at-load-more"
+>
+  <view
+    class="at-load-more__cnt"
+  >
+    <view
+      class="at-button--normal at-button--full at-button"
+    >
+      <button
+        class="at-button__wxbutton"
+        lang="en"
+      />
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        moreText
+      </view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtLoadMore Snap render AtLoadMore -- props noMoreText 1`] = `
+<view
+  class="at-load-more"
+>
+  <text
+    class="at-load-more__tip"
+  >
+    noMoreText
+  </text>
+</view>
+`;
+
+exports[`AtLoadMore Snap render AtLoadMore -- props noMoreTextStyle 1`] = `
+<view
+  class="at-load-more"
+>
+  <view
+    class="at-load-more__cnt"
+  >
+    <view
+      class="at-button--normal at-button--full at-button"
+    >
+      <button
+        class="at-button__wxbutton"
+        lang="en"
+      />
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        查看更多
+      </view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtLoadMore Snap render AtLoadMore -- props status === more 1`] = `
+<view
+  class="at-load-more"
+>
+  <view
+    class="at-load-more__cnt"
+  >
+    <view
+      class="at-button--normal at-button--full at-button"
+    >
+      <button
+        class="at-button__wxbutton"
+        lang="en"
+      />
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        查看更多
+      </view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtLoadMore Snap render AtLoadMore -- props status === noMore 1`] = `
+<view
+  class="at-load-more"
+>
+  <text
+    class="at-load-more__tip"
+  >
+    没有更多
+  </text>
+</view>
+`;
+
+exports[`AtLoadMore Snap render initial AtLoadMore 1`] = `
+<view
+  class="at-load-more"
+>
+  <view
+    class="at-load-more__cnt"
+  >
+    <view
+      class="at-button--normal at-button--full at-button"
+    >
+      <button
+        class="at-button__wxbutton"
+        lang="en"
+      />
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        查看更多
+      </view>
+    </view>
+  </view>
+</view>
+`;

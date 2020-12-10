@@ -1,0 +1,660 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtInput Snap render AtInput -- props border 1`] = `
+<view
+  class="at-input"
+>
+  <view
+    class="at-input__container"
+  >
+    <view
+      class="at-input__overlay at-input__overlay--hidden"
+    />
+    
+    <input
+      adjustposition="false"
+      autofocus="false"
+      class="at-input__input"
+      confirmtype="done"
+      cursor="0"
+      cursorspacing="50"
+      id="weui-inputNBLLOFOK"
+      maxlength="140"
+      name=""
+      password="false"
+      placeholder=""
+      placeholderclass="placeholder "
+      placeholderstyle=""
+      type="text"
+    />
+    <!---->
+    <!---->
+    <view
+      class="at-input__children"
+    />
+  </view>
+</view>
+`;
+
+exports[`AtInput Snap render AtInput -- props clear 1`] = `
+<view
+  class="at-input at-input--without-border"
+>
+  <view
+    class="at-input__container"
+  >
+    <view
+      class="at-input__overlay at-input__overlay--hidden"
+    />
+    
+    <input
+      adjustposition="false"
+      autofocus="false"
+      class="at-input__input"
+      confirmtype="done"
+      cursor="0"
+      cursorspacing="50"
+      id="weui-inputKJPHJMLL"
+      maxlength="140"
+      name=""
+      password="false"
+      placeholder=""
+      placeholderclass="placeholder "
+      placeholderstyle=""
+      type="text"
+    />
+    
+    <!---->
+    <view
+      class="at-input__children"
+    />
+  </view>
+</view>
+`;
+
+exports[`AtInput Snap render AtInput -- props disabled 1`] = `
+<view
+  class="at-input at-input--without-border"
+>
+  <view
+    class="at-input__container at-input--disabled"
+  >
+    <view
+      class="at-input__overlay"
+    />
+    
+    <input
+      adjustposition="false"
+      autofocus="false"
+      class="at-input__input"
+      confirmtype="done"
+      cursor="0"
+      cursorspacing="50"
+      id="weui-inputFFALNEMK"
+      maxlength="140"
+      name=""
+      password="false"
+      placeholder=""
+      placeholderclass="placeholder "
+      placeholderstyle=""
+      type="text"
+    />
+    <!---->
+    <!---->
+    <view
+      class="at-input__children"
+    />
+  </view>
+</view>
+`;
+
+exports[`AtInput Snap render AtInput -- props editable 1`] = `
+<view
+  class="at-input at-input--without-border"
+>
+  <view
+    class="at-input__container at-input--disabled"
+  >
+    <view
+      class="at-input__overlay"
+    />
+    
+    <input
+      adjustposition="false"
+      autofocus="false"
+      class="at-input__input"
+      confirmtype="done"
+      cursor="0"
+      cursorspacing="50"
+      id="weui-inputNBPPFLBL"
+      maxlength="140"
+      name=""
+      password="false"
+      placeholder=""
+      placeholderclass="placeholder "
+      placeholderstyle=""
+      type="text"
+    />
+    <!---->
+    <!---->
+    <view
+      class="at-input__children"
+    />
+  </view>
+</view>
+`;
+
+exports[`AtInput Snap render AtInput -- props error 1`] = `
+<view
+  class="at-input at-input--without-border"
+>
+  <view
+    class="at-input__container at-input--error"
+  >
+    <view
+      class="at-input__overlay at-input__overlay--hidden"
+    />
+    
+    <input
+      adjustposition="false"
+      autofocus="false"
+      class="at-input__input"
+      confirmtype="done"
+      cursor="0"
+      cursorspacing="50"
+      id="weui-inputCOPGGCHO"
+      maxlength="140"
+      name=""
+      password="false"
+      placeholder=""
+      placeholderclass="placeholder "
+      placeholderstyle=""
+      type="text"
+    />
+    <!---->
+    <view
+      class="at-input__icon"
+    >
+      <text
+        class="at-icon at-icon-alert-circle at-input__icon-alert"
+      />
+    </view>
+    <view
+      class="at-input__children"
+    />
+  </view>
+</view>
+`;
+
+exports[`AtInput Snap render AtInput -- props maxLength 1`] = `
+<view
+  class="at-input at-input--without-border"
+>
+  <view
+    class="at-input__container"
+  >
+    <view
+      class="at-input__overlay at-input__overlay--hidden"
+    />
+    
+    <input
+      adjustposition="false"
+      autofocus="false"
+      class="at-input__input"
+      confirmtype="done"
+      cursor="0"
+      cursorspacing="50"
+      id="weui-inputNIAAFFJL"
+      maxlength="10"
+      name=""
+      password="false"
+      placeholder=""
+      placeholderclass="placeholder "
+      placeholderstyle=""
+      type="text"
+    />
+    <!---->
+    <!---->
+    <view
+      class="at-input__children"
+    />
+  </view>
+</view>
+`;
+
+exports[`AtInput Snap render AtInput -- props name 1`] = `
+<view
+  class="at-input at-input--without-border"
+>
+  <view
+    class="at-input__container"
+  >
+    <view
+      class="at-input__overlay at-input__overlay--hidden"
+    />
+    
+    <input
+      adjustposition="false"
+      autofocus="false"
+      class="at-input__input"
+      confirmtype="done"
+      cursor="0"
+      cursorspacing="50"
+      id="weui-inputMEBALHDK"
+      maxlength="140"
+      name="name"
+      password="false"
+      placeholder=""
+      placeholderclass="placeholder "
+      placeholderstyle=""
+      type="text"
+    />
+    <!---->
+    <!---->
+    <view
+      class="at-input__children"
+    />
+  </view>
+</view>
+`;
+
+exports[`AtInput Snap render AtInput -- props placeholder 1`] = `
+<view
+  class="at-input at-input--without-border"
+>
+  <view
+    class="at-input__container"
+  >
+    <view
+      class="at-input__overlay at-input__overlay--hidden"
+    />
+    
+    <input
+      adjustposition="false"
+      autofocus="false"
+      class="at-input__input"
+      confirmtype="done"
+      cursor="0"
+      cursorspacing="50"
+      id="weui-inputDNAIMIOI"
+      maxlength="140"
+      name=""
+      password="false"
+      placeholder="placeholder"
+      placeholderclass="placeholder "
+      placeholderstyle=""
+      type="text"
+    />
+    <!---->
+    <!---->
+    <view
+      class="at-input__children"
+    />
+  </view>
+</view>
+`;
+
+exports[`AtInput Snap render AtInput -- props required 1`] = `
+<view
+  class="at-input at-input--without-border"
+>
+  <view
+    class="at-input__container"
+  >
+    <view
+      class="at-input__overlay at-input__overlay--hidden"
+    />
+    
+    <input
+      adjustposition="false"
+      autofocus="false"
+      class="at-input__input"
+      confirmtype="done"
+      cursor="0"
+      cursorspacing="50"
+      id="weui-inputHDAEAODK"
+      maxlength="140"
+      name=""
+      password="false"
+      placeholder=""
+      placeholderclass="placeholder "
+      placeholderstyle=""
+      type="text"
+    />
+    <!---->
+    <!---->
+    <view
+      class="at-input__children"
+    />
+  </view>
+</view>
+`;
+
+exports[`AtInput Snap render AtInput -- props style 1`] = `
+<view
+  class="at-input at-input--without-border"
+>
+  <view
+    class="at-input__container"
+  >
+    <view
+      class="at-input__overlay at-input__overlay--hidden"
+    />
+    
+    <input
+      adjustposition="false"
+      autofocus="false"
+      class="at-input__input"
+      confirmtype="done"
+      cursor="0"
+      cursorspacing="50"
+      id="weui-inputPNGENFDM"
+      maxlength="140"
+      name=""
+      password="false"
+      placeholder=""
+      placeholderclass="placeholder "
+      placeholderstyle=""
+      type="text"
+    />
+    <!---->
+    <!---->
+    <view
+      class="at-input__children"
+    />
+  </view>
+</view>
+`;
+
+exports[`AtInput Snap render AtInput -- props title 1`] = `
+<view
+  class="at-input at-input--without-border"
+>
+  <view
+    class="at-input__container"
+  >
+    <view
+      class="at-input__overlay at-input__overlay--hidden"
+    />
+    <label
+      class="at-input__title"
+      for=""
+    >
+      title
+    </label>
+    <input
+      adjustposition="false"
+      autofocus="false"
+      class="at-input__input"
+      confirmtype="done"
+      cursor="0"
+      cursorspacing="50"
+      id="weui-inputMACLAIKJ"
+      maxlength="140"
+      name=""
+      password="false"
+      placeholder=""
+      placeholderclass="placeholder "
+      placeholderstyle=""
+      type="text"
+    />
+    <!---->
+    <!---->
+    <view
+      class="at-input__children"
+    />
+  </view>
+</view>
+`;
+
+exports[`AtInput Snap render AtInput -- props type(digit) 1`] = `
+<view
+  class="at-input at-input--without-border"
+>
+  <view
+    class="at-input__container"
+  >
+    <view
+      class="at-input__overlay at-input__overlay--hidden"
+    />
+    
+    <input
+      adjustposition="false"
+      autofocus="false"
+      class="at-input__input"
+      confirmtype="done"
+      cursor="0"
+      cursorspacing="50"
+      id="weui-inputKGGDHOFL"
+      maxlength="140"
+      name=""
+      password="false"
+      placeholder=""
+      placeholderclass="placeholder "
+      placeholderstyle=""
+      type="digit"
+    />
+    <!---->
+    <!---->
+    <view
+      class="at-input__children"
+    />
+  </view>
+</view>
+`;
+
+exports[`AtInput Snap render AtInput -- props type(idcard) 1`] = `
+<view
+  class="at-input at-input--without-border"
+>
+  <view
+    class="at-input__container"
+  >
+    <view
+      class="at-input__overlay at-input__overlay--hidden"
+    />
+    
+    <input
+      adjustposition="false"
+      autofocus="false"
+      class="at-input__input"
+      confirmtype="done"
+      cursor="0"
+      cursorspacing="50"
+      id="weui-inputHEPHDBAK"
+      maxlength="140"
+      name=""
+      password="false"
+      placeholder=""
+      placeholderclass="placeholder "
+      placeholderstyle=""
+      type="idcard"
+    />
+    <!---->
+    <!---->
+    <view
+      class="at-input__children"
+    />
+  </view>
+</view>
+`;
+
+exports[`AtInput Snap render AtInput -- props type(number) 1`] = `
+<view
+  class="at-input at-input--without-border"
+>
+  <view
+    class="at-input__container"
+  >
+    <view
+      class="at-input__overlay at-input__overlay--hidden"
+    />
+    
+    <input
+      adjustposition="false"
+      autofocus="false"
+      class="at-input__input"
+      confirmtype="done"
+      cursor="0"
+      cursorspacing="50"
+      id="weui-inputKDLIJBKP"
+      maxlength="140"
+      name=""
+      password="false"
+      placeholder=""
+      placeholderclass="placeholder "
+      placeholderstyle=""
+      type="number"
+    />
+    <!---->
+    <!---->
+    <view
+      class="at-input__children"
+    />
+  </view>
+</view>
+`;
+
+exports[`AtInput Snap render AtInput -- props type(password) 1`] = `
+<view
+  class="at-input at-input--without-border"
+>
+  <view
+    class="at-input__container"
+  >
+    <view
+      class="at-input__overlay at-input__overlay--hidden"
+    />
+    
+    <input
+      adjustposition="false"
+      autofocus="false"
+      class="at-input__input"
+      confirmtype="done"
+      cursor="0"
+      cursorspacing="50"
+      id="weui-inputCPAAJLBI"
+      maxlength="140"
+      name=""
+      password="true"
+      placeholder=""
+      placeholderclass="placeholder "
+      placeholderstyle=""
+      type="text"
+    />
+    <!---->
+    <!---->
+    <view
+      class="at-input__children"
+    />
+  </view>
+</view>
+`;
+
+exports[`AtInput Snap render AtInput -- props type(phone) 1`] = `
+<view
+  class="at-input at-input--without-border"
+>
+  <view
+    class="at-input__container"
+  >
+    <view
+      class="at-input__overlay at-input__overlay--hidden"
+    />
+    
+    <input
+      adjustposition="false"
+      autofocus="false"
+      class="at-input__input"
+      confirmtype="done"
+      cursor="0"
+      cursorspacing="50"
+      id="weui-inputEPEODCMH"
+      maxlength="11"
+      name=""
+      password="false"
+      placeholder=""
+      placeholderclass="placeholder "
+      placeholderstyle=""
+      type="number"
+    />
+    <!---->
+    <!---->
+    <view
+      class="at-input__children"
+    />
+  </view>
+</view>
+`;
+
+exports[`AtInput Snap render AtInput -- props value 1`] = `
+<view
+  class="at-input at-input--without-border"
+>
+  <view
+    class="at-input__container"
+  >
+    <view
+      class="at-input__overlay at-input__overlay--hidden"
+    />
+    
+    <input
+      adjustposition="false"
+      autofocus="false"
+      class="at-input__input"
+      confirmtype="done"
+      cursor="0"
+      cursorspacing="50"
+      id="weui-inputFALNAFED"
+      maxlength="140"
+      name=""
+      password="false"
+      placeholder=""
+      placeholderclass="placeholder "
+      placeholderstyle=""
+      type="text"
+    />
+    <!---->
+    <!---->
+    <view
+      class="at-input__children"
+    />
+  </view>
+</view>
+`;
+
+exports[`AtInput Snap render initial AtInput 1`] = `
+<view
+  class="at-input at-input--without-border"
+>
+  <view
+    class="at-input__container"
+  >
+    <view
+      class="at-input__overlay at-input__overlay--hidden"
+    />
+    
+    <input
+      adjustposition="false"
+      autofocus="false"
+      class="at-input__input"
+      confirmtype="done"
+      cursor="0"
+      cursorspacing="50"
+      id="weui-inputFNDFLBHL"
+      maxlength="140"
+      name=""
+      password="false"
+      placeholder=""
+      placeholderclass="placeholder "
+      placeholderstyle=""
+      type="text"
+    />
+    <!---->
+    <!---->
+    <view
+      class="at-input__children"
+    />
+  </view>
+</view>
+`;
