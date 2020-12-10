@@ -1,4 +1,5 @@
 import { mount } from '@vue/test-utils'
+import { h } from '@vue/runtime-core'
 import AtNavBar from '../index'
 
 const factory = (values = {}, slots = { default: [] }) => {
@@ -56,9 +57,11 @@ describe('AtNavBar Snap', () => {
     const wrapper = mount({
       render() {
         return (
-          <AtNavBar>
-          <text>test < /text>
-          < /AtNavBar>
+          h(AtNavBar, null, {
+            default: () => [
+              h('text', null, "test")
+            ]
+          })
         )
       },
     })
@@ -97,21 +100,21 @@ describe('AtNavBar Behavior ', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('AtNavBar onClickRgIconNd', () => {
-    const onClickRgIconNd = jest.fn()
+  it('AtNavBar onClickRightSecondIcon', () => {
+    const onClickRightSecondIcon = jest.fn()
     const wrapper = factory({
       leftIconType: 'test',
-      onClickRgIconNd,
+      onClickRightSecondIcon,
     })
     wrapper.find('.at-nav-bar__right-view view:first-child').trigger('tap')
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('AtNavBar onClickRgIconSt', () => {
-    const onClickRgIconSt = jest.fn()
+  it('AtNavBar onClickRightFirstIcon', () => {
+    const onClickRightFirstIcon = jest.fn()
     const wrapper = factory({
       leftIconType: 'test',
-      onClickRgIconSt,
+      onClickRightFirstIcon,
     })
     wrapper.find('.at-nav-bar__right-view view:last-child').trigger('tap')
     expect(wrapper.element).toMatchSnapshot()

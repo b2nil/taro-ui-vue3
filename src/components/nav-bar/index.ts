@@ -39,8 +39,8 @@ const AtNavBar = defineComponent({
     },
     // events
     onClickLeftIcon: Function as PropType<AtNavBarProps['onClickLeftIcon']>,
-    onClickRgIconSt: Function as PropType<AtNavBarProps['onClickRgIconSt']>,
-    onClickRgIconNd: Function as PropType<AtNavBarProps['onClickRgIconNd']>
+    onClickRightFirstIcon: Function as PropType<AtNavBarProps['onClickRightFirstIcon']>,
+    onClickRightSecondIcon: Function as PropType<AtNavBarProps['onClickRightSecondIcon']>
   },
 
   setup(props: AtNavBarProps, { attrs, slots }) {
@@ -62,7 +62,7 @@ const AtNavBar = defineComponent({
         : { ...defaultIconInfo, value: props.leftIconType }
     )
 
-    const leftIconClass = computed(() => ({
+    const leftIconClasses = computed(() => ({
       [`${leftIconInfo.value.prefixClass}`]: Boolean(leftIconInfo.value.prefixClass),
       [`${leftIconInfo.value.prefixClass}-${leftIconInfo.value.value}`]: Boolean(leftIconInfo.value.value),
       [`${leftIconInfo.value.className}`]: Boolean(leftIconInfo.value.className)
@@ -74,7 +74,7 @@ const AtNavBar = defineComponent({
         : { ...defaultIconInfo, value: props.rightFirstIconType }
     )
 
-    const rightFirstIconClass = computed(() => ({
+    const rightFirstIconClasses = computed(() => ({
       [`${rightFirstIconInfo.value.prefixClass}`]: Boolean(rightFirstIconInfo.value.prefixClass),
       [`${rightFirstIconInfo.value.prefixClass}-${rightFirstIconInfo.value.value}`]: Boolean(rightFirstIconInfo.value.value),
       [`${rightFirstIconInfo.value.className}`]: Boolean(rightFirstIconInfo.value.className)
@@ -86,7 +86,7 @@ const AtNavBar = defineComponent({
         : { ...defaultIconInfo, value: props.rightSecondIconType }
     )
 
-    const rightSecondIconClass = computed(() => ({
+    const rightSecondIconClasses = computed(() => ({
       [`${rightSecondIconInfo.value.prefixClass}`]: Boolean(rightSecondIconInfo.value.prefixClass),
       [`${rightSecondIconInfo.value.prefixClass}-${rightSecondIconInfo.value.value}`]: Boolean(rightSecondIconInfo.value.value),
       [`${rightSecondIconInfo.value.className}`]: Boolean(rightSecondIconInfo.value.className)
@@ -118,7 +118,7 @@ const AtNavBar = defineComponent({
       rightSecondIconInfo.value.customStyle
     ))
 
-    const containerClass = computed(() => (iconType) => ({
+    const genContainerClasses = computed(() => (iconType) => ({
       'at-nav-bar__container': true,
       'at-nav-bar__container--hide': !iconType
     }))
@@ -134,16 +134,16 @@ const AtNavBar = defineComponent({
     ))
 
 
-    function handleClickLeftView(event: ITouchEvent): void {
-      props.onClickLeftIcon && props.onClickLeftIcon(event)
+    function handleLeftIconClick(event: ITouchEvent): void {
+      props.onClickLeftIcon?.(event)
     }
 
-    function handleClick1St(event: ITouchEvent): void {
-      props.onClickRgIconSt && props.onClickRgIconSt(event)
+    function handleFirstIconClick(event: ITouchEvent): void {
+      props.onClickRightFirstIcon?.(event)
     }
 
-    function handleClick2Nd(event: ITouchEvent): void {
-      props.onClickRgIconNd && props.onClickRgIconNd(event)
+    function handleSecondIconClick(event: ITouchEvent): void {
+      props.onClickRightSecondIcon?.(event)
     }
 
     return () => (
@@ -155,12 +155,12 @@ const AtNavBar = defineComponent({
           h(View, {
             class: 'at-nav-bar__left-view',
             style: linkStyle.value,
-            onTap: handleClickLeftView
+            onTap: handleLeftIconClick
           }, {
             default: () => [
               (props.leftIconType) && (
                 h(Text, {
-                  class: leftIconClass.value,
+                  class: leftIconClasses.value,
                   style: leftIconStyle.value
                 })
               ),
@@ -182,14 +182,14 @@ const AtNavBar = defineComponent({
             default: () => [
               // 2nd icon
               h(View, {
-                class: containerClass.value(props.rightSecondIconType),
+                class: genContainerClasses.value(props.rightSecondIconType),
                 style: linkStyle.value,
-                onTap: handleClick2Nd
+                onTap: handleSecondIconClick
               }, {
                 default: () => [
                   (props.rightSecondIconType) && (
                     h(Text, {
-                      class: rightSecondIconClass.value,
+                      class: rightSecondIconClasses.value,
                       style: rightSecondIconStyle.value
                     })
                   )
@@ -198,14 +198,14 @@ const AtNavBar = defineComponent({
 
               // 1st icon
               h(View, {
-                class: containerClass.value(props.rightFirstIconType),
+                class: genContainerClasses.value(props.rightFirstIconType),
                 style: linkStyle.value,
-                onTap: handleClick1St
+                onTap: handleFirstIconClick
               }, {
                 default: () => [
                   (props.rightFirstIconType) && (
                     h(Text, {
-                      class: rightFirstIconClass.value,
+                      class: rightFirstIconClasses.value,
                       style: rightFirstIconStyle.value
                     })
                   )
