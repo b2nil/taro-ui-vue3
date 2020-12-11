@@ -27,19 +27,19 @@ const factory = (
 }
 
 describe('ActionSheet Snap', () => {
-  it('render initial ActionSheet', () => {
+  it('should render initial ActionSheet', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render opened ActionSheet', () => {
+  it('should render opened ActionSheet', () => {
     const wrapper = factory({
       isOpened: true,
     })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render opened ActionSheet -- props cancelText', () => {
+  it('should render opened ActionSheet -- props cancelText', () => {
     const wrapper = factory({
       isOpened: true,
       cancelText: '取消',
@@ -47,7 +47,7 @@ describe('ActionSheet Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render opened ActionSheet -- props title', () => {
+  it('should render opened ActionSheet -- props title', () => {
     const wrapper = factory({
       isOpened: true,
       title: '清除位置信息后， 别人将不能查看到你\r\n可以通过转义字符换行',
@@ -55,7 +55,7 @@ describe('ActionSheet Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render opened ActionSheet -- props completed', () => {
+  it('should render opened ActionSheet -- props completed', () => {
     const wrapper = factory({
       isOpened: true,
       cancelText: '取消',
@@ -65,9 +65,9 @@ describe('ActionSheet Snap', () => {
   })
 })
 
-describe('ActionSheet Behavior ', () => {
+describe('ActionSheet events', () => {
   beforeEach(() => { })
-  it('ActionSheet onCancel & onClose', async () => {
+  it('should trigger onCancel & onClose events', async () => {
     const onCancel = jest.fn()
     const onClose = jest.fn()
 
@@ -90,7 +90,7 @@ describe('ActionSheet Behavior ', () => {
     expect(onClose).toBeCalled()
   })
 
-  it('ActionSheet onClick AtActionSheetItem', async () => {
+  it('should trigger onClick event on AtActionSheetItem', async () => {
     const onClick = jest.fn()
 
     const wrapper = mount({
@@ -110,7 +110,7 @@ describe('ActionSheet Behavior ', () => {
         title="清除位置信息后， 别人将不能查看到你\r\n可以通过转义字符换行"
       >
         
-        <AtActionSheetItem :on-click="onClick">按钮一</AtActionSheetItem>
+        <AtActionSheetItem @click="onClick">按钮一</AtActionSheetItem>
       </AtActionSheet>
       `,
     })

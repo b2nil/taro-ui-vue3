@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ActionSheet Snap render initial ActionSheet 1`] = `
+exports[`ActionSheet Snap should render initial ActionSheet 1`] = `
 <view
   class="at-action-sheet"
 >
@@ -22,7 +22,7 @@ exports[`ActionSheet Snap render initial ActionSheet 1`] = `
 </view>
 `;
 
-exports[`ActionSheet Snap render opened ActionSheet -- props cancelText 1`] = `
+exports[`ActionSheet Snap should render opened ActionSheet -- props cancelText 1`] = `
 <view
   class="at-action-sheet at-action-sheet--active"
 >
@@ -48,7 +48,7 @@ exports[`ActionSheet Snap render opened ActionSheet -- props cancelText 1`] = `
 </view>
 `;
 
-exports[`ActionSheet Snap render opened ActionSheet -- props completed 1`] = `
+exports[`ActionSheet Snap should render opened ActionSheet -- props completed 1`] = `
 <view
   class="at-action-sheet at-action-sheet--active"
 >
@@ -79,7 +79,7 @@ exports[`ActionSheet Snap render opened ActionSheet -- props completed 1`] = `
 </view>
 `;
 
-exports[`ActionSheet Snap render opened ActionSheet -- props title 1`] = `
+exports[`ActionSheet Snap should render opened ActionSheet -- props title 1`] = `
 <view
   class="at-action-sheet at-action-sheet--active"
 >
@@ -106,7 +106,7 @@ exports[`ActionSheet Snap render opened ActionSheet -- props title 1`] = `
 </view>
 `;
 
-exports[`ActionSheet Snap render opened ActionSheet 1`] = `
+exports[`ActionSheet Snap should render opened ActionSheet 1`] = `
 <view
   class="at-action-sheet at-action-sheet--active"
 >
