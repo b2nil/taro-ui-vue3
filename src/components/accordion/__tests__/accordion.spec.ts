@@ -13,38 +13,51 @@ const factory = (
 }
 
 describe('AtAccordion', () => {
-  it('render initial AtAccordion', () => {
+  it('should render AtAccordion without passing any prop', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtAccordion -- props title', () => {
+  it('shoud render AtAccordion -- props title', () => {
     const wrapper = factory({
       title: 'title',
     })
     expect(wrapper.element).toMatchSnapshot()
+    expect(
+      wrapper.find('.at-accordion__info__title').text()
+    ).toEqual('title')
   })
 
-  it('render AtAccordion -- props open', async () => {
+  it('should render AtAccordion -- props open', async () => {
     const wrapper = factory({
       open: true,
     })
+
     expect(wrapper.element).toMatchSnapshot()
+    expect(wrapper.find(".at-accordion__arrow--folded").exists()).toBeTruthy()
+    expect(wrapper.find(".at-accordion__content--inactive").exists()).not.toBeTruthy()
+
+    await wrapper.setProps({ open: false })
+    expect(wrapper.find(".at-accordion__arrow--folded").exists()).not.toBeTruthy()
   })
 
-  it('render AtAccordion -- props icon', () => {
+  it('should render AtAccordion -- props icon', () => {
     const wrapper = factory(
       {
-        icon: { value: 'chevron-down', color: 'red' },
+        icon: { value: 'chevron-down', color: 'red', size: 10 },
       },
       {
         default: [h('view', null, 'test')],
       }
     )
     expect(wrapper.element).toMatchSnapshot()
+    expect(wrapper.find(".at-icon-chevron-down").exists()).toBeTruthy()
+    expect(
+      wrapper.find(".at-icon-chevron-down").attributes().style
+    ).toBe("color: red; font-size: 10px;")
   })
 
-  it('render AtAccordion -- props icon prefixClass', () => {
+  it('should render AtAccordion -- props icon prefixClass', () => {
     const wrapper = factory(
       {
         icon: { prefixClass: 'prefixClass', value: 'star', color: 'red' },
@@ -54,9 +67,13 @@ describe('AtAccordion', () => {
       }
     )
     expect(wrapper.element).toMatchSnapshot()
+
+    const iconElement = wrapper.find(".at-accordion__icon")
+    expect(iconElement.classes()).toContain('prefixClass')
+    expect(iconElement.classes()).toContain('prefixClass-star')
   })
 
-  it('render AtAccordion -- props note', () => {
+  it('should render AtAccordion -- props note', () => {
     const wrapper = factory(
       {
         note: 'note',
@@ -66,6 +83,9 @@ describe('AtAccordion', () => {
       }
     )
     expect(wrapper.element).toMatchSnapshot()
+    expect(
+      wrapper.find('.at-accordion__info__note').text()
+    ).toEqual('note')
   })
 })
 
