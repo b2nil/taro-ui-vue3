@@ -53,15 +53,18 @@ describe('AtNavBar Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtNavBar -- props title', () => {
+  it('render AtNavBar -- title as both slot and prop', () => {
     const wrapper = mount({
       render() {
         return (
-          h(AtNavBar, null, {
-            default: () => [
-              h('text', null, "test")
-            ]
-          })
+          h('view', null, [
+            h(AtNavBar, null, {
+              default: () => [
+                h('text', null, "title as slot")
+              ]
+            }),
+            h(AtNavBar, { title: "title as prop" })
+          ])
         )
       },
     })
@@ -96,7 +99,7 @@ describe('AtNavBar Behavior ', () => {
       leftIconType: 'test',
       onClickLeftIcon,
     })
-    wrapper.find('.at-nav-bar__left-view view').trigger('tap')
+    wrapper.find('.at-nav-bar__left-view').trigger('tap')
     expect(wrapper.element).toMatchSnapshot()
   })
 
