@@ -1,4 +1,5 @@
 import { CommonEventFunction } from '@tarojs/components/types/common'
+import { VNode } from 'vue'
 
 import AtComponent, { AtIconBaseProps } from './base'
 
@@ -35,7 +36,7 @@ export interface AtCardProps extends AtComponent {
   /**
    * 元素自定义图标
    */
-  renderIcon?: JSX.Element
+  renderIcon?: JSX.Element | VNode
   /**
    * 元素被点击触发的事件
    */
