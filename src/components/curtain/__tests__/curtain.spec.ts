@@ -1,7 +1,11 @@
 import { mount } from '@vue/test-utils'
+import { VNode } from '@vue/runtime-core'
 import AtCurtain from '../index'
 
-const factory = (values = {}, slots = { default: [] }) => {
+const factory = (
+  values = {},
+  slots: { default: Array<VNode | string> } = { default: [] }
+) => {
   return mount(AtCurtain as any, {
     global: {
       components: {}

@@ -1,8 +1,13 @@
 import { mount } from '@vue/test-utils'
+import { h, VNode } from '@vue/runtime-core'
+
 import AtSwipeAction from '../index'
 
-const factory = (values = {}, slots = { default: [''] }) => {
-  return mount(AtSteps as any, {
+const factory = (
+  values = {},
+  slots: { default: Array<VNode | string> } = { default: [''] }
+) => {
+  return mount(AtSwipeAction as any, {
     slots,
     props: { ...values },
   })
@@ -45,36 +50,46 @@ const MOVE_INFO = {
 }
 
 describe('SwipeAction Snap', () => {
-  it('render options', () => {
+  it('should render SwipeAction -- props options', () => {
     const wrapper = mount({
       render() {
         return (
-          <AtSwipeAction disabled autoClose options = { OPTIONS } class = "swipe-action--test" >
-            <View class="normal" > AtSwipeAction 一般使用场景 < /View>
-              < /AtSwipeAction>
+          h(AtSwipeAction, {
+            disabled: true,
+            autoClose: true,
+            options: OPTIONS,
+            class: "swipe-action--test"
+          }, {
+            default: () => [
+              h('view', { class: "normal" }, "AtSwipeAction 一般使用场景")
+            ]
+          })
         )
-  },
+      }
     })
 
-expect(wrapper.element).toMatchSnapshot()
+    expect(wrapper.element).toMatchSnapshot()
   })
 
-it('render options -- isOpened', () => {
-  const wrapper = mount({
-    render() {
-      return (
-        <AtSwipeAction
-            isOpened
-            disabled
-      autoClose
-      options = { OPTIONS }
-      class = "swipe-action--test" >
-        <View class="normal" > AtSwipeAction 一般使用场景 < /View>
-          < /AtSwipeAction>
+  it('should render SwipeAction -- isOpened', () => {
+    const wrapper = mount({
+      render() {
+        return (
+          h(AtSwipeAction, {
+            isOpened: true,
+            disabled: true,
+            autoClose: true,
+            options: OPTIONS,
+            class: "swipe-action--test"
+          }, {
+            default: () => [
+              h('view', { class: "normal" }, "AtSwipeAction 一般使用场景")
+            ]
+          })
         )
-},
+      },
     })
 
-expect(wrapper.element).toMatchSnapshot()
+    expect(wrapper.element).toMatchSnapshot()
   })
 })
