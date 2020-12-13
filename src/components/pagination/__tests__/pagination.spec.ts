@@ -1,14 +1,9 @@
-import { mount } from '@vue/test-utils'
+import { mountFactory, Slots } from '@/tests/helper'
+import { ref } from '@vue/runtime-core'
 import AtPagination from '../index'
 
-const factory = (values = {}, slots = { default: [] }) => {
-  return mount(AtPagination as any, {
-    global: {
-      components: {}
-    },
-    slots,
-    props: { ...values },
-  })
+const factory = (values = {}, slots: Slots = { default: [] }) => {
+  return mountFactory(AtPagination, {}, values, slots)
 }
 
 describe('AtPagination Snap', () => {
@@ -35,29 +30,35 @@ describe('AtPagination Snap', () => {
 
 describe('AtPagination Event', () => {
   it('AtPagination onPageChange - prev', () => {
-    const onPageChange = jest.fn()
+    const current = ref(2)
+    const onPageChange = jest.fn().mockImplementation((val) => {
+      current.value = val.current
+    })
     const wrapper = factory({
       total: 100,
-      current: 2,
+      current: current.value,
       onPageChange,
     })
     expect(wrapper.element).toMatchSnapshot()
     wrapper.find('.at-pagination .at-pagination__btn-prev .at-button').trigger('tap')
     expect(onPageChange).toBeCalled()
-    expect(wrapper.vm.state.currentPage).toBe(1)
+    expect(current.value).toBe(1)
   })
 
   it('AtPagination onPageChange - next', () => {
-    const onPageChange = jest.fn()
+    const current = ref(2)
+    const onPageChange = jest.fn().mockImplementation((val) => {
+      current.value = val.current
+    })
     const wrapper = factory({
       total: 100,
-      current: 2,
+      current: current.value,
       onPageChange,
     })
     expect(wrapper.element).toMatchSnapshot()
     wrapper.find('.at-pagination .at-pagination__btn-next .at-button').trigger('tap')
     expect(onPageChange).toBeCalled()
-    expect(wrapper.vm.state.currentPage).toBe(3)
+    expect(current.value).toBe(3)
   })
 
   it('AtPagination onPageChange not to be called(disabled prev or next)', () => {
