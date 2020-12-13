@@ -3,7 +3,7 @@ module.exports = {
   rootDir: __dirname,
   moduleFileExtensions: ['js', 'jsx', 'json', 'vue', 'tsx', 'ts'],
   transformIgnorePatterns: [
-    "<rootDir>/node_modules/(?!@tarojs)"
+    // "<rootDir>/node_modules/(?!@tarojs)"
   ],
   transform: {
     '^.+\\.vue$': 'vue-jest',
@@ -13,6 +13,7 @@ module.exports = {
   },
   moduleNameMapper: {
     '^@tarojs/components$': "<rootDir>/tests/mock/tarojs_components",
+    '^@tarojs/taro$': "<rootDir>/node_modules/@tarojs/taro/h5.js",
     '^@/mock/(.*)$': "<rootDir>/tests/mock/$1",
     '^@/tests/(.*)$': "<rootDir>/tests/$1",
     // '^@/(.*)$': '<rootDir>/src/$1'
@@ -36,5 +37,5 @@ module.exports = {
       }
     },
   },
-  roots: ['<rootDir>/src/components/']
+  roots: ['<rootDir>/src/components']
 }
