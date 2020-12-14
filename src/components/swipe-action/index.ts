@@ -11,7 +11,8 @@ import {
 import {
   delayGetClientRect,
   delayGetScrollOffset,
-  uuid
+  uuid,
+  isTest
 } from '../../utils/common'
 import AtSwipeActionOptions from './options/index'
 
@@ -47,7 +48,7 @@ const AtSwipeAction = defineComponent({
     })
 
     const state = reactive<AtSwipeActionState>({
-      componentId: uuid(),
+      componentId: isTest() ? '2020' : uuid(),
       offsetSize: 0,
       _isOpened: !!props.isOpened
     })
