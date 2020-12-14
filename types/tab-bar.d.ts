@@ -67,12 +67,12 @@ export interface AtTabBarProps extends AtComponent {
    * 图标大小
    * @default 24
    */
-  iconSize?: number
+  iconSize?: number | string
   /**
    * 字体大小
    * @default 14
    */
-  fontSize?: number
+  fontSize?: number | string
   /**
    * 未选中标签字体与图标颜色
    * @default #333
