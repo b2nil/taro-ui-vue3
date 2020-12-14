@@ -8,7 +8,7 @@ export interface AtRateProps extends AtComponent {
    * 评分星星大小
    * @default 20
    */
-  size?: number
+  size?: number | string
   /**
    * 当前评分,开发者需要通过 onChange 事件或 v-model:value 来更新 value 值，必填
    */
@@ -17,12 +17,12 @@ export interface AtRateProps extends AtComponent {
    * 最大评分
    * @default 5
    */
-  max?: number
+  max?: number | string
   /**
    * 星星间隔,单位根据环境自动转为 rpx 或 rem
    * @default 5
    */
-  margin?: number
+  margin?: number | string
   /**
    * 图标类型，仅支持 'star' 和 'heart'
    * @default 'star'

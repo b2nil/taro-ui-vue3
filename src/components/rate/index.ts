@@ -2,7 +2,7 @@ import { h, defineComponent, computed, mergeProps, PropType } from 'vue'
 import { Text, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtRateProps } from 'types/rate'
-import { pxTransform } from '../../utils/common'
+import { pxTransform, convertToUnit } from '../../utils/common'
 import { useModelValue } from '../../composables/model'
 
 const AtRate = defineComponent({
@@ -10,20 +10,29 @@ const AtRate = defineComponent({
 
   props: {
     size: {
-      type: Number,
-      default: 20
+      type: [Number, String],
+      default: 20,
+      validator: (prop: number | string) => {
+        return typeof parseInt(`${prop}`) === 'number'
+      }
     },
     value: {
       type: Number,
       default: 0
     },
     max: {
-      type: Number,
-      default: 5
+      type: [Number, String],
+      default: 5,
+      validator: (prop: number | string) => {
+        return typeof parseInt(`${prop}`) === 'number'
+      }
     },
     margin: {
-      type: Number,
-      default: 5
+      type: [Number, String],
+      default: 5,
+      validator: (prop: number | string) => {
+        return typeof parseInt(`${prop}`) === 'number'
+      }
     },
     icon: {
       type: String as PropType<AtRateProps['icon']>,
@@ -43,11 +52,11 @@ const AtRate = defineComponent({
     }))
 
     const iconMarginStyle = computed(() => ({
-      marginRight: pxTransform(props.margin!)
+      marginRight: pxTransform(parseInt(`${props.margin!}`))
     }))
 
     const iconStyle = computed(() => (cls) => ({
-      fontSize: props.size ? `${props.size}px` : '',
+      fontSize: props.size ? convertToUnit(props.size) : '',
       color: props.color && cls.includes('at-rate__icon--on') ? props.color : ''
     }))
 
@@ -56,7 +65,7 @@ const AtRate = defineComponent({
       const classNameArr: string[] = []
       const floorValue = Math.floor(props.value!)
       const ceilValue = Math.ceil(props.value!)
-      for (let i = 0; i < props.max!; i++) {
+      for (let i = 0; i < parseInt(`${props.max!}`); i++) {
         if (floorValue > i) {
           classNameArr.push('at-rate__icon at-rate__icon--on')
         } else if (ceilValue - 1 === i) {
