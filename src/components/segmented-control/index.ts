@@ -23,8 +23,11 @@ const AtSegmentedControl = defineComponent({
       default: '#6190E8'
     },
     fontSize: {
-      type: Number,
-      default: 28
+      type: [Number, String],
+      default: 28,
+      validator: (prop: number | string) => {
+        return typeof parseInt(`${prop}`) === 'number'
+      }
     },
     disabled: {
       type: Boolean,
@@ -42,7 +45,7 @@ const AtSegmentedControl = defineComponent({
     },
   },
 
-  setup(props: AtSegmentedControlProps, { attrs, slots }) {
+  setup(props: AtSegmentedControlProps, { attrs }) {
 
     const rootClass = computed(() => ({
       'at-segmented-control': true,
@@ -60,14 +63,14 @@ const AtSegmentedControl = defineComponent({
 
     const itemStyle = computed(() => ({
       color: props.selectedColor,
-      fontSize: pxTransform(props.fontSize!),
+      fontSize: pxTransform(parseInt(`${props.fontSize!}`)),
       borderColor: props.selectedColor,
       backgroundColor: props.color
     }))
 
     const selectedItemStyle = computed(() => ({
       color: props.color,
-      fontSize: pxTransform(props.fontSize!),
+      fontSize: pxTransform(parseInt(`${props.fontSize!}`)),
       borderColor: props.selectedColor,
       backgroundColor: props.selectedColor
     }))
