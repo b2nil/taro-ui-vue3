@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtRate Snap render AtRate -- props class 1`] = `
+exports[`AtRate Snap should render AtRate -- props class 1`] = `
 <view
   class="test at-rate test"
 >
@@ -94,7 +94,289 @@ exports[`AtRate Snap render AtRate -- props class 1`] = `
 </view>
 `;
 
-exports[`AtRate Snap render AtRate -- props margin 1`] = `
+exports[`AtRate Snap should render AtRate -- props color 1`] = `
+<view
+  class="at-rate"
+>
+  
+  <view
+    class="at-rate__icon at-rate__icon--on"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px; color: teal;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px; color: teal;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  
+</view>
+`;
+
+exports[`AtRate Snap should render AtRate -- props icon: heart 1`] = `
+<view
+  class="at-rate"
+>
+  
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-heart-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-heart-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-heart-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-heart-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-heart-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-heart-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-heart-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-heart-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-heart-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-heart-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  
+</view>
+`;
+
+exports[`AtRate Snap should render AtRate -- props icon: star 1`] = `
+<view
+  class="at-rate"
+>
+  
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  
+</view>
+`;
+
+exports[`AtRate Snap should render AtRate -- props margin 1`] = `
 <view
   class="at-rate"
 >
@@ -188,7 +470,7 @@ exports[`AtRate Snap render AtRate -- props margin 1`] = `
 </view>
 `;
 
-exports[`AtRate Snap render AtRate -- props max 1`] = `
+exports[`AtRate Snap should render AtRate -- props max 1`] = `
 <view
   class="at-rate"
 >
@@ -367,7 +649,7 @@ exports[`AtRate Snap render AtRate -- props max 1`] = `
 </view>
 `;
 
-exports[`AtRate Snap render AtRate -- props size 1`] = `
+exports[`AtRate Snap should render AtRate -- props size 1`] = `
 <view
   class="at-rate"
 >
@@ -461,7 +743,7 @@ exports[`AtRate Snap render AtRate -- props size 1`] = `
 </view>
 `;
 
-exports[`AtRate Snap render AtRate -- props style 1`] = `
+exports[`AtRate Snap should render AtRate -- props style 1`] = `
 <view
   class="at-rate"
   style="color: red;"
@@ -556,7 +838,7 @@ exports[`AtRate Snap render AtRate -- props style 1`] = `
 </view>
 `;
 
-exports[`AtRate Snap render AtRate -- props value 1`] = `
+exports[`AtRate Snap should render AtRate -- props value 1`] = `
 <view
   class="at-rate"
 >
@@ -650,10 +932,9 @@ exports[`AtRate Snap render AtRate -- props value 1`] = `
 </view>
 `;
 
-exports[`AtRate Snap render initial AtRate 1`] = `
+exports[`AtRate Snap should render initial AtRate 1`] = `
 <view
   class="at-rate"
-  istest="true"
 >
   
   <view
