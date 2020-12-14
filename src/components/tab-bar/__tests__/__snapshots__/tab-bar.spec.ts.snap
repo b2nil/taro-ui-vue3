@@ -1,20 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtTabBar Snap render AtTabBar -- props backgroundColor 1`] = `
+exports[`AtTabBar Snap should render AtTabBar -- props backgroundColor 1`] = `
 <view
   class="at-tab-bar at-tab-bar--fixed"
   style="background-color: rgb(255, 255, 255);"
 />
 `;
 
-exports[`AtTabBar Snap render AtTabBar -- props class 1`] = `
+exports[`AtTabBar Snap should render AtTabBar -- props class 1`] = `
 <view
   class="test at-tab-bar test"
   style="background-color: rgb(255, 255, 255);"
 />
 `;
 
-exports[`AtTabBar Snap render AtTabBar -- props color 1`] = `
+exports[`AtTabBar Snap should render AtTabBar -- props color 1`] = `
 <view
   class="at-tab-bar"
   style="background-color: rgb(255, 255, 255);"
@@ -186,7 +186,7 @@ exports[`AtTabBar Snap render AtTabBar -- props color 1`] = `
 </view>
 `;
 
-exports[`AtTabBar Snap render AtTabBar -- props fontSize 1`] = `
+exports[`AtTabBar Snap should render AtTabBar -- props fontSize 1`] = `
 <view
   class="at-tab-bar"
   style="background-color: rgb(255, 255, 255);"
@@ -358,7 +358,7 @@ exports[`AtTabBar Snap render AtTabBar -- props fontSize 1`] = `
 </view>
 `;
 
-exports[`AtTabBar Snap render AtTabBar -- props iconSize 1`] = `
+exports[`AtTabBar Snap should render AtTabBar -- props iconSize 1`] = `
 <view
   class="at-tab-bar"
   style="background-color: rgb(255, 255, 255);"
@@ -530,7 +530,7 @@ exports[`AtTabBar Snap render AtTabBar -- props iconSize 1`] = `
 </view>
 `;
 
-exports[`AtTabBar Snap render AtTabBar -- props scroll 1`] = `
+exports[`AtTabBar Snap should render AtTabBar -- props scroll 1`] = `
 <view
   class="at-tab-bar"
   scroll="true"
@@ -703,7 +703,7 @@ exports[`AtTabBar Snap render AtTabBar -- props scroll 1`] = `
 </view>
 `;
 
-exports[`AtTabBar Snap render AtTabBar -- props selectedColor 1`] = `
+exports[`AtTabBar Snap should render AtTabBar -- props selectedColor 1`] = `
 <view
   class="at-tab-bar"
   style="background-color: rgb(255, 255, 255);"
@@ -875,14 +875,14 @@ exports[`AtTabBar Snap render AtTabBar -- props selectedColor 1`] = `
 </view>
 `;
 
-exports[`AtTabBar Snap render AtTabBar -- props style 1`] = `
+exports[`AtTabBar Snap should render AtTabBar -- props style 1`] = `
 <view
   class="at-tab-bar"
   style="color: red; background-color: rgb(255, 255, 255);"
 />
 `;
 
-exports[`AtTabBar Snap render AtTabBar -- props tabList 1`] = `
+exports[`AtTabBar Snap should render AtTabBar -- props tabList 1`] = `
 <view
   class="at-tab-bar"
   style="background-color: rgb(255, 255, 255);"
@@ -1054,7 +1054,7 @@ exports[`AtTabBar Snap render AtTabBar -- props tabList 1`] = `
 </view>
 `;
 
-exports[`AtTabBar Snap render initial AtTabBar 1`] = `
+exports[`AtTabBar Snap should render initial AtTabBar 1`] = `
 <view
   class="at-tab-bar"
   style="background-color: rgb(255, 255, 255);"
