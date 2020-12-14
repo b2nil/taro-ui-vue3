@@ -1,77 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`List Snap render completed List -- no border 1`] = `
-<view
-  class="at-list at-list--no-border"
->
-  <view
-    class="at-list__item at-list__item--no-border"
-  >
-    <view
-      class="at-list__item-container"
-    >
-      
-      
-      <view
-        class="at-list__item-content item-content"
-      >
-        <view
-          class="item-content__info"
-        >
-          <view
-            class="item-content__info-title"
-          >
-            标题文字
-          </view>
-          
-        </view>
-      </view>
-      <view
-        class="at-list__item-extra item-extra"
-      >
-        
-        
-        <!---->
-        
-      </view>
-    </view>
-  </view>
-  <view
-    class="at-list__item at-list__item--no-border"
-  >
-    <view
-      class="at-list__item-container"
-    >
-      
-      
-      <view
-        class="at-list__item-content item-content"
-      >
-        <view
-          class="item-content__info"
-        >
-          <view
-            class="item-content__info-title"
-          >
-            标题文字
-          </view>
-          
-        </view>
-      </view>
-      <view
-        class="at-list__item-extra item-extra"
-      >
-        
-        
-        <!---->
-        
-      </view>
-    </view>
-  </view>
-</view>
-`;
-
-exports[`List Snap render completed List 1`] = `
+exports[`List Snap should render the complete List 1`] = `
 <view
   class="at-list"
 >
@@ -618,6 +547,77 @@ exports[`List Snap render completed List 1`] = `
             disabled="true"
           />
         </view>
+        
+      </view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`List Snap should render the completed List -- no border 1`] = `
+<view
+  class="at-list at-list--no-border"
+>
+  <view
+    class="at-list__item at-list__item--no-border"
+  >
+    <view
+      class="at-list__item-container"
+    >
+      
+      
+      <view
+        class="at-list__item-content item-content"
+      >
+        <view
+          class="item-content__info"
+        >
+          <view
+            class="item-content__info-title"
+          >
+            标题文字
+          </view>
+          
+        </view>
+      </view>
+      <view
+        class="at-list__item-extra item-extra"
+      >
+        
+        
+        <!---->
+        
+      </view>
+    </view>
+  </view>
+  <view
+    class="at-list__item at-list__item--no-border"
+  >
+    <view
+      class="at-list__item-container"
+    >
+      
+      
+      <view
+        class="at-list__item-content item-content"
+      >
+        <view
+          class="item-content__info"
+        >
+          <view
+            class="item-content__info-title"
+          >
+            标题文字
+          </view>
+          
+        </view>
+      </view>
+      <view
+        class="at-list__item-extra item-extra"
+      >
+        
+        
+        <!---->
         
       </view>
     </view>

@@ -3,7 +3,7 @@ import AtList from '../index'
 import AtListItem from '../item'
 
 describe('List Snap', () => {
-  it('render completed List', () => {
+  it('should render the complete List', () => {
     const wrapper = mount({
       data() {
         return {
@@ -19,7 +19,7 @@ describe('List Snap', () => {
         AtListItem,
       },
       template: `
-      <AtList>
+    <AtList>
       <AtListItem title='标题文字' />
       <AtListItem title='标题文字' arrow='right' />
       <AtListItem title='标题文字' note='描述信息' />
@@ -57,7 +57,7 @@ describe('List Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render completed List -- no border', () => {
+  it('should render the completed List -- no border', () => {
     const wrapper = mount({
       components: {
         AtList,
@@ -75,7 +75,7 @@ describe('List Snap', () => {
 })
 
 describe('List Behavior ', () => {
-  it('ListItem onClick', () => {
+  it('ListItem onClick should be called', () => {
     const onClick = jest.fn()
     const wrapper = mount({
       components: {
@@ -87,7 +87,7 @@ describe('List Behavior ', () => {
       },
       template: `
       <AtList>
-        <AtListItem title='标题文字' :on-click="onClick" />
+        <AtListItem title='标题文字' @click="onClick" />
       </AtList>
       `,
     })
@@ -95,36 +95,38 @@ describe('List Behavior ', () => {
     expect(onClick).toBeCalled()
   })
 
-  it('ListItem onSwitchChange && onClick', () => {
-    const onClick = jest.fn()
-    const onChange = jest.fn()
+  it('ListItem onSwitchChange should be called', async () => {
+
     const wrapper = mount({
+      data: () => ({
+        checked: false
+      }),
       components: {
         AtList,
         AtListItem,
       },
       methods: {
-        onClick: onClick,
-        onChange: onChange,
+        onSwitchChange: jest.fn().mockImplementation((e) => {
+          wrapper.vm.$data.checked = e.detail
+        })
       },
       template: `
         <AtList>
           <AtListItem
             title='标题文字'
             is-switch
-            :on-click="onClick"
-            :on-switch-change="onChange"
+            :switch-is-check="checked"
+            @switch-change="onSwitchChange"
           />
         </AtList>
       `,
     })
-    wrapper.find('.at-list .at-list__item .item-extra__switch switch').trigger('tap')
-    wrapper.find('.at-list .at-list__item .item-extra__switch switch').trigger('change')
-    expect(onClick).toBeCalled()
-    expect(onChange).toBeCalled()
+    expect(wrapper.vm.$data.checked).toBeFalsy()
+    wrapper.find('.at-list .at-list__item .item-extra__switch switch').trigger('change', { detail: true })
+    expect(wrapper.vm.$data.checked).toBeTruthy()
   })
 
-  it('ListItem switch was checked', () => {
+  it('ListItem switch should be checked', () => {
     const wrapper = mount({
       components: {
         AtList,
@@ -141,10 +143,10 @@ describe('List Behavior ', () => {
       `,
     })
     const switchEl = wrapper.find('.at-list .at-list__item .item-extra__switch switch')
-    expect(switchEl.attributes('checked')).toBe('checked')
+    expect(switchEl.attributes('checked')).toBe("true")
   })
 
-  it('ListItem switch was unchecked', () => {
+  it('ListItem switch should be unchecked', () => {
     const wrapper = mount({
       components: {
         AtList,
@@ -160,6 +162,6 @@ describe('List Behavior ', () => {
       `,
     })
     const switchEl = wrapper.find('.at-list .at-list__item .item-extra__switch switch')
-    expect(switchEl.attributes('checked')).toBe(undefined)
+    expect(switchEl.attributes('checked')).toBe("false")
   })
 })
