@@ -2,7 +2,7 @@ import { h, defineComponent, reactive, computed, CSSProperties, mergeProps, ref,
 import { Input, Text, View } from '@tarojs/components'
 import { BaseEventOrig, CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
 import { AtSearchBarProps, AtSearchBarState } from 'types/search-bar'
-import { uuid } from '../../utils/common'
+import { isTest, uuid } from '../../utils/common'
 import { useModelValue } from '../../composables/model'
 
 const AtSearchBar = defineComponent({
@@ -60,7 +60,7 @@ const AtSearchBar = defineComponent({
       isFocus: !!props.focus
     })
 
-    const inputID = ref('weui-input' + uuid())
+    const inputID = ref(isTest() ? 'weui-input_2020' : 'weui-input_' + uuid())
     const inputValue = useModelValue(props, emit, 'value')
 
     const fontSize = 14
