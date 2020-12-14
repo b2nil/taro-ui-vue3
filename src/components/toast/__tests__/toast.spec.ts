@@ -1,12 +1,9 @@
-import { mount } from '@vue/test-utils'
+import { mountFactory, Slots } from '@/tests/helper'
 import AtToast from '../index'
 import { sleep } from '@/tests/helper'
 
-const factory = (values = {}, slots = { default: [] }) => {
-  return mount(AtToast as any, {
-    slots,
-    props: { ...values },
-  })
+const factory = (values = {}, slots: Slots = { default: [] }) => {
+  return mountFactory(AtToast, {}, values, slots)
 }
 
 const ICON = 'loading'
@@ -18,91 +15,96 @@ const STATUS_SUCCESS = 'success'
 const STATUS_LOADING = 'loading'
 
 describe('Toast Snap', () => {
-  it('render initial Toast', () => {
+  it('should render initial Toast', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render opened Toast', () => {
+  it('should render opened Toast', () => {
     const wrapper = factory({ isOpened: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render opened Toast -- props text', () => {
+  it('should render opened Toast -- props text', () => {
     const wrapper = factory({ isOpened: true, text: TEXT })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render opened Toast -- props icon', () => {
+  it('should render opened Toast -- props icon', () => {
     const wrapper = factory({ isOpened: true, icon: ICON })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render opened  Toast -- props image', () => {
+  it('should render opened  Toast -- props image', () => {
     const wrapper = factory({ isOpened: true, image: IMAGE })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render opened  Toast -- props hasMask', () => {
+  it('should render opened  Toast -- props hasMask', () => {
     const wrapper = factory({ isOpened: true, hasMask: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render opened Toast -- props status : success ', () => {
+  it('should render opened Toast -- props status : success ', () => {
     const wrapper = factory({ isOpened: true, status: STATUS_SUCCESS })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render opened Toast -- props status : loading ', () => {
+  it('should render opened Toast -- props status : loading ', () => {
     const wrapper = factory({ isOpened: true, status: STATUS_LOADING })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render opened Toast -- props status : error ', () => {
+  it('should render opened Toast -- props status : error ', () => {
     const wrapper = factory({ isOpened: true, status: STATUS_ERROR })
     expect(wrapper.element).toMatchSnapshot()
   })
 })
 
 describe('Toast Behavior ', () => {
-  it('Toast will close when is clicked && onClose will be called', async () => {
-    const onClose = jest.fn()
+  it('Toast will close when clicked && onClose will be called', async () => {
+    let closeToken = ""
+    const onClose = jest.fn().mockImplementation(() => {
+      closeToken = "onClose is called"
+    })
     const wrapper = factory({ isOpened: true, onClose: onClose })
-    expect(wrapper.vm.state._isOpened).toBeTruthy()
-    expect(wrapper.vm.status === 'loading').toBeFalsy()
-    wrapper.find('.at-toast .toast-body').trigger('tap')
-    await sleep(0)
-    expect(onClose).toBeCalled()
-    expect(wrapper.vm.state._isOpened).toBeFalsy()
-  })
+    expect(wrapper.find(".at-toast").exists()).toBeTruthy()
 
-  it('Toast will close when time over --- default', async () => {
-    const wrapper = factory({ isOpened: true })
-    expect(wrapper.vm.state._isOpened).toBeTruthy()
-    expect(wrapper.vm.duration).toEqual(3000)
-    await sleep(3000)
+    wrapper.find('.at-toast .toast-body').trigger('tap')
     wrapper.vm.$nextTick(() => {
-      expect(wrapper.vm.state._isOpened).toBeFalsy()
+      expect(closeToken).toEqual("onClose is called")
+      expect(wrapper.find(".at-toast").exists()).toBeFalsy()
     })
   })
 
-  it('Toast will close when time over', async () => {
+  it('Toast will close when time over --- default 3000 ms', async () => {
+    const wrapper = factory({ isOpened: true })
+    expect(wrapper.vm.duration).toEqual(3000)
+    await sleep(3000)
+    wrapper.vm.$nextTick(() => {
+      expect(wrapper.find(".at-toast").exists()).toBeFalsy()
+    })
+  })
+
+  it('Toast will close when time over -- 1000 ms', async () => {
     const wrapper = factory({ isOpened: true, duration: 1000 })
-    expect(wrapper.vm.state._isOpened).toBeTruthy()
     expect(wrapper.vm.duration).toEqual(1000)
     await sleep(1000)
     wrapper.vm.$nextTick(() => {
-      expect(wrapper.vm.state._isOpened).toBeFalsy()
+      expect(wrapper.find(".at-toast").exists()).toBeFalsy()
     })
   })
 
   it('Toast onClick will be called', async () => {
     const onClick = jest.fn()
     const wrapper = factory({ isOpened: true, onClick: onClick })
-    expect(wrapper.vm.state._isOpened).toBeTruthy()
+    expect(wrapper.find(".at-toast").exists()).toBeTruthy()
+
     wrapper.find('.at-toast .toast-body').trigger('tap')
-    await sleep(0)
     expect(onClick).toBeCalled()
-    expect(wrapper.vm.state._isOpened).toBeTruthy()
+
+    wrapper.vm.$nextTick(() => {
+      expect(wrapper.find(".at-toast").exists()).toBeFalsy()
+    })
   })
 })
