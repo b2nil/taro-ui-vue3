@@ -9,49 +9,49 @@ const factory = (values = {}, slots = { default: ['按钮'] }) => {
 }
 
 describe('AtButton.vue', () => {
-  it('render AtButton -- props size(normal)', () => {
+  it('should render AtButton -- props size(normal)', () => {
     const wrapper = factory({
       size: 'normal',
     })
     expect(wrapper.element).toMatchSnapshot()
   })
-  it('render AtButton -- props size(small)', () => {
+  it('should render AtButton -- props size(small)', () => {
     const wrapper = factory({
       size: 'small',
     })
     expect(wrapper.element).toMatchSnapshot()
   })
-  it('render AtButton -- props size(primary)', () => {
+  it('should render AtButton -- props type(primary)', () => {
     const wrapper = factory({
-      size: 'primary',
+      type: 'primary',
     })
     expect(wrapper.element).toMatchSnapshot()
   })
-  it('render AtButton -- props size(secondary)', () => {
+  it('should render AtButton -- props type(secondary)', () => {
     const wrapper = factory({
-      size: 'secondary',
+      type: 'secondary',
     })
     expect(wrapper.element).toMatchSnapshot()
   })
-  it('render AtButton -- props circle', () => {
+  it('should render AtButton -- props circle', () => {
     const wrapper = factory({
       circle: true,
     })
     expect(wrapper.element).toMatchSnapshot()
   })
-  it('render AtButton -- props full', () => {
+  it('should render AtButton -- props full', () => {
     const wrapper = factory({
       full: true,
     })
     expect(wrapper.element).toMatchSnapshot()
   })
-  it('render AtButton -- props loading', () => {
+  it('should render AtButton -- props loading', () => {
     const wrapper = factory({
       loading: true,
     })
     expect(wrapper.element).toMatchSnapshot()
   })
-  it('render AtButton -- props disabled', () => {
+  it('should render AtButton -- props disabled', () => {
     const wrapper = factory({
       disabled: true,
     })

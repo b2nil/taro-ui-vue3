@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtButton.vue render AtButton -- props circle 1`] = `
+exports[`AtButton.vue should render AtButton -- props circle 1`] = `
 <view
   class="at-button--normal at-button--circle at-button"
 >
@@ -19,7 +19,7 @@ exports[`AtButton.vue render AtButton -- props circle 1`] = `
 </view>
 `;
 
-exports[`AtButton.vue render AtButton -- props disabled 1`] = `
+exports[`AtButton.vue should render AtButton -- props disabled 1`] = `
 <view
   class="at-button--normal at-button--disabled at-button"
 >
@@ -35,7 +35,7 @@ exports[`AtButton.vue render AtButton -- props disabled 1`] = `
 </view>
 `;
 
-exports[`AtButton.vue render AtButton -- props full 1`] = `
+exports[`AtButton.vue should render AtButton -- props full 1`] = `
 <view
   class="at-button--normal at-button--full at-button"
 >
@@ -54,7 +54,7 @@ exports[`AtButton.vue render AtButton -- props full 1`] = `
 </view>
 `;
 
-exports[`AtButton.vue render AtButton -- props loading 1`] = `
+exports[`AtButton.vue should render AtButton -- props loading 1`] = `
 <view
   class="at-button--normal at-button--icon at-button"
 >
@@ -89,7 +89,7 @@ exports[`AtButton.vue render AtButton -- props loading 1`] = `
 </view>
 `;
 
-exports[`AtButton.vue render AtButton -- props size(normal) 1`] = `
+exports[`AtButton.vue should render AtButton -- props size(normal) 1`] = `
 <view
   class="at-button--normal at-button"
 >
@@ -108,47 +108,47 @@ exports[`AtButton.vue render AtButton -- props size(normal) 1`] = `
 </view>
 `;
 
-exports[`AtButton.vue render AtButton -- props size(primary) 1`] = `
-<view
-  class="at-button"
->
-  <button
-    class="at-button__wxbutton"
-    lang="en"
-  />
-  <!---->
-  <!---->
-  <!---->
-  <view
-    class="at-button__text"
-  >
-    按钮
-  </view>
-</view>
-`;
-
-exports[`AtButton.vue render AtButton -- props size(secondary) 1`] = `
-<view
-  class="at-button"
->
-  <button
-    class="at-button__wxbutton"
-    lang="en"
-  />
-  <!---->
-  <!---->
-  <!---->
-  <view
-    class="at-button__text"
-  >
-    按钮
-  </view>
-</view>
-`;
-
-exports[`AtButton.vue render AtButton -- props size(small) 1`] = `
+exports[`AtButton.vue should render AtButton -- props size(small) 1`] = `
 <view
   class="at-button--small at-button"
+>
+  <button
+    class="at-button__wxbutton"
+    lang="en"
+  />
+  <!---->
+  <!---->
+  <!---->
+  <view
+    class="at-button__text"
+  >
+    按钮
+  </view>
+</view>
+`;
+
+exports[`AtButton.vue should render AtButton -- props type(primary) 1`] = `
+<view
+  class="at-button--normal at-button--primary at-button"
+>
+  <button
+    class="at-button__wxbutton"
+    lang="en"
+  />
+  <!---->
+  <!---->
+  <!---->
+  <view
+    class="at-button__text"
+  >
+    按钮
+  </view>
+</view>
+`;
+
+exports[`AtButton.vue should render AtButton -- props type(secondary) 1`] = `
+<view
+  class="at-button--normal at-button--secondary at-button"
 >
   <button
     class="at-button__wxbutton"
