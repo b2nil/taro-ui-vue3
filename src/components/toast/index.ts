@@ -21,14 +21,18 @@ const AtToast = defineComponent({
     duration: { type: Number, default: 3000 },
     hasMask: Boolean,
     onClick: Function as PropType<AtToastProps['onClick']>,
-    onClose: Function as PropType<AtToastProps['onClick']>,
+    onClose: Function as PropType<AtToastProps['onClose']>,
   },
 
-  setup(props: AtToastProps, { attrs, slots }) {
+  setup(props: AtToastProps, { attrs }) {
     const state = reactive({
-      _timer: props.isOpened ? makeTimer(props.duration || 0) : null as NodeJS.Timeout | null,
+      _timer: null as NodeJS.Timeout | null,
       _isOpened: props.isOpened
     })
+
+    if (props.isOpened) {
+      makeTimer(props.duration || 0)
+    }
 
     const realImg = computed(() => (props.image || statusImg[props.status!] || null))
     const isRenderIcon = computed(() => !!(props.icon && !(props.image || statusImg[props.status!])))
