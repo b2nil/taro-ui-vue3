@@ -1,11 +1,8 @@
-import { mount } from '@vue/test-utils'
+import { mountFactory } from '@/tests/helper'
 import AtInput from '../index'
 
 const factory = (values = {}, slots = { default: [] }) => {
-  return mount(AtInput as any, {
-    slots,
-    props: { ...values },
-  })
+  return mountFactory(AtInput, {}, values, slots)
 }
 
 describe('AtInput Snap', () => {
@@ -132,15 +129,14 @@ describe('AtInput Event', () => {
   it('AtInput clear Behavior', () => {
     const onChange = jest.fn()
     const wrapper = factory({ onChange: onChange, clear: true, value: 'value' })
-    wrapper.find('.at-input .at-input__icon').trigger('touchEnd')
-    expect(wrapper.vm.inputClearing).toBeTruthy()
+    wrapper.find('.at-input .at-input__icon').trigger('touchstart')
     expect(onChange).toBeCalled()
   })
 
   it('AtInput error Behavior', () => {
     const onErrorClick = jest.fn()
     const wrapper = factory({ onErrorClick: onErrorClick, error: true, value: 'value' })
-    wrapper.find('.at-input .at-input__icon').trigger('touchStart')
+    wrapper.find('.at-input .at-input__icon').trigger('touchstart')
     expect(onErrorClick).toBeCalled()
   })
 })
