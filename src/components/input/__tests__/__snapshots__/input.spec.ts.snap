@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtInput Snap render AtInput -- props border 1`] = `
+exports[`AtInput Snap should render AtInput -- props border 1`] = `
 <view
   class="at-input"
 >
@@ -10,7 +10,7 @@ exports[`AtInput Snap render AtInput -- props border 1`] = `
     <view
       class="at-input__overlay at-input__overlay--hidden"
     />
-    
+    <!---->
     <input
       adjustposition="false"
       autofocus="false"
@@ -18,7 +18,7 @@ exports[`AtInput Snap render AtInput -- props border 1`] = `
       confirmtype="done"
       cursor="0"
       cursorspacing="50"
-      id="weui-inputHELJONAN"
+      id="weui-input_2020"
       maxlength="140"
       name=""
       password="false"
@@ -36,7 +36,7 @@ exports[`AtInput Snap render AtInput -- props border 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap render AtInput -- props clear 1`] = `
+exports[`AtInput Snap should render AtInput -- props clear 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -46,7 +46,7 @@ exports[`AtInput Snap render AtInput -- props clear 1`] = `
     <view
       class="at-input__overlay at-input__overlay--hidden"
     />
-    
+    <!---->
     <input
       adjustposition="false"
       autofocus="false"
@@ -54,7 +54,7 @@ exports[`AtInput Snap render AtInput -- props clear 1`] = `
       confirmtype="done"
       cursor="0"
       cursorspacing="50"
-      id="weui-inputKPPOIOFF"
+      id="weui-input_2020"
       maxlength="140"
       name=""
       password="false"
@@ -63,7 +63,7 @@ exports[`AtInput Snap render AtInput -- props clear 1`] = `
       placeholderstyle=""
       type="text"
     />
-    
+    <!---->
     <!---->
     <view
       class="at-input__children"
@@ -72,7 +72,7 @@ exports[`AtInput Snap render AtInput -- props clear 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap render AtInput -- props disabled 1`] = `
+exports[`AtInput Snap should render AtInput -- props disabled 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -82,7 +82,7 @@ exports[`AtInput Snap render AtInput -- props disabled 1`] = `
     <view
       class="at-input__overlay"
     />
-    
+    <!---->
     <input
       adjustposition="false"
       autofocus="false"
@@ -90,7 +90,7 @@ exports[`AtInput Snap render AtInput -- props disabled 1`] = `
       confirmtype="done"
       cursor="0"
       cursorspacing="50"
-      id="weui-inputFHHPHFOH"
+      id="weui-input_2020"
       maxlength="140"
       name=""
       password="false"
@@ -108,7 +108,7 @@ exports[`AtInput Snap render AtInput -- props disabled 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap render AtInput -- props editable 1`] = `
+exports[`AtInput Snap should render AtInput -- props editable 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -118,7 +118,7 @@ exports[`AtInput Snap render AtInput -- props editable 1`] = `
     <view
       class="at-input__overlay"
     />
-    
+    <!---->
     <input
       adjustposition="false"
       autofocus="false"
@@ -126,7 +126,7 @@ exports[`AtInput Snap render AtInput -- props editable 1`] = `
       confirmtype="done"
       cursor="0"
       cursorspacing="50"
-      id="weui-inputFCFLAABB"
+      id="weui-input_2020"
       maxlength="140"
       name=""
       password="false"
@@ -144,7 +144,7 @@ exports[`AtInput Snap render AtInput -- props editable 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap render AtInput -- props error 1`] = `
+exports[`AtInput Snap should render AtInput -- props error 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -154,7 +154,7 @@ exports[`AtInput Snap render AtInput -- props error 1`] = `
     <view
       class="at-input__overlay at-input__overlay--hidden"
     />
-    
+    <!---->
     <input
       adjustposition="false"
       autofocus="false"
@@ -162,7 +162,7 @@ exports[`AtInput Snap render AtInput -- props error 1`] = `
       confirmtype="done"
       cursor="0"
       cursorspacing="50"
-      id="weui-inputGGHBBBFA"
+      id="weui-input_2020"
       maxlength="140"
       name=""
       password="false"
@@ -186,7 +186,7 @@ exports[`AtInput Snap render AtInput -- props error 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap render AtInput -- props maxLength 1`] = `
+exports[`AtInput Snap should render AtInput -- props maxLength 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -196,7 +196,7 @@ exports[`AtInput Snap render AtInput -- props maxLength 1`] = `
     <view
       class="at-input__overlay at-input__overlay--hidden"
     />
-    
+    <!---->
     <input
       adjustposition="false"
       autofocus="false"
@@ -204,7 +204,7 @@ exports[`AtInput Snap render AtInput -- props maxLength 1`] = `
       confirmtype="done"
       cursor="0"
       cursorspacing="50"
-      id="weui-inputEBPBHMIC"
+      id="weui-input_2020"
       maxlength="10"
       name=""
       password="false"
@@ -222,7 +222,7 @@ exports[`AtInput Snap render AtInput -- props maxLength 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap render AtInput -- props name 1`] = `
+exports[`AtInput Snap should render AtInput -- props name 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -232,7 +232,7 @@ exports[`AtInput Snap render AtInput -- props name 1`] = `
     <view
       class="at-input__overlay at-input__overlay--hidden"
     />
-    
+    <!---->
     <input
       adjustposition="false"
       autofocus="false"
@@ -240,7 +240,7 @@ exports[`AtInput Snap render AtInput -- props name 1`] = `
       confirmtype="done"
       cursor="0"
       cursorspacing="50"
-      id="weui-inputIKMMMGIF"
+      id="weui-input_2020"
       maxlength="140"
       name="name"
       password="false"
@@ -258,7 +258,7 @@ exports[`AtInput Snap render AtInput -- props name 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap render AtInput -- props placeholder 1`] = `
+exports[`AtInput Snap should render AtInput -- props placeholder 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -268,7 +268,7 @@ exports[`AtInput Snap render AtInput -- props placeholder 1`] = `
     <view
       class="at-input__overlay at-input__overlay--hidden"
     />
-    
+    <!---->
     <input
       adjustposition="false"
       autofocus="false"
@@ -276,7 +276,7 @@ exports[`AtInput Snap render AtInput -- props placeholder 1`] = `
       confirmtype="done"
       cursor="0"
       cursorspacing="50"
-      id="weui-inputMCABEKKP"
+      id="weui-input_2020"
       maxlength="140"
       name=""
       password="false"
@@ -294,7 +294,7 @@ exports[`AtInput Snap render AtInput -- props placeholder 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap render AtInput -- props required 1`] = `
+exports[`AtInput Snap should render AtInput -- props required 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -304,7 +304,7 @@ exports[`AtInput Snap render AtInput -- props required 1`] = `
     <view
       class="at-input__overlay at-input__overlay--hidden"
     />
-    
+    <!---->
     <input
       adjustposition="false"
       autofocus="false"
@@ -312,7 +312,7 @@ exports[`AtInput Snap render AtInput -- props required 1`] = `
       confirmtype="done"
       cursor="0"
       cursorspacing="50"
-      id="weui-inputJLHDEFBE"
+      id="weui-input_2020"
       maxlength="140"
       name=""
       password="false"
@@ -330,7 +330,7 @@ exports[`AtInput Snap render AtInput -- props required 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap render AtInput -- props style 1`] = `
+exports[`AtInput Snap should render AtInput -- props style 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -340,7 +340,7 @@ exports[`AtInput Snap render AtInput -- props style 1`] = `
     <view
       class="at-input__overlay at-input__overlay--hidden"
     />
-    
+    <!---->
     <input
       adjustposition="false"
       autofocus="false"
@@ -348,7 +348,7 @@ exports[`AtInput Snap render AtInput -- props style 1`] = `
       confirmtype="done"
       cursor="0"
       cursorspacing="50"
-      id="weui-inputKAMMDHGI"
+      id="weui-input_2020"
       maxlength="140"
       name=""
       password="false"
@@ -366,7 +366,7 @@ exports[`AtInput Snap render AtInput -- props style 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap render AtInput -- props title 1`] = `
+exports[`AtInput Snap should render AtInput -- props title 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -389,7 +389,7 @@ exports[`AtInput Snap render AtInput -- props title 1`] = `
       confirmtype="done"
       cursor="0"
       cursorspacing="50"
-      id="weui-inputGBPHINNN"
+      id="weui-input_2020"
       maxlength="140"
       name=""
       password="false"
@@ -407,7 +407,7 @@ exports[`AtInput Snap render AtInput -- props title 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap render AtInput -- props type(digit) 1`] = `
+exports[`AtInput Snap should render AtInput -- props type(digit) 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -417,7 +417,7 @@ exports[`AtInput Snap render AtInput -- props type(digit) 1`] = `
     <view
       class="at-input__overlay at-input__overlay--hidden"
     />
-    
+    <!---->
     <input
       adjustposition="false"
       autofocus="false"
@@ -425,7 +425,7 @@ exports[`AtInput Snap render AtInput -- props type(digit) 1`] = `
       confirmtype="done"
       cursor="0"
       cursorspacing="50"
-      id="weui-inputGJFPAPFO"
+      id="weui-input_2020"
       maxlength="140"
       name=""
       password="false"
@@ -443,7 +443,7 @@ exports[`AtInput Snap render AtInput -- props type(digit) 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap render AtInput -- props type(idcard) 1`] = `
+exports[`AtInput Snap should render AtInput -- props type(idcard) 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -453,7 +453,7 @@ exports[`AtInput Snap render AtInput -- props type(idcard) 1`] = `
     <view
       class="at-input__overlay at-input__overlay--hidden"
     />
-    
+    <!---->
     <input
       adjustposition="false"
       autofocus="false"
@@ -461,7 +461,7 @@ exports[`AtInput Snap render AtInput -- props type(idcard) 1`] = `
       confirmtype="done"
       cursor="0"
       cursorspacing="50"
-      id="weui-inputCBCEDJIK"
+      id="weui-input_2020"
       maxlength="140"
       name=""
       password="false"
@@ -479,7 +479,7 @@ exports[`AtInput Snap render AtInput -- props type(idcard) 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap render AtInput -- props type(number) 1`] = `
+exports[`AtInput Snap should render AtInput -- props type(number) 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -489,7 +489,7 @@ exports[`AtInput Snap render AtInput -- props type(number) 1`] = `
     <view
       class="at-input__overlay at-input__overlay--hidden"
     />
-    
+    <!---->
     <input
       adjustposition="false"
       autofocus="false"
@@ -497,7 +497,7 @@ exports[`AtInput Snap render AtInput -- props type(number) 1`] = `
       confirmtype="done"
       cursor="0"
       cursorspacing="50"
-      id="weui-inputDEFGBFAK"
+      id="weui-input_2020"
       maxlength="140"
       name=""
       password="false"
@@ -515,7 +515,7 @@ exports[`AtInput Snap render AtInput -- props type(number) 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap render AtInput -- props type(password) 1`] = `
+exports[`AtInput Snap should render AtInput -- props type(password) 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -525,7 +525,7 @@ exports[`AtInput Snap render AtInput -- props type(password) 1`] = `
     <view
       class="at-input__overlay at-input__overlay--hidden"
     />
-    
+    <!---->
     <input
       adjustposition="false"
       autofocus="false"
@@ -533,7 +533,7 @@ exports[`AtInput Snap render AtInput -- props type(password) 1`] = `
       confirmtype="done"
       cursor="0"
       cursorspacing="50"
-      id="weui-inputGKIOEOFB"
+      id="weui-input_2020"
       maxlength="140"
       name=""
       password="true"
@@ -551,7 +551,7 @@ exports[`AtInput Snap render AtInput -- props type(password) 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap render AtInput -- props type(phone) 1`] = `
+exports[`AtInput Snap should render AtInput -- props type(phone) 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -561,7 +561,7 @@ exports[`AtInput Snap render AtInput -- props type(phone) 1`] = `
     <view
       class="at-input__overlay at-input__overlay--hidden"
     />
-    
+    <!---->
     <input
       adjustposition="false"
       autofocus="false"
@@ -569,7 +569,7 @@ exports[`AtInput Snap render AtInput -- props type(phone) 1`] = `
       confirmtype="done"
       cursor="0"
       cursorspacing="50"
-      id="weui-inputKILPCOEN"
+      id="weui-input_2020"
       maxlength="11"
       name=""
       password="false"
@@ -587,7 +587,7 @@ exports[`AtInput Snap render AtInput -- props type(phone) 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap render AtInput -- props value 1`] = `
+exports[`AtInput Snap should render AtInput -- props value 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -597,7 +597,7 @@ exports[`AtInput Snap render AtInput -- props value 1`] = `
     <view
       class="at-input__overlay at-input__overlay--hidden"
     />
-    
+    <!---->
     <input
       adjustposition="false"
       autofocus="false"
@@ -605,7 +605,7 @@ exports[`AtInput Snap render AtInput -- props value 1`] = `
       confirmtype="done"
       cursor="0"
       cursorspacing="50"
-      id="weui-inputEOBPFCIE"
+      id="weui-input_2020"
       maxlength="140"
       name=""
       password="false"
@@ -623,7 +623,7 @@ exports[`AtInput Snap render AtInput -- props value 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap render initial AtInput 1`] = `
+exports[`AtInput Snap should render initial AtInput 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -633,7 +633,7 @@ exports[`AtInput Snap render initial AtInput 1`] = `
     <view
       class="at-input__overlay at-input__overlay--hidden"
     />
-    
+    <!---->
     <input
       adjustposition="false"
       autofocus="false"
@@ -641,7 +641,7 @@ exports[`AtInput Snap render initial AtInput 1`] = `
       confirmtype="done"
       cursor="0"
       cursorspacing="50"
-      id="weui-inputKOBCKOOL"
+      id="weui-input_2020"
       maxlength="140"
       name=""
       password="false"

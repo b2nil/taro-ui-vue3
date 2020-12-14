@@ -10,7 +10,7 @@ import {
   InputEventDetail,
   KeyboardHeightEventDetail,
 } from "types/input"
-import { uuid } from "../../utils/common"
+import { isTest, uuid } from "../../utils/common"
 import { useModelValue } from "../../composables/model"
 
 type PickAtInputProps = Pick<AtInputProps, 'maxLength' | 'disabled' | 'password'>
@@ -130,7 +130,7 @@ const AtInput = defineComponent({
 
   setup(props: AtInputProps, { attrs, slots, emit }) {
     const inputValue = useModelValue(props, emit, 'value')
-    const inputID = ref('weui-input' + uuid())
+    const inputID = ref(`weui-input_${isTest() ? '2020' : uuid()}`)
     const inputProps = computed(() => getInputProps(props))
 
     const rootClasses = computed(() => ({
@@ -155,12 +155,6 @@ const AtInput = defineComponent({
       'at-input__title': true,
       'at-input__title--required': props.required
     }))
-
-    // watch(() => props.value, (val, preVal) => {
-    //   if (val !== preVal) {
-    //     inputValue.value = val
-    //   }
-    // })
 
     function handleInput(e: BaseEventOrig<InputEventDetail>) {
       if (attrs['onUpdate:value']) {
@@ -246,7 +240,7 @@ const AtInput = defineComponent({
                     class: titleClasses.value,
                     for: props.name
                   }, { default: () => props.title })
-                ),
+                ) || null,
 
                 h(Input, {
                   class: 'at-input__input',
@@ -285,7 +279,7 @@ const AtInput = defineComponent({
                       })
                     ]
                   })
-                ),
+                ) || null,
 
                 props.error && (
                   h(View, {
@@ -298,7 +292,7 @@ const AtInput = defineComponent({
                       })
                     ]
                   })
-                ),
+                ) || null,
 
                 h(View, {
                   class: 'at-input__children'
