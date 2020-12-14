@@ -10,7 +10,7 @@ const factory = (values = {}, slots = { default: [] }) => {
 }
 
 describe('AtDrawer Snap', () => {
-  it('should render initial AtDrawer', () => {
+  it('should render default AtDrawer', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
@@ -21,9 +21,10 @@ describe('AtDrawer Snap', () => {
   })
 
   it('should render AtDrawer -- props width', () => {
-    const wrapper = factory({ show: true, width: 50 })
+    const wrapper = factory({ show: true, width: '50px' })
     expect(wrapper.element).toMatchSnapshot()
   })
+
   it('should render AtDrawer -- props items', () => {
     const wrapper = factory({ show: true, items: ['菜单1', '菜单2'] })
     expect(wrapper.element).toMatchSnapshot()
@@ -31,7 +32,7 @@ describe('AtDrawer Snap', () => {
 })
 
 describe('AtDrawer Event', () => {
-  it('AtDrawer onItemClick & onClose', async () => {
+  it('should trigger onItemClick & onClose events', async () => {
     const onItemClick = jest.fn()
     const onClose = jest.fn()
     const wrapper = factory({
@@ -47,7 +48,7 @@ describe('AtDrawer Event', () => {
     expect(onClose).toBeCalled()
   })
 
-  it('AtDrawer item NO.0 & NO.1 click, onItemClick(index) index should be 0 and 1', async () => {
+  it('onItemClick event should return index of the clicked item', async () => {
     const onItemClick = jest.fn()
     const wrapper = factory({
       show: true,
@@ -61,7 +62,8 @@ describe('AtDrawer Event', () => {
     expect(onItemClick.mock.calls[0][0]).toBe(0)
     expect(onItemClick.mock.calls[1][0]).toBe(1)
   })
-  it('AtDrawer click mask onClose', async () => {
+
+  it('should trigger onClose event by clicking mask', async () => {
     const onClose = jest.fn()
     const wrapper = factory({
       show: true,

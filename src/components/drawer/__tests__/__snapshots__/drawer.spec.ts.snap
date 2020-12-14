@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtDrawer Snap render AtDrawer -- props items 1`] = `
+exports[`AtDrawer Snap should render AtDrawer -- props items 1`] = `
 <view
   class="at-drawer at-drawer--left"
 >
@@ -98,7 +98,7 @@ exports[`AtDrawer Snap render AtDrawer -- props items 1`] = `
 </view>
 `;
 
-exports[`AtDrawer Snap render AtDrawer -- props show 1`] = `
+exports[`AtDrawer Snap should render AtDrawer -- props show 1`] = `
 <view
   class="at-drawer at-drawer--left"
 >
@@ -113,7 +113,7 @@ exports[`AtDrawer Snap render AtDrawer -- props show 1`] = `
 </view>
 `;
 
-exports[`AtDrawer Snap render AtDrawer -- props width 1`] = `
+exports[`AtDrawer Snap should render AtDrawer -- props width 1`] = `
 <view
   class="at-drawer at-drawer--left"
 >
@@ -123,9 +123,9 @@ exports[`AtDrawer Snap render AtDrawer -- props width 1`] = `
   />
   <view
     class="at-drawer__content"
-    style="transition: all 195ms cubic-bezier(0.4, 0, 0.6, 1);"
+    style="width: 50px; transition: all 195ms cubic-bezier(0.4, 0, 0.6, 1);"
   />
 </view>
 `;
 
-exports[`AtDrawer Snap render initial AtDrawer 1`] = `<view />`;
+exports[`AtDrawer Snap should render default AtDrawer 1`] = `<view />`;
