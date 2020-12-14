@@ -1,128 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtPagination Event AtPagination onPageChange - next 1`] = `
-<view
-  class="at-pagination"
->
-  <view
-    class="at-pagination__btn-prev"
-  >
-    <!---->
-    <view
-      class="at-button--small at-button"
-    >
-      <button
-        class="at-button__wxbutton"
-        lang="en"
-      />
-      <!---->
-      <!---->
-      <!---->
-      <view
-        class="at-button__text"
-      >
-        上一页
-      </view>
-    </view>
-  </view>
-  <view
-    class="at-pagination__number"
-  >
-    <text
-      class="at-pagination__number-current"
-    >
-      2
-    </text>
-    <text>
-      /5
-    </text>
-  </view>
-  <view
-    class="at-pagination__btn-next"
-  >
-    <!---->
-    <view
-      class="at-button--small at-button"
-    >
-      <button
-        class="at-button__wxbutton"
-        lang="en"
-      />
-      <!---->
-      <!---->
-      <!---->
-      <view
-        class="at-button__text"
-      >
-        下一页
-      </view>
-    </view>
-  </view>
-</view>
-`;
-
-exports[`AtPagination Event AtPagination onPageChange - prev 1`] = `
-<view
-  class="at-pagination"
->
-  <view
-    class="at-pagination__btn-prev"
-  >
-    <!---->
-    <view
-      class="at-button--small at-button"
-    >
-      <button
-        class="at-button__wxbutton"
-        lang="en"
-      />
-      <!---->
-      <!---->
-      <!---->
-      <view
-        class="at-button__text"
-      >
-        上一页
-      </view>
-    </view>
-  </view>
-  <view
-    class="at-pagination__number"
-  >
-    <text
-      class="at-pagination__number-current"
-    >
-      2
-    </text>
-    <text>
-      /5
-    </text>
-  </view>
-  <view
-    class="at-pagination__btn-next"
-  >
-    <!---->
-    <view
-      class="at-button--small at-button"
-    >
-      <button
-        class="at-button__wxbutton"
-        lang="en"
-      />
-      <!---->
-      <!---->
-      <!---->
-      <view
-        class="at-button__text"
-      >
-        下一页
-      </view>
-    </view>
-  </view>
-</view>
-`;
-
-exports[`AtPagination Event AtPagination onPageChange not to be called(disabled prev or next) 1`] = `
+exports[`AtPagination Events should not trigger event onPageChange when disabled 1`] = `
 <view
   class="at-pagination"
 >
@@ -177,7 +55,129 @@ exports[`AtPagination Event AtPagination onPageChange not to be called(disabled 
 </view>
 `;
 
-exports[`AtPagination Snap render AtPagination -- props current 1`] = `
+exports[`AtPagination Events should trigger event onPageChange - next 1`] = `
+<view
+  class="at-pagination"
+>
+  <view
+    class="at-pagination__btn-prev"
+  >
+    <!---->
+    <view
+      class="at-button--small at-button"
+    >
+      <button
+        class="at-button__wxbutton"
+        lang="en"
+      />
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        上一页
+      </view>
+    </view>
+  </view>
+  <view
+    class="at-pagination__number"
+  >
+    <text
+      class="at-pagination__number-current"
+    >
+      2
+    </text>
+    <text>
+      /5
+    </text>
+  </view>
+  <view
+    class="at-pagination__btn-next"
+  >
+    <!---->
+    <view
+      class="at-button--small at-button"
+    >
+      <button
+        class="at-button__wxbutton"
+        lang="en"
+      />
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        下一页
+      </view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtPagination Events should trigger event onPageChange - prev 1`] = `
+<view
+  class="at-pagination"
+>
+  <view
+    class="at-pagination__btn-prev"
+  >
+    <!---->
+    <view
+      class="at-button--small at-button"
+    >
+      <button
+        class="at-button__wxbutton"
+        lang="en"
+      />
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        上一页
+      </view>
+    </view>
+  </view>
+  <view
+    class="at-pagination__number"
+  >
+    <text
+      class="at-pagination__number-current"
+    >
+      2
+    </text>
+    <text>
+      /5
+    </text>
+  </view>
+  <view
+    class="at-pagination__btn-next"
+  >
+    <!---->
+    <view
+      class="at-button--small at-button"
+    >
+      <button
+        class="at-button__wxbutton"
+        lang="en"
+      />
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        下一页
+      </view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtPagination Snap should render AtPagination -- props current 1`] = `
 <view
   class="at-pagination"
 >
@@ -232,7 +232,7 @@ exports[`AtPagination Snap render AtPagination -- props current 1`] = `
 </view>
 `;
 
-exports[`AtPagination Snap render AtPagination -- props icon 1`] = `
+exports[`AtPagination Snap should render AtPagination -- props icon 1`] = `
 <view
   class="at-pagination at-pagination--icon"
 >
@@ -291,7 +291,7 @@ exports[`AtPagination Snap render AtPagination -- props icon 1`] = `
 </view>
 `;
 
-exports[`AtPagination Snap render AtPagination -- props pageSize 1`] = `
+exports[`AtPagination Snap should render AtPagination -- props pageSize 1`] = `
 <view
   class="at-pagination"
 >
@@ -346,7 +346,7 @@ exports[`AtPagination Snap render AtPagination -- props pageSize 1`] = `
 </view>
 `;
 
-exports[`AtPagination Snap render AtPagination -- props total 1`] = `
+exports[`AtPagination Snap should render AtPagination -- props total 1`] = `
 <view
   class="at-pagination"
 >

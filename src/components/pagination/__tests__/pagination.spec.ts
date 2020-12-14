@@ -28,8 +28,8 @@ describe('AtPagination Snap', () => {
   })
 })
 
-describe('AtPagination Event', () => {
-  it('AtPagination onPageChange - prev', () => {
+describe('AtPagination Events', () => {
+  it('should trigger event onPageChange - prev', () => {
     const current = ref(2)
     const onPageChange = jest.fn().mockImplementation((val) => {
       current.value = val.current
@@ -45,7 +45,7 @@ describe('AtPagination Event', () => {
     expect(current.value).toBe(1)
   })
 
-  it('AtPagination onPageChange - next', () => {
+  it('should trigger event onPageChange - next', () => {
     const current = ref(2)
     const onPageChange = jest.fn().mockImplementation((val) => {
       current.value = val.current
@@ -61,7 +61,7 @@ describe('AtPagination Event', () => {
     expect(current.value).toBe(3)
   })
 
-  it('AtPagination onPageChange not to be called(disabled prev or next)', () => {
+  it('should not trigger event onPageChange when disabled', () => {
     const onPageChange = jest.fn()
     const wrapper = factory({
       total: 20,
@@ -73,7 +73,7 @@ describe('AtPagination Event', () => {
     expect(onPageChange).not.toBeCalled()
   })
 
-  it('AtPagination onPageChange params {type, current} - prev', () => {
+  it('when triggered, event onPageChange should return params {type, current} - prev', () => {
     const onPageChange = jest.fn()
     const wrapper = factory({
       current: 2,
@@ -85,7 +85,7 @@ describe('AtPagination Event', () => {
     expect(onPageChange.mock.calls[0][0].current).toEqual(1)
   })
 
-  it('AtPagination onPageChange params {type, current} - next', () => {
+  it('when triggered, event onPageChange should return params {type, current} - next', () => {
     const onPageChange = jest.fn()
     const wrapper = factory({
       total: 100,
