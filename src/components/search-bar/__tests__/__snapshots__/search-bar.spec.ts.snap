@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtSearchBar Snap render AtSearchBar -- props actionName 1`] = `
+exports[`AtSearchBar Snap should render AtSearchBar -- props actionName 1`] = `
 <view
   class="at-search-bar"
 >
@@ -24,7 +24,7 @@ exports[`AtSearchBar Snap render AtSearchBar -- props actionName 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-inputOAHIDAPL"
+      id="weui-inputFMBFNBCJ"
       maxlength="140"
       type="text"
     />
@@ -39,9 +39,9 @@ exports[`AtSearchBar Snap render AtSearchBar -- props actionName 1`] = `
 </view>
 `;
 
-exports[`AtSearchBar Snap render AtSearchBar -- props className 1`] = `
+exports[`AtSearchBar Snap should render AtSearchBar -- props class 1`] = `
 <view
-  class="at-search-bar"
+  class="test at-search-bar test"
 >
   <view
     class="at-search-bar__input-cnt"
@@ -63,7 +63,7 @@ exports[`AtSearchBar Snap render AtSearchBar -- props className 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-inputBFJBKAKF"
+      id="weui-inputNJHDPPNI"
       maxlength="140"
       type="text"
     />
@@ -78,47 +78,7 @@ exports[`AtSearchBar Snap render AtSearchBar -- props className 1`] = `
 </view>
 `;
 
-exports[`AtSearchBar Snap render AtSearchBar -- props customStyle 1`] = `
-<view
-  class="at-search-bar"
-  customstyle="color:red;"
->
-  <view
-    class="at-search-bar__input-cnt"
-  >
-    <view
-      class="at-search-bar__placeholder-wrap"
-      style="flex-grow: 1;"
-    >
-      <text
-        class="at-icon at-icon-search"
-      />
-      <text
-        class="at-search-bar__placeholder"
-        style="visibility: visible;"
-      >
-        搜索
-      </text>
-    </view>
-    <input
-      class="at-search-bar__input"
-      confirmtype="search"
-      id="weui-inputCFFNDIHF"
-      maxlength="140"
-      type="text"
-    />
-    
-  </view>
-  <view
-    class="at-search-bar__action"
-    style="opacity: 0; margin-right: -59px;"
-  >
-    搜索
-  </view>
-</view>
-`;
-
-exports[`AtSearchBar Snap render AtSearchBar -- props disabled 1`] = `
+exports[`AtSearchBar Snap should render AtSearchBar -- props disabled 1`] = `
 <view
   class="at-search-bar"
 >
@@ -143,7 +103,7 @@ exports[`AtSearchBar Snap render AtSearchBar -- props disabled 1`] = `
       class="at-search-bar__input"
       confirmtype="search"
       disabled=""
-      id="weui-inputGABPMMLE"
+      id="weui-inputLPAMEPKP"
       maxlength="140"
       type="text"
     />
@@ -158,7 +118,7 @@ exports[`AtSearchBar Snap render AtSearchBar -- props disabled 1`] = `
 </view>
 `;
 
-exports[`AtSearchBar Snap render AtSearchBar -- props fixed 1`] = `
+exports[`AtSearchBar Snap should render AtSearchBar -- props fixed 1`] = `
 <view
   class="at-search-bar at-search-bar--fixed"
 >
@@ -182,7 +142,7 @@ exports[`AtSearchBar Snap render AtSearchBar -- props fixed 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-inputDOFIJOHF"
+      id="weui-inputNCLCLCGK"
       maxlength="140"
       type="text"
     />
@@ -197,7 +157,7 @@ exports[`AtSearchBar Snap render AtSearchBar -- props fixed 1`] = `
 </view>
 `;
 
-exports[`AtSearchBar Snap render AtSearchBar -- props fucos 1`] = `
+exports[`AtSearchBar Snap should render AtSearchBar -- props focus 1`] = `
 <view
   class="at-search-bar"
   fucos="true"
@@ -222,7 +182,7 @@ exports[`AtSearchBar Snap render AtSearchBar -- props fucos 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-inputKADBOGAN"
+      id="weui-inputNMIBJCDN"
       maxlength="140"
       type="text"
     />
@@ -237,7 +197,7 @@ exports[`AtSearchBar Snap render AtSearchBar -- props fucos 1`] = `
 </view>
 `;
 
-exports[`AtSearchBar Snap render AtSearchBar -- props inputType number 1`] = `
+exports[`AtSearchBar Snap should render AtSearchBar -- props inputType number 1`] = `
 <view
   class="at-search-bar"
 >
@@ -261,7 +221,7 @@ exports[`AtSearchBar Snap render AtSearchBar -- props inputType number 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-inputKLOGAFIA"
+      id="weui-inputMAPAACBD"
       maxlength="140"
       type="number"
     />
@@ -276,7 +236,7 @@ exports[`AtSearchBar Snap render AtSearchBar -- props inputType number 1`] = `
 </view>
 `;
 
-exports[`AtSearchBar Snap render AtSearchBar -- props maxLength 1`] = `
+exports[`AtSearchBar Snap should render AtSearchBar -- props maxLength 1`] = `
 <view
   class="at-search-bar"
 >
@@ -300,7 +260,7 @@ exports[`AtSearchBar Snap render AtSearchBar -- props maxLength 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-inputBENFCCPD"
+      id="weui-inputHPKECHBD"
       maxlength="120"
       type="text"
     />
@@ -315,7 +275,7 @@ exports[`AtSearchBar Snap render AtSearchBar -- props maxLength 1`] = `
 </view>
 `;
 
-exports[`AtSearchBar Snap render AtSearchBar -- props placeholder 1`] = `
+exports[`AtSearchBar Snap should render AtSearchBar -- props placeholder 1`] = `
 <view
   class="at-search-bar"
 >
@@ -339,7 +299,7 @@ exports[`AtSearchBar Snap render AtSearchBar -- props placeholder 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-inputEMMCDFDK"
+      id="weui-inputFJPOMBJF"
       maxlength="140"
       type="text"
     />
@@ -354,7 +314,7 @@ exports[`AtSearchBar Snap render AtSearchBar -- props placeholder 1`] = `
 </view>
 `;
 
-exports[`AtSearchBar Snap render AtSearchBar -- props showActionButton 1`] = `
+exports[`AtSearchBar Snap should render AtSearchBar -- props showActionButton 1`] = `
 <view
   class="at-search-bar"
 >
@@ -378,7 +338,7 @@ exports[`AtSearchBar Snap render AtSearchBar -- props showActionButton 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-inputHFJHHBHH"
+      id="weui-inputEEPPCCCG"
       maxlength="140"
       type="text"
     />
@@ -393,7 +353,47 @@ exports[`AtSearchBar Snap render AtSearchBar -- props showActionButton 1`] = `
 </view>
 `;
 
-exports[`AtSearchBar Snap render AtSearchBar -- props value 1`] = `
+exports[`AtSearchBar Snap should render AtSearchBar -- props style 1`] = `
+<view
+  class="at-search-bar"
+  style="color: red;"
+>
+  <view
+    class="at-search-bar__input-cnt"
+  >
+    <view
+      class="at-search-bar__placeholder-wrap"
+      style="flex-grow: 1;"
+    >
+      <text
+        class="at-icon at-icon-search"
+      />
+      <text
+        class="at-search-bar__placeholder"
+        style="visibility: visible;"
+      >
+        搜索
+      </text>
+    </view>
+    <input
+      class="at-search-bar__input"
+      confirmtype="search"
+      id="weui-inputCNCMIDAF"
+      maxlength="140"
+      type="text"
+    />
+    
+  </view>
+  <view
+    class="at-search-bar__action"
+    style="opacity: 0; margin-right: -59px;"
+  >
+    搜索
+  </view>
+</view>
+`;
+
+exports[`AtSearchBar Snap should render AtSearchBar -- props value 1`] = `
 <view
   class="at-search-bar"
 >
@@ -417,7 +417,7 @@ exports[`AtSearchBar Snap render AtSearchBar -- props value 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-inputLCMILGLC"
+      id="weui-inputIIEFCIKA"
       maxlength="140"
       type="text"
     />
@@ -439,7 +439,7 @@ exports[`AtSearchBar Snap render AtSearchBar -- props value 1`] = `
 </view>
 `;
 
-exports[`AtSearchBar Snap render initial AtSearchBar 1`] = `
+exports[`AtSearchBar Snap should render initial AtSearchBar 1`] = `
 <view
   class="at-search-bar"
 >
@@ -463,7 +463,7 @@ exports[`AtSearchBar Snap render initial AtSearchBar 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-inputBKOFMPHO"
+      id="weui-inputHPBFOIBF"
       maxlength="140"
       type="text"
     />
