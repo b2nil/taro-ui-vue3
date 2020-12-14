@@ -14,7 +14,7 @@ const components = {
 }
 
 describe('Modal Snap', () => {
-  it('render initial Modal', () => {
+  it('should render initial Modal', () => {
     const wrapper = mount({
       components,
       render() {
@@ -42,7 +42,7 @@ describe('Modal Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render opened Modal', () => {
+  it('should render opened Modal', () => {
     const wrapper = mount({
       components,
       render() {
@@ -70,7 +70,7 @@ describe('Modal Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render opened Modal -- not header', () => {
+  it('should render opened Modal -- not header', () => {
     const wrapper = mount({
       components,
       render() {
@@ -97,7 +97,7 @@ describe('Modal Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render opened Modal -- single button', () => {
+  it('should render opened Modal -- single button', () => {
     const wrapper = mount({
       components,
       render() {
@@ -123,7 +123,7 @@ describe('Modal Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render opened  Modal -- simple', () => {
+  it('should render opened  Modal -- simple', () => {
     const wrapper = mount({
       components,
       render() {

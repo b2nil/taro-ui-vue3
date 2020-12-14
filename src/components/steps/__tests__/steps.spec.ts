@@ -59,29 +59,29 @@ describe('AtSteps Snap', () => {
     },
   ]
 
-  it('render initial AtSteps', () => {
+  it('should render initial AtSteps', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtSteps -- props style', () => {
+  it('should render AtSteps -- props style', () => {
     const wrapper = factory({ style: 'color:red;' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtSteps -- props class', () => {
+  it('should render AtSteps -- props class', () => {
     const wrapper = factory({ class: 'test' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtSteps -- props items', () => {
+  it('should render AtSteps -- props items', () => {
     const wrapper1 = factory({ items: items1 })
     expect(wrapper1.element).toMatchSnapshot()
     const wrapper2 = factory({ items: items2 })
     expect(wrapper2.element).toMatchSnapshot()
   })
 
-  it('render AtSteps -- props current', () => {
+  it('should render AtSteps -- props current', () => {
     const wrapper = factory({ items: items1, current: 1 })
     expect(wrapper.element).toMatchSnapshot()
   })

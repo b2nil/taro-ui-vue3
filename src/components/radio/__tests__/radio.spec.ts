@@ -9,7 +9,7 @@ const options = [
 ]
 
 describe('AtRadio Snap', () => {
-  it('render AtRadio', () => {
+  it('should render AtRadio', () => {
     const wrapper = mount({
       render() {
         return h(AtRadio, { options: options })

@@ -19,6 +19,26 @@ exports[`AtLoading Snap render AtLoading -- props color 1`] = `
 </view>
 `;
 
+exports[`AtLoading Snap render AtLoading -- props size 1`] = `
+<view
+  class="at-loading"
+  style="width: 0.32rem; height: 0.32rem;"
+>
+  <view
+    class="at-loading__ring"
+    style="width: 0.32rem; height: 0.32rem;"
+  />
+  <view
+    class="at-loading__ring"
+    style="width: 0.32rem; height: 0.32rem;"
+  />
+  <view
+    class="at-loading__ring"
+    style="width: 0.32rem; height: 0.32rem;"
+  />
+</view>
+`;
+
 exports[`AtLoading Snap render initial AtLoading 1`] = `
 <view
   class="at-loading"

@@ -12,12 +12,12 @@ const factory = (values = {}, slots = { default: ['这也是内容区 可以随�
 }
 
 describe('Card Snap', () => {
-  it('render initial Card', () => {
+  it('should render initial Card', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render Card -- props thumb', () => {
+  it('should render Card -- props thumb', () => {
     const wrapper = factory({
       thumb:
         'http://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png',
@@ -25,7 +25,7 @@ describe('Card Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render Card -- props note', () => {
+  it('should render Card -- props note', () => {
     const wrapper = factory({
       note: '小Tips',
       thumb:
@@ -34,7 +34,7 @@ describe('Card Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render Card -- props extra', () => {
+  it('should render Card -- props extra', () => {
     const wrapper = factory({
       note: '小Tips',
       extra: '额外信息',
@@ -44,7 +44,7 @@ describe('Card Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render Card -- props isFull', () => {
+  it('should render Card -- props isFull', () => {
     const wrapper = factory({
       isFull: true,
       note: '小Tips',
@@ -55,7 +55,7 @@ describe('Card Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render Card -- props extraStyle', () => {
+  it('should render Card -- props extraStyle', () => {
     const wrapper = factory({
       isFull: true,
       note: '小Tips',

@@ -1,0 +1,190 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtTextarea Snap render AtTextarea -- props class 1`] = `
+<view
+  class="test at-textarea at-textarea--WEB test"
+>
+  <textarea
+    autofocus="false"
+    class="at-textarea__textarea"
+    cursorspacing="100"
+    fixed="false"
+    maxlength="200"
+    placeholder=""
+    placeholderclass="[object Object]"
+    placeholderstyle=""
+    showconfirmbar="false"
+    style="height: 2.1334rem;"
+  />
+  <view
+    class="at-textarea__counter"
+  >
+    0 / 200
+  </view>
+</view>
+`;
+
+exports[`AtTextarea Snap render AtTextarea -- props count 1`] = `
+<view
+  class="at-textarea at-textarea--WEB"
+>
+  <textarea
+    autofocus="false"
+    class="at-textarea__textarea"
+    cursorspacing="100"
+    fixed="false"
+    maxlength="200"
+    placeholder=""
+    placeholderclass="[object Object]"
+    placeholderstyle=""
+    showconfirmbar="false"
+    style="height: 2.1334rem;"
+  />
+  <!---->
+</view>
+`;
+
+exports[`AtTextarea Snap render AtTextarea -- props height 1`] = `
+<view
+  class="at-textarea at-textarea--WEB"
+>
+  <textarea
+    autofocus="false"
+    class="at-textarea__textarea"
+    cursorspacing="100"
+    fixed="false"
+    maxlength="200"
+    placeholder=""
+    placeholderclass="[object Object]"
+    placeholderstyle=""
+    showconfirmbar="false"
+    style="height: 64rem;"
+  />
+  <view
+    class="at-textarea__counter"
+  >
+    0 / 200
+  </view>
+</view>
+`;
+
+exports[`AtTextarea Snap render AtTextarea -- props maxLength 1`] = `
+<view
+  class="at-textarea at-textarea--WEB"
+>
+  <textarea
+    autofocus="false"
+    class="at-textarea__textarea"
+    cursorspacing="100"
+    fixed="false"
+    maxlength="300"
+    placeholder=""
+    placeholderclass="[object Object]"
+    placeholderstyle=""
+    showconfirmbar="false"
+    style="height: 2.1334rem;"
+  />
+  <view
+    class="at-textarea__counter"
+  >
+    0 / 300
+  </view>
+</view>
+`;
+
+exports[`AtTextarea Snap render AtTextarea -- props placeholder 1`] = `
+<view
+  class="at-textarea at-textarea--WEB"
+>
+  <textarea
+    autofocus="false"
+    class="at-textarea__textarea"
+    cursorspacing="100"
+    fixed="false"
+    maxlength="200"
+    placeholder="test"
+    placeholderclass="[object Object]"
+    placeholderstyle=""
+    showconfirmbar="false"
+    style="height: 2.1334rem;"
+  />
+  <view
+    class="at-textarea__counter"
+  >
+    0 / 200
+  </view>
+</view>
+`;
+
+exports[`AtTextarea Snap render AtTextarea -- props style 1`] = `
+<view
+  class="at-textarea at-textarea--WEB"
+  style="color: red;"
+>
+  <textarea
+    autofocus="false"
+    class="at-textarea__textarea"
+    cursorspacing="100"
+    fixed="false"
+    maxlength="200"
+    placeholder=""
+    placeholderclass="[object Object]"
+    placeholderstyle=""
+    showconfirmbar="false"
+    style="height: 2.1334rem;"
+  />
+  <view
+    class="at-textarea__counter"
+  >
+    0 / 200
+  </view>
+</view>
+`;
+
+exports[`AtTextarea Snap render AtTextarea -- props value 1`] = `
+<view
+  class="at-textarea at-textarea--WEB"
+>
+  <textarea
+    autofocus="false"
+    class="at-textarea__textarea"
+    cursorspacing="100"
+    fixed="false"
+    maxlength="200"
+    placeholder=""
+    placeholderclass="[object Object]"
+    placeholderstyle=""
+    showconfirmbar="false"
+    style="height: 2.1334rem;"
+  />
+  <view
+    class="at-textarea__counter"
+  >
+    4 / 200
+  </view>
+</view>
+`;
+
+exports[`AtTextarea Snap render initial AtTextarea 1`] = `
+<view
+  class="at-textarea at-textarea--WEB"
+>
+  <textarea
+    autofocus="false"
+    class="at-textarea__textarea"
+    cursorspacing="100"
+    fixed="false"
+    maxlength="200"
+    placeholder=""
+    placeholderclass="[object Object]"
+    placeholderstyle=""
+    showconfirmbar="false"
+    style="height: 2.1334rem;"
+  />
+  <view
+    class="at-textarea__counter"
+  >
+    0 / 200
+  </view>
+</view>
+`;

@@ -9,42 +9,42 @@ const factory = (values = {}, slots = { default: [] }) => {
 }
 
 describe('AtTextarea Snap', () => {
-  it('render initial AtTextarea', () => {
+  it('should render initial AtTextarea', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtTextarea -- props style', () => {
+  it('should render AtTextarea -- props style', () => {
     const wrapper = factory({ style: 'color:red;' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtTextarea -- props class', () => {
+  it('should render AtTextarea -- props class', () => {
     const wrapper = factory({ class: 'test' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtTextarea -- props value', () => {
+  it('should render AtTextarea -- props value', () => {
     const wrapper = factory({ value: 'test' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtTextarea -- props maxLength', () => {
+  it('should render AtTextarea -- props maxLength', () => {
     const wrapper = factory({ maxLength: 300 })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtTextarea -- props placeholder', () => {
+  it('should render AtTextarea -- props placeholder', () => {
     const wrapper = factory({ placeholder: 'test' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtTextarea -- props count', () => {
+  it('should render AtTextarea -- props count', () => {
     const wrapper = factory({ count: false })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtTextarea -- props height', () => {
+  it('should render AtTextarea -- props height', () => {
     const wrapper = factory({ height: 3000 })
     expect(wrapper.vm.height).toBe(3000)
     expect(wrapper.element).toMatchSnapshot()

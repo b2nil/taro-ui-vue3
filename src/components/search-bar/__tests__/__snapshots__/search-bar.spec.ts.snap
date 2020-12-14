@@ -24,7 +24,7 @@ exports[`AtSearchBar Snap should render AtSearchBar -- props actionName 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-inputFMBFNBCJ"
+      id="weui-inputOGKOFBPM"
       maxlength="140"
       type="text"
     />
@@ -63,7 +63,7 @@ exports[`AtSearchBar Snap should render AtSearchBar -- props class 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-inputNJHDPPNI"
+      id="weui-inputAEOIMBEL"
       maxlength="140"
       type="text"
     />
@@ -103,7 +103,7 @@ exports[`AtSearchBar Snap should render AtSearchBar -- props disabled 1`] = `
       class="at-search-bar__input"
       confirmtype="search"
       disabled=""
-      id="weui-inputLPAMEPKP"
+      id="weui-inputOKJMEMPB"
       maxlength="140"
       type="text"
     />
@@ -142,7 +142,7 @@ exports[`AtSearchBar Snap should render AtSearchBar -- props fixed 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-inputNCLCLCGK"
+      id="weui-inputNFGFBMHG"
       maxlength="140"
       type="text"
     />
@@ -182,7 +182,7 @@ exports[`AtSearchBar Snap should render AtSearchBar -- props focus 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-inputNMIBJCDN"
+      id="weui-inputDONDDGIL"
       maxlength="140"
       type="text"
     />
@@ -221,7 +221,7 @@ exports[`AtSearchBar Snap should render AtSearchBar -- props inputType number 1`
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-inputMAPAACBD"
+      id="weui-inputPDFKCAKO"
       maxlength="140"
       type="number"
     />
@@ -260,7 +260,7 @@ exports[`AtSearchBar Snap should render AtSearchBar -- props maxLength 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-inputHPKECHBD"
+      id="weui-inputFKEMJLOL"
       maxlength="120"
       type="text"
     />
@@ -299,7 +299,7 @@ exports[`AtSearchBar Snap should render AtSearchBar -- props placeholder 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-inputFJPOMBJF"
+      id="weui-inputMDFFOJKC"
       maxlength="140"
       type="text"
     />
@@ -338,7 +338,7 @@ exports[`AtSearchBar Snap should render AtSearchBar -- props showActionButton 1`
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-inputEEPPCCCG"
+      id="weui-inputELMGICCC"
       maxlength="140"
       type="text"
     />
@@ -378,7 +378,7 @@ exports[`AtSearchBar Snap should render AtSearchBar -- props style 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-inputCNCMIDAF"
+      id="weui-inputIFJEJGNP"
       maxlength="140"
       type="text"
     />
@@ -417,7 +417,7 @@ exports[`AtSearchBar Snap should render AtSearchBar -- props value 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-inputIIEFCIKA"
+      id="weui-inputJBBMNEED"
       maxlength="140"
       type="text"
     />
@@ -463,7 +463,7 @@ exports[`AtSearchBar Snap should render initial AtSearchBar 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-inputHPBFOIBF"
+      id="weui-inputNFBLNJFB"
       maxlength="140"
       type="text"
     />

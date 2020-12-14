@@ -9,27 +9,27 @@ const factory = (values = {}, slots = { default: ['标签'] }) => {
 }
 
 describe('AtSwitch Snap', () => {
-  it('render initial AtSwitch', () => {
+  it('should render initial AtSwitch', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtSwitch -- props title', () => {
+  it('should render AtSwitch -- props title', () => {
     const wrapper = factory({ title: '开启中' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtSwitch -- props checked', () => {
+  it('should render AtSwitch -- props checked', () => {
     const wrapper = factory({ title: '开启中', checked: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtSwitch -- props border', () => {
+  it('should render AtSwitch -- props border', () => {
     const wrapper = factory({ title: '开启中', border: false })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtSwitch -- props disabled', () => {
+  it('should render AtSwitch -- props disabled', () => {
     const wrapper1 = factory({ title: '开启中', checked: true, disabled: true })
     expect(wrapper1.element).toMatchSnapshot()
     const wrapper2 = factory({ title: '开启中', disabled: true })

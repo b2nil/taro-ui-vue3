@@ -62,9 +62,9 @@ exports[`AtTabs Snap render AtTabs -- props animated 1`] = `
 </view>
 `;
 
-exports[`AtTabs Snap render AtTabs -- props className 1`] = `
+exports[`AtTabs Snap render AtTabs -- props class 1`] = `
 <view
-  class="at-tabs at-tabs--horizontal at-tabs--WEB"
+  class="test at-tabs at-tabs--horizontal at-tabs--WEB test"
 >
   <view
     class="at-tabs__header"
@@ -146,29 +146,6 @@ exports[`AtTabs Snap render AtTabs -- props current 1`] = `
 </view>
 `;
 
-exports[`AtTabs Snap render AtTabs -- props customStyle 1`] = `
-<view
-  class="at-tabs at-tabs--horizontal at-tabs--WEB"
-  customstyle="color:red;"
->
-  <view
-    class="at-tabs__header"
-    id="tabs-AOTU2018"
-  />
-  <view
-    class="at-tabs__body"
-    style="transform: translate3d(-0%, 0px, 0px);"
-  >
-    <view
-      class="at-tabs__underline"
-      style="width: 0%;"
-    />
-    
-    
-  </view>
-</view>
-`;
-
 exports[`AtTabs Snap render AtTabs -- props height 1`] = `
 <view
   class="at-tabs at-tabs--vertical at-tabs--WEB"
@@ -225,6 +202,29 @@ exports[`AtTabs Snap render AtTabs -- props height 1`] = `
     <view
       class="at-tabs__underline"
       style="height: 300%;"
+    />
+    
+    
+  </view>
+</view>
+`;
+
+exports[`AtTabs Snap render AtTabs -- props style 1`] = `
+<view
+  class="at-tabs at-tabs--horizontal at-tabs--WEB"
+  style="color: red;"
+>
+  <view
+    class="at-tabs__header"
+    id="tabs-AOTU2018"
+  />
+  <view
+    class="at-tabs__body"
+    style="transform: translate3d(-0%, 0px, 0px);"
+  >
+    <view
+      class="at-tabs__underline"
+      style="width: 0%;"
     />
     
     

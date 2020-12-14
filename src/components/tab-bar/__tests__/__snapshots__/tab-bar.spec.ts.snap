@@ -7,9 +7,9 @@ exports[`AtTabBar Snap render AtTabBar -- props backgroundColor 1`] = `
 />
 `;
 
-exports[`AtTabBar Snap render AtTabBar -- props className 1`] = `
+exports[`AtTabBar Snap render AtTabBar -- props class 1`] = `
 <view
-  class="at-tab-bar"
+  class="test at-tab-bar test"
   style="background-color: rgb(255, 255, 255);"
 />
 `;
@@ -184,14 +184,6 @@ exports[`AtTabBar Snap render AtTabBar -- props color 1`] = `
     </view>
   </view>
 </view>
-`;
-
-exports[`AtTabBar Snap render AtTabBar -- props customStyle 1`] = `
-<view
-  class="at-tab-bar"
-  customstyle="color:red;"
-  style="background-color: rgb(255, 255, 255);"
-/>
 `;
 
 exports[`AtTabBar Snap render AtTabBar -- props fontSize 1`] = `
@@ -881,6 +873,13 @@ exports[`AtTabBar Snap render AtTabBar -- props selectedColor 1`] = `
     </view>
   </view>
 </view>
+`;
+
+exports[`AtTabBar Snap render AtTabBar -- props style 1`] = `
+<view
+  class="at-tab-bar"
+  style="color: red; background-color: rgb(255, 255, 255);"
+/>
 `;
 
 exports[`AtTabBar Snap render AtTabBar -- props tabList 1`] = `

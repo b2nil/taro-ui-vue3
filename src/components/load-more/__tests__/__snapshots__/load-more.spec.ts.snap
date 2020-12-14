@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtLoadMore Snap render AtLoadMore -- props className 1`] = `
+exports[`AtLoadMore Snap render AtLoadMore -- props class 1`] = `
 <view
-  class="at-load-more"
+  class="test at-load-more test"
 >
   <view
     class="at-load-more__cnt"
@@ -27,30 +27,39 @@ exports[`AtLoadMore Snap render AtLoadMore -- props className 1`] = `
 </view>
 `;
 
-exports[`AtLoadMore Snap render AtLoadMore -- props customStyle 1`] = `
+exports[`AtLoadMore Snap render AtLoadMore -- props loadingText 1`] = `
 <view
   class="at-load-more"
-  customstyle="color:red;"
 >
   <view
-    class="at-load-more__cnt"
+    class="at-activity-indicator at-activity-indicator--center at-activity-indicator--isopened"
   >
     <view
-      class="at-button--normal at-button--full at-button"
+      class="at-activity-indicator__body"
     >
-      <button
-        class="at-button__wxbutton"
-        lang="en"
-      />
-      <!---->
-      <!---->
-      <!---->
       <view
-        class="at-button__text"
+        class="at-loading"
+        style="width: 1.024rem; height: 1.024rem;"
       >
-        查看更多
+        <view
+          class="at-loading__ring"
+          style="width: 1.024rem; height: 1.024rem; border: 1px solid #6190e8; border-color: #6190e8 transparent transparent transparent;"
+        />
+        <view
+          class="at-loading__ring"
+          style="width: 1.024rem; height: 1.024rem; border: 1px solid #6190e8; border-color: #6190e8 transparent transparent transparent;"
+        />
+        <view
+          class="at-loading__ring"
+          style="width: 1.024rem; height: 1.024rem; border: 1px solid #6190e8; border-color: #6190e8 transparent transparent transparent;"
+        />
       </view>
     </view>
+    <text
+      class="at-activity-indicator__content"
+    >
+      loadingText
+    </text>
   </view>
 </view>
 `;
@@ -149,6 +158,43 @@ exports[`AtLoadMore Snap render AtLoadMore -- props noMoreTextStyle 1`] = `
 </view>
 `;
 
+exports[`AtLoadMore Snap render AtLoadMore -- props status === loading 1`] = `
+<view
+  class="at-load-more"
+>
+  <view
+    class="at-activity-indicator at-activity-indicator--center at-activity-indicator--isopened"
+  >
+    <view
+      class="at-activity-indicator__body"
+    >
+      <view
+        class="at-loading"
+        style="width: 1.024rem; height: 1.024rem;"
+      >
+        <view
+          class="at-loading__ring"
+          style="width: 1.024rem; height: 1.024rem; border: 1px solid #6190e8; border-color: #6190e8 transparent transparent transparent;"
+        />
+        <view
+          class="at-loading__ring"
+          style="width: 1.024rem; height: 1.024rem; border: 1px solid #6190e8; border-color: #6190e8 transparent transparent transparent;"
+        />
+        <view
+          class="at-loading__ring"
+          style="width: 1.024rem; height: 1.024rem; border: 1px solid #6190e8; border-color: #6190e8 transparent transparent transparent;"
+        />
+      </view>
+    </view>
+    <text
+      class="at-activity-indicator__content"
+    >
+      加载中
+    </text>
+  </view>
+</view>
+`;
+
 exports[`AtLoadMore Snap render AtLoadMore -- props status === more 1`] = `
 <view
   class="at-load-more"
@@ -185,6 +231,34 @@ exports[`AtLoadMore Snap render AtLoadMore -- props status === noMore 1`] = `
   >
     没有更多
   </text>
+</view>
+`;
+
+exports[`AtLoadMore Snap render AtLoadMore -- props style 1`] = `
+<view
+  class="at-load-more"
+  style="color: red;"
+>
+  <view
+    class="at-load-more__cnt"
+  >
+    <view
+      class="at-button--normal at-button--full at-button"
+    >
+      <button
+        class="at-button__wxbutton"
+        lang="en"
+      />
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        查看更多
+      </view>
+    </view>
+  </view>
 </view>
 `;
 

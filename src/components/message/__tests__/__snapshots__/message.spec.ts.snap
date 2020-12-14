@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtMessage Snap render AtMessage -- props className 1`] = `
+exports[`AtMessage Snap render AtMessage -- props class 1`] = `
 <view
-  class="at-message at-message--hidden at-message--info"
+  class="test at-message at-message--hidden at-message--info test"
 />
 `;
 
-exports[`AtMessage Snap render AtMessage -- props customStyle 1`] = `
+exports[`AtMessage Snap render AtMessage -- props style 1`] = `
 <view
   class="at-message at-message--hidden at-message--info"
-  customstyle="color:red;"
+  style="color: red;"
 />
 `;
 

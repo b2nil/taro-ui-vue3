@@ -12,17 +12,17 @@ const factory = (values = {}, slots = { default: [] }) => {
 }
 
 describe('AtLoading Snap', () => {
-  it('render initial AtLoading', () => {
+  it('should render initial AtLoading', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtLoading -- props size', () => {
+  it('should render AtLoading -- props size', () => {
     const wrapper = factory({ size: 15 })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtLoading -- props color', () => {
+  it('should render AtLoading -- props color', () => {
     const wrapper = factory({ color: '#fff' })
     expect(wrapper.element).toMatchSnapshot()
   })

@@ -7,22 +7,22 @@ const factory = (values = {}, slots: Slots = { default: [] }) => {
 }
 
 describe('AtPagination Snap', () => {
-  it('render AtPagination -- props current', () => {
+  it('should render AtPagination -- props current', () => {
     const wrapper = factory({ current: 2 })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtPagination -- props total', () => {
+  it('should render AtPagination -- props total', () => {
     const wrapper = factory({ total: 100 })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtPagination -- props pageSize', () => {
+  it('should render AtPagination -- props pageSize', () => {
     const wrapper = factory({ pageSize: 40 })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtPagination -- props icon', () => {
+  it('should render AtPagination -- props icon', () => {
     const wrapper = factory({ icon: true })
     expect(wrapper.element).toMatchSnapshot()
   })

@@ -9,57 +9,57 @@ const factory = (values = {}, slots = { default: [] }) => {
 }
 
 describe('AtSlider Snap', () => {
-  it('render initial AtSlider', () => {
+  it('should render initial AtSlider', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtSlider -- props value', () => {
+  it('should render AtSlider -- props value', () => {
     const wrapper = factory({ value: 50 })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtSlider -- props step', () => {
+  it('should render AtSlider -- props step', () => {
     const wrapper = factory({ step: 1 })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtSlider -- props min', () => {
+  it('should render AtSlider -- props min', () => {
     const wrapper = factory({ min: 50 })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtSlider -- props max', () => {
+  it('should render AtSlider -- props max', () => {
     const wrapper = factory({ max: 200 })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtSlider -- props disabled', () => {
+  it('should render AtSlider -- props disabled', () => {
     const wrapper = factory({ disabled: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtSlider -- props activeColor', () => {
+  it('should render AtSlider -- props activeColor', () => {
     const wrapper = factory({ activeColor: 'red' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtSlider -- props backgroundColor', () => {
+  it('should render AtSlider -- props backgroundColor', () => {
     const wrapper = factory({ backgroundColor: 'red' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtSlider -- props blockColor', () => {
+  it('should render AtSlider -- props blockColor', () => {
     const wrapper = factory({ blockColor: 'red' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtSlider -- props blockSize', () => {
+  it('should render AtSlider -- props blockSize', () => {
     const wrapper = factory({ blockSize: 24 })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtSlider -- props showValue', () => {
+  it('should render AtSlider -- props showValue', () => {
     const wrapper = factory({ showValue: true })
     expect(wrapper.element).toMatchSnapshot()
   })

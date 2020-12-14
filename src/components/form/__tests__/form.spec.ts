@@ -9,12 +9,12 @@ const factory = (values = {}, slots = { default: [] }) => {
 }
 
 describe('AtForm Snap', () => {
-  it('render initial AtForm', () => {
+  it('should render initial AtForm', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render initial AtForm', () => {
+  it('should render initial AtForm', () => {
     const wrapper = factory({ reportSubmit: true })
     expect(wrapper.element).toMatchSnapshot()
   })

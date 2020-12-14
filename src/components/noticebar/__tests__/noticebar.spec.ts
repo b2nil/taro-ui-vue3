@@ -9,28 +9,28 @@ const factory = (values = {}, slots = { default: ['这是内容'] }) => {
 }
 
 describe('AtNoticebar Snap', () => {
-  it('render AtNoticebar -- props show', () => {
+  it('should render AtNoticebar -- props show', () => {
     const wrapper = factory({ close: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtNoticebar -- props single', () => {
+  it('should render AtNoticebar -- props single', () => {
     const wrapper = factory({ single: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtNoticebar -- props speed', () => {
+  it('should render AtNoticebar -- props speed', () => {
     const wrapper = factory({ speed: 200 })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtNoticebar -- props moreText & showMore', () => {
+  it('should render AtNoticebar -- props moreText & showMore', () => {
     // showMore work only when single is true
     const wrapper = factory({ moreText: '查看更多', showMore: true, single: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtNoticebar -- props icon', () => {
+  it('should render AtNoticebar -- props icon', () => {
     const wrapper = factory({ icon: 'volume-plus' })
     expect(wrapper.element).toMatchSnapshot()
   })

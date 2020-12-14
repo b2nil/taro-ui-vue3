@@ -6,92 +6,92 @@ const factory = (values = {}, slots = { default: [] }) => {
 }
 
 describe('AtInput Snap', () => {
-  it('render initial AtInput', () => {
+  it('should render initial AtInput', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtInput -- props style', () => {
+  it('should render AtInput -- props style', () => {
     const wrapper = factory({ style: 'border:none;' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtInput -- props value', () => {
+  it('should render AtInput -- props value', () => {
     const wrapper = factory({ value: 'value' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtInput -- props name', () => {
+  it('should render AtInput -- props name', () => {
     const wrapper = factory({ name: 'name' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtInput -- props placeholder', () => {
+  it('should render AtInput -- props placeholder', () => {
     const wrapper = factory({ placeholder: 'placeholder' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtInput -- props title', () => {
+  it('should render AtInput -- props title', () => {
     const wrapper = factory({ title: 'title' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtInput -- props maxLength', () => {
+  it('should render AtInput -- props maxLength', () => {
     const wrapper = factory({ maxLength: 10 })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtInput -- props type(number)', () => {
+  it('should render AtInput -- props type(number)', () => {
     const wrapper = factory({ type: 'number' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtInput -- props type(password)', () => {
+  it('should render AtInput -- props type(password)', () => {
     const wrapper = factory({ type: 'password' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtInput -- props type(idcard)', () => {
+  it('should render AtInput -- props type(idcard)', () => {
     const wrapper = factory({ type: 'idcard' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtInput -- props type(digit)', () => {
+  it('should render AtInput -- props type(digit)', () => {
     const wrapper = factory({ type: 'digit' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtInput -- props type(phone)', () => {
+  it('should render AtInput -- props type(phone)', () => {
     const wrapper = factory({ type: 'phone' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtInput -- props disabled', () => {
+  it('should render AtInput -- props disabled', () => {
     const wrapper = factory({ disabled: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtInput -- props border', () => {
+  it('should render AtInput -- props border', () => {
     const wrapper = factory({ border: false })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtInput -- props editable', () => {
+  it('should render AtInput -- props editable', () => {
     const wrapper = factory({ editable: false })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtInput -- props error', () => {
+  it('should render AtInput -- props error', () => {
     const wrapper = factory({ error: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtInput -- props clear', () => {
+  it('should render AtInput -- props clear', () => {
     const wrapper = factory({ clear: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtInput -- props required', () => {
+  it('should render AtInput -- props required', () => {
     const wrapper = factory({ required: true })
     expect(wrapper.element).toMatchSnapshot()
   })

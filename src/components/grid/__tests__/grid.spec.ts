@@ -62,32 +62,32 @@ const ICON_DATA = [
 ]
 
 describe('Grid Snap', () => {
-  it('render image Grid', () => {
+  it('should render image Grid', () => {
     const wrapper = factory({ data: IMAGE_DATA })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render no border of image Grid', () => {
+  it('should render no border of image Grid', () => {
     const wrapper = factory({ data: IMAGE_DATA, hasBorder: false })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render rect image Grid', () => {
+  it('should render rect image Grid', () => {
     const wrapper = factory({ data: IMAGE_DATA, mode: 'rect' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render icon Grid', () => {
+  it('should render icon Grid', () => {
     const wrapper = factory({ data: ICON_DATA })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render rect icon Grid', () => {
+  it('should render rect icon Grid', () => {
     const wrapper = factory({ data: ICON_DATA, mode: 'rect' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render rect icon Grid -- props columnNum', () => {
+  it('should render rect icon Grid -- props columnNum', () => {
     const wrapper = factory({ data: ICON_DATA, mode: 'rect', columnNum: 4 })
     expect(wrapper.element).toMatchSnapshot()
   })

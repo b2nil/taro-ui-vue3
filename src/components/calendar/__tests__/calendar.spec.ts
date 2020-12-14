@@ -9,7 +9,7 @@ const factory = (values = {}, slots = { default: [] }) => {
 }
 
 describe('AtCalendar Snap', () => {
-  it('render initial AtCalendar', () => {
+  it('should render initial AtCalendar', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })

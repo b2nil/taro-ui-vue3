@@ -8,9 +8,9 @@ exports[`AtFab Snap render AtFab -- default props 1`] = `
 </view>
 `;
 
-exports[`AtFab Snap render AtFab -- props className 1`] = `
+exports[`AtFab Snap render AtFab -- props class 1`] = `
 <view
-  class="at-fab at-fab--normal"
+  class="button at-fab at-fab--normal button"
 >
   按钮
 </view>

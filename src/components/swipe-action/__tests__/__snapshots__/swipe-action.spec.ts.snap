@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SwipeAction Snap should render SwipeAction -- isOpened 1`] = `
+<view
+  class="swipe-action--test at-swipe-action swipe-action--test"
+  id="swipeAction-NPKDAANB"
+>
+  <view
+    class="at-swipe-action__content animation"
+  >
+    <view
+      class="normal"
+    >
+      AtSwipeAction 一般使用场景
+    </view>
+  </view>
+  <view
+    class="at-swipe-action__options"
+    id="swipeActionOptions-NPKDAANB"
+  >
+    <view
+      class="at-swipe-action__option"
+      style="background-color: rgb(97, 144, 232);"
+    >
+      <text
+        class="option__text"
+      >
+        取消
+      </text>
+    </view>
+    <view
+      class="at-swipe-action__option"
+      style="background-color: rgb(255, 73, 73);"
+    >
+      <text
+        class="option__text"
+      >
+        确认
+      </text>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`SwipeAction Snap should render SwipeAction -- props options 1`] = `
+<view
+  class="swipe-action--test at-swipe-action swipe-action--test"
+  id="swipeAction-DOKLFONB"
+>
+  <view
+    class="at-swipe-action__content animation"
+  >
+    <view
+      class="normal"
+    >
+      AtSwipeAction 一般使用场景
+    </view>
+  </view>
+  <view
+    class="at-swipe-action__options"
+    id="swipeActionOptions-DOKLFONB"
+  >
+    <view
+      class="at-swipe-action__option"
+      style="background-color: rgb(97, 144, 232);"
+    >
+      <text
+        class="option__text"
+      >
+        取消
+      </text>
+    </view>
+    <view
+      class="at-swipe-action__option"
+      style="background-color: rgb(255, 73, 73);"
+    >
+      <text
+        class="option__text"
+      >
+        确认
+      </text>
+    </view>
+  </view>
+</view>
+`;

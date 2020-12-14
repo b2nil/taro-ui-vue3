@@ -9,32 +9,32 @@ const factory = (values = {}, slots = { default: ['标签'] }) => {
 }
 
 describe('AtTag Snap', () => {
-  it('render AtTag -- props size', () => {
+  it('should render AtTag -- props size', () => {
     const wrapper = factory({ size: 'small' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtTag -- props type', () => {
+  it('should render AtTag -- props type', () => {
     const wrapper = factory({ type: 'primary' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtTag -- props name', () => {
+  it('should render AtTag -- props name', () => {
     const wrapper = factory({ name: 'tag-01' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtTag -- props circle', () => {
+  it('should render AtTag -- props circle', () => {
     const wrapper = factory({ circle: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtTag -- props active', () => {
+  it('should render AtTag -- props active', () => {
     const wrapper = factory({ active: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtTag -- props disabled', () => {
+  it('should render AtTag -- props disabled', () => {
     const wrapper = factory({ disabled: true })
     expect(wrapper.element).toMatchSnapshot()
   })

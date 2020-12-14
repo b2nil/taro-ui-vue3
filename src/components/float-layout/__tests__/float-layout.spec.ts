@@ -22,17 +22,17 @@ const factory = (
 }
 
 describe('FloatLayout Snap', () => {
-  it('render initial FloatLayout', () => {
+  it('should render initial FloatLayout', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render FloatLayout -- props isOpened', () => {
+  it('should render FloatLayout -- props isOpened', () => {
     const wrapper = factory({ isOpened: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render FloatLayout -- props title', () => {
+  it('should render FloatLayout -- props title', () => {
     const wrapper = factory({ title: '这是个标题', isOpened: true })
     expect(wrapper.element).toMatchSnapshot()
   })

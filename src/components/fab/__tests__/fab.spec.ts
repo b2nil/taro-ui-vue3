@@ -12,17 +12,17 @@ const factory = (values = {}, slots = { default: ['按钮'] }) => {
 }
 
 describe('AtFab Snap', () => {
-  it('render AtFab -- default props', () => {
+  it('should render AtFab -- default props', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtFab -- props class', () => {
+  it('should render AtFab -- props class', () => {
     const wrapper = factory({ class: 'button' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtFab -- props size small', () => {
+  it('should render AtFab -- props size small', () => {
     const wrapper = factory({ size: 'small' })
     expect(wrapper.element).toMatchSnapshot()
   })

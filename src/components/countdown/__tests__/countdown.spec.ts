@@ -12,57 +12,57 @@ const factory = async (values = {}, slots = { default: [] }) => {
 }
 
 describe('AtCountdown Snap', () => {
-  it('render initial AtCountdown', async () => {
+  it('should render initial AtCountdown', async () => {
     const wrapper = await factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtCountdown -- props class', async () => {
+  it('should render AtCountdown -- props class', async () => {
     const wrapper = await factory({ class: 'test' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtCountdown -- props style', async () => {
+  it('should render AtCountdown -- props style', async () => {
     const wrapper = await factory({ style: 'color:red;' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtCountdown -- props isCard', async () => {
+  it('should render AtCountdown -- props isCard', async () => {
     const wrapper = await factory({ isCard: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtCountdown -- props format', async () => {
+  it('should render AtCountdown -- props format', async () => {
     const wrapper = await factory({ format: { hours: ':', minutes: ':', seconds: '' } })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtCountdown -- props day', async () => {
+  it('should render AtCountdown -- props day', async () => {
     const wrapper = await factory({ day: 1 })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtCountdown -- props hours', async () => {
+  it('should render AtCountdown -- props hours', async () => {
     const wrapper = await factory({ hours: 1 })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtCountdown -- props minutes', async () => {
+  it('should render AtCountdown -- props minutes', async () => {
     const wrapper = await factory({ minutes: 1 })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtCountdown -- props seconds', async () => {
+  it('should render AtCountdown -- props seconds', async () => {
     const wrapper = await factory({ seconds: 1 })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtCountdown -- props isShowDay', async () => {
+  it('should render AtCountdown -- props isShowDay', async () => {
     const wrapper = await factory({ isShowDay: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtCountdown -- hours > 24 and show day', async () => {
+  it('should render AtCountdown -- hours > 24 and show day', async () => {
     const wrapper = await factory({
       isShowDay: true,
       hours: 25,
@@ -70,7 +70,7 @@ describe('AtCountdown Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtCountdown -- hours > 24 and not show day', async () => {
+  it('should render AtCountdown -- hours > 24 and not show day', async () => {
     const wrapper = await factory({
       isShowDay: false,
       hours: 25,

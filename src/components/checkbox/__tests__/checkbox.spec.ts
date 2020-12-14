@@ -33,17 +33,17 @@ const checkboxOption = [
 ]
 
 describe('AtCheckbox Snap', () => {
-  it('render initial AtCheckbox', () => {
+  it('should render initial AtCheckbox', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtCheckbox -- props options', () => {
+  it('should render AtCheckbox -- props options', () => {
     const wrapper = factory({ options: checkboxOption })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtCheckbox -- props selectedList', () => {
+  it('should render AtCheckbox -- props selectedList', () => {
     const wrapper = factory({ options: checkboxOption, selectedList: ['list2'] })
     expect(wrapper.element).toMatchSnapshot()
   })

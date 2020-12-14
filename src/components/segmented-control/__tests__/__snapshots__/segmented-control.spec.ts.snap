@@ -1,18 +1,147 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtSegmentedControl Snap render AtSegmentedControl -- props className 1`] = `
+exports[`AtSegmentedControl Snap render AtSegmentedControl -- props class 1`] = `
 <view
-  class="at-segmented-control"
+  class="test at-segmented-control test"
   style="border-color: #6190e8;"
 />
 `;
 
-exports[`AtSegmentedControl Snap render AtSegmentedControl -- props customStyle 1`] = `
+exports[`AtSegmentedControl Snap render AtSegmentedControl -- props current 1`] = `
 <view
   class="at-segmented-control"
-  customstyle="color:red;"
   style="border-color: #6190e8;"
+>
+  <view
+    class="at-segmented-control__item"
+    style="color: rgb(97, 144, 232); font-size: 0.5974rem; border-color: #6190e8; background-color: rgb(255, 255, 255);"
+  >
+    tab1
+  </view>
+  <view
+    class="at-segmented-control__item"
+    style="color: rgb(97, 144, 232); font-size: 0.5974rem; border-color: #6190e8; background-color: rgb(255, 255, 255);"
+  >
+    tab2
+  </view>
+  <view
+    class="at-segmented-control__item at-segmented-control__item--active"
+    style="color: rgb(255, 255, 255); font-size: 0.5974rem; border-color: #6190e8; background-color: rgb(97, 144, 232);"
+  >
+    tab3
+  </view>
+</view>
+`;
+
+exports[`AtSegmentedControl Snap render AtSegmentedControl -- props disabled 1`] = `
+<view
+  class="at-segmented-control at-segmented-control--disabled"
+  style="border-color: #6190e8;"
+>
+  <view
+    class="at-segmented-control__item at-segmented-control__item--active"
+    style="color: rgb(255, 255, 255); font-size: 0.5974rem; border-color: #6190e8; background-color: rgb(97, 144, 232);"
+  >
+    tab1
+  </view>
+  <view
+    class="at-segmented-control__item"
+    style="color: rgb(97, 144, 232); font-size: 0.5974rem; border-color: #6190e8; background-color: rgb(255, 255, 255);"
+  >
+    tab2
+  </view>
+  <view
+    class="at-segmented-control__item"
+    style="color: rgb(97, 144, 232); font-size: 0.5974rem; border-color: #6190e8; background-color: rgb(255, 255, 255);"
+  >
+    tab3
+  </view>
+</view>
+`;
+
+exports[`AtSegmentedControl Snap render AtSegmentedControl -- props fontSize 1`] = `
+<view
+  class="at-segmented-control"
+  style="border-color: #6190e8;"
+>
+  <view
+    class="at-segmented-control__item at-segmented-control__item--active"
+    style="color: rgb(255, 255, 255); font-size: 0.64rem; border-color: #6190e8; background-color: rgb(97, 144, 232);"
+  >
+    tab1
+  </view>
+  <view
+    class="at-segmented-control__item"
+    style="color: rgb(97, 144, 232); font-size: 0.64rem; border-color: #6190e8; background-color: rgb(255, 255, 255);"
+  >
+    tab2
+  </view>
+  <view
+    class="at-segmented-control__item"
+    style="color: rgb(97, 144, 232); font-size: 0.64rem; border-color: #6190e8; background-color: rgb(255, 255, 255);"
+  >
+    tab3
+  </view>
+</view>
+`;
+
+exports[`AtSegmentedControl Snap render AtSegmentedControl -- props selectedColor 1`] = `
+<view
+  class="at-segmented-control"
+  style="border-color: #fff;"
+>
+  <view
+    class="at-segmented-control__item at-segmented-control__item--active"
+    style="color: rgb(255, 255, 255); font-size: 0.5974rem; border-color: #fff; background-color: rgb(255, 255, 255);"
+  >
+    tab1
+  </view>
+  <view
+    class="at-segmented-control__item"
+    style="color: rgb(255, 255, 255); font-size: 0.5974rem; border-color: #fff; background-color: rgb(255, 255, 255);"
+  >
+    tab2
+  </view>
+  <view
+    class="at-segmented-control__item"
+    style="color: rgb(255, 255, 255); font-size: 0.5974rem; border-color: #fff; background-color: rgb(255, 255, 255);"
+  >
+    tab3
+  </view>
+</view>
+`;
+
+exports[`AtSegmentedControl Snap render AtSegmentedControl -- props style 1`] = `
+<view
+  class="at-segmented-control"
+  style="color: red; border-color: #6190e8;"
 />
+`;
+
+exports[`AtSegmentedControl Snap render AtSegmentedControl -- props values 1`] = `
+<view
+  class="at-segmented-control"
+  style="border-color: #6190e8;"
+>
+  <view
+    class="at-segmented-control__item at-segmented-control__item--active"
+    style="color: rgb(255, 255, 255); font-size: 0.5974rem; border-color: #6190e8; background-color: rgb(97, 144, 232);"
+  >
+    tab1
+  </view>
+  <view
+    class="at-segmented-control__item"
+    style="color: rgb(97, 144, 232); font-size: 0.5974rem; border-color: #6190e8; background-color: rgb(255, 255, 255);"
+  >
+    tab2
+  </view>
+  <view
+    class="at-segmented-control__item"
+    style="color: rgb(97, 144, 232); font-size: 0.5974rem; border-color: #6190e8; background-color: rgb(255, 255, 255);"
+  >
+    tab3
+  </view>
+</view>
 `;
 
 exports[`AtSegmentedControl Snap render initial AtSegmentedControl 1`] = `

@@ -9,37 +9,37 @@ const factory = (values = {}, slots = { default: [] }) => {
 }
 
 describe('AtRate Snap', () => {
-  it('render initial AtRate', () => {
+  it('should render initial AtRate', () => {
     const wrapper = factory({ isTest: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtRate -- props class', () => {
+  it('should render AtRate -- props class', () => {
     const wrapper = factory({ class: 'test' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtRate -- props style', () => {
+  it('should render AtRate -- props style', () => {
     const wrapper = factory({ style: 'color:red;' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtRate -- props size', () => {
+  it('should render AtRate -- props size', () => {
     const wrapper = factory({ size: '10' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtRate -- props value', () => {
+  it('should render AtRate -- props value', () => {
     const wrapper = factory({ value: 2 })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtRate -- props max', () => {
+  it('should render AtRate -- props max', () => {
     const wrapper = factory({ max: 10 })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtRate -- props margin', () => {
+  it('should render AtRate -- props margin', () => {
     const wrapper = factory({ margin: 10 })
     expect(wrapper.element).toMatchSnapshot()
   })

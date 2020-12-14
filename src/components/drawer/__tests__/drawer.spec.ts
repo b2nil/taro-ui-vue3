@@ -10,21 +10,21 @@ const factory = (values = {}, slots = { default: [] }) => {
 }
 
 describe('AtDrawer Snap', () => {
-  it('render initial AtDrawer', () => {
+  it('should render initial AtDrawer', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtDrawer -- props show', () => {
+  it('should render AtDrawer -- props show', () => {
     const wrapper = factory({ show: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('render AtDrawer -- props width', () => {
+  it('should render AtDrawer -- props width', () => {
     const wrapper = factory({ show: true, width: 50 })
     expect(wrapper.element).toMatchSnapshot()
   })
-  it('render AtDrawer -- props items', () => {
+  it('should render AtDrawer -- props items', () => {
     const wrapper = factory({ show: true, items: ['菜单1', '菜单2'] })
     expect(wrapper.element).toMatchSnapshot()
   })
