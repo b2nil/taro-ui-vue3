@@ -45,7 +45,11 @@
   "compileOnSave": false,
   "exclude": [
     "node_modules/*",
-    "dist/*"
+    "dist/*",
+    "src/components/**/__tests__/*",
+    "src/pages/**/*",
+    "src/app.config.ts",
+    "src/app.ts",
   ],
   "include": [
     "types",
