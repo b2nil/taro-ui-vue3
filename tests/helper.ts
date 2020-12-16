@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils'
+import { mount, shallowMount } from '@vue/test-utils'
 import { VNode } from '@vue/runtime-core'
 
 export const sleep = async (timeout: number): Promise<null> =>
@@ -16,6 +16,21 @@ export function mountFactory(
   slots: Slots = { default: [] }
 ) {
   return mount<any>(comp, {
+    global: {
+      components
+    },
+    props,
+    slots,
+  })
+}
+
+export function shallowMountFactory(
+  comp: any,
+  components: Record<string, object> = {},
+  props: Record<string, any> = {},
+  slots: Slots = { default: [] }
+) {
+  return shallowMount<any>(comp, {
     global: {
       components
     },
