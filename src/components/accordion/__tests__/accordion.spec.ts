@@ -1,24 +1,20 @@
-import { mount } from '@vue/test-utils'
-import { h, VNode } from '@vue/runtime-core'
+import { mountFactory, Slots } from '@/tests/helper'
 import AtAccordion from '../index'
 
 const factory = (
   values = {},
-  slots: { default: Array<string | VNode> } = { default: ['按钮'] }
+  slots: Slots = { default: ['按钮'] }
 ) => {
-  return mount(AtAccordion as any, {
-    slots,
-    props: { ...values },
-  })
+  return mountFactory(AtAccordion, {}, values, slots)
 }
 
 describe('AtAccordion', () => {
-  it('should render AtAccordion without passing any prop', () => {
+  it('should render default AtAccordion', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('shoud render AtAccordion -- props title', () => {
+  it('should render AtAccordion props -- title', () => {
     const wrapper = factory({
       title: 'title',
     })
@@ -28,60 +24,104 @@ describe('AtAccordion', () => {
     ).toEqual('title')
   })
 
-  it('should render AtAccordion -- props open', async () => {
+  it('should render AtAccordion props -- open=true', () => {
     const wrapper = factory({
       open: true,
     })
 
     expect(wrapper.element).toMatchSnapshot()
     expect(wrapper.find(".at-accordion__arrow--folded").exists()).toBeTruthy()
-    expect(wrapper.find(".at-accordion__content--inactive").exists()).not.toBeTruthy()
-
-    await wrapper.setProps({ open: false })
-    expect(wrapper.find(".at-accordion__arrow--folded").exists()).not.toBeTruthy()
+    expect(wrapper.find(".at-accordion__content--inactive").exists()).toBeFalsy()
   })
 
-  it('should render AtAccordion -- props icon', () => {
-    const wrapper = factory(
-      {
-        icon: { value: 'chevron-down', color: 'red', size: 10 },
-      },
-      {
-        default: [h('view', null, 'test')],
-      }
-    )
+  it('should render AtAccordion props -- open=false', () => {
+    const wrapper = factory()
+    expect(wrapper.element).toMatchSnapshot()
+    expect(wrapper.find(".at-accordion__arrow--folded").exists()).toBeFalsy()
+    expect(wrapper.find(".at-accordion__content--inactive").exists()).toBeTruthy()
+  })
+
+  it('should render AtAccordion props -- icon', () => {
+    const wrapper = factory({
+      icon: { value: 'chevron-down' },
+    })
+    expect(wrapper.element).toMatchSnapshot()
+    expect(wrapper.find(".at-icon-chevron-down").exists()).toBeTruthy()
+  })
+
+  it('should render AtAccordion props -- icon with color', async () => {
+    const wrapper = factory({
+      icon: { value: 'chevron-down', color: 'red' },
+    })
+    expect(wrapper.element).toMatchSnapshot()
+    expect(wrapper.find(".at-icon-chevron-down").exists()).toBeTruthy()
+    expect(
+      wrapper.find(".at-icon-chevron-down").attributes("style")
+    ).toBe("color: red;")
+
+    await wrapper.setProps({ icon: { value: 'chevron-down' } })
+    wrapper.vm.$nextTick(() => {
+      expect(wrapper.find(".at-icon-chevron-down").exists()).toBeTruthy()
+      expect(
+        wrapper.find(".at-icon-chevron-down").attributes("style")
+      ).toBe("")
+    })
+  })
+
+  it('should render AtAccordion props -- icon with size', async () => {
+    const wrapper = factory({
+      icon: { value: 'chevron-down', size: 10 },
+    })
     expect(wrapper.element).toMatchSnapshot()
     expect(wrapper.find(".at-icon-chevron-down").exists()).toBeTruthy()
     expect(
       wrapper.find(".at-icon-chevron-down").attributes().style
-    ).toBe("color: red; font-size: 10px;")
+    ).toBe("font-size: 10px;")
+
+    await wrapper.setProps({ icon: { value: 'chevron-down' } })
+    wrapper.vm.$nextTick(() => {
+      expect(wrapper.find(".at-icon-chevron-down").exists()).toBeTruthy()
+      expect(
+        wrapper.find(".at-icon-chevron-down").attributes("style")
+      ).toBe("")
+    })
   })
 
-  it('should render AtAccordion -- props icon prefixClass', () => {
-    const wrapper = factory(
-      {
-        icon: { prefixClass: 'prefixClass', value: 'star', color: 'red' },
-      },
-      {
-        default: [h('view', null, 'test')],
-      }
-    )
+  it('should render AtAccordion props -- icon with prefixClass', async () => {
+    const wrapper = factory({
+      icon: { prefixClass: 'prefixClass', value: 'star' },
+    })
     expect(wrapper.element).toMatchSnapshot()
 
     const iconElement = wrapper.find(".at-accordion__icon")
     expect(iconElement.classes()).toContain('prefixClass')
     expect(iconElement.classes()).toContain('prefixClass-star')
+
+    await wrapper.setProps({ icon: { value: 'star' } })
+    wrapper.vm.$nextTick(() => {
+      const iconElement2 = wrapper.find(".at-accordion__icon")
+      expect(iconElement2.classes()).not.toContain('prefixClass')
+      expect(iconElement2.classes()).not.toContain('prefixClass-star')
+    })
   })
 
-  it('should render AtAccordion -- props note', () => {
-    const wrapper = factory(
-      {
-        note: 'note',
-      },
-      {
-        default: [h('view', null, 'test')],
-      }
-    )
+  it('should render AtAccordion props -- hasBorder', async () => {
+    const wrapper = factory({
+      title: 'title',
+    })
+
+    expect(wrapper.find(".at-accordion__header--noborder").exists()).toBeFalsy()
+
+    await wrapper.setProps({ hasBorder: false })
+    wrapper.vm.$nextTick(() => {
+      expect(wrapper.find(".at-accordion__header--noborder").exists()).toBeTruthy()
+    })
+  })
+
+  it('should render AtAccordion props -- note', () => {
+    const wrapper = factory({
+      note: 'note',
+    })
     expect(wrapper.element).toMatchSnapshot()
     expect(
       wrapper.find('.at-accordion__info__note').text()
@@ -90,12 +130,52 @@ describe('AtAccordion', () => {
 })
 
 describe('AtAccordion Event', () => {
-  it('toggle accordion', () => {
+  it('should trigger onClick event to toggle accordion', async () => {
     const onClick = jest.fn()
     const wrapper = factory({
       onClick: onClick,
     })
-    wrapper.find('.at-accordion__header').trigger('tap')
-    expect(onClick).toBeCalled()
+
+    expect(wrapper.find('.at-accordion__content--inactive').exists()).toBeTruthy()
+
+    await wrapper.find('.at-accordion__header').trigger('tap')
+    wrapper.vm.$nextTick(() => {
+      expect(wrapper.find('.at-accordion__content--inactive').exists()).toBeFalsy()
+    })
+
+    await wrapper.find('.at-accordion__header').trigger('tap')
+    wrapper.vm.$nextTick(() => {
+      expect(wrapper.find('.at-accordion__content--inactive').exists()).toBeTruthy()
+    })
+
+    expect(onClick.mock.calls.length).toBe(2)
   })
+
+  it('should not trigger onClick event when isAnimation is false', async () => {
+    const onClick = jest.fn()
+    const wrapper = factory({
+      onClick: onClick,
+    })
+
+    await wrapper.setProps({ open: true, isAnimation: false })
+    wrapper.vm.$nextTick(async () => {
+      await wrapper.find('.at-accordion__header').trigger('tap')
+      expect(onClick).not.toBeCalled()
+    })
+  })
+
+  jest.useFakeTimers()
+
+  it('should trigger setTimeout', async () => {
+    jest.spyOn(global, 'setTimeout')
+    const onClick = jest.fn()
+    const wrapper = factory({
+      onClick: onClick,
+    })
+
+    await wrapper.setProps({ open: true, isAnimation: true })
+    jest.runAllTimers()
+    expect(setTimeout).toHaveBeenNthCalledWith(1, expect.any(Function), 30)
+  })
+
 })
