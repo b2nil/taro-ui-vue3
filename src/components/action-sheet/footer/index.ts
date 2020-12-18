@@ -6,16 +6,13 @@ const AtActionSheetFooter = defineComponent({
   name: "AtActionSheetFooter",
 
   props: {
-    onClick: {
-      type: Function as PropType<AtActionSheetFooterProps['onClick']>,
-      default: () => () => { }
-    },
+    onClick: Function as PropType<AtActionSheetFooterProps['onClick']>
   },
 
   setup(props: AtActionSheetFooterProps, { attrs, slots }) {
 
     function handleClick(...args: any[]) {
-      props.onClick && props.onClick(...args)
+      props.onClick?.(...args)
     }
 
     return () => (
@@ -23,7 +20,7 @@ const AtActionSheetFooter = defineComponent({
         class: 'at-action-sheet__footer',
         onTap: handleClick
       }),
-        { default: () => slots.default && slots.default() }
+        { default: () => slots.default?.() }
       )
     )
   }
