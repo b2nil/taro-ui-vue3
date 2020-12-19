@@ -1,5 +1,6 @@
 import { mount } from '@vue/test-utils'
 import AtAvatar from '../index'
+import * as utils from '../../../utils/common'
 
 const factory = (values = {}, slots = { default: [] }) => {
   return mount(AtAvatar as any, {
@@ -24,6 +25,12 @@ describe('Avatar Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
+  it('should render Avatar with normal size if prop size failed validation', () => {
+    const wrapper = factory({ size: 'xsmall' })
+    expect(wrapper.find('.at-avatar--xsamll').exists()).toBe(false)
+    expect(wrapper.find('.at-avatar--normal').exists()).toBe(true)
+  })
+
   it('should render Avatar -- props circle', () => {
     const wrapper = factory({ circle: true })
     expect(wrapper.element).toMatchSnapshot()
@@ -37,5 +44,37 @@ describe('Avatar Snap', () => {
   it('should render Avatar -- props text', () => {
     const wrapper = factory({ text: '凹凸实验室' })
     expect(wrapper.element).toMatchSnapshot()
+  })
+
+  it('should render Avatar -- props openData', () => {
+    jest.mock('../../../utils/common')
+    const getEnvs = jest.spyOn(utils, 'getEnvs').mockImplementation(() => {
+      return {
+        isWEAPP: true,
+        isALIPAY: false,
+        isWEB: false
+      }
+    })
+
+    const wrapper = factory({ openData: { type: 'userAvatarUrl' } })
+    expect(wrapper.element).toMatchSnapshot()
+    expect(wrapper.find('open-data').exists()).toBe(true)
+    expect(wrapper.find('open-data').attributes('type')).toBe('userAvatarUrl')
+    getEnvs.mockClear()
+  })
+
+  it('should not render open-data element if type of openData is not userAvatarUrl', () => {
+    jest.mock('../../../utils/common')
+    const getEnvs = jest.spyOn(utils, 'getEnvs').mockImplementation(() => {
+      return {
+        isWEAPP: true,
+        isALIPAY: false,
+        isWEB: false
+      }
+    })
+
+    const wrapper = factory({ openData: { type: 'nickName' } })
+    expect(wrapper.find('open-data').exists()).toBe(false)
+    getEnvs.mockClear()
   })
 })
