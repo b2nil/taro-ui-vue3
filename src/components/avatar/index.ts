@@ -1,4 +1,4 @@
-import { h, defineComponent, mergeProps, computed, PropType } from 'vue'
+import { h, defineComponent, mergeProps, computed, PropType, warn } from 'vue'
 import { Image, OpenData, Text, View } from '@tarojs/components'
 import { AtAvatarProps } from "types/avatar"
 import { getEnvs } from '../../utils/common'
@@ -41,7 +41,15 @@ const AtAvatar = defineComponent({
 
 		const letter = computed(() => props.text ? props.text[0] : '')
 
-		const iconSize = SIZE_CLASS[props.size || 'normal']
+		let iconSize = SIZE_CLASS[props.size!]
+
+		if (!Boolean(iconSize)) {
+			warn(
+				"Prop size must be of PropType<'large' | 'normal' | 'small'>, actual: ", props.size,
+				"\nThe size is now set to 'normal' as fallback."
+			)
+			iconSize = 'normal'
+		}
 
 		const rootClasses = computed(() => ({
 			'at-avatar': true,
