@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtButton.vue should render AtButton -- props circle 1`] = `
+exports[`AtButton should render AtButton -- props circle 1`] = `
 <view
   class="at-button--normal at-button--circle at-button"
 >
@@ -19,7 +19,7 @@ exports[`AtButton.vue should render AtButton -- props circle 1`] = `
 </view>
 `;
 
-exports[`AtButton.vue should render AtButton -- props disabled 1`] = `
+exports[`AtButton should render AtButton -- props disabled should not render any Button element when disabled 1`] = `
 <view
   class="at-button--normal at-button--disabled at-button"
 >
@@ -35,7 +35,70 @@ exports[`AtButton.vue should render AtButton -- props disabled 1`] = `
 </view>
 `;
 
-exports[`AtButton.vue should render AtButton -- props full 1`] = `
+exports[`AtButton should render AtButton -- props disabled should render alipay Button 1`] = `
+<view
+  class="at-button--normal at-button"
+>
+  <!---->
+  <!---->
+  <button
+    class="at-button__wxbutton"
+    formtype=""
+    lang="en"
+    showmessagecard="false"
+  />
+  <!---->
+  <view
+    class="at-button__text"
+  >
+    按钮
+  </view>
+</view>
+`;
+
+exports[`AtButton should render AtButton -- props disabled should render weapp Button 1`] = `
+<view
+  class="at-button--normal at-button"
+>
+  <!---->
+  <form>
+    <button
+      class="at-button__wxbutton"
+      formtype=""
+      lang="en"
+      showmessagecard="false"
+    />
+  </form>
+  <!---->
+  <!---->
+  <view
+    class="at-button__text"
+  >
+    按钮
+  </view>
+</view>
+`;
+
+exports[`AtButton should render AtButton -- props disabled should render web button 1`] = `
+<view
+  class="at-button--normal at-button"
+>
+  <button
+    class="at-button__wxbutton"
+    lang="en"
+  />
+  <!---->
+  <!---->
+  <!---->
+  <view
+    class="at-button__text"
+  >
+    按钮
+  </view>
+</view>
+`;
+
+exports[`AtButton should render AtButton -- props full 1`] = `
 <view
   class="at-button--normal at-button--full at-button"
 >
@@ -54,7 +117,7 @@ exports[`AtButton.vue should render AtButton -- props full 1`] = `
 </view>
 `;
 
-exports[`AtButton.vue should render AtButton -- props loading 1`] = `
+exports[`AtButton should render AtButton -- props loading 1`] = `
 <view
   class="at-button--normal at-button--icon at-button"
 >
@@ -89,7 +152,7 @@ exports[`AtButton.vue should render AtButton -- props loading 1`] = `
 </view>
 `;
 
-exports[`AtButton.vue should render AtButton -- props size(normal) 1`] = `
+exports[`AtButton should render AtButton -- props size(normal) 1`] = `
 <view
   class="at-button--normal at-button"
 >
@@ -108,7 +171,7 @@ exports[`AtButton.vue should render AtButton -- props size(normal) 1`] = `
 </view>
 `;
 
-exports[`AtButton.vue should render AtButton -- props size(small) 1`] = `
+exports[`AtButton should render AtButton -- props size(small) 1`] = `
 <view
   class="at-button--small at-button"
 >
@@ -127,7 +190,7 @@ exports[`AtButton.vue should render AtButton -- props size(small) 1`] = `
 </view>
 `;
 
-exports[`AtButton.vue should render AtButton -- props type(primary) 1`] = `
+exports[`AtButton should render AtButton -- props type(primary) 1`] = `
 <view
   class="at-button--normal at-button--primary at-button"
 >
@@ -146,7 +209,7 @@ exports[`AtButton.vue should render AtButton -- props type(primary) 1`] = `
 </view>
 `;
 
-exports[`AtButton.vue should render AtButton -- props type(secondary) 1`] = `
+exports[`AtButton should render AtButton -- props type(secondary) 1`] = `
 <view
   class="at-button--normal at-button--secondary at-button"
 >
