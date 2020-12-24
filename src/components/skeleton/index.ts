@@ -50,7 +50,7 @@ const AtSkeleton = defineComponent({
     })
 
     const _attrs = computed(() => {
-      if (isLoading.value) return attrs
+      if (!isLoading.value) return attrs
 
       return !props.boilerplate
         ? {
