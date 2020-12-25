@@ -4,7 +4,7 @@ import {
   VNode,
   PropType,
   computed,
-  Transition
+  TransitionGroup,
 } from "vue"
 
 import {
@@ -140,14 +140,23 @@ const AtSkeleton = defineComponent({
     }
 
     function genSkeleton() {
-      const children: any[] = []
+      let children: any[] = []
 
       if (!isLoading.value) children.push(slots.default?.())
       else children.push(genStructure())
 
       if (!props.transition) return children
 
-      return h(Transition, {
+      // children must be keyed when using TransitionGroup
+      children = children.map((child) => {
+        child.map((c, index) => {
+          c.key = index
+          return c
+        })
+        return child
+      })
+
+      return h(TransitionGroup, {
         onAfterEnter: resetStyles,
         onBeforeEnter: onBeforeEnter,
         onBeforeLeave: onBeforeLeave,

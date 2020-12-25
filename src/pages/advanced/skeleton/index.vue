@@ -7,6 +7,7 @@
       <example-item>
         <at-skeleton
           style="margin: 10px;"
+          transition=".3s ease"
           type="list-item-avatar, divider, list-item-three-line, card-heading, image, actions"
         >
         </at-skeleton>
