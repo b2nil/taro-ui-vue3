@@ -27,12 +27,22 @@
           :loading="loading"
           type="list-item-avatar-two-line"
         >
-          <at-flex-item>
-            this ia test
-          </at-flex-item>
-          <at-flex-item>
-            this is another thest
-          </at-flex-item>
+          <at-flex
+            justify="center"
+            align-content="center"
+          >
+            <at-flex-item :size="2">
+              <image
+                class="profile_img"
+                mode="cover"
+                src="@/assets/images/logo_taro.png"
+              />
+            </at-flex-item>
+            <at-flex-item>
+              <view>this is the title</view>
+              <view>this is the text</view>
+            </at-flex-item>
+          </at-flex>
         </at-skeleton>
       </example-item>
     </panel>
@@ -54,6 +64,8 @@ import {
   Panel,
   ExampleItem
 } from '../../components/demo-page'
+
+import './index.scss'
 
 export default defineComponent({
   name: "SkeletonDemo",
@@ -82,6 +94,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style>
-</style>
