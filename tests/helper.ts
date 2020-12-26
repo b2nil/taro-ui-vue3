@@ -11,9 +11,9 @@ export interface Slots {
 
 export function mountFactory(
   comp: any,
-  components: Record<string, object> = {},
-  props: Record<string, any> = {},
-  slots: Slots = { default: [] }
+  components?: Record<string, object>,
+  props?: Record<string, any>,
+  slots?: Slots
 ) {
   return mount<any>(comp, {
     global: {
@@ -26,9 +26,9 @@ export function mountFactory(
 
 export function shallowMountFactory(
   comp: any,
-  components: Record<string, object> = {},
-  props: Record<string, any> = {},
-  slots: Slots = { default: [] }
+  components?: Record<string, object>,
+  props?: Record<string, any>,
+  slots?: Slots
 ) {
   return shallowMount<any>(comp, {
     global: {

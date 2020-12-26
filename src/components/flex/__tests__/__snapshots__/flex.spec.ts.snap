@@ -1,0 +1,199 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtFlex should render prop align -- baseline 1`] = `
+<view
+  class="at-row at-row__align--baseline"
+/>
+`;
+
+exports[`AtFlex should render prop align -- center 1`] = `
+<view
+  class="at-row at-row__align--center"
+/>
+`;
+
+exports[`AtFlex should render prop align -- end 1`] = `
+<view
+  class="at-row at-row__align--end"
+/>
+`;
+
+exports[`AtFlex should render prop align -- start 1`] = `
+<view
+  class="at-row at-row__align--start"
+/>
+`;
+
+exports[`AtFlex should render prop align -- stretch 1`] = `
+<view
+  class="at-row at-row__align--stretch"
+/>
+`;
+
+exports[`AtFlex should render prop alignContent -- around 1`] = `
+<view
+  class="at-row at-row__align-content--around"
+/>
+`;
+
+exports[`AtFlex should render prop alignContent -- between 1`] = `
+<view
+  class="at-row at-row__align-content--between"
+/>
+`;
+
+exports[`AtFlex should render prop alignContent -- center 1`] = `
+<view
+  class="at-row at-row__align-content--center"
+/>
+`;
+
+exports[`AtFlex should render prop alignContent -- end 1`] = `
+<view
+  class="at-row at-row__align-content--end"
+/>
+`;
+
+exports[`AtFlex should render prop alignContent -- start 1`] = `
+<view
+  class="at-row at-row__align-content--start"
+/>
+`;
+
+exports[`AtFlex should render prop alignContent -- stretch 1`] = `
+<view
+  class="at-row at-row__align-content--stretch"
+/>
+`;
+
+exports[`AtFlex should render prop direction -- column 1`] = `
+<view
+  class="at-row at-row__direction--column"
+/>
+`;
+
+exports[`AtFlex should render prop direction -- column-reverse 1`] = `
+<view
+  class="at-row at-row__direction--column-reverse"
+/>
+`;
+
+exports[`AtFlex should render prop direction -- row 1`] = `
+<view
+  class="at-row at-row__direction--row"
+/>
+`;
+
+exports[`AtFlex should render prop direction -- row-reverse 1`] = `
+<view
+  class="at-row at-row__direction--row-reverse"
+/>
+`;
+
+exports[`AtFlex should render prop justify -- around 1`] = `
+<view
+  class="at-row at-row__justify--around"
+/>
+`;
+
+exports[`AtFlex should render prop justify -- between 1`] = `
+<view
+  class="at-row at-row__justify--between"
+/>
+`;
+
+exports[`AtFlex should render prop justify -- center 1`] = `
+<view
+  class="at-row at-row__justify--center"
+/>
+`;
+
+exports[`AtFlex should render prop justify -- end 1`] = `
+<view
+  class="at-row at-row__justify--end"
+/>
+`;
+
+exports[`AtFlex should render prop justify -- start 1`] = `
+<view
+  class="at-row at-row__justify--start"
+/>
+`;
+
+exports[`AtFlex should render prop wrap -- no-wrap 1`] = `
+<view
+  class="at-row at-row--no-wrap"
+/>
+`;
+
+exports[`AtFlex should render prop wrap -- wrap 1`] = `
+<view
+  class="at-row at-row--wrap"
+/>
+`;
+
+exports[`AtFlex should render prop wrap -- wrap-reverse 1`] = `
+<view
+  class="at-row at-row--wrap-reverse"
+/>
+`;
+
+exports[`AtFlex should render slot content 1`] = `
+<view
+  class="at-row"
+>
+  <view />
+</view>
+`;
+
+exports[`AtFlex should render slot content 2`] = `
+<view
+  class="at-row"
+>
+  <view />
+</view>
+`;
+
+exports[`AtFlex should render slot content 3`] = `
+<view
+  class="at-row"
+>
+  <view />
+</view>
+`;
+
+exports[`AtFlex should render slot content 4`] = `
+<view
+  class="at-row"
+>
+  <view />
+</view>
+`;
+
+exports[`AtFlex should render slot content 5`] = `
+<view
+  class="at-row"
+>
+  <view />
+</view>
+`;
+
+exports[`AtFlexItem should render prop -- isAuto 1`] = `
+<view
+  class="at-col--auto at-col"
+/>
+`;
+
+exports[`AtFlexItem should render prop -- isWrap 1`] = `
+<view
+  class="at-col--wrap at-col"
+/>
+`;
+
+exports[`AtFlexItem should render slot content 1`] = `
+<view
+  class="at-col"
+>
+  <view />
+</view>
+`;
