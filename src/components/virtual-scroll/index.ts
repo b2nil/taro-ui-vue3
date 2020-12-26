@@ -120,7 +120,7 @@ const AtVirtualScroll = defineComponent({
         id: `item-${index}`,
         class: 'at-virtual-scroll__item',
         style: { top },
-      }, { default: () => slots.default && slots.default({ index, item }) })
+      }, { default: () => slots.default?.({ index, item }) })
     }
 
     function getFirst(): number {
@@ -155,9 +155,9 @@ const AtVirtualScroll = defineComponent({
             }
           }, { default: () => getChildren() }),
 
-          h(View, {
+          slots.footer && h(View, {
             class: 'at-virtual-scroll__footer'
-          }, { default: () => slots.footer && slots.footer() }),
+          }, { default: () => slots.footer!() }),
         ]
       })
 
@@ -185,9 +185,9 @@ const AtVirtualScroll = defineComponent({
 
       return h(View, null, {
         default: () => [
-          h(View, {
+          slots.header && h(View, {
             class: 'at-virtual-scroll__header',
-          }, { default: () => slots.header && slots.header() }),
+          }, { default: () => slots.header!() }),
           scrollViewNode,
         ]
       })
