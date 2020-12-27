@@ -60,6 +60,45 @@ describe('AtFlexItem', () => {
     expect(wrapper.find(`.at-col--${propName.toLowerCase().replace('is', '')}`).exists()).toBeTruthy()
   })
 
+  it.each([
+    "center", "top", "bottom"
+  ])('should render prop align -- %s', (propOption) => {
+    const wrapper = mountFactory(
+      AtFlexItem,
+      undefined,
+      { align: propOption }
+    )
+
+    expect(wrapper.element).toMatchSnapshot()
+    expect(wrapper.find(`.at-col__align--${propOption}`).exists()).toBeTruthy()
+  })
+
+  it.each([
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+  ])('should render prop offset -- %s', (propOption) => {
+    const wrapper = mountFactory(
+      AtFlexItem,
+      undefined,
+      { offset: propOption }
+    )
+
+    expect(wrapper.element).toMatchSnapshot()
+    expect(wrapper.find(`.at-col__offset-${propOption}`).exists()).toBeTruthy()
+  })
+
+  it.each([
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+  ])('should render prop size -- %s', (propOption) => {
+    const wrapper = mountFactory(
+      AtFlexItem,
+      undefined,
+      { size: propOption }
+    )
+
+    expect(wrapper.element).toMatchSnapshot()
+    expect(wrapper.find(`.at-col-${propOption}`).exists()).toBeTruthy()
+  })
+
   it('should render default slot content', () => {
     const wrapper = mountFactory(
       AtFlexItem,
