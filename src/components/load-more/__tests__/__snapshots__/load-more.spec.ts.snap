@@ -1,6 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtLoadMore Snap render AtLoadMore -- props class 1`] = `
+exports[`AtLoadMore should render default AtLoadMore 1`] = `
+<view
+  class="at-load-more"
+>
+  <view
+    class="at-load-more__cnt"
+  >
+    <view
+      class="at-button--normal at-button--full at-button"
+    >
+      <button
+        class="at-button__wxbutton"
+        lang="en"
+      />
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        查看更多
+      </view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtLoadMore should render prop -- class 1`] = `
 <view
   class="test at-load-more test"
 >
@@ -27,7 +54,7 @@ exports[`AtLoadMore Snap render AtLoadMore -- props class 1`] = `
 </view>
 `;
 
-exports[`AtLoadMore Snap render AtLoadMore -- props loadingText 1`] = `
+exports[`AtLoadMore should render prop -- loadingText 1`] = `
 <view
   class="at-load-more"
 >
@@ -64,7 +91,7 @@ exports[`AtLoadMore Snap render AtLoadMore -- props loadingText 1`] = `
 </view>
 `;
 
-exports[`AtLoadMore Snap render AtLoadMore -- props moreBtnStyle 1`] = `
+exports[`AtLoadMore should render prop -- moreBtnStyle 1`] = `
 <view
   class="at-load-more"
 >
@@ -92,7 +119,7 @@ exports[`AtLoadMore Snap render AtLoadMore -- props moreBtnStyle 1`] = `
 </view>
 `;
 
-exports[`AtLoadMore Snap render AtLoadMore -- props moreText 1`] = `
+exports[`AtLoadMore should render prop -- moreText 1`] = `
 <view
   class="at-load-more"
 >
@@ -119,7 +146,7 @@ exports[`AtLoadMore Snap render AtLoadMore -- props moreText 1`] = `
 </view>
 `;
 
-exports[`AtLoadMore Snap render AtLoadMore -- props noMoreText 1`] = `
+exports[`AtLoadMore should render prop -- noMoreText 1`] = `
 <view
   class="at-load-more"
 >
@@ -131,7 +158,7 @@ exports[`AtLoadMore Snap render AtLoadMore -- props noMoreText 1`] = `
 </view>
 `;
 
-exports[`AtLoadMore Snap render AtLoadMore -- props noMoreTextStyle 1`] = `
+exports[`AtLoadMore should render prop -- noMoreTextStyle 1`] = `
 <view
   class="at-load-more"
 >
@@ -158,7 +185,7 @@ exports[`AtLoadMore Snap render AtLoadMore -- props noMoreTextStyle 1`] = `
 </view>
 `;
 
-exports[`AtLoadMore Snap render AtLoadMore -- props status === loading 1`] = `
+exports[`AtLoadMore should render prop -- status === loading 1`] = `
 <view
   class="at-load-more"
 >
@@ -195,7 +222,7 @@ exports[`AtLoadMore Snap render AtLoadMore -- props status === loading 1`] = `
 </view>
 `;
 
-exports[`AtLoadMore Snap render AtLoadMore -- props status === more 1`] = `
+exports[`AtLoadMore should render prop -- status === more 1`] = `
 <view
   class="at-load-more"
 >
@@ -222,7 +249,7 @@ exports[`AtLoadMore Snap render AtLoadMore -- props status === more 1`] = `
 </view>
 `;
 
-exports[`AtLoadMore Snap render AtLoadMore -- props status === noMore 1`] = `
+exports[`AtLoadMore should render prop -- status === noMore 1`] = `
 <view
   class="at-load-more"
 >
@@ -234,37 +261,10 @@ exports[`AtLoadMore Snap render AtLoadMore -- props status === noMore 1`] = `
 </view>
 `;
 
-exports[`AtLoadMore Snap render AtLoadMore -- props style 1`] = `
+exports[`AtLoadMore should render prop -- style 1`] = `
 <view
   class="at-load-more"
   style="color: red;"
->
-  <view
-    class="at-load-more__cnt"
-  >
-    <view
-      class="at-button--normal at-button--full at-button"
-    >
-      <button
-        class="at-button__wxbutton"
-        lang="en"
-      />
-      <!---->
-      <!---->
-      <!---->
-      <view
-        class="at-button__text"
-      >
-        查看更多
-      </view>
-    </view>
-  </view>
-</view>
-`;
-
-exports[`AtLoadMore Snap render initial AtLoadMore 1`] = `
-<view
-  class="at-load-more"
 >
   <view
     class="at-load-more__cnt"

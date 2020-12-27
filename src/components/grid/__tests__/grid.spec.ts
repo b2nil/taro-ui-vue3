@@ -61,7 +61,7 @@ const ICON_DATA = [
   },
 ]
 
-describe('Grid Snap', () => {
+describe('Grid', () => {
   it('should render image Grid', () => {
     const wrapper = factory({ data: IMAGE_DATA })
     expect(wrapper.element).toMatchSnapshot()
@@ -72,7 +72,7 @@ describe('Grid Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render rect image Grid', () => {
+  it('should render image Grid in rect mode', () => {
     const wrapper = factory({ data: IMAGE_DATA, mode: 'rect' })
     expect(wrapper.element).toMatchSnapshot()
   })
@@ -82,19 +82,19 @@ describe('Grid Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render rect icon Grid', () => {
+  it('should render icon Grid in rect mode', () => {
     const wrapper = factory({ data: ICON_DATA, mode: 'rect' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render rect icon Grid -- props columnNum', () => {
+  it('should render icon Grid in rect mode with prop columnNum', () => {
     const wrapper = factory({ data: ICON_DATA, mode: 'rect', columnNum: 4 })
     expect(wrapper.element).toMatchSnapshot()
   })
 })
 
 describe('Grid Behavior ', () => {
-  it('Grid onClick', () => {
+  it('should trigger onClick', () => {
     const onClick = jest.fn()
 
     const wrapper = factory({

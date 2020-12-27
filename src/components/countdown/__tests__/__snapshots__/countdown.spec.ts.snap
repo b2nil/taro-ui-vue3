@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtCountdown Snap render AtCountdown -- hours > 24 and not show day 1`] = `
+exports[`AtCountdown should render default AtCountdown 1`] = `
 <view
   class="at-countdown"
 >
@@ -14,7 +14,7 @@ exports[`AtCountdown Snap render AtCountdown -- hours > 24 and not show day 1`] 
       <text
         class="at-countdown__time"
       >
-        25
+        00
       </text>
     </view>
     <text
@@ -62,86 +62,7 @@ exports[`AtCountdown Snap render AtCountdown -- hours > 24 and not show day 1`] 
 </view>
 `;
 
-exports[`AtCountdown Snap render AtCountdown -- hours > 24 and show day 1`] = `
-<view
-  class="at-countdown"
->
-  <view
-    class="at-countdown__item"
-  >
-    <view
-      class="at-countdown__time-box"
-    >
-      <text
-        class="at-countdown__time"
-      >
-        01
-      </text>
-    </view>
-    <text
-      class="at-countdown__separator"
-    >
-      天
-    </text>
-  </view>
-  <view
-    class="at-countdown__item"
-  >
-    <view
-      class="at-countdown__time-box"
-    >
-      <text
-        class="at-countdown__time"
-      >
-        01
-      </text>
-    </view>
-    <text
-      class="at-countdown__separator"
-    >
-      时
-    </text>
-  </view>
-  <view
-    class="at-countdown__item"
-  >
-    <view
-      class="at-countdown__time-box"
-    >
-      <text
-        class="at-countdown__time"
-      >
-        00
-      </text>
-    </view>
-    <text
-      class="at-countdown__separator"
-    >
-      分
-    </text>
-  </view>
-  <view
-    class="at-countdown__item"
-  >
-    <view
-      class="at-countdown__time-box"
-    >
-      <text
-        class="at-countdown__time"
-      >
-        00
-      </text>
-    </view>
-    <text
-      class="at-countdown__separator"
-    >
-      秒
-    </text>
-  </view>
-</view>
-`;
-
-exports[`AtCountdown Snap render AtCountdown -- props class 1`] = `
+exports[`AtCountdown should render prop -- class 1`] = `
 <view
   class="test at-countdown test"
 >
@@ -203,7 +124,7 @@ exports[`AtCountdown Snap render AtCountdown -- props class 1`] = `
 </view>
 `;
 
-exports[`AtCountdown Snap render AtCountdown -- props day 1`] = `
+exports[`AtCountdown should render prop -- day 1`] = `
 <view
   class="at-countdown"
 >
@@ -265,7 +186,7 @@ exports[`AtCountdown Snap render AtCountdown -- props day 1`] = `
 </view>
 `;
 
-exports[`AtCountdown Snap render AtCountdown -- props format 1`] = `
+exports[`AtCountdown should render prop -- format 1`] = `
 <view
   class="at-countdown"
 >
@@ -325,7 +246,7 @@ exports[`AtCountdown Snap render AtCountdown -- props format 1`] = `
 </view>
 `;
 
-exports[`AtCountdown Snap render AtCountdown -- props hours 1`] = `
+exports[`AtCountdown should render prop -- hours 1`] = `
 <view
   class="at-countdown"
 >
@@ -387,7 +308,148 @@ exports[`AtCountdown Snap render AtCountdown -- props hours 1`] = `
 </view>
 `;
 
-exports[`AtCountdown Snap render AtCountdown -- props isCard 1`] = `
+exports[`AtCountdown should render prop -- hours when > 24 and not show day 1`] = `
+<view
+  class="at-countdown"
+>
+  <!---->
+  <view
+    class="at-countdown__item"
+  >
+    <view
+      class="at-countdown__time-box"
+    >
+      <text
+        class="at-countdown__time"
+      >
+        25
+      </text>
+    </view>
+    <text
+      class="at-countdown__separator"
+    >
+      时
+    </text>
+  </view>
+  <view
+    class="at-countdown__item"
+  >
+    <view
+      class="at-countdown__time-box"
+    >
+      <text
+        class="at-countdown__time"
+      >
+        00
+      </text>
+    </view>
+    <text
+      class="at-countdown__separator"
+    >
+      分
+    </text>
+  </view>
+  <view
+    class="at-countdown__item"
+  >
+    <view
+      class="at-countdown__time-box"
+    >
+      <text
+        class="at-countdown__time"
+      >
+        00
+      </text>
+    </view>
+    <text
+      class="at-countdown__separator"
+    >
+      秒
+    </text>
+  </view>
+</view>
+`;
+
+exports[`AtCountdown should render prop -- hours when > 24 and show day 1`] = `
+<view
+  class="at-countdown"
+>
+  <view
+    class="at-countdown__item"
+  >
+    <view
+      class="at-countdown__time-box"
+    >
+      <text
+        class="at-countdown__time"
+      >
+        01
+      </text>
+    </view>
+    <text
+      class="at-countdown__separator"
+    >
+      天
+    </text>
+  </view>
+  <view
+    class="at-countdown__item"
+  >
+    <view
+      class="at-countdown__time-box"
+    >
+      <text
+        class="at-countdown__time"
+      >
+        01
+      </text>
+    </view>
+    <text
+      class="at-countdown__separator"
+    >
+      时
+    </text>
+  </view>
+  <view
+    class="at-countdown__item"
+  >
+    <view
+      class="at-countdown__time-box"
+    >
+      <text
+        class="at-countdown__time"
+      >
+        00
+      </text>
+    </view>
+    <text
+      class="at-countdown__separator"
+    >
+      分
+    </text>
+  </view>
+  <view
+    class="at-countdown__item"
+  >
+    <view
+      class="at-countdown__time-box"
+    >
+      <text
+        class="at-countdown__time"
+      >
+        00
+      </text>
+    </view>
+    <text
+      class="at-countdown__separator"
+    >
+      秒
+    </text>
+  </view>
+</view>
+`;
+
+exports[`AtCountdown should render prop -- isCard 1`] = `
 <view
   class="at-countdown at-countdown--card"
 >
@@ -449,7 +511,7 @@ exports[`AtCountdown Snap render AtCountdown -- props isCard 1`] = `
 </view>
 `;
 
-exports[`AtCountdown Snap render AtCountdown -- props isShowDay 1`] = `
+exports[`AtCountdown should render prop -- isShowDay 1`] = `
 <view
   class="at-countdown"
 >
@@ -528,7 +590,7 @@ exports[`AtCountdown Snap render AtCountdown -- props isShowDay 1`] = `
 </view>
 `;
 
-exports[`AtCountdown Snap render AtCountdown -- props minutes 1`] = `
+exports[`AtCountdown should render prop -- minutes 1`] = `
 <view
   class="at-countdown"
 >
@@ -590,7 +652,7 @@ exports[`AtCountdown Snap render AtCountdown -- props minutes 1`] = `
 </view>
 `;
 
-exports[`AtCountdown Snap render AtCountdown -- props seconds 1`] = `
+exports[`AtCountdown should render prop -- seconds 1`] = `
 <view
   class="at-countdown"
 >
@@ -652,72 +714,10 @@ exports[`AtCountdown Snap render AtCountdown -- props seconds 1`] = `
 </view>
 `;
 
-exports[`AtCountdown Snap render AtCountdown -- props style 1`] = `
+exports[`AtCountdown should render prop -- style 1`] = `
 <view
   class="at-countdown"
   style="color: red;"
->
-  <!---->
-  <view
-    class="at-countdown__item"
-  >
-    <view
-      class="at-countdown__time-box"
-    >
-      <text
-        class="at-countdown__time"
-      >
-        00
-      </text>
-    </view>
-    <text
-      class="at-countdown__separator"
-    >
-      时
-    </text>
-  </view>
-  <view
-    class="at-countdown__item"
-  >
-    <view
-      class="at-countdown__time-box"
-    >
-      <text
-        class="at-countdown__time"
-      >
-        00
-      </text>
-    </view>
-    <text
-      class="at-countdown__separator"
-    >
-      分
-    </text>
-  </view>
-  <view
-    class="at-countdown__item"
-  >
-    <view
-      class="at-countdown__time-box"
-    >
-      <text
-        class="at-countdown__time"
-      >
-        00
-      </text>
-    </view>
-    <text
-      class="at-countdown__separator"
-    >
-      秒
-    </text>
-  </view>
-</view>
-`;
-
-exports[`AtCountdown Snap render initial AtCountdown 1`] = `
-<view
-  class="at-countdown"
 >
   <!---->
   <view

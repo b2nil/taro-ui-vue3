@@ -11,58 +11,58 @@ const factory = (values = {}, slots = { default: [] }) => {
   })
 }
 
-describe('AtLoadMore Snap', () => {
-  it('should render initial AtLoadMore', () => {
+describe('AtLoadMore', () => {
+  it('should render default AtLoadMore', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtLoadMore -- props style', () => {
+  it('should render prop -- style', () => {
     const wrapper = factory({ style: 'color:red;' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtLoadMore -- props class', () => {
+  it('should render prop -- class', () => {
     const wrapper = factory({ class: 'test' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtLoadMore -- props status === more', () => {
+  it('should render prop -- status === more', () => {
     const wrapper = factory({ status: 'more' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtLoadMore -- props status === loading', () => {
+  it('should render prop -- status === loading', () => {
     const wrapper = factory({ status: 'loading' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtLoadMore -- props status === noMore', () => {
+  it('should render prop -- status === noMore', () => {
     const wrapper = factory({ status: 'noMore' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtLoadMore -- props moreText', () => {
+  it('should render prop -- moreText', () => {
     const wrapper = factory({ moreText: 'moreText', status: 'more' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtLoadMore -- props loadingText', () => {
+  it('should render prop -- loadingText', () => {
     const wrapper = factory({ loadingText: 'loadingText', status: 'loading' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtLoadMore -- props noMoreText', () => {
+  it('should render prop -- noMoreText', () => {
     const wrapper = factory({ noMoreText: 'noMoreText', status: 'noMore' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtLoadMore -- props noMoreTextStyle', () => {
+  it('should render prop -- noMoreTextStyle', () => {
     const wrapper = factory({ noMoreTextStyle: 'color:red' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtLoadMore -- props moreBtnStyle', () => {
+  it('should render prop -- moreBtnStyle', () => {
     const wrapper = factory({ moreBtnStyle: 'color:red' })
     expect(wrapper.element).toMatchSnapshot()
   })

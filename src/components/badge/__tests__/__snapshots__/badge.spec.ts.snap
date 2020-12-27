@@ -1,11 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtBadge Snap render AtBadge -- props dot 1`] = `
+exports[`AtBadge should render prop -- dot 1`] = `
 <view
   class="at-badge"
 >
   
-  &lt;AtButton loading&gt;按钮文字&lt;/AtButton&gt;
+  <view
+    class="at-button--normal at-button--icon at-button"
+  >
+    <button
+      class="at-button__wxbutton"
+      lang="en"
+    />
+    <!---->
+    <!---->
+    <view
+      class="at-button__icon"
+    >
+      <view
+        class="at-loading"
+      >
+        <view
+          class="at-loading__ring"
+        />
+        <view
+          class="at-loading__ring"
+        />
+        <view
+          class="at-loading__ring"
+        />
+      </view>
+    </view>
+    <view
+      class="at-button__text"
+    >
+      按钮文字
+    </view>
+  </view>
   
   <view
     class="at-badge__dot"
@@ -13,12 +44,43 @@ exports[`AtBadge Snap render AtBadge -- props dot 1`] = `
 </view>
 `;
 
-exports[`AtBadge Snap render AtBadge -- props maxValue 1`] = `
+exports[`AtBadge should render prop -- maxValue 1`] = `
 <view
   class="at-badge"
 >
   
-  &lt;AtButton loading&gt;按钮文字&lt;/AtButton&gt;
+  <view
+    class="at-button--normal at-button--icon at-button"
+  >
+    <button
+      class="at-button__wxbutton"
+      lang="en"
+    />
+    <!---->
+    <!---->
+    <view
+      class="at-button__icon"
+    >
+      <view
+        class="at-loading"
+      >
+        <view
+          class="at-loading__ring"
+        />
+        <view
+          class="at-loading__ring"
+        />
+        <view
+          class="at-loading__ring"
+        />
+      </view>
+    </view>
+    <view
+      class="at-button__text"
+    >
+      按钮文字
+    </view>
+  </view>
   
   <view
     class="at-badge__num"
@@ -28,12 +90,43 @@ exports[`AtBadge Snap render AtBadge -- props maxValue 1`] = `
 </view>
 `;
 
-exports[`AtBadge Snap render AtBadge -- props value 1`] = `
+exports[`AtBadge should render prop -- value 1`] = `
 <view
   class="at-badge"
 >
   
-  &lt;AtButton loading&gt;按钮文字&lt;/AtButton&gt;
+  <view
+    class="at-button--normal at-button--icon at-button"
+  >
+    <button
+      class="at-button__wxbutton"
+      lang="en"
+    />
+    <!---->
+    <!---->
+    <view
+      class="at-button__icon"
+    >
+      <view
+        class="at-loading"
+      >
+        <view
+          class="at-loading__ring"
+        />
+        <view
+          class="at-loading__ring"
+        />
+        <view
+          class="at-loading__ring"
+        />
+      </view>
+    </view>
+    <view
+      class="at-button__text"
+    >
+      按钮文字
+    </view>
+  </view>
   
   <view
     class="at-badge__num"

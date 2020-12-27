@@ -11,25 +11,25 @@ const factory = (values = {}, slots = { default: ['按钮'] }) => {
   })
 }
 
-describe('AtFab Snap', () => {
-  it('should render AtFab -- default props', () => {
+describe('AtFab', () => {
+  it('should render default AtFab', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtFab -- props class', () => {
+  it('should render prop -- class', () => {
     const wrapper = factory({ class: 'button' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtFab -- props size small', () => {
+  it('should render prop -- size small', () => {
     const wrapper = factory({ size: 'small' })
     expect(wrapper.element).toMatchSnapshot()
   })
 })
 
-describe('AtFab Event', () => {
-  it('AtFab onClick', () => {
+describe('AtFab Behavior', () => {
+  it('should trigger onClick', () => {
     const onClick = jest.fn()
     const wrapper = factory({ onClick: onClick })
 

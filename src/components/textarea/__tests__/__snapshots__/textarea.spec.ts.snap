@@ -1,6 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtTextarea Snap render AtTextarea -- props class 1`] = `
+exports[`AtTextarea should render default AtTextarea 1`] = `
+<view
+  class="at-textarea at-textarea--WEB"
+>
+  <textarea
+    autofocus="false"
+    class="at-textarea__textarea"
+    cursorspacing="100"
+    fixed="false"
+    maxlength="200"
+    placeholder=""
+    placeholderclass="[object Object]"
+    placeholderstyle=""
+    showconfirmbar="false"
+    style="height: 2.1334rem;"
+  />
+  <view
+    class="at-textarea__counter"
+  >
+    0 / 200
+  </view>
+</view>
+`;
+
+exports[`AtTextarea should render prop -- class 1`] = `
 <view
   class="test at-textarea at-textarea--WEB test"
 >
@@ -24,7 +48,7 @@ exports[`AtTextarea Snap render AtTextarea -- props class 1`] = `
 </view>
 `;
 
-exports[`AtTextarea Snap render AtTextarea -- props count 1`] = `
+exports[`AtTextarea should render prop -- count 1`] = `
 <view
   class="at-textarea at-textarea--WEB"
 >
@@ -44,7 +68,7 @@ exports[`AtTextarea Snap render AtTextarea -- props count 1`] = `
 </view>
 `;
 
-exports[`AtTextarea Snap render AtTextarea -- props height 1`] = `
+exports[`AtTextarea should render prop -- height 1`] = `
 <view
   class="at-textarea at-textarea--WEB"
 >
@@ -68,7 +92,7 @@ exports[`AtTextarea Snap render AtTextarea -- props height 1`] = `
 </view>
 `;
 
-exports[`AtTextarea Snap render AtTextarea -- props maxLength 1`] = `
+exports[`AtTextarea should render prop -- maxLength 1`] = `
 <view
   class="at-textarea at-textarea--WEB"
 >
@@ -92,7 +116,7 @@ exports[`AtTextarea Snap render AtTextarea -- props maxLength 1`] = `
 </view>
 `;
 
-exports[`AtTextarea Snap render AtTextarea -- props placeholder 1`] = `
+exports[`AtTextarea should render prop -- placeholder 1`] = `
 <view
   class="at-textarea at-textarea--WEB"
 >
@@ -116,7 +140,7 @@ exports[`AtTextarea Snap render AtTextarea -- props placeholder 1`] = `
 </view>
 `;
 
-exports[`AtTextarea Snap render AtTextarea -- props style 1`] = `
+exports[`AtTextarea should render prop -- style 1`] = `
 <view
   class="at-textarea at-textarea--WEB"
   style="color: red;"
@@ -141,7 +165,7 @@ exports[`AtTextarea Snap render AtTextarea -- props style 1`] = `
 </view>
 `;
 
-exports[`AtTextarea Snap render AtTextarea -- props value 1`] = `
+exports[`AtTextarea should render prop -- value 1`] = `
 <view
   class="at-textarea at-textarea--WEB"
 >
@@ -161,30 +185,6 @@ exports[`AtTextarea Snap render AtTextarea -- props value 1`] = `
     class="at-textarea__counter"
   >
     4 / 200
-  </view>
-</view>
-`;
-
-exports[`AtTextarea Snap render initial AtTextarea 1`] = `
-<view
-  class="at-textarea at-textarea--WEB"
->
-  <textarea
-    autofocus="false"
-    class="at-textarea__textarea"
-    cursorspacing="100"
-    fixed="false"
-    maxlength="200"
-    placeholder=""
-    placeholderclass="[object Object]"
-    placeholderstyle=""
-    showconfirmbar="false"
-    style="height: 2.1334rem;"
-  />
-  <view
-    class="at-textarea__counter"
-  >
-    0 / 200
   </view>
 </view>
 `;

@@ -21,25 +21,25 @@ const factory = (
   })
 }
 
-describe('FloatLayout Snap', () => {
-  it('should render initial FloatLayout', () => {
+describe('FloatLayout', () => {
+  it('should render default FloatLayout', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render FloatLayout -- props isOpened', () => {
+  it('should render prop -- isOpened', () => {
     const wrapper = factory({ isOpened: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render FloatLayout -- props title', () => {
+  it('should render prop -- title', () => {
     const wrapper = factory({ title: '这是个标题', isOpened: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 })
 
 describe('FloatLayout Behavior ', () => {
-  it('FloatLayout onClose', async () => {
+  it('should trigger onClose', async () => {
     const onClose = jest.fn()
     const wrapper = factory({
       title: '这是个标题',

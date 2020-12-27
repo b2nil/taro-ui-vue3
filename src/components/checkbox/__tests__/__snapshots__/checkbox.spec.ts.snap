@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtCheckbox Snap render AtCheckbox -- props options 1`] = `
+exports[`AtCheckbox should render default AtCheckbox 1`] = `
+<view
+  class="at-checkbox"
+/>
+`;
+
+exports[`AtCheckbox should render prop -- options 1`] = `
 <view
   class="at-checkbox"
 >
@@ -119,7 +125,7 @@ exports[`AtCheckbox Snap render AtCheckbox -- props options 1`] = `
 </view>
 `;
 
-exports[`AtCheckbox Snap render AtCheckbox -- props selectedList 1`] = `
+exports[`AtCheckbox should render prop -- selectedList 1`] = `
 <view
   class="at-checkbox"
 >
@@ -236,10 +242,4 @@ exports[`AtCheckbox Snap render AtCheckbox -- props selectedList 1`] = `
     </view>
   </view>
 </view>
-`;
-
-exports[`AtCheckbox Snap render initial AtCheckbox 1`] = `
-<view
-  class="at-checkbox"
-/>
 `;

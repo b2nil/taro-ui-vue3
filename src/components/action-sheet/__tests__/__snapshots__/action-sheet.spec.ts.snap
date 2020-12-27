@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ActionSheet Snap should render default ActionSheet 1`] = `
+exports[`ActionSheet should render default ActionSheet 1`] = `
 <view
   class="at-action-sheet"
 >
@@ -19,30 +19,7 @@ exports[`ActionSheet Snap should render default ActionSheet 1`] = `
 </view>
 `;
 
-exports[`ActionSheet Snap should render opened ActionSheet -- props cancelText 1`] = `
-<view
-  class="at-action-sheet at-action-sheet--active"
->
-  <view
-    class="at-action-sheet__overlay"
-  />
-  <view
-    class="at-action-sheet__container"
-  >
-    
-    <view
-      class="at-action-sheet__body"
-    />
-    <view
-      class="at-action-sheet__footer"
-    >
-      取消
-    </view>
-  </view>
-</view>
-`;
-
-exports[`ActionSheet Snap should render opened ActionSheet -- props title 1`] = `
+exports[`ActionSheet should render opened ActionSheet -- props title 1`] = `
 <view
   class="at-action-sheet at-action-sheet--active"
 >
@@ -66,7 +43,7 @@ exports[`ActionSheet Snap should render opened ActionSheet -- props title 1`] = 
 </view>
 `;
 
-exports[`ActionSheet Snap should render opened ActionSheet 1`] = `
+exports[`ActionSheet should render opened ActionSheet 1`] = `
 <view
   class="at-action-sheet at-action-sheet--active"
 >
@@ -85,7 +62,7 @@ exports[`ActionSheet Snap should render opened ActionSheet 1`] = `
 </view>
 `;
 
-exports[`ActionSheet Snap should render opened ActionSheet with header, body and footer 1`] = `
+exports[`ActionSheet should render opened ActionSheet with header, body and footer 1`] = `
 <view
   class="at-action-sheet at-action-sheet--active"
 >
@@ -113,7 +90,30 @@ exports[`ActionSheet Snap should render opened ActionSheet with header, body and
 </view>
 `;
 
-exports[`ActionSheet Snap should render opened ActionSheet with slot contents 1`] = `
+exports[`ActionSheet should render opened ActionSheet with prop cancelText 1`] = `
+<view
+  class="at-action-sheet at-action-sheet--active"
+>
+  <view
+    class="at-action-sheet__overlay"
+  />
+  <view
+    class="at-action-sheet__container"
+  >
+    
+    <view
+      class="at-action-sheet__body"
+    />
+    <view
+      class="at-action-sheet__footer"
+    >
+      取消
+    </view>
+  </view>
+</view>
+`;
+
+exports[`ActionSheet should render opened ActionSheet with slot contents 1`] = `
 <view
   class="at-action-sheet at-action-sheet--active"
 >

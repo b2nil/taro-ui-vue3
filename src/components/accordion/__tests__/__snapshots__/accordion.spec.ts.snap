@@ -1,6 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtAccordion should render AtAccordion props -- icon 1`] = `
+exports[`AtAccordion should render default AtAccordion 1`] = `
+<view
+  class="at-accordion"
+>
+  <view
+    class="at-accordion__header"
+  >
+    
+    <view
+      class="at-accordion__info"
+    >
+      <view
+        class="at-accordion__info__title"
+      />
+      <view
+        class="at-accordion__info__note"
+      />
+    </view>
+    <view
+      class="at-accordion__arrow"
+    >
+      <text
+        class="at-icon at-icon-chevron-down"
+      />
+    </view>
+  </view>
+  <view
+    class="at-accordion__content at-accordion__content--inactive"
+  >
+    <view
+      class="at-accordion__body"
+      id="content"
+    >
+      按钮
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtAccordion should render prop -- icon 1`] = `
 <view
   class="at-accordion"
 >
@@ -41,7 +80,7 @@ exports[`AtAccordion should render AtAccordion props -- icon 1`] = `
 </view>
 `;
 
-exports[`AtAccordion should render AtAccordion props -- icon with color 1`] = `
+exports[`AtAccordion should render prop -- icon with color 1`] = `
 <view
   class="at-accordion"
 >
@@ -83,7 +122,7 @@ exports[`AtAccordion should render AtAccordion props -- icon with color 1`] = `
 </view>
 `;
 
-exports[`AtAccordion should render AtAccordion props -- icon with prefixClass 1`] = `
+exports[`AtAccordion should render prop -- icon with prefixClass 1`] = `
 <view
   class="at-accordion"
 >
@@ -124,7 +163,7 @@ exports[`AtAccordion should render AtAccordion props -- icon with prefixClass 1`
 </view>
 `;
 
-exports[`AtAccordion should render AtAccordion props -- icon with size 1`] = `
+exports[`AtAccordion should render prop -- icon with size 1`] = `
 <view
   class="at-accordion"
 >
@@ -166,7 +205,7 @@ exports[`AtAccordion should render AtAccordion props -- icon with size 1`] = `
 </view>
 `;
 
-exports[`AtAccordion should render AtAccordion props -- note 1`] = `
+exports[`AtAccordion should render prop -- note 1`] = `
 <view
   class="at-accordion"
 >
@@ -207,7 +246,7 @@ exports[`AtAccordion should render AtAccordion props -- note 1`] = `
 </view>
 `;
 
-exports[`AtAccordion should render AtAccordion props -- open=false 1`] = `
+exports[`AtAccordion should render prop -- open=false 1`] = `
 <view
   class="at-accordion"
 >
@@ -246,7 +285,7 @@ exports[`AtAccordion should render AtAccordion props -- open=false 1`] = `
 </view>
 `;
 
-exports[`AtAccordion should render AtAccordion props -- open=true 1`] = `
+exports[`AtAccordion should render prop -- open=true 1`] = `
 <view
   class="at-accordion"
 >
@@ -285,7 +324,7 @@ exports[`AtAccordion should render AtAccordion props -- open=true 1`] = `
 </view>
 `;
 
-exports[`AtAccordion should render AtAccordion props -- title 1`] = `
+exports[`AtAccordion should render prop -- title 1`] = `
 <view
   class="at-accordion"
 >
@@ -301,45 +340,6 @@ exports[`AtAccordion should render AtAccordion props -- title 1`] = `
       >
         title
       </view>
-      <view
-        class="at-accordion__info__note"
-      />
-    </view>
-    <view
-      class="at-accordion__arrow"
-    >
-      <text
-        class="at-icon at-icon-chevron-down"
-      />
-    </view>
-  </view>
-  <view
-    class="at-accordion__content at-accordion__content--inactive"
-  >
-    <view
-      class="at-accordion__body"
-      id="content"
-    >
-      按钮
-    </view>
-  </view>
-</view>
-`;
-
-exports[`AtAccordion should render default AtAccordion 1`] = `
-<view
-  class="at-accordion"
->
-  <view
-    class="at-accordion__header"
-  >
-    
-    <view
-      class="at-accordion__info"
-    >
-      <view
-        class="at-accordion__info__title"
-      />
       <view
         class="at-accordion__info__note"
       />

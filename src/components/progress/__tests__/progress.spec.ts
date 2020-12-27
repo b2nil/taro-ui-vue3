@@ -11,38 +11,38 @@ const factory = (values = {}, slots = { default: [] }) => {
   })
 }
 
-describe('Progress Snap', () => {
-  it('should render initial Progress', () => {
+describe('Progress', () => {
+  it('should render default Progress', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render Progress -- props percent', () => {
+  it('should render prop -- percent', () => {
     const wrapper = factory({ percent: 25 })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render Progress -- props isHidePercent', () => {
+  it('should render prop -- isHidePercent', () => {
     const wrapper = factory({ isHidePercent: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render Progress -- props color', () => {
+  it('should render prop -- color', () => {
     const wrapper = factory({ color: '#FF4949' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render Progress -- props status(progress)', () => {
+  it('should render prop -- status(progress)', () => {
     const wrapper = factory({ status: 'progress' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render Progress -- props status(error)', () => {
+  it('should render prop -- status(error)', () => {
     const wrapper = factory({ status: 'error' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render Progress -- props status(success)', () => {
+  it('should render prop -- status(success)', () => {
     const wrapper = factory({ status: 'success' })
     expect(wrapper.element).toMatchSnapshot()
   })

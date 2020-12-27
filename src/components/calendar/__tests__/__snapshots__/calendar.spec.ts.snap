@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtCalendar Snap render initial AtCalendar 1`] = `
+exports[`AtCalendar should render default AtCalendar 1`] = `
 <view
   class="at-calendar"
 >
@@ -1118,7 +1118,7 @@ exports[`AtCalendar Snap render initial AtCalendar 1`] = `
             </view>
           </view>
           <view
-            class="flex__item flex__item--now flex__item--today flex__item--selected flex__item--selected-head flex__item--selected-tail"
+            class="flex__item flex__item--now"
           >
             <view
               class="flex__item-container"
@@ -1352,7 +1352,7 @@ exports[`AtCalendar Snap render initial AtCalendar 1`] = `
             </view>
           </view>
           <view
-            class="flex__item flex__item--now"
+            class="flex__item flex__item--now flex__item--today flex__item--selected flex__item--selected-head flex__item--selected-tail"
           >
             <view
               class="flex__item-container"

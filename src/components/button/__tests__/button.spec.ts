@@ -10,44 +10,44 @@ const factory = (
 }
 
 describe('AtButton', () => {
-  it('should render AtButton -- props size(normal)', () => {
+  it('should render prop -- size(normal)', () => {
     const wrapper = factory({
       size: 'normal',
     })
     expect(wrapper.element).toMatchSnapshot()
   })
-  it('should render AtButton -- props size(small)', () => {
+  it('should render prop -- size(small)', () => {
     const wrapper = factory({
       size: 'small',
     })
     expect(wrapper.element).toMatchSnapshot()
   })
-  it('should render AtButton -- props type(primary)', () => {
+  it('should render prop -- type(primary)', () => {
     const wrapper = factory({
       type: 'primary',
     })
     expect(wrapper.element).toMatchSnapshot()
   })
-  it('should render AtButton -- props type(secondary)', () => {
+  it('should render prop -- type(secondary)', () => {
     const wrapper = factory({
       type: 'secondary',
     })
     expect(wrapper.element).toMatchSnapshot()
   })
-  it('should render AtButton -- props circle', () => {
+  it('should render prop -- circle', () => {
     const wrapper = factory({
       circle: true,
     })
     expect(wrapper.element).toMatchSnapshot()
   })
-  it('should render AtButton -- props full', () => {
+  it('should render prop -- full', () => {
     const wrapper = factory({
       full: true,
     })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtButton -- props loading', async () => {
+  it('should render prop -- loading', async () => {
     const wrapper = factory({
       loading: true,
     })
@@ -57,7 +57,7 @@ describe('AtButton', () => {
     expect(wrapper.find('.at-button__icon').exists()).toBe(false)
   })
 
-  it('should render AtButton -- props formType', async () => {
+  it('should render prop -- formType', async () => {
     const wrapper = factory({
       formType: 'submit',
     })
@@ -69,7 +69,7 @@ describe('AtButton', () => {
     })
   })
 
-  describe('should render AtButton -- props disabled', () => {
+  describe('should render prop -- disabled', () => {
     beforeEach(() => {
       jest.mock('../../../utils/common')
     })
@@ -127,7 +127,7 @@ describe('AtButton', () => {
   })
 })
 
-describe('AtButton Events', () => {
+describe('AtButton Behavior', () => {
   it('AtButton should trigger onClick event', () => {
     const onClick = jest.fn()
     const wrapper = factory({

@@ -1,6 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtLoading Snap render AtLoading -- props color 1`] = `
+exports[`AtLoading should render default AtLoading 1`] = `
+<view
+  class="at-loading"
+>
+  <view
+    class="at-loading__ring"
+  />
+  <view
+    class="at-loading__ring"
+  />
+  <view
+    class="at-loading__ring"
+  />
+</view>
+`;
+
+exports[`AtLoading should render prop -- color 1`] = `
 <view
   class="at-loading"
 >
@@ -19,7 +35,7 @@ exports[`AtLoading Snap render AtLoading -- props color 1`] = `
 </view>
 `;
 
-exports[`AtLoading Snap render AtLoading -- props size 1`] = `
+exports[`AtLoading should render prop -- size 1`] = `
 <view
   class="at-loading"
   style="width: 0.32rem; height: 0.32rem;"
@@ -35,22 +51,6 @@ exports[`AtLoading Snap render AtLoading -- props size 1`] = `
   <view
     class="at-loading__ring"
     style="width: 0.32rem; height: 0.32rem;"
-  />
-</view>
-`;
-
-exports[`AtLoading Snap render initial AtLoading 1`] = `
-<view
-  class="at-loading"
->
-  <view
-    class="at-loading__ring"
-  />
-  <view
-    class="at-loading__ring"
-  />
-  <view
-    class="at-loading__ring"
   />
 </view>
 `;

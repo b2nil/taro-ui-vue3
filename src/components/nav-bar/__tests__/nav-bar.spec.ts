@@ -12,48 +12,48 @@ const factory = (values = {}, slots = { default: [] }) => {
   })
 }
 
-describe('AtNavBar Snap', () => {
-  it('should render initial AtNavBar', () => {
+describe('AtNavBar', () => {
+  it('should render default AtNavBar', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtNavBar -- props class', () => {
+  it('should render prop -- class', () => {
     const wrapper = factory({ class: 'test' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtNavBar -- props style', () => {
+  it('should render prop -- style', () => {
     const wrapper = factory({ style: 'color:red;' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtNavBar -- props fixed', () => {
+  it('should render prop -- fixed', () => {
     const wrapper = factory({ fixed: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtNavBar -- props color', () => {
+  it('should render prop -- color', () => {
     const wrapper = factory({ color: '#fff' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtNavBar -- props leftIconType', () => {
+  it('should render prop -- leftIconType', () => {
     const wrapper = factory({ leftIconType: 'test' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtNavBar -- props leftIconType', () => {
+  it('should render prop -- leftIconType', () => {
     const wrapper = factory({ leftIconType: { value: 'test', color: 'red', size: 36 } })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtNavBar -- props leftText', () => {
+  it('should render prop -- leftText', () => {
     const wrapper = factory({ leftText: 'test' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtNavBar -- title as both slot and prop', () => {
+  it('should render title as both slot and prop', () => {
     const wrapper = mount({
       render() {
         return (
@@ -71,29 +71,29 @@ describe('AtNavBar Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtNavBar -- props rightFirstIconType', () => {
+  it('should render prop -- rightFirstIconType', () => {
     const wrapper = factory({ rightFirstIconType: 'test' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtNavBar -- props rightFirstIconType', () => {
+  it('should render prop -- rightFirstIconType', () => {
     const wrapper = factory({ rightFirstIconType: 'test', color: 'red', size: 36 })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtNavBar -- props rightSecondIconType', () => {
+  it('should render prop -- rightSecondIconType', () => {
     const wrapper = factory({ rightSecondIconType: 'test' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtNavBar -- props rightSecondIconType', () => {
+  it('should render prop -- rightSecondIconType', () => {
     const wrapper = factory({ rightSecondIconType: 'test', color: 'red', size: 36 })
     expect(wrapper.element).toMatchSnapshot()
   })
 })
 
 describe('AtNavBar Behavior ', () => {
-  it('AtNavBar onClickLeftIcon', () => {
+  it('should trigger onClickLeftIcon', () => {
     const onClickLeftIcon = jest.fn()
     const wrapper = factory({
       leftIconType: 'test',
@@ -103,7 +103,7 @@ describe('AtNavBar Behavior ', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('AtNavBar onClickRightSecondIcon', () => {
+  it('should trigger onClickRightSecondIcon', () => {
     const onClickRightSecondIcon = jest.fn()
     const wrapper = factory({
       leftIconType: 'test',
@@ -113,7 +113,7 @@ describe('AtNavBar Behavior ', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('AtNavBar onClickRightFirstIcon', () => {
+  it('should trigger onClickRightFirstIcon', () => {
     const onClickRightFirstIcon = jest.fn()
     const wrapper = factory({
       leftIconType: 'test',

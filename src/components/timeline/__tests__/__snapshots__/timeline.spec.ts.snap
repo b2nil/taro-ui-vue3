@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtTimeline Snap render AtNoticebar -- props items 1`] = `
+exports[`AtTimeline should render prop -- items 1`] = `
 <view
   class="at-timeline"
 >
@@ -95,7 +95,7 @@ exports[`AtTimeline Snap render AtNoticebar -- props items 1`] = `
 </view>
 `;
 
-exports[`AtTimeline Snap render AtNoticebar -- props items.color 1`] = `
+exports[`AtTimeline should render prop -- items.color 1`] = `
 <view
   class="at-timeline"
 >
@@ -190,7 +190,7 @@ exports[`AtTimeline Snap render AtNoticebar -- props items.color 1`] = `
 </view>
 `;
 
-exports[`AtTimeline Snap render AtNoticebar -- props items.content 1`] = `
+exports[`AtTimeline should render prop -- items.content 1`] = `
 <view
   class="at-timeline"
 >
@@ -332,7 +332,7 @@ exports[`AtTimeline Snap render AtNoticebar -- props items.content 1`] = `
 </view>
 `;
 
-exports[`AtTimeline Snap render AtNoticebar -- props items.icon 1`] = `
+exports[`AtTimeline should render prop -- items.icon 1`] = `
 <view
   class="at-timeline"
 >
@@ -435,7 +435,7 @@ exports[`AtTimeline Snap render AtNoticebar -- props items.icon 1`] = `
 </view>
 `;
 
-exports[`AtTimeline Snap render AtNoticebar -- props pending 1`] = `
+exports[`AtTimeline should render prop -- pending 1`] = `
 <view
   class="at-timeline at-timeline--pending"
 >

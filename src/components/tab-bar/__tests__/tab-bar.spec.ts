@@ -19,59 +19,59 @@ const tabList = [
   },
 ]
 
-describe('AtTabBar Snap', () => {
+describe('AtTabBar', () => {
 
-  it('should render initial AtTabBar', () => {
+  it('should render default AtTabBar', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtTabBar -- props style', () => {
+  it('should render prop -- style', () => {
     const wrapper = factory({ style: 'color:red;' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtTabBar -- props class', () => {
+  it('should render prop -- class', () => {
     const wrapper = factory({ class: 'test' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtTabBar -- props backgroundColor', () => {
+  it('should render prop -- backgroundColor', () => {
     const wrapper = factory({ fixed: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtTabBar -- props tabList', () => {
+  it('should render prop -- tabList', () => {
     const wrapper = factory({ tabList: tabList })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtTabBar -- props iconSize', () => {
+  it('should render prop -- iconSize', () => {
     const wrapper = factory({ iconSize: '26', tabList: tabList })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtTabBar -- props fontSize', () => {
+  it('should render prop -- fontSize', () => {
     const wrapper = factory({ fontSize: 26, tabList: tabList })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtTabBar -- props color', () => {
+  it('should render prop -- color', () => {
     const wrapper = factory({ color: 'red', tabList: tabList })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtTabBar -- props selectedColor', () => {
+  it('should render prop -- selectedColor', () => {
     const wrapper = factory({ selectedColor: 'red', tabList: tabList })
     expect(wrapper.element).toMatchSnapshot()
   })
-  it('should render AtTabBar -- props scroll', () => {
+  it('should render prop -- scroll', () => {
     const wrapper = factory({ scroll: true, tabList: tabList })
     expect(wrapper.element).toMatchSnapshot()
   })
 })
 
-describe('AtTabBar Events', () => {
+describe('AtTabBar Behavior', () => {
   it('should trigger onClick event, and prop current should be equal to index of the item clicked', async () => {
     const onClick = jest.fn()
     const wrapper = factory({ tabList: tabList, onClick: onClick })

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtNoticebar Snap render AtNoticebar -- props icon 1`] = `
+exports[`AtNoticebar should render prop -- icon 1`] = `
 <view
   class="at-noticebar"
 >
@@ -21,7 +21,7 @@ exports[`AtNoticebar Snap render AtNoticebar -- props icon 1`] = `
       <view
         animation="[object Object]"
         class="at-noticebar__content-inner"
-        id="J_hhq7"
+        id="J_6fhh"
       >
         这是内容
       </view>
@@ -31,7 +31,7 @@ exports[`AtNoticebar Snap render AtNoticebar -- props icon 1`] = `
 </view>
 `;
 
-exports[`AtNoticebar Snap render AtNoticebar -- props moreText & showMore 1`] = `
+exports[`AtNoticebar should render prop -- moreText & showMore 1`] = `
 <view
   class="at-noticebar at-noticebar--single"
 >
@@ -46,7 +46,7 @@ exports[`AtNoticebar Snap render AtNoticebar -- props moreText & showMore 1`] = 
       <view
         animation="[object Object]"
         class="at-noticebar__content-inner"
-        id="J_ez04"
+        id="J_cadd"
       >
         这是内容
       </view>
@@ -71,7 +71,7 @@ exports[`AtNoticebar Snap render AtNoticebar -- props moreText & showMore 1`] = 
 </view>
 `;
 
-exports[`AtNoticebar Snap render AtNoticebar -- props show 1`] = `
+exports[`AtNoticebar should render prop -- show 1`] = `
 <view
   class="at-noticebar"
 >
@@ -92,7 +92,7 @@ exports[`AtNoticebar Snap render AtNoticebar -- props show 1`] = `
       <view
         animation="[object Object]"
         class="at-noticebar__content-inner"
-        id="J_gek6"
+        id="J_clqv"
       >
         这是内容
       </view>
@@ -102,7 +102,7 @@ exports[`AtNoticebar Snap render AtNoticebar -- props show 1`] = `
 </view>
 `;
 
-exports[`AtNoticebar Snap render AtNoticebar -- props single 1`] = `
+exports[`AtNoticebar should render prop -- single 1`] = `
 <view
   class="at-noticebar at-noticebar--single"
 >
@@ -117,7 +117,7 @@ exports[`AtNoticebar Snap render AtNoticebar -- props single 1`] = `
       <view
         animation="[object Object]"
         class="at-noticebar__content-inner"
-        id="J_5y5q"
+        id="J_792r"
       >
         这是内容
       </view>
@@ -127,7 +127,7 @@ exports[`AtNoticebar Snap render AtNoticebar -- props single 1`] = `
 </view>
 `;
 
-exports[`AtNoticebar Snap render AtNoticebar -- props speed 1`] = `
+exports[`AtNoticebar should render prop -- speed 1`] = `
 <view
   class="at-noticebar"
 >
@@ -142,7 +142,7 @@ exports[`AtNoticebar Snap render AtNoticebar -- props speed 1`] = `
       <view
         animation="[object Object]"
         class="at-noticebar__content-inner"
-        id="J_4uga"
+        id="J_brub"
       >
         这是内容
       </view>

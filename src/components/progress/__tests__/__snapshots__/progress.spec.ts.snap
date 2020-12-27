@@ -1,6 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Progress Snap render Progress -- props color 1`] = `
+exports[`Progress should render default Progress 1`] = `
+<view
+  class="at-progress"
+>
+  <view
+    class="at-progress__outer"
+  >
+    <view
+      class="at-progress__outer-inner"
+    >
+      <view
+        class="at-progress__outer-inner-background"
+        style="width: 0%; height: 10px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-progress__content"
+  >
+    0%
+  </view>
+</view>
+`;
+
+exports[`Progress should render prop -- color 1`] = `
 <view
   class="at-progress"
 >
@@ -24,7 +48,7 @@ exports[`Progress Snap render Progress -- props color 1`] = `
 </view>
 `;
 
-exports[`Progress Snap render Progress -- props isHidePercent 1`] = `
+exports[`Progress should render prop -- isHidePercent 1`] = `
 <view
   class="at-progress"
 >
@@ -44,7 +68,7 @@ exports[`Progress Snap render Progress -- props isHidePercent 1`] = `
 </view>
 `;
 
-exports[`Progress Snap render Progress -- props percent 1`] = `
+exports[`Progress should render prop -- percent 1`] = `
 <view
   class="at-progress"
 >
@@ -68,7 +92,7 @@ exports[`Progress Snap render Progress -- props percent 1`] = `
 </view>
 `;
 
-exports[`Progress Snap render Progress -- props status(error) 1`] = `
+exports[`Progress should render prop -- status(error) 1`] = `
 <view
   class="at-progress at-progress--error"
 >
@@ -90,7 +114,7 @@ exports[`Progress Snap render Progress -- props status(error) 1`] = `
 </view>
 `;
 
-exports[`Progress Snap render Progress -- props status(progress) 1`] = `
+exports[`Progress should render prop -- status(progress) 1`] = `
 <view
   class="at-progress at-progress--progress"
 >
@@ -114,7 +138,7 @@ exports[`Progress Snap render Progress -- props status(progress) 1`] = `
 </view>
 `;
 
-exports[`Progress Snap render Progress -- props status(success) 1`] = `
+exports[`Progress should render prop -- status(success) 1`] = `
 <view
   class="at-progress at-progress--success"
 >
@@ -133,29 +157,5 @@ exports[`Progress Snap render Progress -- props status(success) 1`] = `
   <view
     class="at-progress__content"
   />
-</view>
-`;
-
-exports[`Progress Snap render initial Progress 1`] = `
-<view
-  class="at-progress"
->
-  <view
-    class="at-progress__outer"
-  >
-    <view
-      class="at-progress__outer-inner"
-    >
-      <view
-        class="at-progress__outer-inner-background"
-        style="width: 0%; height: 10px;"
-      />
-    </view>
-  </view>
-  <view
-    class="at-progress__content"
-  >
-    0%
-  </view>
 </view>
 `;

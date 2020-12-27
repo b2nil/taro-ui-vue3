@@ -1,6 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtCurtain Snap render AtCurtain -- prop class 1`] = `
+exports[`AtCurtain should render default AtCurtain 1`] = `
+<view
+  class="at-curtain at-curtain--closed"
+>
+  <view
+    class="at-curtain__container"
+  >
+    <view
+      class="at-curtain__body"
+    >
+      
+      
+      <view
+        class="at-curtain__btn-close at-curtain__btn-close--bottom"
+      />
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtCurtain should render prop -- class 1`] = `
 <view
   class="test at-curtain at-curtain--closed test"
 >
@@ -20,7 +40,7 @@ exports[`AtCurtain Snap render AtCurtain -- prop class 1`] = `
 </view>
 `;
 
-exports[`AtCurtain Snap render AtCurtain -- prop closeBtnPosition 1`] = `
+exports[`AtCurtain should render prop -- closeBtnPosition 1`] = `
 <view
   class="at-curtain at-curtain--closed"
 >
@@ -41,7 +61,7 @@ exports[`AtCurtain Snap render AtCurtain -- prop closeBtnPosition 1`] = `
 </view>
 `;
 
-exports[`AtCurtain Snap render AtCurtain -- prop closeBtnPosition 2`] = `
+exports[`AtCurtain should render prop -- closeBtnPosition 2`] = `
 <view
   class="at-curtain at-curtain--closed"
 >
@@ -62,28 +82,7 @@ exports[`AtCurtain Snap render AtCurtain -- prop closeBtnPosition 2`] = `
 </view>
 `;
 
-exports[`AtCurtain Snap render AtCurtain -- prop isOpened 1`] = `
-<view
-  class="at-curtain at-curtain--closed"
-  style="color: red;"
->
-  <view
-    class="at-curtain__container"
-  >
-    <view
-      class="at-curtain__body"
-    >
-      
-      
-      <view
-        class="at-curtain__btn-close at-curtain__btn-close--bottom"
-      />
-    </view>
-  </view>
-</view>
-`;
-
-exports[`AtCurtain Snap render AtCurtain -- prop isOpened 2`] = `
+exports[`AtCurtain should render prop -- isOpened 1`] = `
 <view
   class="at-curtain"
 >
@@ -103,7 +102,7 @@ exports[`AtCurtain Snap render AtCurtain -- prop isOpened 2`] = `
 </view>
 `;
 
-exports[`AtCurtain Snap render AtCurtain -- prop isOpened 3`] = `
+exports[`AtCurtain should render prop -- isOpened 2`] = `
 <view
   class="at-curtain at-curtain--closed"
 >
@@ -123,7 +122,7 @@ exports[`AtCurtain Snap render AtCurtain -- prop isOpened 3`] = `
 </view>
 `;
 
-exports[`AtCurtain Snap render AtCurtain -- prop style 1`] = `
+exports[`AtCurtain should render prop -- style 1`] = `
 <view
   class="at-curtain at-curtain--closed"
   style="color: red;"
@@ -144,9 +143,10 @@ exports[`AtCurtain Snap render AtCurtain -- prop style 1`] = `
 </view>
 `;
 
-exports[`AtCurtain Snap render initial AtCurtain 1`] = `
+exports[`AtCurtain should render prop -- style 2`] = `
 <view
   class="at-curtain at-curtain--closed"
+  style="color: red;"
 >
   <view
     class="at-curtain__container"

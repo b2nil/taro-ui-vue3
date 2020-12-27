@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtNavBar Behavior  AtNavBar onClickLeftIcon 1`] = `
+exports[`AtNavBar Behavior  should trigger onClickLeftIcon 1`] = `
 <view
   class="at-nav-bar"
 >
@@ -38,7 +38,7 @@ exports[`AtNavBar Behavior  AtNavBar onClickLeftIcon 1`] = `
 </view>
 `;
 
-exports[`AtNavBar Behavior  AtNavBar onClickRightFirstIcon 1`] = `
+exports[`AtNavBar Behavior  should trigger onClickRightFirstIcon 1`] = `
 <view
   class="at-nav-bar"
 >
@@ -76,7 +76,7 @@ exports[`AtNavBar Behavior  AtNavBar onClickRightFirstIcon 1`] = `
 </view>
 `;
 
-exports[`AtNavBar Behavior  AtNavBar onClickRightSecondIcon 1`] = `
+exports[`AtNavBar Behavior  should trigger onClickRightSecondIcon 1`] = `
 <view
   class="at-nav-bar"
 >
@@ -114,7 +114,42 @@ exports[`AtNavBar Behavior  AtNavBar onClickRightSecondIcon 1`] = `
 </view>
 `;
 
-exports[`AtNavBar Snap render AtNavBar -- props class 1`] = `
+exports[`AtNavBar should render default AtNavBar 1`] = `
+<view
+  class="at-nav-bar"
+>
+  <view
+    class="at-nav-bar__left-view"
+    style="color: rgb(97, 144, 232);"
+  >
+    
+    <text
+      class="at-nav-bar__text"
+    />
+  </view>
+  <view
+    class="at-nav-bar__title"
+  />
+  <view
+    class="at-nav-bar__right-view"
+  >
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: rgb(97, 144, 232);"
+    >
+      
+    </view>
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: rgb(97, 144, 232);"
+    >
+      
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtNavBar should render prop -- class 1`] = `
 <view
   class="test at-nav-bar test"
 >
@@ -149,7 +184,7 @@ exports[`AtNavBar Snap render AtNavBar -- props class 1`] = `
 </view>
 `;
 
-exports[`AtNavBar Snap render AtNavBar -- props color 1`] = `
+exports[`AtNavBar should render prop -- color 1`] = `
 <view
   class="at-nav-bar"
 >
@@ -184,7 +219,7 @@ exports[`AtNavBar Snap render AtNavBar -- props color 1`] = `
 </view>
 `;
 
-exports[`AtNavBar Snap render AtNavBar -- props fixed 1`] = `
+exports[`AtNavBar should render prop -- fixed 1`] = `
 <view
   class="at-nav-bar at-nav-bar--fixed"
 >
@@ -219,7 +254,7 @@ exports[`AtNavBar Snap render AtNavBar -- props fixed 1`] = `
 </view>
 `;
 
-exports[`AtNavBar Snap render AtNavBar -- props leftIconType 1`] = `
+exports[`AtNavBar should render prop -- leftIconType 1`] = `
 <view
   class="at-nav-bar"
 >
@@ -257,7 +292,7 @@ exports[`AtNavBar Snap render AtNavBar -- props leftIconType 1`] = `
 </view>
 `;
 
-exports[`AtNavBar Snap render AtNavBar -- props leftIconType 2`] = `
+exports[`AtNavBar should render prop -- leftIconType 2`] = `
 <view
   class="at-nav-bar"
 >
@@ -295,7 +330,7 @@ exports[`AtNavBar Snap render AtNavBar -- props leftIconType 2`] = `
 </view>
 `;
 
-exports[`AtNavBar Snap render AtNavBar -- props leftText 1`] = `
+exports[`AtNavBar should render prop -- leftText 1`] = `
 <view
   class="at-nav-bar"
 >
@@ -332,7 +367,7 @@ exports[`AtNavBar Snap render AtNavBar -- props leftText 1`] = `
 </view>
 `;
 
-exports[`AtNavBar Snap render AtNavBar -- props rightFirstIconType 1`] = `
+exports[`AtNavBar should render prop -- rightFirstIconType 1`] = `
 <view
   class="at-nav-bar"
 >
@@ -370,7 +405,7 @@ exports[`AtNavBar Snap render AtNavBar -- props rightFirstIconType 1`] = `
 </view>
 `;
 
-exports[`AtNavBar Snap render AtNavBar -- props rightFirstIconType 2`] = `
+exports[`AtNavBar should render prop -- rightFirstIconType 2`] = `
 <view
   class="at-nav-bar"
   size="36"
@@ -409,7 +444,7 @@ exports[`AtNavBar Snap render AtNavBar -- props rightFirstIconType 2`] = `
 </view>
 `;
 
-exports[`AtNavBar Snap render AtNavBar -- props rightSecondIconType 1`] = `
+exports[`AtNavBar should render prop -- rightSecondIconType 1`] = `
 <view
   class="at-nav-bar"
 >
@@ -447,7 +482,7 @@ exports[`AtNavBar Snap render AtNavBar -- props rightSecondIconType 1`] = `
 </view>
 `;
 
-exports[`AtNavBar Snap render AtNavBar -- props rightSecondIconType 2`] = `
+exports[`AtNavBar should render prop -- rightSecondIconType 2`] = `
 <view
   class="at-nav-bar"
   size="36"
@@ -486,7 +521,7 @@ exports[`AtNavBar Snap render AtNavBar -- props rightSecondIconType 2`] = `
 </view>
 `;
 
-exports[`AtNavBar Snap render AtNavBar -- props style 1`] = `
+exports[`AtNavBar should render prop -- style 1`] = `
 <view
   class="at-nav-bar"
   style="color: red;"
@@ -522,7 +557,7 @@ exports[`AtNavBar Snap render AtNavBar -- props style 1`] = `
 </view>
 `;
 
-exports[`AtNavBar Snap render AtNavBar -- title as both slot and prop 1`] = `
+exports[`AtNavBar should render title as both slot and prop 1`] = `
 <view>
   <view
     class="at-nav-bar"
@@ -592,41 +627,6 @@ exports[`AtNavBar Snap render AtNavBar -- title as both slot and prop 1`] = `
       >
         
       </view>
-    </view>
-  </view>
-</view>
-`;
-
-exports[`AtNavBar Snap render initial AtNavBar 1`] = `
-<view
-  class="at-nav-bar"
->
-  <view
-    class="at-nav-bar__left-view"
-    style="color: rgb(97, 144, 232);"
-  >
-    
-    <text
-      class="at-nav-bar__text"
-    />
-  </view>
-  <view
-    class="at-nav-bar__title"
-  />
-  <view
-    class="at-nav-bar__right-view"
-  >
-    <view
-      class="at-nav-bar__container at-nav-bar__container--hide"
-      style="color: rgb(97, 144, 232);"
-    >
-      
-    </view>
-    <view
-      class="at-nav-bar__container at-nav-bar__container--hide"
-      style="color: rgb(97, 144, 232);"
-    >
-      
     </view>
   </view>
 </view>

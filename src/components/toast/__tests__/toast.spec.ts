@@ -14,8 +14,8 @@ const STATUS_ERROR = 'error'
 const STATUS_SUCCESS = 'success'
 const STATUS_LOADING = 'loading'
 
-describe('Toast Snap', () => {
-  it('should render initial Toast', () => {
+describe('Toast', () => {
+  it('should render default Toast', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
@@ -25,44 +25,44 @@ describe('Toast Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render opened Toast -- props text', () => {
+  it('should render opened Toast with prop text', () => {
     const wrapper = factory({ isOpened: true, text: TEXT })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render opened Toast -- props icon', () => {
+  it('should render opened Toast with prop icon', () => {
     const wrapper = factory({ isOpened: true, icon: ICON })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render opened  Toast -- props image', () => {
+  it('should render opened  Toast with prop image', () => {
     const wrapper = factory({ isOpened: true, image: IMAGE })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render opened  Toast -- props hasMask', () => {
+  it('should render opened  Toast with prop hasMask', () => {
     const wrapper = factory({ isOpened: true, hasMask: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render opened Toast -- props status : success ', () => {
+  it('should render opened Toast with prop status -- success ', () => {
     const wrapper = factory({ isOpened: true, status: STATUS_SUCCESS })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render opened Toast -- props status : loading ', () => {
+  it('should render opened Toast with prop status -- loading ', () => {
     const wrapper = factory({ isOpened: true, status: STATUS_LOADING })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render opened Toast -- props status : error ', () => {
+  it('should render opened Toast with prop status -- error ', () => {
     const wrapper = factory({ isOpened: true, status: STATUS_ERROR })
     expect(wrapper.element).toMatchSnapshot()
   })
 })
 
 describe('Toast Behavior ', () => {
-  it('Toast will close when clicked && onClose will be called', async () => {
+  it('should trigger onClose event and close Toast', async () => {
     let closeToken = ""
     const onClose = jest.fn().mockImplementation(() => {
       closeToken = "onClose is called"
@@ -77,7 +77,7 @@ describe('Toast Behavior ', () => {
     })
   })
 
-  it('Toast will close when time over --- default 3000 ms', async () => {
+  it('Toast should be closed when time over --- default 3000 ms', async () => {
     const wrapper = factory({ isOpened: true })
     expect(wrapper.vm.duration).toEqual(3000)
     await sleep(3000)
@@ -86,7 +86,7 @@ describe('Toast Behavior ', () => {
     })
   })
 
-  it('Toast will close when time over -- 1000 ms', async () => {
+  it('Toast should be closed when time over -- 1000 ms', async () => {
     const wrapper = factory({ isOpened: true, duration: 1000 })
     expect(wrapper.vm.duration).toEqual(1000)
     await sleep(1000)
@@ -95,7 +95,7 @@ describe('Toast Behavior ', () => {
     })
   })
 
-  it('Toast onClick will be called', async () => {
+  it('should trigger onClick', async () => {
     const onClick = jest.fn()
     const wrapper = factory({ isOpened: true, onClick: onClick })
     expect(wrapper.find(".at-toast").exists()).toBeTruthy()

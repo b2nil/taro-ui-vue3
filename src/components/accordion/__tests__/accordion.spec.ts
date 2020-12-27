@@ -14,7 +14,7 @@ describe('AtAccordion', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtAccordion props -- title', () => {
+  it('should render prop -- title', () => {
     const wrapper = factory({
       title: 'title',
     })
@@ -24,7 +24,7 @@ describe('AtAccordion', () => {
     ).toEqual('title')
   })
 
-  it('should render AtAccordion props -- open=true', () => {
+  it('should render prop -- open=true', () => {
     const wrapper = factory({
       open: true,
     })
@@ -34,14 +34,14 @@ describe('AtAccordion', () => {
     expect(wrapper.find(".at-accordion__content--inactive").exists()).toBeFalsy()
   })
 
-  it('should render AtAccordion props -- open=false', () => {
+  it('should render prop -- open=false', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
     expect(wrapper.find(".at-accordion__arrow--folded").exists()).toBeFalsy()
     expect(wrapper.find(".at-accordion__content--inactive").exists()).toBeTruthy()
   })
 
-  it('should render AtAccordion props -- icon', () => {
+  it('should render prop -- icon', () => {
     const wrapper = factory({
       icon: { value: 'chevron-down' },
     })
@@ -49,7 +49,7 @@ describe('AtAccordion', () => {
     expect(wrapper.find(".at-icon-chevron-down").exists()).toBeTruthy()
   })
 
-  it('should render AtAccordion props -- icon with color', async () => {
+  it('should render prop -- icon with color', async () => {
     const wrapper = factory({
       icon: { value: 'chevron-down', color: 'red' },
     })
@@ -60,15 +60,14 @@ describe('AtAccordion', () => {
     ).toBe("color: red;")
 
     await wrapper.setProps({ icon: { value: 'chevron-down' } })
-    wrapper.vm.$nextTick(() => {
-      expect(wrapper.find(".at-icon-chevron-down").exists()).toBeTruthy()
-      expect(
-        wrapper.find(".at-icon-chevron-down").attributes("style")
-      ).toBe("")
-    })
+    wrapper.vm.$nextTick()
+    expect(wrapper.find(".at-icon-chevron-down").exists()).toBeTruthy()
+    expect(
+      wrapper.find(".at-icon-chevron-down").attributes("style")
+    ).toBe("")
   })
 
-  it('should render AtAccordion props -- icon with size', async () => {
+  it('should render prop -- icon with size', async () => {
     const wrapper = factory({
       icon: { value: 'chevron-down', size: 10 },
     })
@@ -79,15 +78,14 @@ describe('AtAccordion', () => {
     ).toBe("font-size: 10px;")
 
     await wrapper.setProps({ icon: { value: 'chevron-down' } })
-    wrapper.vm.$nextTick(() => {
-      expect(wrapper.find(".at-icon-chevron-down").exists()).toBeTruthy()
-      expect(
-        wrapper.find(".at-icon-chevron-down").attributes("style")
-      ).toBe("")
-    })
+    wrapper.vm.$nextTick()
+    expect(wrapper.find(".at-icon-chevron-down").exists()).toBeTruthy()
+    expect(
+      wrapper.find(".at-icon-chevron-down").attributes("style")
+    ).toBe("")
   })
 
-  it('should render AtAccordion props -- icon with prefixClass', async () => {
+  it('should render prop -- icon with prefixClass', async () => {
     const wrapper = factory({
       icon: { prefixClass: 'prefixClass', value: 'star' },
     })
@@ -98,14 +96,13 @@ describe('AtAccordion', () => {
     expect(iconElement.classes()).toContain('prefixClass-star')
 
     await wrapper.setProps({ icon: { value: 'star' } })
-    wrapper.vm.$nextTick(() => {
-      const iconElement2 = wrapper.find(".at-accordion__icon")
-      expect(iconElement2.classes()).not.toContain('prefixClass')
-      expect(iconElement2.classes()).not.toContain('prefixClass-star')
-    })
+    wrapper.vm.$nextTick()
+    const iconElement2 = wrapper.find(".at-accordion__icon")
+    expect(iconElement2.classes()).not.toContain('prefixClass')
+    expect(iconElement2.classes()).not.toContain('prefixClass-star')
   })
 
-  it('should render AtAccordion props -- hasBorder', async () => {
+  it('should render prop -- hasBorder', async () => {
     const wrapper = factory({
       title: 'title',
     })
@@ -113,12 +110,11 @@ describe('AtAccordion', () => {
     expect(wrapper.find(".at-accordion__header--noborder").exists()).toBeFalsy()
 
     await wrapper.setProps({ hasBorder: false })
-    wrapper.vm.$nextTick(() => {
-      expect(wrapper.find(".at-accordion__header--noborder").exists()).toBeTruthy()
-    })
+    wrapper.vm.$nextTick()
+    expect(wrapper.find(".at-accordion__header--noborder").exists()).toBeTruthy()
   })
 
-  it('should render AtAccordion props -- note', () => {
+  it('should render prop -- note', () => {
     const wrapper = factory({
       note: 'note',
     })
@@ -129,7 +125,7 @@ describe('AtAccordion', () => {
   })
 })
 
-describe('AtAccordion Event', () => {
+describe('AtAccordion Behavior', () => {
   it('should trigger onClick event to toggle accordion', async () => {
     const onClick = jest.fn()
     const wrapper = factory({

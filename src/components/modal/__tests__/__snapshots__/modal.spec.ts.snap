@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Modal Snap render initial Modal 1`] = `
+exports[`Modal should render default Modal 1`] = `
 <view
   class="at-modal"
 >
@@ -40,7 +40,7 @@ exports[`Modal Snap render initial Modal 1`] = `
 </view>
 `;
 
-exports[`Modal Snap render opened  Modal -- simple 1`] = `
+exports[`Modal should render opened  Modal -- simple 1`] = `
 <view
   class="at-modal at-modal--active"
 >
@@ -90,7 +90,7 @@ exports[`Modal Snap render opened  Modal -- simple 1`] = `
 </view>
 `;
 
-exports[`Modal Snap render opened Modal -- not header 1`] = `
+exports[`Modal should render opened Modal -- no header 1`] = `
 <view
   class="at-modal at-modal--active"
 >
@@ -125,7 +125,7 @@ exports[`Modal Snap render opened Modal -- not header 1`] = `
 </view>
 `;
 
-exports[`Modal Snap render opened Modal -- single button 1`] = `
+exports[`Modal should render opened Modal -- single button 1`] = `
 <view
   class="at-modal at-modal--active"
 >
@@ -157,7 +157,7 @@ exports[`Modal Snap render opened Modal -- single button 1`] = `
 </view>
 `;
 
-exports[`Modal Snap render opened Modal 1`] = `
+exports[`Modal should render opened Modal 1`] = `
 <view
   class="at-modal at-modal--active"
 >

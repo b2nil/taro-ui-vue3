@@ -32,25 +32,25 @@ const checkboxOption = [
   },
 ]
 
-describe('AtCheckbox Snap', () => {
-  it('should render initial AtCheckbox', () => {
+describe('AtCheckbox', () => {
+  it('should render default AtCheckbox', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtCheckbox -- props options', () => {
+  it('should render prop -- options', () => {
     const wrapper = factory({ options: checkboxOption })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtCheckbox -- props selectedList', () => {
+  it('should render prop -- selectedList', () => {
     const wrapper = factory({ options: checkboxOption, selectedList: ['list2'] })
     expect(wrapper.element).toMatchSnapshot()
   })
 })
 
-describe('AtCheckbox Event', () => {
-  it('AtCheckbox onChange', () => {
+describe('AtCheckbox Behavior', () => {
+  it('should trigger onChange', () => {
     const onClick = jest.fn()
     const wrapper = factory({
       options: checkboxOption,
@@ -61,7 +61,7 @@ describe('AtCheckbox Event', () => {
     expect(onClick).toBeCalled()
   })
 
-  it('AtCheckbox disabled, onChange not to be called', () => {
+  it('should not trigger onChange when disabled', () => {
     const onClick = jest.fn()
     const wrapper = factory({
       options: checkboxOption,

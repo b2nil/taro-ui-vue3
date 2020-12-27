@@ -8,20 +8,20 @@ const factory = (values = {}, slots = { default: [] }) => {
   })
 }
 
-describe('AtTimeline Snap', () => {
+describe('AtTimeline', () => {
   const list = [{ title: '刷牙洗脸' }, { title: '吃早餐' }, { title: '上班' }, { title: '睡觉' }]
 
-  it('should render AtNoticebar -- props pending', () => {
+  it('should render prop -- pending', () => {
     const wrapper = factory({ items: list, pending: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtNoticebar -- props items', () => {
+  it('should render prop -- items', () => {
     const wrapper = factory({ items: list })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtNoticebar -- props items.color', () => {
+  it('should render prop -- items.color', () => {
     const wrapper = factory({
       items: [
         { title: '刷牙洗脸' },
@@ -33,7 +33,7 @@ describe('AtTimeline Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtNoticebar -- props items.icon', () => {
+  it('should render prop -- items.icon', () => {
     const wrapper = factory({
       items: [
         { title: '刷牙洗脸', icon: 'check-circle' },
@@ -45,7 +45,7 @@ describe('AtTimeline Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtNoticebar -- props items.content', () => {
+  it('should render prop -- items.content', () => {
     const wrapper = factory({
       items: [
         { title: '刷牙洗脸', content: ['大概8:00'], icon: 'check-circle' },

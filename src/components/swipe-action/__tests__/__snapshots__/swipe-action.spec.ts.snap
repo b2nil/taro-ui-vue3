@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SwipeAction Snap should render SwipeAction -- isOpened 1`] = `
+exports[`SwipeAction should render SwipeAction -- isOpened 1`] = `
 <view
   class="swipe-action--test at-swipe-action swipe-action--test"
   id="swipeAction-2020"
@@ -42,7 +42,7 @@ exports[`SwipeAction Snap should render SwipeAction -- isOpened 1`] = `
 </view>
 `;
 
-exports[`SwipeAction Snap should render SwipeAction -- props options 1`] = `
+exports[`SwipeAction should render prop -- options 1`] = `
 <view
   class="swipe-action--test at-swipe-action swipe-action--test"
   id="swipeAction-2020"

@@ -8,28 +8,28 @@ const factory = (values = {}, slots = { default: [''] }) => {
   })
 }
 
-describe('AtTabsPane Snap', () => {
-  it('should render initial AtTabs', () => {
+describe('AtTabsPane', () => {
+  it('should render default AtTabs', () => {
     const wrapper = factory({}, { default: ['test'] })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtTabsPane -- props style', () => {
+  it('should render prop -- style', () => {
     const wrapper = factory({ style: 'color:red;' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtTabsPane -- props class', () => {
+  it('should render prop -- class', () => {
     const wrapper = factory({ class: 'test' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtTabsPane -- props index current', () => {
+  it('should render prop -- index current', () => {
     const wrapper = factory({ index: 0, current: 0 })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtTabsPane -- props index current', () => {
+  it('should render prop -- index current', () => {
     const wrapper = factory({ index: 1, current: 0 })
     expect(wrapper.element).toMatchSnapshot()
   })

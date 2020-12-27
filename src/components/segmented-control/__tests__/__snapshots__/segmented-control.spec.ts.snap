@@ -1,13 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtSegmentedControl Snap render AtSegmentedControl -- props class 1`] = `
+exports[`AtSegmentedControl should render default AtSegmentedControl 1`] = `
+<view
+  class="at-segmented-control"
+  style="border-color: #6190e8;"
+/>
+`;
+
+exports[`AtSegmentedControl should render prop -- class 1`] = `
 <view
   class="test at-segmented-control test"
   style="border-color: #6190e8;"
 />
 `;
 
-exports[`AtSegmentedControl Snap render AtSegmentedControl -- props current 1`] = `
+exports[`AtSegmentedControl should render prop -- current 1`] = `
 <view
   class="at-segmented-control"
   style="border-color: #6190e8;"
@@ -33,7 +40,7 @@ exports[`AtSegmentedControl Snap render AtSegmentedControl -- props current 1`] 
 </view>
 `;
 
-exports[`AtSegmentedControl Snap render AtSegmentedControl -- props disabled 1`] = `
+exports[`AtSegmentedControl should render prop -- disabled 1`] = `
 <view
   class="at-segmented-control at-segmented-control--disabled"
   style="border-color: #6190e8;"
@@ -59,7 +66,7 @@ exports[`AtSegmentedControl Snap render AtSegmentedControl -- props disabled 1`]
 </view>
 `;
 
-exports[`AtSegmentedControl Snap render AtSegmentedControl -- props fontSize 1`] = `
+exports[`AtSegmentedControl should render prop -- fontSize 1`] = `
 <view
   class="at-segmented-control"
   style="border-color: #6190e8;"
@@ -85,7 +92,7 @@ exports[`AtSegmentedControl Snap render AtSegmentedControl -- props fontSize 1`]
 </view>
 `;
 
-exports[`AtSegmentedControl Snap render AtSegmentedControl -- props selectedColor 1`] = `
+exports[`AtSegmentedControl should render prop -- selectedColor 1`] = `
 <view
   class="at-segmented-control"
   style="border-color: #fff;"
@@ -111,14 +118,14 @@ exports[`AtSegmentedControl Snap render AtSegmentedControl -- props selectedColo
 </view>
 `;
 
-exports[`AtSegmentedControl Snap render AtSegmentedControl -- props style 1`] = `
+exports[`AtSegmentedControl should render prop -- style 1`] = `
 <view
   class="at-segmented-control"
   style="color: red; border-color: #6190e8;"
 />
 `;
 
-exports[`AtSegmentedControl Snap render AtSegmentedControl -- props values 1`] = `
+exports[`AtSegmentedControl should render prop -- values 1`] = `
 <view
   class="at-segmented-control"
   style="border-color: #6190e8;"
@@ -142,11 +149,4 @@ exports[`AtSegmentedControl Snap render AtSegmentedControl -- props values 1`] =
     tab3
   </view>
 </view>
-`;
-
-exports[`AtSegmentedControl Snap render initial AtSegmentedControl 1`] = `
-<view
-  class="at-segmented-control"
-  style="border-color: #6190e8;"
-/>
 `;

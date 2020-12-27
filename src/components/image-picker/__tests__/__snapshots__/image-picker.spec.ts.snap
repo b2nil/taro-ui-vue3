@@ -1,6 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtImagePicker Snap render AtImagePicker -- props class 1`] = `
+exports[`AtImagePicker should render default AtImagePicker 1`] = `
+<view
+  class="at-image-picker"
+>
+  <view
+    class="at-image-picker__flex-box"
+  >
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <view
+        class="at-image-picker__item at-image-picker__choose-btn"
+      >
+        <view
+          class="add-bar"
+        />
+        <view
+          class="add-bar"
+        />
+      </view>
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!---->
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!---->
+    </view>
+    <view
+      class="at-image-picker__flex-item"
+    >
+      <!---->
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtImagePicker should render prop -- class 1`] = `
 <view
   class="test at-image-picker test"
 >
@@ -40,7 +80,7 @@ exports[`AtImagePicker Snap render AtImagePicker -- props class 1`] = `
 </view>
 `;
 
-exports[`AtImagePicker Snap render AtImagePicker -- props files 1`] = `
+exports[`AtImagePicker should render prop -- files 1`] = `
 <view
   class="at-image-picker"
 >
@@ -159,7 +199,7 @@ exports[`AtImagePicker Snap render AtImagePicker -- props files 1`] = `
 </view>
 `;
 
-exports[`AtImagePicker Snap render AtImagePicker -- props length 1`] = `
+exports[`AtImagePicker should render prop -- length 1`] = `
 <view
   class="at-image-picker"
 >
@@ -288,7 +328,7 @@ exports[`AtImagePicker Snap render AtImagePicker -- props length 1`] = `
 </view>
 `;
 
-exports[`AtImagePicker Snap render AtImagePicker -- props mode 1`] = `
+exports[`AtImagePicker should render prop -- mode 1`] = `
 <view
   class="at-image-picker"
 >
@@ -407,7 +447,7 @@ exports[`AtImagePicker Snap render AtImagePicker -- props mode 1`] = `
 </view>
 `;
 
-exports[`AtImagePicker Snap render AtImagePicker -- props multiple 1`] = `
+exports[`AtImagePicker should render prop -- multiple 1`] = `
 <view
   class="at-image-picker"
 >
@@ -526,7 +566,7 @@ exports[`AtImagePicker Snap render AtImagePicker -- props multiple 1`] = `
 </view>
 `;
 
-exports[`AtImagePicker Snap render AtImagePicker -- props showAddBtn 1`] = `
+exports[`AtImagePicker should render prop -- showAddBtn 1`] = `
 <view
   class="at-image-picker"
 >
@@ -636,50 +676,10 @@ exports[`AtImagePicker Snap render AtImagePicker -- props showAddBtn 1`] = `
 </view>
 `;
 
-exports[`AtImagePicker Snap render AtImagePicker -- props style 1`] = `
+exports[`AtImagePicker should render prop -- style 1`] = `
 <view
   class="at-image-picker"
   style="color: red;"
->
-  <view
-    class="at-image-picker__flex-box"
-  >
-    <view
-      class="at-image-picker__flex-item"
-    >
-      <view
-        class="at-image-picker__item at-image-picker__choose-btn"
-      >
-        <view
-          class="add-bar"
-        />
-        <view
-          class="add-bar"
-        />
-      </view>
-    </view>
-    <view
-      class="at-image-picker__flex-item"
-    >
-      <!---->
-    </view>
-    <view
-      class="at-image-picker__flex-item"
-    >
-      <!---->
-    </view>
-    <view
-      class="at-image-picker__flex-item"
-    >
-      <!---->
-    </view>
-  </view>
-</view>
-`;
-
-exports[`AtImagePicker Snap render initial AtImagePicker 1`] = `
-<view
-  class="at-image-picker"
 >
   <view
     class="at-image-picker__flex-box"

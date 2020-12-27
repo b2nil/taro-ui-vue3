@@ -98,7 +98,7 @@ describe('AtSkeleton', () => {
     expect(
       wrapper.find('.at-skeleton').attributes()
     ).toEqual({
-      "class": "at-skeleton--boilerplate at-skeleton"
+      "class": "at-skeleton--boilerplate at-skeleton--is-loading at-skeleton"
     })
 
     await wrapper.setProps({ loading: true })

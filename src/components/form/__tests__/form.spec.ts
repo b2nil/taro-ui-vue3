@@ -8,27 +8,27 @@ const factory = (values = {}, slots = { default: [] }) => {
   })
 }
 
-describe('AtForm Snap', () => {
-  it('should render initial AtForm', () => {
+describe('AtForm', () => {
+  it('should render default AtForm', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render initial AtForm', () => {
+  it('should render prop -- reportSubmit', () => {
     const wrapper = factory({ reportSubmit: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 })
 
-describe('AtForm Event', () => {
-  it('AtForm onSubmit', () => {
+describe('AtForm Behavior', () => {
+  it('should trigger onSubmit', () => {
     const onSubmit = jest.fn()
     const wrapper = factory({ onSubmit: onSubmit })
     wrapper.find('.at-form').trigger('submit')
     expect(onSubmit).toBeCalled()
   })
 
-  it('AtForm onReset', () => {
+  it('should trigger onReset', () => {
     const onReset = jest.fn()
     const wrapper = factory({ onReset: onReset })
     wrapper.find('.at-form').trigger('reset')

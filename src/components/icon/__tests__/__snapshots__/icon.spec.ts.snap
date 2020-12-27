@@ -1,50 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtIcon Snap render AtIcon -- props class 1`] = `
+exports[`AtIcon should render default AtIcon 1`] = `
+<text
+  class="at-icon"
+  style="font-size: 1.024rem;"
+/>
+`;
+
+exports[`AtIcon should render prop -- class 1`] = `
 <text
   class="test at-icon test"
   style="font-size: 1.024rem;"
 />
 `;
 
-exports[`AtIcon Snap render AtIcon -- props color 1`] = `
+exports[`AtIcon should render prop -- color 1`] = `
 <text
   class="at-icon"
   style="color: rgb(255, 255, 255); font-size: 1.024rem;"
 />
 `;
 
-exports[`AtIcon Snap render AtIcon -- props prefixClass 1`] = `
+exports[`AtIcon should render prop -- prefixClass 1`] = `
 <text
   class="prefixClass prefixClass-star"
   style="font-size: 1.024rem;"
 />
 `;
 
-exports[`AtIcon Snap render AtIcon -- props size 1`] = `
+exports[`AtIcon should render prop -- size 1`] = `
 <text
   class="at-icon"
   style="font-size: 0.5974rem;"
 />
 `;
 
-exports[`AtIcon Snap render AtIcon -- props style 1`] = `
+exports[`AtIcon should render prop -- style 1`] = `
 <text
   class="at-icon"
   style="color: red; font-size: 1.024rem;"
 />
 `;
 
-exports[`AtIcon Snap render AtIcon -- props value 1`] = `
+exports[`AtIcon should render prop -- value 1`] = `
 <text
   class="at-icon at-icon-star"
-  style="font-size: 1.024rem;"
-/>
-`;
-
-exports[`AtIcon Snap render initial AtIcon 1`] = `
-<text
-  class="at-icon"
   style="font-size: 1.024rem;"
 />
 `;

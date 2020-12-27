@@ -6,29 +6,29 @@ const factory = (values = {}, slots: Slots = { default: [] }) => {
   return mountFactory(AtPagination, {}, values, slots)
 }
 
-describe('AtPagination Snap', () => {
-  it('should render AtPagination -- props current', () => {
+describe('AtPagination', () => {
+  it('should render prop -- current', () => {
     const wrapper = factory({ current: 2 })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtPagination -- props total', () => {
+  it('should render prop -- total', () => {
     const wrapper = factory({ total: 100 })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtPagination -- props pageSize', () => {
+  it('should render prop -- pageSize', () => {
     const wrapper = factory({ pageSize: 40 })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtPagination -- props icon', () => {
+  it('should render prop -- icon', () => {
     const wrapper = factory({ icon: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 })
 
-describe('AtPagination Events', () => {
+describe('AtPagination Behavior', () => {
   it('should trigger event onPageChange - prev', () => {
     const current = ref(2)
     const onPageChange = jest.fn().mockImplementation((val) => {
@@ -73,7 +73,7 @@ describe('AtPagination Events', () => {
     expect(onPageChange).not.toBeCalled()
   })
 
-  it('when triggered, event onPageChange should return params {type, current} - prev', () => {
+  it('onPageChange should return params {type, current} - prev', () => {
     const onPageChange = jest.fn()
     const wrapper = factory({
       current: 2,
@@ -85,7 +85,7 @@ describe('AtPagination Events', () => {
     expect(onPageChange.mock.calls[0][0].current).toEqual(1)
   })
 
-  it('when triggered, event onPageChange should return params {type, current} - next', () => {
+  it('onPageChange should return params {type, current} - next', () => {
     const onPageChange = jest.fn()
     const wrapper = factory({
       total: 100,

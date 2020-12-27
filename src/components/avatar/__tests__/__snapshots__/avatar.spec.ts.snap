@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Avatar Snap should render Avatar -- props circle 1`] = `
+exports[`Avatar should render prop -- circle 1`] = `
 <view
   class="at-avatar at-avatar--normal at-avatar--circle"
 >
@@ -10,7 +10,7 @@ exports[`Avatar Snap should render Avatar -- props circle 1`] = `
 </view>
 `;
 
-exports[`Avatar Snap should render Avatar -- props image 1`] = `
+exports[`Avatar should render prop -- image 1`] = `
 <view
   class="at-avatar at-avatar--normal"
 >
@@ -21,7 +21,7 @@ exports[`Avatar Snap should render Avatar -- props image 1`] = `
 </view>
 `;
 
-exports[`Avatar Snap should render Avatar -- props openData 1`] = `
+exports[`Avatar should render prop -- openData 1`] = `
 <view
   class="at-avatar at-avatar--normal"
 >
@@ -31,7 +31,7 @@ exports[`Avatar Snap should render Avatar -- props openData 1`] = `
 </view>
 `;
 
-exports[`Avatar Snap should render Avatar -- props size(large)  1`] = `
+exports[`Avatar should render prop -- size(large)  1`] = `
 <view
   class="at-avatar at-avatar--large"
 >
@@ -41,7 +41,7 @@ exports[`Avatar Snap should render Avatar -- props size(large)  1`] = `
 </view>
 `;
 
-exports[`Avatar Snap should render Avatar -- props size(normal)  1`] = `
+exports[`Avatar should render prop -- size(normal)  1`] = `
 <view
   class="at-avatar at-avatar--normal"
 >
@@ -51,7 +51,7 @@ exports[`Avatar Snap should render Avatar -- props size(normal)  1`] = `
 </view>
 `;
 
-exports[`Avatar Snap should render Avatar -- props size(small)  1`] = `
+exports[`Avatar should render prop -- size(small)  1`] = `
 <view
   class="at-avatar at-avatar--small"
 >
@@ -61,7 +61,7 @@ exports[`Avatar Snap should render Avatar -- props size(small)  1`] = `
 </view>
 `;
 
-exports[`Avatar Snap should render Avatar -- props text 1`] = `
+exports[`Avatar should render prop -- text 1`] = `
 <view
   class="at-avatar at-avatar--normal"
 >

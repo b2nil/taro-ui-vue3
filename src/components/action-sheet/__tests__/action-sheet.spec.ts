@@ -12,7 +12,7 @@ const factory = (
   return mountFactory(AtActionSheet, { AtActionSheetItem }, values, slots)
 }
 
-describe('ActionSheet Snap', () => {
+describe('ActionSheet', () => {
   it('should render default ActionSheet', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
@@ -37,7 +37,7 @@ describe('ActionSheet Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render opened ActionSheet -- props cancelText', () => {
+  it('should render opened ActionSheet with prop cancelText', () => {
     const wrapper = factory({
       isOpened: true,
       cancelText: '取消',
@@ -62,7 +62,7 @@ describe('ActionSheet Snap', () => {
     expect(wrapper.find('.at-action-sheet__header').exists()).toBe(true)
   })
 
-  it('should not render ActionSheetHeader without props title', () => {
+  it('should not render ActionSheetHeader without prop title', () => {
     const wrapper = factory({
       isOpened: true
     })

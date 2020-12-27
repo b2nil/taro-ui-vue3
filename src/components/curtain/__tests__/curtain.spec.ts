@@ -15,35 +15,35 @@ const factory = (
   })
 }
 
-describe('AtCurtain Snap', () => {
-  it('should render initial AtCurtain', () => {
+describe('AtCurtain', () => {
+  it('should render default AtCurtain', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtCurtain -- prop class', () => {
+  it('should render prop -- class', () => {
     const wrapper = factory({ class: 'test' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtCurtain -- prop style', () => {
+  it('should render prop -- style', () => {
     const wrapper = factory({ style: 'color:red;' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtCurtain -- prop isOpened', () => {
+  it('should render prop -- style', () => {
     const wrapper = factory({ style: 'color:red;' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtCurtain -- prop isOpened', () => {
+  it('should render prop -- isOpened', () => {
     const wrapper0 = factory({ isOpened: true })
     expect(wrapper0.element).toMatchSnapshot()
     const wrapper1 = factory({ isOpened: false })
     expect(wrapper1.element).toMatchSnapshot()
   })
 
-  it('should render AtCurtain -- prop closeBtnPosition', () => {
+  it('should render prop -- closeBtnPosition', () => {
     const wrapper0 = factory({ closeBtnPosition: 'top' }, { default: ['test'] })
     expect(wrapper0.element).toMatchSnapshot()
     const wrapper1 = factory({ closeBtnPosition: 'bottom' }, { default: ['test'] })

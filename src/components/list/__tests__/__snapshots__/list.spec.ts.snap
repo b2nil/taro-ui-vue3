@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`List Snap should render the complete List 1`] = `
+exports[`List should render the complete List 1`] = `
 <view
   class="at-list"
 >
@@ -554,7 +554,7 @@ exports[`List Snap should render the complete List 1`] = `
 </view>
 `;
 
-exports[`List Snap should render the completed List -- no border 1`] = `
+exports[`List should render the completed List -- no border 1`] = `
 <view
   class="at-list at-list--no-border"
 >

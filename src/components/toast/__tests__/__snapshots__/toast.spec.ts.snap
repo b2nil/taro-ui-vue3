@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Toast Snap should render initial Toast 1`] = `<!---->`;
+exports[`Toast should render default Toast 1`] = `<!---->`;
 
-exports[`Toast Snap should render opened  Toast -- props hasMask 1`] = `
+exports[`Toast should render opened  Toast with prop hasMask 1`] = `
 <view
   class="at-toast"
 >
@@ -23,7 +23,7 @@ exports[`Toast Snap should render opened  Toast -- props hasMask 1`] = `
 </view>
 `;
 
-exports[`Toast Snap should render opened  Toast -- props image 1`] = `
+exports[`Toast should render opened  Toast with prop image 1`] = `
 <view
   class="at-toast"
 >
@@ -50,7 +50,26 @@ exports[`Toast Snap should render opened  Toast -- props image 1`] = `
 </view>
 `;
 
-exports[`Toast Snap should render opened Toast -- props icon 1`] = `
+exports[`Toast should render opened Toast 1`] = `
+<view
+  class="at-toast"
+>
+  <!---->
+  <view
+    class="toast-body toast-body--text"
+  >
+    <view
+      class="toast-body-content"
+    >
+      <!---->
+      <!---->
+      
+    </view>
+  </view>
+</view>
+`;
+
+exports[`Toast should render opened Toast with prop icon 1`] = `
 <view
   class="at-toast"
 >
@@ -75,7 +94,7 @@ exports[`Toast Snap should render opened Toast -- props icon 1`] = `
 </view>
 `;
 
-exports[`Toast Snap should render opened Toast -- props status : error  1`] = `
+exports[`Toast should render opened Toast with prop status -- error  1`] = `
 <view
   class="at-toast"
 >
@@ -102,7 +121,7 @@ exports[`Toast Snap should render opened Toast -- props status : error  1`] = `
 </view>
 `;
 
-exports[`Toast Snap should render opened Toast -- props status : loading  1`] = `
+exports[`Toast should render opened Toast with prop status -- loading  1`] = `
 <view
   class="at-toast"
 >
@@ -129,7 +148,7 @@ exports[`Toast Snap should render opened Toast -- props status : loading  1`] = 
 </view>
 `;
 
-exports[`Toast Snap should render opened Toast -- props status : success  1`] = `
+exports[`Toast should render opened Toast with prop status -- success  1`] = `
 <view
   class="at-toast"
 >
@@ -156,7 +175,7 @@ exports[`Toast Snap should render opened Toast -- props status : success  1`] = 
 </view>
 `;
 
-exports[`Toast Snap should render opened Toast -- props text 1`] = `
+exports[`Toast should render opened Toast with prop text 1`] = `
 <view
   class="at-toast"
 >
@@ -176,25 +195,6 @@ exports[`Toast Snap should render opened Toast -- props text 1`] = `
           测试数据Text
         </text>
       </view>
-    </view>
-  </view>
-</view>
-`;
-
-exports[`Toast Snap should render opened Toast 1`] = `
-<view
-  class="at-toast"
->
-  <!---->
-  <view
-    class="toast-body toast-body--text"
-  >
-    <view
-      class="toast-body-content"
-    >
-      <!---->
-      <!---->
-      
     </view>
   </view>
 </view>

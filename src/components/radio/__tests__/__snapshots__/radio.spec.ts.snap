@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtRadio Snap render AtRadio 1`] = `
+exports[`AtRadio should render AtRadio 1`] = `
 <view
   class="at-radio"
 >

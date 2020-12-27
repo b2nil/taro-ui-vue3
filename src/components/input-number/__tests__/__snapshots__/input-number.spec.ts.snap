@@ -1,6 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtInputNumber Snap render AtInputNumber -- props class 1`] = `
+exports[`AtInputNumber should render default AtInputNumber 1`] = `
+<view
+  class="at-input-number"
+>
+  <view
+    class="at-input-number__btn"
+  >
+    <text
+      class="at-icon at-icon-subtract at-input-number__btn-subtract"
+    />
+  </view>
+  <input
+    class="at-input-number__input"
+    style="width: 2.56rem;"
+    type="number"
+  />
+  <view
+    class="at-input-number__btn"
+  >
+    <text
+      class="at-icon at-icon-add at-input-number__btn-add"
+    />
+  </view>
+</view>
+`;
+
+exports[`AtInputNumber should render prop -- class 1`] = `
 <view
   class="test at-input-number test"
 >
@@ -26,7 +52,7 @@ exports[`AtInputNumber Snap render AtInputNumber -- props class 1`] = `
 </view>
 `;
 
-exports[`AtInputNumber Snap render AtInputNumber -- props disabled 1`] = `
+exports[`AtInputNumber should render prop -- disabled 1`] = `
 <view
   class="at-input-number"
 >
@@ -53,7 +79,7 @@ exports[`AtInputNumber Snap render AtInputNumber -- props disabled 1`] = `
 </view>
 `;
 
-exports[`AtInputNumber Snap render AtInputNumber -- props disabledInput 1`] = `
+exports[`AtInputNumber should render prop -- disabledInput 1`] = `
 <view
   class="at-input-number"
 >
@@ -80,7 +106,7 @@ exports[`AtInputNumber Snap render AtInputNumber -- props disabledInput 1`] = `
 </view>
 `;
 
-exports[`AtInputNumber Snap render AtInputNumber -- props size 1`] = `
+exports[`AtInputNumber should render prop -- size 1`] = `
 <view
   class="at-input-number at-input-number--lg"
 >
@@ -106,7 +132,7 @@ exports[`AtInputNumber Snap render AtInputNumber -- props size 1`] = `
 </view>
 `;
 
-exports[`AtInputNumber Snap render AtInputNumber -- props step 1`] = `
+exports[`AtInputNumber should render prop -- step 1`] = `
 <view
   class="at-input-number"
 >
@@ -132,7 +158,7 @@ exports[`AtInputNumber Snap render AtInputNumber -- props step 1`] = `
 </view>
 `;
 
-exports[`AtInputNumber Snap render AtInputNumber -- props style 1`] = `
+exports[`AtInputNumber should render prop -- style 1`] = `
 <view
   class="at-input-number"
 >
@@ -158,7 +184,7 @@ exports[`AtInputNumber Snap render AtInputNumber -- props style 1`] = `
 </view>
 `;
 
-exports[`AtInputNumber Snap render AtInputNumber -- props type(digit) 1`] = `
+exports[`AtInputNumber should render prop -- type(digit) 1`] = `
 <view
   class="at-input-number"
 >
@@ -184,7 +210,7 @@ exports[`AtInputNumber Snap render AtInputNumber -- props type(digit) 1`] = `
 </view>
 `;
 
-exports[`AtInputNumber Snap render AtInputNumber -- props type(number) 1`] = `
+exports[`AtInputNumber should render prop -- type(number) 1`] = `
 <view
   class="at-input-number"
 >
@@ -210,7 +236,7 @@ exports[`AtInputNumber Snap render AtInputNumber -- props type(number) 1`] = `
 </view>
 `;
 
-exports[`AtInputNumber Snap render AtInputNumber -- props value 1`] = `
+exports[`AtInputNumber should render prop -- value 1`] = `
 <view
   class="at-input-number"
 >
@@ -236,7 +262,7 @@ exports[`AtInputNumber Snap render AtInputNumber -- props value 1`] = `
 </view>
 `;
 
-exports[`AtInputNumber Snap render AtInputNumber -- props width 1`] = `
+exports[`AtInputNumber should render prop -- width 1`] = `
 <view
   class="at-input-number"
 >
@@ -250,32 +276,6 @@ exports[`AtInputNumber Snap render AtInputNumber -- props width 1`] = `
   <input
     class="at-input-number__input"
     style="width: 4.2667rem;"
-    type="number"
-  />
-  <view
-    class="at-input-number__btn"
-  >
-    <text
-      class="at-icon at-icon-add at-input-number__btn-add"
-    />
-  </view>
-</view>
-`;
-
-exports[`AtInputNumber Snap render initial AtInputNumber 1`] = `
-<view
-  class="at-input-number"
->
-  <view
-    class="at-input-number__btn"
-  >
-    <text
-      class="at-icon at-icon-subtract at-input-number__btn-subtract"
-    />
-  </view>
-  <input
-    class="at-input-number__input"
-    style="width: 2.56rem;"
     type="number"
   />
   <view

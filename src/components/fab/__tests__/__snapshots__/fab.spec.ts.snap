@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtFab Snap render AtFab -- default props 1`] = `
+exports[`AtFab should render default AtFab 1`] = `
 <view
   class="at-fab at-fab--normal"
 >
@@ -8,7 +8,7 @@ exports[`AtFab Snap render AtFab -- default props 1`] = `
 </view>
 `;
 
-exports[`AtFab Snap render AtFab -- props class 1`] = `
+exports[`AtFab should render prop -- class 1`] = `
 <view
   class="button at-fab at-fab--normal button"
 >
@@ -16,7 +16,7 @@ exports[`AtFab Snap render AtFab -- props class 1`] = `
 </view>
 `;
 
-exports[`AtFab Snap render AtFab -- props size small 1`] = `
+exports[`AtFab should render prop -- size small 1`] = `
 <view
   class="at-fab at-fab--small"
 >

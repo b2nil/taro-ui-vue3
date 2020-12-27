@@ -9,18 +9,18 @@ const factory = (values = {}, slots = { default: [] }) => {
   })
 }
 
-describe('Avatar Snap', () => {
-  it('should render Avatar -- props size(large) ', () => {
+describe('Avatar', () => {
+  it('should render prop -- size(large) ', () => {
     const wrapper = factory({ size: 'large' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render Avatar -- props size(normal) ', () => {
+  it('should render prop -- size(normal) ', () => {
     const wrapper = factory({ size: 'normal' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render Avatar -- props size(small) ', () => {
+  it('should render prop -- size(small) ', () => {
     const wrapper = factory({ size: 'small' })
     expect(wrapper.element).toMatchSnapshot()
   })
@@ -31,22 +31,22 @@ describe('Avatar Snap', () => {
     expect(wrapper.find('.at-avatar--normal').exists()).toBe(true)
   })
 
-  it('should render Avatar -- props circle', () => {
+  it('should render prop -- circle', () => {
     const wrapper = factory({ circle: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render Avatar -- props image', () => {
+  it('should render prop -- image', () => {
     const wrapper = factory({ image: 'https://jdc.jd.com/img/100' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render Avatar -- props text', () => {
+  it('should render prop -- text', () => {
     const wrapper = factory({ text: '凹凸实验室' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render Avatar -- props openData', () => {
+  it('should render prop -- openData', () => {
     jest.mock('../../../utils/common')
     const getEnvs = jest.spyOn(utils, 'getEnvs').mockImplementation(() => {
       return {

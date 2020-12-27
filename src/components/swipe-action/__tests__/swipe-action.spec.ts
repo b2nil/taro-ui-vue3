@@ -46,8 +46,8 @@ const MOVE_INFO = {
   pageY: DOM_INFO.height / 2,
 }
 
-describe('SwipeAction Snap', () => {
-  it('should render SwipeAction -- props options', () => {
+describe('SwipeAction', () => {
+  it('should render prop -- options', () => {
     const wrapper = factory(
       {
         disabled: true,

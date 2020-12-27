@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtTag Snap render AtTag -- props active 1`] = `
+exports[`AtTag should render prop -- active 1`] = `
 <view
   class="at-tag at-tag--normal at-tag--active"
 >
@@ -8,7 +8,7 @@ exports[`AtTag Snap render AtTag -- props active 1`] = `
 </view>
 `;
 
-exports[`AtTag Snap render AtTag -- props circle 1`] = `
+exports[`AtTag should render prop -- circle 1`] = `
 <view
   class="at-tag at-tag--normal at-tag--circle"
 >
@@ -16,7 +16,7 @@ exports[`AtTag Snap render AtTag -- props circle 1`] = `
 </view>
 `;
 
-exports[`AtTag Snap render AtTag -- props disabled 1`] = `
+exports[`AtTag should render prop -- disabled 1`] = `
 <view
   class="at-tag at-tag--normal at-tag--disabled"
 >
@@ -24,7 +24,7 @@ exports[`AtTag Snap render AtTag -- props disabled 1`] = `
 </view>
 `;
 
-exports[`AtTag Snap render AtTag -- props name 1`] = `
+exports[`AtTag should render prop -- name 1`] = `
 <view
   class="at-tag at-tag--normal"
 >
@@ -32,7 +32,7 @@ exports[`AtTag Snap render AtTag -- props name 1`] = `
 </view>
 `;
 
-exports[`AtTag Snap render AtTag -- props size 1`] = `
+exports[`AtTag should render prop -- size 1`] = `
 <view
   class="at-tag at-tag--small"
 >
@@ -40,7 +40,7 @@ exports[`AtTag Snap render AtTag -- props size 1`] = `
 </view>
 `;
 
-exports[`AtTag Snap render AtTag -- props type 1`] = `
+exports[`AtTag should render prop -- type 1`] = `
 <view
   class="at-tag at-tag--normal at-tag--primary"
 >

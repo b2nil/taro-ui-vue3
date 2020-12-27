@@ -10,48 +10,48 @@ const factory = (values = {}, slots: Slots = { default: [] }) => {
   )
 }
 
-describe('AtDivider Snap', () => {
-  it('should render initial AtDivider', () => {
+describe('AtDivider', () => {
+  it('should render default AtDivider', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtDivider -- props class', () => {
+  it('should render prop -- class', () => {
     const wrapper = factory({ class: 'test' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtDivider -- props style', () => {
+  it('should render prop -- style', () => {
     const wrapper = factory({ style: 'color:red;' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtDivider -- props content', () => {
+  it('should render prop -- content', () => {
     const wrapper = factory({ content: 'content' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtDivider -- props height', () => {
+  it('should render prop -- height', () => {
     const wrapper = factory({ height: '120' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtDivider -- props fontColor', () => {
+  it('should render prop -- fontColor', () => {
     const wrapper = factory({ fontColor: '#fff' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtDivider -- props fontSize', () => {
+  it('should render prop -- fontSize', () => {
     const wrapper = factory({ fontSize: '56' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtDivider -- props lineColor', () => {
+  it('should render prop -- lineColor', () => {
     const wrapper = factory({ lineColor: '#fff' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtDivider -- props childen', () => {
+  it('should render prop -- childen', () => {
     const wrapper = factory({ childen: 'content' }, { default: ['test'] })
     expect(wrapper.element).toMatchSnapshot()
   })

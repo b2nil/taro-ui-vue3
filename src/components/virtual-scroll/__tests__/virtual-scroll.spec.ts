@@ -123,7 +123,7 @@ describe('AtVirtualScroll', () => {
   })
 })
 
-describe('AtVirtualScroll Events', () => {
+describe('AtVirtualScroll Behavior', () => {
   it('should trigger onReachTop event', async () => {
     const onReachTop = jest.fn()
 

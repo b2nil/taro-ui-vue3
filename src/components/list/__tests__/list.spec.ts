@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils'
 import AtList from '../index'
 import AtListItem from '../item'
 
-describe('List Snap', () => {
+describe('List', () => {
   it('should render the complete List', () => {
     const wrapper = mount({
       data() {
@@ -75,7 +75,7 @@ describe('List Snap', () => {
 })
 
 describe('List Behavior ', () => {
-  it('ListItem onClick should be called', () => {
+  it('should trigger onClick event on ListItem', () => {
     const onClick = jest.fn()
     const wrapper = mount({
       components: {
@@ -95,7 +95,7 @@ describe('List Behavior ', () => {
     expect(onClick).toBeCalled()
   })
 
-  it('ListItem onSwitchChange should be called', async () => {
+  it('should trigger onSwitchChange event on ListItem', async () => {
 
     const wrapper = mount({
       data: () => ({

@@ -1,6 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtInput Snap should render AtInput -- props border 1`] = `
+exports[`AtInput should render default AtInput 1`] = `
+<view
+  class="at-input at-input--without-border"
+>
+  <view
+    class="at-input__container"
+  >
+    <view
+      class="at-input__overlay at-input__overlay--hidden"
+    />
+    <!---->
+    <input
+      adjustposition="false"
+      autofocus="false"
+      class="at-input__input"
+      confirmtype="done"
+      cursor="0"
+      cursorspacing="50"
+      id="weui-input_2020"
+      maxlength="140"
+      name=""
+      password="false"
+      placeholder=""
+      placeholderclass="placeholder "
+      placeholderstyle=""
+      type="text"
+    />
+    <!---->
+    <!---->
+    <view
+      class="at-input__children"
+    />
+  </view>
+</view>
+`;
+
+exports[`AtInput should render prop -- border 1`] = `
 <view
   class="at-input"
 >
@@ -36,7 +72,7 @@ exports[`AtInput Snap should render AtInput -- props border 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap should render AtInput -- props clear 1`] = `
+exports[`AtInput should render prop -- clear 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -72,7 +108,7 @@ exports[`AtInput Snap should render AtInput -- props clear 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap should render AtInput -- props disabled 1`] = `
+exports[`AtInput should render prop -- disabled 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -108,7 +144,7 @@ exports[`AtInput Snap should render AtInput -- props disabled 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap should render AtInput -- props editable 1`] = `
+exports[`AtInput should render prop -- editable 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -144,7 +180,7 @@ exports[`AtInput Snap should render AtInput -- props editable 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap should render AtInput -- props error 1`] = `
+exports[`AtInput should render prop -- error 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -186,7 +222,7 @@ exports[`AtInput Snap should render AtInput -- props error 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap should render AtInput -- props maxLength 1`] = `
+exports[`AtInput should render prop -- maxLength 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -222,7 +258,7 @@ exports[`AtInput Snap should render AtInput -- props maxLength 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap should render AtInput -- props name 1`] = `
+exports[`AtInput should render prop -- name 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -258,7 +294,7 @@ exports[`AtInput Snap should render AtInput -- props name 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap should render AtInput -- props placeholder 1`] = `
+exports[`AtInput should render prop -- placeholder 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -294,7 +330,7 @@ exports[`AtInput Snap should render AtInput -- props placeholder 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap should render AtInput -- props required 1`] = `
+exports[`AtInput should render prop -- required 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -330,7 +366,7 @@ exports[`AtInput Snap should render AtInput -- props required 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap should render AtInput -- props style 1`] = `
+exports[`AtInput should render prop -- style 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -366,7 +402,7 @@ exports[`AtInput Snap should render AtInput -- props style 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap should render AtInput -- props title 1`] = `
+exports[`AtInput should render prop -- title 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -407,7 +443,7 @@ exports[`AtInput Snap should render AtInput -- props title 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap should render AtInput -- props type(digit) 1`] = `
+exports[`AtInput should render prop -- type(digit) 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -443,7 +479,7 @@ exports[`AtInput Snap should render AtInput -- props type(digit) 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap should render AtInput -- props type(idcard) 1`] = `
+exports[`AtInput should render prop -- type(idcard) 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -479,7 +515,7 @@ exports[`AtInput Snap should render AtInput -- props type(idcard) 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap should render AtInput -- props type(number) 1`] = `
+exports[`AtInput should render prop -- type(number) 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -515,7 +551,7 @@ exports[`AtInput Snap should render AtInput -- props type(number) 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap should render AtInput -- props type(password) 1`] = `
+exports[`AtInput should render prop -- type(password) 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -551,7 +587,7 @@ exports[`AtInput Snap should render AtInput -- props type(password) 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap should render AtInput -- props type(phone) 1`] = `
+exports[`AtInput should render prop -- type(phone) 1`] = `
 <view
   class="at-input at-input--without-border"
 >
@@ -587,43 +623,7 @@ exports[`AtInput Snap should render AtInput -- props type(phone) 1`] = `
 </view>
 `;
 
-exports[`AtInput Snap should render AtInput -- props value 1`] = `
-<view
-  class="at-input at-input--without-border"
->
-  <view
-    class="at-input__container"
-  >
-    <view
-      class="at-input__overlay at-input__overlay--hidden"
-    />
-    <!---->
-    <input
-      adjustposition="false"
-      autofocus="false"
-      class="at-input__input"
-      confirmtype="done"
-      cursor="0"
-      cursorspacing="50"
-      id="weui-input_2020"
-      maxlength="140"
-      name=""
-      password="false"
-      placeholder=""
-      placeholderclass="placeholder "
-      placeholderstyle=""
-      type="text"
-    />
-    <!---->
-    <!---->
-    <view
-      class="at-input__children"
-    />
-  </view>
-</view>
-`;
-
-exports[`AtInput Snap should render initial AtInput 1`] = `
+exports[`AtInput should render prop -- value 1`] = `
 <view
   class="at-input at-input--without-border"
 >

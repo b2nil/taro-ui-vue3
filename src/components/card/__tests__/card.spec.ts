@@ -1,7 +1,10 @@
 import { mount } from '@vue/test-utils'
 import AtCard from '../index'
 
-const factory = (values = {}, slots = { default: ['这也是内容区 可以随意定义功能'] }) => {
+const factory = (
+  values = {},
+  slots = { default: ['这也是内容区 可以随意定义功能'] }
+) => {
   return mount(AtCard as any, {
     global: {
       components: {}
@@ -11,13 +14,13 @@ const factory = (values = {}, slots = { default: ['这也是内容区 可以随�
   })
 }
 
-describe('Card Snap', () => {
-  it('should render initial Card', () => {
+describe('Card', () => {
+  it('should render default Card', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render Card -- props thumb', () => {
+  it('should render prop -- thumb', () => {
     const wrapper = factory({
       thumb:
         'http://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png',
@@ -25,7 +28,7 @@ describe('Card Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render Card -- props note', () => {
+  it('should render prop -- note', () => {
     const wrapper = factory({
       note: '小Tips',
       thumb:
@@ -34,7 +37,7 @@ describe('Card Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render Card -- props extra', () => {
+  it('should render prop -- extra', () => {
     const wrapper = factory({
       note: '小Tips',
       extra: '额外信息',
@@ -44,7 +47,7 @@ describe('Card Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render Card -- props isFull', () => {
+  it('should render prop -- isFull', () => {
     const wrapper = factory({
       isFull: true,
       note: '小Tips',
@@ -55,7 +58,7 @@ describe('Card Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render Card -- props extraStyle', () => {
+  it('should render prop -- extraStyle', () => {
     const wrapper = factory({
       isFull: true,
       note: '小Tips',
@@ -69,14 +72,14 @@ describe('Card Snap', () => {
 })
 
 describe('Card Behavior ', () => {
-  it('Card onClick', () => {
+  it('should trigger onClick', async () => {
     const onClick = jest.fn()
 
     const wrapper = factory({
       onClick: onClick,
     })
-    wrapper.find('.at-card').trigger('tap')
 
+    await wrapper.find('.at-card').trigger('tap')
     expect(onClick).toBeCalled()
   })
 })

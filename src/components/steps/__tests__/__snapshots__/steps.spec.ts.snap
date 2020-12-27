@@ -1,12 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtSteps Snap render AtSteps -- props class 1`] = `
+exports[`AtSteps should render default AtSteps 1`] = `
+<view
+  class="at-steps"
+/>
+`;
+
+exports[`AtSteps should render prop -- class 1`] = `
 <view
   class="test at-steps test"
 />
 `;
 
-exports[`AtSteps Snap render AtSteps -- props current 1`] = `
+exports[`AtSteps should render prop -- current 1`] = `
 <view
   class="at-steps"
 >
@@ -102,7 +108,7 @@ exports[`AtSteps Snap render AtSteps -- props current 1`] = `
 </view>
 `;
 
-exports[`AtSteps Snap render AtSteps -- props items 1`] = `
+exports[`AtSteps should render prop -- items 1`] = `
 <view
   class="at-steps"
 >
@@ -198,7 +204,7 @@ exports[`AtSteps Snap render AtSteps -- props items 1`] = `
 </view>
 `;
 
-exports[`AtSteps Snap render AtSteps -- props items 2`] = `
+exports[`AtSteps should render prop -- items 2`] = `
 <view
   class="at-steps"
 >
@@ -300,15 +306,9 @@ exports[`AtSteps Snap render AtSteps -- props items 2`] = `
 </view>
 `;
 
-exports[`AtSteps Snap render AtSteps -- props style 1`] = `
+exports[`AtSteps should render prop -- style 1`] = `
 <view
   class="at-steps"
   style="color: red;"
-/>
-`;
-
-exports[`AtSteps Snap render initial AtSteps 1`] = `
-<view
-  class="at-steps"
 />
 `;

@@ -1,6 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtDivider Snap should render AtDivider -- props childen 1`] = `
+exports[`AtDivider should render default AtDivider 1`] = `
+<view
+  class="at-divider"
+>
+  <view
+    class="at-divider__content"
+  />
+  <view
+    class="at-divider__line"
+  />
+</view>
+`;
+
+exports[`AtDivider should render prop -- childen 1`] = `
 <view
   childen="content"
   class="at-divider"
@@ -16,7 +29,7 @@ exports[`AtDivider Snap should render AtDivider -- props childen 1`] = `
 </view>
 `;
 
-exports[`AtDivider Snap should render AtDivider -- props class 1`] = `
+exports[`AtDivider should render prop -- class 1`] = `
 <view
   class="test at-divider test"
 >
@@ -29,7 +42,7 @@ exports[`AtDivider Snap should render AtDivider -- props class 1`] = `
 </view>
 `;
 
-exports[`AtDivider Snap should render AtDivider -- props content 1`] = `
+exports[`AtDivider should render prop -- content 1`] = `
 <view
   class="at-divider"
 >
@@ -44,7 +57,7 @@ exports[`AtDivider Snap should render AtDivider -- props content 1`] = `
 </view>
 `;
 
-exports[`AtDivider Snap should render AtDivider -- props fontColor 1`] = `
+exports[`AtDivider should render prop -- fontColor 1`] = `
 <view
   class="at-divider"
 >
@@ -58,7 +71,7 @@ exports[`AtDivider Snap should render AtDivider -- props fontColor 1`] = `
 </view>
 `;
 
-exports[`AtDivider Snap should render AtDivider -- props fontSize 1`] = `
+exports[`AtDivider should render prop -- fontSize 1`] = `
 <view
   class="at-divider"
 >
@@ -72,7 +85,7 @@ exports[`AtDivider Snap should render AtDivider -- props fontSize 1`] = `
 </view>
 `;
 
-exports[`AtDivider Snap should render AtDivider -- props height 1`] = `
+exports[`AtDivider should render prop -- height 1`] = `
 <view
   class="at-divider"
   style="height: 2.56rem;"
@@ -86,7 +99,7 @@ exports[`AtDivider Snap should render AtDivider -- props height 1`] = `
 </view>
 `;
 
-exports[`AtDivider Snap should render AtDivider -- props lineColor 1`] = `
+exports[`AtDivider should render prop -- lineColor 1`] = `
 <view
   class="at-divider"
 >
@@ -100,23 +113,10 @@ exports[`AtDivider Snap should render AtDivider -- props lineColor 1`] = `
 </view>
 `;
 
-exports[`AtDivider Snap should render AtDivider -- props style 1`] = `
+exports[`AtDivider should render prop -- style 1`] = `
 <view
   class="at-divider"
   style="color: red;"
->
-  <view
-    class="at-divider__content"
-  />
-  <view
-    class="at-divider__line"
-  />
-</view>
-`;
-
-exports[`AtDivider Snap should render initial AtDivider 1`] = `
-<view
-  class="at-divider"
 >
   <view
     class="at-divider__content"

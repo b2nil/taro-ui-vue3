@@ -1,6 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtTabsPane Snap render AtTabsPane -- props class 1`] = `
+exports[`AtTabsPane should render default AtTabs 1`] = `
+<view
+  class="at-tabs-pane at-tabs-pane--active"
+>
+  test
+</view>
+`;
+
+exports[`AtTabsPane should render prop -- class 1`] = `
 <view
   class="test at-tabs-pane at-tabs-pane--active test"
 >
@@ -8,7 +16,7 @@ exports[`AtTabsPane Snap render AtTabsPane -- props class 1`] = `
 </view>
 `;
 
-exports[`AtTabsPane Snap render AtTabsPane -- props index current 1`] = `
+exports[`AtTabsPane should render prop -- index current 1`] = `
 <view
   class="at-tabs-pane at-tabs-pane--active"
 >
@@ -16,7 +24,7 @@ exports[`AtTabsPane Snap render AtTabsPane -- props index current 1`] = `
 </view>
 `;
 
-exports[`AtTabsPane Snap render AtTabsPane -- props index current 2`] = `
+exports[`AtTabsPane should render prop -- index current 2`] = `
 <view
   class="at-tabs-pane at-tabs-pane--inactive"
 >
@@ -24,19 +32,11 @@ exports[`AtTabsPane Snap render AtTabsPane -- props index current 2`] = `
 </view>
 `;
 
-exports[`AtTabsPane Snap render AtTabsPane -- props style 1`] = `
+exports[`AtTabsPane should render prop -- style 1`] = `
 <view
   class="at-tabs-pane at-tabs-pane--active"
   style="color: red;"
 >
   
-</view>
-`;
-
-exports[`AtTabsPane Snap render initial AtTabs 1`] = `
-<view
-  class="at-tabs-pane at-tabs-pane--active"
->
-  test
 </view>
 `;

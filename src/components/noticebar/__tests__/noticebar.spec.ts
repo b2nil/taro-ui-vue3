@@ -8,36 +8,36 @@ const factory = (values = {}, slots = { default: ['这是内容'] }) => {
   })
 }
 
-describe('AtNoticebar Snap', () => {
-  it('should render AtNoticebar -- props show', () => {
+describe('AtNoticebar', () => {
+  it('should render prop -- show', () => {
     const wrapper = factory({ close: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtNoticebar -- props single', () => {
+  it('should render prop -- single', () => {
     const wrapper = factory({ single: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtNoticebar -- props speed', () => {
+  it('should render prop -- speed', () => {
     const wrapper = factory({ speed: 200 })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtNoticebar -- props moreText & showMore', () => {
+  it('should render prop -- moreText & showMore', () => {
     // showMore work only when single is true
     const wrapper = factory({ moreText: '查看更多', showMore: true, single: true })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtNoticebar -- props icon', () => {
+  it('should render prop -- icon', () => {
     const wrapper = factory({ icon: 'volume-plus' })
     expect(wrapper.element).toMatchSnapshot()
   })
 })
 
-describe('AtNoticebar Event', () => {
-  it('AtNoticebar onClose', () => {
+describe('AtNoticebar Behavior', () => {
+  it('should trigger onClose', () => {
     const onClose = jest.fn()
     const wrapper = factory({
       close: true,
@@ -47,7 +47,7 @@ describe('AtNoticebar Event', () => {
     expect(onClose).toBeCalled()
   })
 
-  it('AtNoticebar onGotoMore', () => {
+  it('should trigger onGotoMore', () => {
     const onGotoMore = jest.fn()
     const wrapper = factory({
       icon: 'volume-plus',

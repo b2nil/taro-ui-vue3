@@ -8,7 +8,7 @@ const options = [
   { label: '单选项三', value: 'option3', desc: '单选项描述三', disabled: true },
 ]
 
-describe('AtRadio Snap', () => {
+describe('AtRadio', () => {
   it('should render AtRadio', () => {
     const wrapper = mount({
       render() {
@@ -19,8 +19,8 @@ describe('AtRadio Snap', () => {
   })
 })
 
-describe('AtRadio Event', () => {
-  it('AtRadio onClick', () => {
+describe('AtRadio Behavior', () => {
+  it('should trigger onClick', () => {
     const onItemClick = jest.fn()
     const wrapper = mount({
       render() {

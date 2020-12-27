@@ -12,33 +12,33 @@ const factory = (values = {}, slots = { default: [] }) => {
   })
 }
 
-describe('ActivityIndicator Snap', () => {
-  it('should render initial ActivityIndicator', () => {
+describe('ActivityIndicator', () => {
+  it('should render default ActivityIndicator', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render ActivityIndicator -- props size', () => {
+  it('should render prop -- size', () => {
     const wrapper = factory({ size: 32 })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render ActivityIndicator -- props color', () => {
+  it('should render prop -- color', () => {
     const wrapper = factory({ color: '#13CE66' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render ActivityIndicator -- props content', () => {
+  it('should render prop -- content', () => {
     const wrapper = factory({ content: '加载中...' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render ActivityIndicator -- props mode', () => {
+  it('should render prop -- mode', () => {
     const wrapper = factory({ mode: 'center' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render ActivityIndicator -- props isOpened', () => {
+  it('should render prop -- isOpened', () => {
     const wrapper = factory({ isOpened: true })
     expect(wrapper.element).toMatchSnapshot()
   })

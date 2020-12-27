@@ -11,18 +11,18 @@ const factory = (values = {}, slots = { default: [] }) => {
   })
 }
 
-describe('AtMessage Snap', () => {
-  it('should render initial AtMessage', () => {
+describe('AtMessage', () => {
+  it('should render default AtMessage', () => {
     const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtMessage -- props class', () => {
+  it('should render prop -- class', () => {
     const wrapper = factory({ class: 'test' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render AtMessage -- props style', () => {
+  it('should render prop -- style', () => {
     const wrapper = factory({ style: 'color:red;' })
     expect(wrapper.element).toMatchSnapshot()
   })

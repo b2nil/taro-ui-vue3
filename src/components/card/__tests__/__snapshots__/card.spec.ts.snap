@@ -1,6 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Card Snap render Card -- props extra 1`] = `
+exports[`Card should render default Card 1`] = `
+<view
+  class="at-card"
+>
+  <view
+    class="at-card__header"
+  >
+    
+    <!---->
+    <!---->
+    <text
+      class="at-card__header-title"
+    >
+      这是个标题
+    </text>
+    
+  </view>
+  <view
+    class="at-card__content"
+  >
+    <view
+      class="at-card__content-info"
+    >
+      这也是内容区 可以随意定义功能
+    </view>
+    
+  </view>
+</view>
+`;
+
+exports[`Card should render prop -- extra 1`] = `
 <view
   class="at-card"
 >
@@ -46,7 +76,7 @@ exports[`Card Snap render Card -- props extra 1`] = `
 </view>
 `;
 
-exports[`Card Snap render Card -- props extraStyle 1`] = `
+exports[`Card should render prop -- extraStyle 1`] = `
 <view
   class="at-card at-card--full"
 >
@@ -93,7 +123,7 @@ exports[`Card Snap render Card -- props extraStyle 1`] = `
 </view>
 `;
 
-exports[`Card Snap render Card -- props isFull 1`] = `
+exports[`Card should render prop -- isFull 1`] = `
 <view
   class="at-card at-card--full"
 >
@@ -139,7 +169,7 @@ exports[`Card Snap render Card -- props isFull 1`] = `
 </view>
 `;
 
-exports[`Card Snap render Card -- props note 1`] = `
+exports[`Card should render prop -- note 1`] = `
 <view
   class="at-card"
 >
@@ -181,7 +211,7 @@ exports[`Card Snap render Card -- props note 1`] = `
 </view>
 `;
 
-exports[`Card Snap render Card -- props thumb 1`] = `
+exports[`Card should render prop -- thumb 1`] = `
 <view
   class="at-card"
 >
@@ -197,36 +227,6 @@ exports[`Card Snap render Card -- props thumb 1`] = `
         src="http://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png"
       />
     </view>
-    <!---->
-    <!---->
-    <text
-      class="at-card__header-title"
-    >
-      这是个标题
-    </text>
-    
-  </view>
-  <view
-    class="at-card__content"
-  >
-    <view
-      class="at-card__content-info"
-    >
-      这也是内容区 可以随意定义功能
-    </view>
-    
-  </view>
-</view>
-`;
-
-exports[`Card Snap render initial Card 1`] = `
-<view
-  class="at-card"
->
-  <view
-    class="at-card__header"
-  >
-    
     <!---->
     <!---->
     <text

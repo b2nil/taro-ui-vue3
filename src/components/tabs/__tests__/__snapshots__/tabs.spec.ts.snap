@@ -1,6 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtTabs Snap render AtTabs -- props animated 1`] = `
+exports[`AtTabs should render default AtTabs 1`] = `
+<view
+  class="at-tabs at-tabs--horizontal at-tabs--WEB"
+>
+  <view
+    class="at-tabs__header"
+    id="tabs-AOTU2018"
+  />
+  <view
+    class="at-tabs__body"
+    style="transform: translate3d(-0%, 0px, 0px);"
+  >
+    <view
+      class="at-tabs__underline"
+      style="width: 0%;"
+    />
+    
+    
+  </view>
+</view>
+`;
+
+exports[`AtTabs should render prop -- animated 1`] = `
 <view
   class="at-tabs at-tabs--horizontal at-tabs--WEB"
 >
@@ -62,7 +84,7 @@ exports[`AtTabs Snap render AtTabs -- props animated 1`] = `
 </view>
 `;
 
-exports[`AtTabs Snap render AtTabs -- props class 1`] = `
+exports[`AtTabs should render prop -- class 1`] = `
 <view
   class="test at-tabs at-tabs--horizontal at-tabs--WEB test"
 >
@@ -84,7 +106,7 @@ exports[`AtTabs Snap render AtTabs -- props class 1`] = `
 </view>
 `;
 
-exports[`AtTabs Snap render AtTabs -- props current 1`] = `
+exports[`AtTabs should render prop -- current 1`] = `
 <view
   class="at-tabs at-tabs--horizontal at-tabs--WEB"
 >
@@ -146,7 +168,7 @@ exports[`AtTabs Snap render AtTabs -- props current 1`] = `
 </view>
 `;
 
-exports[`AtTabs Snap render AtTabs -- props height 1`] = `
+exports[`AtTabs should render prop -- height 1`] = `
 <view
   class="at-tabs at-tabs--vertical at-tabs--WEB"
   style="height: 300px;"
@@ -209,7 +231,7 @@ exports[`AtTabs Snap render AtTabs -- props height 1`] = `
 </view>
 `;
 
-exports[`AtTabs Snap render AtTabs -- props style 1`] = `
+exports[`AtTabs should render prop -- style 1`] = `
 <view
   class="at-tabs at-tabs--horizontal at-tabs--WEB"
   style="color: red;"
@@ -232,7 +254,7 @@ exports[`AtTabs Snap render AtTabs -- props style 1`] = `
 </view>
 `;
 
-exports[`AtTabs Snap render AtTabs -- props swipeable 1`] = `
+exports[`AtTabs should render prop -- swipeable 1`] = `
 <view
   class="at-tabs at-tabs--horizontal at-tabs--WEB"
 >
@@ -294,7 +316,7 @@ exports[`AtTabs Snap render AtTabs -- props swipeable 1`] = `
 </view>
 `;
 
-exports[`AtTabs Snap render AtTabs -- props tabDirection 1`] = `
+exports[`AtTabs should render prop -- tabDirection 1`] = `
 <view
   class="at-tabs at-tabs--vertical at-tabs--WEB"
 >
@@ -356,7 +378,7 @@ exports[`AtTabs Snap render AtTabs -- props tabDirection 1`] = `
 </view>
 `;
 
-exports[`AtTabs Snap render AtTabs -- props tabList 1`] = `
+exports[`AtTabs should render prop -- tabList 1`] = `
 <view
   class="at-tabs at-tabs--horizontal at-tabs--WEB"
 >
@@ -411,28 +433,6 @@ exports[`AtTabs Snap render AtTabs -- props tabList 1`] = `
     <view
       class="at-tabs__underline"
       style="width: 300%;"
-    />
-    
-    
-  </view>
-</view>
-`;
-
-exports[`AtTabs Snap render initial AtTabs 1`] = `
-<view
-  class="at-tabs at-tabs--horizontal at-tabs--WEB"
->
-  <view
-    class="at-tabs__header"
-    id="tabs-AOTU2018"
-  />
-  <view
-    class="at-tabs__body"
-    style="transform: translate3d(-0%, 0px, 0px);"
-  >
-    <view
-      class="at-tabs__underline"
-      style="width: 0%;"
     />
     
     

@@ -13,8 +13,8 @@ const components = {
   AtModalContent,
 }
 
-describe('Modal Snap', () => {
-  it('should render initial Modal', () => {
+describe('Modal', () => {
+  it('should render default Modal', () => {
     const wrapper = mount({
       components,
       render() {
@@ -70,7 +70,7 @@ describe('Modal Snap', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render opened Modal -- not header', () => {
+  it('should render opened Modal -- no header', () => {
     const wrapper = mount({
       components,
       render() {
@@ -143,7 +143,7 @@ describe('Modal Snap', () => {
 })
 
 describe('Modal Behavior ', () => {
-  it('Modal onClose & onCancel & onClick', async () => {
+  it('should trigger onClose & onCancel & onClick', async () => {
     const onCancel = jest.fn()
     const onConfirm = jest.fn()
     const onClose = jest.fn()

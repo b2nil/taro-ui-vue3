@@ -1,6 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FloatLayout Snap render FloatLayout -- props isOpened 1`] = `
+exports[`FloatLayout should render default FloatLayout 1`] = `
+<view
+  class="at-float-layout"
+>
+  <view
+    class="at-float-layout__overlay"
+  />
+  <view
+    class="at-float-layout__container layout"
+  >
+    
+    <view
+      class="layout-body"
+    >
+      <scroll-view
+        class="layout-body__content"
+        scrollwithanimation="false"
+        scrollx="false"
+        scrolly="true"
+      >
+        这是内容区 随你怎么写这是内容区 随你怎么写这是内容区
+随你怎么写这是内容区 随你怎么写这是内容区 随你怎么写这是内容区
+随你怎么写
+      </scroll-view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`FloatLayout should render prop -- isOpened 1`] = `
 <view
   class="at-float-layout at-float-layout--active"
 >
@@ -29,7 +58,7 @@ exports[`FloatLayout Snap render FloatLayout -- props isOpened 1`] = `
 </view>
 `;
 
-exports[`FloatLayout Snap render FloatLayout -- props title 1`] = `
+exports[`FloatLayout should render prop -- title 1`] = `
 <view
   class="at-float-layout at-float-layout--active"
 >
@@ -51,35 +80,6 @@ exports[`FloatLayout Snap render FloatLayout -- props title 1`] = `
         class="layout-header__btn-close"
       />
     </view>
-    <view
-      class="layout-body"
-    >
-      <scroll-view
-        class="layout-body__content"
-        scrollwithanimation="false"
-        scrollx="false"
-        scrolly="true"
-      >
-        这是内容区 随你怎么写这是内容区 随你怎么写这是内容区
-随你怎么写这是内容区 随你怎么写这是内容区 随你怎么写这是内容区
-随你怎么写
-      </scroll-view>
-    </view>
-  </view>
-</view>
-`;
-
-exports[`FloatLayout Snap render initial FloatLayout 1`] = `
-<view
-  class="at-float-layout"
->
-  <view
-    class="at-float-layout__overlay"
-  />
-  <view
-    class="at-float-layout__container layout"
-  >
-    
     <view
       class="layout-body"
     >
