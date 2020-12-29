@@ -29,14 +29,8 @@ const AtCalendar = defineComponent({
       type: [Number, String, Date, Object] as PropType<AtCalendarProps['currentDate']>,
       default: Date.now() as Calendar.DateArg
     },
-    minDate: {
-      type: [String, Number, Date] as PropType<AtCalendarProps['minDate']>,
-      default: () => ''
-    },
-    maxDate: {
-      type: [String, Number, Date] as PropType<AtCalendarProps['maxDate']>,
-      default: () => ''
-    },
+    minDate: [String, Number, Date] as PropType<AtCalendarProps['minDate']>,
+    maxDate: [String, Number, Date] as PropType<AtCalendarProps['maxDate']>,
     isSwiper: {
       type: Boolean,
       default: true
@@ -65,30 +59,12 @@ const AtCalendar = defineComponent({
       default: () => []
     },
     // 事件        
-    onClickPreMonth: {
-      type: Function as PropType<AtCalendarProps['onClickPreMonth']>,
-      default: () => () => { }
-    },
-    onClickNextMonth: {
-      type: Function as PropType<AtCalendarProps['onClickNextMonth']>,
-      default: () => () => { }
-    },
-    onDayClick: {
-      type: Function as PropType<AtCalendarProps['onDayClick']>,
-      default: () => () => { }
-    },
-    onDayLongClick: {
-      type: Function as PropType<AtCalendarProps['onDayLongClick']>,
-      default: () => () => { }
-    },
-    onMonthChange: {
-      type: Function as PropType<AtCalendarProps['onMonthChange']>,
-      default: () => () => { }
-    },
-    onSelectDate: {
-      type: Function as PropType<AtCalendarProps['onSelectDate']>,
-      default: () => () => { }
-    }
+    onClickPreMonth: Function as PropType<AtCalendarProps['onClickPreMonth']>,
+    onClickNextMonth: Function as PropType<AtCalendarProps['onClickNextMonth']>,
+    onDayClick: Function as PropType<AtCalendarProps['onDayClick']>,
+    onDayLongClick: Function as PropType<AtCalendarProps['onDayLongClick']>,
+    onMonthChange: Function as PropType<AtCalendarProps['onMonthChange']>,
+    onSelectDate: Function as PropType<AtCalendarProps['onSelectDate']>
   },
 
   setup(props: AtCalendarProps, { attrs }) {
