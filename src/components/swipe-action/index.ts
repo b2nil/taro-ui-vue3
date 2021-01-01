@@ -85,9 +85,11 @@ const AtSwipeAction = defineComponent({
         }),
         delayGetScrollOffset({ delayTime: 0 })
       ]).then(([rect, scrollOffset]) => {
-        rect[0].top += scrollOffset[0].scrollTop
-        rect[0].bottom += scrollOffset[0].scrollTop
-        domInfo.value = rect[0]
+        if (rect[0]) {
+          rect[0].top += scrollOffset[0].scrollTop
+          rect[0].bottom += scrollOffset[0].scrollTop
+          domInfo.value = rect[0]
+        }
       })
     }
 
