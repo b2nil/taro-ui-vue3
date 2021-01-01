@@ -29,7 +29,7 @@ function pxTransform(size: number, designWidth?: number): string {
   return Taro.pxTransform(size, designWidth)
 }
 
-function delay(delayTime = 500): Promise<null> {
+function delay(delayTime = 500): Promise<void> {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve()
@@ -37,7 +37,7 @@ function delay(delayTime = 500): Promise<null> {
   })
 }
 
-function delayQuerySelector(_, selectorStr: string, delayTime = 500): Promise<[]> {
+function delayQuerySelector(_, selectorStr: string, delayTime = 500): Promise<any[]> {
   false && console.log(_)
   const selector: SelectorQuery = Taro.createSelectorQuery()
 
