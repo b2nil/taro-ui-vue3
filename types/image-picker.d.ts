@@ -46,14 +46,22 @@ export interface AtImagePickerProps extends AtComponent {
   count?: number
   /**
    * 所选的图片的尺寸
+   * - `original`: 原图
+   * - `compressed`: 压缩图
+   * @default ["original", "compressed"]
    * @since v2.0.2
    */
-  sizeType?: string[]
+  sizeType?: ("original" | "compressed")[]
   /**
    * 选择图片的来源
+   * - `album`: 从相册选图   
+   * - `camera`: 使用相机   
+   * - `user`: 使用前置摄像头 (仅H5纯浏览器使用)   
+   * - `environment`: 使用后置摄像头 (仅H5纯浏览器) 
+   * @default ["album", "camera"]  
    * @since v2.0.2
    */
-  sourceType?: string[]
+  sourceType?: ("album" | "camera" | "user" | "environment")[]
   /**
    * files 值发生变化触发的回调函数, operationType 操作类型有添加，移除，如果是移除操作，则第三个参数代表的是移除图片的索引
    */
