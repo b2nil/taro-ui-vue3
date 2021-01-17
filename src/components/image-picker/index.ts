@@ -80,14 +80,8 @@ const AtImagePicker = defineComponent({
       default: () => () => { },
       required: true
     },
-    onImageClick: {
-      type: Function as PropType<AtImagePickerProps['onImageClick']>,
-      default: () => () => { }
-    },
-    onFail: {
-      type: Function as PropType<AtImagePickerProps['onFail']>,
-      default: () => () => { }
-    },
+    onImageClick: Function as PropType<AtImagePickerProps['onImageClick']>,
+    onFail: Function as PropType<AtImagePickerProps['onFail']>,
   },
 
   setup(props: AtImagePickerProps, { attrs }) {
