@@ -37,5 +37,6 @@ module.exports = {
       }
     },
   },
+  maxConcurrency: 8,
   roots: ['<rootDir>/src/components']
 }
