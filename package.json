@@ -48,7 +48,7 @@
     "build:lib": "tsc --project ./tsconfig.build.json",
     "build:rollup": "rollup --config ./rollup.config.js",
     "prepublishOnly": "yarn run clean && yarn run build",
-    "test": "cross-env NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules && jest --clearCache && jest --coverage",
+    "test": "cross-env NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules && jest --coverage --maxWorkers=4",
     "build:weapp": "taro build --type weapp",
     "build:swan": "taro build --type swan",
     "build:alipay": "taro build --type alipay",
