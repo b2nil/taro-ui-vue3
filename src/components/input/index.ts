@@ -149,10 +149,11 @@ const AtInput = defineComponent({
       'at-input__overlay--hidden': !inputProps.value.disabled
     }))
 
-    const placeholderClasses = computed(() => ({
-      'placeholder': true,
-      [`${props.placeholderClass}`]: Boolean(props.placeholderClass)
-    }))
+    const placeholderClasses = computed(() =>
+      Boolean(props.placeholderClass)
+        ? `placeholder ${props.placeholderClass}`
+        : 'placeholder'
+    )
 
     const titleClasses = computed(() => ({
       'at-input__title': true,
