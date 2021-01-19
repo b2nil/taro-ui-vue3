@@ -1,413 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtInput should render default AtInput 1`] = `
-<view
-  class="at-input at-input--without-border"
->
-  <view
-    class="at-input__container"
-  >
-    <view
-      class="at-input__overlay at-input__overlay--hidden"
-    />
-    <!---->
-    <input
-      adjustposition="false"
-      autofocus="false"
-      class="at-input__input"
-      confirmtype="done"
-      cursor="0"
-      cursorspacing="50"
-      id="weui-input_2020"
-      maxlength="140"
-      name=""
-      password="false"
-      placeholder=""
-      placeholderclass="placeholder "
-      placeholderstyle=""
-      type="text"
-    />
-    <!---->
-    <!---->
-    <view
-      class="at-input__children"
-    />
-  </view>
-</view>
-`;
-
-exports[`AtInput should render prop -- border 1`] = `
-<view
-  class="at-input"
->
-  <view
-    class="at-input__container"
-  >
-    <view
-      class="at-input__overlay at-input__overlay--hidden"
-    />
-    <!---->
-    <input
-      adjustposition="false"
-      autofocus="false"
-      class="at-input__input"
-      confirmtype="done"
-      cursor="0"
-      cursorspacing="50"
-      id="weui-input_2020"
-      maxlength="140"
-      name=""
-      password="false"
-      placeholder=""
-      placeholderclass="placeholder "
-      placeholderstyle=""
-      type="text"
-    />
-    <!---->
-    <!---->
-    <view
-      class="at-input__children"
-    />
-  </view>
-</view>
-`;
-
-exports[`AtInput should render prop -- clear 1`] = `
-<view
-  class="at-input at-input--without-border"
->
-  <view
-    class="at-input__container"
-  >
-    <view
-      class="at-input__overlay at-input__overlay--hidden"
-    />
-    <!---->
-    <input
-      adjustposition="false"
-      autofocus="false"
-      class="at-input__input"
-      confirmtype="done"
-      cursor="0"
-      cursorspacing="50"
-      id="weui-input_2020"
-      maxlength="140"
-      name=""
-      password="false"
-      placeholder=""
-      placeholderclass="placeholder "
-      placeholderstyle=""
-      type="text"
-    />
-    <!---->
-    <!---->
-    <view
-      class="at-input__children"
-    />
-  </view>
-</view>
-`;
-
-exports[`AtInput should render prop -- disabled 1`] = `
-<view
-  class="at-input at-input--without-border"
->
-  <view
-    class="at-input__container at-input--disabled"
-  >
-    <view
-      class="at-input__overlay"
-    />
-    <!---->
-    <input
-      adjustposition="false"
-      autofocus="false"
-      class="at-input__input"
-      confirmtype="done"
-      cursor="0"
-      cursorspacing="50"
-      id="weui-input_2020"
-      maxlength="140"
-      name=""
-      password="false"
-      placeholder=""
-      placeholderclass="placeholder "
-      placeholderstyle=""
-      type="text"
-    />
-    <!---->
-    <!---->
-    <view
-      class="at-input__children"
-    />
-  </view>
-</view>
-`;
-
-exports[`AtInput should render prop -- editable 1`] = `
-<view
-  class="at-input at-input--without-border"
->
-  <view
-    class="at-input__container at-input--disabled"
-  >
-    <view
-      class="at-input__overlay"
-    />
-    <!---->
-    <input
-      adjustposition="false"
-      autofocus="false"
-      class="at-input__input"
-      confirmtype="done"
-      cursor="0"
-      cursorspacing="50"
-      id="weui-input_2020"
-      maxlength="140"
-      name=""
-      password="false"
-      placeholder=""
-      placeholderclass="placeholder "
-      placeholderstyle=""
-      type="text"
-    />
-    <!---->
-    <!---->
-    <view
-      class="at-input__children"
-    />
-  </view>
-</view>
-`;
-
-exports[`AtInput should render prop -- error 1`] = `
+exports[`AtInput should render all nodes and match snapshot 1`] = `
 <view
   class="at-input at-input--without-border"
 >
   <view
     class="at-input__container at-input--error"
-  >
-    <view
-      class="at-input__overlay at-input__overlay--hidden"
-    />
-    <!---->
-    <input
-      adjustposition="false"
-      autofocus="false"
-      class="at-input__input"
-      confirmtype="done"
-      cursor="0"
-      cursorspacing="50"
-      id="weui-input_2020"
-      maxlength="140"
-      name=""
-      password="false"
-      placeholder=""
-      placeholderclass="placeholder "
-      placeholderstyle=""
-      type="text"
-    />
-    <!---->
-    <view
-      class="at-input__icon"
-    >
-      <text
-        class="at-icon at-icon-alert-circle at-input__icon-alert"
-      />
-    </view>
-    <view
-      class="at-input__children"
-    />
-  </view>
-</view>
-`;
-
-exports[`AtInput should render prop -- maxLength 1`] = `
-<view
-  class="at-input at-input--without-border"
->
-  <view
-    class="at-input__container"
-  >
-    <view
-      class="at-input__overlay at-input__overlay--hidden"
-    />
-    <!---->
-    <input
-      adjustposition="false"
-      autofocus="false"
-      class="at-input__input"
-      confirmtype="done"
-      cursor="0"
-      cursorspacing="50"
-      id="weui-input_2020"
-      maxlength="10"
-      name=""
-      password="false"
-      placeholder=""
-      placeholderclass="placeholder "
-      placeholderstyle=""
-      type="text"
-    />
-    <!---->
-    <!---->
-    <view
-      class="at-input__children"
-    />
-  </view>
-</view>
-`;
-
-exports[`AtInput should render prop -- name 1`] = `
-<view
-  class="at-input at-input--without-border"
->
-  <view
-    class="at-input__container"
-  >
-    <view
-      class="at-input__overlay at-input__overlay--hidden"
-    />
-    <!---->
-    <input
-      adjustposition="false"
-      autofocus="false"
-      class="at-input__input"
-      confirmtype="done"
-      cursor="0"
-      cursorspacing="50"
-      id="weui-input_2020"
-      maxlength="140"
-      name="name"
-      password="false"
-      placeholder=""
-      placeholderclass="placeholder "
-      placeholderstyle=""
-      type="text"
-    />
-    <!---->
-    <!---->
-    <view
-      class="at-input__children"
-    />
-  </view>
-</view>
-`;
-
-exports[`AtInput should render prop -- placeholder 1`] = `
-<view
-  class="at-input at-input--without-border"
->
-  <view
-    class="at-input__container"
-  >
-    <view
-      class="at-input__overlay at-input__overlay--hidden"
-    />
-    <!---->
-    <input
-      adjustposition="false"
-      autofocus="false"
-      class="at-input__input"
-      confirmtype="done"
-      cursor="0"
-      cursorspacing="50"
-      id="weui-input_2020"
-      maxlength="140"
-      name=""
-      password="false"
-      placeholder="placeholder"
-      placeholderclass="placeholder "
-      placeholderstyle=""
-      type="text"
-    />
-    <!---->
-    <!---->
-    <view
-      class="at-input__children"
-    />
-  </view>
-</view>
-`;
-
-exports[`AtInput should render prop -- required 1`] = `
-<view
-  class="at-input at-input--without-border"
->
-  <view
-    class="at-input__container"
-  >
-    <view
-      class="at-input__overlay at-input__overlay--hidden"
-    />
-    <!---->
-    <input
-      adjustposition="false"
-      autofocus="false"
-      class="at-input__input"
-      confirmtype="done"
-      cursor="0"
-      cursorspacing="50"
-      id="weui-input_2020"
-      maxlength="140"
-      name=""
-      password="false"
-      placeholder=""
-      placeholderclass="placeholder "
-      placeholderstyle=""
-      type="text"
-    />
-    <!---->
-    <!---->
-    <view
-      class="at-input__children"
-    />
-  </view>
-</view>
-`;
-
-exports[`AtInput should render prop -- style 1`] = `
-<view
-  class="at-input at-input--without-border"
->
-  <view
-    class="at-input__container"
-  >
-    <view
-      class="at-input__overlay at-input__overlay--hidden"
-    />
-    <!---->
-    <input
-      adjustposition="false"
-      autofocus="false"
-      class="at-input__input"
-      confirmtype="done"
-      cursor="0"
-      cursorspacing="50"
-      id="weui-input_2020"
-      maxlength="140"
-      name=""
-      password="false"
-      placeholder=""
-      placeholderclass="placeholder "
-      placeholderstyle=""
-      type="text"
-    />
-    <!---->
-    <!---->
-    <view
-      class="at-input__children"
-    />
-  </view>
-</view>
-`;
-
-exports[`AtInput should render prop -- title 1`] = `
-<view
-  class="at-input at-input--without-border"
->
-  <view
-    class="at-input__container"
   >
     <view
       class="at-input__overlay at-input__overlay--hidden"
@@ -430,231 +28,58 @@ exports[`AtInput should render prop -- title 1`] = `
       name=""
       password="false"
       placeholder=""
-      placeholderclass="placeholder "
+      placeholderclass="placeholder"
       placeholderstyle=""
       type="text"
     />
-    <!---->
-    <!---->
+    <view
+      class="at-input__icon"
+    >
+      <text
+        class="at-icon at-icon-close-circle at-input__icon-close"
+      />
+    </view>
+    <view
+      class="at-input__icon"
+    >
+      <text
+        class="at-icon at-icon-alert-circle at-input__icon-alert"
+      />
+    </view>
     <view
       class="at-input__children"
-    />
+    >
+      slot
+    </view>
   </view>
 </view>
 `;
 
-exports[`AtInput should render prop -- type(digit) 1`] = `
+exports[`AtInput should render clear icon 1`] = `
 <view
-  class="at-input at-input--without-border"
+  class="at-input__icon"
 >
-  <view
-    class="at-input__container"
-  >
-    <view
-      class="at-input__overlay at-input__overlay--hidden"
-    />
-    <!---->
-    <input
-      adjustposition="false"
-      autofocus="false"
-      class="at-input__input"
-      confirmtype="done"
-      cursor="0"
-      cursorspacing="50"
-      id="weui-input_2020"
-      maxlength="140"
-      name=""
-      password="false"
-      placeholder=""
-      placeholderclass="placeholder "
-      placeholderstyle=""
-      type="digit"
-    />
-    <!---->
-    <!---->
-    <view
-      class="at-input__children"
-    />
-  </view>
+  <text
+    class="at-icon at-icon-close-circle at-input__icon-close"
+  />
 </view>
 `;
 
-exports[`AtInput should render prop -- type(idcard) 1`] = `
+exports[`AtInput should render prop error 1`] = `
 <view
-  class="at-input at-input--without-border"
+  class="at-input__icon"
 >
-  <view
-    class="at-input__container"
-  >
-    <view
-      class="at-input__overlay at-input__overlay--hidden"
-    />
-    <!---->
-    <input
-      adjustposition="false"
-      autofocus="false"
-      class="at-input__input"
-      confirmtype="done"
-      cursor="0"
-      cursorspacing="50"
-      id="weui-input_2020"
-      maxlength="140"
-      name=""
-      password="false"
-      placeholder=""
-      placeholderclass="placeholder "
-      placeholderstyle=""
-      type="idcard"
-    />
-    <!---->
-    <!---->
-    <view
-      class="at-input__children"
-    />
-  </view>
+  <text
+    class="at-icon at-icon-alert-circle at-input__icon-alert"
+  />
 </view>
 `;
 
-exports[`AtInput should render prop -- type(number) 1`] = `
-<view
-  class="at-input at-input--without-border"
+exports[`AtInput should render prop title 1`] = `
+<label
+  class="at-input__title"
+  for=""
 >
-  <view
-    class="at-input__container"
-  >
-    <view
-      class="at-input__overlay at-input__overlay--hidden"
-    />
-    <!---->
-    <input
-      adjustposition="false"
-      autofocus="false"
-      class="at-input__input"
-      confirmtype="done"
-      cursor="0"
-      cursorspacing="50"
-      id="weui-input_2020"
-      maxlength="140"
-      name=""
-      password="false"
-      placeholder=""
-      placeholderclass="placeholder "
-      placeholderstyle=""
-      type="number"
-    />
-    <!---->
-    <!---->
-    <view
-      class="at-input__children"
-    />
-  </view>
-</view>
-`;
-
-exports[`AtInput should render prop -- type(password) 1`] = `
-<view
-  class="at-input at-input--without-border"
->
-  <view
-    class="at-input__container"
-  >
-    <view
-      class="at-input__overlay at-input__overlay--hidden"
-    />
-    <!---->
-    <input
-      adjustposition="false"
-      autofocus="false"
-      class="at-input__input"
-      confirmtype="done"
-      cursor="0"
-      cursorspacing="50"
-      id="weui-input_2020"
-      maxlength="140"
-      name=""
-      password="true"
-      placeholder=""
-      placeholderclass="placeholder "
-      placeholderstyle=""
-      type="text"
-    />
-    <!---->
-    <!---->
-    <view
-      class="at-input__children"
-    />
-  </view>
-</view>
-`;
-
-exports[`AtInput should render prop -- type(phone) 1`] = `
-<view
-  class="at-input at-input--without-border"
->
-  <view
-    class="at-input__container"
-  >
-    <view
-      class="at-input__overlay at-input__overlay--hidden"
-    />
-    <!---->
-    <input
-      adjustposition="false"
-      autofocus="false"
-      class="at-input__input"
-      confirmtype="done"
-      cursor="0"
-      cursorspacing="50"
-      id="weui-input_2020"
-      maxlength="11"
-      name=""
-      password="false"
-      placeholder=""
-      placeholderclass="placeholder "
-      placeholderstyle=""
-      type="number"
-    />
-    <!---->
-    <!---->
-    <view
-      class="at-input__children"
-    />
-  </view>
-</view>
-`;
-
-exports[`AtInput should render prop -- value 1`] = `
-<view
-  class="at-input at-input--without-border"
->
-  <view
-    class="at-input__container"
-  >
-    <view
-      class="at-input__overlay at-input__overlay--hidden"
-    />
-    <!---->
-    <input
-      adjustposition="false"
-      autofocus="false"
-      class="at-input__input"
-      confirmtype="done"
-      cursor="0"
-      cursorspacing="50"
-      id="weui-input_2020"
-      maxlength="140"
-      name=""
-      password="false"
-      placeholder=""
-      placeholderclass="placeholder "
-      placeholderstyle=""
-      type="text"
-    />
-    <!---->
-    <!---->
-    <view
-      class="at-input__children"
-    />
-  </view>
-</view>
+  title
+</label>
 `;
