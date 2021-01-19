@@ -157,32 +157,34 @@ const AtInput = defineComponent({
     }))
 
     function handleInput(e: BaseEventOrig<InputEventDetail>) {
-      if (attrs['onUpdate:value']) {
-        inputValue.value = e.detail.value
-      } else {
-        props.onChange?.(e.detail.value, e)
+      if (!inputProps.value.disabled) {
+        if (attrs['onUpdate:value']) {
+          inputValue.value = e.detail.value
+        } else {
+          props.onChange?.(e.detail.value, e)
+        }
       }
     }
 
     function handleFocus(e: BaseEventOrig<FocusEventDetail>) {
-      if (typeof props.onFocus === 'function') {
-        props.onFocus(e.detail.value, e)
-      }
-      if (process.env.TARO_ENV === 'h5') {
-        // hack fix: h5 点击清除按钮后，input value 在数据层被清除，但视图层仍未清除
-        inputID.value = 'weui-input' + uuid(10, 32)
+      if (!inputProps.value.disabled) {
+        props.onFocus?.(e.detail.value, e)
+        if (process.env.TARO_ENV === 'h5') {
+          // hack fix: h5 点击清除按钮后，input value 在数据层被清除，但视图层仍未清除
+          inputID.value = 'weui-input' + uuid(10, 32)
+        }
       }
     }
 
     function handleBlur(e: BaseEventOrig<BlurEventDetail>) {
-      if (typeof props.onBlur === 'function') {
-        props.onBlur(e.detail.value, e)
+      if (!inputProps.value.disabled) {
+        props.onBlur?.(e.detail.value, e)
       }
     }
 
     function handleConfirm(e: BaseEventOrig<ConfirmEventDetail>) {
-      if (typeof props.onConfirm === 'function') {
-        props.onConfirm(e.detail.value, e)
+      if (!inputProps.value.disabled) {
+        props.onConfirm?.(e.detail.value, e)
       }
     }
 
@@ -209,15 +211,13 @@ const AtInput = defineComponent({
     function handleKeyboardHeightChange(
       e: BaseEventOrig<KeyboardHeightEventDetail>
     ) {
-      if (typeof props.onKeyboardHeightChange === 'function') {
-        props.onKeyboardHeightChange(e)
+      if (!inputProps.value.disabled) {
+        props.onKeyboardHeightChange?.(e)
       }
     }
 
     function handleErrorClick(e: ITouchEvent) {
-      if (typeof props.onErrorClick === 'function') {
-        props.onErrorClick(e)
-      }
+      props.onErrorClick?.(e)
     }
 
     return () => {
