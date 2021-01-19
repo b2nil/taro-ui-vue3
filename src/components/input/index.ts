@@ -294,7 +294,7 @@ const AtInput = defineComponent({
                   })
                 ) || null,
 
-                h(View, {
+                slots.default && h(View, {
                   class: 'at-input__children'
                 }, { default: () => slots.default?.() })
               ]
