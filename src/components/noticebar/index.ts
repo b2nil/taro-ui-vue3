@@ -1,25 +1,37 @@
-import { h, defineComponent, reactive, onMounted, Ref, computed, ref, mergeProps, PropType } from 'vue'
-import { Text, View } from '@tarojs/components'
-import { CommonEvent } from '@tarojs/components/types/common'
+import {
+  h,
+  defineComponent,
+  reactive,
+  onMounted,
+  Ref,
+  computed,
+  ref,
+  mergeProps,
+  PropType
+} from 'vue'
+
 import Taro from '@tarojs/taro'
-import { AtNoticeBarProps } from 'types/noticebar'
+import { Text, View } from '@tarojs/components'
+
+import type { AtNoticeBarProps } from 'types/noticebar'
+import type { CommonEvent } from '@tarojs/components/types/common'
 
 const AtNoticebar = defineComponent({
   name: "AtNoticebar",
 
   props: {
-    close: { type: Boolean, default: false },
-    single: Boolean,
-    marquee: Boolean,
+    close: Boolean as PropType<AtNoticeBarProps['close']>,
+    single: Boolean as PropType<AtNoticeBarProps['single']>,
+    marquee: Boolean as PropType<AtNoticeBarProps['marquee']>,
+    showMore: Boolean as PropType<AtNoticeBarProps['showMore']>,
     speed: {
       type: Number as PropType<AtNoticeBarProps['speed']>,
       default: 100
     },
     moreText: {
-      type: String,
+      type: String as PropType<AtNoticeBarProps['moreText']>,
       default: '查看详情'
     },
-    showMore: { type: Boolean, default: false },
     icon: String as PropType<AtNoticeBarProps['icon']>,
     // events
     onClose: Function as PropType<AtNoticeBarProps['onClose']>,
@@ -33,12 +45,12 @@ const AtNoticebar = defineComponent({
     const interval: Ref<NodeJS.Timer | null> = ref(null)
 
     const state = reactive({
-      _showMore: !props.single ? false : props.showMore,
-      _close: props.marquee ? false : props.close,
+      dura: 15,
       show: true,
+      _close: props.marquee ? false : props.close,
+      _showMore: !props.single ? false : props.showMore,
       animElemId: `J_${Math.ceil(Math.random() * 10e5).toString(36)}`,
       animationData: { actions: [{}] },
-      dura: 15,
       isWEB: env === Taro.ENV_TYPE.WEB
     })
 
