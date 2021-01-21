@@ -1,6 +1,5 @@
 import { mountFactory, Slots } from '@/tests/helper'
 import AtInputNumber from '../index'
-import * as utils from '../../../utils/common'
 import { ref } from 'vue'
 
 const factory = (
@@ -47,21 +46,13 @@ describe('AtInputNumber', () => {
   })
 
   it('should render prop width', () => {
-    jest.mock('../../../utils/common')
-    const spy = jest
-      .spyOn(utils, 'pxTransform')
-      .mockImplementation((size: number, designWidth?: number) => {
-        return Math.ceil((((size / 40) * 640) / 750) * 10000) / 10000 + 'rem'
-      })
-
     const wrapper = factory({ width: 200 })
     expect(
       wrapper
         .find('.at-input-number__input')
         .attributes('style')
+      // width = Math.ceil((((size / 40) * 640) / 750) * 10000) / 10000 + 'rem'
     ).toBe('width: 4.2667rem;')
-
-    spy.mockRestore()
   })
 
   it.each([
@@ -177,7 +168,22 @@ describe('AtNumberInput Behavior', () => {
     expect(onChange).not.toBeCalled()
   })
 
-  it('should trigger `onUpdate:value` and emit `update:value` when disabled', async () => {
+  it('should emit `update:value` if using v-model', async () => {
+    const onUpdateValue = jest.fn()
+    const wrapper = factory({
+      value: 2,
+      'onUpdate:value': onUpdateValue
+    })
+
+    await wrapper
+      .find('.at-input-number .at-input-number__input')
+      .trigger('input')
+
+    expect(onUpdateValue).toBeCalled()
+    expect(wrapper.emitted()).toHaveProperty('update:value')
+  })
+
+  it('should not emit `update:value` when disabled', async () => {
     const onUpdateValue = jest.fn()
     const wrapper = factory({
       value: 2,
@@ -204,7 +210,7 @@ describe('AtNumberInput Behavior', () => {
     expect(onBlur).toBeCalled()
   })
 
-  it('should trigger onErrorInput when value is below min or over max', async () => {
+  it('should trigger onErrorInput when value after minus or plus is below min or over max', async () => {
     const onErrorInput = jest.fn()
     const wrapper = factory({
       value: 2,
@@ -229,6 +235,41 @@ describe('AtNumberInput Behavior', () => {
     expect(onErrorInput.mock.calls[1][0]).toEqual({
       type: 'OVER',
       errorValue: 100
+    })
+  })
+
+  it('should trigger onErrorInput when initial value is below min or over max', async () => {
+    const onErrorInput = jest.fn()
+    const wrapper = factory({
+      value: -10,
+      onErrorInput
+    })
+
+    await wrapper
+      .find('.at-input-number__btn:first-child')
+      .trigger('tap')
+
+    await wrapper.setProps({ value: 110 })
+    await wrapper
+      .find('.at-input-number__btn:last-child')
+      .trigger('tap')
+
+    expect(onErrorInput.mock.calls.length).toBe(4)
+    expect(onErrorInput.mock.calls[0][0]).toEqual({
+      type: 'LOW',
+      errorValue: 0
+    })
+    expect(onErrorInput.mock.calls[1][0]).toEqual({
+      type: 'LOW',
+      errorValue: -1
+    })
+    expect(onErrorInput.mock.calls[2][0]).toEqual({
+      type: 'OVER',
+      errorValue: 100
+    })
+    expect(onErrorInput.mock.calls[3][0]).toEqual({
+      type: 'OVER',
+      errorValue: 101
     })
   })
 
