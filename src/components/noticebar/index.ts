@@ -151,7 +151,7 @@ const AtNoticebar = defineComponent({
         timeout.value = null
 
         if (state.isWEB) initWebAnimation()
-        else initMiniAppAnimation
+        else initMiniAppAnimation()
       }, 100)
     }
 
