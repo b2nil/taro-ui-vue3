@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtTextarea should render default AtTextarea 1`] = `
+exports[`AtTextarea should render all nodes and match snapshot 1`] = `
 <view
   class="at-textarea at-textarea--WEB"
 >
@@ -11,7 +11,7 @@ exports[`AtTextarea should render default AtTextarea 1`] = `
     fixed="false"
     maxlength="200"
     placeholder=""
-    placeholderclass="[object Object]"
+    placeholderclass="placeholder "
     placeholderstyle=""
     showconfirmbar="false"
     style="height: 2.1334rem;"
@@ -24,167 +24,10 @@ exports[`AtTextarea should render default AtTextarea 1`] = `
 </view>
 `;
 
-exports[`AtTextarea should render prop -- class 1`] = `
+exports[`AtTextarea should render prop count 1`] = `
 <view
-  class="test at-textarea at-textarea--WEB test"
+  class="at-textarea__counter"
 >
-  <textarea
-    autofocus="false"
-    class="at-textarea__textarea"
-    cursorspacing="100"
-    fixed="false"
-    maxlength="200"
-    placeholder=""
-    placeholderclass="[object Object]"
-    placeholderstyle=""
-    showconfirmbar="false"
-    style="height: 2.1334rem;"
-  />
-  <view
-    class="at-textarea__counter"
-  >
-    0 / 200
-  </view>
-</view>
-`;
-
-exports[`AtTextarea should render prop -- count 1`] = `
-<view
-  class="at-textarea at-textarea--WEB"
->
-  <textarea
-    autofocus="false"
-    class="at-textarea__textarea"
-    cursorspacing="100"
-    fixed="false"
-    maxlength="200"
-    placeholder=""
-    placeholderclass="[object Object]"
-    placeholderstyle=""
-    showconfirmbar="false"
-    style="height: 2.1334rem;"
-  />
-  <!---->
-</view>
-`;
-
-exports[`AtTextarea should render prop -- height 1`] = `
-<view
-  class="at-textarea at-textarea--WEB"
->
-  <textarea
-    autofocus="false"
-    class="at-textarea__textarea"
-    cursorspacing="100"
-    fixed="false"
-    maxlength="200"
-    placeholder=""
-    placeholderclass="[object Object]"
-    placeholderstyle=""
-    showconfirmbar="false"
-    style="height: 64rem;"
-  />
-  <view
-    class="at-textarea__counter"
-  >
-    0 / 200
-  </view>
-</view>
-`;
-
-exports[`AtTextarea should render prop -- maxLength 1`] = `
-<view
-  class="at-textarea at-textarea--WEB"
->
-  <textarea
-    autofocus="false"
-    class="at-textarea__textarea"
-    cursorspacing="100"
-    fixed="false"
-    maxlength="300"
-    placeholder=""
-    placeholderclass="[object Object]"
-    placeholderstyle=""
-    showconfirmbar="false"
-    style="height: 2.1334rem;"
-  />
-  <view
-    class="at-textarea__counter"
-  >
-    0 / 300
-  </view>
-</view>
-`;
-
-exports[`AtTextarea should render prop -- placeholder 1`] = `
-<view
-  class="at-textarea at-textarea--WEB"
->
-  <textarea
-    autofocus="false"
-    class="at-textarea__textarea"
-    cursorspacing="100"
-    fixed="false"
-    maxlength="200"
-    placeholder="test"
-    placeholderclass="[object Object]"
-    placeholderstyle=""
-    showconfirmbar="false"
-    style="height: 2.1334rem;"
-  />
-  <view
-    class="at-textarea__counter"
-  >
-    0 / 200
-  </view>
-</view>
-`;
-
-exports[`AtTextarea should render prop -- style 1`] = `
-<view
-  class="at-textarea at-textarea--WEB"
-  style="color: red;"
->
-  <textarea
-    autofocus="false"
-    class="at-textarea__textarea"
-    cursorspacing="100"
-    fixed="false"
-    maxlength="200"
-    placeholder=""
-    placeholderclass="[object Object]"
-    placeholderstyle=""
-    showconfirmbar="false"
-    style="height: 2.1334rem;"
-  />
-  <view
-    class="at-textarea__counter"
-  >
-    0 / 200
-  </view>
-</view>
-`;
-
-exports[`AtTextarea should render prop -- value 1`] = `
-<view
-  class="at-textarea at-textarea--WEB"
->
-  <textarea
-    autofocus="false"
-    class="at-textarea__textarea"
-    cursorspacing="100"
-    fixed="false"
-    maxlength="200"
-    placeholder=""
-    placeholderclass="[object Object]"
-    placeholderstyle=""
-    showconfirmbar="false"
-    style="height: 2.1334rem;"
-  />
-  <view
-    class="at-textarea__counter"
-  >
-    4 / 200
-  </view>
+  0 / 200
 </view>
 `;
