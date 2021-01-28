@@ -1,5 +1,6 @@
 import { mountFactory, Slots } from '@/tests/helper'
 import AtNoticebar from '../index'
+import Taro from '@tarojs/taro'
 
 const factory = (
   props = {},
@@ -41,11 +42,11 @@ describe('AtNoticebar', () => {
     }, {
       default: ['this is a slot content']
     })
-    const slotEl = wrapper.find('.at-noticebar__content-inner')
     expect(
-      slotEl.attributes('style')
+      wrapper
+        .find('.at-noticebar__content-inner')
+        .attributes('style')
     ).toBe('animation-duration: 15s;')
-    expect(slotEl.element).toMatchSnapshot()
   })
 
   it('should not render moreText in multi-line mode', () => {
@@ -99,18 +100,29 @@ describe('AtNoticebar', () => {
     expect(iconEl.element).toMatchSnapshot()
   })
 
-  it('should render slot content and match snapshot', () => {
+  it('should render slot content', () => {
     const wrapper = factory({}, {
       default: ['this is slot content text']
     })
 
-    const slotEl = wrapper.find('.at-noticebar__content-inner')
-    expect(slotEl.exists()).toBeTruthy()
-    expect(slotEl.element).toMatchSnapshot()
+    expect(
+      wrapper
+        .find('.at-noticebar__content-inner')
+        .text()
+    ).toBe('this is slot content text')
   })
 })
 
 describe('AtNoticebar Behavior', () => {
+  beforeEach(() => {
+    jest.mock('@tarojs/taro', () => ({
+      ...(jest.requireActual('@tarojs/taro')) as object,
+      getEnv: jest.fn(),
+    }))
+    jest.useFakeTimers()
+    jest.spyOn(global, 'setTimeout')
+  })
+
   it('should trigger onClose', async () => {
     const onClose = jest.fn()
     const wrapper = factory({
@@ -119,6 +131,7 @@ describe('AtNoticebar Behavior', () => {
     })
     await wrapper.find('.at-noticebar__close').trigger('tap')
     expect(onClose).toBeCalled()
+    expect(wrapper.find('.at-noticebar').exists()).toBeFalsy()
   })
 
   it('should trigger onGotoMore', async () => {
@@ -132,5 +145,56 @@ describe('AtNoticebar Behavior', () => {
     })
     await wrapper.find('.at-noticebar__more').trigger('tap')
     expect(onGotoMore).toBeCalled()
+  })
+
+  it('should initiate h5 animation when mounted if marquee is used', () => {
+    const spy = jest
+      .spyOn(document, 'querySelector')
+      // @ts-ignore
+      .mockImplementation((sel: string) => {
+        return {
+          getBoundingClientRect: jest.fn().mockReturnValueOnce({ width: 30 })
+        }
+      })
+
+    const wrapper = factory({
+      single: true,
+      marquee: true,
+    })
+
+    jest.runAllTimers()
+    expect(setTimeout).toBeCalledTimes(1)
+    spy.mockRestore()
+  })
+
+  it('should initiate miniapp animation when mounted if marquee is used', () => {
+    jest
+      .spyOn(Taro, 'getEnv')
+      .mockReturnValue(Taro.ENV_TYPE.WEAPP)
+
+    jest.spyOn(Taro, 'createSelectorQuery')
+      // @ts-ignore
+      .mockImplementation(() => {
+        const query = {
+          exec: jest.fn()
+            .mockImplementation((cb: (rect) => void) => {
+              cb([{ width: 30, left: 30 }])
+            })
+        }
+        query['select'] = jest.fn().mockReturnValue({
+          boundingClientRect: jest.fn().mockReturnValue(query)
+        })
+
+        return query
+      })
+
+    const wrapper = factory({
+      single: true,
+      marquee: true,
+    })
+
+    jest.runOnlyPendingTimers()
+    jest.advanceTimersByTime(900)
+    expect(setTimeout).toBeCalledTimes(4)
   })
 })

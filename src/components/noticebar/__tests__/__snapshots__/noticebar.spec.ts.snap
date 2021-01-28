@@ -38,24 +38,3 @@ exports[`AtNoticebar should render prop icon and match snapshot 1`] = `
   />
 </view>
 `;
-
-exports[`AtNoticebar should render prop speed 1`] = `
-<view
-  animation="[object Object]"
-  class="at-noticebar__content-inner J_kue4"
-  id="J_kue4"
-  style="animation-duration: 15s;"
->
-  this is a slot content
-</view>
-`;
-
-exports[`AtNoticebar should render slot content and match snapshot 1`] = `
-<view
-  animation="[object Object]"
-  class="at-noticebar__content-inner"
-  id="J_fy4i"
->
-  this is slot content text
-</view>
-`;
