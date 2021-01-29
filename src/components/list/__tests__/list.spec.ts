@@ -1,167 +1,304 @@
-import { mount } from '@vue/test-utils'
+import { mountFactory } from '@/tests/helper'
+import { ref } from 'vue'
 import AtList from '../index'
 import AtListItem from '../item'
 
-describe('List', () => {
-  it('should render the complete List', () => {
-    const wrapper = mount({
-      data() {
-        return {
-          iconInfo: {
-            size: 25,
-            color: '#78A4FA',
-            value: 'calendar',
-          },
-        }
-      },
-      components: {
-        AtList,
-        AtListItem,
-      },
-      template: `
-    <AtList>
-      <AtListItem title='标题文字' />
-      <AtListItem title='标题文字' arrow='right' />
-      <AtListItem title='标题文字' note='描述信息' />
-      <AtListItem title='禁用状态' disabled extraText='详细信息' />
-      <AtListItem title='标题文字' note='描述信息' arrow='right' />
-      <AtListItem title='标题文字' extraText='详细信息' arrow='right' />
-      <AtListItem
-        arrow='right'
-        note='描述信息'
-        title='标题文字标题文字标题文字标题文字标题文字'
-        extraText='详细信息详细信息详细信息详细信息'
-      />
-      <AtListItem
-        title='标题文字'
-        note='描述信息'
-        extraText='详细信息'
-        arrow='right'
-        thumb='http://img12.360buyimg.com/jdphoto/s72x72_jfs/t10660/330/203667368/1672/801735d7/59c85643N31e68303.png'
-      />
-      <AtListItem
-        arrow='right'
-        note='描述信息'
-        :iconInfo="iconInfo"
-        title='标题文字'
-        extraText='详细信息'
-        thumb='http://img12.360buyimg.com/jdphoto/s72x72_jfs/t10660/330/203667368/1672/801735d7/59c85643N31e68303.png'
-      />
-      <AtListItem title='标题文字' isSwitch />
-      <AtListItem title='标题文字' isSwitch disabled />
-      <AtListItem title='标题文字' switchIsCheck isSwitch />
-      <AtListItem title='标题文字' switchIsCheck isSwitch disabled />
-    </AtList>
-      `,
+describe('AtList', () => {
+  it('should render all nodes and match snapshot', () => {
+    const wrapper = mountFactory(AtList, {}, {}, {
+      default: ['slot content']
     })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render the completed List -- no border', () => {
-    const wrapper = mount({
-      components: {
-        AtList,
-        AtListItem,
-      },
-      template: `
-      <AtList :hasBorder="false">
-        <AtListItem title='标题文字' :hasBorder="false" />
-        <AtListItem title='标题文字' :hasBorder="false" />
-      </AtList>
-      `,
+  it('should render default slot', () => {
+    const wrapper = mountFactory(AtList, {}, {}, {
+      default: ['slot content']
     })
-    expect(wrapper.element).toMatchSnapshot()
+
+    expect(
+      wrapper
+        .find('.at-list')
+        .text()
+    ).toBe('slot content')
+  })
+
+  it('should render prop class', () => {
+    const wrapper = mountFactory(AtList, {}, { class: 'test' })
+    expect(
+      wrapper
+        .find('.at-list')
+        .classes('test')
+    ).toBeTruthy()
+  })
+
+  it('should render prop style', () => {
+    const wrapper = mountFactory(AtList, {}, { style: 'color: red;' })
+    expect(
+      wrapper
+        .find('.at-list')
+        .attributes('style')
+    ).toBe('color: red;')
+  })
+
+  it('should render prop hasBorder', async () => {
+    const wrapper = mountFactory(AtList)
+    expect(
+      wrapper
+        .find('.at-list--no-border')
+        .exists()
+    ).toBeFalsy()
+
+    await wrapper.setProps({ hasBorder: false })
+    expect(
+      wrapper
+        .find('.at-list--no-border')
+        .exists()
+    ).toBeTruthy()
   })
 })
 
-describe('List Behavior ', () => {
-  it('should trigger onClick event on ListItem', () => {
-    const onClick = jest.fn()
-    const wrapper = mount({
-      components: {
-        AtList,
-        AtListItem,
-      },
-      methods: {
-        onClick: onClick,
-      },
-      template: `
-      <AtList>
-        <AtListItem title='标题文字' @click="onClick" />
-      </AtList>
-      `,
+const iconInfo = {
+  size: 25,
+  color: '#78A4FA',
+  value: 'calendar',
+}
+
+describe('AtListItem', () => {
+  it('should render all nodes and match snapshot', () => {
+    const wrapper = mountFactory(AtListItem, {}, {
+      class: 'test',
+      style: 'color: red;',
+      note: 'note',
+      title: 'title',
+      thumb: 'http://img.test.com/3N31e.png',
+      extraText: 'extraText',
+      arrow: 'right',
+      iconInfo: { value: 'calendar' }
     })
-    wrapper.find('.at-list .at-list__item').trigger('tap')
+
+    expect(wrapper.element).toMatchSnapshot()
+  })
+
+  it('should render prop class', () => {
+    const wrapper = mountFactory(AtListItem, {}, { class: 'test' })
+    expect(
+      wrapper
+        .find('.at-list__item')
+        .classes('test')
+    ).toBeTruthy()
+  })
+
+  it('should render prop style', () => {
+    const wrapper = mountFactory(AtListItem, {}, { style: 'color: red;' })
+    expect(
+      wrapper
+        .find('.at-list__item')
+        .attributes('style')
+    ).toBe('color: red;')
+  })
+
+  it('should render prop thumb', () => {
+    const wrapper = mountFactory(AtListItem, {}, {
+      thumb: 'http://img.test.com/3N31e.png'
+    })
+
+    const thumbEl = wrapper.find('.at-list__item-thumb')
+    expect(thumbEl.exists()).toBeTruthy()
+    expect(thumbEl.element).toMatchSnapshot()
+
+    expect(
+      wrapper
+        .find('.at-list__item-thumb > .item-thumb__info')
+        .attributes('src')
+    ).toBe('http://img.test.com/3N31e.png')
+
+  })
+
+  it('should render prop iconInfo', () => {
+    const wrapper = mountFactory(AtListItem, {}, {
+      iconInfo: {
+        ...iconInfo,
+        prefixClass: 'prefixClass',
+        class: 'klass',
+        style: 'background: teal;'
+      }
+    })
+
+    const iconWrapperEl = wrapper.find('.at-list__item-icon')
+
+    expect(iconWrapperEl.exists()).toBeTruthy()
+    expect(iconWrapperEl.element).toMatchSnapshot()
+
+    const iconEl = wrapper.find('.at-list__item-icon > view')
+
+    expect(iconEl.classes()).toEqual([
+      'prefixClass',
+      'prefixClass-calendar',
+      'klass'
+    ])
+
+    expect(iconEl.attributes('style')).toEqual(
+      'color: rgb(120, 164, 250); font-size: 25px; background: teal;'
+    )
+  })
+
+  it.each([
+    'title',
+    'note'
+  ])('should render prop %s', (propName) => {
+    const wrapper = mountFactory(AtListItem, {}, {
+      [propName]: propName
+    })
+    expect(
+      wrapper
+        .find(`.item-content__info-${propName}`)
+        .text()
+    ).toBe(propName)
+  })
+
+  it('should render prop extraText and match snapshot', () => {
+    const wrapper = mountFactory(AtListItem, {}, {
+      extraText: 'extraText'
+    })
+
+    const extraTextEl = wrapper.find(`.item-extra__info`)
+    expect(extraTextEl.text()).toBe('extraText')
+    expect(extraTextEl.element).toMatchSnapshot()
+  })
+
+  it('should render prop extraThumb and match snapshot', () => {
+    const wrapper = mountFactory(AtListItem, {}, {
+      extraThumb: 'http://img.test.com/3N31e.png'
+    })
+    expect(
+      wrapper
+        .find(`.item-extra__image-info`)
+        .attributes('src')
+    ).toBe('http://img.test.com/3N31e.png')
+
+    expect(
+      wrapper
+        .find(`.item-extra__image`)
+        .element
+    ).toMatchSnapshot()
+  })
+
+  it('should render prop isSwitch and match snapshot', async () => {
+    const wrapper = mountFactory(AtListItem, {}, {
+      isSwitch: true,
+      switchColor: 'red'
+    })
+
+    const switchWrapperEl = wrapper.find('.item-extra__switch')
+    expect(switchWrapperEl.exists()).toBeTruthy()
+    expect(switchWrapperEl.element).toMatchSnapshot()
+
+    const swithEl = wrapper.find('.item-extra__switch > switch')
+
+    expect(
+      swithEl.attributes('checked')
+    ).toBe("false")
+
+    expect(
+      swithEl.attributes('disabled')
+    ).toBe('false')
+
+    expect(
+      swithEl.attributes('color')
+    ).toBe('red')
+
+    await wrapper.setProps({ switchIsCheck: true })
+    expect(
+      wrapper
+        .find('.item-extra__switch > switch')
+        .attributes('checked')
+    ).toBe("true")
+  })
+
+  it.each([
+    'up', 'down', 'right'
+  ])('should render prop arrow -- %s', (option) => {
+    const wrapper = mountFactory(AtListItem, {}, {
+      arrow: option
+    })
+
+    const extraIconWrapperEl = wrapper.find('.item-extra__icon')
+    expect(extraIconWrapperEl.exists()).toBeTruthy()
+
+    expect(
+      wrapper
+        .find('.item-extra__icon-arrow')
+        .classes()
+    ).toContain(`at-icon-chevron-${option}`)
+  })
+})
+
+describe('AtListItem Behavior ', () => {
+  it('should trigger onClick', async () => {
+    const onClick = jest.fn()
+    const wrapper = mountFactory(AtListItem, {}, {
+      onClick
+    })
+
+    await wrapper.find('.at-list__item').trigger('tap')
     expect(onClick).toBeCalled()
   })
 
-  it('should trigger onSwitchChange event on ListItem', async () => {
-
-    const wrapper = mount({
-      data: () => ({
-        checked: false
-      }),
-      components: {
-        AtList,
-        AtListItem,
-      },
-      methods: {
-        onSwitchChange: jest.fn().mockImplementation((e) => {
-          wrapper.vm.$data.checked = e.detail
-        })
-      },
-      template: `
-        <AtList>
-          <AtListItem
-            title='标题文字'
-            is-switch
-            :switch-is-check="checked"
-            @switch-change="onSwitchChange"
-          />
-        </AtList>
-      `,
+  it('should trigger onSwitchChange', async () => {
+    const checked = ref(false)
+    const onSwitchChange = jest.fn((e) => {
+      checked.value = e.detail
     })
-    expect(wrapper.vm.$data.checked).toBeFalsy()
-    wrapper.find('.at-list .at-list__item .item-extra__switch switch').trigger('change', { detail: true })
-    expect(wrapper.vm.$data.checked).toBeTruthy()
+
+    const wrapper = mountFactory(AtListItem, {}, {
+      isSwitch: true,
+      switchIsCheck: checked.value,
+      onSwitchChange
+    })
+
+    await wrapper
+      .find('.item-extra__switch > switch')
+      .trigger('change', { detail: true })
+
+    expect(onSwitchChange).toBeCalled()
+    expect(checked.value).toBe(true)
   })
 
-  it('ListItem switch should be checked', () => {
-    const wrapper = mount({
-      components: {
-        AtList,
-        AtListItem,
-      },
-      template: `
-        <AtList>
-          <AtListItem
-            title='标题文字'
-            is-switch
-            switch-is-check
-          />
-        </AtList>
-      `,
+  it('should not trigger any event when disabled', async () => {
+    const onSwitchChange = jest.fn()
+    const onClick = jest.fn()
+
+    const wrapper = mountFactory(AtListItem, {}, {
+      disabled: true,
+      isSwitch: true,
+      onClick,
+      onSwitchChange
     })
-    const switchEl = wrapper.find('.at-list .at-list__item .item-extra__switch switch')
-    expect(switchEl.attributes('checked')).toBe("true")
+
+    await wrapper.find('.at-list__item').trigger('tap')
+    await wrapper
+      .find('.item-extra__switch > switch')
+      .trigger('change', { detail: true })
+
+    expect(onClick).not.toBeCalled()
+    expect(onSwitchChange).not.toBeCalled()
   })
 
-  it('ListItem switch should be unchecked', () => {
-    const wrapper = mount({
-      components: {
-        AtList,
-        AtListItem,
-      },
-      template: `
-        <AtList>
-          <AtListItem
-            title='标题文字'
-            is-switch
-          />
-        </AtList>
-      `,
+
+
+  // @TODO: check how to mock event.stopProparation()
+  it.skip('should stop propagation when clicking switch wrapper', async () => {
+    const ev = { stopPropagation: jest.fn() }
+
+    const wrapper = mountFactory(AtListItem, {}, {
+      isSwitch: true
     })
-    const switchEl = wrapper.find('.at-list .at-list__item .item-extra__switch switch')
-    expect(switchEl.attributes('checked')).toBe("false")
+
+    await wrapper
+      .find('.item-extra__switch')
+      .trigger('tap', ev)
+
+    expect(ev.stopPropagation).toBeCalled()
   })
 })
