@@ -1,4 +1,4 @@
-import { h, defineComponent, computed, mergeProps, PropType } from 'vue'
+import { h, defineComponent, computed, mergeProps, warn, PropType } from 'vue'
 import { Button, View, Form } from '@tarojs/components'
 import { AtButtonProps } from "types/button"
 import AtLoading from '../loading/index'
@@ -101,6 +101,13 @@ const AtButton = defineComponent({
     const loadingSize = computed(() => props.size === 'small' ? '30' : '0')
 
     function handleClick(event) {
+      if (Boolean(attrs['onTap'])) {
+        warn(
+          'AtButton 绑定的点击事件应为 `click`， 而非 `tap`。',
+          '正确示例：`<at-button @click="eventHandler"/>`'
+        )
+      }
+
       if (!props.disabled) {
         props.onClick?.(event)
       }
