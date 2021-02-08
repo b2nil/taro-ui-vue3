@@ -134,10 +134,10 @@ describe('AtInput', () => {
 
   it('should render prop border', async () => {
     const wrapper = factory()
-    expect(wrapper.find('.at-input--without-border').exists()).toBeTruthy()
+    expect(wrapper.find('.at-input--without-border').exists()).toBeFalsy()
 
     await wrapper.setProps({ border: false })
-    expect(wrapper.find('.at-input--without-border').exists()).toBeFalsy()
+    expect(wrapper.find('.at-input--without-border').exists()).toBeTruthy()
   })
 
   it('should render prop editable', async () => {

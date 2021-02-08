@@ -135,7 +135,7 @@ const AtInput = defineComponent({
 
     const rootClasses = computed(() => ({
       'at-input': true,
-      'at-input--without-border': props.border
+      'at-input--without-border': !props.border
     }))
 
     const containerClasses = computed(() => ({
