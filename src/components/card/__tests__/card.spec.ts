@@ -1,74 +1,153 @@
-import { mount } from '@vue/test-utils'
+import AtIcon from '../../icon'
+import { mountFactory, Slots } from '@/tests/helper'
+import { h } from 'vue'
 import AtCard from '../index'
 
 const factory = (
-  values = {},
-  slots = { default: ['这也是内容区 可以随意定义功能'] }
+  props = {},
+  slots?: Slots
 ) => {
-  return mount(AtCard as any, {
-    global: {
-      components: {}
-    },
-    slots,
-    props: { ...values, title: '这是个标题' },
-  })
+  return mountFactory(AtCard, undefined, props, slots)
 }
 
-describe('Card', () => {
-  it('should render default Card', () => {
-    const wrapper = factory()
+const thumbURL = "http://test.pic.com/ni74d.png"
+const title = "title"
+const note = "tips"
+const extra = "2021-01-29 01:00:00"
+const extraStyle = { fontSize: '10px' }
+
+describe('AtCard', () => {
+  it('should render all nodes and match snapshot', () => {
+    const wrapper = factory({
+      thumb: thumbURL,
+      title,
+      extra,
+      extraStyle,
+      note
+    })
+
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render prop -- thumb', () => {
+  it('should render prop thumb', () => {
     const wrapper = factory({
-      thumb:
-        'http://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png',
+      thumb: thumbURL,
     })
-    expect(wrapper.element).toMatchSnapshot()
+    expect(
+      wrapper
+        .find(".at-card__header-thumb-info")
+        .attributes("src")
+    ).toBe(thumbURL)
   })
 
-  it('should render prop -- note', () => {
+  it('should render prop title', () => {
     const wrapper = factory({
-      note: '小Tips',
-      thumb:
-        'http://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png',
+      title,
     })
-    expect(wrapper.element).toMatchSnapshot()
+    expect(
+      wrapper
+        .find(".at-card__header-title")
+        .text()
+    ).toBe(title)
   })
 
-  it('should render prop -- extra', () => {
+  it('should render prop note', () => {
     const wrapper = factory({
-      note: '小Tips',
-      extra: '额外信息',
-      thumb:
-        'http://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png',
+      note,
+      thumb: thumbURL,
     })
-    expect(wrapper.element).toMatchSnapshot()
+    expect(
+      wrapper
+        .find(".at-card__content-note")
+        .text()
+    ).toBe(note)
   })
 
-  it('should render prop -- isFull', () => {
+  it('should render prop extra and extraStyle', () => {
     const wrapper = factory({
-      isFull: true,
-      note: '小Tips',
-      extra: '额外信息',
-      thumb:
-        'http://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png',
+      note,
+      extra,
+      extraStyle,
+      thumb: thumbURL,
     })
-    expect(wrapper.element).toMatchSnapshot()
+
+    const extraEl = wrapper.find(".at-card__header-extra")
+    expect(extraEl.text()).toBe(extra)
+    expect(extraEl.attributes('style')).toBe('font-size: 10px;')
   })
 
-  it('should render prop -- extraStyle', () => {
-    const wrapper = factory({
-      isFull: true,
-      note: '小Tips',
-      extra: '额外信息',
-      extraStyle: { fontSize: '12px', maxWidth: '200px' },
-      thumb:
-        'http://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png',
-    })
-    expect(wrapper.element).toMatchSnapshot()
+  it('should render default slot', () => {
+    const wrapper = factory({}, { default: ['slot content'] })
+    expect(
+      wrapper
+        .find(".at-card__content-info")
+        .text()
+    ).toBe('slot content')
   })
+
+  it('should render prop isFull', () => {
+    const wrapper = factory({
+      isFull: true
+    })
+
+    expect(
+      wrapper
+        .find(".at-card--full")
+        .exists()
+    ).toBe(true)
+  })
+
+  it('should render prop icon', () => {
+    const icon = {
+      value: 'test',
+      color: 'blue',
+      size: '20'
+    }
+
+    const wrapper = factory({
+      icon
+    })
+
+    expect(
+      wrapper
+        .find(".at-icon-test")
+        .exists()
+    ).toBe(true)
+
+    expect(
+      wrapper
+        .find(".at-icon-test")
+        .attributes("style")
+    ).toBe("color: blue; font-size: 20px;")
+
+  })
+
+  it('should render prop renderIcon', () => {
+    const renderIcon = h(AtIcon, {
+      prefixClass: 'at-icon',
+      value: 'home',
+      size: 16,
+      color: '#6190e8',
+      style: { marginRight: '10px' }
+    })
+
+    const wrapper = factory({
+      renderIcon
+    })
+
+    expect(
+      wrapper
+        .find(".at-icon-home")
+        .exists()
+    ).toBe(true)
+
+    expect(
+      wrapper
+        .find(".at-icon")
+        .attributes("style")
+    ).toBe("margin-right: 10px; color: rgb(97, 144, 232); font-size: 0.6827rem;")
+  })
+
 })
 
 describe('Card Behavior ', () => {
