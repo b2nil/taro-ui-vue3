@@ -157,23 +157,11 @@
 <script lang="ts">
 import { defineComponent, ref, reactive, toRefs } from "vue"
 import Taro from "@tarojs/taro"
-import { AtButton, AtList, AtListItem, AtSwipeAction } from "../../../index"
-import { Page, Panel, ExampleItem } from "../../components/demo-page"
 
 import "./index.scss"
 
 export default defineComponent({
   name: "SwipeActionDemo",
-
-  components: {
-    Page,
-    Panel,
-    ExampleItem,
-    AtButton,
-    AtList,
-    AtListItem,
-    AtSwipeAction
-  },
 
   setup() {
 

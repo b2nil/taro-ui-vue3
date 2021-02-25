@@ -122,20 +122,11 @@
 <script lang="ts">
 import { defineComponent } from "vue"
 import Taro from "@tarojs/taro"
-import { AtNavBar } from "../../../index"
-import { Page, Panel, ExampleItem } from '../../components/demo-page'
 
 import "./index.scss"
 
 export default defineComponent({
   name: "NavbarDemo",
-
-  components: {
-    AtNavBar,
-    Page,
-    Panel,
-    ExampleItem
-  },
 
   setup() {
 

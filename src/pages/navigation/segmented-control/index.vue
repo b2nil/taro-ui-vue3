@@ -46,20 +46,11 @@
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs, ref } from "vue"
-import { AtSegmentedControl } from "../../../index"
-import { Page, Panel, ExampleItem } from '../../components/demo-page'
 
 import "./index.scss"
 
 export default defineComponent({
   name: "SegmentedControlDemo",
-
-  components: {
-    AtSegmentedControl,
-    Page,
-    Panel,
-    ExampleItem
-  },
 
   setup() {
     const state = reactive({

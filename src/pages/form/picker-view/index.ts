@@ -2,7 +2,6 @@ import { h, defineComponent, reactive, onMounted } from 'vue'
 import { PickerView, PickerViewColumn, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import Taro from '@tarojs/taro'
-import { Page, Panel, ExampleItem } from '../../components/demo-page'
 import './index.scss'
 
 interface IndexState {

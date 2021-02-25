@@ -126,24 +126,11 @@ import {
   AtModalAction,
   AtModalContent,
   AtModalHeader
-} from "../../../index"
-import { Page, Panel, ExampleItem } from "../../components/demo-page"
+} from 'taro-ui-vue3'
 import mockData from '../../navigation/indexes/mock-data'
 
 export default defineComponent({
   name: "ModalDemo",
-
-  components: {
-    Page,
-    Panel,
-    ExampleItem,
-    AtButton,
-    AtIndexes,
-    AtModal,
-    AtModalAction,
-    AtModalContent,
-    AtModalHeader
-  },
 
   setup() {
     const state = reactive({

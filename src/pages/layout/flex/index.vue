@@ -149,20 +149,10 @@
 
 <script lang="ts">
 import { defineComponent } from "vue"
-import { AtFlex, AtFlexItem } from "../../../index"
-import { Page, Panel, ExampleItem } from "../../components/demo-page"
 
 import "./index.scss"
 
 export default defineComponent({
   name: "FlexDemo",
-
-  components: {
-    Page,
-    Panel,
-    ExampleItem,
-    AtFlex,
-    AtFlexItem
-  }
 })
 </script>

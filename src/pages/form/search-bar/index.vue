@@ -69,9 +69,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from 'vue'
-import { AtSearchBar } from '../../../index'
 import Taro from '@tarojs/taro'
-import { Page, Panel, ExampleItem } from '../../components/demo-page'
 import './index.scss'
 
 interface IndexState {
@@ -80,13 +78,6 @@ interface IndexState {
 
 export default defineComponent({
   name: "SearchBarDemo",
-
-  components: {
-    AtSearchBar,
-    Page,
-    Panel,
-    ExampleItem
-  },
 
   setup() {
 

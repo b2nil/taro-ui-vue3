@@ -89,21 +89,11 @@
 
 <script>
 import { reactive, toRefs } from 'vue'
-import { AtButton, AtToast } from '../../../index'
-import { Page, Panel, ExampleItem } from "../../components/demo-page"
 
 import "./index.scss"
 
 export default {
   name: 'ToastDemo',
-
-  components: {
-    AtButton,
-    AtToast,
-    Page,
-    Panel,
-    ExampleItem,
-  },
 
   setup() {
     const state = reactive({

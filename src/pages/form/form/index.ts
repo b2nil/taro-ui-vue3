@@ -1,8 +1,6 @@
 import { h, defineComponent, reactive } from 'vue'
-import { AtButton, AtCheckbox, AtForm, AtInput, AtToast } from '../../../index'
 import { CheckboxOption } from 'types/checkbox'
 import { View } from '@tarojs/components'
-import { Page, Panel } from '../../components/demo-page'
 import './index.scss'
 
 interface PageFormState {
