@@ -1,0 +1,258 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtSlider should render default AtSlider 1`] = `
+<view
+  class="at-slider"
+>
+  <view
+    class="at-slider__inner"
+  >
+    <slider
+      activecolor="#6190e8"
+      backgroundcolor="#e9e9e9"
+      blockcolor="#ffffff"
+      blocksize="28"
+      disabled="false"
+      max="100"
+      min="0"
+      step="1"
+      value="0"
+    />
+  </view>
+  <!---->
+</view>
+`;
+
+exports[`AtSlider should render prop -- activeColor 1`] = `
+<view
+  class="at-slider"
+>
+  <view
+    class="at-slider__inner"
+  >
+    <slider
+      activecolor="red"
+      backgroundcolor="#e9e9e9"
+      blockcolor="#ffffff"
+      blocksize="28"
+      disabled="false"
+      max="100"
+      min="0"
+      step="1"
+      value="0"
+    />
+  </view>
+  <!---->
+</view>
+`;
+
+exports[`AtSlider should render prop -- backgroundColor 1`] = `
+<view
+  class="at-slider"
+>
+  <view
+    class="at-slider__inner"
+  >
+    <slider
+      activecolor="#6190e8"
+      backgroundcolor="red"
+      blockcolor="#ffffff"
+      blocksize="28"
+      disabled="false"
+      max="100"
+      min="0"
+      step="1"
+      value="0"
+    />
+  </view>
+  <!---->
+</view>
+`;
+
+exports[`AtSlider should render prop -- blockColor 1`] = `
+<view
+  class="at-slider"
+>
+  <view
+    class="at-slider__inner"
+  >
+    <slider
+      activecolor="#6190e8"
+      backgroundcolor="#e9e9e9"
+      blockcolor="red"
+      blocksize="28"
+      disabled="false"
+      max="100"
+      min="0"
+      step="1"
+      value="0"
+    />
+  </view>
+  <!---->
+</view>
+`;
+
+exports[`AtSlider should render prop -- blockSize 1`] = `
+<view
+  class="at-slider"
+>
+  <view
+    class="at-slider__inner"
+  >
+    <slider
+      activecolor="#6190e8"
+      backgroundcolor="#e9e9e9"
+      blockcolor="#ffffff"
+      blocksize="24"
+      disabled="false"
+      max="100"
+      min="0"
+      step="1"
+      value="0"
+    />
+  </view>
+  <!---->
+</view>
+`;
+
+exports[`AtSlider should render prop -- disabled 1`] = `
+<view
+  class="at-slider at-slider--disabled"
+>
+  <view
+    class="at-slider__inner"
+  >
+    <slider
+      activecolor="#6190e8"
+      backgroundcolor="#e9e9e9"
+      blockcolor="#ffffff"
+      blocksize="28"
+      disabled="true"
+      max="100"
+      min="0"
+      step="1"
+      value="0"
+    />
+  </view>
+  <!---->
+</view>
+`;
+
+exports[`AtSlider should render prop -- max 1`] = `
+<view
+  class="at-slider"
+>
+  <view
+    class="at-slider__inner"
+  >
+    <slider
+      activecolor="#6190e8"
+      backgroundcolor="#e9e9e9"
+      blockcolor="#ffffff"
+      blocksize="28"
+      disabled="false"
+      max="200"
+      min="0"
+      step="1"
+      value="0"
+    />
+  </view>
+  <!---->
+</view>
+`;
+
+exports[`AtSlider should render prop -- min 1`] = `
+<view
+  class="at-slider"
+>
+  <view
+    class="at-slider__inner"
+  >
+    <slider
+      activecolor="#6190e8"
+      backgroundcolor="#e9e9e9"
+      blockcolor="#ffffff"
+      blocksize="28"
+      disabled="false"
+      max="100"
+      min="50"
+      step="1"
+      value="50"
+    />
+  </view>
+  <!---->
+</view>
+`;
+
+exports[`AtSlider should render prop -- showValue 1`] = `
+<view
+  class="at-slider"
+>
+  <view
+    class="at-slider__inner"
+  >
+    <slider
+      activecolor="#6190e8"
+      backgroundcolor="#e9e9e9"
+      blockcolor="#ffffff"
+      blocksize="28"
+      disabled="false"
+      max="100"
+      min="0"
+      step="1"
+      value="0"
+    />
+  </view>
+  <view
+    class="at-slider__text"
+  >
+    0
+  </view>
+</view>
+`;
+
+exports[`AtSlider should render prop -- step 1`] = `
+<view
+  class="at-slider"
+>
+  <view
+    class="at-slider__inner"
+  >
+    <slider
+      activecolor="#6190e8"
+      backgroundcolor="#e9e9e9"
+      blockcolor="#ffffff"
+      blocksize="28"
+      disabled="false"
+      max="100"
+      min="0"
+      step="1"
+      value="0"
+    />
+  </view>
+  <!---->
+</view>
+`;
+
+exports[`AtSlider should render prop -- value 1`] = `
+<view
+  class="at-slider"
+>
+  <view
+    class="at-slider__inner"
+  >
+    <slider
+      activecolor="#6190e8"
+      backgroundcolor="#e9e9e9"
+      blockcolor="#ffffff"
+      blocksize="28"
+      disabled="false"
+      max="100"
+      min="0"
+      step="1"
+      value="50"
+    />
+  </view>
+  <!---->
+</view>
+`;

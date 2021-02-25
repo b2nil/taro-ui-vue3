@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtFab should render default AtFab 1`] = `
+<view
+  class="at-fab at-fab--normal"
+>
+  按钮
+</view>
+`;
+
+exports[`AtFab should render prop -- class 1`] = `
+<view
+  class="button at-fab at-fab--normal button"
+>
+  按钮
+</view>
+`;
+
+exports[`AtFab should render prop -- size small 1`] = `
+<view
+  class="at-fab at-fab--small"
+>
+  按钮
+</view>
+`;

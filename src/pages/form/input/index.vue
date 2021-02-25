@@ -212,20 +212,10 @@
 import { computed, defineComponent, reactive, toRefs } from 'vue'
 import Taro from '@tarojs/taro'
 
-import { AtForm, AtInput } from '../../../index'
-import { Page, Panel, ExampleItem } from "../../components/demo-page"
 import verificationCode from '@/assets/images/verification_code.png'
 import './index.scss'
 
 export default defineComponent({
-  components: {
-    AtForm,
-    AtInput,
-    Page,
-    Panel,
-    ExampleItem,
-  },
-
   setup() {
     const state = reactive({
       value1: '',

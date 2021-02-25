@@ -1,0 +1,633 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtNavBar Behavior  should trigger onClickLeftIcon 1`] = `
+<view
+  class="at-nav-bar"
+>
+  <view
+    class="at-nav-bar__left-view"
+    style="color: rgb(97, 144, 232);"
+  >
+    <text
+      class="at-icon at-icon-test"
+      style=""
+    />
+    <text
+      class="at-nav-bar__text"
+    />
+  </view>
+  <view
+    class="at-nav-bar__title"
+  />
+  <view
+    class="at-nav-bar__right-view"
+  >
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: rgb(97, 144, 232);"
+    >
+      
+    </view>
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: rgb(97, 144, 232);"
+    >
+      
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtNavBar Behavior  should trigger onClickRightFirstIcon 1`] = `
+<view
+  class="at-nav-bar"
+>
+  <view
+    class="at-nav-bar__left-view"
+    style="color: rgb(97, 144, 232);"
+  >
+    <text
+      class="at-icon at-icon-test"
+      style=""
+    />
+    <text
+      class="at-nav-bar__text"
+    />
+  </view>
+  <view
+    class="at-nav-bar__title"
+  />
+  <view
+    class="at-nav-bar__right-view"
+  >
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: rgb(97, 144, 232);"
+    >
+      
+    </view>
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: rgb(97, 144, 232);"
+    >
+      
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtNavBar Behavior  should trigger onClickRightSecondIcon 1`] = `
+<view
+  class="at-nav-bar"
+>
+  <view
+    class="at-nav-bar__left-view"
+    style="color: rgb(97, 144, 232);"
+  >
+    <text
+      class="at-icon at-icon-test"
+      style=""
+    />
+    <text
+      class="at-nav-bar__text"
+    />
+  </view>
+  <view
+    class="at-nav-bar__title"
+  />
+  <view
+    class="at-nav-bar__right-view"
+  >
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: rgb(97, 144, 232);"
+    >
+      
+    </view>
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: rgb(97, 144, 232);"
+    >
+      
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtNavBar should render default AtNavBar 1`] = `
+<view
+  class="at-nav-bar"
+>
+  <view
+    class="at-nav-bar__left-view"
+    style="color: rgb(97, 144, 232);"
+  >
+    
+    <text
+      class="at-nav-bar__text"
+    />
+  </view>
+  <view
+    class="at-nav-bar__title"
+  />
+  <view
+    class="at-nav-bar__right-view"
+  >
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: rgb(97, 144, 232);"
+    >
+      
+    </view>
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: rgb(97, 144, 232);"
+    >
+      
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtNavBar should render prop -- class 1`] = `
+<view
+  class="test at-nav-bar test"
+>
+  <view
+    class="at-nav-bar__left-view"
+    style="color: rgb(97, 144, 232);"
+  >
+    
+    <text
+      class="at-nav-bar__text"
+    />
+  </view>
+  <view
+    class="at-nav-bar__title"
+  />
+  <view
+    class="at-nav-bar__right-view"
+  >
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: rgb(97, 144, 232);"
+    >
+      
+    </view>
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: rgb(97, 144, 232);"
+    >
+      
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtNavBar should render prop -- color 1`] = `
+<view
+  class="at-nav-bar"
+>
+  <view
+    class="at-nav-bar__left-view"
+    style="color: rgb(255, 255, 255);"
+  >
+    
+    <text
+      class="at-nav-bar__text"
+    />
+  </view>
+  <view
+    class="at-nav-bar__title"
+  />
+  <view
+    class="at-nav-bar__right-view"
+  >
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: rgb(255, 255, 255);"
+    >
+      
+    </view>
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: rgb(255, 255, 255);"
+    >
+      
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtNavBar should render prop -- fixed 1`] = `
+<view
+  class="at-nav-bar at-nav-bar--fixed"
+>
+  <view
+    class="at-nav-bar__left-view"
+    style="color: rgb(97, 144, 232);"
+  >
+    
+    <text
+      class="at-nav-bar__text"
+    />
+  </view>
+  <view
+    class="at-nav-bar__title"
+  />
+  <view
+    class="at-nav-bar__right-view"
+  >
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: rgb(97, 144, 232);"
+    >
+      
+    </view>
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: rgb(97, 144, 232);"
+    >
+      
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtNavBar should render prop -- leftIconType 1`] = `
+<view
+  class="at-nav-bar"
+>
+  <view
+    class="at-nav-bar__left-view"
+    style="color: rgb(97, 144, 232);"
+  >
+    <text
+      class="at-icon at-icon-test"
+      style=""
+    />
+    <text
+      class="at-nav-bar__text"
+    />
+  </view>
+  <view
+    class="at-nav-bar__title"
+  />
+  <view
+    class="at-nav-bar__right-view"
+  >
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: rgb(97, 144, 232);"
+    >
+      
+    </view>
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: rgb(97, 144, 232);"
+    >
+      
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtNavBar should render prop -- leftIconType 2`] = `
+<view
+  class="at-nav-bar"
+>
+  <view
+    class="at-nav-bar__left-view"
+    style="color: rgb(97, 144, 232);"
+  >
+    <text
+      class="at-icon at-icon-test"
+      style="color: red; font-size: 1.536rem;"
+    />
+    <text
+      class="at-nav-bar__text"
+    />
+  </view>
+  <view
+    class="at-nav-bar__title"
+  />
+  <view
+    class="at-nav-bar__right-view"
+  >
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: rgb(97, 144, 232);"
+    >
+      
+    </view>
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: rgb(97, 144, 232);"
+    >
+      
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtNavBar should render prop -- leftText 1`] = `
+<view
+  class="at-nav-bar"
+>
+  <view
+    class="at-nav-bar__left-view"
+    style="color: rgb(97, 144, 232);"
+  >
+    
+    <text
+      class="at-nav-bar__text"
+    >
+      test
+    </text>
+  </view>
+  <view
+    class="at-nav-bar__title"
+  />
+  <view
+    class="at-nav-bar__right-view"
+  >
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: rgb(97, 144, 232);"
+    >
+      
+    </view>
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: rgb(97, 144, 232);"
+    >
+      
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtNavBar should render prop -- rightFirstIconType 1`] = `
+<view
+  class="at-nav-bar"
+>
+  <view
+    class="at-nav-bar__left-view"
+    style="color: rgb(97, 144, 232);"
+  >
+    
+    <text
+      class="at-nav-bar__text"
+    />
+  </view>
+  <view
+    class="at-nav-bar__title"
+  />
+  <view
+    class="at-nav-bar__right-view"
+  >
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: rgb(97, 144, 232);"
+    >
+      
+    </view>
+    <view
+      class="at-nav-bar__container"
+      style="color: rgb(97, 144, 232);"
+    >
+      <text
+        class="at-icon at-icon-test"
+        style=""
+      />
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtNavBar should render prop -- rightFirstIconType 2`] = `
+<view
+  class="at-nav-bar"
+  size="36"
+>
+  <view
+    class="at-nav-bar__left-view"
+    style="color: red;"
+  >
+    
+    <text
+      class="at-nav-bar__text"
+    />
+  </view>
+  <view
+    class="at-nav-bar__title"
+  />
+  <view
+    class="at-nav-bar__right-view"
+  >
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: red;"
+    >
+      
+    </view>
+    <view
+      class="at-nav-bar__container"
+      style="color: red;"
+    >
+      <text
+        class="at-icon at-icon-test"
+        style=""
+      />
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtNavBar should render prop -- rightSecondIconType 1`] = `
+<view
+  class="at-nav-bar"
+>
+  <view
+    class="at-nav-bar__left-view"
+    style="color: rgb(97, 144, 232);"
+  >
+    
+    <text
+      class="at-nav-bar__text"
+    />
+  </view>
+  <view
+    class="at-nav-bar__title"
+  />
+  <view
+    class="at-nav-bar__right-view"
+  >
+    <view
+      class="at-nav-bar__container"
+      style="color: rgb(97, 144, 232);"
+    >
+      <text
+        class="at-icon at-icon-test"
+        style=""
+      />
+    </view>
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: rgb(97, 144, 232);"
+    >
+      
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtNavBar should render prop -- rightSecondIconType 2`] = `
+<view
+  class="at-nav-bar"
+  size="36"
+>
+  <view
+    class="at-nav-bar__left-view"
+    style="color: red;"
+  >
+    
+    <text
+      class="at-nav-bar__text"
+    />
+  </view>
+  <view
+    class="at-nav-bar__title"
+  />
+  <view
+    class="at-nav-bar__right-view"
+  >
+    <view
+      class="at-nav-bar__container"
+      style="color: red;"
+    >
+      <text
+        class="at-icon at-icon-test"
+        style=""
+      />
+    </view>
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: red;"
+    >
+      
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtNavBar should render prop -- style 1`] = `
+<view
+  class="at-nav-bar"
+  style="color: red;"
+>
+  <view
+    class="at-nav-bar__left-view"
+    style="color: rgb(97, 144, 232);"
+  >
+    
+    <text
+      class="at-nav-bar__text"
+    />
+  </view>
+  <view
+    class="at-nav-bar__title"
+  />
+  <view
+    class="at-nav-bar__right-view"
+  >
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: rgb(97, 144, 232);"
+    >
+      
+    </view>
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: rgb(97, 144, 232);"
+    >
+      
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtNavBar should render title as both slot and prop 1`] = `
+<view>
+  <view
+    class="at-nav-bar"
+  >
+    <view
+      class="at-nav-bar__left-view"
+      style="color: rgb(97, 144, 232);"
+    >
+      
+      <text
+        class="at-nav-bar__text"
+      />
+    </view>
+    <view
+      class="at-nav-bar__title"
+    >
+      <text>
+        title as slot
+      </text>
+    </view>
+    <view
+      class="at-nav-bar__right-view"
+    >
+      <view
+        class="at-nav-bar__container at-nav-bar__container--hide"
+        style="color: rgb(97, 144, 232);"
+      >
+        
+      </view>
+      <view
+        class="at-nav-bar__container at-nav-bar__container--hide"
+        style="color: rgb(97, 144, 232);"
+      >
+        
+      </view>
+    </view>
+  </view>
+  <view
+    class="at-nav-bar"
+  >
+    <view
+      class="at-nav-bar__left-view"
+      style="color: rgb(97, 144, 232);"
+    >
+      
+      <text
+        class="at-nav-bar__text"
+      />
+    </view>
+    <view
+      class="at-nav-bar__title"
+    >
+      title as prop
+    </view>
+    <view
+      class="at-nav-bar__right-view"
+    >
+      <view
+        class="at-nav-bar__container at-nav-bar__container--hide"
+        style="color: rgb(97, 144, 232);"
+      >
+        
+      </view>
+      <view
+        class="at-nav-bar__container at-nav-bar__container--hide"
+        style="color: rgb(97, 144, 232);"
+      >
+        
+      </view>
+    </view>
+  </view>
+</view>
+`;

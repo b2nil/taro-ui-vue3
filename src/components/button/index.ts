@@ -1,4 +1,4 @@
-import { h, defineComponent, computed, mergeProps, PropType } from 'vue'
+import { h, defineComponent, computed, mergeProps, warn, PropType } from 'vue'
 import { Button, View, Form } from '@tarojs/components'
 import { AtButtonProps } from "types/button"
 import AtLoading from '../loading/index'
@@ -37,10 +37,7 @@ const AtButton = defineComponent({
     full: Boolean,
     loading: Boolean,
     disabled: Boolean,
-    onClick: {
-      type: Function as PropType<AtButtonProps['onClick']>,
-      default: () => () => { },
-    },
+    onClick: Function as PropType<AtButtonProps['onClick']>,
 
     // Taro Button Props
     formType: {
@@ -91,7 +88,7 @@ const AtButton = defineComponent({
     const { isWEAPP, isALIPAY, isWEB } = getEnvs()
 
     const rootClasses = computed(() => ({
-      [`at-button--${SIZE_CLASS[props.size ? props.size : 'normal']}`]: SIZE_CLASS[props.size ? props.size : 'normal'],
+      [`at-button--${SIZE_CLASS[props.size!]}`]: SIZE_CLASS[props.size!],
       [`at-button--${props.type}`]: TYPE_CLASS[props.type ? props.type : ''],
       'at-button--circle': props.circle,
       'at-button--disabled': props.disabled,
@@ -104,41 +101,48 @@ const AtButton = defineComponent({
     const loadingSize = computed(() => props.size === 'small' ? '30' : '0')
 
     function handleClick(event) {
+      if (Boolean(attrs['onTap'])) {
+        warn(
+          'AtButton 绑定的点击事件应为 `click`， 而非 `tap`。',
+          '正确示例：`<at-button @click="eventHandler"/>`'
+        )
+      }
+
       if (!props.disabled) {
-        props.onClick && props.onClick(event)
+        props.onClick?.(event)
       }
     }
 
     function handleGetUserInfo(event) {
-      props.onGetUserInfo && props.onGetUserInfo(event)
+      props.onGetUserInfo?.(event)
     }
 
     function handleGetPhoneNumber(event) {
-      props.onGetPhoneNumber && props.onGetPhoneNumber(event)
+      props.onGetPhoneNumber?.(event)
     }
 
     function handleOpenSetting(event) {
-      props.onOpenSetting && props.onOpenSetting(event)
+      props.onOpenSetting?.(event)
     }
 
     function handleError(event) {
-      props.onError && props.onError(event)
+      props.onError?.(event)
     }
 
     function handleContact(event) {
-      props.onContact && props.onContact(event)
+      props.onContact?.(event)
     }
 
     function handleLaunchapp(event) {
-      props.onLaunchapp && props.onLaunchapp(event)
+      props.onLaunchapp?.(event)
     }
 
     function handleGetRealNameAuthInfo(event) {
-      props.onGetRealnameAuthInfo && props.onGetRealnameAuthInfo(event)
+      props.onGetRealnameAuthInfo?.(event)
     }
 
     function handleGetAuthorize(event) {
-      props.onGetAuthorize && props.onGetAuthorize(event)
+      props.onGetAuthorize?.(event)
     }
 
     function handleSubmit(event) {
@@ -256,7 +260,7 @@ const AtButton = defineComponent({
           // button text
           h(View, {
             class: 'at-button__text'
-          }, { default: () => slots.default && slots.default() })
+          }, { default: () => slots.default?.() })
         ]
       })
     )

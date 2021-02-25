@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtBadge should render prop -- dot 1`] = `
+<view
+  class="at-badge"
+>
+  
+  <view
+    class="at-button--normal at-button--icon at-button"
+  >
+    <button
+      class="at-button__wxbutton"
+      lang="en"
+    />
+    <!---->
+    <!---->
+    <view
+      class="at-button__icon"
+    >
+      <view
+        class="at-loading"
+      >
+        <view
+          class="at-loading__ring"
+        />
+        <view
+          class="at-loading__ring"
+        />
+        <view
+          class="at-loading__ring"
+        />
+      </view>
+    </view>
+    <view
+      class="at-button__text"
+    >
+      按钮文字
+    </view>
+  </view>
+  
+  <view
+    class="at-badge__dot"
+  />
+</view>
+`;
+
+exports[`AtBadge should render prop -- maxValue 1`] = `
+<view
+  class="at-badge"
+>
+  
+  <view
+    class="at-button--normal at-button--icon at-button"
+  >
+    <button
+      class="at-button__wxbutton"
+      lang="en"
+    />
+    <!---->
+    <!---->
+    <view
+      class="at-button__icon"
+    >
+      <view
+        class="at-loading"
+      >
+        <view
+          class="at-loading__ring"
+        />
+        <view
+          class="at-loading__ring"
+        />
+        <view
+          class="at-loading__ring"
+        />
+      </view>
+    </view>
+    <view
+      class="at-button__text"
+    >
+      按钮文字
+    </view>
+  </view>
+  
+  <view
+    class="at-badge__num"
+  >
+    9+
+  </view>
+</view>
+`;
+
+exports[`AtBadge should render prop -- value 1`] = `
+<view
+  class="at-badge"
+>
+  
+  <view
+    class="at-button--normal at-button--icon at-button"
+  >
+    <button
+      class="at-button__wxbutton"
+      lang="en"
+    />
+    <!---->
+    <!---->
+    <view
+      class="at-button__icon"
+    >
+      <view
+        class="at-loading"
+      >
+        <view
+          class="at-loading__ring"
+        />
+        <view
+          class="at-loading__ring"
+        />
+        <view
+          class="at-loading__ring"
+        />
+      </view>
+    </view>
+    <view
+      class="at-button__text"
+    >
+      按钮文字
+    </view>
+  </view>
+  
+  <view
+    class="at-badge__num"
+  >
+    3
+  </view>
+</view>
+`;

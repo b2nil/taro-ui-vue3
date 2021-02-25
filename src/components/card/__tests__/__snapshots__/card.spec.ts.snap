@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtCard should render all nodes and match snapshot 1`] = `
+<view
+  class="at-card"
+>
+  <view
+    class="at-card__header"
+  >
+    <view
+      class="at-card__header-thumb"
+    >
+      <image
+        class="at-card__header-thumb-info"
+        mode="scaleToFill"
+        src="http://test.pic.com/ni74d.png"
+      />
+    </view>
+    <!---->
+    <!---->
+    <text
+      class="at-card__header-title"
+    >
+      title
+    </text>
+    <text
+      class="at-card__header-extra"
+      style="font-size: 10px;"
+    >
+      2021-01-29 01:00:00
+    </text>
+  </view>
+  <view
+    class="at-card__content"
+  >
+    <view
+      class="at-card__content-info"
+    />
+    <view
+      class="at-card__content-note"
+    >
+      tips
+    </view>
+  </view>
+</view>
+`;

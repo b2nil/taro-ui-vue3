@@ -1,0 +1,50 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "es6",
+    "sourceMap": true,
+    "importHelpers": true,
+    "noUnusedLocals": false,
+    "esModuleInterop": true,
+    "noImplicitAny": false,
+    "removeComments": false,
+    "strictNullChecks": true,
+    "preserveConstEnums": true,
+    "noUnusedParameters": false,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "outDir": "lib",
+    "baseUrl": ".",
+    "rootDir": ".",
+    "jsx": "preserve",
+    "jsxFactory": "h",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "types": [
+      "node",
+      "jest"
+    ],
+    "typeRoots": [
+      "node_modules/@types",
+      "global.d.ts",
+      "types"
+    ],
+    "paths": {
+      "@/mock/tarojs_components": [
+        "./tests/mock/tarojs_components"
+      ],
+      "@/tests/helper": [
+        "./tests/helper"
+      ]
+    }
+  },
+  "include": [
+    "src/components/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules/*",
+    "dist",
+    "**/*.spec.js"
+  ]
+}

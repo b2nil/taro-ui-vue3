@@ -7,23 +7,20 @@ const AtActionSheetItem = defineComponent({
   name: "AtActionSheetItem",
 
   props: {
-    onClick: {
-      type: Function as PropType<(event?: CommonEvent) => void>,
-      default: () => () => { }
-    },
+    onClick: Function as PropType<(event?: CommonEvent) => void>
   },
 
   setup(props: AtActionSheetItemProps, { attrs, slots }) {
 
     function handleClick(e: CommonEvent) {
-      props.onClick && props.onClick(e)
+      props.onClick?.(e)
     }
 
     return () => (
       h(View, mergeProps(attrs, {
         class: 'at-action-sheet__item',
         onTap: handleClick
-      }), { default: () => slots.default && slots.default() })
+      }), { default: () => slots.default?.() })
     )
   }
 })

@@ -1,5 +1,6 @@
 # Taro UI Vue3
 
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![NPM version](https://img.shields.io/npm/v/taro-ui-vue3.svg)](https://npmjs.org/package/taro-ui-vue3)
 [![NPM](https://img.shields.io/npm/l/taro-ui-vue3)](./LECENSE)
 ![David](https://img.shields.io/david/b2nil/taro-ui-vue3)

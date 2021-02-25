@@ -97,17 +97,17 @@ const AtInputNumber = defineComponent({
       width: props.width ? `${pxTransform(props.width)}` : ''
     }))
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       'at-input-number': true,
       'at-input-number--lg': props.size! === 'large'
     }))
 
-    const minusBtnClass = computed(() => ({
+    const minusBtnClasses = computed(() => ({
       'at-input-number__btn': true,
       'at-input-number--disabled': inputValue.value <= props.min! || props.disabled
     }))
 
-    const plusBtnClass = computed(() => ({
+    const plusBtnClasses = computed(() => ({
       'at-input-number__btn': true,
       'at-input-number--disabled': inputValue.value >= props.max! || props.disabled
     }))
@@ -201,11 +201,11 @@ const AtInputNumber = defineComponent({
 
     return () => (
       h(View, mergeProps(attrs, {
-        class: rootClass.value,
+        class: rootClasses.value,
       }), {
         default: () => [
           h(View, {
-            class: minusBtnClass.value,
+            class: minusBtnClasses.value,
             onTap: handleClick.bind(this, 'minus')
           }, {
             default: () => [
@@ -226,7 +226,7 @@ const AtInputNumber = defineComponent({
           }),
 
           h(View, {
-            class: plusBtnClass.value,
+            class: plusBtnClasses.value,
             onTap: handleClick.bind(this, 'plus')
           }, {
             default: () => [

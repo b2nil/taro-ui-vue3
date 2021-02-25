@@ -23,14 +23,8 @@ const AtActionSheet = defineComponent({
       type: String,
       default: ''
     },
-    onClose: {
-      type: Function as PropType<(event?: CommonEvent) => void>,
-      default: () => () => { }
-    },
-    onCancel: {
-      type: Function as PropType<(event?: CommonEvent) => void>,
-      default: () => () => { }
-    },
+    onClose: Function as PropType<(event?: CommonEvent) => void>,
+    onCancel: Function as PropType<(event?: CommonEvent) => void>
   },
 
   setup(props: AtActionSheetProps, { attrs, slots }) {
@@ -49,11 +43,11 @@ const AtActionSheet = defineComponent({
     })
 
     function handleClose() {
-      props.onClose && props.onClose()
+      props.onClose?.()
     }
 
     function handleCancel() {
-      props.onCancel && props.onCancel()
+      props.onCancel?.()
       close()
     }
 
@@ -86,7 +80,7 @@ const AtActionSheet = defineComponent({
                 h(AtActionSheetHeader, null, { default: () => props.title })
               ),
 
-              h(AtActionSheetBody, null, { default: () => slots.default && slots.default() }),
+              h(AtActionSheetBody, null, { default: () => slots.default?.() }),
 
               props.cancelText && (
                 h(AtActionSheetFooter, {

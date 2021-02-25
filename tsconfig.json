@@ -19,10 +19,14 @@
     "allowJs": true,
     "resolveJsonModule": true,
     "typeRoots": [
-      "node_modules/@types",
-      "global.d.ts"
+      "types",
+      "global.d.ts",
+      "node_modules/@types"
     ],
     "paths": {
+      "types/*": [
+        "./types/*"
+      ],
       "@/components/*": [
         "./src/components/*"
       ],
@@ -32,6 +36,15 @@
       "@/assets/*": [
         "./src/assets/*"
       ],
+      "@/mock/tarojs_components": [
+        "./tests/mock/tarojs_components"
+      ],
+      "@/tests/helper": [
+        "./tests/helper"
+      ],
+      "taro-ui-vue3": [
+        "./dist"
+      ]
     }
   },
   "exclude": [

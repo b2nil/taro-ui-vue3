@@ -2,7 +2,7 @@ import { h, defineComponent, computed, mergeProps, PropType } from 'vue'
 import { Image, Text, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtTabBarProps, TabItem } from 'types/tab-bar'
-import { mergeStyle } from '../../utils/common'
+import { convertToUnit } from '../../utils/common'
 
 import AtBadge from '../badge/index'
 
@@ -24,12 +24,18 @@ const AtTabBar = defineComponent({
       required: true
     },
     iconSize: {
-      type: Number,
-      default: 24
+      type: [Number, String],
+      default: 24,
+      validator: (prop: string | number) => {
+        return typeof parseInt(`${prop}`) === 'number'
+      }
     },
     fontSize: {
-      type: Number,
-      default: 14
+      type: [Number, String],
+      default: 14,
+      validator: (prop: string | number) => {
+        return typeof parseInt(`${prop}`) === 'number'
+      }
     },
     color: {
       type: String,
@@ -50,7 +56,7 @@ const AtTabBar = defineComponent({
     },
   },
 
-  setup(props: AtTabBarProps, { attrs, slots }) {
+  setup(props: AtTabBarProps, { attrs }) {
 
     const defaultStyle = computed(() => ({
       color: props.color || ''
@@ -61,7 +67,7 @@ const AtTabBar = defineComponent({
     }))
 
     const titleStyle = computed(() => ({
-      fontSize: props.fontSize ? `${props.fontSize}px` : ''
+      fontSize: props.fontSize ? convertToUnit(props.fontSize) : ''
     }))
 
     const rootStyle = computed(() => ({
@@ -69,8 +75,8 @@ const AtTabBar = defineComponent({
     }))
 
     const imgStyle = computed(() => ({
-      width: `${props.iconSize}px`,
-      height: `${props.iconSize}px`
+      width: convertToUnit(props.iconSize),
+      height: convertToUnit(props.iconSize)
     }))
 
     const rootClass = computed(() => ({
@@ -93,7 +99,7 @@ const AtTabBar = defineComponent({
 
     const tabBarItemIconStyle = computed(() => (i) => ({
       color: props.current === i ? props.selectedColor : props.color,
-      fontSize: props.iconSize ? `${props.iconSize}px` : ''
+      fontSize: props.iconSize ? convertToUnit(props.iconSize) : ''
     }))
 
     const tabBarItemInnerImgClass = computed(() => (selected: boolean) => ({

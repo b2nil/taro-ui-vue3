@@ -1,0 +1,161 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Progress should render default Progress 1`] = `
+<view
+  class="at-progress"
+>
+  <view
+    class="at-progress__outer"
+  >
+    <view
+      class="at-progress__outer-inner"
+    >
+      <view
+        class="at-progress__outer-inner-background"
+        style="width: 0%; height: 10px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-progress__content"
+  >
+    0%
+  </view>
+</view>
+`;
+
+exports[`Progress should render prop -- color 1`] = `
+<view
+  class="at-progress"
+>
+  <view
+    class="at-progress__outer"
+  >
+    <view
+      class="at-progress__outer-inner"
+    >
+      <view
+        class="at-progress__outer-inner-background"
+        style="width: 0%; height: 10px; background-color: rgb(255, 73, 73);"
+      />
+    </view>
+  </view>
+  <view
+    class="at-progress__content"
+  >
+    0%
+  </view>
+</view>
+`;
+
+exports[`Progress should render prop -- isHidePercent 1`] = `
+<view
+  class="at-progress"
+>
+  <view
+    class="at-progress__outer"
+  >
+    <view
+      class="at-progress__outer-inner"
+    >
+      <view
+        class="at-progress__outer-inner-background"
+        style="width: 0%; height: 10px;"
+      />
+    </view>
+  </view>
+  <!---->
+</view>
+`;
+
+exports[`Progress should render prop -- percent 1`] = `
+<view
+  class="at-progress"
+>
+  <view
+    class="at-progress__outer"
+  >
+    <view
+      class="at-progress__outer-inner"
+    >
+      <view
+        class="at-progress__outer-inner-background"
+        style="width: 25%; height: 10px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-progress__content"
+  >
+    25%
+  </view>
+</view>
+`;
+
+exports[`Progress should render prop -- status(error) 1`] = `
+<view
+  class="at-progress at-progress--error"
+>
+  <view
+    class="at-progress__outer"
+  >
+    <view
+      class="at-progress__outer-inner"
+    >
+      <view
+        class="at-progress__outer-inner-background"
+        style="width: 0%; height: 10px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-progress__content"
+  />
+</view>
+`;
+
+exports[`Progress should render prop -- status(progress) 1`] = `
+<view
+  class="at-progress at-progress--progress"
+>
+  <view
+    class="at-progress__outer"
+  >
+    <view
+      class="at-progress__outer-inner"
+    >
+      <view
+        class="at-progress__outer-inner-background"
+        style="width: 0%; height: 10px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-progress__content"
+  >
+    0%
+  </view>
+</view>
+`;
+
+exports[`Progress should render prop -- status(success) 1`] = `
+<view
+  class="at-progress at-progress--success"
+>
+  <view
+    class="at-progress__outer"
+  >
+    <view
+      class="at-progress__outer-inner"
+    >
+      <view
+        class="at-progress__outer-inner-background"
+        style="width: 0%; height: 10px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-progress__content"
+  />
+</view>
+`;

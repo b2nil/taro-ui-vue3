@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtMessage should render default AtMessage 1`] = `
+<view
+  class="at-message at-message--hidden at-message--info"
+/>
+`;
+
+exports[`AtMessage should render prop -- class 1`] = `
+<view
+  class="test at-message at-message--hidden at-message--info test"
+/>
+`;
+
+exports[`AtMessage should render prop -- style 1`] = `
+<view
+  class="at-message at-message--hidden at-message--info"
+  style="color: red;"
+/>
+`;

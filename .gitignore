@@ -12,3 +12,11 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+# tests
+coverage/
+tests/coverage
+tests/components
+tests/utils
+tests/composables
+tests/index.ts*
+

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtForm should render default AtForm 1`] = `
+<form
+  class="at-form"
+  reportsubmit="false"
+/>
+`;
+
+exports[`AtForm should render prop -- reportSubmit 1`] = `
+<form
+  class="at-form"
+  reportsubmit="true"
+/>
+`;

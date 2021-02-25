@@ -135,22 +135,11 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue"
-import { AtButton, AtIcon, AtProgress } from "../../../index"
-import { Page, Panel, ExampleItem } from "../../components/demo-page"
 
 import "./index.scss"
 
 export default defineComponent({
   name: "ProgressDemo",
-
-  components: {
-    Page,
-    Panel,
-    ExampleItem,
-    AtButton,
-    AtIcon,
-    AtProgress
-  },
 
   setup() {
     const OFFSET = 15

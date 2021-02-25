@@ -77,21 +77,11 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue"
-import { AtActivityIndicator, AtSwitch } from "../../../index"
-import { Page, Panel, ExampleItem } from "../../components/demo-page"
 
 import "./index.scss"
 
 export default defineComponent({
   name: "ActivityIndicatorDemo",
-
-  components: {
-    Page,
-    Panel,
-    ExampleItem,
-    AtSwitch,
-    AtActivityIndicator,
-  },
 
   setup() {
     const isOpened = ref(true)

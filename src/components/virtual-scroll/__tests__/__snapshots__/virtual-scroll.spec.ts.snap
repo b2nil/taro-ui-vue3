@@ -1,0 +1,308 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtVirtualScroll should render component with scopedSlot and match snapshot 1`] = `
+<view>
+  <!---->
+  <scroll-view
+    class="at-virtual-scroll"
+    lowerthreshold="50"
+    scrollintoview="item-undefined"
+    scrollwithanimation="true"
+    scrolly="true"
+    style="height: 100px;"
+    upperthreshold="50"
+  >
+    <view>
+      <view
+        class="at-virtual-scroll__container"
+        style="height: 150px;"
+      >
+        <view
+          class="at-virtual-scroll__item"
+          id="item-0"
+          style="top: 0px;"
+        >
+          <view
+            class="item"
+          >
+            0: item-1
+          </view>
+        </view>
+        <view
+          class="at-virtual-scroll__item"
+          id="item-1"
+          style="top: 50px;"
+        >
+          <view
+            class="item"
+          >
+            1: item-2
+          </view>
+        </view>
+      </view>
+      <!---->
+    </view>
+  </scroll-view>
+</view>
+`;
+
+exports[`AtVirtualScroll should render footer slot 1`] = `
+<view>
+  <!---->
+  <scroll-view
+    class="at-virtual-scroll"
+    lowerthreshold="50"
+    scrollintoview="item-undefined"
+    scrollwithanimation="true"
+    scrolly="true"
+    style="height: 100px;"
+    upperthreshold="50"
+  >
+    <view>
+      <view
+        class="at-virtual-scroll__container"
+        style="height: 150px;"
+      >
+        <view
+          class="at-virtual-scroll__item"
+          id="item-0"
+          style="top: 0px;"
+        >
+          <view
+            class="item"
+          >
+            0: item-1
+          </view>
+        </view>
+        <view
+          class="at-virtual-scroll__item"
+          id="item-1"
+          style="top: 50px;"
+        >
+          <view
+            class="item"
+          >
+            1: item-2
+          </view>
+        </view>
+      </view>
+      <view
+        class="at-virtual-scroll__footer"
+      >
+        <view />
+      </view>
+    </view>
+  </scroll-view>
+</view>
+`;
+
+exports[`AtVirtualScroll should render header slot 1`] = `
+<view>
+  <view
+    class="at-virtual-scroll__header"
+  >
+    <view />
+  </view>
+  <scroll-view
+    class="at-virtual-scroll"
+    lowerthreshold="50"
+    scrollintoview="item-undefined"
+    scrollwithanimation="true"
+    scrolly="true"
+    style="height: 100px;"
+    upperthreshold="50"
+  >
+    <view>
+      <view
+        class="at-virtual-scroll__container"
+        style="height: 150px;"
+      >
+        <view
+          class="at-virtual-scroll__item"
+          id="item-0"
+          style="top: 0px;"
+        >
+          <view
+            class="item"
+          >
+            0: item-1
+          </view>
+        </view>
+        <view
+          class="at-virtual-scroll__item"
+          id="item-1"
+          style="top: 50px;"
+        >
+          <view
+            class="item"
+          >
+            1: item-2
+          </view>
+        </view>
+      </view>
+      <!---->
+    </view>
+  </scroll-view>
+</view>
+`;
+
+exports[`AtVirtualScroll should render not more than 5 hidden items and match snapshot 1`] = `
+<view>
+  <!---->
+  <scroll-view
+    class="at-virtual-scroll"
+    lowerthreshold="50"
+    scrollintoview="item-undefined"
+    scrollwithanimation="true"
+    scrolly="true"
+    style="height: 100px;"
+    upperthreshold="50"
+  >
+    <view>
+      <view
+        class="at-virtual-scroll__container"
+        style="height: 500px;"
+      >
+        <view
+          class="at-virtual-scroll__item"
+          id="item-0"
+          style="top: 0px;"
+        >
+          <view
+            class="item"
+          >
+            0: item-1
+          </view>
+        </view>
+        <view
+          class="at-virtual-scroll__item"
+          id="item-1"
+          style="top: 50px;"
+        >
+          <view
+            class="item"
+          >
+            1: item-2
+          </view>
+        </view>
+      </view>
+      <!---->
+    </view>
+  </scroll-view>
+</view>
+`;
+
+exports[`AtVirtualScroll should render right items on scroll and match snapshot 1`] = `
+<view>
+  <!---->
+  <scroll-view
+    class="at-virtual-scroll"
+    lowerthreshold="50"
+    scrollintoview="item-undefined"
+    scrollwithanimation="true"
+    scrolly="true"
+    style="height: 100px;"
+    upperthreshold="50"
+  >
+    <view>
+      <view
+        class="at-virtual-scroll__container"
+        style="height: 1000px;"
+      />
+      <!---->
+    </view>
+  </scroll-view>
+</view>
+`;
+
+exports[`AtVirtualScroll should scroll to the provided item index 1`] = `
+<view>
+  <!---->
+  <scroll-view
+    class="at-virtual-scroll"
+    lowerthreshold="50"
+    scrollintoview="item-10"
+    scrollwithanimation="true"
+    scrolly="true"
+    style="height: 100px;"
+    upperthreshold="50"
+  >
+    <view>
+      <view
+        class="at-virtual-scroll__container"
+        style="height: 1000px;"
+      >
+        <view
+          class="at-virtual-scroll__item"
+          id="item-10"
+          style="top: 500px;"
+        >
+          <view
+            class="item"
+          >
+            10: item-11
+          </view>
+        </view>
+        <view
+          class="at-virtual-scroll__item"
+          id="item-11"
+          style="top: 550px;"
+        >
+          <view
+            class="item"
+          >
+            11: item-12
+          </view>
+        </view>
+      </view>
+      <!---->
+    </view>
+  </scroll-view>
+</view>
+`;
+
+exports[`AtVirtualScroll should scroll to the provided item index 2`] = `
+<view>
+  <!---->
+  <scroll-view
+    class="at-virtual-scroll"
+    lowerthreshold="50"
+    scrollintoview="item-15"
+    scrollwithanimation="true"
+    scrolly="true"
+    style="height: 100px;"
+    upperthreshold="50"
+  >
+    <view>
+      <view
+        class="at-virtual-scroll__container"
+        style="height: 1000px;"
+      >
+        <view
+          class="at-virtual-scroll__item"
+          id="item-15"
+          style="top: 750px;"
+        >
+          <view
+            class="item"
+          >
+            15: item-16
+          </view>
+        </view>
+        <view
+          class="at-virtual-scroll__item"
+          id="item-16"
+          style="top: 800px;"
+        >
+          <view
+            class="item"
+          >
+            16: item-17
+          </view>
+        </view>
+      </view>
+      <!---->
+    </view>
+  </scroll-view>
+</view>
+`;

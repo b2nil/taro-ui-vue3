@@ -7,6 +7,7 @@
       <example-item>
         <at-skeleton
           style="margin: 10px;"
+          transition=".3s ease"
           type="list-item-avatar, divider, list-item-three-line, card-heading, image, actions"
         >
         </at-skeleton>
@@ -26,12 +27,22 @@
           :loading="loading"
           type="list-item-avatar-two-line"
         >
-          <at-flex-item>
-            this ia test
-          </at-flex-item>
-          <at-flex-item>
-            this is another thest
-          </at-flex-item>
+          <at-flex
+            justify="center"
+            align-content="center"
+          >
+            <at-flex-item :size="2">
+              <image
+                class="profile_img"
+                mode="cover"
+                src="@/assets/images/logo_taro.png"
+              />
+            </at-flex-item>
+            <at-flex-item>
+              <view>this is the title</view>
+              <view>this is the text</view>
+            </at-flex-item>
+          </at-flex>
         </at-skeleton>
       </example-item>
     </panel>
@@ -46,7 +57,7 @@ import {
   AtFlex,
   AtFlexItem,
   AtSwitch,
-} from "../../../index"
+} from 'taro-ui-vue3'
 
 import {
   Page,
@@ -54,19 +65,10 @@ import {
   ExampleItem
 } from '../../components/demo-page'
 
+import './index.scss'
+
 export default defineComponent({
   name: "SkeletonDemo",
-
-  components: {
-    AtSkeleton,
-    AtCard,
-    AtFlex,
-    AtFlexItem,
-    AtSwitch,
-    Page,
-    Panel,
-    ExampleItem
-  },
 
   setup() {
     const loading = ref(true)
@@ -81,6 +83,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style>
-</style>

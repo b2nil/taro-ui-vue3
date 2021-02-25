@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtTabsPane should render default AtTabs 1`] = `
+<view
+  class="at-tabs-pane at-tabs-pane--active"
+>
+  test
+</view>
+`;
+
+exports[`AtTabsPane should render prop -- class 1`] = `
+<view
+  class="test at-tabs-pane at-tabs-pane--active test"
+>
+  
+</view>
+`;
+
+exports[`AtTabsPane should render prop -- index current 1`] = `
+<view
+  class="at-tabs-pane at-tabs-pane--active"
+>
+  
+</view>
+`;
+
+exports[`AtTabsPane should render prop -- index current 2`] = `
+<view
+  class="at-tabs-pane at-tabs-pane--inactive"
+>
+  
+</view>
+`;
+
+exports[`AtTabsPane should render prop -- style 1`] = `
+<view
+  class="at-tabs-pane at-tabs-pane--active"
+  style="color: red;"
+>
+  
+</view>
+`;

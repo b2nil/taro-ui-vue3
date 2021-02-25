@@ -2,7 +2,6 @@ import { h, defineComponent, reactive, onMounted } from 'vue'
 import { Picker, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import Taro from '@tarojs/taro'
-import { Page, Panel, ExampleItem } from '../../components/demo-page'
 import './index.scss'
 
 interface IndexState {
@@ -116,8 +115,7 @@ export default defineComponent({
                               h(View, { class: 'demo-list-item__label' }, { default: () => '请选择早餐' }),
                               h(View, { class: 'demo-list-item__value' }, {
                                 default: () => [
-                                  `${
-                                  multiSelector[0][mulitSelectorValues[0]]
+                                  `${multiSelector[0][mulitSelectorValues[0]]
                                   } & ${multiSelector[1][mulitSelectorValues[1]]}`
                                 ]
                               }),

@@ -25,17 +25,11 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue"
-import { Page, Panel } from "../../components/demo-page"
 
 import "./index.scss"
 
 export default defineComponent({
   name: "TypoDemo",
-
-  components: {
-    Page,
-    Panel,
-  },
 
   setup() {
     const typographies = ref([

@@ -1,0 +1,405 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtPagination Behavior should not trigger event onPageChange when disabled 1`] = `
+<view
+  class="at-pagination"
+>
+  <view
+    class="at-pagination__btn-prev"
+  >
+    <!---->
+    <view
+      class="at-button--small at-button--disabled at-button"
+    >
+      <!---->
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        上一页
+      </view>
+    </view>
+  </view>
+  <view
+    class="at-pagination__number"
+  >
+    <text
+      class="at-pagination__number-current"
+    >
+      1
+    </text>
+    <text>
+      /1
+    </text>
+  </view>
+  <view
+    class="at-pagination__btn-next"
+  >
+    <!---->
+    <view
+      class="at-button--small at-button--disabled at-button"
+    >
+      <!---->
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        下一页
+      </view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtPagination Behavior should trigger event onPageChange - next 1`] = `
+<view
+  class="at-pagination"
+>
+  <view
+    class="at-pagination__btn-prev"
+  >
+    <!---->
+    <view
+      class="at-button--small at-button"
+    >
+      <button
+        class="at-button__wxbutton"
+        lang="en"
+      />
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        上一页
+      </view>
+    </view>
+  </view>
+  <view
+    class="at-pagination__number"
+  >
+    <text
+      class="at-pagination__number-current"
+    >
+      2
+    </text>
+    <text>
+      /5
+    </text>
+  </view>
+  <view
+    class="at-pagination__btn-next"
+  >
+    <!---->
+    <view
+      class="at-button--small at-button"
+    >
+      <button
+        class="at-button__wxbutton"
+        lang="en"
+      />
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        下一页
+      </view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtPagination Behavior should trigger event onPageChange - prev 1`] = `
+<view
+  class="at-pagination"
+>
+  <view
+    class="at-pagination__btn-prev"
+  >
+    <!---->
+    <view
+      class="at-button--small at-button"
+    >
+      <button
+        class="at-button__wxbutton"
+        lang="en"
+      />
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        上一页
+      </view>
+    </view>
+  </view>
+  <view
+    class="at-pagination__number"
+  >
+    <text
+      class="at-pagination__number-current"
+    >
+      2
+    </text>
+    <text>
+      /5
+    </text>
+  </view>
+  <view
+    class="at-pagination__btn-next"
+  >
+    <!---->
+    <view
+      class="at-button--small at-button"
+    >
+      <button
+        class="at-button__wxbutton"
+        lang="en"
+      />
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        下一页
+      </view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtPagination should render prop -- current 1`] = `
+<view
+  class="at-pagination"
+>
+  <view
+    class="at-pagination__btn-prev"
+  >
+    <!---->
+    <view
+      class="at-button--small at-button--disabled at-button"
+    >
+      <!---->
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        上一页
+      </view>
+    </view>
+  </view>
+  <view
+    class="at-pagination__number"
+  >
+    <text
+      class="at-pagination__number-current"
+    >
+      2
+    </text>
+    <text>
+      /1
+    </text>
+  </view>
+  <view
+    class="at-pagination__btn-next"
+  >
+    <!---->
+    <view
+      class="at-button--small at-button--disabled at-button"
+    >
+      <!---->
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        下一页
+      </view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtPagination should render prop -- icon 1`] = `
+<view
+  class="at-pagination at-pagination--icon"
+>
+  <view
+    class="at-pagination__btn-prev"
+  >
+    <view
+      class="at-button--small at-button--disabled at-button"
+    >
+      <!---->
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        <text
+          class="at-icon at-icon-chevron-left"
+        />
+      </view>
+    </view>
+    <!---->
+  </view>
+  <view
+    class="at-pagination__number"
+  >
+    <text
+      class="at-pagination__number-current"
+    >
+      1
+    </text>
+    <text>
+      /1
+    </text>
+  </view>
+  <view
+    class="at-pagination__btn-next"
+  >
+    <view
+      class="at-button--small at-button--disabled at-button"
+    >
+      <!---->
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        <text
+          class="at-icon at-icon-chevron-right"
+        />
+      </view>
+    </view>
+    <!---->
+  </view>
+</view>
+`;
+
+exports[`AtPagination should render prop -- pageSize 1`] = `
+<view
+  class="at-pagination"
+>
+  <view
+    class="at-pagination__btn-prev"
+  >
+    <!---->
+    <view
+      class="at-button--small at-button--disabled at-button"
+    >
+      <!---->
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        上一页
+      </view>
+    </view>
+  </view>
+  <view
+    class="at-pagination__number"
+  >
+    <text
+      class="at-pagination__number-current"
+    >
+      1
+    </text>
+    <text>
+      /1
+    </text>
+  </view>
+  <view
+    class="at-pagination__btn-next"
+  >
+    <!---->
+    <view
+      class="at-button--small at-button--disabled at-button"
+    >
+      <!---->
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        下一页
+      </view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtPagination should render prop -- total 1`] = `
+<view
+  class="at-pagination"
+>
+  <view
+    class="at-pagination__btn-prev"
+  >
+    <!---->
+    <view
+      class="at-button--small at-button--disabled at-button"
+    >
+      <!---->
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        上一页
+      </view>
+    </view>
+  </view>
+  <view
+    class="at-pagination__number"
+  >
+    <text
+      class="at-pagination__number-current"
+    >
+      1
+    </text>
+    <text>
+      /5
+    </text>
+  </view>
+  <view
+    class="at-pagination__btn-next"
+  >
+    <!---->
+    <view
+      class="at-button--small at-button"
+    >
+      <button
+        class="at-button__wxbutton"
+        lang="en"
+      />
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        下一页
+      </view>
+    </view>
+  </view>
+</view>
+`;

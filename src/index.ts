@@ -1,3 +1,5 @@
+import type { App } from 'vue'
+
 import AtAccordion from './components/accordion'
 import AtActionSheet from './components/action-sheet'
 import AtActionSheetItem from './components/action-sheet/body/item'
@@ -54,6 +56,76 @@ import AtTextarea from './components/textarea'
 import AtTimeline from './components/timeline'
 import AtToast from './components/toast'
 import AtVirtualScroll from './components/virtual-scroll'
+
+const allComponents = {
+  AtAccordion,
+  AtActionSheet,
+  AtActionSheetItem,
+  AtActivityIndicator,
+  AtAvatar,
+  AtBadge,
+  AtButton,
+  AtCalendar,
+  AtCard,
+  AtCheckbox,
+  AtCountdown,
+  AtCurtain,
+  AtDivider,
+  AtDrawer,
+  AtFab,
+  AtFlex,
+  AtFlexItem,
+  AtFloatLayout,
+  AtForm,
+  AtGrid,
+  AtIcon,
+  AtImagePicker,
+  AtIndexes,
+  AtInput,
+  AtInputNumber,
+  AtList,
+  AtListItem,
+  AtLoadMore,
+  AtLoading,
+  AtMessage,
+  AtModal,
+  AtModalAction,
+  AtModalContent,
+  AtModalHeader,
+  AtNavBar,
+  AtNoticebar,
+  AtPagination,
+  AtProgress,
+  AtRadio,
+  AtRange,
+  AtRate,
+  AtSearchBar,
+  AtSegmentedControl,
+  AtSkeleton,
+  AtSlider,
+  AtSteps,
+  AtSwipeAction,
+  AtSwitch,
+  AtTabBar,
+  AtTabs,
+  AtTabsPane,
+  AtTag,
+  AtTextarea,
+  AtTimeline,
+  AtToast,
+  AtVirtualScroll
+}
+
+export const createUI = (components: Record<string, any> = allComponents) => {
+  const install = (app: App) => {
+    for (const key in components) {
+      const component = components[key]
+      app.component(key, component)
+    }
+  }
+
+  return { install }
+}
 
 export {
   AtAccordion,

@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtInput should render all nodes and match snapshot 1`] = `
+<view
+  class="at-input at-input--without-border"
+>
+  <view
+    class="at-input__container at-input--error"
+  >
+    <view
+      class="at-input__overlay at-input__overlay--hidden"
+    />
+    <label
+      class="at-input__title"
+      for=""
+    >
+      title
+    </label>
+    <input
+      adjustposition="false"
+      autofocus="false"
+      class="at-input__input"
+      confirmtype="done"
+      cursor="0"
+      cursorspacing="50"
+      id="weui-input_2020"
+      maxlength="140"
+      name=""
+      password="false"
+      placeholder=""
+      placeholderclass="placeholder"
+      placeholderstyle=""
+      type="text"
+    />
+    <view
+      class="at-input__icon"
+    >
+      <text
+        class="at-icon at-icon-close-circle at-input__icon-close"
+      />
+    </view>
+    <view
+      class="at-input__icon"
+    >
+      <text
+        class="at-icon at-icon-alert-circle at-input__icon-alert"
+      />
+    </view>
+    <view
+      class="at-input__children"
+    >
+      slot
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtInput should render clear icon 1`] = `
+<view
+  class="at-input__icon"
+>
+  <text
+    class="at-icon at-icon-close-circle at-input__icon-close"
+  />
+</view>
+`;
+
+exports[`AtInput should render prop error 1`] = `
+<view
+  class="at-input__icon"
+>
+  <text
+    class="at-icon at-icon-alert-circle at-input__icon-alert"
+  />
+</view>
+`;
+
+exports[`AtInput should render prop title 1`] = `
+<label
+  class="at-input__title"
+  for=""
+>
+  title
+</label>
+`;

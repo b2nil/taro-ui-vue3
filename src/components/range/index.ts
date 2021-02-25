@@ -48,11 +48,9 @@ const AtRange = defineComponent({
     onAfterChange: Function as PropType<AtRangeProps['onAfterChange']>,
   },
 
-  setup(props: AtRangeProps, { attrs, slots }) {
-
+  setup(props: AtRangeProps, { attrs }) {
     const width = ref<number>(0)
     const left = ref<number>(0)
-    const deltaValue = ref<number>(props.max! - props.min!)
     const currentSlider = ref<string>('')
 
     const state = reactive<AtRangeState>({
@@ -60,7 +58,9 @@ const AtRange = defineComponent({
       bX: 0
     })
 
-    const rootClass = computed(() => ({
+    const deltaValue = computed<number>(() => props.max! - props.min!)
+
+    const rootClasses = computed(() => ({
       'at-range': true,
       'at-range--disabled': props.disabled
     }))
@@ -177,7 +177,7 @@ const AtRange = defineComponent({
 
     return () => (
       h(View, mergeProps(attrs, {
-        class: rootClass.value,
+        class: rootClasses.value,
         onTap: handleClick
       }), {
         default: () => [
@@ -196,19 +196,15 @@ const AtRange = defineComponent({
                     style: atTrackStyle.value
                   }),
 
-                  h(View, {
-                    class: 'at-range__slider',
-                    style: sliderAStyle.value,
-                    onTouchEnd: handleTouchEnd.bind(this, 'aX'),
-                    onTouchMove: handleTouchMove.bind(this, 'aX'),
-                  }),
-
-                  h(View, {
-                    class: 'at-range__slider',
-                    style: sliderBStyle.value,
-                    onTouchEnd: handleTouchEnd.bind(this, 'bX'),
-                    onTouchMove: handleTouchMove.bind(this, 'bX'),
-                  })
+                  ...['aX', 'bX'].map((sliderName, index) => (
+                    h(View, {
+                      key: `${sliderName} - ${index}`,
+                      class: 'at-range__slider',
+                      style: sliderName === 'aX' ? sliderAStyle.value : sliderBStyle.value,
+                      onTouchEnd: handleTouchEnd.bind(this, sliderName),
+                      onTouchMove: handleTouchMove.bind(this, sliderName),
+                    })
+                  ))
                 ]
               })
             ]

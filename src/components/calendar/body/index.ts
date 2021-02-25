@@ -1,4 +1,4 @@
-import { h, defineComponent, computed, reactive, watch, onMounted, ref, nextTick, mergeProps } from "vue"
+import { h, defineComponent, computed, reactive, watch, onMounted, ref, nextTick, mergeProps, PropType } from "vue"
 import { Swiper, SwiperItem, View } from '@tarojs/components'
 import { BaseEventOrig, ITouch, ITouchEvent } from '@tarojs/components/types/common'
 import { AtCalendarBodyListGroup, AtCalendarBodyProps, Calendar, AtCalendarBodyState } from 'types/calendar'
@@ -27,21 +27,15 @@ const AtCalendarBody = defineComponent({
       default: 'YYYY-MM-DD'
     },
     validDates: {
-      type: Array as () => Array<Calendar.ValidDate>,
+      type: Array as PropType<AtCalendarBodyProps['validDates']>,
       default: () => [] as Array<Calendar.ValidDate>
     },
     marks: {
-      type: Array as () => Array<Calendar.Mark>,
+      type: Array as PropType<AtCalendarBodyProps['marks']>,
       default: () => [] as Array<Calendar.Mark>
     },
-    minDate: {
-      type: (String || Number || Date) as () => Calendar.DateArg,
-      default: () => ''
-    },
-    maxDate: {
-      type: (String || Number || Date) as () => Calendar.DateArg,
-      default: () => ''
-    },
+    minDate: [String, Number, Date] as PropType<AtCalendarBodyProps['minDate']>,
+    maxDate: [String, Number, Date] as PropType<AtCalendarBodyProps['minDate']>,
     isSwiper: {
       type: Boolean,
       default: true
@@ -51,27 +45,27 @@ const AtCalendarBody = defineComponent({
       default: false
     },
     generateDate: {
-      type: Number || String,
+      type: [Number, String] as PropType<AtCalendarBodyProps['generateDate']>,
       default: Date.now()
     },
     selectedDate: {
-      type: Object as () => Calendar.SelectedDate,
+      type: Object as PropType<AtCalendarBodyProps['selectedDate']>,
       default: () => ({ end: Date.now(), start: Date.now() })
     },
     selectedDates: {
-      type: Array as () => Array<Calendar.SelectedDate> | [],
+      type: Array as PropType<AtCalendarBodyProps['selectedDates']>,
       default: () => []
     },
     onDayClick: {
-      type: Function as unknown as () => (item: Calendar.Item) => void,
+      type: Function as PropType<AtCalendarBodyProps['onDayClick']>,
       default: () => () => { }
     },
     onLongClick: {
-      type: Function as unknown as () => (item: Calendar.Item) => void,
+      type: Function as PropType<AtCalendarBodyProps['onLongClick']>,
       default: () => () => { }
     },
     onSwipeMonth: {
-      type: Function as unknown as () => (vectorCount: number) => void,
+      type: Function as PropType<AtCalendarBodyProps['onSwipeMonth']>,
       default: () => () => { }
     },
   },

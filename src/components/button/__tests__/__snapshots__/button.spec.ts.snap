@@ -1,0 +1,229 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtButton should render prop -- circle 1`] = `
+<view
+  class="at-button--normal at-button--circle at-button"
+>
+  <button
+    class="at-button__wxbutton"
+    lang="en"
+  />
+  <!---->
+  <!---->
+  <!---->
+  <view
+    class="at-button__text"
+  >
+    按钮
+  </view>
+</view>
+`;
+
+exports[`AtButton should render prop -- disabled should not render any Button element when disabled 1`] = `
+<view
+  class="at-button--normal at-button--disabled at-button"
+>
+  <!---->
+  <!---->
+  <!---->
+  <!---->
+  <view
+    class="at-button__text"
+  >
+    按钮
+  </view>
+</view>
+`;
+
+exports[`AtButton should render prop -- disabled should render alipay Button 1`] = `
+<view
+  class="at-button--normal at-button"
+>
+  <!---->
+  <!---->
+  <button
+    class="at-button__wxbutton"
+    formtype=""
+    lang="en"
+    showmessagecard="false"
+  />
+  <!---->
+  <view
+    class="at-button__text"
+  >
+    按钮
+  </view>
+</view>
+`;
+
+exports[`AtButton should render prop -- disabled should render weapp Button 1`] = `
+<view
+  class="at-button--normal at-button"
+>
+  <!---->
+  <form>
+    <button
+      class="at-button__wxbutton"
+      formtype=""
+      lang="en"
+      showmessagecard="false"
+    />
+  </form>
+  <!---->
+  <!---->
+  <view
+    class="at-button__text"
+  >
+    按钮
+  </view>
+</view>
+`;
+
+exports[`AtButton should render prop -- disabled should render web button 1`] = `
+<view
+  class="at-button--normal at-button"
+>
+  <button
+    class="at-button__wxbutton"
+    lang="en"
+  />
+  <!---->
+  <!---->
+  <!---->
+  <view
+    class="at-button__text"
+  >
+    按钮
+  </view>
+</view>
+`;
+
+exports[`AtButton should render prop -- full 1`] = `
+<view
+  class="at-button--normal at-button--full at-button"
+>
+  <button
+    class="at-button__wxbutton"
+    lang="en"
+  />
+  <!---->
+  <!---->
+  <!---->
+  <view
+    class="at-button__text"
+  >
+    按钮
+  </view>
+</view>
+`;
+
+exports[`AtButton should render prop -- loading 1`] = `
+<view
+  class="at-button--normal at-button--icon at-button"
+>
+  <button
+    class="at-button__wxbutton"
+    lang="en"
+  />
+  <!---->
+  <!---->
+  <view
+    class="at-button__icon"
+  >
+    <view
+      class="at-loading"
+    >
+      <view
+        class="at-loading__ring"
+      />
+      <view
+        class="at-loading__ring"
+      />
+      <view
+        class="at-loading__ring"
+      />
+    </view>
+  </view>
+  <view
+    class="at-button__text"
+  >
+    按钮
+  </view>
+</view>
+`;
+
+exports[`AtButton should render prop -- size(normal) 1`] = `
+<view
+  class="at-button--normal at-button"
+>
+  <button
+    class="at-button__wxbutton"
+    lang="en"
+  />
+  <!---->
+  <!---->
+  <!---->
+  <view
+    class="at-button__text"
+  >
+    按钮
+  </view>
+</view>
+`;
+
+exports[`AtButton should render prop -- size(small) 1`] = `
+<view
+  class="at-button--small at-button"
+>
+  <button
+    class="at-button__wxbutton"
+    lang="en"
+  />
+  <!---->
+  <!---->
+  <!---->
+  <view
+    class="at-button__text"
+  >
+    按钮
+  </view>
+</view>
+`;
+
+exports[`AtButton should render prop -- type(primary) 1`] = `
+<view
+  class="at-button--normal at-button--primary at-button"
+>
+  <button
+    class="at-button__wxbutton"
+    lang="en"
+  />
+  <!---->
+  <!---->
+  <!---->
+  <view
+    class="at-button__text"
+  >
+    按钮
+  </view>
+</view>
+`;
+
+exports[`AtButton should render prop -- type(secondary) 1`] = `
+<view
+  class="at-button--normal at-button--secondary at-button"
+>
+  <button
+    class="at-button__wxbutton"
+    lang="en"
+  />
+  <!---->
+  <!---->
+  <!---->
+  <view
+    class="at-button__text"
+  >
+    按钮
+  </view>
+</view>
+`;

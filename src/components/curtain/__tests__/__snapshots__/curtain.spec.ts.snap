@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtCurtain should render default AtCurtain 1`] = `
+<view class="at-curtain at-curtain--closed">
+  <view class="at-curtain__container">
+    <view class="at-curtain__body">
+      <!---->
+      <view class="at-curtain__btn-close at-curtain__btn-close--bottom"></view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtCurtain should render prop -- isOpened 1`] = `
+<view class="at-curtain">
+  <view class="at-curtain__container">
+    <view class="at-curtain__body">
+      <!---->
+      <view class="at-curtain__btn-close at-curtain__btn-close--bottom"></view>
+    </view>
+  </view>
+</view>
+`;

@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtRange should render default AtRange 1`] = `
+<view class="at-range">
+  <view class="at-range__container">
+    <view class="at-range__rail">
+      <view class="at-range__track" style="left: 0%; width: 0%;"></view>
+      <view class="at-range__slider" style="top: 0%;"></view>
+      <view class="at-range__slider" style="top: 0%;"></view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtRange should render prop -- railStyle 1`] = `
+<view class="at-range">
+  <view class="at-range__container">
+    <view class="at-range__rail" style="color: red;">
+      <view class="at-range__track" style="left: 0%; width: 0%;"></view>
+      <view class="at-range__slider" style="top: 0%;"></view>
+      <view class="at-range__slider" style="top: 0%;"></view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtRange should render prop -- sliderStyle 1`] = `
+<view class="at-range">
+  <view class="at-range__container">
+    <view class="at-range__rail">
+      <view class="at-range__track" style="left: 0%; width: 0%;"></view>
+      <view class="at-range__slider" style="color: red; top: 0%;"></view>
+      <view class="at-range__slider" style="color: red; top: 0%;"></view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtRange should render prop -- trackStyle 1`] = `
+<view class="at-range">
+  <view class="at-range__container">
+    <view class="at-range__rail">
+      <view class="at-range__track" style="color: red; left: 0%; width: 0%;"></view>
+      <view class="at-range__slider" style="top: 0%;"></view>
+      <view class="at-range__slider" style="top: 0%;"></view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtRange should render prop -- value 1`] = `
+<view class="at-range">
+  <view class="at-range__container">
+    <view class="at-range__rail">
+      <view class="at-range__track" style="left: 20%; width: 30%;"></view>
+      <view class="at-range__slider" style="top: 0%;"></view>
+      <view class="at-range__slider" style="top: 0%;"></view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtRange should render props -- min and max 1`] = `
+<view class="at-range">
+  <view class="at-range__container">
+    <view class="at-range__rail">
+      <view class="at-range__track" style="left: 25%; width: 75%;"></view>
+      <view class="at-range__slider" style="top: 0%;"></view>
+      <view class="at-range__slider" style="top: 0%;"></view>
+    </view>
+  </view>
+</view>
+`;

@@ -1,0 +1,198 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal should render default Modal 1`] = `
+<view
+  class="at-modal"
+>
+  <view
+    class="at-modal__overlay"
+  />
+  <view
+    class="at-modal__container"
+  >
+    <view
+      class="at-modal__header"
+    >
+      标题
+    </view>
+    <scroll-view
+      class="at-modal__content"
+      scrolly="true"
+    >
+      这里是正文内容，欢迎加入京东凹凸实验室 这里是正文内容，欢迎加入京东凹凸实验室
+              这里是正文内容，欢迎加入京东凹凸实验室
+    </scroll-view>
+    <view
+      class="at-modal__footer"
+    >
+      <view
+        class="at-modal__action"
+      >
+        <button>
+          取消
+        </button>
+        <button>
+          确定
+        </button>
+      </view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`Modal should render opened  Modal -- simple 1`] = `
+<view
+  class="at-modal at-modal--active"
+>
+  <view
+    class="at-modal__overlay"
+  />
+  <view
+    class="at-modal__container"
+  >
+    <view
+      class="at-modal__header"
+    >
+      <text>
+        标题
+      </text>
+    </view>
+    <scroll-view
+      class="at-modal__content"
+      scrolly="true"
+    >
+      <view
+        class="content-simple"
+      >
+        <text>
+          欢迎加入京东凹凸实验室
+          <br />
+          
+欢迎加入京东凹凸实验室
+        </text>
+      </view>
+    </scroll-view>
+    <view
+      class="at-modal__footer at-modal__footer--simple"
+    >
+      <view
+        class="at-modal__action"
+      >
+        <button>
+          取消
+        </button>
+        <button>
+          确认
+        </button>
+      </view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`Modal should render opened Modal -- no header 1`] = `
+<view
+  class="at-modal at-modal--active"
+>
+  <view
+    class="at-modal__overlay"
+  />
+  <view
+    class="at-modal__container"
+  >
+    <scroll-view
+      class="at-modal__content"
+      scrolly="true"
+    >
+      这里是正文内容，欢迎加入京东凹凸实验室 这里是正文内容，欢迎加入京东凹凸实验室
+              这里是正文内容，欢迎加入京东凹凸实验室
+    </scroll-view>
+    <view
+      class="at-modal__footer"
+    >
+      <view
+        class="at-modal__action"
+      >
+        <button>
+          取消
+        </button>
+        <button>
+          确定
+        </button>
+      </view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`Modal should render opened Modal -- single button 1`] = `
+<view
+  class="at-modal at-modal--active"
+>
+  <view
+    class="at-modal__overlay"
+  />
+  <view
+    class="at-modal__container"
+  >
+    <scroll-view
+      class="at-modal__content"
+      scrolly="true"
+    >
+      这里是正文内容，欢迎加入京东凹凸实验室 这里是正文内容，欢迎加入京东凹凸实验室
+              这里是正文内容，欢迎加入京东凹凸实验室
+    </scroll-view>
+    <view
+      class="at-modal__footer"
+    >
+      <view
+        class="at-modal__action"
+      >
+        <button>
+          确定
+        </button>
+      </view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`Modal should render opened Modal 1`] = `
+<view
+  class="at-modal at-modal--active"
+>
+  <view
+    class="at-modal__overlay"
+  />
+  <view
+    class="at-modal__container"
+  >
+    <view
+      class="at-modal__header"
+    >
+      标题
+    </view>
+    <scroll-view
+      class="at-modal__content"
+      scrolly="true"
+    >
+      这里是正文内容，欢迎加入京东凹凸实验室 这里是正文内容，欢迎加入京东凹凸实验室
+              这里是正文内容，欢迎加入京东凹凸实验室
+    </scroll-view>
+    <view
+      class="at-modal__footer"
+    >
+      <view
+        class="at-modal__action"
+      >
+        <button>
+          取消
+        </button>
+        <button>
+          确定
+        </button>
+      </view>
+    </view>
+  </view>
+</view>
+`;

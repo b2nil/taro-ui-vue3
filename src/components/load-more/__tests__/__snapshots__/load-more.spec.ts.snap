@@ -1,0 +1,290 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtLoadMore should render default AtLoadMore 1`] = `
+<view
+  class="at-load-more"
+>
+  <view
+    class="at-load-more__cnt"
+  >
+    <view
+      class="at-button--normal at-button--full at-button"
+    >
+      <button
+        class="at-button__wxbutton"
+        lang="en"
+      />
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        查看更多
+      </view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtLoadMore should render prop -- class 1`] = `
+<view
+  class="test at-load-more test"
+>
+  <view
+    class="at-load-more__cnt"
+  >
+    <view
+      class="at-button--normal at-button--full at-button"
+    >
+      <button
+        class="at-button__wxbutton"
+        lang="en"
+      />
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        查看更多
+      </view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtLoadMore should render prop -- loadingText 1`] = `
+<view
+  class="at-load-more"
+>
+  <view
+    class="at-activity-indicator at-activity-indicator--center at-activity-indicator--isopened"
+  >
+    <view
+      class="at-activity-indicator__body"
+    >
+      <view
+        class="at-loading"
+        style="width: 1.024rem; height: 1.024rem;"
+      >
+        <view
+          class="at-loading__ring"
+          style="width: 1.024rem; height: 1.024rem; border: 1px solid #6190e8; border-color: #6190e8 transparent transparent transparent;"
+        />
+        <view
+          class="at-loading__ring"
+          style="width: 1.024rem; height: 1.024rem; border: 1px solid #6190e8; border-color: #6190e8 transparent transparent transparent;"
+        />
+        <view
+          class="at-loading__ring"
+          style="width: 1.024rem; height: 1.024rem; border: 1px solid #6190e8; border-color: #6190e8 transparent transparent transparent;"
+        />
+      </view>
+    </view>
+    <text
+      class="at-activity-indicator__content"
+    >
+      loadingText
+    </text>
+  </view>
+</view>
+`;
+
+exports[`AtLoadMore should render prop -- moreBtnStyle 1`] = `
+<view
+  class="at-load-more"
+>
+  <view
+    class="at-load-more__cnt"
+  >
+    <view
+      class="at-button--normal at-button--full at-button"
+      style="color: red;"
+    >
+      <button
+        class="at-button__wxbutton"
+        lang="en"
+      />
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        查看更多
+      </view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtLoadMore should render prop -- moreText 1`] = `
+<view
+  class="at-load-more"
+>
+  <view
+    class="at-load-more__cnt"
+  >
+    <view
+      class="at-button--normal at-button--full at-button"
+    >
+      <button
+        class="at-button__wxbutton"
+        lang="en"
+      />
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        moreText
+      </view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtLoadMore should render prop -- noMoreText 1`] = `
+<view
+  class="at-load-more"
+>
+  <text
+    class="at-load-more__tip"
+  >
+    noMoreText
+  </text>
+</view>
+`;
+
+exports[`AtLoadMore should render prop -- noMoreTextStyle 1`] = `
+<view
+  class="at-load-more"
+>
+  <view
+    class="at-load-more__cnt"
+  >
+    <view
+      class="at-button--normal at-button--full at-button"
+    >
+      <button
+        class="at-button__wxbutton"
+        lang="en"
+      />
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        查看更多
+      </view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtLoadMore should render prop -- status === loading 1`] = `
+<view
+  class="at-load-more"
+>
+  <view
+    class="at-activity-indicator at-activity-indicator--center at-activity-indicator--isopened"
+  >
+    <view
+      class="at-activity-indicator__body"
+    >
+      <view
+        class="at-loading"
+        style="width: 1.024rem; height: 1.024rem;"
+      >
+        <view
+          class="at-loading__ring"
+          style="width: 1.024rem; height: 1.024rem; border: 1px solid #6190e8; border-color: #6190e8 transparent transparent transparent;"
+        />
+        <view
+          class="at-loading__ring"
+          style="width: 1.024rem; height: 1.024rem; border: 1px solid #6190e8; border-color: #6190e8 transparent transparent transparent;"
+        />
+        <view
+          class="at-loading__ring"
+          style="width: 1.024rem; height: 1.024rem; border: 1px solid #6190e8; border-color: #6190e8 transparent transparent transparent;"
+        />
+      </view>
+    </view>
+    <text
+      class="at-activity-indicator__content"
+    >
+      加载中
+    </text>
+  </view>
+</view>
+`;
+
+exports[`AtLoadMore should render prop -- status === more 1`] = `
+<view
+  class="at-load-more"
+>
+  <view
+    class="at-load-more__cnt"
+  >
+    <view
+      class="at-button--normal at-button--full at-button"
+    >
+      <button
+        class="at-button__wxbutton"
+        lang="en"
+      />
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        查看更多
+      </view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtLoadMore should render prop -- status === noMore 1`] = `
+<view
+  class="at-load-more"
+>
+  <text
+    class="at-load-more__tip"
+  >
+    没有更多
+  </text>
+</view>
+`;
+
+exports[`AtLoadMore should render prop -- style 1`] = `
+<view
+  class="at-load-more"
+  style="color: red;"
+>
+  <view
+    class="at-load-more__cnt"
+  >
+    <view
+      class="at-button--normal at-button--full at-button"
+    >
+      <button
+        class="at-button__wxbutton"
+        lang="en"
+      />
+      <!---->
+      <!---->
+      <!---->
+      <view
+        class="at-button__text"
+      >
+        查看更多
+      </view>
+    </view>
+  </view>
+</view>
+`;

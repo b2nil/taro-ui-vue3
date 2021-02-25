@@ -20,10 +20,10 @@ export interface AtSegmentedControlProps extends AtComponent {
    */
   selectedColor?: string
   /**
-   * 字体大小，单位 h5 为 rem，小程序为 rem
+   * 字体大小，单位 h5 为 rem，小程序为 rpx
    * @default 28
    */
-  fontSize?: number
+  fontSize?: number | string
   /**
    * 是否禁止点击
    * @default false

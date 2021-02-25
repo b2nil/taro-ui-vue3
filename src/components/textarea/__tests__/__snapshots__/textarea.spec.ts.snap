@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtTextarea should render all nodes and match snapshot 1`] = `
+<view
+  class="at-textarea at-textarea--WEB"
+>
+  <textarea
+    autofocus="false"
+    class="at-textarea__textarea"
+    cursorspacing="100"
+    fixed="false"
+    maxlength="200"
+    placeholder=""
+    placeholderclass="placeholder "
+    placeholderstyle=""
+    showconfirmbar="false"
+    style="height: 2.1334rem;"
+  />
+  <view
+    class="at-textarea__counter"
+  >
+    0 / 200
+  </view>
+</view>
+`;
+
+exports[`AtTextarea should render prop count 1`] = `
+<view
+  class="at-textarea__counter"
+>
+  0 / 200
+</view>
+`;

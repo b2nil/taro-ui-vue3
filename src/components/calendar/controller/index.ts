@@ -1,7 +1,6 @@
 import { h, defineComponent, computed, PropType } from "vue"
 import { Picker, Text, View } from '@tarojs/components'
-import { Calendar, AtCalendarControllerProps } from 'types/calendar'
-import { CommonEvent } from '@tarojs/components/types/common'
+import { AtCalendarControllerProps } from 'types/calendar'
 import dayjs from 'dayjs/esm/index'
 
 const AtCalendarController = defineComponent({
@@ -22,18 +21,9 @@ const AtCalendarController = defineComponent({
       type: String as PropType<AtCalendarControllerProps["monthFormat"]>,
       default: 'YYYY年MM月'
     },
-    onPreMonth: {
-      type: Function as PropType<AtCalendarControllerProps["onPreMonth"]>,
-      default: () => () => { }
-    },
-    onNextMonth: {
-      type: Function as PropType<AtCalendarControllerProps["onNextMonth"]>,
-      default: () => () => { }
-    },
-    onSelectDate: {
-      type: Function as PropType<AtCalendarControllerProps["onSelectDate"]>,
-      default: () => () => { }
-    },
+    onPreMonth: Function as PropType<AtCalendarControllerProps["onPreMonth"]>,
+    onNextMonth: Function as PropType<AtCalendarControllerProps["onNextMonth"]>,
+    onSelectDate: Function as PropType<AtCalendarControllerProps["onSelectDate"]>
   },
 
   setup(props: AtCalendarControllerProps) {

@@ -1,0 +1,1027 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtRate should render default AtRate 1`] = `
+<view
+  class="at-rate"
+>
+  
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  
+</view>
+`;
+
+exports[`AtRate should render prop -- class 1`] = `
+<view
+  class="test at-rate test"
+>
+  
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  
+</view>
+`;
+
+exports[`AtRate should render prop -- color 1`] = `
+<view
+  class="at-rate"
+>
+  
+  <view
+    class="at-rate__icon at-rate__icon--on"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px; color: teal;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px; color: teal;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  
+</view>
+`;
+
+exports[`AtRate should render prop -- icon: heart 1`] = `
+<view
+  class="at-rate"
+>
+  
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-heart-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-heart-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-heart-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-heart-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-heart-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-heart-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-heart-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-heart-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-heart-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-heart-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  
+</view>
+`;
+
+exports[`AtRate should render prop -- icon: star 1`] = `
+<view
+  class="at-rate"
+>
+  
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  
+</view>
+`;
+
+exports[`AtRate should render prop -- margin 1`] = `
+<view
+  class="at-rate"
+>
+  
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.2134rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.2134rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.2134rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.2134rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.2134rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  
+</view>
+`;
+
+exports[`AtRate should render prop -- max 1`] = `
+<view
+  class="at-rate"
+>
+  
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  
+</view>
+`;
+
+exports[`AtRate should render prop -- size 1`] = `
+<view
+  class="at-rate"
+>
+  
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 10px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 10px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 10px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 10px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 10px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 10px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 10px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 10px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 10px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 10px;"
+      />
+    </view>
+  </view>
+  
+</view>
+`;
+
+exports[`AtRate should render prop -- style 1`] = `
+<view
+  class="at-rate"
+  style="color: red;"
+>
+  
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  
+</view>
+`;
+
+exports[`AtRate should render prop -- value 1`] = `
+<view
+  class="at-rate"
+>
+  
+  <view
+    class="at-rate__icon at-rate__icon--on"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--on"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  
+</view>
+`;

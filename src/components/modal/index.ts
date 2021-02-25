@@ -45,6 +45,15 @@ const AtModal = defineComponent({
       'at-modal--active': state._isOpened
     }))
 
+    // to make sure button+button 
+    // not having any top margin in h5
+    // may remove this if button+button margin fixed by Taro
+    const h5ButtonStyle = computed(() => {
+      return state.isWEB
+        ? 'margin-top: 0;'
+        : null
+    })
+
     watch(() => props.isOpened, (val, oldVal) => {
       if (val !== oldVal) {
         handleTouchScroll(val)
@@ -141,6 +150,7 @@ const AtModal = defineComponent({
                         ),
                         props.confirmText && (
                           h(Button, {
+                            style: h5ButtonStyle.value,
                             onTap: handleConfirm
                           }, { default: () => props.confirmText })
                         )

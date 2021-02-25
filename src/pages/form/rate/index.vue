@@ -83,8 +83,6 @@
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from 'vue'
-import { AtRate } from '../../../index'
-import { Page, Panel, ExampleItem } from '../../components/demo-page'
 import './index.scss'
 
 interface IndexState {
@@ -93,13 +91,6 @@ interface IndexState {
 
 export default defineComponent({
   name: "RateDemo",
-
-  components: {
-    AtRate,
-    Page,
-    Panel,
-    ExampleItem
-  },
 
   setup() {
 

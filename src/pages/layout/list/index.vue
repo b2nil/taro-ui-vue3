@@ -162,19 +162,9 @@
 <script lang="ts">
 import { defineComponent } from "vue"
 import Taro from "@tarojs/taro"
-import { AtList, AtListItem } from "../../../index"
-import { Page, Panel, ExampleItem } from "../../components/demo-page"
 
 export default defineComponent({
   name: "ListDemo",
-
-  components: {
-    Page,
-    Panel,
-    ExampleItem,
-    AtList,
-    AtListItem,
-  },
 
   setup() {
     function handleChange(e) {

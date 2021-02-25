@@ -1,8 +1,7 @@
-import { h, defineComponent, computed, mergeProps } from "vue"
+import { h, defineComponent, computed, mergeProps, resolveComponent } from "vue"
 import { View } from "@tarojs/components"
 import Taro from "@tarojs/taro"
 import "./index.scss"
-import { AtFlex, AtFlexItem } from "../../../index"
 
 const Page = defineComponent({
   name: "Page",
@@ -117,8 +116,11 @@ const PropItem = defineComponent({
 
   setup(props, { slots }) {
 
-    return () => (
-      h(AtFlex, {
+    return () => {
+      const AtFlex = resolveComponent('AtFlex') as any
+      const AtFlexItem = resolveComponent('AtFlexItem') as any
+
+      return h(AtFlex, {
         direction: 'column'
       }, {
         default: () => [
@@ -143,7 +145,7 @@ const PropItem = defineComponent({
           h(AtFlexItem, null, { default: () => slots.default?.() })
         ]
       })
-    )
+    }
   }
 })
 

@@ -66,22 +66,22 @@ const AtImagePicker = defineComponent({
       default: 4
     },
     count: Number as PropType<AtImagePickerProps['count']>,
-    sizetype: Array as PropType<AtImagePickerProps['sizeType']>,
-    sourcetype: Array as PropType<AtImagePickerProps['sourceType']>,
+    sizeType: {
+      type: Array as PropType<AtImagePickerProps['sizeType']>,
+      default: () => ['original', 'compressed']
+    },
+    sourceType: {
+      type: Array as PropType<AtImagePickerProps['sourceType']>,
+      default: () => ['album', 'camera']
+    },
     // 事件
     onChange: {
       type: Function as PropType<AtImagePickerProps['onChange']>,
       default: () => () => { },
       required: true
     },
-    onImageClick: {
-      type: Function as PropType<AtImagePickerProps['onImageClick']>,
-      default: () => () => { }
-    },
-    onFail: {
-      type: Function as PropType<AtImagePickerProps['onFail']>,
-      default: () => () => { }
-    },
+    onImageClick: Function as PropType<AtImagePickerProps['onImageClick']>,
+    onFail: Function as PropType<AtImagePickerProps['onFail']>,
   },
 
   setup(props: AtImagePickerProps, { attrs }) {

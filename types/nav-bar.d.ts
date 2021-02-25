@@ -48,9 +48,9 @@ export interface AtNavBarProps extends AtComponent {
   /**
    * 从右到左第一个图标类型点击事件
    */
-  onClickRgIconSt?: CommonEventFunction
+  onClickRightFirstIcon?: CommonEventFunction
   /**
    * 从右到左第二个图标类型点击事件
    */
-  onClickRgIconNd?: CommonEventFunction
+  onClickRightSecondIcon?: CommonEventFunction
 }

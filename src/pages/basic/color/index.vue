@@ -36,18 +36,11 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue"
-import { Page, Panel, ExampleItem } from "../../components/demo-page"
 
 import "./index.scss"
 
 export default defineComponent({
   name: "ColorDemo",
-
-  components: {
-    Page,
-    Panel,
-    ExampleItem,
-  },
 
   setup() {
 

@@ -1,4 +1,4 @@
-import { h, defineComponent, ref, computed, mergeProps, watch, PropType } from "vue"
+import { h, defineComponent, ref, computed, mergeProps, PropType } from "vue"
 import { Input, Text, View, Label } from '@tarojs/components'
 import { BaseEventOrig, ITouchEvent } from "@tarojs/components/types/common"
 import { InputProps } from "@tarojs/components/types/Input"
@@ -10,7 +10,7 @@ import {
   InputEventDetail,
   KeyboardHeightEventDetail,
 } from "types/input"
-import { uuid } from "../../utils/common"
+import { isTest, uuid } from "../../utils/common"
 import { useModelValue } from "../../composables/model"
 
 type PickAtInputProps = Pick<AtInputProps, 'maxLength' | 'disabled' | 'password'>
@@ -130,12 +130,12 @@ const AtInput = defineComponent({
 
   setup(props: AtInputProps, { attrs, slots, emit }) {
     const inputValue = useModelValue(props, emit, 'value')
-    const inputID = ref('weui-input' + uuid())
+    const inputID = ref(`weui-input_${isTest() ? '2020' : uuid()}`)
     const inputProps = computed(() => getInputProps(props))
 
     const rootClasses = computed(() => ({
       'at-input': true,
-      'at-input--without-border': props.border
+      'at-input--without-border': !props.border
     }))
 
     const containerClasses = computed(() => ({
@@ -149,46 +149,46 @@ const AtInput = defineComponent({
       'at-input__overlay--hidden': !inputProps.value.disabled
     }))
 
-    const placeholderClasses = computed(() => `placeholder ${props.placeholderClass}`)
+    const placeholderClasses = computed(() =>
+      Boolean(props.placeholderClass)
+        ? `placeholder ${props.placeholderClass}`
+        : 'placeholder'
+    )
 
     const titleClasses = computed(() => ({
       'at-input__title': true,
       'at-input__title--required': props.required
     }))
 
-    // watch(() => props.value, (val, preVal) => {
-    //   if (val !== preVal) {
-    //     inputValue.value = val
-    //   }
-    // })
-
     function handleInput(e: BaseEventOrig<InputEventDetail>) {
-      if (attrs['onUpdate:value']) {
-        inputValue.value = e.detail.value
-      } else {
-        props.onChange?.(e.detail.value, e)
+      if (!inputProps.value.disabled) {
+        if (attrs['onUpdate:value']) {
+          inputValue.value = e.detail.value
+        } else {
+          props.onChange?.(e.detail.value, e)
+        }
       }
     }
 
     function handleFocus(e: BaseEventOrig<FocusEventDetail>) {
-      if (typeof props.onFocus === 'function') {
-        props.onFocus(e.detail.value, e)
-      }
-      if (process.env.TARO_ENV === 'h5') {
-        // hack fix: h5 点击清除按钮后，input value 在数据层被清除，但视图层仍未清除
-        inputID.value = 'weui-input' + uuid(10, 32)
+      if (!inputProps.value.disabled) {
+        props.onFocus?.(e.detail.value, e)
+        if (process.env.TARO_ENV === 'h5') {
+          // hack fix: h5 点击清除按钮后，input value 在数据层被清除，但视图层仍未清除
+          inputID.value = 'weui-input' + uuid(10, 32)
+        }
       }
     }
 
     function handleBlur(e: BaseEventOrig<BlurEventDetail>) {
-      if (typeof props.onBlur === 'function') {
-        props.onBlur(e.detail.value, e)
+      if (!inputProps.value.disabled) {
+        props.onBlur?.(e.detail.value, e)
       }
     }
 
     function handleConfirm(e: BaseEventOrig<ConfirmEventDetail>) {
-      if (typeof props.onConfirm === 'function') {
-        props.onConfirm(e.detail.value, e)
+      if (!inputProps.value.disabled) {
+        props.onConfirm?.(e.detail.value, e)
       }
     }
 
@@ -215,15 +215,13 @@ const AtInput = defineComponent({
     function handleKeyboardHeightChange(
       e: BaseEventOrig<KeyboardHeightEventDetail>
     ) {
-      if (typeof props.onKeyboardHeightChange === 'function') {
-        props.onKeyboardHeightChange(e)
+      if (!inputProps.value.disabled) {
+        props.onKeyboardHeightChange?.(e)
       }
     }
 
     function handleErrorClick(e: ITouchEvent) {
-      if (typeof props.onErrorClick === 'function') {
-        props.onErrorClick(e)
-      }
+      props.onErrorClick?.(e)
     }
 
     return () => {
@@ -246,7 +244,7 @@ const AtInput = defineComponent({
                     class: titleClasses.value,
                     for: props.name
                   }, { default: () => props.title })
-                ),
+                ) || null,
 
                 h(Input, {
                   class: 'at-input__input',
@@ -274,7 +272,7 @@ const AtInput = defineComponent({
                   onKeyboardHeightChange: handleKeyboardHeightChange,
                 }),
 
-                (props.clear && props.value) && (
+                (props.clear && String(props.value)) && (
                   h(View, {
                     class: 'at-input__icon',
                     onTouchStart: handleClearValue
@@ -285,7 +283,7 @@ const AtInput = defineComponent({
                       })
                     ]
                   })
-                ),
+                ) || null,
 
                 props.error && (
                   h(View, {
@@ -298,9 +296,9 @@ const AtInput = defineComponent({
                       })
                     ]
                   })
-                ),
+                ) || null,
 
-                h(View, {
+                slots.default && h(View, {
                   class: 'at-input__children'
                 }, { default: () => slots.default?.() })
               ]

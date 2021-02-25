@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtList should render all nodes and match snapshot 1`] = `
+<view
+  class="at-list"
+>
+  slot content
+</view>
+`;
+
+exports[`AtListItem should render all nodes and match snapshot 1`] = `
+<view
+  class="test at-list__item at-list__item--thumb at-list__item--multiple at-list__item--no-border test"
+  style="color: red;"
+>
+  <view
+    class="at-list__item-container"
+  >
+    <view
+      class="at-list__item-thumb item-thumb"
+    >
+      <image
+        class="item-thumb__info"
+        mode="scaleToFill"
+        src="http://img.test.com/3N31e.png"
+      />
+    </view>
+    <view
+      class="at-list__item-icon item-icon"
+    >
+      <view
+        class="at-icon at-icon-calendar"
+        style=""
+      />
+    </view>
+    <view
+      class="at-list__item-content item-content"
+    >
+      <view
+        class="item-content__info"
+      >
+        <view
+          class="item-content__info-title"
+        >
+          title
+        </view>
+        <view
+          class="item-content__info-note"
+        >
+          note
+        </view>
+      </view>
+    </view>
+    <view
+      class="at-list__item-extra item-extra"
+    >
+      <view
+        class="item-extra__info"
+      >
+        extraText
+      </view>
+      
+      <!---->
+      <view
+        class="item-extra__icon"
+      >
+        <view
+          class="at-icon item-extra__icon-arrow at-icon-chevron-right"
+        />
+      </view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtListItem should render prop extraText and match snapshot 1`] = `
+<view
+  class="item-extra__info"
+>
+  extraText
+</view>
+`;
+
+exports[`AtListItem should render prop extraThumb and match snapshot 1`] = `
+<view
+  class="item-extra__image"
+>
+  <image
+    class="item-extra__image-info"
+    mode="aspectFit"
+    src="http://img.test.com/3N31e.png"
+  />
+</view>
+`;
+
+exports[`AtListItem should render prop iconInfo 1`] = `
+<view
+  class="at-list__item-icon item-icon"
+>
+  <view
+    class="prefixClass prefixClass-calendar klass"
+    style="color: rgb(120, 164, 250); font-size: 25px; background: teal;"
+  />
+</view>
+`;
+
+exports[`AtListItem should render prop isSwitch and match snapshot 1`] = `
+<view
+  class="item-extra__switch"
+>
+  <switch
+    checked="false"
+    color="red"
+    disabled="false"
+  />
+</view>
+`;
+
+exports[`AtListItem should render prop thumb 1`] = `
+<view
+  class="at-list__item-thumb item-thumb"
+>
+  <image
+    class="item-thumb__info"
+    mode="scaleToFill"
+    src="http://img.test.com/3N31e.png"
+  />
+</view>
+`;
