@@ -19,10 +19,17 @@ module.exports = {
     // '^@/(.*)$': '<rootDir>/src/$1'
   },
   snapshotSerializers: ['jest-serializer-vue'],
-  testMatch: ['<rootDir>/src/components/**/__tests__/*.spec.ts'],
+  testMatch: [
+    '<rootDir>/src/components/**/__tests__/*.spec.ts',
+    '<rootDir>/src/__tests__/*.spec.ts',
+  ],
   coverageDirectory: '<rootDir>/tests/coverage',
   collectCoverage: true,
-  collectCoverageFrom: ['<rootDir>/src/components/**/*.ts', '!**/node_modules/**'],
+  collectCoverageFrom: [
+    '<rootDir>/src/components/**/*.ts',
+    '<rootDir>/src/index.ts',
+    '!**/node_modules/**'
+  ],
   globals: {
     'ts-jest': {
       tsconfig: './jest.tsconfig.json',
