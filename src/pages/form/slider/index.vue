@@ -14,8 +14,7 @@
 </template>
 
 <script lang="ts">
-import { h, defineComponent } from 'vue'
-import { View } from '@tarojs/components'
+import { defineComponent } from 'vue'
 import './index.scss'
 
 export default defineComponent({
@@ -65,6 +64,5 @@ export default defineComponent({
       cases
     }
   }
-
 })
 </script>
