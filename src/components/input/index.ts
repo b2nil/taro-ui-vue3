@@ -272,7 +272,7 @@ const AtInput = defineComponent({
                   onKeyboardHeightChange: handleKeyboardHeightChange,
                 }),
 
-                (props.clear && props.value) && (
+                (props.clear && String(props.value)) && (
                   h(View, {
                     class: 'at-input__icon',
                     onTouchStart: handleClearValue
