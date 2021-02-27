@@ -125,7 +125,7 @@ export default defineComponent({
     })
 
     const setAutoPlay = (e: CommonEvent): void => {
-      state.isCircular = e.detail.value
+      state.isAutoplay = e.detail.value
     }
 
     const setCircular = (e: CommonEvent): void => {

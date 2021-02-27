@@ -79,6 +79,7 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from 'vue'
 import './index.scss'
 
 export default defineComponent({

@@ -39,13 +39,13 @@
 </template>
 
 <script lang="ts">
-import { h, defineComponent } from 'vue'
+import { defineComponent } from 'vue'
 import './index.scss'
 
 export default defineComponent({
   name: "TimelineDemo",
-  setup() {
 
+  setup() {
     const items1 = [
       { title: '刷牙洗脸' },
       { title: '吃早餐' },
@@ -90,7 +90,7 @@ export default defineComponent({
         content: ['查看邮件', '写PPT', '发送PPT给领导'],
         icon: 'clock'
       },
-      { title: '睡觉', content: ['不超过23:00'], 'clock' }
+      { title: '睡觉', content: ['不超过23:00'], icon: 'clock' }
     ]
 
     return {
