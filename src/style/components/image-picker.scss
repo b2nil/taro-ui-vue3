@@ -14,7 +14,6 @@
     padding: $spacing-h-sm;
     overflow: hidden;
     box-sizing: border-box;
-    margin-left: -$spacing-h-sm;
   }
 
   &__flex-item {
@@ -23,6 +22,10 @@
     flex: 1;
     height: 100%;
     box-sizing: border-box;
+
+    &:nth-child(1) {
+      margin-left: 0 !important;
+    }
 
     &::after {
       content: '';
