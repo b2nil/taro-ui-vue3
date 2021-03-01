@@ -23,6 +23,10 @@
     height: 100%;
     box-sizing: border-box;
 
+    &:nth-child(1) {
+      margin-left: 0 !important;
+    }
+
     &::after {
       content: '';
       display: block;
