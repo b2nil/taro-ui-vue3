@@ -14,6 +14,7 @@
     padding: $spacing-h-sm;
     overflow: hidden;
     box-sizing: border-box;
+    margin-left: -$spacing-h-sm;
   }
 
   &__flex-item {
