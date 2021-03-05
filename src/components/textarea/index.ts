@@ -27,10 +27,6 @@ const ENV = Taro.getEnv()
 const AtTextarea = defineComponent({
   name: "AtTextarea",
 
-  emits: [
-    "update:value"
-  ],
-
   props: {
     value: {
       type: String,

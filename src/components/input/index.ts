@@ -47,10 +47,6 @@ function getInputProps(props: AtInputProps): GetInputPropsReturn {
 const AtInput = defineComponent({
   name: "AtInput",
 
-  emits: [
-    "update:value"
-  ],
-
   props: {
     name: {
       type: String as PropType<AtInputProps['name']>,

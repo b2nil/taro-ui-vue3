@@ -7,10 +7,6 @@ import { useModelValue } from "../../composables/model"
 const AtCheckbox = defineComponent({
   name: "AtCheckbox",
 
-  emits: [
-    "update:selected-list"
-  ],
-
   props: {
     // 参数
     options: {

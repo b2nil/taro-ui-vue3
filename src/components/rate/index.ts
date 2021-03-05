@@ -8,10 +8,6 @@ import { useModelValue } from '../../composables/model'
 const AtRate = defineComponent({
   name: "AtRate",
 
-  emits: [
-    "update:value"
-  ],
-
   props: {
     size: {
       type: [Number, String],

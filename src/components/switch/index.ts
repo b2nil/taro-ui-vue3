@@ -5,11 +5,8 @@ import { AtSwitchProps } from 'types/switch'
 import { useModelValue } from '../../composables/model'
 
 const AtSwitch = defineComponent({
-  name: "AtSwitch",
 
-  emits: [
-    "update:checked"
-  ],
+  name: "AtSwitch",
 
   props: {
     title: {

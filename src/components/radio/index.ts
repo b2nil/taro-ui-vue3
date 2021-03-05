@@ -7,10 +7,6 @@ import { useModelValue } from '../../composables/model'
 const AtRadio = defineComponent({
   name: "AtRadio",
 
-  emits: [
-    "update:value"
-  ],
-
   props: {
     value: {
       type: String as PropType<AtRadioProps<any>['value']>,
