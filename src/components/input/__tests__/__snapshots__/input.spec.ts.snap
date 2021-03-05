@@ -2,7 +2,7 @@
 
 exports[`AtInput should render all nodes and match snapshot 1`] = `
 <view
-  class="at-input at-input--without-border"
+  class="at-input"
 >
   <view
     class="at-input__container at-input--error"
