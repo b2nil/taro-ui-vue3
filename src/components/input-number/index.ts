@@ -46,6 +46,10 @@ type ExtendEvent = {
 const AtInputNumber = defineComponent({
   name: "AtInputNumber",
 
+  emits: [
+    "update:value"
+  ],
+
   props: {
     // 参数
     type: {

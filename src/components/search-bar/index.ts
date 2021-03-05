@@ -8,6 +8,10 @@ import { useModelValue } from '../../composables/model'
 const AtSearchBar = defineComponent({
   name: "AtSearchBar",
 
+  emits: [
+    "update:value"
+  ],
+
   props: {
     value: {
       type: String,
