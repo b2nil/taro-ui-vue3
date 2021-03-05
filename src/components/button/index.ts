@@ -168,10 +168,10 @@ const AtButton = defineComponent({
     interface miniAppEventHandleProps {
       onError?: typeof props.onError
       onContact?: typeof props.onContact
-      onOpenSetting?: typeof props.onOpenSetting
-      onGetPhoneNumber?: typeof props.onGetPhoneNumber
-      onGetUserInfo?: typeof props.onGetUserInfo
-      onGetAuthorize?: typeof props.onGetAuthorize
+      onOpensetting?: typeof props.onOpenSetting
+      onGetphonenumber?: typeof props.onGetPhoneNumber
+      onGetuserinfo?: typeof props.onGetUserInfo
+      onGetauthorize?: typeof props.onGetAuthorize
       onLaunchapp?: typeof props.onLaunchapp
     }
 
@@ -185,16 +185,16 @@ const AtButton = defineComponent({
           wxButtonProps.onContact = handleContact
           break
         case 'openSetting':
-          wxButtonProps.onOpenSetting = handleOpenSetting
+          wxButtonProps.onOpensetting = handleOpenSetting
           break
         case 'getPhoneNumber':
-          wxButtonProps.onGetPhoneNumber = handleGetPhoneNumber
+          wxButtonProps.onGetphonenumber = handleGetPhoneNumber
           break
         case 'getUserInfo':
-          wxButtonProps.onGetUserInfo = handleGetUserInfo
+          wxButtonProps.onGetuserinfo = handleGetUserInfo
           break
         case 'getAuthorize':
-          wxButtonProps.onGetAuthorize = handleGetAuthorize
+          wxButtonProps.onGetauthorize = handleGetAuthorize
           break
         case 'launchApp':
           wxButtonProps.onLaunchapp = handleLaunchapp

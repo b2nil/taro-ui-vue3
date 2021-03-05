@@ -201,8 +201,8 @@ const AtRange = defineComponent({
                       key: `${sliderName} - ${index}`,
                       class: 'at-range__slider',
                       style: sliderName === 'aX' ? sliderAStyle.value : sliderBStyle.value,
-                      onTouchEnd: handleTouchEnd.bind(this, sliderName),
-                      onTouchMove: handleTouchMove.bind(this, sliderName),
+                      onTouchend: handleTouchEnd.bind(this, sliderName),
+                      onTouchmove: handleTouchMove.bind(this, sliderName),
                     })
                   ))
                 ]

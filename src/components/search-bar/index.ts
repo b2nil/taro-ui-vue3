@@ -224,7 +224,7 @@ const AtSearchBar = defineComponent({
               inputValue.value && h(View, {
                 class: 'at-search-bar__clear',
                 style: clearIconStyle.value,
-                onTouchStart: handleClear
+                onTouchstart: handleClear
               }, {
                 default: () => [
                   h(Text, { class: 'at-icon at-icon-close-circle' })
