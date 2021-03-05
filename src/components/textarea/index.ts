@@ -55,7 +55,7 @@ const AtTextarea = defineComponent({
     onFocus: Function as PropType<AtTextareaProps['onFocus']>,
     onBlur: Function as PropType<AtTextareaProps['onBlur']>,
     onConfirm: Function as PropType<AtTextareaProps['onConfirm']>,
-    onLineChange: Function as PropType<AtTextareaProps['onLinechange']>,
+    onLinechange: Function as PropType<AtTextareaProps['onLinechange']>,
   },
 
   setup(props: AtTextareaProps, { attrs, emit }) {
@@ -101,7 +101,7 @@ const AtTextarea = defineComponent({
       props.onConfirm?.(event)
     }
 
-    function handleLineChange(event: CommonEvent): void {
+    function handleLinechange(event: CommonEvent): void {
       props.onLinechange?.(event)
     }
 
@@ -132,7 +132,7 @@ const AtTextarea = defineComponent({
               onFocus: handleFocus,
               onBlur: handleBlur,
               onConfirm: handleConfirm,
-              onLinechange: handleLineChange,
+              onLinechange: handleLinechange,
             })),
 
           props.count && process.env.TARO_ENV !== 'alipay' && (
