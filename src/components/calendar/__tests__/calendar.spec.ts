@@ -2,9 +2,15 @@ import { mountFactory } from '@/tests/helper'
 import AtCalendar from '../index'
 import Taro from '@tarojs/taro'
 
+const today = new Date()
+const dString = today.toISOString().substring(0, 7)
+
 describe('AtCalendar', () => {
   it('should render default calendar -- h5', () => {
-    const wrapper = mountFactory(AtCalendar, undefined, { currentDate: '2020-12-27' })
+    const wrapper = mountFactory(AtCalendar, undefined, {
+      currentDate: '2020-12-27',
+      marks: [{ value: "2020-11-27" }, { value: "2020-12-01" }]
+    })
     expect(wrapper.html()).toMatchSnapshot()
     expect(wrapper.find('.main > .main__body > .body__slider--pre').exists()).toBeTruthy()
     expect(wrapper.find('.main > .main__body > .body__slider--now').exists()).toBeTruthy()
@@ -81,12 +87,13 @@ describe('AtCalendar', () => {
   })
 
   it('should render marks', async () => {
-    const wrapper = mountFactory(AtCalendar)
-    expect(wrapper.findAll('.mark').length).toBe(0)
-
-    await wrapper.setProps({ marks: [{ value: '2020-12-27' }, { value: '2020-12-28' }] })
+    today.setDate(today.getDate() - 28)
+    const prevM = new Date(today).toISOString().substring(0, 10)
+    const wrapper = mountFactory(AtCalendar, undefined, { marks: [{ value: prevM }] })
+    expect(wrapper.findAll('.mark').length).toBe(1)
+    await wrapper.setProps({ marks: [{ value: `${dString}-21` }, { value: prevM }, { value: `${dString}-23` }] })
     wrapper.vm.$nextTick()
-    expect(wrapper.findAll('.mark').length).toBe(2)
+    expect(wrapper.findAll('.mark').length).toBe(3)
   })
 
   it('should render minDate and maxDate', () => {
@@ -124,7 +131,7 @@ describe('AtCalendar', () => {
 
   it('should render valid dates', () => {
     const wrapper = mountFactory(AtCalendar, undefined, {
-      validDates: [{ value: '2020-12-27' }, { value: '2020-12-28' }]
+      validDates: [{ value: `${dString}-21` }, { value: `${dString}-25` }]
     })
 
     expect(

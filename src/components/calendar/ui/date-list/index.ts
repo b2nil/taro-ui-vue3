@@ -89,7 +89,7 @@ const AtCalendarList = defineComponent({
                         h(Text, {
                           key: key,
                           class: 'mark'
-                        }, { default: () => String(mark) })
+                        }, { default: () => mark.value })
                       ))
                     })
                   )

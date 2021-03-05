@@ -291,7 +291,7 @@ exports[`AtCalendar should render default calendar -- h5 1`] = `
               <view class="container-text">27</view>
             </view>
             <view class="flex__item-extra extra">
-              <!---->
+              <view class="extra-marks"><text class="mark">2020-11-27</text></view>
             </view>
           </view>
           <view class="flex__item flex__item--now">
@@ -323,7 +323,7 @@ exports[`AtCalendar should render default calendar -- h5 1`] = `
               <view class="container-text">1</view>
             </view>
             <view class="flex__item-extra extra">
-              <!---->
+              <view class="extra-marks"><text class="mark">2020-12-01</text></view>
             </view>
           </view>
           <view class="flex__item flex__item--next flex__item--blur">
@@ -383,7 +383,7 @@ exports[`AtCalendar should render default calendar -- h5 1`] = `
               <view class="container-text">1</view>
             </view>
             <view class="flex__item-extra extra">
-              <!---->
+              <view class="extra-marks"><text class="mark">2020-12-01</text></view>
             </view>
           </view>
           <view class="flex__item flex__item--now">
@@ -610,7 +610,7 @@ exports[`AtCalendar should render default calendar -- h5 1`] = `
               <!---->
             </view>
           </view>
-          <view class="flex__item flex__item--now flex__item--today">
+          <view class="flex__item flex__item--now">
             <view class="flex__item-container">
               <view class="container-text">30</view>
             </view>
