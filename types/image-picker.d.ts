@@ -12,6 +12,21 @@ export interface File {
   url: string
 
   file?: FileItem
+
+  /**
+   * 图片上传的状态
+   * - `uploading`: 正在上传   
+   * - `failed`: 上传失败   
+   * - `done`: 上传成功   
+   * @default "done"
+   * @since v2.0.2  how to get version??
+   */
+  status?: "uploading" | "failed" | "done"
+   /**
+   * 图片上传的状态文案
+   * @since v2.0.2  how to get version??
+   */
+  message?: string
 }
 
 export interface AtImagePickerProps extends AtComponent {

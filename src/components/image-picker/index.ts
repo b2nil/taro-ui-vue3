@@ -5,6 +5,7 @@ import { uuid } from '../../utils/common'
 
 import { Image, View } from '@tarojs/components'
 import { AtImagePickerProps, File } from 'types/image-picker'
+import AtLoading from '../loading/index'
 
 interface MatrixFile extends Partial<File> {
   type: 'blank' | 'btn'
@@ -146,6 +147,32 @@ const AtImagePicker = defineComponent({
       props.onChange(newFiles, 'remove', idx)
     }
 
+    function renderUploadStatus(item: MatrixFile) {
+      return h(View, {
+        class: `at-image-picker__upload-status`,
+      }, {
+        default: () => {
+          const r = [
+            item.status === 'uploading'
+              ? h(AtLoading, {
+                color: '#fff'
+              })
+              : h(View, {
+                class: 'at-image-picker__upload-status--failed'
+              })
+          ]
+          if (item.message) {
+            r.push(
+              h(View, {
+                class: 'at-image-picker__status-message'
+              }, { default: () => item.message })
+            )
+          }
+          return r
+        }
+      })
+    }
+
     return () => (
       h(View, mergeProps(attrs, {
         class: 'at-image-picker'
@@ -168,19 +195,27 @@ const AtImagePicker = defineComponent({
                       h(View, {
                         class: 'at-image-picker__item'
                       }, {
-                        default: () => [
-                          h(View, {
-                            class: 'at-image-picker__remove-btn',
-                            onTap: handleRemoveImg.bind(this, i * props.length! + j)
-                          }),
+                        default: () => {
+                          const r = [
+                            h(View, {
+                              class: 'at-image-picker__remove-btn',
+                              onTap: handleRemoveImg.bind(this, i * props.length! + j)
+                            }),
 
-                          h(Image, {
-                            class: 'at-image-picker__preview-img',
-                            mode: props.mode,
-                            src: item.url,
-                            onTap: handleImageClick.bind(this, i * props.length! + j)
-                          })
-                        ]
+                            h(Image, {
+                              class: 'at-image-picker__preview-img',
+                              mode: props.mode,
+                              src: item.url,
+                              onTap: handleImageClick.bind(this, i * props.length! + j)
+                            }),
+                          ]
+                          if (item.status && item.status !== 'done') {
+                            r.push(
+                              renderUploadStatus(item)
+                            )
+                          }
+                          return r
+                        }
                       })
                     )
                     : item.type === 'btn' && ( // add bar

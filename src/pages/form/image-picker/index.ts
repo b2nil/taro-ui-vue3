@@ -6,11 +6,13 @@ import './index.scss'
 
 type DogaImage = {
   url: string
+  status?: 'uploading' | 'failed' | 'done'
+  message?: string
 }
 
 const dogaImages: DogaImage[] = [
   {
-    url: 'https://storage.360buyimg.com/mtd/home/111543234387022.jpg'
+    url: 'https://storage.360buyimg.com/mtd/home/111543234387022.jpg',
   },
   {
     url: 'https://storage.360buyimg.com/mtd/home/221543234387016.jpg'
@@ -37,7 +39,21 @@ export default defineComponent({
           url:
             'https://storage.360buyimg.com/mtd/home/36549825_887087111478302_5745542532574478336_n1543234831971.jpg'
         }
-      ])
+      ]),
+      files5: [
+        {
+          url:
+            'https://storage.360buyimg.com/mtd/home/111543234387022.jpg',
+          status: 'uploading',
+          message: '上传中'
+        },
+        {
+          url:
+            'https://storage.360buyimg.com/mtd/home/221543234387016.jpg',
+          status: 'failed',
+          message: '上传失败'
+        }
+      ]
     })
 
     function onChange(stateName: string, files: DogaImage[]): void {
@@ -120,6 +136,22 @@ export default defineComponent({
                       multiple: true,
                       files: state.files4,
                       onChange: onChange.bind(this, 'files4'),
+                    })
+                  ]
+                }),
+              ]
+            }),
+
+            /* 上传状态*/
+            h(Panel, { title: '上传状态', noPadding: true }, {
+              default: () => [
+                h(ExampleItem, null, {
+                  default: () => [
+                    h(AtImagePicker, {
+                      mode: 'aspectFit',
+                      multiple: true,
+                      files: state.files5,
+                      onChange: onChange.bind(this, 'files5'),
                     })
                   ]
                 }),
