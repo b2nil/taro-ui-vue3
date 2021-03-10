@@ -13,8 +13,9 @@ import Image from './components/image'
 import Icon from './components/icon'
 import ScrollView from './components/scroll-view'
 
-const componentMap = {}
+
 function genSimpleComponents(components) {
+  const componentMap = {}
   components.map(component => {
     if (typeof component === 'string') {
       componentMap[component] = createComponent(component)
@@ -23,9 +24,10 @@ function genSimpleComponents(components) {
       componentMap[name] = createComponent(name, classNames)
     }
   })
+  return componentMap
 }
 
-genSimpleComponents(simpleComponents)
+const componentMap = genSimpleComponents(simpleComponents)
 
 // simple components
 export const View = componentMap['taro-view']
@@ -74,9 +76,9 @@ export const Slider = createFormsComponent('taro-slider', 'change', 'value', ['w
 export function initVue3Components(app) {
   app.config.isCustomElement = tag => /^taro-/.test(tag) || tag === 'root' || tag === 'block'
 
-  simpleComponents.map(component => {
-    app.component(component, componentMap[component])
-  })
+  for (const [name, component] of Object.entries(componentMap)) {
+    app.component(name, component)
+  }
 
   app.component('taro-input', Input)
   app.component('taro-textarea', Textarea)

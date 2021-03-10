@@ -1,4 +1,4 @@
-import { h, defineComponent, computed, mergeProps, PropType } from 'vue'
+import { h, defineComponent, computed, mergeProps, warn, PropType } from 'vue'
 import { Button, View, Form } from '@tarojs/components'
 import { AtButtonProps } from "types/button"
 import AtLoading from '../loading/index'
@@ -101,6 +101,13 @@ const AtButton = defineComponent({
     const loadingSize = computed(() => props.size === 'small' ? '30' : '0')
 
     function handleClick(event) {
+      if (Boolean(attrs['onTap'])) {
+        warn(
+          'AtButton 绑定的点击事件应为 `click`， 而非 `tap`。',
+          '正确示例：`<at-button @click="eventHandler"/>`'
+        )
+      }
+
       if (!props.disabled) {
         props.onClick?.(event)
       }
@@ -161,10 +168,10 @@ const AtButton = defineComponent({
     interface miniAppEventHandleProps {
       onError?: typeof props.onError
       onContact?: typeof props.onContact
-      onOpenSetting?: typeof props.onOpenSetting
-      onGetPhoneNumber?: typeof props.onGetPhoneNumber
-      onGetUserInfo?: typeof props.onGetUserInfo
-      onGetAuthorize?: typeof props.onGetAuthorize
+      onOpensetting?: typeof props.onOpenSetting
+      onGetphonenumber?: typeof props.onGetPhoneNumber
+      onGetuserinfo?: typeof props.onGetUserInfo
+      onGetauthorize?: typeof props.onGetAuthorize
       onLaunchapp?: typeof props.onLaunchapp
     }
 
@@ -178,16 +185,16 @@ const AtButton = defineComponent({
           wxButtonProps.onContact = handleContact
           break
         case 'openSetting':
-          wxButtonProps.onOpenSetting = handleOpenSetting
+          wxButtonProps.onOpensetting = handleOpenSetting
           break
         case 'getPhoneNumber':
-          wxButtonProps.onGetPhoneNumber = handleGetPhoneNumber
+          wxButtonProps.onGetphonenumber = handleGetPhoneNumber
           break
         case 'getUserInfo':
-          wxButtonProps.onGetUserInfo = handleGetUserInfo
+          wxButtonProps.onGetuserinfo = handleGetUserInfo
           break
         case 'getAuthorize':
-          wxButtonProps.onGetAuthorize = handleGetAuthorize
+          wxButtonProps.onGetauthorize = handleGetAuthorize
           break
         case 'launchApp':
           wxButtonProps.onLaunchapp = handleLaunchapp

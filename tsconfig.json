@@ -41,6 +41,9 @@
       ],
       "@/tests/helper": [
         "./tests/helper"
+      ],
+      "taro-ui-vue3": [
+        "./dist"
       ]
     }
   },

@@ -79,10 +79,7 @@ const AtTextarea = defineComponent({
       'at-textarea--error': _maxLength.value < inputValue.value.length
     }))
 
-    const placeholderClasses = computed(() => ({
-      'placeholder': true,
-      [`${props.placeholderClass}`]: Boolean(props.placeholderClass)
-    }))
+    const placeholderClasses = computed(() => `placeholder ${props.placeholderClass}`)
 
     function handleInput(event: CommonEvent & ExtendEvent): void {
       if (attrs['onUpdate:value']) {
@@ -118,7 +115,7 @@ const AtTextarea = defineComponent({
             {
               class: 'at-textarea__textarea',
               style: textareaStyle.value,
-              placeholderstyle: props.placeholderStyle,
+              placeholderStyle: props.placeholderStyle,
               placeholderClass: placeholderClasses.value,
               cursorSpacing: props.cursorSpacing,
               value: inputValue.value,
@@ -135,7 +132,7 @@ const AtTextarea = defineComponent({
               onFocus: handleFocus,
               onBlur: handleBlur,
               onConfirm: handleConfirm,
-              onLineChange: handleLinechange,
+              onLinechange: handleLinechange,
             })),
 
           props.count && process.env.TARO_ENV !== 'alipay' && (

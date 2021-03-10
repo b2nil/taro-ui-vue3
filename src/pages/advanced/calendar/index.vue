@@ -88,19 +88,10 @@
 import { ref, computed, reactive, toRefs, onMounted, onBeforeMount } from 'vue'
 import Taro from '@tarojs/taro'
 
-import { AtButton, AtCalendar } from '../../../index'
-import { Page, Panel } from '../../components/demo-page'
 
 import "./index.scss"
 
 export default {
-  components: {
-    AtButton,
-    AtCalendar,
-    Page,
-    Panel
-  },
-
   setup() {
     const state = reactive({
       now: Date.now(),

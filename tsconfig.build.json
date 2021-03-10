@@ -50,6 +50,7 @@
     "src/pages/**/*",
     "src/app.config.ts",
     "src/app.ts",
+    "src/__tests__/*"
   ],
   "include": [
     "types",

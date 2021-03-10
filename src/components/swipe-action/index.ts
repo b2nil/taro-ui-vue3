@@ -219,9 +219,9 @@ const AtSwipeAction = defineComponent({
         h(View, mergeProps(attrs, {
           id: `swipeAction-${state.componentId}`,
           class: 'at-swipe-action',
-          onTouchMove: handleTouchMove,
-          onTouchEnd: handleTouchEnd,
-          onTouchStart: handleTouchStart
+          onTouchmove: handleTouchMove,
+          onTouchend: handleTouchEnd,
+          onTouchstart: handleTouchStart
         }), {
           default: () => [
             // action content

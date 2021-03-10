@@ -302,9 +302,9 @@ const AtCalendarBody = defineComponent({
       if (isWeb.value) {
         return h(View, {
           class: rootClass.value,
-          onTouchEnd: handleTouchEnd,
-          onTouchMove: handleTouchMove,
-          onTouchStart: handleTouchStart
+          onTouchend: handleTouchEnd,
+          onTouchmove: handleTouchMove,
+          onTouchstart: handleTouchStart
         }, {
           default: () => [
             h(AtCalendarDayList),
@@ -370,9 +370,9 @@ const AtCalendarBody = defineComponent({
             skipHiddenItemLayout: true,
             current: currentSwiperIndex.value,
             onChange: handleChange,
-            onTouchMove: handleSwipeTouchMove,
-            onTouchEnd: handleSwipeTouchEnd,
-            onTouchStart: handleSwipeTouchStart
+            onTouchmove: handleSwipeTouchMove,
+            onTouchend: handleSwipeTouchEnd,
+            onTouchstart: handleSwipeTouchStart
           }), {
             default: () => state.listGroup.map((item, key) => (
               h(SwiperItem, {

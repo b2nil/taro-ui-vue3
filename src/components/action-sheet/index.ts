@@ -64,7 +64,7 @@ const AtActionSheet = defineComponent({
     return () => (
       h(View, mergeProps(attrs, {
         class: rootClasses.value,
-        onTouchMove: handleTouchMove
+        onTouchmove: handleTouchMove
       }), {
         default: () => [
           h(View, {

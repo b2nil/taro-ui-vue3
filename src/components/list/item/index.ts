@@ -1,9 +1,10 @@
 import { h, defineComponent, mergeProps, computed, PropType } from 'vue'
 import { View, Image, Switch } from '@tarojs/components'
-import { CommonEvent, ITouchEvent, CommonEventFunction } from '@tarojs/components/types/common'
-import { AtListItemProps } from "types/list"
-import { AtIconBaseProps } from "types/base"
 import { mergeStyle } from "../../../utils/common"
+
+import type { CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
+import type { AtListItemProps } from "types/list"
+import type { AtIconBaseProps } from "types/base"
 
 const AtListItem = defineComponent({
   props: {
@@ -26,14 +27,8 @@ const AtListItem = defineComponent({
       default: '',
       validator: (prop: string) => ['up', 'down', 'right', ''].includes(prop)
     },
-    onClick: {
-      type: Function as PropType<AtListItemProps['onClick']>,
-      default: () => () => { }
-    },
-    onSwitchChange: {
-      type: Function as PropType<AtListItemProps['onSwitchChange']>,
-      default: () => () => { }
-    },
+    onClick: Function as PropType<AtListItemProps['onClick']>,
+    onSwitchChange: Function as PropType<AtListItemProps['onSwitchChange']>
   },
 
   setup(props: AtListItemProps, { attrs }) {
@@ -61,9 +56,9 @@ const AtListItem = defineComponent({
     ))
 
     const arrowClasses = computed(() => ({
-      'at-icon': true,
-      'item-extra__icon-arrow': true,
-      [`at-icon-chevron-${props.arrow}`]: true
+      'at-icon': Boolean(props.arrow),
+      'item-extra__icon-arrow': Boolean(props.arrow),
+      [`at-icon-chevron-${props.arrow}`]: Boolean(props.arrow)
     }))
 
     function handleClick(e: ITouchEvent) {

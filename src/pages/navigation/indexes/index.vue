@@ -27,18 +27,12 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue"
 import Taro from "@tarojs/taro"
-import { AtIndexes, AtSearchBar } from "../../../index"
 import mockData from './mock-data'
 
 import "./index.scss"
 
 export default defineComponent({
   name: "IndexesDemo",
-
-  components: {
-    AtIndexes,
-    AtSearchBar,
-  },
 
   setup() {
     const searchbarValue = ref('')

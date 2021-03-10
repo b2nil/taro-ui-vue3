@@ -64,7 +64,7 @@ const AtCalendarList = defineComponent({
             key: `list-item-${item.value}-${index}`,
             class: flexItemClass.value(item),
             onTap: handleClick.bind(this, item),
-            onLongPress: handleLongClick.bind(this, item)
+            onLongpress: handleLongClick.bind(this, item)
           }, {
             default: () => [
               h(View, {

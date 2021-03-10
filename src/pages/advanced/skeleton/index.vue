@@ -57,7 +57,7 @@ import {
   AtFlex,
   AtFlexItem,
   AtSwitch,
-} from "../../../index"
+} from 'taro-ui-vue3'
 
 import {
   Page,
@@ -69,17 +69,6 @@ import './index.scss'
 
 export default defineComponent({
   name: "SkeletonDemo",
-
-  components: {
-    AtSkeleton,
-    AtCard,
-    AtFlex,
-    AtFlexItem,
-    AtSwitch,
-    Page,
-    Panel,
-    ExampleItem
-  },
 
   setup() {
     const loading = ref(true)

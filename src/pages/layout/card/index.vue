@@ -101,19 +101,9 @@
 <script lang='ts'>
 import { h, defineComponent } from "vue"
 import Taro from "@tarojs/taro"
-import { Page, Panel, ExampleItem } from '../../components/demo-page'
-import { AtIcon, AtCard } from '../../../index'
 
 export default defineComponent({
   name: "CardDemo",
-
-  components: {
-    Page,
-    Panel,
-    ExampleItem,
-    AtCard,
-    AtIcon
-  },
 
   setup() {
     const renderIcon = h(AtIcon, {

@@ -135,7 +135,7 @@ const AtInput = defineComponent({
 
     const rootClasses = computed(() => ({
       'at-input': true,
-      'at-input--without-border': props.border
+      'at-input--without-border': !props.border
     }))
 
     const containerClasses = computed(() => ({
@@ -269,13 +269,13 @@ const AtInput = defineComponent({
                   onInput: handleInput,
                   onFocus: handleFocus,
                   onConfirm: handleConfirm,
-                  onKeyboardHeightChange: handleKeyboardHeightChange,
+                  onKeyboardheightchange: handleKeyboardHeightChange,
                 }),
 
-                (props.clear && props.value) && (
+                (props.clear && String(props.value)) && (
                   h(View, {
                     class: 'at-input__icon',
-                    onTouchStart: handleClearValue
+                    onTouchstart: handleClearValue
                   }, {
                     default: () => [
                       h(Text, {
@@ -288,7 +288,7 @@ const AtInput = defineComponent({
                 props.error && (
                   h(View, {
                     class: 'at-input__icon',
-                    onTouchStart: handleErrorClick
+                    onTouchstart: handleErrorClick
                   }, {
                     default: () => [
                       h(Text, {

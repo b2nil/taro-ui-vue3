@@ -1,36 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Card should render default Card 1`] = `
-<view
-  class="at-card"
->
-  <view
-    class="at-card__header"
-  >
-    
-    <!---->
-    <!---->
-    <text
-      class="at-card__header-title"
-    >
-      这是个标题
-    </text>
-    
-  </view>
-  <view
-    class="at-card__content"
-  >
-    <view
-      class="at-card__content-info"
-    >
-      这也是内容区 可以随意定义功能
-    </view>
-    
-  </view>
-</view>
-`;
-
-exports[`Card should render prop -- extra 1`] = `
+exports[`AtCard should render all nodes and match snapshot 1`] = `
 <view
   class="at-card"
 >
@@ -43,7 +13,7 @@ exports[`Card should render prop -- extra 1`] = `
       <image
         class="at-card__header-thumb-info"
         mode="scaleToFill"
-        src="http://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png"
+        src="http://test.pic.com/ni74d.png"
       />
     </view>
     <!---->
@@ -51,12 +21,13 @@ exports[`Card should render prop -- extra 1`] = `
     <text
       class="at-card__header-title"
     >
-      这是个标题
+      title
     </text>
     <text
       class="at-card__header-extra"
+      style="font-size: 10px;"
     >
-      额外信息
+      2021-01-29 01:00:00
     </text>
   </view>
   <view
@@ -64,187 +35,12 @@ exports[`Card should render prop -- extra 1`] = `
   >
     <view
       class="at-card__content-info"
-    >
-      这也是内容区 可以随意定义功能
-    </view>
+    />
     <view
       class="at-card__content-note"
     >
-      小Tips
+      tips
     </view>
-  </view>
-</view>
-`;
-
-exports[`Card should render prop -- extraStyle 1`] = `
-<view
-  class="at-card at-card--full"
->
-  <view
-    class="at-card__header"
-  >
-    <view
-      class="at-card__header-thumb"
-    >
-      <image
-        class="at-card__header-thumb-info"
-        mode="scaleToFill"
-        src="http://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png"
-      />
-    </view>
-    <!---->
-    <!---->
-    <text
-      class="at-card__header-title"
-    >
-      这是个标题
-    </text>
-    <text
-      class="at-card__header-extra"
-      style="font-size: 12px; max-width: 200px;"
-    >
-      额外信息
-    </text>
-  </view>
-  <view
-    class="at-card__content"
-  >
-    <view
-      class="at-card__content-info"
-    >
-      这也是内容区 可以随意定义功能
-    </view>
-    <view
-      class="at-card__content-note"
-    >
-      小Tips
-    </view>
-  </view>
-</view>
-`;
-
-exports[`Card should render prop -- isFull 1`] = `
-<view
-  class="at-card at-card--full"
->
-  <view
-    class="at-card__header"
-  >
-    <view
-      class="at-card__header-thumb"
-    >
-      <image
-        class="at-card__header-thumb-info"
-        mode="scaleToFill"
-        src="http://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png"
-      />
-    </view>
-    <!---->
-    <!---->
-    <text
-      class="at-card__header-title"
-    >
-      这是个标题
-    </text>
-    <text
-      class="at-card__header-extra"
-    >
-      额外信息
-    </text>
-  </view>
-  <view
-    class="at-card__content"
-  >
-    <view
-      class="at-card__content-info"
-    >
-      这也是内容区 可以随意定义功能
-    </view>
-    <view
-      class="at-card__content-note"
-    >
-      小Tips
-    </view>
-  </view>
-</view>
-`;
-
-exports[`Card should render prop -- note 1`] = `
-<view
-  class="at-card"
->
-  <view
-    class="at-card__header"
-  >
-    <view
-      class="at-card__header-thumb"
-    >
-      <image
-        class="at-card__header-thumb-info"
-        mode="scaleToFill"
-        src="http://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png"
-      />
-    </view>
-    <!---->
-    <!---->
-    <text
-      class="at-card__header-title"
-    >
-      这是个标题
-    </text>
-    
-  </view>
-  <view
-    class="at-card__content"
-  >
-    <view
-      class="at-card__content-info"
-    >
-      这也是内容区 可以随意定义功能
-    </view>
-    <view
-      class="at-card__content-note"
-    >
-      小Tips
-    </view>
-  </view>
-</view>
-`;
-
-exports[`Card should render prop -- thumb 1`] = `
-<view
-  class="at-card"
->
-  <view
-    class="at-card__header"
-  >
-    <view
-      class="at-card__header-thumb"
-    >
-      <image
-        class="at-card__header-thumb-info"
-        mode="scaleToFill"
-        src="http://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png"
-      />
-    </view>
-    <!---->
-    <!---->
-    <text
-      class="at-card__header-title"
-    >
-      这是个标题
-    </text>
-    
-  </view>
-  <view
-    class="at-card__content"
-  >
-    <view
-      class="at-card__content-info"
-    >
-      这也是内容区 可以随意定义功能
-    </view>
-    
   </view>
 </view>
 `;

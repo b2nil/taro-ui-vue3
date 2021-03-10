@@ -1,153 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtNoticebar should render prop -- icon 1`] = `
+exports[`AtNoticebar should render close icon and match snapshot 1`] = `
 <view
-  class="at-noticebar"
+  class="at-noticebar__close"
 >
-  <!---->
-  <view
-    class="at-noticebar__content"
-  >
-    <view
-      class="at-noticebar__content-icon"
-    >
-      <text
-        class="at-icon at-icon-volume-plus"
-      />
-    </view>
-    <view
-      class="at-noticebar__content-text"
-    >
-      <view
-        animation="[object Object]"
-        class="at-noticebar__content-inner"
-        id="J_6fhh"
-      >
-        这是内容
-      </view>
-      <!---->
-    </view>
-  </view>
+  <text
+    class="at-icon at-icon-close"
+  />
 </view>
 `;
 
-exports[`AtNoticebar should render prop -- moreText & showMore 1`] = `
+exports[`AtNoticebar should render moreText in single-line mode and match snapshot 1`] = `
 <view
-  class="at-noticebar at-noticebar--single"
+  class="at-noticebar__more"
 >
-  <!---->
-  <view
-    class="at-noticebar__content"
+  <text
+    class="text"
   >
-    <!---->
-    <view
-      class="at-noticebar__content-text"
-    >
-      <view
-        animation="[object Object]"
-        class="at-noticebar__content-inner"
-        id="J_cadd"
-      >
-        这是内容
-      </view>
-      <view
-        class="at-noticebar__more"
-      >
-        <text
-          class="text"
-        >
-          查看更多
-        </text>
-        <view
-          class="at-noticebar__more-icon"
-        >
-          <text
-            class="at-icon at-icon-chevron-right"
-          />
-        </view>
-      </view>
-    </view>
-  </view>
-</view>
-`;
-
-exports[`AtNoticebar should render prop -- show 1`] = `
-<view
-  class="at-noticebar"
->
+    查看更多
+  </text>
   <view
-    class="at-noticebar__close"
+    class="at-noticebar__more-icon"
   >
     <text
-      class="at-icon at-icon-close"
+      class="at-icon at-icon-chevron-right"
     />
   </view>
-  <view
-    class="at-noticebar__content"
-  >
-    <!---->
-    <view
-      class="at-noticebar__content-text"
-    >
-      <view
-        animation="[object Object]"
-        class="at-noticebar__content-inner"
-        id="J_clqv"
-      >
-        这是内容
-      </view>
-      <!---->
-    </view>
-  </view>
 </view>
 `;
 
-exports[`AtNoticebar should render prop -- single 1`] = `
+exports[`AtNoticebar should render prop icon and match snapshot 1`] = `
 <view
-  class="at-noticebar at-noticebar--single"
+  class="at-noticebar__content-icon"
 >
-  <!---->
-  <view
-    class="at-noticebar__content"
-  >
-    <!---->
-    <view
-      class="at-noticebar__content-text"
-    >
-      <view
-        animation="[object Object]"
-        class="at-noticebar__content-inner"
-        id="J_792r"
-      >
-        这是内容
-      </view>
-      <!---->
-    </view>
-  </view>
-</view>
-`;
-
-exports[`AtNoticebar should render prop -- speed 1`] = `
-<view
-  class="at-noticebar"
->
-  <!---->
-  <view
-    class="at-noticebar__content"
-  >
-    <!---->
-    <view
-      class="at-noticebar__content-text"
-    >
-      <view
-        animation="[object Object]"
-        class="at-noticebar__content-inner"
-        id="J_brub"
-      >
-        这是内容
-      </view>
-      <!---->
-    </view>
-  </view>
+  <text
+    class="at-icon at-icon-volume-plus"
+  />
 </view>
 `;

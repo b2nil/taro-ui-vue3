@@ -108,20 +108,11 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref, toRefs } from "vue"
-import { AtTabs, AtTabsPane } from "../../../index"
-import { Page, Panel } from '../../components/demo-page'
 
 import "./index.scss"
 
 export default defineComponent({
   name: "TabsDemo",
-
-  components: {
-    AtTabs,
-    AtTabsPane,
-    Page,
-    Panel
-  },
 
   setup() {
     const state = reactive({

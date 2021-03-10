@@ -1,3 +1,4 @@
+import { Plugin } from 'vue'
 
 export { AtActionSheet, AtActionSheetItem } from './action-sheet'
 export { default as AtActivityIndicator } from './activity-indicator'
@@ -49,3 +50,5 @@ export { default as AtRange } from './range'
 export { default as AtFloatButton } from './float-button'
 export { default as AtVirtualScroll } from './virtual-scroll'
 export { default as AtSkeleton } from './skeleton'
+
+export function createUI(components?: Record<string, any>): Plugin
