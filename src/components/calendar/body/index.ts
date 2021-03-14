@@ -355,8 +355,8 @@ const AtCalendarBody = defineComponent({
 
       // 支付宝 Swiper 组件无 onAnimationFinish 属性，应改为 onAnimationEnd
       const animationEndOrFinish = isAlipay.value
-        ? { onAnimationEnd: handleAnimateFinish }
-        : { onAnimationFinish: handleAnimateFinish }
+        ? { onAnimationend: handleAnimateFinish }
+        : { onAnimationfinish: handleAnimateFinish }
 
       return h(View, {
         class: rootClass.value
