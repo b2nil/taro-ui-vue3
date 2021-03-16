@@ -19,12 +19,12 @@ export interface File {
    * - `failed`: 上传失败   
    * - `done`: 上传成功   
    * @default "done"
-   * @since v2.0.2  how to get version??
+   * @since v1.0.0-alpha18 
    */
   status?: "uploading" | "failed" | "done"
    /**
    * 图片上传的状态文案
-   * @since v2.0.2  how to get version??
+   * @since 1.0.0-alpha18
    */
   message?: string
 }
