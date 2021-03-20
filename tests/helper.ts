@@ -1,12 +1,12 @@
 import { mount, shallowMount } from '@vue/test-utils'
-import { VNode } from '@vue/runtime-core'
+import { VNode, Slot } from '@vue/runtime-core'
 
 export const sleep = async (timeout: number): Promise<null> =>
   new Promise((resolve) => setTimeout(resolve, timeout))
 
 export interface Slots {
-  default: Array<string | VNode>
-  [x: string]: Array<string | VNode>
+  default: Array<string | VNode> | Slot
+  [x: string]: Array<string | VNode> | Slot
 }
 
 export function mountFactory(

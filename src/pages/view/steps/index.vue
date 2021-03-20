@@ -11,12 +11,12 @@
         <at-steps
           :items="items1"
           :current="current1"
-          @change="onChange('current1')"
+          @change="onChange('current1', $event)"
         ></at-steps>
         <at-steps
           :items="items2"
           :current="current2"
-          @change="onChange('current2')"
+          @change="onChange('current2', $event)"
         ></at-steps>
       </example-item>
     </panel>
@@ -28,7 +28,7 @@
         <at-steps
           :items="items3"
           :current="current3"
-          @change="onChange('current3')"
+          @change="onChange('current3', $event)"
         ></at-steps>
       </example-item>
     </panel>
@@ -40,7 +40,7 @@
         <at-steps
           :items="items4"
           :current="current4"
-          @change="onChange('current4')"
+          @change="onChange('current4', $event)"
         ></at-steps>
       </example-item>
     </panel>
@@ -52,7 +52,7 @@
         <at-steps
           :items="items5"
           :current="current5"
-          @change="onChange('current5')"
+          @change="onChange('current5', $event)"
         ></at-steps>
       </example-item>
     </panel>
@@ -151,11 +151,11 @@ export default defineComponent({
 
     return {
       ...toRefs(state),
-      item1,
-      item2,
-      item3,
-      item4,
-      item5,
+      items1,
+      items2,
+      items3,
+      items4,
+      items5,
       onChange
     }
   }

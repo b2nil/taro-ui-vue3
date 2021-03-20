@@ -269,9 +269,9 @@ const AtTabs = defineComponent({
             h(View, {
               class: 'at-tabs__body',
               style: bodyStyle.value,
-              onTouchStart: handleTouchStart,
-              onTouchEnd: handleTouchEnd,
-              onTouchMove: handleTouchMove,
+              onTouchstart: handleTouchStart,
+              onTouchend: handleTouchEnd,
+              onTouchmove: handleTouchMove,
             }, {
               default: () => [
                 h(View, {

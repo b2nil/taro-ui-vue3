@@ -1,13 +1,13 @@
 <template>
   <page header-title="Slider 滑动条">
     <panel
-      v-for="(case, idx) in cases"
+      v-for="(c, idx) in cases"
       :key="idx"
-      :title="case.title"
+      :title="c.title"
     >
       <example-item>
-        <view class="example-item__desc">{{ case.desc }}</view>
-        <at-slider v-bind="case.props" />
+        <view class="example-item__desc">{{ c.desc }}</view>
+        <at-slider v-bind="c.props" />
       </example-item>
     </panel>
   </page>

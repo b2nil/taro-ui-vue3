@@ -16,7 +16,7 @@
 
     <template #default>
       <panel
-        v-for="(pos, txt) in positions"
+        v-for="(txt, pos) in positions"
         :key="pos"
         :title="txt"
       >
@@ -31,10 +31,9 @@
 </template>
 
 <script lang="ts">
-import { toRefs } from 'vue'
+import { defineComponent, reactive, toRefs } from 'vue'
+import curtainPng from '@/assets/images/curtain.png'
 import './index.scss'
-
-const curtainPng = require('@/assets/images/curtain.png')
 
 interface TagPageState {
   isOpened: boolean
@@ -54,11 +53,11 @@ export default defineComponent({
   setup() {
 
     const positions = {
-      'top': '顶部关闭'
-      'top-left': '底部关闭'
-      'top-right': '左上关闭'
-      'bottom': '右上关闭'
-      'bottom-left': '左下关闭'
+      'top': '顶部关闭',
+      'top-left': '底部关闭',
+      'top-right': '左上关闭',
+      'bottom': '右上关闭',
+      'bottom-left': '左下关闭',
       'bottom-right': '右下关闭'
     }
 
@@ -77,7 +76,8 @@ export default defineComponent({
     }
 
     return {
-      ...toRefs(state)
+      ...toRefs(state),
+      curtainPng,
       positions,
       handleChange,
       onClose

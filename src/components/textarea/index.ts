@@ -132,7 +132,7 @@ const AtTextarea = defineComponent({
               onFocus: handleFocus,
               onBlur: handleBlur,
               onConfirm: handleConfirm,
-              onLineChange: handleLinechange,
+              onLinechange: handleLinechange,
             })),
 
           props.count && process.env.TARO_ENV !== 'alipay' && (

@@ -41,7 +41,7 @@ interface IndexState {
 }
 
 export default defineComponent({
-  name: "SliderDemo",
+  name: "RangeDemo",
 
   setup() {
 

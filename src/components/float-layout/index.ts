@@ -72,7 +72,7 @@ const AtFloatLayout = defineComponent({
     return () => (
       h(View, mergeProps(attrs, {
         class: rootClass.value,
-        onTouchMove: handleTouchMove
+        onTouchmove: handleTouchMove
       }), {
         default: () => [
           // overlay
@@ -113,8 +113,8 @@ const AtFloatLayout = defineComponent({
                     lowerThreshold: props.lowerThreshold,
                     scrollWithAnimation: props.scrollWithAnimation,
                     onScroll: props.onScroll,
-                    onScrollToLower: props.onScrollToLower,
-                    onScrollToUpper: props.onScrollToUpper,
+                    onScrolltolower: props.onScrollToLower,
+                    onScrolltoupper: props.onScrollToUpper,
                   }, { default: () => slots.default && slots.default() })
                 ]
               })

@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { toRefs } from 'vue'
+import { defineComponent, reactive, toRefs } from 'vue'
 import './index.scss'
 
 interface LoadMorePageState {

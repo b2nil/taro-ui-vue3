@@ -190,6 +190,7 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from 'vue'
 import Taro from '@tarojs/taro'
 import './index.scss'
 
@@ -221,7 +222,7 @@ export default defineComponent({
       singleLineText,
       multiLineText,
       textWithIcon,
-      superLongText
+      superLongText,
       onGotoMore
     }
   }

@@ -114,6 +114,13 @@ const AtButton = defineComponent({
     }
 
     function handleGetUserInfo(event) {
+      warn(
+        "2021 年 4 月 13 日后发布的新版本小程序，",
+        "开发者调用 `wx.getUserInfo` 或 `<button open-type=\"getUserInfo\"/>` 将不再弹出弹窗，",
+        "直接返回匿名的用户个人信息。",
+        "详情见：https://developers.weixin.qq.com/community/develop/doc/000cacfa20ce88df04cb468bc52801?idescene=6&page=10,",
+        "请使用 `getUserProfile` 进行适配。"
+      )
       props.onGetUserInfo?.(event)
     }
 
@@ -168,10 +175,10 @@ const AtButton = defineComponent({
     interface miniAppEventHandleProps {
       onError?: typeof props.onError
       onContact?: typeof props.onContact
-      onOpenSetting?: typeof props.onOpenSetting
-      onGetPhoneNumber?: typeof props.onGetPhoneNumber
-      onGetUserInfo?: typeof props.onGetUserInfo
-      onGetAuthorize?: typeof props.onGetAuthorize
+      onOpensetting?: typeof props.onOpenSetting
+      onGetphonenumber?: typeof props.onGetPhoneNumber
+      onGetuserinfo?: typeof props.onGetUserInfo
+      onGetauthorize?: typeof props.onGetAuthorize
       onLaunchapp?: typeof props.onLaunchapp
     }
 
@@ -185,16 +192,16 @@ const AtButton = defineComponent({
           wxButtonProps.onContact = handleContact
           break
         case 'openSetting':
-          wxButtonProps.onOpenSetting = handleOpenSetting
+          wxButtonProps.onOpensetting = handleOpenSetting
           break
         case 'getPhoneNumber':
-          wxButtonProps.onGetPhoneNumber = handleGetPhoneNumber
+          wxButtonProps.onGetphonenumber = handleGetPhoneNumber
           break
         case 'getUserInfo':
-          wxButtonProps.onGetUserInfo = handleGetUserInfo
+          wxButtonProps.onGetuserinfo = handleGetUserInfo
           break
         case 'getAuthorize':
-          wxButtonProps.onGetAuthorize = handleGetAuthorize
+          wxButtonProps.onGetauthorize = handleGetAuthorize
           break
         case 'launchApp':
           wxButtonProps.onLaunchapp = handleLaunchapp

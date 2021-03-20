@@ -5,7 +5,7 @@ const path = require('path')
 const toastPlugin = {
   name: 'toast',
   setup(build) {
-    build.onLoad({ filter: /toast\\index.ts$/ }, async (args) => {
+    build.onLoad({ filter: /toast.index\.ts$/ }, async (args) => {
       const text = await fs.promises.readFile(args.path, "utf8")
       const contents = text.replace("img.json", "img.js")
       return {

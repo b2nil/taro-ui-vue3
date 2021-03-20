@@ -179,8 +179,8 @@ const AtVirtualScroll = defineComponent({
           lowerThreshold: parseInt(`${props.reachBottomThreshold}`, 10),
           ref: (e) => { elRef.value = e },
           onScroll: handleScroll,
-          onScrollToUpper: props.onReachTop,
-          onScrollToLower: props.onReachBottom,
+          onScrolltoupper: props.onReachTop,
+          onScrolltolower: props.onReachBottom,
         }), { default: () => [content] })
 
       return h(View, null, {

@@ -1,5 +1,5 @@
 import { h } from '@vue/runtime-core'
-import { mount } from '@vue/test-utils'
+import { mountFactory, Slots } from '@/tests/helper'
 import AtVirtualScroll from '../index'
 import Taro from '@tarojs/taro'
 
@@ -7,16 +7,13 @@ const elementHeight = 100
 
 const mountFn = (
   props = {},
-  slots: any = {
+  slots: Slots = {
     default: ({ index, item }) => {
-      return h('view', { class: 'item' }, `${index}: item-${item}`)
+      return [h('view', { class: 'item' }, `${index}: item-${item}`)]
     }
   }
 ) => {
-  return mount(AtVirtualScroll, {
-    props,
-    slots
-  })
+  return mountFactory(AtVirtualScroll, undefined, props, slots)
 }
 
 const props = {
@@ -24,7 +21,6 @@ const props = {
   items: [1, 2, 3],
   itemHeight: 50,
 }
-
 
 describe('AtVirtualScroll', () => {
   let mock: jest.SpyInstance
@@ -102,8 +98,8 @@ describe('AtVirtualScroll', () => {
 
   it('should render header slot', async () => {
     const wrapper = mountFn(props, {
-      default: ({ index, item }) => h('view', { class: 'item' }, `${index}: item-${item}`),
-      header: () => h('view')
+      default: ({ index, item }) => [h('view', { class: 'item' }, `${index}: item-${item}`)],
+      header: () => [h('view')]
     })
 
     await wrapper.vm.$nextTick()
@@ -113,8 +109,8 @@ describe('AtVirtualScroll', () => {
 
   it('should render footer slot', async () => {
     const wrapper = mountFn(props, {
-      default: ({ index, item }) => h('view', { class: 'item' }, `${index}: item-${item}`),
-      footer: () => h('view')
+      default: ({ index, item }) => [h('view', { class: 'item' }, `${index}: item-${item}`)],
+      footer: () => [h('view')]
     })
 
     await wrapper.vm.$nextTick()

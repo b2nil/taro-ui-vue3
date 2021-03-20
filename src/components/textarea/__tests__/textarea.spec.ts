@@ -142,7 +142,7 @@ describe('AtTextArea Behaviour', () => {
     'onFocus',
     'onBlur',
     'onConfirm',
-    'onLineChange',
+    'onLinechange',
   ])('should trigger %s', async (eventName) => {
     const eventHandler = jest.fn()
     const wrapper = factory({ [eventName]: eventHandler })

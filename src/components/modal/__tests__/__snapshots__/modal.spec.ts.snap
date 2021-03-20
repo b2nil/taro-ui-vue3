@@ -81,7 +81,9 @@ exports[`Modal should render opened  Modal -- simple 1`] = `
         <button>
           取消
         </button>
-        <button>
+        <button
+          style="margin-top: 0px;"
+        >
           确认
         </button>
       </view>
