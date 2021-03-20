@@ -80,8 +80,8 @@
     "lodash-es": "^4.17.15"
   },
   "peerDependencies": {
-    "@tarojs/components": "^3.1.1",
-    "@tarojs/taro": "^3.1.1",
+    "@tarojs/components": "^3.1.4",
+    "@tarojs/taro": "^3.1.4",
     "vue": "^3.0.6"
   },
   "devDependencies": {
@@ -89,11 +89,11 @@
     "@babel/runtime": "^7.7.7",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
-    "@tarojs/components": "^3.1.1",
-    "@tarojs/mini-runner": "^3.1.1",
-    "@tarojs/runtime": "^3.1.1",
-    "@tarojs/taro": "^3.1.1",
-    "@tarojs/webpack-runner": "^3.1.1",
+    "@tarojs/components": "^3.1.4",
+    "@tarojs/mini-runner": "^3.1.4",
+    "@tarojs/runtime": "^3.1.4",
+    "@tarojs/taro": "^3.1.4",
+    "@tarojs/webpack-runner": "^3.1.4",
     "@types/jest": "^26.0.17",
     "@types/lodash-es": "^4.17.3",
     "@types/webpack-env": "^1.13.6",
