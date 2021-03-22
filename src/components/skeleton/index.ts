@@ -157,10 +157,10 @@ const AtSkeleton = defineComponent({
       })
 
       return h(TransitionGroup, {
-        onAfterenter: resetStyles,
-        onBeforeenter: onBeforeEnter,
-        onBeforeleave: onBeforeLeave,
-        onLeavecancelled: resetStyles
+        onAfterEnter: resetStyles,
+        onBeforeEnter: onBeforeEnter,
+        onBeforeLeave: onBeforeLeave,
+        onLeaveCancelled: resetStyles
       }, { default: () => children })
     }
 

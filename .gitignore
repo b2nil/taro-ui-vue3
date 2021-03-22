@@ -19,4 +19,6 @@ tests/components
 tests/utils
 tests/composables
 tests/index.ts*
+.yarnrc.yml
+.npmrc
 

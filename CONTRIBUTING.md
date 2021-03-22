@@ -13,5 +13,5 @@
 - 在本地添加一个 remote 分支: `git remote add upstream https://github.com/b2nil/taro-ui-vue3.git`
 - 同步 upstream 分支的代码：`git fetch upstream`
 - 进行需要的更改
-- PR 提交值本项目的 dev 分支
+- PR 提交至本项目的 dev 分支
 
