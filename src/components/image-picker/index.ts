@@ -152,19 +152,21 @@ const AtImagePicker = defineComponent({
         class: `at-image-picker__upload-status`,
       }, {
         default: () => {
+          const isUploading = item.status === 'uploading'
           const r = [
-            item.status === 'uploading'
+            isUploading
               ? h(AtLoading, {
                 color: '#fff'
               })
               : h(View, {
-                class: 'at-image-picker__upload-status--failed'
+                class: 'at-image-picker__status-icon at-image-picker__status-icon--failed'
               })
           ]
           if (item.message) {
+            const messageBasicClass = 'at-image-picker__status-message'
             r.push(
               h(View, {
-                class: 'at-image-picker__status-message'
+                class: `${messageBasicClass} ${messageBasicClass}--${isUploading ? 'uploading' : 'failed'}`
               }, { default: () => item.message })
             )
           }
