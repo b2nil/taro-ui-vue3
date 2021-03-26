@@ -128,7 +128,7 @@ const AtImagePicker = defineComponent({
 
           const newFiles = props.files.concat(targetFiles)
 
-          props.onChange(newFiles, 'add')
+          props.onChange({ files: newFiles, operationType: 'add' })
         })
         .catch(props.onFail)
     }
@@ -144,7 +144,7 @@ const AtImagePicker = defineComponent({
 
       const newFiles = props.files.filter((_, i) => i !== idx)
 
-      props.onChange(newFiles, 'remove', idx)
+      props.onChange({ files: newFiles, operationType: 'remove', index: idx })
     }
 
     function renderUploadStatus(item: MatrixFile) {
