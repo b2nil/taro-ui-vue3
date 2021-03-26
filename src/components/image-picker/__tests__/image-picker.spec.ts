@@ -73,7 +73,7 @@ describe('AtImagePicker', () => {
     const wrapper = factory({ files: files })
     const imageEls = wrapper.findAll('.at-image-picker__preview-img')
     const uploadingIconEls = wrapper.findAll('.at-loading')
-    const failedIconEls = wrapper.findAll('.at-image-picker__upload-status--failed')
+    const failedIconEls = wrapper.findAll('.at-image-picker__status-icon--failed')
     const statusMessageEls = wrapper.findAll('.at-image-picker__status-message')
     expect(imageEls.length).toBe(unref(files).length)
     expect(uploadingIconEls.length).toBe(unref(files).filter(({ status }) => status === 'uploading').length)
@@ -222,7 +222,7 @@ describe('AtImagePicker Behaviours', () => {
     unref(files)[index].message = message
     await wrapper.vm.$nextTick()
     const el = wrapper.findAll('.at-image-picker__item')[index]
-    el.get('.at-image-picker__upload-status--failed')
+    el.get('.at-image-picker__status-icon--failed')
     expect(el.find('.at-image-picker__status-message').text()).toBe(message)
   })
 
