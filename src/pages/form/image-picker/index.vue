@@ -75,11 +75,12 @@
 import { defineComponent, reactive, toRefs } from 'vue'
 import Taro from '@tarojs/taro'
 import './index.scss'
-
+import { uuid } from '../../../utils/common'
 type DogaImage = {
   url: string,
   status?: 'uploading' | 'failed' | 'done'
   message?: string
+  [propName:string]:any
 }
 
 const dogaImages: DogaImage[] = [
@@ -128,9 +129,33 @@ export default defineComponent({
         }
       ]
     })
+  
+    function onChange(stateName: string, {
+        files, operationType
+      }: {
+        files: DogaImage[],
+        operationType: 'add' | 'remove'
+      }): void {
+      const oldLen = state[stateName].length
+      const currentFiles = state[stateName]
 
-    function onChange(stateName: string, files: DogaImage[]): void {
-      state[stateName] = files
+      if (operationType === 'add') {
+        files.slice(oldLen).forEach((file, index) => {
+          const id = uuid()
+          currentFiles.push({ ...file, id })
+          setStatus(currentFiles[index + oldLen], 'uploading')
+          uploadMock(file.url)
+            .then(() => {
+              const target = currentFiles.find(({ id: _id }) => _id === id)
+              target && setStatus(target, 'done')
+            }).catch(() => {
+              const target = currentFiles.find(({ id: _id }) => _id === id)
+              target && setStatus(target, 'failed')
+            })
+        });
+      } else if (operationType === 'remove') {
+        state[stateName] = files
+      }
     }
 
     function onFail(mes: string): void {
@@ -145,6 +170,32 @@ export default defineComponent({
         title: `onImageClick: ${index}${JSON.stringify(file)}`,
         icon: 'none'
       })
+    }
+
+    function uploadMock(url){
+      return  new Promise((resolve,reject)=>{
+        setTimeout(() => {
+          Math.random()>.5?resolve(url):reject('err')
+        }, 5000);
+      })
+    }
+
+
+    function setStatus(item, type){
+       switch(type){
+         case 'uploading':
+          item.status='uploading'
+          item.message='正在上传'
+          break;
+        case 'failed':
+          item.status='failed'
+          item.message='上传失败'
+          break;
+        case 'done':
+          item.status='done'
+          break;    
+       }
+       return item
     }
 
     return {

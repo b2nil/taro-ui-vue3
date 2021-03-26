@@ -22,11 +22,16 @@ export interface File {
    * @since v1.0.0-alpha18 
    */
   status?: "uploading" | "failed" | "done"
-   /**
-   * 图片上传的状态文案
-   * @since 1.0.0-alpha18
-   */
+  /**
+  * 图片上传的状态文案
+  * @since 1.0.0-alpha18
+  */
   message?: string
+  /**
+  * 自定义字段
+  * @since 1.0.0-alpha18
+  */
+  [propName: string]: any
 }
 
 export interface AtImagePickerProps extends AtComponent {
@@ -78,9 +83,13 @@ export interface AtImagePickerProps extends AtComponent {
    */
   sourceType?: ("album" | "camera" | "user" | "environment")[]
   /**
-   * files 值发生变化触发的回调函数, operationType 操作类型有添加，移除，如果是移除操作，则第三个参数代表的是移除图片的索引
+   * files 值发生变化触发的回调函数, operationType 操作类型有添加，移除，如果是移除操作，则index代表的是移除图片的索引
    */
-  onChange: (files: File[], operationType: 'add' | 'remove', index?: number) => void
+  onChange: (args: {
+    files: File[],
+    operationType: 'add' | 'remove',
+    index?: number
+  }) => void
   /**
    * 点击图片触发的回调
    */
