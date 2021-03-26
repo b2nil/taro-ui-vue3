@@ -22,7 +22,7 @@
           :files="files2"
           @change="onChange('files2', $event)"
           @fail="onFail"
-          @image-pick="onImageClick"
+          @image-click="onImageClick"
         />
       </example-item>
     </panel>
