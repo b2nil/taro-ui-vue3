@@ -116,4 +116,57 @@
     width: 100%;
     height: 100%;
   }
+
+  &__upload-status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-weight: 300;
+    color: #fff;
+    @include overlay-dark;
+
+  }
+
+  &__status-icon {
+    height: $at-loading-size;
+    width: $at-loading-size;
+    position: relative;
+
+    &--failed {
+      color: $color-error;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      &::before {
+        width: 100%;
+        border-top: 1PX solid;
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+
+      &::after {
+        width: 100%;
+        height: 100%;
+        border: 1PX solid;
+        border-radius: 50%;
+      }
+    }
+
+  }
+
+  &__status-message {
+    &--failed {
+      color: $color-error;
+    }
+
+    margin-top: 20px;
+    font-size: $font-size-base;
+  }
 }
