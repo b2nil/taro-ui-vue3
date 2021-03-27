@@ -176,7 +176,7 @@ export default defineComponent({
       return  new Promise((resolve,reject)=>{
         setTimeout(() => {
           Math.random()>.5?resolve(url):reject('err')
-        }, 5000);
+        }, 2000);
       })
     }
 
