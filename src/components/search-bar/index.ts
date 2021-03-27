@@ -165,17 +165,6 @@ const AtSearchBar = defineComponent({
 
     function handleActionClick(event: CommonEvent): void {
       props.onActionClick?.(event)
-
-      // default to clear value after action click
-      if (attrs['onUpdate:value']) {
-        inputValue.value = ''
-      } else {
-        props.onChange?.('', event)
-      }
-
-      if (process.env.TARO_ENV === 'h5') {
-        clearInputNodeValue()
-      }
     }
 
     return () => (
