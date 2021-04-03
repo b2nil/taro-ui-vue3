@@ -23,8 +23,7 @@ const AtTabs = defineComponent({
     },
     current: {
       type: Number,
-      default: 0,
-      required: true
+      default: 0
     },
     scroll: {
       type: Boolean,
@@ -45,8 +44,7 @@ const AtTabs = defineComponent({
     },
     onClick: {
       type: Function as PropType<AtTabsProps['onClick']>,
-      default: () => (index: number, event: CommonEvent) => { },
-      required: true
+      default: () => (index: number, event: CommonEvent) => { }
     },
   },
 

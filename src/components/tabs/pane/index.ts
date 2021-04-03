@@ -8,8 +8,7 @@ const AtTabsPane = defineComponent({
   props: {
     tabDirection: {
       type: String as PropType<AtTabsPaneProps['tabDirection']>,
-      default: 'horizontal',
-      required: true
+      default: 'horizontal'
     },
     index: {
       type: Number,
