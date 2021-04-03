@@ -9,7 +9,7 @@ const AtToast = defineComponent({
   name: "AtToast",
 
   props: {
-    isOpened: { type: Boolean, default: false, required: true },
+    isOpened: { type: Boolean, default: false },
     text: { type: String, default: '' },
     icon: { type: String, default: '' },
     image: { type: String, default: '' },

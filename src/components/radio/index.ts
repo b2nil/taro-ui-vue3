@@ -10,13 +10,11 @@ const AtRadio = defineComponent({
   props: {
     value: {
       type: String as PropType<AtRadioProps<any>['value']>,
-      default: '',
-      required: true
+      default: ''
     },
     options: {
       type: Array as PropType<AtRadioProps<any>['options']>,
-      default: [],
-      required: true
+      default: []
     },
     onClick: Function as PropType<AtRadioProps<any>['onClick']>
   },

@@ -34,8 +34,7 @@ const AtSegmentedControl = defineComponent({
     },
     values: {
       type: Array as PropType<AtSegmentedControlProps['values']>,
-      default: [],
-      required: true
+      default: []
     },
     onClick: {
       type: Function as PropType<AtSegmentedControlProps['onClick']>,

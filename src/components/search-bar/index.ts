@@ -11,8 +11,7 @@ const AtSearchBar = defineComponent({
   props: {
     value: {
       type: String,
-      default: '',
-      required: true
+      default: ''
     },
     placeholder: {
       type: String,

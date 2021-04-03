@@ -9,18 +9,15 @@ const AtSwipeActionOptions = defineComponent({
   props: {
     componentId: {
       type: String,
-      default: '',
-      required: true
+      default: ''
     },
     options: {
       type: Array as PropType<AtSwipeActionOptionsProps['options']>,
-      default: [],
-      required: true
+      default: []
     },
     onQueryedDom: {
       type: Function as PropType<AtSwipeActionOptionsProps['onQueryedDom']>,
-      default: () => ({ width }: { width: number }) => { },
-      required: true
+      default: () => ({ width }: { width: number }) => { }
     },
   },
 

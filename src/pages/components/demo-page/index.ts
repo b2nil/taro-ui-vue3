@@ -9,8 +9,7 @@ const Page = defineComponent({
   props: {
     headerTitle: {
       type: String,
-      default: '标题',
-      required: true
+      default: '标题'
     }
   },
 
@@ -64,8 +63,7 @@ const Panel = defineComponent({
   props: {
     title: {
       type: String,
-      default: '',
-      required: true
+      default: ''
     },
     noPadding: Boolean
   },

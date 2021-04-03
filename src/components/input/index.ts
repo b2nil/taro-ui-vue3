@@ -50,8 +50,7 @@ const AtInput = defineComponent({
   props: {
     name: {
       type: String as PropType<AtInputProps['name']>,
-      default: '',
-      required: true
+      default: ''
     },
     title: {
       type: String as PropType<AtInputProps['title']>,

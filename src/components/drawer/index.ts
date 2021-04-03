@@ -10,8 +10,7 @@ const AtDrawer = defineComponent({
   props: {
     show: {
       type: Boolean,
-      default: false,
-      required: true
+      default: false
     },
     mask: {
       type: Boolean,

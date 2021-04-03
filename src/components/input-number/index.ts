@@ -54,8 +54,7 @@ const AtInputNumber = defineComponent({
     },
     value: {
       type: [Number, String] as PropType<AtInputNumberProps['value']>,
-      default: 1,
-      required: true
+      default: 1
     },
     style: String as PropType<AtInputNumberProps['style']>,
     min: {

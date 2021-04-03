@@ -11,8 +11,7 @@ const AtCalendarController = defineComponent({
   props: {
     generateDate: {
       type: [String, Number] as PropType<AtCalendarControllerProps["generateDate"]>,
-      default: Date.now(),
-      required: true
+      default: Date.now()
     },
     minDate: [String, Number, Date] as PropType<AtCalendarControllerProps["minDate"]>,
     maxDate: [String, Number, Date] as PropType<AtCalendarControllerProps["maxDate"]>,

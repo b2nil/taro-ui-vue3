@@ -39,8 +39,7 @@ const AtTabs = defineComponent({
     },
     tabList: {
       type: Array as PropType<AtTabsProps['tabList']>,
-      default: [],
-      required: true
+      default: []
     },
     onClick: {
       type: Function as PropType<AtTabsProps['onClick']>,

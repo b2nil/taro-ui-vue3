@@ -20,8 +20,7 @@ const AtTabBar = defineComponent({
     },
     current: {
       type: Number,
-      default: 0,
-      required: true
+      default: 0
     },
     iconSize: {
       type: [Number, String],
@@ -51,9 +50,8 @@ const AtTabBar = defineComponent({
     },
     onClick: {
       type: Function as PropType<AtTabBarProps['onClick']>,
-      default: () => (index: number, event: CommonEvent) => { },
-      required: true
-    },
+      default: () => (index: number, event: CommonEvent) => { }
+    }
   },
 
   setup(props: AtTabBarProps, { attrs }) {

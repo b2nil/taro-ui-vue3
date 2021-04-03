@@ -12,13 +12,11 @@ const AtTabsPane = defineComponent({
     },
     index: {
       type: Number,
-      default: 0,
-      required: true
+      default: 0
     },
     current: {
       type: Number,
-      default: 0,
-      required: true
+      default: 0
     },
   },
 

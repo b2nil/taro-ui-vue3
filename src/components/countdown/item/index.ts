@@ -10,8 +10,7 @@ const AtCountdownItem = defineComponent({
     // 参数
     num: {
       type: Number as PropType<AtCountdownItemProps['num']>,
-      default: 0,
-      required: true
+      default: 0
     },
     separator: {
       type: String as PropType<AtCountdownItemProps['separator']>,

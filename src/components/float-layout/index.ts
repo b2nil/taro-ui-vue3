@@ -12,8 +12,7 @@ const AtFloatLayout = defineComponent({
     // 参数
     isOpened: {
       type: Boolean,
-      default: false,
-      required: true
+      default: false
     },
     title: {
       type: String as PropType<AtFloatLayoutProps['title']>,

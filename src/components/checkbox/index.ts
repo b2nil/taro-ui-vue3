@@ -11,8 +11,7 @@ const AtCheckbox = defineComponent({
     // 参数
     options: {
       type: Array as PropType<AtCheckboxProps<any>['options']>,
-      default: () => [],
-      required: true
+      default: () => []
     },
     selectedList: {
       type: Array as PropType<AtCheckboxProps<any>['selectedList']>,
