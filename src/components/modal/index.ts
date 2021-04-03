@@ -19,8 +19,7 @@ const AtModal = defineComponent({
     title: String as PropType<AtModalProps['title']>,
     isOpened: {
       type: Boolean,
-      default: false,
-      required: true
+      default: false
     },
     content: String as PropType<AtModalProps['content']>,
     closeOnClickOverlay: {
