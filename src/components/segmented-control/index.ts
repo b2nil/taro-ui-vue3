@@ -11,8 +11,7 @@ const AtSegmentedControl = defineComponent({
   props: {
     current: {
       type: Number,
-      default: 0,
-      required: true
+      default: 0
     },
     color: {
       type: String,
@@ -40,8 +39,7 @@ const AtSegmentedControl = defineComponent({
     },
     onClick: {
       type: Function as PropType<AtSegmentedControlProps['onClick']>,
-      default: () => (index: number, event: CommonEvent) => { },
-      required: true
+      default: () => (index: number, event: CommonEvent) => { }
     },
   },
 
