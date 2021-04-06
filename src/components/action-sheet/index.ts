@@ -23,8 +23,8 @@ const AtActionSheet = defineComponent({
       type: String,
       default: ''
     },
-    onClose: Function as PropType<(event?: CommonEvent) => void>,
-    onCancel: Function as PropType<(event?: CommonEvent) => void>
+    onClose: Function as unknown as PropType<(event?: CommonEvent) => void>,
+    onCancel: Function as unknown as PropType<(event?: CommonEvent) => void>
   },
 
   setup(props: AtActionSheetProps, { attrs, slots }) {

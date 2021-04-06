@@ -27,7 +27,7 @@ const AtGrid = defineComponent({
       default: 'square',
     },
     onClick: {
-      type: Function as PropType<AtGridProps['onClick']>,
+      type: Function as unknown as PropType<AtGridProps['onClick']>,
       default: () => () => { }
     }
   },

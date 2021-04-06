@@ -118,13 +118,13 @@ const AtInput = defineComponent({
       validator: (val: string) => ["done", "send", "search", "next", "go"].includes(val)
     },
     // events
-    onChange: Function as PropType<AtInputProps['onChange']>,
-    onBlur: Function as PropType<AtInputProps['onBlur']>,
-    onFocus: Function as PropType<AtInputProps['onFocus']>,
-    onConfirm: Function as PropType<AtInputProps['onConfirm']>,
-    onClick: Function as PropType<AtInputProps['onClick']>,
-    onKeyboardHeightChange: Function as PropType<AtInputProps['onKeyboardHeightChange']>,
-    onErrorClick: Function as PropType<AtInputProps['onErrorClick']>
+    onChange: Function as unknown as PropType<AtInputProps['onChange']>,
+    onBlur: Function as unknown as PropType<AtInputProps['onBlur']>,
+    onFocus: Function as unknown as PropType<AtInputProps['onFocus']>,
+    onConfirm: Function as unknown as PropType<AtInputProps['onConfirm']>,
+    onClick: Function as unknown as PropType<AtInputProps['onClick']>,
+    onKeyboardHeightChange: Function as unknown as PropType<AtInputProps['onKeyboardHeightChange']>,
+    onErrorClick: Function as unknown as PropType<AtInputProps['onErrorClick']>
   },
 
   setup(props: AtInputProps, { attrs, slots, emit }) {

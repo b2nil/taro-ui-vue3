@@ -27,9 +27,9 @@ const AtSwipeAction = defineComponent({
       type: Array as PropType<AtSwipeActionProps['options']>,
       default: () => []
     },
-    onClick: Function as PropType<AtSwipeActionProps['onClick']>,
-    onOpened: Function as PropType<AtSwipeActionProps['onOpened']>,
-    onClosed: Function as PropType<AtSwipeActionProps['onClosed']>,
+    onClick: Function as unknown as PropType<AtSwipeActionProps['onClick']>,
+    onOpened: Function as unknown as PropType<AtSwipeActionProps['onOpened']>,
+    onClosed: Function as unknown as PropType<AtSwipeActionProps['onClosed']>,
   },
 
   setup(props: AtSwipeActionProps, { attrs, slots }) {

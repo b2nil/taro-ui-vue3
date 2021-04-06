@@ -26,11 +26,11 @@ const AtDrawer = defineComponent({
       default: () => [],
     },
     onItemClick: {
-      type: Function as PropType<AtDrawerProps['onItemClick']>,
+      type: Function as unknown as PropType<AtDrawerProps['onItemClick']>,
       default: () => () => { }
     },
     onClose: {
-      type: Function as PropType<AtDrawerProps['onClose']>,
+      type: Function as unknown as PropType<AtDrawerProps['onClose']>,
       default: () => () => { }
     }
   },

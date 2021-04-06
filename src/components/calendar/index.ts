@@ -59,12 +59,12 @@ const AtCalendar = defineComponent({
       default: () => []
     },
     // 事件        
-    onClickPreMonth: Function as PropType<AtCalendarProps['onClickPreMonth']>,
-    onClickNextMonth: Function as PropType<AtCalendarProps['onClickNextMonth']>,
-    onDayClick: Function as PropType<AtCalendarProps['onDayClick']>,
-    onDayLongClick: Function as PropType<AtCalendarProps['onDayLongClick']>,
-    onMonthChange: Function as PropType<AtCalendarProps['onMonthChange']>,
-    onSelectDate: Function as PropType<AtCalendarProps['onSelectDate']>
+    onClickPreMonth: Function as unknown as PropType<AtCalendarProps['onClickPreMonth']>,
+    onClickNextMonth: Function as unknown as PropType<AtCalendarProps['onClickNextMonth']>,
+    onDayClick: Function as unknown as PropType<AtCalendarProps['onDayClick']>,
+    onDayLongClick: Function as unknown as PropType<AtCalendarProps['onDayLongClick']>,
+    onMonthChange: Function as unknown as PropType<AtCalendarProps['onMonthChange']>,
+    onSelectDate: Function as unknown as PropType<AtCalendarProps['onSelectDate']>
   },
 
   setup(props: AtCalendarProps, { attrs }) {

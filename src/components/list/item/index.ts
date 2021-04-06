@@ -27,8 +27,8 @@ const AtListItem = defineComponent({
       default: '',
       validator: (prop: string) => ['up', 'down', 'right', ''].includes(prop)
     },
-    onClick: Function as PropType<AtListItemProps['onClick']>,
-    onSwitchChange: Function as PropType<AtListItemProps['onSwitchChange']>
+    onClick: Function as unknown as PropType<AtListItemProps['onClick']>,
+    onSwitchChange: Function as unknown as PropType<AtListItemProps['onSwitchChange']>
   },
 
   setup(props: AtListItemProps, { attrs }) {

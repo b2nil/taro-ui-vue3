@@ -50,8 +50,8 @@ const AtIndexes = defineComponent({
       default: () => []
     },
     // 事件
-    onClick: Function as PropType<AtIndexesProps['onClick']>,
-    onScrollIntoView: Function as PropType<AtIndexesProps['onScrollIntoView']>
+    onClick: Function as unknown as PropType<AtIndexesProps['onClick']>,
+    onScrollIntoView: Function as unknown as PropType<AtIndexesProps['onScrollIntoView']>
   },
 
   setup(props: AtIndexesProps, { attrs, slots }) {

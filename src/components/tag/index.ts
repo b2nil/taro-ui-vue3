@@ -42,7 +42,7 @@ const AtTag = defineComponent({
       type: Boolean,
       default: false
     },
-    onClick: Function as PropType<AtTagProps['onClick']>,
+    onClick: Function as unknown as PropType<AtTagProps['onClick']>,
   },
 
   setup(props: AtTagProps, { attrs, slots }) {

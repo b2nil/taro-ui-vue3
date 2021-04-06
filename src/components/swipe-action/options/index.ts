@@ -16,7 +16,7 @@ const AtSwipeActionOptions = defineComponent({
       default: []
     },
     onQueryedDom: {
-      type: Function as PropType<AtSwipeActionOptionsProps['onQueryedDom']>,
+      type: Function as unknown as PropType<AtSwipeActionOptionsProps['onQueryedDom']>,
       default: () => ({ width }: { width: number }) => { }
     },
   },

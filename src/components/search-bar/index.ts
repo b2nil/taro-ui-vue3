@@ -45,12 +45,12 @@ const AtSearchBar = defineComponent({
       type: String as PropType<AtSearchBarProps['inputType']>,
       default: 'text'
     },
-    onChange: Function as PropType<AtSearchBarProps['onChange']>,
-    onFocus: Function as PropType<AtSearchBarProps['onFocus']>,
-    onBlur: Function as PropType<AtSearchBarProps['onBlur']>,
-    onConfirm: Function as PropType<AtSearchBarProps['onConfirm']>,
-    onActionClick: Function as PropType<AtSearchBarProps['onActionClick']>,
-    onClear: Function as PropType<AtSearchBarProps['onClear']>,
+    onChange: Function as unknown as PropType<AtSearchBarProps['onChange']>,
+    onFocus: Function as unknown as PropType<AtSearchBarProps['onFocus']>,
+    onBlur: Function as unknown as PropType<AtSearchBarProps['onBlur']>,
+    onConfirm: Function as unknown as PropType<AtSearchBarProps['onConfirm']>,
+    onActionClick: Function as unknown as PropType<AtSearchBarProps['onActionClick']>,
+    onClear: Function as unknown as PropType<AtSearchBarProps['onClear']>,
   },
 
   setup(props: AtSearchBarProps, { attrs, emit }) {

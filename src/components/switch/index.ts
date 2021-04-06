@@ -20,7 +20,7 @@ const AtSwitch = defineComponent({
     checked: Boolean,
     disabled: Boolean,
     border: Boolean,
-    onChange: Function as PropType<AtSwitchProps['onChange']>,
+    onChange: Function as unknown as PropType<AtSwitchProps['onChange']>,
   },
 
   setup(props: AtSwitchProps, { attrs, emit }) {

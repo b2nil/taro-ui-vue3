@@ -16,7 +16,7 @@ const AtRadio = defineComponent({
       type: Array as PropType<AtRadioProps<any>['options']>,
       default: []
     },
-    onClick: Function as PropType<AtRadioProps<any>['onClick']>
+    onClick: Function as unknown as PropType<AtRadioProps<any>['onClick']>
   },
 
   setup(props: AtRadioProps<any>, { attrs, emit }) {

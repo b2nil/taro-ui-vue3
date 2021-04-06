@@ -49,7 +49,7 @@ const AtTabBar = defineComponent({
       default: []
     },
     onClick: {
-      type: Function as PropType<AtTabBarProps['onClick']>,
+      type: Function as unknown as PropType<AtTabBarProps['onClick']>,
       default: () => (index: number, event: CommonEvent) => { }
     }
   },

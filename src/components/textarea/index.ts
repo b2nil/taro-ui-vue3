@@ -51,11 +51,11 @@ const AtTextarea = defineComponent({
     height: { type: [String, Number], default: 100 },
     cursorSpacing: { type: Number, default: 100 },
     // event handlers
-    onChange: Function as PropType<AtTextareaProps['onChange']>,
-    onFocus: Function as PropType<AtTextareaProps['onFocus']>,
-    onBlur: Function as PropType<AtTextareaProps['onBlur']>,
-    onConfirm: Function as PropType<AtTextareaProps['onConfirm']>,
-    onLinechange: Function as PropType<AtTextareaProps['onLinechange']>,
+    onChange: Function as unknown as PropType<AtTextareaProps['onChange']>,
+    onFocus: Function as unknown as PropType<AtTextareaProps['onFocus']>,
+    onBlur: Function as unknown as PropType<AtTextareaProps['onBlur']>,
+    onConfirm: Function as unknown as PropType<AtTextareaProps['onConfirm']>,
+    onLinechange: Function as unknown as PropType<AtTextareaProps['onLinechange']>,
   },
 
   setup(props: AtTextareaProps, { attrs, emit }) {

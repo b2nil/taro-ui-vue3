@@ -6,7 +6,7 @@ const AtActionSheetFooter = defineComponent({
   name: "AtActionSheetFooter",
 
   props: {
-    onClick: Function as PropType<AtActionSheetFooterProps['onClick']>
+    onClick: Function as unknown as PropType<AtActionSheetFooterProps['onClick']>
   },
 
   setup(props: AtActionSheetFooterProps, { attrs, slots }) {

@@ -18,7 +18,7 @@ const AtCheckbox = defineComponent({
       default: () => []
     },
     // 事件
-    onChange: Function as PropType<AtCheckboxProps<any>['onChange']>
+    onChange: Function as unknown as PropType<AtCheckboxProps<any>['onChange']>
   },
 
   setup(props: AtCheckboxProps<any>, { attrs, emit }) {

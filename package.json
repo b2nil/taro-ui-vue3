@@ -82,7 +82,7 @@
   "peerDependencies": {
     "@tarojs/components": "^3.1.4",
     "@tarojs/taro": "^3.1.4",
-    "vue": "^3.0.6"
+    "vue": "^3.0.9"
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",
@@ -100,12 +100,12 @@
     "@typescript-eslint/eslint-plugin": "^2.x",
     "@typescript-eslint/parser": "^2.x",
     "@vue/babel-plugin-jsx": "^1.0.0-rc.4",
-    "@vue/compiler-sfc": "^3.0.6",
+    "@vue/compiler-sfc": "^3.0.9",
     "@vue/test-utils": "2.0.0-rc.0",
     "babel-preset-taro": "^3.0.5",
     "cross-env": "^7.0.2",
     "csstype": "^2.6.11",
-    "esbuild": "^0.9.0",
+    "esbuild": "^0.11.0",
     "eslint": "^6.8.0",
     "eslint-config-taro": "^3.0.5",
     "eslint-plugin-vue": "^7.0.0-alpha.6",
@@ -116,14 +116,15 @@
     "rollup": "^2.29.0",
     "rollup-plugin-copy": "^3.3.0",
     "rollup-plugin-sass": "^1.2.2",
-    "rollup-plugin-typescript2": "^0.27.2",
+    "rollup-plugin-typescript2": "0.30.0",
     "shelljs": "^0.8.4",
     "stylelint": "^9.3.0",
     "tiny-glob": "^0.2.8",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.2",
-    "typescript": "^3.7.0",
-    "vue": "^3.0.6",
+    "tslib": "^2.1.0",
+    "typescript": "^4.2.0",
+    "vue": "^3.0.9",
     "vue-jest": "^5.0.0-alpha.7",
     "vue-loader": "^16.1.0",
     "webpack-bundle-analyzer": "^4.2.0"

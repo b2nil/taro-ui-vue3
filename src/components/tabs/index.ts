@@ -42,7 +42,7 @@ const AtTabs = defineComponent({
       default: []
     },
     onClick: {
-      type: Function as PropType<AtTabsProps['onClick']>,
+      type: Function as unknown as PropType<AtTabsProps['onClick']>,
       default: () => (index: number, event: CommonEvent) => { }
     },
   },

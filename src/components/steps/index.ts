@@ -16,7 +16,7 @@ const AtSteps = defineComponent({
       default: []
     },
     onChange: {
-      type: Function as PropType<AtStepsProps['onChange']>,
+      type: Function as unknown as PropType<AtStepsProps['onChange']>,
       default: () => (current: number, event: CommonEvent) => { }
     },
   },

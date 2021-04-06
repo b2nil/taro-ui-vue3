@@ -29,7 +29,7 @@ const AtAccordion = defineComponent({
       type: String,
       default: ''
     },
-    onClick: Function as PropType<AtAccordionProps['onClick']>
+    onClick: Function as unknown as PropType<AtAccordionProps['onClick']>
   },
 
   setup(props: AtAccordionProps, { attrs, slots }) {

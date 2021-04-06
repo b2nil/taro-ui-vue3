@@ -7,8 +7,8 @@ const AtForm = defineComponent({
 
   props: {
     reportSubmit: Boolean as PropType<AtFormProps['reportSubmit']>,
-    onSubmit: Function as PropType<AtFormProps['onSubmit']>,
-    onReset: Function as PropType<AtFormProps['onReset']>,
+    onSubmit: Function as unknown as PropType<AtFormProps['onSubmit']>,
+    onReset: Function as unknown as PropType<AtFormProps['onReset']>,
   },
 
   setup(props: AtFormProps, { attrs, slots }) {

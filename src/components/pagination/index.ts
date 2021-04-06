@@ -23,7 +23,7 @@ const AtPagination = defineComponent({
     current: { type: Number, default: 1 },
     pageSize: { type: Number, default: 20 },
     icon: { type: Boolean, default: false },
-    onPageChange: Function as PropType<AtPaginationProps['onPageChange']>,
+    onPageChange: Function as unknown as PropType<AtPaginationProps['onPageChange']>,
   },
 
   setup(props: AtPaginationProps, { attrs, slots }) {
