@@ -1,4 +1,16 @@
-import { h, defineComponent, reactive, ref, watch, onMounted, onUnmounted, CSSProperties, computed, mergeProps, PropType } from 'vue'
+import {
+  h,
+  computed,
+  defineComponent,
+  mergeProps,
+  onMounted,
+  onUnmounted,
+  ref,
+  reactive,
+  watch,
+  CSSProperties,
+  PropType
+} from 'vue'
 import { ScrollView, View, Text } from '@tarojs/components'
 import { CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
 import Taro from '@tarojs/taro'
@@ -123,7 +135,7 @@ const AtTabs = defineComponent({
           }
           case Taro.ENV_TYPE.WEB: {
             const index = Math.max(idx - 1, 0)
-            const prevTabItem = tabHeaderRef.value.childNodes[index]
+            const prevTabItem = tabHeaderRef.value.$el.children[index]
             if (prevTabItem) {
               state._scrollTop = prevTabItem.offsetTop
               state._scrollLeft = prevTabItem.offsetLeft
@@ -186,34 +198,14 @@ const AtTabs = defineComponent({
       _isMoving.value = false
     }
 
-    function getTabHeaderRef(): void {
-      if (ENV === Taro.ENV_TYPE.WEB) {
-        tabHeaderRef.value = document.getElementById(_tabId.value)
-      }
-    }
-
-    watch(() => [
-      props.scroll,
-      props.current
-    ], (
-      [scroll, current]: [boolean, number],
-      [preScroll, preCurrent]: [boolean, number]
+    watch(() => props.current, (
+      current: number
     ) => {
-      if (scroll !== preScroll) {
-        getTabHeaderRef()
-      }
-      if (current !== preCurrent) {
-        updateState(current)
-      }
+      updateState(current)
     })
 
     onMounted(() => {
-      getTabHeaderRef()
       updateState(props.current)
-    })
-
-    onUnmounted(() => {
-      tabHeaderRef.value = null
     })
 
     return () => {
@@ -243,17 +235,22 @@ const AtTabs = defineComponent({
             // scroll view ?
             props.scroll
               ? ( // with scroll view
-                h(ScrollView, {
-                  id: _tabId.value,
-                  class: 'at-tabs__header',
-                  style: heightStyle.value,
-                  scrollX: scrollX.value,
-                  scrollY: scrollY.value,
-                  scrollWithAnimation: true,
-                  scrollLeft: state._scrollLeft,
-                  scrollTop: state._scrollTop,
-                  scrollIntoView: state._scrollIntoView,
-                }, { default: () => tabItems })
+                h(ScrollView, mergeProps(
+                  ENV === Taro.ENV_TYPE.WEB
+                    ? { ref: (el) => { tabHeaderRef.value = el } }
+                    : {},
+                  {
+                    id: _tabId.value,
+
+                    class: 'at-tabs__header',
+                    style: heightStyle.value,
+                    scrollX: scrollX.value,
+                    scrollY: scrollY.value,
+                    scrollWithAnimation: true,
+                    scrollLeft: state._scrollLeft,
+                    scrollTop: state._scrollTop,
+                    scrollIntoView: state._scrollIntoView,
+                  }), { default: () => tabItems })
               )
               : ( // or without scroll view
                 h(View, {
