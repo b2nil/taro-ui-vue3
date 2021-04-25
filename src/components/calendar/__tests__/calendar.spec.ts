@@ -90,10 +90,10 @@ describe('AtCalendar', () => {
     today.setDate(today.getDate() - 28)
     const prevM = new Date(today).toISOString().substring(0, 10)
     const wrapper = mountFactory(AtCalendar, undefined, { marks: [{ value: prevM }] })
-    expect(wrapper.findAll('.mark').length).toBe(1)
+    expect(wrapper.findAll('.flex__item:not(.flex__item--blur) .mark').length).toBe(1)
     await wrapper.setProps({ marks: [{ value: `${dString}-21` }, { value: prevM }, { value: `${dString}-23` }] })
     wrapper.vm.$nextTick()
-    expect(wrapper.findAll('.mark').length).toBe(3)
+    expect(wrapper.findAll('.flex__item:not(.flex__item--blur) .mark').length).toBe(3)
   })
 
   it('should render minDate and maxDate', () => {
