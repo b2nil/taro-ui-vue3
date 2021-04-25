@@ -7,7 +7,7 @@ const AtModalAction = defineComponent({
   name: "AtModalAction",
 
   props: {
-    isSimple: { type: Boolean, default: false, required: true }
+    isSimple: { type: Boolean, default: false }
   },
 
   setup(props: AtModalActionProps, { attrs, slots }) {

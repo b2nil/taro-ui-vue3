@@ -52,8 +52,8 @@ const AtVirtualScroll = defineComponent({
       type: [Number, String] as PropType<AtVirtualScrollProps['reachBottomThreshold']>,
       default: 50
     },
-    onReachTop: Function as PropType<AtVirtualScrollProps['onReachTop']>,
-    onReachBottom: Function as PropType<AtVirtualScrollProps['onReachBottom']>,
+    onReachTop: Function as unknown as PropType<AtVirtualScrollProps['onReachTop']>,
+    onReachBottom: Function as unknown as PropType<AtVirtualScrollProps['onReachBottom']>,
   },
 
   setup(props: AtVirtualScrollProps, { slots }) {

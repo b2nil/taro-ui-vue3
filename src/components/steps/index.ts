@@ -9,17 +9,15 @@ const AtSteps = defineComponent({
   props: {
     current: {
       type: Number,
-      default: 0,
-      required: true
+      default: 0
     },
     items: {
       type: Array as PropType<AtStepsProps['items']>,
       default: []
     },
     onChange: {
-      type: Function as PropType<AtStepsProps['onChange']>,
-      default: () => (current: number, event: CommonEvent) => { },
-      required: true
+      type: Function as unknown as PropType<AtStepsProps['onChange']>,
+      default: () => (current: number, event: CommonEvent) => { }
     },
   },
 

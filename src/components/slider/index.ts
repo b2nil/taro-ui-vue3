@@ -49,11 +49,11 @@ const AtSlider = defineComponent({
       default: false
     },
     onChange: {
-      type: Function as PropType<AtSliderProps['onChange']>,
+      type: Function as unknown as PropType<AtSliderProps['onChange']>,
       default: () => (value: number) => { }
     },
     onChanging: {
-      type: Function as PropType<AtSliderProps['onChange']>,
+      type: Function as unknown as PropType<AtSliderProps['onChange']>,
       default: () => (value: number) => { }
     },
   },

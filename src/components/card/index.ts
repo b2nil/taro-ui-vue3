@@ -29,7 +29,7 @@ const AtCard = defineComponent({
     },
     icon: Object as PropType<AtCardProps['icon']>,
     renderIcon: Object as PropType<AtCardProps['renderIcon']>,
-    onClick: Function as PropType<AtCardProps['onClick']>
+    onClick: Function as unknown as PropType<AtCardProps['onClick']>
   },
 
   setup(props: AtCardProps, { attrs, slots }) {

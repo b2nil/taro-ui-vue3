@@ -57,15 +57,15 @@ const AtCalendarBody = defineComponent({
       default: () => []
     },
     onDayClick: {
-      type: Function as PropType<AtCalendarBodyProps['onDayClick']>,
+      type: Function as unknown as PropType<AtCalendarBodyProps['onDayClick']>,
       default: () => () => { }
     },
     onLongClick: {
-      type: Function as PropType<AtCalendarBodyProps['onLongClick']>,
+      type: Function as unknown as PropType<AtCalendarBodyProps['onLongClick']>,
       default: () => () => { }
     },
     onSwipeMonth: {
-      type: Function as PropType<AtCalendarBodyProps['onSwipeMonth']>,
+      type: Function as unknown as PropType<AtCalendarBodyProps['onSwipeMonth']>,
       default: () => () => { }
     },
   },

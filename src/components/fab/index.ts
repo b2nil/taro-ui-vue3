@@ -13,7 +13,7 @@ const AtFab = defineComponent({
       validator: (prop: string) => ['normal', 'small'].includes(prop)
     },
     onClick: {
-      type: Function as PropType<AtFabProps['onClick']>,
+      type: Function as unknown as PropType<AtFabProps['onClick']>,
       default: () => () => { }
     }
   },

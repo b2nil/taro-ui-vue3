@@ -44,8 +44,8 @@ const AtRange = defineComponent({
       type: Boolean,
       default: false
     },
-    onChange: Function as PropType<AtRangeProps['onChange']>,
-    onAfterChange: Function as PropType<AtRangeProps['onAfterChange']>,
+    onChange: Function as unknown as PropType<AtRangeProps['onChange']>,
+    onAfterChange: Function as unknown as PropType<AtRangeProps['onAfterChange']>,
   },
 
   setup(props: AtRangeProps, { attrs }) {

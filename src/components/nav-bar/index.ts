@@ -38,9 +38,9 @@ const AtNavBar = defineComponent({
       default: ''
     },
     // events
-    onClickLeftIcon: Function as PropType<AtNavBarProps['onClickLeftIcon']>,
-    onClickRightFirstIcon: Function as PropType<AtNavBarProps['onClickRightFirstIcon']>,
-    onClickRightSecondIcon: Function as PropType<AtNavBarProps['onClickRightSecondIcon']>
+    onClickLeftIcon: Function as unknown as PropType<AtNavBarProps['onClickLeftIcon']>,
+    onClickRightFirstIcon: Function as unknown as PropType<AtNavBarProps['onClickRightFirstIcon']>,
+    onClickRightSecondIcon: Function as unknown as PropType<AtNavBarProps['onClickRightSecondIcon']>
   },
 
   setup(props: AtNavBarProps, { attrs, slots }) {

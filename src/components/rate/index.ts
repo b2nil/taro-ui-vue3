@@ -39,7 +39,7 @@ const AtRate = defineComponent({
       default: 'star'
     },
     color: String,
-    onChange: Function as PropType<AtRateProps['onChange']>
+    onChange: Function as unknown as PropType<AtRateProps['onChange']>
   },
 
   setup(props: AtRateProps, { attrs, emit }) {

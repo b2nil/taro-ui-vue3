@@ -11,8 +11,7 @@ const AtCalendarController = defineComponent({
   props: {
     generateDate: {
       type: [String, Number] as PropType<AtCalendarControllerProps["generateDate"]>,
-      default: Date.now(),
-      required: true
+      default: Date.now()
     },
     minDate: [String, Number, Date] as PropType<AtCalendarControllerProps["minDate"]>,
     maxDate: [String, Number, Date] as PropType<AtCalendarControllerProps["maxDate"]>,
@@ -21,9 +20,9 @@ const AtCalendarController = defineComponent({
       type: String as PropType<AtCalendarControllerProps["monthFormat"]>,
       default: 'YYYY年MM月'
     },
-    onPreMonth: Function as PropType<AtCalendarControllerProps["onPreMonth"]>,
-    onNextMonth: Function as PropType<AtCalendarControllerProps["onNextMonth"]>,
-    onSelectDate: Function as PropType<AtCalendarControllerProps["onSelectDate"]>
+    onPreMonth: Function as unknown as PropType<AtCalendarControllerProps["onPreMonth"]>,
+    onNextMonth: Function as unknown as PropType<AtCalendarControllerProps["onNextMonth"]>,
+    onSelectDate: Function as unknown as PropType<AtCalendarControllerProps["onSelectDate"]>
   },
 
   setup(props: AtCalendarControllerProps) {

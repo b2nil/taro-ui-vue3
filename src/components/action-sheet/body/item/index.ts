@@ -7,7 +7,7 @@ const AtActionSheetItem = defineComponent({
   name: "AtActionSheetItem",
 
   props: {
-    onClick: Function as PropType<(event?: CommonEvent) => void>
+    onClick: Function as unknown as PropType<(event?: CommonEvent) => void>
   },
 
   setup(props: AtActionSheetItemProps, { attrs, slots }) {

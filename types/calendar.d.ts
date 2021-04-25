@@ -22,7 +22,7 @@ declare namespace Calendar {
   export interface Item {
     value: string
 
-    _value: dayjs.Dayjs
+    _value?: dayjs.Dayjs
 
     text: number
 

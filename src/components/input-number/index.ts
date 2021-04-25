@@ -54,8 +54,7 @@ const AtInputNumber = defineComponent({
     },
     value: {
       type: [Number, String] as PropType<AtInputNumberProps['value']>,
-      default: 1,
-      required: true
+      default: 1
     },
     style: String as PropType<AtInputNumberProps['style']>,
     min: {
@@ -81,9 +80,9 @@ const AtInputNumber = defineComponent({
     disabled: Boolean,
     disabledInput: Boolean,
     // 事件
-    onChange: Function as PropType<AtInputNumberProps['onChange']>,
-    onBlur: Function as PropType<AtInputNumberProps['onBlur']>,
-    onErrorInput: Function as PropType<AtInputNumberProps['onErrorInput']>
+    onChange: Function as unknown as PropType<AtInputNumberProps['onChange']>,
+    onBlur: Function as unknown as PropType<AtInputNumberProps['onBlur']>,
+    onErrorInput: Function as unknown as PropType<AtInputNumberProps['onErrorInput']>
   },
 
   setup(props: AtInputNumberProps, { attrs, emit }) {

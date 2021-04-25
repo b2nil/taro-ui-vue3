@@ -12,8 +12,7 @@ const AtFloatLayout = defineComponent({
     // 参数
     isOpened: {
       type: Boolean,
-      default: false,
-      required: true
+      default: false
     },
     title: {
       type: String as PropType<AtFloatLayoutProps['title']>,
@@ -30,10 +29,10 @@ const AtFloatLayout = defineComponent({
     lowerThreshold: Number as PropType<AtFloatLayoutProps['lowerThreshold']>,
     scrollWithAnimation: Boolean,
     // 事件
-    onClose: Function as PropType<AtFloatLayoutProps['onClose']>,
-    onScroll: Function as PropType<AtFloatLayoutProps['onScroll']>,
-    onScrollToUpper: Function as PropType<AtFloatLayoutProps['onScrollToUpper']>,
-    onScrollToLower: Function as PropType<AtFloatLayoutProps['onScrollToLower']>,
+    onClose: Function as unknown as PropType<AtFloatLayoutProps['onClose']>,
+    onScroll: Function as unknown as PropType<AtFloatLayoutProps['onScroll']>,
+    onScrollToUpper: Function as unknown as PropType<AtFloatLayoutProps['onScrollToUpper']>,
+    onScrollToLower: Function as unknown as PropType<AtFloatLayoutProps['onScrollToLower']>,
   },
 
   setup(props: AtFloatLayoutProps, { attrs, slots }) {

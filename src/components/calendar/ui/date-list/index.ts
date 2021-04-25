@@ -25,8 +25,8 @@ const AtCalendarList = defineComponent({
       type: Array as PropType<AtCalendarListProps["list"]>,
       default: () => [] as Calendar.List<Calendar.Item>
     },
-    onClick: Function as PropType<AtCalendarListProps["onClick"]>,
-    onLongClick: Function as PropType<AtCalendarListProps["onLongClick"]>,
+    onClick: Function as unknown as PropType<AtCalendarListProps["onClick"]>,
+    onLongClick: Function as unknown as PropType<AtCalendarListProps["onLongClick"]>,
   },
 
   setup(props: AtCalendarListProps) {

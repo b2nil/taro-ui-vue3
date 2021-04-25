@@ -1,11 +1,18 @@
 /**
  * 通用的遮罩
  */
-@mixin overlay {
+@mixin overlay ($alpha:0.3) {
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   position: absolute;
-  background-color: rgba($color: #000, $alpha: 0.3);
+  background-color: rgba($color: #000, $alpha:$alpha);
+}
+
+/**
+ * 深一点的遮罩
+ */
+@mixin overlay-dark {
+  @include overlay(.7)
 }

@@ -5,6 +5,7 @@ import { uuid } from '../../utils/common'
 
 import { Image, View } from '@tarojs/components'
 import { AtImagePickerProps, File } from 'types/image-picker'
+import AtLoading from '../loading/index'
 
 interface MatrixFile extends Partial<File> {
   type: 'blank' | 'btn'
@@ -76,12 +77,11 @@ const AtImagePicker = defineComponent({
     },
     // 事件
     onChange: {
-      type: Function as PropType<AtImagePickerProps['onChange']>,
-      default: () => () => { },
-      required: true
+      type: Function as unknown as PropType<AtImagePickerProps['onChange']>,
+      default: () => () => { }
     },
-    onImageClick: Function as PropType<AtImagePickerProps['onImageClick']>,
-    onFail: Function as PropType<AtImagePickerProps['onFail']>,
+    onImageClick: Function as unknown as PropType<AtImagePickerProps['onImageClick']>,
+    onFail: Function as unknown as PropType<AtImagePickerProps['onFail']>,
   },
 
   setup(props: AtImagePickerProps, { attrs }) {
@@ -127,7 +127,7 @@ const AtImagePicker = defineComponent({
 
           const newFiles = props.files.concat(targetFiles)
 
-          props.onChange(newFiles, 'add')
+          props.onChange({ files: newFiles, operationType: 'add' })
         })
         .catch(props.onFail)
     }
@@ -143,7 +143,35 @@ const AtImagePicker = defineComponent({
 
       const newFiles = props.files.filter((_, i) => i !== idx)
 
-      props.onChange(newFiles, 'remove', idx)
+      props.onChange({ files: newFiles, operationType: 'remove', index: idx })
+    }
+
+    function renderUploadStatus(item: MatrixFile) {
+      return h(View, {
+        class: `at-image-picker__upload-status`,
+      }, {
+        default: () => {
+          const isUploading = item.status === 'uploading'
+          const r = [
+            isUploading
+              ? h(AtLoading, {
+                color: '#fff'
+              })
+              : h(View, {
+                class: 'at-image-picker__status-icon at-image-picker__status-icon--failed'
+              })
+          ]
+          if (item.message) {
+            const messageBasicClass = 'at-image-picker__status-message'
+            r.push(
+              h(View, {
+                class: `${messageBasicClass} ${messageBasicClass}--${isUploading ? 'uploading' : 'failed'}`
+              }, { default: () => item.message })
+            )
+          }
+          return r
+        }
+      })
     }
 
     return () => (
@@ -168,19 +196,27 @@ const AtImagePicker = defineComponent({
                       h(View, {
                         class: 'at-image-picker__item'
                       }, {
-                        default: () => [
-                          h(View, {
-                            class: 'at-image-picker__remove-btn',
-                            onTap: handleRemoveImg.bind(this, i * props.length! + j)
-                          }),
+                        default: () => {
+                          const r = [
+                            h(View, {
+                              class: 'at-image-picker__remove-btn',
+                              onTap: handleRemoveImg.bind(this, i * props.length! + j)
+                            }),
 
-                          h(Image, {
-                            class: 'at-image-picker__preview-img',
-                            mode: props.mode,
-                            src: item.url,
-                            onTap: handleImageClick.bind(this, i * props.length! + j)
-                          })
-                        ]
+                            h(Image, {
+                              class: 'at-image-picker__preview-img',
+                              mode: props.mode,
+                              src: item.url,
+                              onTap: handleImageClick.bind(this, i * props.length! + j)
+                            }),
+                          ]
+                          if (item.status && item.status !== 'done') {
+                            r.push(
+                              renderUploadStatus(item)
+                            )
+                          }
+                          return r
+                        }
                       })
                     )
                     : item.type === 'btn' && ( // add bar

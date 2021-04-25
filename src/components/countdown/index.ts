@@ -45,7 +45,7 @@ const AtCountdown = defineComponent({
       default: 0,
     },
     // 事件
-    onTimeUp: Function as PropType<AtCountDownProps['onTimeUp']>
+    onTimeUp: Function as unknown as PropType<AtCountDownProps['onTimeUp']>
   },
 
   onShow() {

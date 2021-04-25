@@ -24,7 +24,7 @@ const AtIcon = defineComponent({
       default: 24
     },
     onClick: {
-      type: Function as PropType<AtIconProps['onClick']>,
+      type: Function as unknown as PropType<AtIconProps['onClick']>,
       default: () => () => { }
     }
   },

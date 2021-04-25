@@ -36,7 +36,7 @@ const AtLoadMore = defineComponent({
     },
     // 事件
     onClick: {
-      type: Function as PropType<AtLoadMoreProps['onClick']>,
+      type: Function as unknown as PropType<AtLoadMoreProps['onClick']>,
       default: () => () => { }
     },
   },

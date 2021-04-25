@@ -34,8 +34,8 @@ const AtNoticebar = defineComponent({
     },
     icon: String as PropType<AtNoticeBarProps['icon']>,
     // events
-    onClose: Function as PropType<AtNoticeBarProps['onClose']>,
-    onGotoMore: Function as PropType<AtNoticeBarProps['onGotoMore']>
+    onClose: Function as unknown as PropType<AtNoticeBarProps['onClose']>,
+    onGotoMore: Function as unknown as PropType<AtNoticeBarProps['onGotoMore']>
   },
 
   setup(props: AtNoticeBarProps, { attrs, slots }) {

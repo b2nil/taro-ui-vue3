@@ -22,7 +22,7 @@
           :files="files2"
           @change="onChange('files2', $event)"
           @fail="onFail"
-          @image-pick="onImageClick"
+          @image-click="onImageClick"
         />
       </example-item>
     </panel>
@@ -54,6 +54,20 @@
         />
       </example-item>
     </panel>
+
+    <panel
+      title="上传状态"
+      no-padding
+    >
+      <example-item>
+        <at-image-picker
+          multiple
+          mode="aspectFit"
+          :files="files5"
+          @change="onChange('files5', $event)"
+        />
+      </example-item>
+    </panel>
   </page>
 </template>
 
@@ -61,9 +75,12 @@
 import { defineComponent, reactive, toRefs } from 'vue'
 import Taro from '@tarojs/taro'
 import './index.scss'
-
+import { uuid } from '../../../utils/common'
 type DogaImage = {
-  url: string
+  url: string,
+  status?: 'uploading' | 'failed' | 'done'
+  message?: string
+  [propName:string]:any
 }
 
 const dogaImages: DogaImage[] = [
@@ -96,11 +113,49 @@ export default defineComponent({
           url:
             'https://storage.360buyimg.com/mtd/home/36549825_887087111478302_5745542532574478336_n1543234831971.jpg'
         }
-      ])
+      ]),
+      files5: [
+        {
+          url:
+            'https://storage.360buyimg.com/mtd/home/111543234387022.jpg',
+          status: 'uploading',
+          message: '上传中'
+        },
+        {
+          url:
+            'https://storage.360buyimg.com/mtd/home/221543234387016.jpg',
+          status: 'failed',
+          message: '上传失败'
+        }
+      ]
     })
+  
+    function onChange(stateName: string, {
+        files, operationType
+      }: {
+        files: DogaImage[],
+        operationType: 'add' | 'remove'
+      }): void {
+      const oldLen = state[stateName].length
+      const currentFiles = state[stateName]
 
-    function onChange(stateName: string, files: DogaImage[]): void {
-      state[stateName] = files
+      if (operationType === 'add') {
+        files.slice(oldLen).forEach((file, index) => {
+          const id = uuid()
+          currentFiles.push({ ...file, id })
+          setStatus(currentFiles[index + oldLen], 'uploading')
+          uploadMock(file.url)
+            .then(() => {
+              const target = currentFiles.find(({ id: _id }) => _id === id)
+              target && setStatus(target, 'done')
+            }).catch(() => {
+              const target = currentFiles.find(({ id: _id }) => _id === id)
+              target && setStatus(target, 'failed')
+            })
+        });
+      } else if (operationType === 'remove') {
+        state[stateName] = files
+      }
     }
 
     function onFail(mes: string): void {
@@ -115,6 +170,32 @@ export default defineComponent({
         title: `onImageClick: ${index}${JSON.stringify(file)}`,
         icon: 'none'
       })
+    }
+
+    function uploadMock(url){
+      return  new Promise((resolve,reject)=>{
+        setTimeout(() => {
+          Math.random()>.5?resolve(url):reject('err')
+        }, 2000);
+      })
+    }
+
+
+    function setStatus(item, type){
+       switch(type){
+         case 'uploading':
+          item.status='uploading'
+          item.message='正在上传'
+          break;
+        case 'failed':
+          item.status='failed'
+          item.message='上传失败'
+          break;
+        case 'done':
+          item.status='done'
+          break;    
+       }
+       return item
     }
 
     return {

@@ -9,7 +9,7 @@ const AtToast = defineComponent({
   name: "AtToast",
 
   props: {
-    isOpened: { type: Boolean, default: false, required: true },
+    isOpened: { type: Boolean, default: false },
     text: { type: String, default: '' },
     icon: { type: String, default: '' },
     image: { type: String, default: '' },
@@ -20,8 +20,8 @@ const AtToast = defineComponent({
     },
     duration: { type: Number, default: 3000 },
     hasMask: Boolean,
-    onClick: Function as PropType<AtToastProps['onClick']>,
-    onClose: Function as PropType<AtToastProps['onClose']>,
+    onClick: Function as unknown as PropType<AtToastProps['onClick']>,
+    onClose: Function as unknown as PropType<AtToastProps['onClose']>,
   },
 
   setup(props: AtToastProps, { attrs }) {

@@ -15,7 +15,7 @@ const AtCurtain = defineComponent({
     },
     // 事件
     onClose: {
-      type: Function as PropType<AtCurtainProps['onClose']>,
+      type: Function as unknown as PropType<AtCurtainProps['onClose']>,
       default: () => () => { }
     }
   },

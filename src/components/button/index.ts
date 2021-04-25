@@ -37,7 +37,7 @@ const AtButton = defineComponent({
     full: Boolean,
     loading: Boolean,
     disabled: Boolean,
-    onClick: Function as PropType<AtButtonProps['onClick']>,
+    onClick: Function as unknown as PropType<AtButtonProps['onClick']>,
 
     // Taro Button Props
     formType: {
@@ -74,14 +74,14 @@ const AtButton = defineComponent({
     scope: String as PropType<AtButtonProps['scope']>, // alipay scope
 
     // Taro Button Events
-    onGetUserInfo: Function as PropType<AtButtonProps['onGetUserInfo']>,
-    onGetAuthorize: Function as PropType<AtButtonProps['onGetAuthorize']>, // Alipay auth
-    onContact: Function as PropType<AtButtonProps['onContact']>,
-    onGetPhoneNumber: Function as PropType<AtButtonProps['onGetPhoneNumber']>,
-    onGetRealnameAuthInfo: Function as PropType<AtButtonProps['onGetRealnameAuthInfo']>,
-    onError: Function as PropType<AtButtonProps['onError']>,
-    onOpenSetting: Function as PropType<AtButtonProps['onOpenSetting']>,
-    onLaunchapp: Function as PropType<AtButtonProps['onLaunchapp']>,
+    onGetUserInfo: Function as unknown as PropType<AtButtonProps['onGetUserInfo']>,
+    onGetAuthorize: Function as unknown as PropType<AtButtonProps['onGetAuthorize']>, // Alipay auth
+    onContact: Function as unknown as PropType<AtButtonProps['onContact']>,
+    onGetPhoneNumber: Function as unknown as PropType<AtButtonProps['onGetPhoneNumber']>,
+    onGetRealnameAuthInfo: Function as unknown as PropType<AtButtonProps['onGetRealnameAuthInfo']>,
+    onError: Function as unknown as PropType<AtButtonProps['onError']>,
+    onOpenSetting: Function as unknown as PropType<AtButtonProps['onOpenSetting']>,
+    onLaunchapp: Function as unknown as PropType<AtButtonProps['onLaunchapp']>,
   },
 
   setup(props: AtButtonProps, { attrs, slots }) {
