@@ -4,7 +4,6 @@ import {
   defineComponent,
   mergeProps,
   onMounted,
-  onUnmounted,
   ref,
   reactive,
   watch,
@@ -155,7 +154,6 @@ const AtTabs = defineComponent({
     }
 
     function handleTouchStart(e: ITouchEvent): void {
-
       if (!props.swipeable || props.tabDirection === 'vertical') return
       // 获取触摸时的原点
       _touchDot.value = e.touches[0].pageX
@@ -241,7 +239,6 @@ const AtTabs = defineComponent({
                     : {},
                   {
                     id: _tabId.value,
-
                     class: 'at-tabs__header',
                     style: heightStyle.value,
                     scrollX: scrollX.value,

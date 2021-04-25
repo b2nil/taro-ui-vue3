@@ -16,245 +16,110 @@ exports[`AtTabs should render default AtTabs 1`] = `
       class="at-tabs__underline"
       style="width: 0%;"
     />
-    
-    
-  </view>
-</view>
-`;
-
-exports[`AtTabs should render prop -- animated 1`] = `
-<view
-  class="at-tabs at-tabs--horizontal at-tabs--WEB"
->
-  <view
-    class="at-tabs__header"
-    id="tabs-AOTU2018"
-  >
-    <view
-      class="at-tabs__item at-tabs__item--active"
-      id="tabtabs-AOTU20180"
-    >
-      <text
-        style="white-space: nowrap;"
-      >
-        标签页1
-      </text>
-      <view
-        class="at-tabs__item-underline"
-      />
-    </view>
-    <view
-      class="at-tabs__item"
-      id="tabtabs-AOTU20181"
-    >
-      <text
-        style="white-space: nowrap;"
-      >
-        标签页2
-      </text>
-      <view
-        class="at-tabs__item-underline"
-      />
-    </view>
-    <view
-      class="at-tabs__item"
-      id="tabtabs-AOTU20182"
-    >
-      <text
-        style="white-space: nowrap;"
-      >
-        标签页3
-      </text>
-      <view
-        class="at-tabs__item-underline"
-      />
-    </view>
-  </view>
-  <view
-    class="at-tabs__body"
-    style="transform: translate3d(-0%, 0px, 0px); transition: unset;"
-  >
-    <view
-      class="at-tabs__underline"
-      style="width: 300%;"
-    />
-    
-    
-  </view>
-</view>
-`;
-
-exports[`AtTabs should render prop -- class 1`] = `
-<view
-  class="test at-tabs at-tabs--horizontal at-tabs--WEB test"
->
-  <view
-    class="at-tabs__header"
-    id="tabs-AOTU2018"
-  />
-  <view
-    class="at-tabs__body"
-    style="transform: translate3d(-0%, 0px, 0px);"
-  >
-    <view
-      class="at-tabs__underline"
-      style="width: 0%;"
-    />
-    
-    
-  </view>
-</view>
-`;
-
-exports[`AtTabs should render prop -- current 1`] = `
-<view
-  class="at-tabs at-tabs--horizontal at-tabs--WEB"
->
-  <view
-    class="at-tabs__header"
-    id="tabs-AOTU2018"
-  >
-    <view
-      class="at-tabs__item"
-      id="tabtabs-AOTU20180"
-    >
-      <text
-        style="white-space: nowrap;"
-      >
-        标签页1
-      </text>
-      <view
-        class="at-tabs__item-underline"
-      />
-    </view>
-    <view
-      class="at-tabs__item"
-      id="tabtabs-AOTU20181"
-    >
-      <text
-        style="white-space: nowrap;"
-      >
-        标签页2
-      </text>
-      <view
-        class="at-tabs__item-underline"
-      />
-    </view>
-    <view
-      class="at-tabs__item at-tabs__item--active"
-      id="tabtabs-AOTU20182"
-    >
-      <text
-        style="white-space: nowrap;"
-      >
-        标签页3
-      </text>
-      <view
-        class="at-tabs__item-underline"
-      />
-    </view>
-  </view>
-  <view
-    class="at-tabs__body"
-    style="transform: translate3d(-200%, 0px, 0px);"
-  >
-    <view
-      class="at-tabs__underline"
-      style="width: 300%;"
-    />
-    
-    
+    <!---->
   </view>
 </view>
 `;
 
 exports[`AtTabs should render prop -- height 1`] = `
 <view
-  class="at-tabs at-tabs--vertical at-tabs--WEB"
-  style="height: 300px;"
+  class="at-tabs__header"
+  id="tabs-AOTU2018"
 >
   <view
-    class="at-tabs__header"
-    id="tabs-AOTU2018"
+    class="at-tabs__item at-tabs__item--active"
+    id="tabtabs-AOTU20180"
   >
-    <view
-      class="at-tabs__item at-tabs__item--active"
-      id="tabtabs-AOTU20180"
+    <text
+      style="white-space: nowrap;"
     >
-      <text
-        style="white-space: nowrap;"
-      >
-        标签页1
-      </text>
-      <view
-        class="at-tabs__item-underline"
-      />
-    </view>
+      标签页1
+    </text>
     <view
-      class="at-tabs__item"
-      id="tabtabs-AOTU20181"
-    >
-      <text
-        style="white-space: nowrap;"
-      >
-        标签页2
-      </text>
-      <view
-        class="at-tabs__item-underline"
-      />
-    </view>
-    <view
-      class="at-tabs__item"
-      id="tabtabs-AOTU20182"
-    >
-      <text
-        style="white-space: nowrap;"
-      >
-        标签页3
-      </text>
-      <view
-        class="at-tabs__item-underline"
-      />
-    </view>
+      class="at-tabs__item-underline"
+    />
   </view>
   <view
-    class="at-tabs__body"
-    style="height: 300px; transform: translate3d(0px, -0%, 0px);"
+    class="at-tabs__item"
+    id="tabtabs-AOTU20181"
   >
+    <text
+      style="white-space: nowrap;"
+    >
+      标签页2
+    </text>
     <view
-      class="at-tabs__underline"
-      style="height: 300%;"
+      class="at-tabs__item-underline"
     />
-    
-    
+  </view>
+  <view
+    class="at-tabs__item"
+    id="tabtabs-AOTU20182"
+  >
+    <text
+      style="white-space: nowrap;"
+    >
+      标签页3
+    </text>
+    <view
+      class="at-tabs__item-underline"
+    />
   </view>
 </view>
 `;
 
-exports[`AtTabs should render prop -- style 1`] = `
-<view
-  class="at-tabs at-tabs--horizontal at-tabs--WEB"
-  style="color: red;"
+exports[`AtTabs should render prop -- scroll 1`] = `
+<scroll-view
+  class="at-tabs__header"
+  id="tabs-AOTU2018"
+  scrollintoview=""
+  scrollwithanimation="true"
+  scrollx="true"
+  scrolly="false"
 >
   <view
-    class="at-tabs__header"
-    id="tabs-AOTU2018"
-  />
-  <view
-    class="at-tabs__body"
-    style="transform: translate3d(-0%, 0px, 0px);"
+    class="at-tabs__item at-tabs__item--active"
+    id="tabtabs-AOTU20180"
   >
+    <text
+      style="white-space: nowrap;"
+    >
+      标签页1
+    </text>
     <view
-      class="at-tabs__underline"
-      style="width: 0%;"
+      class="at-tabs__item-underline"
     />
-    
-    
   </view>
-</view>
+  <view
+    class="at-tabs__item"
+    id="tabtabs-AOTU20181"
+  >
+    <text
+      style="white-space: nowrap;"
+    >
+      标签页2
+    </text>
+    <view
+      class="at-tabs__item-underline"
+    />
+  </view>
+  <view
+    class="at-tabs__item"
+    id="tabtabs-AOTU20182"
+  >
+    <text
+      style="white-space: nowrap;"
+    >
+      标签页3
+    </text>
+    <view
+      class="at-tabs__item-underline"
+    />
+  </view>
+</scroll-view>
 `;
 
-exports[`AtTabs should render prop -- swipeable 1`] = `
+exports[`AtTabs should render prop -- tabDirection 1`] = `
 <view
   class="at-tabs at-tabs--horizontal at-tabs--WEB"
 >
@@ -310,19 +175,22 @@ exports[`AtTabs should render prop -- swipeable 1`] = `
       class="at-tabs__underline"
       style="width: 300%;"
     />
-    
-    
+    <!---->
   </view>
 </view>
 `;
 
-exports[`AtTabs should render prop -- tabDirection 1`] = `
+exports[`AtTabs should render prop -- tabDirection 2`] = `
 <view
-  class="at-tabs at-tabs--vertical at-tabs--WEB"
+  class="at-tabs at-tabs--scroll at-tabs--vertical at-tabs--WEB"
 >
-  <view
+  <scroll-view
     class="at-tabs__header"
     id="tabs-AOTU2018"
+    scrollintoview=""
+    scrollwithanimation="true"
+    scrollx="false"
+    scrolly="true"
   >
     <view
       class="at-tabs__item at-tabs__item--active"
@@ -363,79 +231,63 @@ exports[`AtTabs should render prop -- tabDirection 1`] = `
         class="at-tabs__item-underline"
       />
     </view>
-  </view>
+  </scroll-view>
   <view
     class="at-tabs__body"
     style="transform: translate3d(0px, -0%, 0px);"
   >
     <view
       class="at-tabs__underline"
-      style="height: 300%;"
+      style="width: 300%; height: 300%;"
     />
-    
-    
+    <!---->
   </view>
 </view>
 `;
 
 exports[`AtTabs should render prop -- tabList 1`] = `
 <view
-  class="at-tabs at-tabs--horizontal at-tabs--WEB"
+  class="at-tabs__header"
+  id="tabs-AOTU2018"
 >
   <view
-    class="at-tabs__header"
-    id="tabs-AOTU2018"
+    class="at-tabs__item at-tabs__item--active"
+    id="tabtabs-AOTU20180"
   >
-    <view
-      class="at-tabs__item at-tabs__item--active"
-      id="tabtabs-AOTU20180"
+    <text
+      style="white-space: nowrap;"
     >
-      <text
-        style="white-space: nowrap;"
-      >
-        标签页1
-      </text>
-      <view
-        class="at-tabs__item-underline"
-      />
-    </view>
+      标签页1
+    </text>
     <view
-      class="at-tabs__item"
-      id="tabtabs-AOTU20181"
-    >
-      <text
-        style="white-space: nowrap;"
-      >
-        标签页2
-      </text>
-      <view
-        class="at-tabs__item-underline"
-      />
-    </view>
-    <view
-      class="at-tabs__item"
-      id="tabtabs-AOTU20182"
-    >
-      <text
-        style="white-space: nowrap;"
-      >
-        标签页3
-      </text>
-      <view
-        class="at-tabs__item-underline"
-      />
-    </view>
+      class="at-tabs__item-underline"
+    />
   </view>
   <view
-    class="at-tabs__body"
-    style="transform: translate3d(-0%, 0px, 0px);"
+    class="at-tabs__item"
+    id="tabtabs-AOTU20181"
   >
+    <text
+      style="white-space: nowrap;"
+    >
+      标签页2
+    </text>
     <view
-      class="at-tabs__underline"
-      style="width: 300%;"
+      class="at-tabs__item-underline"
     />
-    
-    
+  </view>
+  <view
+    class="at-tabs__item"
+    id="tabtabs-AOTU20182"
+  >
+    <text
+      style="white-space: nowrap;"
+    >
+      标签页3
+    </text>
+    <view
+      class="at-tabs__item-underline"
+    />
   </view>
 </view>
 `;
