@@ -20,9 +20,9 @@ const AtSwipeAction = defineComponent({
   name: "AtSwipeAction",
 
   props: {
-    isOpened: { type: Boolean, default: false },
-    disabled: { type: Boolean, default: false },
-    autoClose: { type: Boolean, default: false },
+    isOpened: Boolean,
+    disabled: Boolean,
+    autoClose: Boolean,
     options: {
       type: Array as PropType<AtSwipeActionProps['options']>,
       default: () => []
