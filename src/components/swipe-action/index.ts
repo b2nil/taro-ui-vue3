@@ -1,4 +1,14 @@
-import { h, defineComponent, ref, reactive, watch, CSSProperties, computed, mergeProps, PropType } from 'vue'
+import {
+  h,
+  defineComponent,
+  ref,
+  reactive,
+  watch,
+  computed,
+  mergeProps,
+  PropType,
+  CSSProperties
+} from 'vue'
 import _inRange from 'lodash-es/inRange'
 import _isEmpty from 'lodash-es/isEmpty'
 import { Text, View } from '@tarojs/components'
@@ -11,8 +21,7 @@ import {
 import {
   delayGetClientRect,
   delayGetScrollOffset,
-  uuid,
-  isTest
+  uuid
 } from '../../utils/common'
 import AtSwipeActionOptions from './options/index'
 
@@ -48,7 +57,7 @@ const AtSwipeAction = defineComponent({
     })
 
     const state = reactive<AtSwipeActionState>({
-      componentId: isTest() ? '2020' : uuid(),
+      componentId: uuid(),
       offsetSize: 0,
       _isOpened: !!props.isOpened
     })
@@ -194,7 +203,6 @@ const AtSwipeAction = defineComponent({
 
     function handleDomInfo({ width }: { width: number }): void {
       const { _isOpened } = state
-
       maxOffsetSize.value = width
       _reset(_isOpened)
     }
