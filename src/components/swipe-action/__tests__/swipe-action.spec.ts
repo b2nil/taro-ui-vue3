@@ -1,13 +1,14 @@
 import { mountFactory, Slots } from '@/tests/helper'
 import { h } from '@vue/runtime-core'
+import * as utils from '../../../utils/common'
 
 import AtSwipeAction from '../index'
 
 const factory = (
-  values = {},
-  slots: Slots = { default: [''] }
+  props = {},
+  slots?: Slots
 ) => {
-  return mountFactory(AtSwipeAction, {}, values, slots)
+  return mountFactory(AtSwipeAction, {}, props, slots)
 }
 
 const MAX_OFFSET_SIZE = 101
@@ -46,34 +47,99 @@ const MOVE_INFO = {
   pageY: DOM_INFO.height / 2,
 }
 
-describe('SwipeAction', () => {
-  it('should render prop -- options', () => {
-    const wrapper = factory(
-      {
-        disabled: true,
-        autoClose: true,
-        options: OPTIONS,
-        class: "swipe-action--test"
-      },
-      {
-        default: [h('view', { class: "normal" }, "AtSwipeAction 一般使用场景")]
-      }
-    )
+const SLOT = h('view', {
+  class: "normal"
+}, "AtSwipeAction 一般使用场景")
 
+describe('SwipeAction', () => {
+  beforeEach(() => {
+    jest.mock('../../../utils/common')
+    jest.spyOn(utils, 'uuid').mockReturnValue('2020')
+  })
+
+  it('should render default props', () => {
+    const wrapper = factory()
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render SwipeAction -- isOpened', () => {
+  it('should render prop options', () => {
+    const wrapper = factory(
+      {
+        options: OPTIONS,
+      },
+      {
+        default: [SLOT]
+      }
+    )
+
+    expect(
+      wrapper
+        .findAll('.at-swipe-action__option')
+        .length
+    ).toBe(OPTIONS.length)
+
+    expect(
+      wrapper
+        .find('.at-swipe-action__options')
+        .element
+    ).toMatchSnapshot()
+  })
+})
+
+describe('SwipeAction Behaviours', () => {
+  beforeEach(() => {
+    jest.mock('../../../utils/common')
+    jest.spyOn(utils, 'uuid').mockReturnValue('2020')
+    jest.spyOn(utils, 'delayGetClientRect').mockReturnValue(new Promise(resolve => {
+      resolve([MOVE_INFO])
+    }))
+    jest.spyOn(utils, 'delayGetScrollOffset').mockReturnValue(new Promise(resolve => {
+      resolve([{
+        id: '2020', // 节点的ID
+        dataset: '', // 节点的dataset
+        scrollLeft: 0, // 节点的水平滚动位置
+        scrollTop: 1, // 节点的竖直滚动位置
+      }])
+    }))
+    jest.spyOn(utils, 'delayQuerySelector').mockReturnValue(new Promise(resolve => {
+      resolve([{
+        width: 30
+      }])
+    }))
+  })
+
+  it('should trigger onClick, onOpened, onClosed', async () => {
+    const onClick = jest.fn()
+    const onOpened = jest.fn()
+    const onClosed = jest.fn()
     const wrapper = factory({
-      isOpened: true,
-      disabled: true,
       autoClose: true,
       options: OPTIONS,
-      class: "swipe-action--test"
+      onClick,
+      onOpened,
+      onClosed
     }, {
-      default: [h('view', { class: "normal" }, "AtSwipeAction 一般使用场景")]
+      default: [SLOT]
     })
 
-    expect(wrapper.element).toMatchSnapshot()
+    await wrapper.setProps({ isOpened: true })
+
+    const swipeActionEl = wrapper.find('.at-swipe-action')
+
+    await swipeActionEl.trigger('touchstart', {
+      touches: [START_INFO]
+    })
+    await swipeActionEl.trigger('touchmove', {
+      touches: [MOVE_INFO]
+    })
+    await swipeActionEl.trigger('touchend')
+
+    await wrapper
+      .find('.at-swipe-action__option')
+      .trigger('tap')
+
+    expect(onClick).toBeCalled()
+    expect(onOpened).toBeCalled()
+    expect(onClosed).toBeCalled()
   })
 })
