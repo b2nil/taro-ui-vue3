@@ -21,7 +21,8 @@
     "typeRoots": [
       "types",
       "global.d.ts",
-      "node_modules/@types"
+      "node_modules/@types",
+      "node_modules/@tarojs/components/types"
     ],
     "paths": {
       "types/*": [
