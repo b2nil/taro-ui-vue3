@@ -120,27 +120,15 @@ const AtTabs = defineComponent({
     function updateState(idx: number): void {
       if (props.scroll) {
         // 标签栏滚动
-        switch (ENV) {
-          case Taro.ENV_TYPE.WEAPP:
-          case Taro.ENV_TYPE.ALIPAY:
-          case Taro.ENV_TYPE.TT:
-          case Taro.ENV_TYPE.SWAN: {
-            const index = Math.max(idx - 1, 0)
-            state._scrollIntoView = `tab${_tabId.value}${index}`
-            break
-          }
-          case Taro.ENV_TYPE.WEB: {
-            const index = Math.max(idx - 1, 0)
-            const prevTabItem = tabHeaderRef.value.$el.children[index]
-            if (prevTabItem) {
-              state._scrollTop = prevTabItem.offsetTop
-              state._scrollLeft = prevTabItem.offsetLeft
-            }
-            break
-          }
-          default: {
-            console.warn('AtTab 组件在该环境还未适配')
-            break
+        if (ENV !== Taro.ENV_TYPE.WEB) {
+          const index = Math.max(idx - 1, 0)
+          state._scrollIntoView = `tab${_tabId.value}${index}`
+        } else {
+          const index = Math.max(idx - 1, 0)
+          const prevTabItem = tabHeaderRef.value.$el.children[index]
+          if (prevTabItem) {
+            state._scrollTop = prevTabItem.offsetTop
+            state._scrollLeft = prevTabItem.offsetLeft
           }
         }
       }
