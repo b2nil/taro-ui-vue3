@@ -2,6 +2,7 @@ import { mountFactory, Slots } from '@/tests/helper'
 import { h } from '@vue/runtime-core'
 import { ref } from 'vue'
 import AtTabs from '../index'
+import * as utils from '../../../utils/common'
 
 const factory = (props = {}, slots?: Slots) => {
   return mountFactory(AtTabs, undefined, props, slots)
@@ -17,6 +18,10 @@ describe('AtTabs', () => {
 
   beforeEach(() => {
     jest.useFakeTimers()
+    jest.advanceTimersByTime(100)
+    jest.runAllTimers()
+    jest.mock('../../../utils/common')
+    jest.spyOn(utils, 'uuid').mockReturnValue('__tests__')
   })
 
   it('should render default AtTabs', () => {
@@ -251,6 +256,8 @@ describe('AtTabs', () => {
 describe('AtTabs Behavior', () => {
   beforeEach(() => {
     jest.useFakeTimers()
+    jest.advanceTimersByTime(100)
+    jest.runAllTimers()
   })
 
   it('should trigger onClick', async () => {
@@ -259,35 +266,44 @@ describe('AtTabs Behavior', () => {
       tabList: tabList,
       onClick: onClick
     })
-    await wrapper.find('.at-tabs__item').trigger('tap')
+
+    const tabs = wrapper.findAll('.at-tabs__item')
+    await tabs[1].trigger('tap')
+
     expect(onClick).toBeCalled()
   })
 
-  it.skip('should switch between tabs when swipeable is true', async () => {
+  it('should switch between tabs when swipeable is true', async () => {
     const current = ref(0)
-    const handleClick = (index) => {
+    const handleClick = jest.fn((index) => {
       current.value = index
-    }
+    })
 
     const wrapper = factory(
       {
         tabList,
-        current,
+        current: current.value,
         swipeable: true,
-        onClick: (e) => handleClick(e)
+        onClick: handleClick
       },
       { default: () => [h('view', { class: "test" }, "slot content")] }
     )
 
-    const tabs0 = wrapper.findAll('.at-tabs__item')
-    expect(tabs0[0].classes()).toContain('at-tabs__item--active')
+    expect(
+      wrapper
+        .findAll('.at-tabs__item')[0]
+        .classes()
+    ).toContain('at-tabs__item--active')
 
+    // swipe towards left
     await wrapper
       .find('.at-tabs__body')
       .trigger('touchstart', {
         touches: [{
-          pageX: 100,
-          pageY: 0,
+          clientX: 372,
+          clientY: 392,
+          pageX: 372,
+          pageY: 792,
         }]
       })
 
@@ -295,32 +311,35 @@ describe('AtTabs Behavior', () => {
       .find('.at-tabs__body')
       .trigger('touchmove', {
         touches: [{
-          pageX: 50,
-          pageY: 0,
+          clientX: 103,
+          clientY: 392,
+          pageX: 103,
+          pageY: 792,
         }]
       })
 
     await wrapper
       .find('.at-tabs__body')
-      .trigger('touchend', {
-        touches: [{
-          pageX: 50,
-          pageY: 0,
-        }]
-      })
+      .trigger('touchend')
 
     await wrapper.vm.$nextTick()
-    const tabs1 = wrapper.findAll('.at-tabs__item')
-    console.log('tabs1[0].classes(): ', tabs1[0].classes())
-    console.log('tabs1[1].classes(): ', tabs1[1].classes())
-    expect(tabs1[1].classes()).toContain('at-tabs__item--active')
+    expect(current.value).toBe(1)
+    await wrapper.setProps({ current: current.value })
+    expect(
+      wrapper
+        .findAll('.at-tabs__item')[1]
+        .classes()
+    ).toContain('at-tabs__item--active')
 
+    // swipe towards left
     await wrapper
       .find('.at-tabs__body')
       .trigger('touchstart', {
         touches: [{
-          pageX: 100,
-          pageY: 0,
+          clientX: 372,
+          clientY: 392,
+          pageX: 372,
+          pageY: 792,
         }]
       })
 
@@ -328,21 +347,107 @@ describe('AtTabs Behavior', () => {
       .find('.at-tabs__body')
       .trigger('touchmove', {
         touches: [{
-          pageX: 50,
-          pageY: 0,
+          clientX: 103,
+          clientY: 392,
+          pageX: 103,
+          pageY: 792,
         }]
       })
 
     await wrapper
       .find('.at-tabs__body')
-      .trigger('touchend', {
+      .trigger('touchend')
+
+    expect(current.value).toBe(2)
+    await wrapper.setProps({ current: current.value })
+    expect(
+      wrapper
+        .findAll('.at-tabs__item')[2]
+        .classes()
+    ).toContain('at-tabs__item--active')
+
+    // swipe towards right
+    await wrapper
+      .find('.at-tabs__body')
+      .trigger('touchstart', {
         touches: [{
-          pageX: 50,
-          pageY: 0,
+          clientX: 40,
+          clientY: 392,
+          pageX: 40,
+          pageY: 792,
         }]
       })
 
-    const tabs2 = wrapper.findAll('.at-tabs__item')
-    expect(tabs2[2].classes()).toContain('at-tabs__item--active')
+    await wrapper
+      .find('.at-tabs__body')
+      .trigger('touchmove', {
+        touches: [{
+          clientX: 300,
+          clientY: 392,
+          pageX: 300,
+          pageY: 792,
+        }]
+      })
+
+    await wrapper
+      .find('.at-tabs__body')
+      .trigger('touchend')
+
+    expect(current.value).toBe(1)
+    await wrapper.setProps({ current: current.value })
+    expect(
+      wrapper
+        .findAll('.at-tabs__item')[1]
+        .classes()
+    ).toContain('at-tabs__item--active')
+  })
+
+  it('should not be swipeable when tab direction is vertical', async () => {
+    const current = ref(0)
+    const handleClick = jest.fn((index) => {
+      current.value = index
+    })
+
+    const wrapper = factory(
+      {
+        tabList,
+        current: current.value,
+        swipeable: true,
+        tabDirection: "vertical",
+        onClick: handleClick
+      },
+      { default: () => [h('view', { class: "test" }, "slot content")] }
+    )
+
+    // swipe towards left
+    await wrapper
+      .find('.at-tabs__body')
+      .trigger('touchstart', {
+        touches: [{
+          clientX: 372,
+          clientY: 392,
+          pageX: 372,
+          pageY: 792,
+        }]
+      })
+
+    await wrapper
+      .find('.at-tabs__body')
+      .trigger('touchmove', {
+        touches: [{
+          clientX: 103,
+          clientY: 392,
+          pageX: 103,
+          pageY: 792,
+        }]
+      })
+
+    await wrapper
+      .find('.at-tabs__body')
+      .trigger('touchend')
+
+    expect(handleClick).not.toBeCalled()
+    expect(current.value).not.toEqual(1)
+    expect(current.value).toBe(0)
   })
 })
