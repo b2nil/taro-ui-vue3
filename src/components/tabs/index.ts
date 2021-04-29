@@ -14,7 +14,7 @@ import { ScrollView, View, Text } from '@tarojs/components'
 import { CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
 import Taro from '@tarojs/taro'
 import { AtTabsProps, AtTabsState } from 'types/tabs'
-import { isTest, uuid } from '../../utils/common'
+import { uuid } from '../../utils/common'
 
 const ENV = Taro.getEnv()
 const MIN_DISTANCE = 100
@@ -36,10 +36,7 @@ const AtTabs = defineComponent({
       type: Number,
       default: 0
     },
-    scroll: {
-      type: Boolean,
-      default: false
-    },
+    scroll: Boolean,
     animated: {
       type: Boolean,
       default: true
@@ -60,7 +57,7 @@ const AtTabs = defineComponent({
 
   setup(props: AtTabsProps, { attrs, slots }) {
 
-    const _tabId = ref<string>(isTest() ? 'tabs-AOTU2018' : uuid())
+    const _tabId = ref<string>(uuid())
     // 触摸时的原点
     const _touchDot = ref<number>(0)
     // 定时器
