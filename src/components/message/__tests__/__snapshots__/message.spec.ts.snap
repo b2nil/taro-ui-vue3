@@ -1,20 +1,55 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtMessage should render default AtMessage 1`] = `
-<view
-  class="at-message at-message--hidden at-message--info"
-/>
+exports[`AtMessage behaviours should open message and render message type -- error 1`] = `
+<view>
+  <button
+    class="btn"
+  >
+    提示消息
+  </button>
+  <view
+    class="at-message at-message--hidden at-message--info"
+  />
+</view>
 `;
 
-exports[`AtMessage should render prop -- class 1`] = `
-<view
-  class="test at-message at-message--hidden at-message--info test"
-/>
+exports[`AtMessage behaviours should open message and render message type -- info 1`] = `
+<view>
+  <button
+    class="btn"
+  >
+    提示消息
+  </button>
+  <view
+    class="at-message at-message--hidden at-message--info"
+  />
+</view>
 `;
 
-exports[`AtMessage should render prop -- style 1`] = `
-<view
-  class="at-message at-message--hidden at-message--info"
-  style="color: red;"
-/>
+exports[`AtMessage behaviours should open message and render message type -- success 1`] = `
+<view>
+  <button
+    class="btn"
+  >
+    提示消息
+  </button>
+  <view
+    class="at-message at-message--hidden at-message--info"
+  />
+</view>
 `;
+
+exports[`AtMessage behaviours should open message and render message type -- warning 1`] = `
+<view>
+  <button
+    class="btn"
+  >
+    提示消息
+  </button>
+  <view
+    class="at-message at-message--hidden at-message--info"
+  />
+</view>
+`;
+
+exports[`AtMessage should render default AtMessage 1`] = `<!---->`;
