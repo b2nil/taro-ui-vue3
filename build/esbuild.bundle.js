@@ -1,5 +1,7 @@
+const fs = require('fs')
+
 require('esbuild').buildSync({
-  entryPoints: ['src/index.ts'],
+  entryPoints: ['packages/taro-ui-vue3/index.ts'],
   mainFields: ['module'],
   format: "esm",
   minify: false,
@@ -21,4 +23,8 @@ require('esbuild').buildSync({
     'process.env.NODE_ENV': "'development'",
   },
   tsconfig: 'tsconfig.rollup.json'
+})
+
+fs.copyFile('packages/style', 'dist/style', (err) => {
+  if (err) throw err
 })
