@@ -37,7 +37,7 @@
             </div>
           </div>
 
-          <div class="wxapp-container">
+          <!-- <div class="wxapp-container">
             <img
               :src="wxAppLogo"
               alt="qrcode"
@@ -52,7 +52,7 @@
                 />
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
 
         <Content class="theme" />
