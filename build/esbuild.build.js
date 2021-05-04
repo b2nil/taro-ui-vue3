@@ -32,7 +32,6 @@ const transformPlugin = {
     })
 
     build.onEnd(result => {
-      console.log(result)
       fs.rename('lib/taro-ui-vue3/index.js', 'lib/index.js', (err) => {
         if (err) throw err
       })
