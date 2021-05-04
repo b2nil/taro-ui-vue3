@@ -42,6 +42,7 @@ import { AtTabBar } from 'taro-ui-vue3'
     />
   </view>
 </template>
+
 <script>
 export default {
   name: 'TabBarPage',
@@ -61,8 +62,8 @@ export default {
     }
   },
 }
+</script>
 ```
-
 
 ## 带图标标签栏
 
@@ -152,21 +153,21 @@ export default {
 
 ## 参数
 
-| 参数       | 说明                                   | 类型    | 可选值                                                              | 默认值   |
-| ---------- | -------------------------------------- | ------- | ------------------------------------------------------------------- | -------- |
+| 参数       | 说明    | 类型    | 可选值   | 默认值   |
+| ---------- | ----- | ------- | ------- | ------- |
 | current | 当前选中的标签索引值，从0计数  | Number  | - | 0 |
-| color     | 未选中标签字体与图标颜色  | String | - | `#333` |
+| color   | 未选中标签字体与图标颜色  | String | - | `#333` |
 | selectedColor  | 选中标签字体与图标颜色  | String | - | `#6190E8` |
 | fixed | 是否固定底部 | Boolean  | - | false |
 | backgroundColor | 背景颜色 | String  | - | `#fff` |
-| iconSize | 图标大小 | Number  | - | 24 |
-| fontSize | 字体大小 | Number  | - | 14 |
+| iconSize | 图标大小 | `Number | String`  | - | 24 |
+| fontSize | 字体大小 | `Number | String`  | - | 14 |
 | tabList | tab 列表, object 字段说明请看下表 | Array  | - | false |
 
 ## tabList object 字段详解
 
-| 参数       | 说明                                   | 类型    | 可选值                                                              | 默认值   | 可选或必填
-| ---------- | -------------------------------------- | ------- | ------------------------------------------------------------------- | -------- |-------- |
+| 参数    | 说明   | 类型    | 可选值  | 默认值   | 可选或必填
+| ---- | --- | ------- | -----| -------- |-------- |
 | title | 标题  | String  | - | 0 | 必填 |
 | iconPrefixClass |  icon className 前缀，用于第三方字体图标库，比如想使用'fa fa-clock' 的图标，则 传入`iconPrefixClass='fa' iconType='clock'`,[拓展图标库详细](/#/docs/icon) | String | - | - | - |
 | iconType | 未选中时展示的 icon 类型，可扩展第三方字体图标库，[拓展图标库详细](/#/docs/icon)  | String | - | - | 可选 |

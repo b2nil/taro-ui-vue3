@@ -26,105 +26,91 @@ $ yarn global add @tarojs/cli
 $ taro init myApp
 ```
 
-### 3. 安装 Taro UI Vue3
+### 3. 安装 `taro-ui-vue3`
 
 ```bash
 $ cd myApp
 $ npm install taro-ui-vue3
 ```
 
-**P.S.因为要支持自定义主题功能，需要将样式从组件中抽离出来，在微信小程序中依赖 globalClass 功能，所以需要微信基础库版本在 v2.2.3 以上。**
+> 因为要支持自定义主题功能，需要将样式从组件中抽离出来，在微信小程序中依赖 globalClass 功能，所以需要微信基础库版本在 v2.2.3 以上。
 
-#### 配置需要额外编译的源码模块
 
-由于引用 `node_modules` 的模块，默认不会编译，所以需要额外给 H5 配置 `esnextModules`，在 taro 项目的 `config/index.js` 中新增如下配置项：
+### 4. 使用 `taro-ui-vue3`
 
-```typescript
-h5: {
-  esnextModules: ['taro-ui-vue3']
-}
-```
+#### **全局引用组件和样式 -- 引用全部组件和样式**
+  ```typescript
+  import { createApp } from 'vue'
+  import { createUI } from 'taro-ui-vue3'
 
-### 4. 使用 Taro UI Vue3
+  // 引用全部组件样式
+  import 'taro-ui-vue3/dist/style/index.scss'
+  
+  const App = createApp({
+    onShow(options) { },
+  })
 
-#### 引入所需组件
+  // 引用全部组件
+  const tuv3 = createUI()
+  App.use(tuv3)
 
-在代码中 `import` 需要的组件并按照文档说明使用
+  export default App
+  ```
 
-```typescript
-// page.js
-import { AtButton } from 'taro-ui-vue3'
+#### **全局引用组件和样式 -- 按需引用部分组件和样式**
+  ```typescript
+  import { createApp } from 'vue'
+  import { createUI } from 'taro-ui-vue3'
+  import { 
+    AtButton, 
+    AtInput, 
+    AtTabs 
+  } from 'taro-ui-vue3/lib'
 
-// 或者从 taro-ui-vue3/lib 中按需引入组件，在少量使用组件的情况下，可大幅减少打包大小
-import { AtButton } from 'taro-ui-vue3/lib'
+  // 引用上述组件对应的样式文件
+  import 'taro-ui-vue3/dist/style/components/button.scss'
+  import 'taro-ui-vue3/dist/style/components/input.scss'
+  import 'taro-ui-vue3/dist/style/components/tabs.scss'
 
-// 除了引入所需的组件，还需要手动引入组件样式
-// app.js
-import 'taro-ui/dist/style/index.scss' // 全局引入一次即可
-```
+  const App = createApp({
+    onShow(options) { },
+  })
+  
+  // 引用部分组件
+  const tuv3 = createUI({
+    AtButton, 
+    AtInput, 
+    AtTabs
+  })
+  App.use(tuv3)
 
-**引入组件样式的三种方式**
+  export default App
+  ```
 
-- **全局引入（JS中）：** 在入口文件中引入 `taro-ui-vue3` 所有的样式
-```typescript
-import 'taro-ui/dist/style/index.scss' // 引入组件样式 - 方式一
-```
+#### **局部按需引用部分组件和组件样式**
 
-- **全局引入（CSS中）：** 在 `app.scss` 样式文件中 `import` 组件样式并按照文档说明使用
-```scss
-@import "taro-ui-vue3/dist/style/index.scss"; // 引入组件样式 - 方式二
-```
+  ```typescript
+  import { AtButton } from 'taro-ui-vue3/lib'
+  import 'taro-ui-vue3/dist/style/components/button.scss'
 
-- **按需引入：** 在页面样式或全局样式中 `import` 需要的组件样式
-```scss
-@import "taro-ui-vue3/dist/style/components/button.scss"; // 引入所需的组件样式 - 方式三
-```
+  export default {
+    components: {
+      AtButton
+    }
+  }
+  ```
+
+#### **在样式文件中引用组件样式**
+  ```scss
+  //在 `app.scss` 样式中引入全部或部分组件样式
+  @import "taro-ui-vue3/dist/style/index.scss"; 
+
+  // 在页面样式中引入样式中部分组件样式
+  @import "taro-ui-vue3/dist/style/components/button.scss"; 
+  ```
 
 > 具体的组件样式文件请查看 [组件样式列表](https://github.com/b2nil/taro-ui-vue3/tree/master/src/style/components)
 
-## 示例
-
-在 `/myApp/src/pages/index/index.tsx` 文件添加以下代码
-
-
-```vue
-<template>
-  <view class='index'>
-    <AtButton type='primary' @click="handleClick">按钮文案</AtButton>
-  </view>
-</template>
-<script>
-import { AtButton } from "taro-ui-vue3"
-import './index.scss'
-
-export default {
-  name: 'Index',
-  component: {
-    AtButton
-  },
-  methods: {
-    handleClick () {
-      console.log('click button)
-    }
-  }
-}
-</script>
-```
-
-
-在 `/myApp/src/app.scss` 文件中添加如下代码
-
-```scss
-@import "taro-ui-vue3/dist/style/index.scss"; // 引入组件样式，仅需引入一次即可
-```
-
-## 按需引入
-
-如果你只希望引入部分组件，比如 Button，那么可以只 `@import` 需要的样式文件
-
-```scss
-@import "taro-ui-vue3/dist/style/components/button.scss";
-```
 
 ## 编译并预览
 

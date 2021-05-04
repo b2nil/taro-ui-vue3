@@ -21,7 +21,10 @@ Taro 是由 [京东·凹凸实验室](https://aotu.io) 倾力打造的多端开�
 <div class="qrcode-modal">
   <h6>扫描二维码查看 H5 演示效果</h6>
   <div class="code-image">
-    <image src="../_assets/h5.png" />
+    <ClientOnly>
+      <qrcode-vue value="https://b2nil.github.io/taro-ui-vue3-demo/#/index" size="140" />
+      <!-- <image src="../_assets/h5.png" /> -->
+    </ClientOnly>
   </div>
 </div>
 
@@ -43,4 +46,4 @@ Taro 是由 [京东·凹凸实验室](https://aotu.io) 倾力打造的多端开�
 
 ## 贡献
 
-如果你在使用 `Taro UI Vue3` 时遇到问题，或者有好的建议，欢迎给我们提 [Issue](https://github.com/b2nil/taro-ui-vue3/issues) 或 [Pull Request](https://github.com/b2nil/taro-ui-vue3/pulls)
+如果你在使用 `taro-ui-vue3` 时遇到问题，或者有好的建议，欢迎给我们提 [Issue](https://github.com/b2nil/taro-ui-vue3/issues) 或 [Pull Request](https://github.com/b2nil/taro-ui-vue3/pulls)

@@ -102,7 +102,7 @@ import { AtRate } from 'taro-ui-vue3'
 | 参数       | 说明    | 类型    | 可选值   | 默认值   |
 | ---------- | ----- | ------- | ------- | -------- |
 | value | 当前评分,开发者可通过 `onChange` 事件或 `v-model:value` 来更新 `value` 值，必填   | `Number`  | - | `0` |
-| max   | 最大评分  | `Number` | - | `5` |
+| max   | 最大评分  | `Number | String` | - | `5` |
 | size  | 评分图标大小 | `Number | String` | - | `20` |
 | margin | 图标间隔,单位根据环境自动转为 `rpx` 或 `rem`  | `Number | String` | - | `5` |
 | color | 图标颜色，css 支持的颜色值  | `String` | - | `#FFCA3E` |

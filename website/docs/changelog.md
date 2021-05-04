@@ -5,6 +5,38 @@
 
 项目遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范
 
+### v1.0.0-alpha.20 (2021-4-25)
+* feat(image-picker): 增加组件上传状态功能以及 demo 展示 (2c6904c, dc3aa6c) by @unforesndprson
+* fix(SearchBar): 不默认清除搜索文字 (385cc1b)
+* fix(components): 移除组件带有 default 值的 props 的 required 属性 (07c9c4f, 3a638ff, b57c958, 7d008ad)
+* refactor(tabs): 简化 refs 的使用 (db9c8ee)
+
+### v1.0.0-alpha.19 (2021-3-20)
+* fix(types): 将 `createUI` 作为安装插件导出 (685161c)
+* fix(ImagePicker): 修复内容不居中 (868bab0, e8f5820), by @unforesndprson
+* fix(events): 所有 taro 内置事件全部采用小写，以便符合 vue@^3.0.6 的修改 (b01004a)
+* fix(calendar): 在多个月份中渲染 `marks` (5772de5)
+* 其他关于测试、依赖和 Demo 的一大波修复
+
+### v1.0.0-alpha.18 (2021-2-26)
+* 新增全局组件注册插件 (c3a4bc1)
+* `tab-bar` 的 `fontSize` 和 `iconSize` 属性类型改为接受 `string` 和 `number` (72492d4)
+* `rate` 的 `size`, `max`, `margin` 属性类型改为接受 `string` 和 `number` (5d45eb9)
+* `segmented-controll` 的 `fontSize` 属性类型改为接受 `string` 和 `number` (c40d35a)
+* 修复 `AtInput` `value` 为 `0` 时导致清除图标渲染失效, close #81 (e4d840f)
+* 修复 `AtInput` 使用 `border` 时仍存在 `.at-input--without-border` 样式， by @SUDOCS (10ed436)
+* `AtInput` 无插槽内容时不渲染插槽容器 (61d5452)
+* 修复 `AtInput` 禁用输入时不应触发事件 (d39acae)
+* 修复 `AtInput` 默认 `placeholderClass` 后的空格去除 (3e5c1ef)
+* 修复 `AtInput` `placeholderClass` 应为 `string` 而非 `object` (5d852b3)
+* 修复 `AtModal` 操作按钮不应设置上边距, close #76 (0a1b8a2)
+* 修复 `AtTextarea` placeholder 样式错误, by @chenxinan (9b21c32)
+* `AtNoticebar` 支持更多小程序平台 (6ce1738)
+* 修复 `AtImage-picker` `sizeType` 和 `sourceType` 笔误，并添加属性默认值 (3b733bb)
+* `AtSkeleton` 使用 `TransitionGroup` 而非 `Transition` (e739dea)
+* 修复 `AtSkeleton` 加载时应返回 a11y 属性 (25e980a)
+* 修复 `AtToast` 引用错误：Cannot access 'state' before initialization (e3c3dc4)
+
 ### v1.0.0-alpha.17 (2020-12-7)
 * `AtCheckbox`, `AtRate`, `AtSwitch`, `AtRadio`, `AtInput`, `AtInputNumber`, `AtTextarea`, `AtSearchBar` 等表单组件支持 v-model 语法
 * `AtRate` 新增 `icon` 和 `color` 属性，支持自定义图标(`'star' | 'heart'`)和图标颜色 (229d93e)
@@ -104,4 +136,4 @@
 
 ### v1.0.0-alpha.1 (2020-09-07)
 
-* **Taro UI Vue3** 发布第一个版本，包含 **50+** 组件
+* **`taro-ui-vue3`** 发布第一个版本，包含 **50+** 组件

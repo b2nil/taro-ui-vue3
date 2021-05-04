@@ -43,56 +43,24 @@ import { AtIcon } from 'taro-ui-vue3'
 
 
 ```typescript
-/* config/dev.js */
+/* config/index.js */
 module.exports = {
-  env: {
-    NODE_ENV: '"development"'
-  },
-  defineConstants: {},
-  // 小程序端专用配置
-  weapp: {
-    module: {
-      postcss: {
-        autoprefixer: {
-          enable: true
-        },
-        // 小程序端样式引用本地资源内联配置
-        url: {
-          enable: true,
-          config: {
-            limit: 10240 // 文件大小限制
-          }
+  //...
+  mini: {
+    postcss: {
+      autoprefixer: {
+        enable: true
+      },
+      // 小程序端样式引用本地资源内联配置
+      url: {
+        enable: true,
+        config: {
+          limit: 10240 // 文件大小限制
         }
       }
     }
   },
-  h5: {}
-}
-
-/* config/prod.js */
-module.exports = {
-  env: {
-    NODE_ENV: '"production"'
-  },
-  defineConstants: {},
-  // 小程序端专用配置
-  weapp: {
-    module: {
-      postcss: {
-        autoprefixer: {
-          enable: true
-        },
-        // 小程序端样式引用本地资源内联配置
-        url: {
-          enable: true,
-          config: {
-            limit: 10240 // 文件大小限制
-          }
-        }
-      }
-    }
-  },
-  h5: {}
+  //...
 }
 ```
 
@@ -166,28 +134,28 @@ import './icon.scss'
 
 ### 主要
 
-<!-- <IconList type='main'></IconList> -->
+<IconList type='main'></IconList>
 
 ### 文件
 
-<!-- <IconList type='file'></IconList> -->
+<IconList type='file'></IconList>
 
 ### 文本
 
-<!-- <IconList type='text'></IconList> -->
+<IconList type='text'></IconList>
 
 ### 箭头
 
-<!-- <IconList type='arrow'></IconList> -->
+<IconList type='arrow'></IconList>
 
 ### 媒体控制
 
-<!-- <IconList type='media'></IconList> -->
+<IconList type='media'></IconList>
 
 ### 多媒体
 
-<!-- <IconList type='photo'></IconList> -->
+<IconList type='photo'></IconList>
 
 ### Logo
 
-<!-- <IconList type='logo'></IconList> -->
+<IconList type='logo'></IconList>
