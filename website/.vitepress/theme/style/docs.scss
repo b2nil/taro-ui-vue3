@@ -371,12 +371,11 @@ $drop-shadow: 0 4px 30px 0 rgba(223, 225, 230, 0.5);
   position: fixed;
   top: 150px;
   right: 50px;
-  width: 375px;
-  height: 756px;
+  width: 411px;
+  height: 823px;
   background-color: #fff;
-  box-shadow: 0 4px 30px 0 rgba(4, 59, 85, 0.1);
+  box-shadow: 0 6px 30px 0 rgba(4, 59, 85, 0.4);
   border-radius: 60px;
-
   &.fixed {
     position: fixed;
     z-index: 100;
@@ -386,16 +385,16 @@ $drop-shadow: 0 4px 30px 0 rgba(223, 225, 230, 0.5);
 
   iframe {
     padding: 58px 22px 18px;
-    width: 375px;
-    height: 758px;
+    width: 411px;
+    height: 823px;
   }
 
   .iphone-frame {
     position: absolute;
     top: 0;
     left: 0;
-    width: 375px;
-    height: 758px;
+    width: 411px;
+    height: 823px;
     background: url('../../../assets/iframe_iphonex.png') no-repeat;
     background-size: contain;
     pointer-events: none;
