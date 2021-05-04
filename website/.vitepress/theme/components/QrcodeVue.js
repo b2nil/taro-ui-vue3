@@ -1,5 +1,5 @@
 import { defineComponent, h, mergeProps, onMounted, onUpdated, ref } from "vue"
-import qrcode from 'qr.js'
+import * as qrcode from 'qr.js'
 
 /**
  * Encode UTF16 to UTF8.

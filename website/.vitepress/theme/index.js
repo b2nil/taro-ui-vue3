@@ -8,7 +8,7 @@ import "./style/code.scss"
 export default {
   Layout,
   NotFound,
-  enhancedApp({ app, router, siteData }) {
+  enhanceApp({ app, router, siteData }) {
     app.component(IconList.name, IconList)
     app.component(QrcodeVue.name, QrcodeVue)
   }

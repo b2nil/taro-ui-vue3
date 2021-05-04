@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "taro-ui-vue3-docs",
-  "version": "1.0.0-alpha.17",
+  "version": "1.0.0-alpha.20",
   "description": "Taro UI Vue3 Documentation",
   "author": "b2nil<Ken Ho>",
   "homepage": "https://b2nil.github.io/taro-ui-vue3",
@@ -23,12 +23,12 @@
   "dependencies": {
     "at-ui-style": "^1.5.1",
     "qr.js": "^0.0.0",
-    "vue": "^3.0.0"
+    "vue": "^3.0.10"
   },
   "devDependencies": {
-    "@vue/compiler-sfc": "^3.0.0",
-    "@vue/server-renderer": "^3.0.0",
+    "@vue/compiler-sfc": "^3.0.10",
+    "@vue/server-renderer": "^3.0.10",
     "sass": "^1.30.0",
-    "vitepress": "^0.8.1"
+    "vitepress": "^0.13.2"
   }
 }
