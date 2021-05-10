@@ -32,8 +32,15 @@ const transformPlugin = {
     })
 
     build.onEnd(result => {
-      fs.rename('lib/taro-ui-vue3/index.js', 'lib/index.js', (err) => {
-        if (err) throw err
+      fs.copyFile('lib/taro-ui-vue3/index.js', 'lib/index.js', (err) => {
+        if (err) {
+          console.log('[x] failed to copy lib/taro-ui-vue3/index.js: ', err)
+        }
+      })
+      fs.rm('lib/taro-ui-vue3', { recursive: true }, (err) => {
+        if (err) {
+          console.log('[x] error occurredd during removing lib/taro-ui-vue3: ', err)
+        }
       })
     })
   },
@@ -44,7 +51,7 @@ async function* walk(dir) {
     const entry = path.join(dir, d.name);
     if (
       d.isDirectory() &&
-      !['__tests__', '__mocks__', 'style', 'types', 'test-utils'].includes(d.name)
+      !['__tests__', '__mocks__', 'style', 'types', 'test-utils', 'node_modules'].includes(d.name)
     ) yield* await walk(entry);
     else if (
       d.isFile() && d.name !== 'package.json'
@@ -69,7 +76,7 @@ const buildLib = async () => {
     },
     plugins: [transformPlugin],
     outdir: "lib",
-    target: ['esnext'],
+    target: ['es6'],
     define: {
       'process.env.NODE_ENV': "'development'",
     },

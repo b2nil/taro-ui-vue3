@@ -1,11 +1,11 @@
 const { build } = require('esbuild')
-var shell = require('shelljs')
+const shell = require('shelljs')
 
-const copyFilePluin = {
-  name: "copyFilePluin",
+const copyStylePluin = {
+  name: "copyStylePluin",
   setup(build) {
     build.onEnd(result => {
-      shell.cp('-R', 'packages/style/', 'dist/style')
+      shell.cp('-R', 'packages/style', 'dist/style')
     })
   }
 }
@@ -27,9 +27,11 @@ build({
     '@tarojs/taro',
     '@tarojs/components',
   ],
-  plugins: [copyFilePluin],
+  plugins: [copyStylePluin],
   outfile: 'dist/index.esm.js',
-  target: ['esnext'],
+  target: [
+    'es6'
+  ],
   define: {
     'process.env.NODE_ENV': "'development'",
   },
