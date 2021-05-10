@@ -100,8 +100,8 @@ describe('ActionSheet events', () => {
       }
     )
 
-    wrapper.find('.at-action-sheet__footer').trigger('tap')
-    wrapper.find('.at-action-sheet__overlay').trigger('tap')
+    await wrapper.find('.at-action-sheet__footer').trigger('tap')
+    await wrapper.find('.at-action-sheet__overlay').trigger('tap')
     expect(onCancel).toBeCalled()
     expect(onClose).toBeCalled()
   })

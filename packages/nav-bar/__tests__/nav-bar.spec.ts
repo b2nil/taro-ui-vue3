@@ -93,33 +93,33 @@ describe('AtNavBar', () => {
 })
 
 describe('AtNavBar Behavior ', () => {
-  it('should trigger onClickLeftIcon', () => {
+  it('should trigger onClickLeftIcon', async () => {
     const onClickLeftIcon = jest.fn()
     const wrapper = factory({
       leftIconType: 'test',
       onClickLeftIcon,
     })
-    wrapper.find('.at-nav-bar__left-view').trigger('tap')
+    await wrapper.find('.at-nav-bar__left-view').trigger('tap')
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should trigger onClickRightSecondIcon', () => {
+  it('should trigger onClickRightSecondIcon', async () => {
     const onClickRightSecondIcon = jest.fn()
     const wrapper = factory({
       leftIconType: 'test',
       onClickRightSecondIcon,
     })
-    wrapper.find('.at-nav-bar__right-view view:first-child').trigger('tap')
+    await wrapper.find('.at-nav-bar__right-view view:first-child').trigger('tap')
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should trigger onClickRightFirstIcon', () => {
+  it('should trigger onClickRightFirstIcon', async () => {
     const onClickRightFirstIcon = jest.fn()
     const wrapper = factory({
       leftIconType: 'test',
       onClickRightFirstIcon,
     })
-    wrapper.find('.at-nav-bar__right-view view:last-child').trigger('tap')
+    await wrapper.find('.at-nav-bar__right-view view:last-child').trigger('tap')
     expect(wrapper.element).toMatchSnapshot()
   })
 })

@@ -41,24 +41,24 @@ describe('AtTag', () => {
 })
 
 describe('AtTag Behavior', () => {
-  it('should trigger onClick', () => {
+  it('should trigger onClick', async () => {
     const onClick = jest.fn()
     const wrapper = factory({ onClick: onClick })
-    wrapper.find('.at-tag').trigger('tap')
+    await wrapper.find('.at-tag').trigger('tap')
     expect(onClick).toBeCalled()
   })
 
-  it('should not trigger onClick when disabled', () => {
+  it('should not trigger onClick when disabled', async () => {
     const onClick = jest.fn()
     const wrapper = factory({ onClick: onClick, disabled: true })
-    wrapper.find('.at-tag').trigger('tap')
+    await wrapper.find('.at-tag').trigger('tap')
     expect(onClick).not.toBeCalled()
   })
 
-  it('onClick should have params {name, active}', () => {
+  it('onClick should have params {name, active}', async () => {
     const onClick = jest.fn()
     const wrapper = factory({ onClick: onClick, name: 'tag-01' })
-    wrapper.find('.at-tag').trigger('tap')
+    await wrapper.find('.at-tag').trigger('tap')
     expect(onClick.mock.calls[0][0].name).toEqual('tag-01')
     expect(onClick.mock.calls[0][0].active).toBeFalsy()
   })

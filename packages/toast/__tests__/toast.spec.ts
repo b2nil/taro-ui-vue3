@@ -62,49 +62,48 @@ describe('Toast', () => {
 })
 
 describe('Toast Behavior ', () => {
+  beforeEach(() => {
+    jest.useFakeTimers()
+    jest.runOnlyPendingTimers()
+  })
   it('should trigger onClose event and close Toast', async () => {
-    let closeToken = ""
-    const onClose = jest.fn().mockImplementation(() => {
-      closeToken = "onClose is called"
-    })
+    const onClose = jest.fn()
     const wrapper = factory({ isOpened: true, onClose: onClose })
     expect(wrapper.find(".at-toast").exists()).toBeTruthy()
 
-    wrapper.find('.at-toast .toast-body').trigger('tap')
-    wrapper.vm.$nextTick(() => {
-      expect(closeToken).toEqual("onClose is called")
-      expect(wrapper.find(".at-toast").exists()).toBeFalsy()
-    })
+    await wrapper.find('.at-toast .toast-body').trigger('tap')
+    await wrapper.vm.$nextTick()
+    expect(onClose).toBeCalled()
+    expect(wrapper.find(".at-toast").exists()).toBeFalsy()
   })
 
-  it('Toast should be closed when time over --- default 3000 ms', async () => {
+  it('Toast should be closed when duration time over --- default 3000 ms', async () => {
     const wrapper = factory({ isOpened: true })
     expect(wrapper.vm.duration).toEqual(3000)
-    await sleep(3000)
-    wrapper.vm.$nextTick(() => {
-      expect(wrapper.find(".at-toast").exists()).toBeFalsy()
-    })
+    jest.advanceTimersByTime(3000)
+    await wrapper.vm.$nextTick()
+    expect(wrapper.find(".at-toast").exists()).toBeFalsy()
   })
 
-  it('Toast should be closed when time over -- 1000 ms', async () => {
+  it('Toast should be closed when duration time over -- 1000 ms', async () => {
     const wrapper = factory({ isOpened: true, duration: 1000 })
     expect(wrapper.vm.duration).toEqual(1000)
-    await sleep(1000)
-    wrapper.vm.$nextTick(() => {
-      expect(wrapper.find(".at-toast").exists()).toBeFalsy()
-    })
+    jest.advanceTimersByTime(1000)
+    await wrapper.vm.$nextTick()
+    expect(wrapper.find(".at-toast").exists()).toBeFalsy()
   })
 
-  it('should trigger onClick', async () => {
+  it('should trigger onClick and onClose', async () => {
     const onClick = jest.fn()
-    const wrapper = factory({ isOpened: true, onClick: onClick })
+    const onClose = jest.fn()
+    const wrapper = factory({ isOpened: true, onClick, onClose })
     expect(wrapper.find(".at-toast").exists()).toBeTruthy()
 
-    wrapper.find('.at-toast .toast-body').trigger('tap')
+    await wrapper.find('.at-toast .toast-body').trigger('tap')
     expect(onClick).toBeCalled()
+    expect(onClose).toBeCalled()
 
-    wrapper.vm.$nextTick(() => {
-      expect(wrapper.find(".at-toast").exists()).toBeFalsy()
-    })
+    await wrapper.vm.$nextTick()
+    expect(wrapper.find(".at-toast").exists()).toBeFalsy()
   })
 })

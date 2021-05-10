@@ -1,4 +1,5 @@
 import { mountFactory, Slots } from '@taro-ui-vue3/test-utils/helper'
+import { ref } from 'vue'
 import AtTabBar from '../index'
 
 const factory = (values = {}, slots: Slots = { default: [''] }) => {
@@ -73,14 +74,16 @@ describe('AtTabBar', () => {
 
 describe('AtTabBar Behavior', () => {
   it('should trigger onClick event, and prop current should be equal to index of the item clicked', async () => {
-    const onClick = jest.fn()
-    const wrapper = factory({ tabList: tabList, onClick: onClick })
+    const current = ref(0)
+    const onClick = jest.fn((index) => {
+      current.value = index
+    })
+    const wrapper = factory({ current: current.value, tabList: tabList, onClick: onClick })
 
-    wrapper.find('.at-tab-bar__item:nth-child(3)').trigger('tap')
+    await wrapper.find('.at-tab-bar__item:nth-child(3)').trigger('tap')
     expect(onClick).toBeCalled()
 
-    wrapper.vm.$nextTick(() => {
-      expect(wrapper.vm.current).toBe(2)
-    })
+    await wrapper.vm.$nextTick()
+    expect(current.value).toBe(2)
   })
 })

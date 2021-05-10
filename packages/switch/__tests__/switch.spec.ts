@@ -38,10 +38,10 @@ describe('AtSwitch', () => {
 })
 
 describe('AtSwitch Behavior', () => {
-  it('should trigger onChange', () => {
+  it('should trigger onChange', async () => {
     const onChange = jest.fn()
     const wrapper = factory({ title: '开启中', onChange: onChange })
-    wrapper.find('.at-switch .at-switch__switch').trigger('change', { detail: { value: false } })
+    await wrapper.find('.at-switch .at-switch__switch').trigger('change', { detail: { value: false } })
     expect(onChange).toBeCalled()
     expect(onChange.mock.calls[0][0].value).toBeFalsy()
   })

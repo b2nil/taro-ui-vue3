@@ -1,4 +1,4 @@
-import { h, defineComponent, computed, mergeProps, PropType } from 'vue'
+import { h, defineComponent, computed, mergeProps, PropType, nextTick } from 'vue'
 import { Text, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtRateProps } from '@taro-ui-vue3/types/rate'

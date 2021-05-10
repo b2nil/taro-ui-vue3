@@ -105,7 +105,7 @@ const AtToast = defineComponent({
       if (props.status === 'loading') return
 
       if (typeof props.onClick === 'function') {
-        return props.onClick(e)
+        props.onClick(e)
       }
 
       close()

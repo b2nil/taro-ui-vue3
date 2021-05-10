@@ -20,7 +20,7 @@ describe('AtRadio', () => {
 })
 
 describe('AtRadio Behavior', () => {
-  it('should trigger onClick', () => {
+  it('should trigger onClick', async () => {
     const onItemClick = jest.fn()
     const wrapper = mount({
       render() {
@@ -31,12 +31,12 @@ describe('AtRadio Behavior', () => {
         })
       },
     })
-    wrapper.find('.at-radio .at-radio__option').trigger('tap')
+    await wrapper.find('.at-radio .at-radio__option').trigger('tap')
     expect(onItemClick).toBeCalled()
     expect(onItemClick.mock.calls[0][0]).toBe('option1')
   })
 
-  it('AtRadio onClick disabled, onClick not to be called', () => {
+  it('AtRadio onClick disabled, onClick not to be called', async () => {
     const onItemClick = jest.fn()
     const wrapper = mount({
       render() {
@@ -47,7 +47,7 @@ describe('AtRadio Behavior', () => {
         })
       },
     })
-    wrapper.find('.at-radio .at-radio__option:nth-child(3)').trigger('tap')
+    await wrapper.find('.at-radio .at-radio__option:nth-child(3)').trigger('tap')
     expect(onItemClick).not.toBeCalled()
   })
 })

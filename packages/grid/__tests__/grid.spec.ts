@@ -94,7 +94,7 @@ describe('Grid', () => {
 })
 
 describe('Grid Behavior ', () => {
-  it('should trigger onClick', () => {
+  it('should trigger onClick', async () => {
     const onClick = jest.fn()
 
     const wrapper = factory({
@@ -104,7 +104,7 @@ describe('Grid Behavior ', () => {
       onClick: onClick,
     })
 
-    wrapper.find('.at-grid .at-grid-item').trigger('tap')
+    await wrapper.find('.at-grid .at-grid-item').trigger('tap')
     expect(onClick).toBeCalled()
   })
 })

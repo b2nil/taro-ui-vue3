@@ -50,25 +50,25 @@ describe('AtCheckbox', () => {
 })
 
 describe('AtCheckbox Behavior', () => {
-  it('should trigger onChange', () => {
+  it('should trigger onChange', async () => {
     const onClick = jest.fn()
     const wrapper = factory({
       options: checkboxOption,
       selectedList: ['list2'],
       onChange: onClick,
     })
-    wrapper.find('.at-checkbox .at-checkbox__option').trigger('tap')
+    await wrapper.find('.at-checkbox .at-checkbox__option').trigger('tap')
     expect(onClick).toBeCalled()
   })
 
-  it('should not trigger onChange when disabled', () => {
+  it('should not trigger onChange when disabled', async () => {
     const onClick = jest.fn()
     const wrapper = factory({
       options: checkboxOption,
       selectedList: ['list2'],
       onChange: onClick,
     })
-    wrapper.find('.at-checkbox .at-checkbox__option:nth-child(3)').trigger('tap')
+    await wrapper.find('.at-checkbox .at-checkbox__option:nth-child(3)').trigger('tap')
     expect(onClick).not.toBeCalled()
   })
 })

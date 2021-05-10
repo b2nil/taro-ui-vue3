@@ -21,17 +21,17 @@ describe('AtForm', () => {
 })
 
 describe('AtForm Behavior', () => {
-  it('should trigger onSubmit', () => {
+  it('should trigger onSubmit', async () => {
     const onSubmit = jest.fn()
     const wrapper = factory({ onSubmit: onSubmit })
-    wrapper.find('.at-form').trigger('submit')
+    await wrapper.find('.at-form').trigger('submit')
     expect(onSubmit).toBeCalled()
   })
 
-  it('should trigger onReset', () => {
+  it('should trigger onReset', async () => {
     const onReset = jest.fn()
     const wrapper = factory({ onReset: onReset })
-    wrapper.find('.at-form').trigger('reset')
+    await wrapper.find('.at-form').trigger('reset')
     expect(onReset).toBeCalled()
   })
 })

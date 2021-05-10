@@ -1,7 +1,6 @@
 import { mountFactory, Slots } from '@taro-ui-vue3/test-utils/helper'
 import AtMessage from '../index'
 import Taro from '@tarojs/taro'
-import { h, defineComponent } from '@vue/runtime-core'
 
 const mountFn = (
   props = {},
@@ -36,8 +35,11 @@ describe('AtMessage', () => {
 })
 
 type MessageType = 'info' | 'success' | 'error' | 'warning'
-// Not working correctly yet
 describe('AtMessage behaviours', () => {
+  beforeEach(() => {
+    jest.useFakeTimers()
+    jest.runOnlyPendingTimers()
+  })
   it.each([
     'info',
     'success',
@@ -45,37 +47,14 @@ describe('AtMessage behaviours', () => {
     'warning'
   ])('should open message and render message type -- %s', async (messageType: MessageType) => {
 
-    const handleClick = jest.fn((type?: MessageType) => {
-      Taro.atMessage({
-        message: '消息通知',
-        type
-      })
+    const wrapper = mountFactory(AtMessage)
+
+    Taro.atMessage({
+      message: '消息通知',
+      type: messageType
     })
 
-    const testComp = defineComponent({
-      name: 'TestComp',
-      setup() {
-
-        return () => (
-          h('view', null, {
-            default: () => [
-              h('button', {
-                class: 'btn',
-                onClick: handleClick(messageType)
-              }, { default: () => '提示消息' }),
-
-              h(AtMessage)
-            ]
-          })
-        )
-      }
-    })
-
-    const wrapper = mountFactory(testComp)
-    await wrapper.find('.btn').trigger('click')
-    wrapper.vm.$nextTick()
-
-    expect(handleClick).toBeCalled()
+    await wrapper.vm.$nextTick()
     expect(
       wrapper
         .find('.at-message')

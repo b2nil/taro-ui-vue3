@@ -61,12 +61,11 @@ describe('AtButton', () => {
     const wrapper = factory({
       formType: 'submit',
     })
-    expect(wrapper.find('.at-button__wxbutton').attributes('formtype')).toBe('submit')
-
-    await wrapper.setProps({ formType: '' })
-    wrapper.vm.$nextTick(() => {
-      expect(wrapper.find('.at-button__wxbutton').attributes('formtype')).toBe('')
-    })
+    expect(
+      wrapper
+        .find('.at-button__wxbutton')
+        .attributes('formtype')
+    ).toBe('submit')
   })
 
   describe('should render prop -- disabled', () => {
@@ -128,29 +127,41 @@ describe('AtButton', () => {
 })
 
 describe('AtButton Behavior', () => {
-  it('AtButton should trigger onClick event', () => {
+  it('AtButton should trigger onClick event', async () => {
     const onClick = jest.fn()
     const wrapper = factory({
       onClick: onClick,
     })
-    wrapper.find('.at-button').trigger('tap')
+    await wrapper.find('.at-button').trigger('tap')
     expect(onClick).toBeCalled()
   })
 
-  it('AtButton should not trigger onClick event when disabled', () => {
+  it('AtButton should trigger [Vue warn] message if onTap is used instead of onClick', async () => {
+    const onClick = jest.fn()
+    const wrapper = factory({
+      onTap: onClick,
+    })
+    await wrapper.find('.at-button').trigger('tap')
+    // expect(onClick).not.toBeCalled()
+    expect(
+      '[Vue warn]: AtButton 绑定的点击事件应为 `click`， 而非 `tap`。'
+    ).toHaveBeenTipped()
+  })
+
+  it('AtButton should not trigger onClick event when disabled', async () => {
     const onClick = jest.fn()
     const wrapper = factory({
       disabled: true,
       onClick: onClick,
     })
-    wrapper.find('.at-button').trigger('tap')
+    await wrapper.find('.at-button').trigger('tap')
     expect(onClick).not.toBeCalled()
   })
 
-  it('AtButton should not trigger onClick event if handler not passed', () => {
+  it('AtButton should not trigger onClick event if handler not passed', async () => {
     const onClick = jest.fn()
     const wrapper = factory()
-    wrapper.find('.at-button').trigger('tap')
+    await wrapper.find('.at-button').trigger('tap')
     expect(onClick).not.toBeCalled()
   })
 
@@ -171,119 +182,128 @@ describe('AtButton Behavior', () => {
       getEnvs.mockClear()
     })
 
-    it('should trigger onGetUserInfo when openType == getUserInfo', () => {
+    it('should trigger onGetUserInfo when openType == getUserInfo', async () => {
       const onGetUserInfo = jest.fn()
       const wrapper = factory({
         openType: 'getUserInfo',
         onGetUserInfo: onGetUserInfo
       })
-      wrapper.find('.at-button__wxbutton').trigger('getuserinfo')
+      await wrapper.find('.at-button__wxbutton').trigger('getuserinfo')
       expect(onGetUserInfo).toBeCalled()
+      expect(
+        '[Vue warn]: 2021 年 4 月 13 日后发布的新版本小程序，'
+      ).toHaveBeenTipped()
     })
 
-    it('should not trigger onGetUserInfo when openType != getUserInfo', () => {
+    it('should not trigger onGetUserInfo when openType != getUserInfo', async () => {
       const onGetUserInfo = jest.fn()
       const wrapper = factory({
         onGetUserInfo: onGetUserInfo
       })
-      wrapper.find('.at-button__wxbutton').trigger('getuserinfo')
+      await wrapper.find('.at-button__wxbutton').trigger('getuserinfo')
       expect(onGetUserInfo).not.toBeCalled()
+      expect(
+        '[Vue warn]: 2021 年 4 月 13 日后发布的新版本小程序，'
+      ).not.toHaveBeenTipped()
     })
 
-    it('should not trigger onGetUserInfo if eventHandler not passed', () => {
+    it('should not trigger onGetUserInfo if eventHandler not passed', async () => {
       const onGetUserInfo = jest.fn()
       const wrapper = factory({
         openType: 'getUserInfo'
       })
-      wrapper.find('.at-button__wxbutton').trigger('getuserinfo')
+      await wrapper.find('.at-button__wxbutton').trigger('getuserinfo')
       expect(onGetUserInfo).not.toBeCalled()
+      expect(
+        '[Vue warn]: 2021 年 4 月 13 日后发布的新版本小程序，'
+      ).toHaveBeenTipped()
     })
 
-    it('should trigger onContact when openType == contact', () => {
+    it('should trigger onContact when openType == contact', async () => {
       const onContact = jest.fn()
       const wrapper = factory({
         openType: 'contact',
         onContact: onContact
       })
-      wrapper.find('.at-button__wxbutton').trigger('contact')
+      await wrapper.find('.at-button__wxbutton').trigger('contact')
       expect(onContact).toBeCalled()
     })
 
-    it('should not trigger onContact if eventHandler not passed', () => {
+    it('should not trigger onContact if eventHandler not passed', async () => {
       const onContact = jest.fn()
       const wrapper = factory({
         openType: 'contact'
       })
-      wrapper.find('.at-button__wxbutton').trigger('contact')
+      await wrapper.find('.at-button__wxbutton').trigger('contact')
       expect(onContact).not.toBeCalled()
     })
 
-    it('should not trigger onContact when openType != contact', () => {
+    it('should not trigger onContact when openType != contact', async () => {
       const onContact = jest.fn()
       const wrapper = factory({
         onContact: onContact
       })
-      wrapper.find('.at-button__wxbutton').trigger('contact')
+      await wrapper.find('.at-button__wxbutton').trigger('contact')
       expect(onContact).not.toBeCalled()
     })
 
-    it('should trigger onOpenSetting when openType == openSetting', () => {
+    it('should trigger onOpenSetting when openType == openSetting', async () => {
       const onOpenSetting = jest.fn()
       const wrapper = factory({
         openType: 'openSetting',
         onOpenSetting: onOpenSetting
       })
-      wrapper.find('.at-button__wxbutton').trigger('opensetting')
+      await wrapper.find('.at-button__wxbutton').trigger('opensetting')
       expect(onOpenSetting).toBeCalled()
     })
 
-    it('should not trigger onOpenSetting if eventHandler not passed', () => {
+    it('should not trigger onOpenSetting if eventHandler not passed', async () => {
       const onOpenSetting = jest.fn()
       const wrapper = factory({
         openType: 'openSetting'
       })
-      wrapper.find('.at-button__wxbutton').trigger('opensetting')
+      await wrapper.find('.at-button__wxbutton').trigger('opensetting')
       expect(onOpenSetting).not.toBeCalled()
     })
 
-    it('should not trigger onOpenSetting when openType != openSetting', () => {
+    it('should not trigger onOpenSetting when openType != openSetting', async () => {
       const onOpenSetting = jest.fn()
       const wrapper = factory({
         onOpenSetting: onOpenSetting
       })
-      wrapper.find('.at-button__wxbutton').trigger('opensetting')
+      await wrapper.find('.at-button__wxbutton').trigger('opensetting')
       expect(onOpenSetting).not.toBeCalled()
     })
 
-    it('should trigger onGetPhoneNumber when openType == getPhoneNumber', () => {
+    it('should trigger onGetPhoneNumber when openType == getPhoneNumber', async () => {
       const onGetPhoneNumber = jest.fn()
       const wrapper = factory({
         openType: 'getPhoneNumber',
         onGetPhoneNumber: onGetPhoneNumber
       })
-      wrapper.find('.at-button__wxbutton').trigger('getphonenumber')
+      await wrapper.find('.at-button__wxbutton').trigger('getphonenumber')
       expect(onGetPhoneNumber).toBeCalled()
     })
 
-    it('should trigger onGetPhoneNumber if eventHandler not passed', () => {
+    it('should trigger onGetPhoneNumber if eventHandler not passed', async () => {
       const onGetPhoneNumber = jest.fn()
       const wrapper = factory({
         openType: 'getPhoneNumber'
       })
-      wrapper.find('.at-button__wxbutton').trigger('getphonenumber')
+      await wrapper.find('.at-button__wxbutton').trigger('getphonenumber')
       expect(onGetPhoneNumber).not.toBeCalled()
     })
 
-    it('should not trigger onGetPhoneNumber when openType != getPhoneNumber', () => {
+    it('should not trigger onGetPhoneNumber when openType != getPhoneNumber', async () => {
       const onGetPhoneNumber = jest.fn()
       const wrapper = factory({
         onGetPhoneNumber: onGetPhoneNumber
       })
-      wrapper.find('.at-button__wxbutton').trigger('getphonenumber')
+      await wrapper.find('.at-button__wxbutton').trigger('getphonenumber')
       expect(onGetPhoneNumber).not.toBeCalled()
     })
 
-    it('should trigger onLaunchapp and onError when openType == launchApp', () => {
+    it('should trigger onLaunchapp and onError when openType == launchApp', async () => {
       const onLaunchapp = jest.fn()
       const onError = jest.fn()
       const wrapper = factory({
@@ -291,38 +311,38 @@ describe('AtButton Behavior', () => {
         onLaunchapp: onLaunchapp,
         onError: onError
       })
-      wrapper.find('.at-button__wxbutton').trigger('launchapp')
-      wrapper.find('.at-button__wxbutton').trigger('error')
+      await wrapper.find('.at-button__wxbutton').trigger('launchapp')
+      await wrapper.find('.at-button__wxbutton').trigger('error')
       expect(onLaunchapp).toBeCalled()
       expect(onError).toBeCalled()
     })
 
-    it('should trigger onLaunchapp and onError if eventHandlers not passed', () => {
+    it('should trigger onLaunchapp and onError if eventHandlers not passed', async () => {
       const onLaunchapp = jest.fn()
       const onError = jest.fn()
       const wrapper = factory({
         openType: 'launchApp'
       })
-      wrapper.find('.at-button__wxbutton').trigger('launchapp')
-      wrapper.find('.at-button__wxbutton').trigger('error')
+      await wrapper.find('.at-button__wxbutton').trigger('launchapp')
+      await wrapper.find('.at-button__wxbutton').trigger('error')
       expect(onLaunchapp).not.toBeCalled()
       expect(onError).not.toBeCalled()
     })
 
-    it('should not trigger onLaunchapp and onError when openType != launchApp', () => {
+    it('should not trigger onLaunchapp and onError when openType != launchApp', async () => {
       const onLaunchapp = jest.fn()
       const onError = jest.fn()
       const wrapper = factory({
         onLaunchapp: onLaunchapp,
         onError: onError
       })
-      wrapper.find('.at-button__wxbutton').trigger('launchapp')
-      wrapper.find('.at-button__wxbutton').trigger('error')
+      await wrapper.find('.at-button__wxbutton').trigger('launchapp')
+      await wrapper.find('.at-button__wxbutton').trigger('error')
       expect(onLaunchapp).not.toBeCalled()
       expect(onError).not.toBeCalled()
     })
 
-    it('should trigger onGetAuthorize when openType == getAuthorize', () => {
+    it('should trigger onGetAuthorize when openType == getAuthorize', async () => {
       getEnvs = jest.spyOn(utils, 'getEnvs').mockImplementation(() => {
         return {
           isWEAPP: false,
@@ -335,11 +355,11 @@ describe('AtButton Behavior', () => {
         openType: 'getAuthorize',
         onGetAuthorize: onGetAuthorize
       })
-      wrapper.find('.at-button__wxbutton').trigger('getauthorize')
+      await wrapper.find('.at-button__wxbutton').trigger('getauthorize')
       expect(onGetAuthorize).toBeCalled()
     })
 
-    it('should not trigger onGetAuthorize when openType != getAuthorize', () => {
+    it('should not trigger onGetAuthorize when openType != getAuthorize', async () => {
       getEnvs = jest.spyOn(utils, 'getEnvs').mockImplementation(() => {
         return {
           isWEAPP: false,
@@ -351,11 +371,11 @@ describe('AtButton Behavior', () => {
       const wrapper = factory({
         onGetAuthorize: onGetAuthorize
       })
-      wrapper.find('.at-button__wxbutton').trigger('getauthorize')
+      await wrapper.find('.at-button__wxbutton').trigger('getauthorize')
       expect(onGetAuthorize).not.toBeCalled()
     })
 
-    it('should not trigger onGetAuthorize if eventHandler not passed', () => {
+    it('should not trigger onGetAuthorize if eventHandler not passed', async () => {
       getEnvs = jest.spyOn(utils, 'getEnvs').mockImplementation(() => {
         return {
           isWEAPP: false,
@@ -365,7 +385,7 @@ describe('AtButton Behavior', () => {
       })
       const onGetAuthorize = jest.fn()
       const wrapper = factory({ openType: 'getAuthorize' })
-      wrapper.find('.at-button__wxbutton').trigger('getauthorize')
+      await wrapper.find('.at-button__wxbutton').trigger('getauthorize')
       expect(onGetAuthorize).not.toBeCalled()
     })
 

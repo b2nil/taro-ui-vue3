@@ -42,7 +42,7 @@ describe('AtDrawer Behavior', () => {
       items: ['菜单1', '菜单2'],
     })
     await sleep(300)
-    wrapper.find('.at-drawer .at-list__item').trigger('tap')
+    await wrapper.find('.at-drawer .at-list__item').trigger('tap')
     expect(onItemClick).toBeCalled()
     await sleep(350)
     expect(onClose).toBeCalled()
@@ -56,8 +56,8 @@ describe('AtDrawer Behavior', () => {
       items: ['菜单1', '菜单2'],
     })
     await sleep(300)
-    wrapper.find('.at-drawer .at-list__item').trigger('tap')
-    wrapper.find('.at-drawer .at-list__item:nth-child(2)').trigger('tap')
+    await wrapper.find('.at-drawer .at-list__item').trigger('tap')
+    await wrapper.find('.at-drawer .at-list__item:nth-child(2)').trigger('tap')
     await sleep(0)
     expect(onItemClick.mock.calls[0][0]).toBe(0)
     expect(onItemClick.mock.calls[1][0]).toBe(1)
@@ -71,7 +71,7 @@ describe('AtDrawer Behavior', () => {
       items: ['菜单1', '菜单2'],
     })
     await sleep(300)
-    wrapper.find('.at-drawer .at-drawer__mask').trigger('tap')
+    await wrapper.find('.at-drawer .at-drawer__mask').trigger('tap')
     await sleep(350)
     expect(onClose).toBeCalled()
   })

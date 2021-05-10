@@ -27,6 +27,12 @@ describe('Avatar', () => {
 
   it('should render Avatar with normal size if prop size failed validation', () => {
     const wrapper = factory({ size: 'xsmall' })
+    expect(
+      '[Vue warn]: Invalid prop: custom validator check failed for prop \"size\".'
+    ).toHaveBeenTipped()
+    expect(
+      "[Vue warn]: Prop size must be of PropType<'large' | 'normal' | 'small'>, actual:"
+    ).toHaveBeenTipped()
     expect(wrapper.find('.at-avatar--xsamll').exists()).toBe(false)
     expect(wrapper.find('.at-avatar--normal').exists()).toBe(true)
   })

@@ -66,17 +66,17 @@ describe('AtSlider', () => {
 })
 
 describe('AtSlider Behavior', () => {
-  it('should trigger onChange', () => {
+  it('should trigger onChange', async () => {
     const onChange = jest.fn()
     const wrapper = factory({ onChange: onChange })
-    wrapper.find('.at-slider slider').trigger('change', { detail: { value: 50 } })
+    await wrapper.find('.at-slider slider').trigger('change', { detail: { value: 50 } })
     expect(onChange).toBeCalled()
   })
 
-  it('should trigger onChanging', () => {
+  it('should trigger onChanging', async () => {
     const onChanging = jest.fn()
     const wrapper = factory({ onChanging: onChanging })
-    wrapper.find('.at-slider slider').trigger('changing', { detail: { value: 50 } })
+    await wrapper.find('.at-slider slider').trigger('changing', { detail: { value: 50 } })
     expect(onChanging).toBeCalled()
   })
 })

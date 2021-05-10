@@ -46,8 +46,7 @@ describe('FloatLayout Behavior ', () => {
       isOpened: true,
       onClose: onClose,
     })
-    wrapper.find('.at-float-layout__overlay').trigger('tap')
-    await sleep(0)
+    await wrapper.find('.at-float-layout__overlay').trigger('tap')
     expect(onClose).toBeCalled()
   })
 })

@@ -1,4 +1,5 @@
 import { mount } from '@vue/test-utils'
+import Taro from "@tarojs/taro"
 import AtSegmentedControl from '../index'
 
 const factory = (values = {}, slots = { default: [''] }) => {

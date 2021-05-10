@@ -72,37 +72,37 @@ describe('AtSearchBar', () => {
 })
 
 describe('AtSearchBar Behavior', () => {
-  it('should trigger onChange', () => {
+  it('should trigger onChange', async () => {
     const wrapper = factory({ value: 'props.value' })
-    wrapper.find('.at-search-bar .at-search-bar__input').trigger('input', { detail: { value: 'value' } })
+    await wrapper.find('.at-search-bar .at-search-bar__input').trigger('input', { detail: { value: 'value' } })
     expect(onChange).toBeCalled()
   })
 
-  it('should trigger onFocus', () => {
+  it('should trigger onFocus', async () => {
     const onFocus = jest.fn()
     const wrapper = factory({ onFocus: onFocus })
-    wrapper.find('.at-search-bar .at-search-bar__input').trigger('focus')
+    await wrapper.find('.at-search-bar .at-search-bar__input').trigger('focus')
     expect(onFocus).toBeCalled()
   })
 
-  it('should trigger onBlur', () => {
+  it('should trigger onBlur', async () => {
     const onBlur = jest.fn()
     const wrapper = factory({ onBlur: onBlur })
-    wrapper.find('.at-search-bar .at-search-bar__input').trigger('blur')
+    await wrapper.find('.at-search-bar .at-search-bar__input').trigger('blur')
     expect(onBlur).toBeCalled()
   })
 
-  it('should trigger onConfirm', () => {
+  it('should trigger onConfirm', async () => {
     const onConfirm = jest.fn()
     const wrapper = factory({ onConfirm: onConfirm })
-    wrapper.find('.at-search-bar .at-search-bar__input').trigger('confirm')
+    await wrapper.find('.at-search-bar .at-search-bar__input').trigger('confirm')
     expect(onConfirm).toBeCalled()
   })
 
-  it('should trigger onActionClick', () => {
+  it('should trigger onActionClick', async () => {
     const onActionClick = jest.fn()
     const wrapper = factory({ onActionClick: onActionClick })
-    wrapper.find('.at-search-bar .at-search-bar__action').trigger('tap')
+    await wrapper.find('.at-search-bar .at-search-bar__action').trigger('tap')
     expect(onActionClick).toBeCalled()
   })
 
@@ -113,7 +113,7 @@ describe('AtSearchBar Behavior', () => {
     expect(clearElement.exists()).toBe(false)
 
     await wrapper.setProps({ value: 'props.value is present now' })
-    wrapper.vm.$nextTick()
+    await wrapper.vm.$nextTick()
 
     const clearElement2 = wrapper.find('.at-search-bar .at-search-bar__clear')
     expect(clearElement2.exists()).toBe(true)

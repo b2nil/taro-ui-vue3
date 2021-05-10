@@ -2,10 +2,39 @@ import { mountFactory } from '@taro-ui-vue3/test-utils/helper'
 import AtCalendar from '../index'
 import Taro from '@tarojs/taro'
 
+const paddingZero = (digit) => {
+  return digit < 10 ? `0${digit}` : `${digit}`
+}
+
+const normalizeDateString = (dateStr): string => {
+  const d = dateStr.split('-')
+  return `${d[0]}-${paddingZero(d[1])}-${paddingZero(d[2])}`
+}
+
 const today = new Date()
-const dString = today.toISOString().substring(0, 7)
+
+const todayStr = normalizeDateString(today
+  .toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })
+  .split(/上午|下午/)[0]
+  .replace(/\//g, '-')
+  .trimEnd()
+)
+
+const dString = todayStr.substring(0, 7)
+
+let getEnv: jest.SpyInstance
+jest.mock('@tarojs/taro')
 
 describe('AtCalendar', () => {
+
+  beforeEach(() => {
+    getEnv = jest.spyOn(Taro, 'getEnv').mockReturnValue(Taro.ENV_TYPE.WEB)
+  })
+
+  afterEach(() => {
+    getEnv.mockRestore()
+  })
+
   it('should render default calendar -- h5', () => {
     const wrapper = mountFactory(AtCalendar, undefined, {
       currentDate: '2020-12-27',
@@ -18,17 +47,13 @@ describe('AtCalendar', () => {
   })
 
   it('should render default calendar -- mini-apps', () => {
-    jest.mock('@tarojs/taro')
-    const getEnv = jest.spyOn(Taro, 'getEnv').mockImplementation(() => {
-      return Taro.ENV_TYPE.WEAPP
-    })
+    getEnv = jest.spyOn(Taro, 'getEnv').mockReturnValue(Taro.ENV_TYPE.WEAPP)
 
     const wrapper = mountFactory(AtCalendar, undefined, { currentDate: '2020-12-27' })
 
     expect(wrapper.find('.main > swiper > swiper-item').exists()).toBeTruthy()
     expect(wrapper.find('.main > swiper > swiper-item').exists()).toBeTruthy()
     expect(wrapper.find('.main > swiper > swiper-item').exists()).toBeTruthy()
-    getEnv.mockRestore()
   })
 
   it('should only render date list of the current month if not using swiper', () => {
@@ -92,7 +117,7 @@ describe('AtCalendar', () => {
     const wrapper = mountFactory(AtCalendar, undefined, { marks: [{ value: prevM }] })
     expect(wrapper.findAll('.flex__item:not(.flex__item--blur) .mark').length).toBe(1)
     await wrapper.setProps({ marks: [{ value: `${dString}-21` }, { value: prevM }, { value: `${dString}-23` }] })
-    wrapper.vm.$nextTick()
+    await wrapper.vm.$nextTick()
     expect(wrapper.findAll('.flex__item:not(.flex__item--blur) .mark').length).toBe(3)
   })
 
@@ -144,15 +169,18 @@ describe('AtCalendar', () => {
 
 describe('AtCalendar Behavior', () => {
   let mockFn: jest.Mock<any, any>
-  let currentDate = new Date().toISOString().substring(0, 10)
-  let year = parseInt(currentDate.substring(0, 4))
-  let month = parseInt(currentDate.substring(5, 7))
-  let paddingZero = (month) => {
-    return month < 10 ? `0${month}` : `${month}`
-  }
+  let currentDate = todayStr
+  let year = parseInt(currentDate.split('-')[0])
+  let month = parseInt(currentDate.split('-')[1])
 
   beforeEach(() => {
     mockFn = jest.fn()
+    getEnv = jest.spyOn(Taro, 'getEnv').mockReturnValue(Taro.ENV_TYPE.WEB)
+  })
+
+  afterEach(() => {
+    getEnv.mockRestore()
+    mockFn.mockRestore()
   })
 
   it('should trigger onClickPreMonth', async () => {
@@ -240,10 +268,7 @@ describe('AtCalendar Behavior', () => {
   })
 
   it.skip('should trigger onMonthChange by swiping in mini-app', async () => {
-    jest.mock('@tarojs/taro')
-    const getEnv = jest.spyOn(Taro, 'getEnv').mockImplementation(() => {
-      return Taro.ENV_TYPE.WEAPP
-    })
+    const getEnv = jest.spyOn(Taro, 'getEnv').mockReturnValue(Taro.ENV_TYPE.WEAPP)
 
     const wrapper = mountFactory(AtCalendar, undefined, { onMonthChange: mockFn })
 
@@ -259,6 +284,5 @@ describe('AtCalendar Behavior', () => {
       ]
     })
     expect(mockFn).toBeCalled()
-    getEnv.mockRestore()
   })
 })

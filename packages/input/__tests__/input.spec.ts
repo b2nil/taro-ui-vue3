@@ -121,6 +121,12 @@ describe('AtInput', () => {
       case 'phone':
         expect(inputEl.attributes('type')).toEqual('number')
         expect(inputEl.attributes('maxlength')).toEqual('11')
+        expect(
+          '[Vue warn]: Failed setting prop \"selectionStart\" on <input>: value -1 is invalid.'
+        ).toHaveBeenTipped()
+        expect(
+          '[Vue warn]: Failed setting prop \"selectionEnd\" on <input>: value -1 is invalid.'
+        ).toHaveBeenTipped()
         break
       case 'password':
         expect(inputEl.attributes('type')).toEqual('text')
@@ -128,6 +134,14 @@ describe('AtInput', () => {
         break
       default:
         expect(inputEl.attributes('type')).toEqual(typeOption)
+        if (typeOption === 'number') {
+          expect(
+            '[Vue warn]: Failed setting prop \"selectionStart\" on <input>: value -1 is invalid.'
+          ).toHaveBeenTipped()
+          expect(
+            '[Vue warn]: Failed setting prop \"selectionEnd\" on <input>: value -1 is invalid.'
+          ).toHaveBeenTipped()
+        }
         break
     }
   })
@@ -210,16 +224,17 @@ describe('AtInput Behavior', () => {
     expect(onChange).toBeCalled()
   })
 
-  it('should trigger onUpdate:value during input if using v-model', async () => {
+  it('should emit update:value during input if using v-model', async () => {
     const onUpdateValue = jest.fn()
     const wrapper = factory({ value: 'test', 'onUpdate:value': onUpdateValue })
     await wrapper
       .find('.at-input__input')
       .trigger('input', { detail: { value: 'value' } })
     expect(onUpdateValue).toBeCalled()
+    expect(wrapper.emitted()).toHaveProperty('update:value')
   })
 
-  it('should trigger onUpdate:value by clicking clear icon if using v-model', async () => {
+  it('should emit update:value by clicking clear icon if using v-model', async () => {
     const onUpdateValue = jest.fn()
     const wrapper = factory({
       clear: true,
@@ -230,6 +245,7 @@ describe('AtInput Behavior', () => {
       .find('.at-input .at-input__icon')
       .trigger('touchstart')
     expect(onUpdateValue).toBeCalled()
+    expect(wrapper.emitted()).toHaveProperty('update:value')
   })
 
   it('should trigger onFocus', async () => {

@@ -29,11 +29,11 @@ describe('AtFab', () => {
 })
 
 describe('AtFab Behavior', () => {
-  it('should trigger onClick', () => {
+  it('should trigger onClick', async () => {
     const onClick = jest.fn()
     const wrapper = factory({ onClick: onClick })
 
-    wrapper.find('.at-fab').trigger('tap')
+    await wrapper.find('.at-fab').trigger('tap')
     expect(onClick).toBeCalled()
   })
 })

@@ -84,30 +84,28 @@ describe('AtRate', () => {
 })
 
 describe('AtRate Behavior', () => {
-  it('should trigger onChange Event', () => {
+  it('should trigger onChange Event', async () => {
     const onChange = jest.fn()
     const wrapper = factory({ value: 2, onChange: onChange })
-    wrapper.find('.at-rate__icon').trigger('tap')
+    await wrapper.find('.at-rate__icon').trigger('tap')
     expect(onChange).toBeCalled()
   })
 
-  it('should trigger "onUpdate:value" when vModel is used', async () => {
+  it('should emit "update:value" when vModel is used', async () => {
     const modelValue = ref(1)
     const wrapper = factory({
       value: modelValue.value,
-      'onUpdate:value': jest.fn().mockImplementation((e) => {
+      'onUpdate:value': jest.fn((e) => {
         modelValue.value = e
       })
     })
     expect(wrapper.findAll('.at-rate__icon--on').length).toEqual(1)
-    wrapper.findAll('.at-rate__icon').forEach((el, i) => {
-      if (i === 2) {
-        el.trigger('tap')
-      }
-    })
-    wrapper.vm.$nextTick(() => {
-      expect(wrapper.vm.value).toBe(3)
-      expect(wrapper.findAll('.at-rate__icon--on').length).toBe(3)
-    })
+    const icons = wrapper.findAll('.at-rate__icon')
+    await icons[2].trigger('tap', { event: 3 })
+    await wrapper.vm.$nextTick()
+    expect(wrapper.emitted()).toHaveProperty('update:value')
+    expect(modelValue.value).toBe(3)
+    await wrapper.setProps({ value: modelValue.value })
+    expect(wrapper.findAll('.at-rate__icon--on').length).toBe(3)
   })
 })

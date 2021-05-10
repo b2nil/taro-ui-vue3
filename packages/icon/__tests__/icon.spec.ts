@@ -49,11 +49,11 @@ describe('AtIcon', () => {
 })
 
 describe('AtIcon Behavior', () => {
-  it('should trigger onClick', () => {
+  it('should trigger onClick', async () => {
     const onClick = jest.fn()
     const wrapper = factory({ onClick: onClick })
 
-    wrapper.find('.at-icon').trigger('tap')
+    await wrapper.find('.at-icon').trigger('tap')
     expect(onClick).toBeCalled()
   })
 })
