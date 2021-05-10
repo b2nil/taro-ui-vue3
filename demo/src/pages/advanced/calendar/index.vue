@@ -56,12 +56,15 @@
     </panel>
 
     <panel title="标记时间">
-      <at-calendar :marks="mark" />
+      <at-calendar
+        :marks="mark"
+        @day-click="handleDayClick"
+      />
       <view class="body_controllers">
         <at-button
           size="small"
           class="button"
-          @click="handleClick('mark', [{ value: Date.now() }])"
+          @click="handleClick('mark', [{ value: now }])"
         >标记当前时间</at-button>
       </view>
     </panel>

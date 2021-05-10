@@ -27,7 +27,7 @@
           type="list-item-avatar-two-line"
         >
           <at-flex-item>
-            this ia test
+            this is test
           </at-flex-item>
           <at-flex-item>
             this is another thest
@@ -40,19 +40,6 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue"
-import {
-  AtSkeleton,
-  AtCard,
-  AtFlex,
-  AtFlexItem,
-  AtSwitch,
-} from 'taro-ui-vue3'
-
-import {
-  Page,
-  Panel,
-  ExampleItem
-} from '@/components/index'
 
 export default defineComponent({
   name: "SkeletonDemo",
