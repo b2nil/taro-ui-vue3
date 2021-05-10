@@ -7,7 +7,7 @@
 [![npm](https://img.shields.io/npm/dm/taro-ui-vue3)](https://www.npmjs.com/package/taro-ui-vue3)
 
 <p align="center">
-  <img height="150" alt="taro-ui-vue3 logo" src="./packages/demo/src/assets/images/logo_taro.png"/>
+  <img height="150" alt="taro-ui-vue3 logo" src="./demo/src/assets/images/logo_taro.png"/>
 </p>
 
 采用 `Vue 3.0` 重写的 [Taro UI](https://github.com/NervJS/taro-ui) 组件库。
