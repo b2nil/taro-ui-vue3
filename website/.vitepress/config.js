@@ -42,69 +42,23 @@ module.exports = {
     ],
   ],
 
-  logo: "/_assets/taro-ui-vue3-logo.png",
-
-  /**
-   * NavItem
-   * / 
-  // nav: "",
-
-  /**
-   * SideBarConfig | MultiSideBarConfig
-   * /
-  // sidebar: "",
-
-  /**
-   * SearchConfig
-   * /
-  // search: "",
-
-  /**
-  * GitHub repository following the format <user>/<project>.
-  */
-  repo: "b2nil/taro-ui-vue3",
-
-  /**
-   * Customize the header label. Defaults to GitHub/Gitlab/Bitbucket depending
-   * on the provided repo
-   */
-  repoLabel: "GitHub",
-
-  /**
-   * If your docs are in a different repository from your main project
-   *
-   * @example `"vuejs/docs-next"`
-   */
-  // docsRepo?: string
-
-  /**
-   * If your docs are not at the root of the repo.
-   *
-   * @example `"docs"`
-   */
-  docsDir: "docs",
-
-  /**
-   * If your docs are in a different branch. Defaults to `master`
-   * @example `"next"`
-   */
-  docsBranch: "gh-pages",
-
-  /**
-   * Enable links to edit pages at the bottom of the page
-   */
-  editLinks: true,
-
-  /**
-   * Custom text for edit link. Defaults to "Edit this page"
-   */
-  editLinkText: "内容有误？ 编辑本页",
-
-  lastUpdated: true,
-  prevLink: true,
-  nextLink: true,
-
   themeConfig: {
-    // docs: components
+    logo: "/_assets/taro-ui-vue3-logo.png",
+    repo: "b2nil/taro-ui-vue3",
+    repoLabel: "GitHub",
+    docsDir: "website",
+    docsBranch: "gh-pages",
+    editLinks: true,
+    editLinkText: 'Edit this page on GitHub',
+    lastUpdated: 'Last Updated',
+    prevLink: true,
+    nextLink: true,
+    algolia: {
+
+    },
+    // nav item: { text, link, activeMatch }
+    nav: [],
+    // sidebar
+    sidebar: []
   },
 };
