@@ -3,6 +3,8 @@
   "npmClient": "yarn",
   "useWorkspaces": true,
   "packages": [
-    "packages/*"
+    "packages/*",
+    "website",
+    "demo"
   ]
 }

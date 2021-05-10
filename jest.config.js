@@ -4,6 +4,9 @@ module.exports = {
   moduleFileExtensions: ['js', 'jsx', 'json', 'vue', 'tsx', 'ts'],
   transformIgnorePatterns: [],
   testEnvironment: 'jsdom',
+  setupFilesAfterEnv: [
+    "<rootDir>/packages/test-utils/setupTests.ts"
+  ],
   transform: {
     '^.+\\.vue$': 'vue-jest',
     '.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
@@ -11,8 +14,9 @@ module.exports = {
     '^.+\\.tsx?$': 'ts-jest',
   },
   moduleNameMapper: {
-    '^@tarojs/components$': "<rootDir>/packages/test-utils/@tarojs/components/index.js",
-    // '^@tarojs/taro$': "<rootDir>/node_modules/@tarojs/taro/h5.js",
+    '^@tarojs/components$': "<rootDir>/packages/test-utils/@tarojs/components/index.ts",
+    '^@tarojs/taro$': "<rootDir>/packages/test-utils/@tarojs/taro/index.ts",
+    '@tarojs/runtime': "<rootDir>/node_modules/@tarojs/runtime"
   },
   snapshotSerializers: ['jest-serializer-vue'],
   testMatch: [
@@ -22,17 +26,20 @@ module.exports = {
   collectCoverage: true,
   collectCoverageFrom: [
     '<rootDir>/packages/**/*.ts',
+    '!<rootDir>/packages/utils/*.ts',
+    '!<rootDir>/packages/types/*.ts',
+    '!<rootDir>/packages/test-utils/**/*.ts',
     '!**/node_modules/**'
   ],
   globals: {
     'ts-jest': {
-      tsconfig: './jest.tsconfig.json',
+      tsconfig: 'jest.tsconfig.json',
       // work around: https://github.com/kulshekhar/ts-jest/issues/748#issuecomment-423528659
       diagnostics: {
         ignoreCodes: [151001],
       }
     },
   },
-  maxConcurrency: 8,
+  maxConcurrency: 4,
   roots: ['<rootDir>/packages/']
 }
