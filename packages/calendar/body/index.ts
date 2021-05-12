@@ -1,4 +1,4 @@
-import { h, defineComponent, computed, reactive, watch, onMounted, ref, nextTick, mergeProps, PropType, CSSProperties } from "vue"
+import { h, defineComponent, computed, reactive, watch, onMounted, ref, nextTick, PropType, CSSProperties } from "vue"
 import { Swiper, SwiperItem, View } from '@tarojs/components'
 import { BaseEventOrig, ITouch, ITouchEvent } from '@tarojs/components/types/common'
 import { AtCalendarBodyListGroup, AtCalendarBodyProps, Calendar, AtCalendarBodyState } from '@taro-ui-vue3/types/calendar'
@@ -79,7 +79,6 @@ const AtCalendarBody = defineComponent({
     const isTouching = ref(false)
     const isPreMonth = ref(false)
     const isWeb = ref(Taro.getEnv() === Taro.ENV_TYPE.WEB)
-    const isAlipay = ref(Taro.getEnv() === Taro.ENV_TYPE.ALIPAY)
 
     let generateFunc = generateCalendarGroup({
       validDates: props.validDates,
@@ -363,17 +362,12 @@ const AtCalendarBody = defineComponent({
         })
       }
 
-      // 支付宝 Swiper 组件无 onAnimationFinish 属性，应改为 onAnimationEnd
-      const animationEndOrFinish = isAlipay.value
-        ? { onAnimationend: handleAnimateFinish }
-        : { onAnimationfinish: handleAnimateFinish }
-
       return h(View, {
         class: rootClass.value
       }, {
         default: () => [
           h(AtCalendarDayList),
-          h(Swiper, mergeProps(animationEndOrFinish, {
+          h(Swiper, {
             class: 'main__body',
             circular: true,
             vertical: props.isVertical,
@@ -381,10 +375,11 @@ const AtCalendarBody = defineComponent({
             current: currentSwiperIndex.value,
             catchMove: true,
             onChange: handleChange,
+            onAnimationfinish: handleAnimateFinish,
             onTouchmove: handleSwipeTouchMove,
             onTouchend: handleSwipeTouchEnd,
             onTouchstart: handleSwipeTouchStart
-          }), {
+          }, {
             default: () => state.listGroup.map((item, key) => (
               h(SwiperItem, {
                 // wrong key may cause the following issue:
