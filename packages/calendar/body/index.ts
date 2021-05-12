@@ -1,4 +1,4 @@
-import { h, defineComponent, computed, reactive, watch, onMounted, ref, nextTick, mergeProps, PropType } from "vue"
+import { h, defineComponent, computed, reactive, watch, onMounted, ref, nextTick, mergeProps, PropType, CSSProperties } from "vue"
 import { Swiper, SwiperItem, View } from '@tarojs/components'
 import { BaseEventOrig, ITouch, ITouchEvent } from '@tarojs/components/types/common'
 import { AtCalendarBodyListGroup, AtCalendarBodyProps, Calendar, AtCalendarBodyState } from '@taro-ui-vue3/types/calendar'
@@ -98,8 +98,7 @@ const AtCalendarBody = defineComponent({
 
     const rootClass = computed(() => ({
       'main': true,
-      'at-calendar-slider__main': true,
-      [`at-calendar-slider__main--${process.env.TARO_ENV}`]: true
+      'at-calendar-slider__main': true
     }))
 
     const h5MainBodyClass = computed(() => ({
@@ -109,14 +108,23 @@ const AtCalendarBody = defineComponent({
       'main__body--animate': state.isAnimate,
     }))
 
-    const h5MainBodyStyle = computed(() => ({
-      transform: props.isSwiper
-        ? `translateX(-100%) translate3d(${state.offsetSize},0,0)`
-        : '',
-      WebkitTransform: props.isSwiper
-        ? `translateX(-100%) translate3d(${state.offsetSize}px,0,0)`
-        : ''
-    }))
+    const h5MainBodyStyle = computed(() => {
+      let style: CSSProperties = {}
+
+      const transformStyle = props.isVertical
+        ? `translateY(-100%) translate3d(0,${state.offsetSize}px,0)`
+        : `translateX(-100%) translate3d(${state.offsetSize}px,0,0)`
+
+      if (props.isSwiper) {
+        style.transform = transformStyle
+        style.WebkitTransform = transformStyle
+        if (props.isVertical) {
+          style.flexDirection = 'column'
+        }
+      }
+
+      return style
+    })
 
     watch(() => [
       props.validDates,
@@ -187,15 +195,14 @@ const AtCalendarBody = defineComponent({
     function handleTouchStart(e: ITouchEvent) {
       if (!props.isSwiper) return
       isTouching.value = true
-      startX.value = e.touches[0].clientX
+      startX.value = props.isVertical ? e.touches[0].clientY : e.touches[0].clientX
     }
 
     function handleTouchMove(e: ITouchEvent) {
       if (!props.isSwiper) return
       if (!isTouching.value) return
-
-      const { clientX } = e.touches[0]
-      state.offsetSize = clientX - startX.value
+      const clientXorY = props.isVertical ? e.touches[0].clientY : e.touches[0].clientX
+      state.offsetSize = clientXorY - startX.value
     }
 
     function animateMoveSlide(offset: number, callback?: Function) {
@@ -266,7 +273,7 @@ const AtCalendarBody = defineComponent({
     onMounted(() => {
       delayQuerySelector(this, '.at-calendar-slider__main', 100).then(res => {
         // @ts-ignore
-        maxWidth.value = res[0].width
+        maxWidth.value = props.isVertical ? res[0].height : res[0].width
       })
     })
 

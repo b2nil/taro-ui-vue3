@@ -6,6 +6,10 @@
 
   /* elements */
   &__header {
+    position: relative;
+    z-index: 10;
+    background-color: white;
+
     .header__flex {
       @include display-flex;
       @include align-items(center);
@@ -125,7 +129,10 @@
     @include align-items(center);
     @include justify-content(center);
 
-    margin-bottom: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    z-index: 10;
+    background-color: white;
 
     .controller__arrow {
       @include flex(0 0 40px);
@@ -163,6 +170,7 @@
     @include display-flex;
 
     width: 100%;
+    height: 480px;
 
     &--animate {
       transition: transform 300ms cubic-bezier(0.36, 0.66, 0.04, 1);
@@ -170,19 +178,6 @@
 
     .body__slider {
       @include flex(0 0 100%);
-    }
-  }
-
-  &--weapp,
-  &--alipay,
-  &--swan,
-  &--tt,
-  &--qq,
-  &--jd,
-  &--quickapp,
-  &--rn {
-    .main__body {
-      height: 480px;
     }
   }
 }
