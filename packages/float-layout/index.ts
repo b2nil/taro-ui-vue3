@@ -2,7 +2,6 @@ import { h, defineComponent, computed, ref, nextTick, watch, mergeProps, PropTyp
 import { handleTouchScroll } from '@taro-ui-vue3/utils/common'
 
 import { ScrollView, Text, View } from '@tarojs/components'
-import { CommonEvent } from '@tarojs/components/types/common'
 import { AtFloatLayoutProps } from '@taro-ui-vue3/types/float-layout'
 
 const AtFloatLayout = defineComponent({
@@ -64,14 +63,10 @@ const AtFloatLayout = defineComponent({
       nextTick(handleClose)
     }
 
-    function handleTouchMove(e: CommonEvent) {
-      e.stopPropagation()
-    }
-
     return () => (
       h(View, mergeProps(attrs, {
         class: rootClass.value,
-        onTouchmove: handleTouchMove
+        catchMove: true
       }), {
         default: () => [
           // overlay
