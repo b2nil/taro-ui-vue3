@@ -99,7 +99,9 @@ const AtModal = defineComponent({
 
         return (
           h(View, mergeProps(attrs, {
-            class: rootClasses.value
+            class: rootClasses.value,
+            catchMove: true,
+            onTouchmove: handleTouchMove
           }), {
             default: () => [
               h(View, {
