@@ -203,6 +203,9 @@ const AtCalendarBody = defineComponent({
       if (!isTouching.value) return
       const clientXorY = props.isVertical ? e.touches[0].clientY : e.touches[0].clientX
       state.offsetSize = clientXorY - startX.value
+
+      e.preventDefault()
+      e.stopPropagation()
     }
 
     function animateMoveSlide(offset: number, callback?: Function) {
@@ -376,6 +379,7 @@ const AtCalendarBody = defineComponent({
             vertical: props.isVertical,
             skipHiddenItemLayout: true,
             current: currentSwiperIndex.value,
+            catchMove: true,
             onChange: handleChange,
             onTouchmove: handleSwipeTouchMove,
             onTouchend: handleSwipeTouchEnd,
