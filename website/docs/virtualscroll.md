@@ -5,8 +5,8 @@
 虚拟列表组件，提供长列表渲染性能。
 
 <p align="center">
-<image src="../_assets/virtual-scroll props.png" />
-<image src="../_assets/virtual-scroll animation.gif" />
+<image src="../assets/virtual-scroll props.png" />
+<image src="../assets/virtual-scroll animation.gif" />
 </p>
 
 ## 使用指南

@@ -13,7 +13,7 @@
   "scripts": {
     "dev:docs": "npx vitepress",
     "build:docs": "npx vitepress build",
-    "deploy:docs": "./deploy.sh"
+    "deploy:docs": "bash ./deploy.sh"
   },
   "browserslist": [
     "last 3 versions",

@@ -291,7 +291,7 @@ module.exports = {
       'link',
       {
         'rel': 'icon',
-        'href': '/taro-ui-vue3/_assets/favicon.png'
+        'href': '/taro-ui-vue3/assets/favicon.png'
       }
     ],
     [
@@ -326,7 +326,7 @@ module.exports = {
   ],
 
   themeConfig: {
-    logo: "/_assets/taro-ui-vue3-logo.png",
+    logo: "/assets/taro-ui-vue3-logo.png",
     repo: "b2nil/taro-ui-vue3",
     repoLabel: "GitHub",
     docsDir: "website",

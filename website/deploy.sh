@@ -9,11 +9,10 @@ cd .vitepress/dist
 # add nojykell
 touch .nojekyll
 
-# copy favicon to .vitepress/dist/_assets
-cp '../../assets/favicon.png' '_assets/favicon.png'
-cp '../../assets/virtual-scroll props.png' '_assets/virtual-scroll props.png'
-cp '../../assets/virtual-scroll animation.gif' '_assets/virtual-scroll animation.gif'
-cp '../../assets/h5.png' '_assets/h5.png'
+# copy favicon to .vitepress/dist/assets
+cp '../../assets/favicon.png' 'assets/favicon.png'
+cp '../../assets/virtual-scroll props.png' 'assets/virtual-scroll props.png'
+cp '../../assets/virtual-scroll animation.gif' 'assets/virtual-scroll animation.gif'
 
 # git ops
 git init
@@ -22,3 +21,5 @@ git commit -m "Deploy"
 
 # push to gh-pages branch
 git push -f git@github.com:b2nil/taro-ui-vue3.git main:gh-pages
+
+echo 'Done'
