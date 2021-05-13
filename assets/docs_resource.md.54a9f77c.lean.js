@@ -1,0 +1,1 @@
+import{o as a,c as s,a as e}from"./app.eaba6329.js";const r='{"title":"设计资源","description":"","frontmatter":{},"relativePath":"docs/resource.md","lastUpdated":1619356090867}',t={},o=e('',4);t.render=function(e,r,t,c,i,n){return a(),s("div",null,[o])};export default t;export{r as __pageData};
