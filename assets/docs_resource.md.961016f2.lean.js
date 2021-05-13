@@ -1,1 +1,0 @@
-import{o as s,c as a,a as e}from"./app.c8f7062b.js";const r='{"title":"设计资源","description":"","frontmatter":{},"relativePath":"docs/resource.md","lastUpdated":1619356090867}',t={},o=e('',4);t.render=function(e,r,t,c,i,n){return s(),a("div",null,[o])};export default t;export{r as __pageData};
