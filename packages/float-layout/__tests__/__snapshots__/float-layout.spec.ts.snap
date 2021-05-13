@@ -2,6 +2,7 @@
 
 exports[`FloatLayout should render default FloatLayout 1`] = `
 <view
+  catchmove="true"
   class="at-float-layout"
 >
   <view
@@ -31,6 +32,7 @@ exports[`FloatLayout should render default FloatLayout 1`] = `
 
 exports[`FloatLayout should render prop -- isOpened 1`] = `
 <view
+  catchmove="true"
   class="at-float-layout at-float-layout--active"
 >
   <view
@@ -60,6 +62,7 @@ exports[`FloatLayout should render prop -- isOpened 1`] = `
 
 exports[`FloatLayout should render prop -- title 1`] = `
 <view
+  catchmove="true"
   class="at-float-layout at-float-layout--active"
 >
   <view
