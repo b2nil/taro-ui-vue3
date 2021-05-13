@@ -7,7 +7,7 @@ exports[`AtCalendar should render default calendar -- h5 1`] = `
     <picker mode="date" fields="month" end="" start="" value="2020-12"><text class="controller__info">2020 年 12 月</text></picker>
     <view class="controller__arrow controller__arrow--right"></view>
   </view>
-  <view class="main at-calendar-slider__main at-calendar-slider__main--h5">
+  <view class="main at-calendar-slider__main">
     <view class="at-calendar__header header">
       <view class="header__flex">
         <view class="header__flex-item">日</view>
@@ -19,7 +19,7 @@ exports[`AtCalendar should render default calendar -- h5 1`] = `
         <view class="header__flex-item">六</view>
       </view>
     </view>
-    <view class="body main__body main__body--slider" style="transform: translateX(-100%) translate3d(0,0,0);">
+    <view class="body main__body main__body--slider" style="transform: translateX(-100%) translate3d(0px,0,0);">
       <view class="body__slider body__slider--pre">
         <view class="at-calendar__list flex">
           <view class="flex__item flex__item--pre flex__item--blur">

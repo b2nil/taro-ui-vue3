@@ -76,6 +76,36 @@ describe('AtCalendar', () => {
     expect(wrapper.find('.controller__arrow').exists()).toBeFalsy()
   })
 
+  it('should render prop isVertical in h5', async () => {
+    const wrapper = mountFactory(AtCalendar, undefined, {
+      currentDate: '2020-12-27',
+      isVertical: true
+    })
+
+    const h5MainBodyStyle = wrapper
+      .find('.main__body--slider')
+      .attributes('style')
+
+    expect(h5MainBodyStyle).toContain(
+      'transform: translateY(-100%) translate3d(0,0px,0);'
+    )
+    expect(h5MainBodyStyle).toContain(
+      'flex-direction: column;'
+    )
+  })
+
+  it('should render prop isVertical in weapp', async () => {
+    getEnv = jest.spyOn(Taro, 'getEnv').mockReturnValue(Taro.ENV_TYPE.WEAPP)
+
+    const wrapper = mountFactory(AtCalendar, undefined, {
+      currentDate: '2020-12-27',
+      isVertical: true
+    })
+
+    const swiperEl = wrapper.find('.main__body')
+    expect(swiperEl.attributes('vertical')).toBe('true')
+  })
+
   it('should render calendar header', () => {
     const days = ['日', '一', '二', '三', '四', '五', '六']
     const wrapper = mountFactory(AtCalendar)
