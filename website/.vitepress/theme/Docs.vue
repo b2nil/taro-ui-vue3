@@ -6,19 +6,18 @@
     <nav-bar collapse />
 
     <div class="at-container row">
-      <div class="at-sidebar col-sm-24 col-md-6 col-lg-4">
-        <side-bar :data="data" />
+      <div class="at-sidebar col-sm-8 col-md-6 col-lg-4">
+        <side-bar />
       </div>
 
       <div
         :ref="(e) => atMarkdownRef = e"
-        :class="`at-markdown col-sm-24 col-md-18 col-lg-20 ${
-          curDemoPath ? 'at-markdown--demo' : ''
-        }`"
+        class="at-markdown col-sm-24 col-md-18 col-lg-20"
+        :class="mdDemoClass"
       >
         <div
           class="qrcode-menu"
-          v-if="curDemoPath"
+          v-if="demoPath"
           :style="{right: '420px'}"
         >
           <div class="qrcode-container">
@@ -27,23 +26,25 @@
               alt="qrcode"
             />
             <div class="qrcode-modal">
-              <h6>扫描二维码查看演示效果</h6>
+              <h6>扫描二维码查看 H5 演示效果</h6>
               <div class="code-image">
                 <QrcodeVue
                   :value="getIframeURL()"
-                  size="140"
+                  renderAs="svg"
+                  :size="140"
                 />
               </div>
             </div>
           </div>
 
-          <!-- <div class="wxapp-container">
+          <div class="wxapp-container">
             <img
               :src="wxAppLogo"
               alt="qrcode"
             />
             <div class="qrcode-modal">
               <h6>扫描二维码查看演示效果</h6>
+              <h6>taro-ui, 非 taro-ui-vue3</h6>
               <div class="code-image">
                 <img
                   class="wxapp-qrcode"
@@ -52,25 +53,25 @@
                 />
               </div>
             </div>
-          </div> -->
+          </div>
         </div>
 
         <Content class="theme" />
 
         <div
-          v-if="curDemoPath"
+          v-if="demoPath"
           id="J-demo-frame"
-          :class="fixed ? 'demo-frame fixed' : 'demo-frame'"
+          class="demo-frame"
         >
           <iframe
-            v-if="curDemoPath"
+            v-if="demoPath"
             :src="getIframeURL()"
             :frame-border="0"
             :style="{ borderWidth: '0px' }"
           />
           <iframe
             v-else
-            src="./taro-ui-vue3-demo/"
+            src="https://b2nil.github.io/taro-ui-vue3-demo/#/index"
             :frame-border="0"
             :style="{ borderWidth: '0px' }"
           />
@@ -82,22 +83,20 @@
   </div>
 </template>
 
-<script>
-import { computed, watch, ref } from 'vue'
-import { useRoute, useSiteData } from 'vitepress'
-import QrcodeVue from "./components/QrcodeVue.js"
+<script lang="ts">
+import { computed, defineComponent, watch, ref } from 'vue'
+import QrcodeVue from "./components/QrcodeVue.vue"
 import NavBar from './components/NavBar.vue'
 import SideBar from './components/SideBar.vue'
 
-import navsConfig from '../nav.config.json'
-import { default as pathMap } from '../page-route'
+import { useCustomRoute } from './composables/url'
 import qrCodeImg from '../../assets/qr_code.png'
 import wxAppLogo from '../../assets/wxapp-logo.png'
 import qrCodeWxApp from '../../assets/wxapp.jpg'
 
 import './style/docs.scss'
 
-export default {
+export default defineComponent({
   name: "Docs",
 
   components: {
@@ -106,38 +105,30 @@ export default {
     QrcodeVue
   },
 
-  setup(props) {
+  setup() {
     const fixed = ref(false)
-    const atMarkdownRef = ref(null)
-    const data = ref(navsConfig.components)
-    const route = useRoute()
-    const siteData = useSiteData()
-    const curDemoPath = computed(() => getDemoPath())
+    const atMarkdownRef = ref<null | HTMLElement>(null)
+    const { path, demoPath } = useCustomRoute()
 
-    watch(() => route.path, (path, prevPath) => {
+    const mdDemoClass = computed(() => ({
+      'at-markdown--demo': Boolean(demoPath.value)
+    }))
+
+    watch(() => path, (path, prevPath) => {
       if (prevPath !== path) {
-        atMarkdownRef.value.scrollTop = 0
+        atMarkdownRef.value!.scrollTop = 0
       }
     })
 
-    function getDemoPath() {
-      const pathname = route.path.replace(".html", "")
-      const result = pathname.split('/')
-      const index = siteData.value.base === '/' ? 2 : 3
-      const curDemoPath = result.length > 1 ? pathMap[result[index]] : ''
-      return curDemoPath
-    }
-
     function getIframeURL() {
       const host = 'https://b2nil.github.io/taro-ui-vue3-demo/#'
-      const curDemoPath = getDemoPath()
-      return `${host}/${curDemoPath}`
+      return `${host}/${demoPath.value}`
     }
 
     return {
-      data,
       fixed,
-      curDemoPath,
+      demoPath,
+      mdDemoClass,
       getIframeURL,
       qrCodeImg,
       wxAppLogo,
@@ -145,5 +136,5 @@ export default {
       atMarkdownRef
     }
   }
-}
+})
 </script>

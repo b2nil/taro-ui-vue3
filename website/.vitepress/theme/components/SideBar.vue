@@ -8,15 +8,14 @@
       <ul class="at-nav__items">
         <template v-if="item.items">
           <li
-            v-for="(navItem, itemIndex) in item.items"
+            v-for="navItem in item.items"
             class="at-nav__item"
             :key="navItem.name"
           >
             <a
-              :id="`${navItem.name}-${itemIndex}`"
-              :class="routeLinkClasses(item, navItem.name, itemIndex)"
-              :href="`${siteData.base + item.name.toLowerCase()}/${navItem.name.toLowerCase()}.html`"
-              @click="handleRouteLinkClick(`${navItem.name}-${itemIndex}`, $event)"
+              :id="`${navItem.name.toLowerCase()}`"
+              :class="['at-nav__page', routeLinkClasses(navItem.name)]"
+              @click="handleRouteLinkClick(navItem.name)"
             >{{ navItem.title }}</a>
           </li>
         </template>
@@ -33,19 +32,18 @@
               {{ group.title }}
               <i :class="iconClasses(idx)" />
             </a>
-            <collapse-transition :is-show="currentOpenMenu.includes(idx)">
+            <collapse-transition :is-show="show(idx)">
               <ul class="at-nav__child-items">
                 {{ ' ' }}
                 <li
                   class="at-nav__child-item"
-                  v-for="(navItem, itemIndex) in group.items"
+                  v-for="navItem in group.items"
                   :key="navItem.name"
                 >
                   <a
-                    :id="`${navItem.name}-${itemIndex}`"
-                    :class="routeLinkClasses(item, navItem.name, itemIndex)"
-                    :href="`${siteData.base}docs/${navItem.name.toLowerCase()}.html`"
-                    @click="handleRouteLinkClick(`${navItem.name}-${itemIndex}`, $event)"
+                    :id="`${navItem.name.toLowerCase()}`"
+                    :class="['at-nav__component', routeLinkClasses(navItem.name)]"
+                    @click="handleRouteLinkClick(navItem.name)"
                   >
                     {{ navItem.name }}
                     <span>{{ navItem.title }}</span>
@@ -60,32 +58,35 @@
   </nav>
 </template>
 
-<script>
-import { useRoute, useSiteData } from 'vitepress'
-import { computed, toRef, ref, watch } from "vue"
+<script lang="ts">
+import { useRouter, useSiteData } from 'vitepress'
+import { computed, ref, defineComponent, watch, onMounted } from "vue"
+import { useURL } from "../composables/url"
 import CollapseTransition from "../composables/CollapseTransition.vue"
-
 import "./IconList.scss"
 import "./SideBar.scss"
 
-export default {
+export default defineComponent({
   name: "SideBar",
 
   components: {
     CollapseTransition
   },
 
-  props: {
-    data: { type: Array, default: [] }
-  },
-
-  setup(props) {
-    const route = useRoute()
+  setup() {
+    const router = useRouter()
     const siteData = useSiteData()
+    const { baseURL, withBase } = useURL()
+    const items = siteData.value.themeConfig.sidebar
 
+    const activeID = ref('introduction')
     const currentOpenMenu = ref([0, 1, 2, 3, 4, 5, 6])
-    const activeID = ref('Introduction-0')
-    const active = ref(false)
+
+    const currentPath = computed(() => router.route.path)
+
+    const show = computed(() => (idx: number) => {
+      return currentOpenMenu.value.includes(idx) && currentPath.value !== baseURL
+    })
 
     const iconClasses = computed(() => (idx) => ({
       'at-icon': true,
@@ -93,30 +94,33 @@ export default {
       'at-icon-chevron-up': currentOpenMenu.value.includes(idx)
     }))
 
-    const routeLinkClasses = computed(() => (item, navItemName, itemIndex) => {
-      const linkID = `${navItemName}-${itemIndex}`
-
-      if (route.path === `${siteData.value.base}docs/introduction.html` || route.path === `${siteData.value.base}docs/resource.html`) {
-        return {
-          'at-nav__page': true,
-          'router-link-exact-active': route.path.includes(navItemName.toLowerCase()) && route.path !== siteData.value.base,
-          'router-link-active': route.path.includes(navItemName.toLowerCase()) && route.path !== siteData.value.base
-        }
-      }
-
-      active.value = route.path !== siteData.value.base
+    const routeLinkClasses = computed(() => (navItemName: string) => {
+      const isActive = navItemName.toLowerCase() === activeID.value
+        && currentPath.value.includes(navItemName.toLowerCase())
 
       return {
-        'at-nav__page': Boolean(item.items),
-        'at-nav__component': Boolean(item.groups),
-        'router-link-exact-active': active.value && linkID === activeID.value,
-        'router-link-active': active.value && linkID === activeID.value
+        'router-link-exact-active': isActive,
+        'router-link-active': isActive
       }
     })
 
-    function handleRouteLinkClick(id, event) {
-      activeID.value = event.target.id
-      active.value = activeID.value === id
+    watch(currentPath, (path) => {
+      if (path !== baseURL) {
+        activeID.value = path.replace('.html', '').split('docs/')[1]
+      }
+    })
+
+    onMounted(() => {
+      const id = window.location.href.replace('.html', '').split('docs/')[1]
+      activeID.value = id
+    })
+
+    function handleRouteLinkClick(clickedID: string) {
+      clickedID = clickedID.toLowerCase()
+      if (activeID.value === clickedID) return
+
+      activeID.value = clickedID
+      router.go(withBase(`docs/${clickedID.toLowerCase()}.html`))
     }
 
     function toggleMenu(idx) {
@@ -128,14 +132,14 @@ export default {
     }
 
     return {
-      items: toRef(props, 'data'),
-      siteData,
-      currentOpenMenu,
+      items,
+      show,
       iconClasses,
       routeLinkClasses,
-      handleRouteLinkClick,
-      toggleMenu
+      toggleMenu,
+      currentOpenMenu,
+      handleRouteLinkClick
     }
   }
-}
+})
 </script>

@@ -1,7 +1,7 @@
 import Layout from "./Layout.vue"
 import NotFound from "./NotFound.vue"
 import IconList from "./components/IconList.vue"
-import QrcodeVue from "./components/QrcodeVue"
+import QrcodeVue from "./components/QrcodeVue.vue"
 import "./style/index.scss"
 import "./style/code.scss"
 

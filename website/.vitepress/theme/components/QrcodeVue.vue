@@ -1,5 +1,53 @@
-import { defineComponent, h, mergeProps, onMounted, onUpdated, ref } from "vue"
+<template>
+  <div
+    :value="value"
+    :level="level"
+    :background="background"
+    :foreground="foreground"
+    v-bind="$attrs"
+  >
+    <svg
+      v-if="renderAs === 'svg'"
+      :height="size"
+      :width="size"
+      :viewBox="`0 0 ${numCells} ${numCells}`"
+      shapeRendering="crispEdges"
+      preserveAspectRatio="none"
+      :style="{ width: size + 'px', height: size + 'px' }"
+    >
+      <path
+        :fill="background"
+        :d="`M0,0 h${numCells}v${numCells}H0z`"
+      />
+      <path
+        :fill="foreground"
+        :d="fgPath"
+      />
+    </svg>
+    <canvas
+      v-else
+      :height="size"
+      :width="size"
+      :style="{ width: size + 'px', height: size + 'px' }"
+      :ref="(e) => qrcodeRef = e"
+    />
+  </div>
+</template>
+
+<script lang="ts">
+/*
+* Adapted from qrcode.vue: 
+* https://github.com/scopewu/qrcode.vue
+*/
+
 import * as qrcode from 'qr.js'
+import {
+  defineComponent,
+  onMounted,
+  onUpdated,
+  ref,
+  toRefs
+} from "vue"
 
 /**
  * Encode UTF16 to UTF8.
@@ -38,7 +86,8 @@ function toUTF8String(str) {
 }
 
 function generatePath(modules, margin = 0) {
-  const ops = []
+  const ops: string[] = []
+
   modules.forEach(function (row, y) {
     let start = null
     row.forEach(function (cell, x) {
@@ -46,7 +95,7 @@ function generatePath(modules, margin = 0) {
         // M0 0h7v1H0z injects the space with the move and drops the comma,
         // saving a char per operation
         ops.push(
-          `M${start + margin} ${y + margin}h${x - start}v1H${start + margin}z`
+          `M${start! + margin} ${y + margin}h${x - start!}v1H${start! + margin}z`
         )
         start = null
         return
@@ -65,7 +114,7 @@ function generatePath(modules, margin = 0) {
         } else {
           // Otherwise finish the current line.
           ops.push(
-            `M${start + margin},${y + margin} h${x + 1 - start}v1H${start +
+            `M${start! + margin},${y + margin} h${x + 1 - start!}v1H${start! +
             margin}z`
           )
         }
@@ -80,8 +129,16 @@ function generatePath(modules, margin = 0) {
   return ops.join('')
 }
 
-// @vue/component
-const QrcodeVue = defineComponent({
+interface QrcodeProps {
+  value: string
+  size: number | string
+  level: 'L' | 'Q' | 'M' | 'H'
+  background: string
+  foreground: string
+  renderAs: 'canvas' | 'svg'
+}
+
+export default defineComponent({
   name: "QrcodeVue",
 
   props: {
@@ -98,7 +155,7 @@ const QrcodeVue = defineComponent({
     level: {
       type: String,
       default: 'L',
-      validator: (l) => ['L', 'Q', 'M', 'H'].indexOf(l) > -1,
+      validator: (l: string) => ['L', 'Q', 'M', 'H'].indexOf(l) > -1,
     },
     background: {
       type: String,
@@ -110,22 +167,27 @@ const QrcodeVue = defineComponent({
     },
     renderAs: {
       type: String,
-      required: false,
       default: 'canvas',
-      validator: (as) => ['canvas', 'svg'].indexOf(as) > -1,
+      validator: (as: string) => ['canvas', 'svg'].indexOf(as) > -1,
     },
   },
 
-  setup(props, { attrs }) {
+  setup(props: QrcodeProps) {
     const numCells = ref(0)
     const fgPath = ref('')
-    const qrcodeRef = ref(null)
+    const qrcodeRef = ref<null | HTMLCanvasElement>(null)
 
     function renderQrcode() {
-      const _size = props.size >>> 0 // size to number
+      const _size = parseInt(`${props.size}`) >>> 0 // size to number
 
       // We'll use type===-1 to force QRCode to automatically pick the best type
-      const qrCode = qrcode(toUTF8String(props.value), { typeNumber: -1, errorCorrectLevel: qrcode.ErrorCorrectLevel[props.level] })
+      const qrCode = qrcode(
+        toUTF8String(props.value),
+        {
+          typeNumber: -1,
+          errorCorrectLevel: qrcode.ErrorCorrectLevel[props.level]
+        }
+      )
 
       const cells = qrCode.modules
       const tileW = _size / cells.length
@@ -144,17 +206,17 @@ const QrcodeVue = defineComponent({
         fgPath.value = generatePath(cells)
       } else {
         const canvas = qrcodeRef.value
-        const ctx = canvas.getContext('2d')
+        const ctx = canvas!.getContext('2d')
 
-        canvas.height = canvas.width = _size * scale
-        ctx.scale(scale, scale)
+        canvas!.height = canvas!.width = _size * scale
+        ctx!.scale(scale, scale)
 
         cells.forEach(function (row, rdx) {
           row.forEach(function (cell, cdx) {
-            ctx.fillStyle = cell ? props.foreground : props.background
+            ctx!.fillStyle = cell ? props.foreground : props.background
             const w = Math.ceil((cdx + 1) * tileW) - Math.floor(cdx * tileW)
             const h = Math.ceil((rdx + 1) * tileH) - Math.floor(rdx * tileH)
-            ctx.fillRect(Math.round(cdx * tileW), Math.round(rdx * tileH), w, h)
+            ctx!.fillRect(Math.round(cdx * tileW), Math.round(rdx * tileH), w, h)
           })
         })
       }
@@ -168,52 +230,12 @@ const QrcodeVue = defineComponent({
       renderQrcode()
     })
 
-    return () => h(
-      'div',
-      mergeProps({
-        value: props.value,
-        level: props.level,
-        background: props.background,
-        foreground: props.foreground
-      }, {
-        class: attrs.class ? attrs.class : ''
-      }),
-      [
-        props.renderAs === 'svg'
-          ? h(
-            'svg',
-            mergeProps({
-              height: props.size,
-              width: props.size,
-              shapeRendering: 'crispEdges',
-              viewBox: `0 0 ${numCells.value} ${numCells.value}`,
-            }, {
-              style: { width: props.size + 'px', height: props.size + 'px' },
-            }),
-            [
-              h('path', {
-                fill: props.background,
-                d: `M0,0 h${numCells.value}v${numCells.value}H0z`,
-              }),
-              h('path', {
-                fill: props.foreground,
-                d: fgPath.value
-              }),
-            ]
-          )
-          : h(
-            'canvas',
-            {
-              height: props.size,
-              width: props.size,
-              style: { width: props.size + 'px', height: props.size + 'px' },
-              ref: qrcodeRef,
-            },
-            []
-          ),
-      ]
-    )
-  },
+    return {
+      ...toRefs(props),
+      numCells,
+      fgPath,
+      qrcodeRef
+    }
+  }
 })
-
-export default QrcodeVue
+</script>

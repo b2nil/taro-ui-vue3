@@ -10,25 +10,21 @@
 
 <script>
 import { computed } from "vue"
-import { useRoute, useSiteData } from 'vitepress'
+import { useHome } from './composables/url'
 
 import Home from "./Home.vue"
 import Docs from "./Docs.vue"
-import Guide from "./Guide.vue"
 
 export default {
   name: "Layout",
 
   components: {
     Home,
-    Docs,
-    Guide
+    Docs
   },
 
   setup() {
-    const route = useRoute()
-    const siteData = useSiteData()
-    const isHome = computed(() => route.path === siteData.value.base)
+    const { isHome } = useHome()
 
     return {
       isHome

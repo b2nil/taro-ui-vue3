@@ -20,7 +20,7 @@
           <a
             class="btn btn-start btn-start--h5"
             href="https://b2nil.github.io/taro-ui-vue3-demo/"
-          >开始使用</a>
+          >查看 Demo</a>
           <a
             class="btn btn-github"
             href="https://github.com/b2nil/taro-ui-vue3/"
@@ -33,36 +33,16 @@
     <div class="feature-wrapper">
       <div class="main-title">特性</div>
       <div class="panel-container">
-        <div class="panel">
+        <div
+          class="panel"
+          v-for="(feature, i) in features"
+          :key="i"
+        >
           <div class="panel-img">
-            <img :src="panelImg1" />
+            <img :src="feature.url" />
           </div>
-          <div class="panel-title">多端适配</div>
-          <div class="panel-desc">一套组件可以在微信小程序 / H5 / 百度小程序 等多端适配运行</div>
-        </div>
-        <div class="panel">
-          <div class="panel-img">
-            <img :src="panelImg2" />
-          </div>
-          <div class="panel-title">组件丰富</div>
-          <div class="panel-desc">提供丰富的基础组件，覆盖大部分使用场景，满足各种功能需求</div>
-        </div>
-        <div class="panel">
-          <div class="panel-img">
-            <img :src="panelImg3" />
-          </div>
-          <div class="panel-title">按需引用</div>
-          <div class="panel-desc">可按需使用独立的组件，不必引入所有文件，可最小化的注入到项目中</div>
-        </div>
-        <div class="panel">
-          <div class="panel-tip-container">
-            <img :src="panelTip" />
-          </div>
-          <div class="panel-img">
-            <img :src="panelImg4" />
-          </div>
-          <div class="panel-title">多套主题</div>
-          <div class="panel-desc">提供默认的蓝色主题、红色主题以及自定义主题，后期会新增渐变色主题</div>
+          <div class="panel-title">{{ feature.title }}</div>
+          <div class="panel-desc">{{ feature.desc }}</div>
         </div>
       </div>
     </div>
@@ -95,13 +75,32 @@ export default {
   setup() {
     const siteData = useSiteData()
 
+    const features = [
+      {
+        url: panelImg1,
+        title: '多端适配',
+        desc: '一套组件可以在微信小程序 / H5 / 百度小程序 等多端适配运行'
+      },
+      {
+        url: panelImg2,
+        title: '组件丰富',
+        desc: '提供丰富的基础组件，覆盖大部分使用场景，满足各种功能需求'
+      },
+      {
+        url: panelImg3,
+        title: '按需引用',
+        desc: '可按需使用独立的组件，不必引入所有文件，可最小化的注入到项目中'
+      },
+      {
+        url: panelImg4,
+        title: '多套主题',
+        desc: '提供默认的蓝色主题、红色主题以及自定义主题，后期会新增渐变色主题'
+      }
+    ]
+
     function goToGuide(e) {
       e.preventDefault()
       window.location.href = siteData.value.base + 'docs/introduction.html'
-    }
-
-    function goToSource(e) {
-      e.preventDefault()
     }
 
     onMounted(() => {
@@ -121,13 +120,9 @@ export default {
     })
 
     return {
-      panelImg1,
-      panelImg2,
-      panelImg3,
-      panelImg4,
+      features,
       panelTip,
-      goToGuide,
-      goToSource
+      goToGuide
     }
   }
 }

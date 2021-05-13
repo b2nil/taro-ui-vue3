@@ -2,12 +2,12 @@
   <div
     id="J-page-header"
     :class="rootClasses"
-    :style="rootStyle"
+    v-bind="$attrs"
   >
     <div class="nav-container">
       <div class="nav-left">
         <div class="logo">
-          <a @click="handleRedirect('', siteData.base, $event)">
+          <a @click="handleRedirect('', baseURL)">
             <img
               :src="taroUIvue3Logo"
               alt="taro ui vue3 logo"
@@ -29,18 +29,16 @@
         <ul class="navbar">
           <li>
             <a
-              :class="activeClass('introduction')"
+              :class="genActiveClass('introduction')"
               id="introduction"
-              :href="`${siteData.base}docs/introduction.html`"
-              @click="handleRedirect('introduction', `${siteData.base}docs/introduction.html`, $event)"
+              @click="handleRedirect('introduction', withBase(`docs/introduction.html`))"
             >组件</a>
           </li>
           <li>
             <a
-              :class="activeClass('resource')"
+              :class="genActiveClass('resource')"
               id="resource"
-              :href="`${siteData.base}docs/resource.html`"
-              @click="handleRedirect('resource', `${siteData.base}docs/resource.html`, $event)"
+              @click="handleRedirect('resource', withBase(`docs/resource.html`))"
             >设计资源</a>
           </li>
           <li>
@@ -61,95 +59,87 @@
   </div>
 </template>
 
-<script>
-import { useRoute, useSiteData } from "vitepress"
-import { computed, onMounted, ref, watch } from 'vue'
+<script lang="ts">
+import { useRouter } from "vitepress"
+import { computed, onMounted, ref, watch, defineComponent } from 'vue'
+import { useURL } from "../composables/url"
 
 import taroUIvue3Logo from '../../../assets/logo-taro-ui-vue3.png'
 import "./NavBar.scss"
 
-export default {
+export default defineComponent({
   name: "NavBar",
 
   props: {
     collapse: Boolean
   },
 
-  setup(props, { attrs }) {
-    const siteData = useSiteData()
-    const route = useRoute()
-    const currentRoute = ref(route.path)
+  setup(props) {
+    const router = useRouter()
+    const { baseURL, withBase } = useURL()
     const toggle = ref(true)
-    const active = ref(false)
-    const id = ref('introduction')
-    const routerLinks = ref([])
+    const activeID = ref('introduction')
+
+    const currentPath = computed(() => router.route.path)
+    const isBaseURL = computed(() => currentPath.value === baseURL)
+    const isResourceURL = computed(() => currentPath.value === withBase('docs/resource.html'))
 
     const rootClasses = computed(() => ({
       'page-header': true,
-      'collapse': !!props.collapse
+      'collapse': !!props.collapse && currentPath.value !== baseURL
     }))
 
-    const activeClass = computed(() => (activeID) => {
-      if (route.path.includes('resource')) {
-        return {
-          'router-link-active': activeID === 'resource' && route.path.includes('resource')
-        }
-      }
-
-      if (route.path.includes('introduction')) {
-        return {
-          'router-link-active': activeID === 'introduction' && route.path.includes('introduction')
-        }
-      }
-
-      id.value = 'introduction'
-      active.value = route.path !== siteData.value.base
+    const genActiveClass = computed(() => (id: string) => {
       return {
-        'router-link-active': active.value && activeID === id.value && !route.path.endsWith('resource.html')
+        'router-link-active': activeID.value === id && !isBaseURL.value
       }
     })
 
-    const rootStyle = computed(() => attrs.style
-      ? attrs.style
-      : {}
-    )
-
-    function handleRedirect(classID, to, e) {
-      id.value = e.target.id
-      active.value = id.value === classID
-
-      if (to === siteData.value.base || currentRoute.value === siteData.value.base) {
-        window.location.href = to
+    watch(currentPath, (path, prevPath) => {
+      if (path !== prevPath) {
+        if (isResourceURL.value) {
+          activeID.value = 'resource'
+        } else if (isBaseURL.value) {
+          activeID.value = ''
+        } else {
+          activeID.value = 'introduction'
+        }
       }
+    })
 
-      currentRoute.value = to
+    onMounted(() => {
+      const id = window.location.href.replace('.html', '').split('docs/')[1]
+      switch (id) {
+        case 'resource':
+          activeID.value = id
+          return
+        case undefined:
+          activeID.value = ''
+          return
+        default:
+          activeID.value = 'introduction'
+      }
+    })
+
+    function handleRedirect(id: string, toHref: string) {
+      activeID.value = id
+      router.go(toHref)
     }
 
     function toggleMenu() {
       toggle.value = !toggle.value
     }
 
-    function goToGuide(e) {
-      e.preventDefault()
-    }
-
-    function goToSource(e) {
-      e.preventDefault()
-    }
-
     return {
-      siteData,
+      baseURL,
+      withBase,
       rootClasses,
-      rootStyle,
+      genActiveClass,
+      taroUIvue3Logo,
       toggle,
       toggleMenu,
-      goToGuide,
-      goToSource,
-      taroUIvue3Logo,
-      activeClass,
-      handleRedirect,
-      currentRoute
+      handleRedirect
     }
   }
-}
+})
 </script>
