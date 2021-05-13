@@ -8,14 +8,14 @@
   </div>
 </template>
 
-<script>
-import { watch, ref, onMounted, onUnmounted } from 'vue'
+<script lang="ts">
+import { defineComponent, watch, ref, onMounted, onUnmounted } from 'vue'
 
 import "./animation.scss"
 
 const ANIMATION_DURATION = 300
 
-export default {
+export default defineComponent({
   name: "CollapseTransition",
 
   props: {
@@ -24,7 +24,7 @@ export default {
 
   setup(props) {
 
-    const selfRef = ref(null)
+    const selfRef = ref<HTMLElement | null>(null)
     const enterTimer = ref(null)
     const leaveTimer = ref(null)
 
@@ -98,6 +98,9 @@ export default {
 
     function beforeLeave() {
       const el = selfRef.value
+
+      if (!el) return
+
       el.dataset.oldPaddingTop = el.style.paddingTop
       el.dataset.oldPaddingBottom = el.style.paddingBottom
       el.dataset.oldOverflow = el.style.overflow
@@ -111,6 +114,8 @@ export default {
 
     function leave() {
       const el = selfRef.value
+      if (!el) return
+
       if (el.scrollHeight !== 0) {
         el.style.height = 0
         el.style.paddingTop = 0
@@ -136,5 +141,5 @@ export default {
       selfRef
     }
   }
-}
+})
 </script>
