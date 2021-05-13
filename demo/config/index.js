@@ -21,7 +21,6 @@ const config = {
     '@/style': path.resolve(__dirname, '..', 'src/style'),
     '@/assets': path.resolve(__dirname, '..', 'src/assets'),
     'taro-ui-vue3$': path.resolve(__dirname, '../..', 'dist/index.esm.js'),
-    // 'taro-ui-vue3$': path.resolve(__dirname, '../..', 'lib'),
     'taro-ui-vue3/dist/style': path.resolve(__dirname, '../..', 'dist/style'),
   },
   copy: {
