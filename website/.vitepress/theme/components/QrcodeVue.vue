@@ -40,7 +40,7 @@
 * https://github.com/scopewu/qrcode.vue
 */
 
-import * as qrcode from 'qr.js'
+import qrcode from 'qr.js'
 import {
   defineComponent,
   onMounted,
