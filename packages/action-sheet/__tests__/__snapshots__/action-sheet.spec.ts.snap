@@ -2,6 +2,7 @@
 
 exports[`ActionSheet should render default ActionSheet 1`] = `
 <view
+  catchmove="true"
   class="at-action-sheet"
 >
   <view
@@ -21,6 +22,7 @@ exports[`ActionSheet should render default ActionSheet 1`] = `
 
 exports[`ActionSheet should render opened ActionSheet -- props title 1`] = `
 <view
+  catchmove="true"
   class="at-action-sheet at-action-sheet--active"
 >
   <view
@@ -45,6 +47,7 @@ exports[`ActionSheet should render opened ActionSheet -- props title 1`] = `
 
 exports[`ActionSheet should render opened ActionSheet 1`] = `
 <view
+  catchmove="true"
   class="at-action-sheet at-action-sheet--active"
 >
   <view
@@ -64,6 +67,7 @@ exports[`ActionSheet should render opened ActionSheet 1`] = `
 
 exports[`ActionSheet should render opened ActionSheet with header, body and footer 1`] = `
 <view
+  catchmove="true"
   class="at-action-sheet at-action-sheet--active"
 >
   <view
@@ -92,6 +96,7 @@ exports[`ActionSheet should render opened ActionSheet with header, body and foot
 
 exports[`ActionSheet should render opened ActionSheet with prop cancelText 1`] = `
 <view
+  catchmove="true"
   class="at-action-sheet at-action-sheet--active"
 >
   <view
@@ -115,6 +120,7 @@ exports[`ActionSheet should render opened ActionSheet with prop cancelText 1`] =
 
 exports[`ActionSheet should render opened ActionSheet with slot contents 1`] = `
 <view
+  catchmove="true"
   class="at-action-sheet at-action-sheet--active"
 >
   <view
