@@ -2,6 +2,7 @@
 
 exports[`Modal should render default Modal 1`] = `
 <view
+  catchmove="true"
   class="at-modal"
 >
   <view
@@ -42,6 +43,7 @@ exports[`Modal should render default Modal 1`] = `
 
 exports[`Modal should render opened  Modal -- simple 1`] = `
 <view
+  catchmove="true"
   class="at-modal at-modal--active"
 >
   <view
@@ -94,6 +96,7 @@ exports[`Modal should render opened  Modal -- simple 1`] = `
 
 exports[`Modal should render opened Modal -- no header 1`] = `
 <view
+  catchmove="true"
   class="at-modal at-modal--active"
 >
   <view
@@ -129,6 +132,7 @@ exports[`Modal should render opened Modal -- no header 1`] = `
 
 exports[`Modal should render opened Modal -- single button 1`] = `
 <view
+  catchmove="true"
   class="at-modal at-modal--active"
 >
   <view
@@ -161,6 +165,7 @@ exports[`Modal should render opened Modal -- single button 1`] = `
 
 exports[`Modal should render opened Modal 1`] = `
 <view
+  catchmove="true"
   class="at-modal at-modal--active"
 >
   <view
