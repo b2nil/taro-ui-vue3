@@ -146,6 +146,40 @@ yarn add taro-ui-vue3
   </at-card>
   ```
 
+### 开发
+- 安装依赖
+
+  运行 `yarn bootstrap` 安装所有依赖，并创建`packages`目录下所有组件以及`demo`目录之间的符号链接。
+
+- 修改文件
+
+  - 组件位于 `packages` 目录，如需修改组件，找到相关组件目录即可。
+
+  - 组件测试文件位于各个组件目录下的 `__tests__`目录中。测试用的一些 mock 文件和功能位于 `packages/test-utils` 目录。
+
+  - 文档文件位于 `website/docs` 目录，关于组件使用方面的修改，只需修改该目下的相关文件即可。
+
+  - 文档网站采用 `vitepress` 开发，网站组件位于 `website/.vitepress` 目录，如需修改网站相关功能和主题，则需修改该目录下的相关文件。
+
+  - demo 位于 `demo` 目录。
+
+- 预览 demo
+  - 预览小程序 demo：
+
+    运行 `yarn demo:weapp` (以微信为例，其他平台可更改以下 `scripts` 下的命令)
+  - 预览 h5 demo：
+
+    `demo` 设置了从项目根目录下 `dist` 和 `lib` 中引用组件和部分功能，因此采用了 `esbuild` 在开发时进行快速构建和打包。
+
+    但 h5 平台使用 `esbuild` 打包的组件时，会报错。因此，预览 h5 效果时，需要先使用 rollup 打包。
+
+    运行 `yarn build` 使用 `rollup` 打包组件，然后运行 `cd demo && yarn dev:h5` 预览
+
+- 预览文档
+
+  运行 `yarn dev:docs` 预览文档。
+  
+
 ## TODOs
 
 - [] 组件展示页面
