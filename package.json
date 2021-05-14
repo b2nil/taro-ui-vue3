@@ -9,7 +9,8 @@
     "*.scss",
     "*.css"
   ],
-  "types": "./packages/types/index.d.ts",
+  "private": "true",
+  "types": "./types/index.d.ts",
   "keywords": [
     "taro",
     "taro-ui-vue3",
@@ -19,11 +20,7 @@
   ],
   "files": [
     "dist",
-    "lib/components",
-    "lib/composables",
-    "lib/utils",
-    "lib/index.js",
-    "lib/index.js.map",
+    "lib",
     "types",
     "global.d.ts"
   ],
@@ -56,9 +53,10 @@
     "build:rollup": "rollup --config ./rollup.config.js",
     "dev:docs": "cd website && yarn dev:docs",
     "build:docs": "cd website && yarn build:docs",
+    "deploy:docs": "cd website && yarn deploy:docs",
     "prepublishOnly": "yarn clean && yarn build",
     "test": "cross-env NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules && jest --coverage --maxWorkers=4",
-    "clean": "rimraf .temp dist lib coverage"
+    "clean": "rimraf .temp dist lib coverage types"
   },
   "browserslist": [
     "last 3 versions",
@@ -80,6 +78,7 @@
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@types/jest": "^26.0.17",
     "@types/lodash-es": "^4.17.3",
+    "@types/shelljs": "^0.8.8",
     "@typescript-eslint/eslint-plugin": "^2.x",
     "@typescript-eslint/parser": "^2.x",
     "@vue/test-utils": "2.0.0-rc.0",

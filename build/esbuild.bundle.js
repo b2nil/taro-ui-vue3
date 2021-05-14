@@ -6,6 +6,7 @@ const copyStylePluin = {
   setup(build) {
     build.onEnd(result => {
       shell.cp('-R', 'packages/style', 'dist/style')
+      shell.rm('-f', 'dist/style/package.json')
     })
   }
 }

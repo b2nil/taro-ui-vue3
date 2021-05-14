@@ -1,5 +1,6 @@
 const { build } = require('esbuild')
 const fs = require('fs')
+const shell = require('shelljs')
 const path = require('path')
 
 const transformPlugin = {
@@ -32,16 +33,10 @@ const transformPlugin = {
     })
 
     build.onEnd(result => {
-      fs.copyFile('lib/taro-ui-vue3/index.js', 'lib/index.js', (err) => {
-        if (err) {
-          console.log('[x] failed to copy lib/taro-ui-vue3/index.js: ', err)
-        }
-      })
-      fs.rm('lib/taro-ui-vue3', { recursive: true }, (err) => {
-        if (err) {
-          console.log('[x] error occurredd during removing lib/taro-ui-vue3: ', err)
-        }
-      })
+      shell.mv('lib/taro-ui-vue3/index.js', 'lib/index.js')
+      shell.rm('-rf', 'lib/taro-ui-vue3')
+      shell.cp('-R', 'packages/types', 'types')
+      shell.rm('-f', 'types/package.json')
     })
   },
 }
