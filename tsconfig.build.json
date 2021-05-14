@@ -24,37 +24,17 @@
       "./global.d.ts"
     ],
     "baseUrl": ".",
-    "paths": {
-      "@/components/*": [
-        "./src/components/*"
-      ],
-      "@/utils/*": [
-        "./src/utils/*"
-      ],
-      "@/style/*": [
-        "./src/style/*"
-      ],
-      "@/composables/*": [
-        "./src/composables/*"
-      ],
-      "@/assets/*": [
-        "./src/assets/*"
-      ],
-    },
   },
   "compileOnSave": false,
   "exclude": [
     "node_modules/*",
     "dist/*",
-    "src/components/**/__tests__/*",
-    "src/pages/**/*",
-    "src/app.config.ts",
-    "src/app.ts",
-    "src/__tests__/*"
+    "packages/**/__tests__/*",
+    "packages/__tests__/*",
+    "packages/__mocks__/*",
   ],
   "include": [
-    "types",
-    "src/**/*",
+    "packages/**/*",
     "./global.d.ts"
   ]
 }

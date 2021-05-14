@@ -28,19 +28,11 @@
     "typeRoots": [
       "node_modules/@types",
       "global.d.ts",
-      "types"
-    ],
-    "paths": {
-      "@/mock/tarojs_components": [
-        "./tests/mock/tarojs_components"
-      ],
-      "@/tests/helper": [
-        "./tests/helper"
-      ]
-    }
+      "packages/types"
+    ]
   },
   "include": [
-    "src/components/**/*.ts"
+    "packages/**/*.ts"
   ],
   "exclude": [
     "node_modules/*",
