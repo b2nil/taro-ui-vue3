@@ -1,6 +1,6 @@
 {
   "name": "taro-ui-vue3",
-  "version": "1.0.0-alpha.20",
+  "version": "1.0.0-dev.14",
   "description": "Taro UI Rewritten in Vue 3.0",
   "module": "dist/index.esm.js",
   "main": "dist/index.js",
@@ -9,7 +9,6 @@
     "*.scss",
     "*.css"
   ],
-  "private": "true",
   "types": "./types/index.d.ts",
   "keywords": [
     "taro",
