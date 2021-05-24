@@ -68,18 +68,23 @@ const AtFloatLayout = defineComponent({
       e.stopPropagation()
     }
 
-    return () => (
-      h(View, mergeProps(attrs, {
+    return () => {
+
+      const disableScroll = process.env.TARO_ENV === 'alipay' ? { disableScroll: true } : {}
+      const trapScroll = process.env.TARO_ENV === 'alipay' ? { trapScroll: true } : {}
+
+      return h(View, mergeProps(attrs, {
         class: rootClass.value,
         catchMove: true,
         onTouchmove: handleTouchMove
       }), {
         default: () => [
           // overlay
-          h(View, {
+          h(View, mergeProps(disableScroll, {
             class: 'at-float-layout__overlay',
             onTap: close
-          }),
+          })),
+
           // container layout
           h(View, {
             class: 'at-float-layout__container layout'
@@ -93,7 +98,10 @@ const AtFloatLayout = defineComponent({
                       class: 'layout-header__title'
                     }, { default: () => props.title }),
 
-                    h(View, { class: 'layout-header__btn-close', onTap: close }),
+                    h(View, {
+                      class: 'layout-header__btn-close',
+                      onTap: close
+                    }),
                   ]
                 })
               ),
@@ -103,7 +111,7 @@ const AtFloatLayout = defineComponent({
                 class: 'layout-body'
               }, {
                 default: () => [
-                  h(ScrollView, {
+                  h(ScrollView, mergeProps(trapScroll, {
                     class: 'layout-body__content',
                     scrollX: props.scrollX,
                     scrollY: props.scrollY,
@@ -115,14 +123,14 @@ const AtFloatLayout = defineComponent({
                     onScroll: props.onScroll,
                     onScrolltolower: props.onScrollToLower,
                     onScrolltoupper: props.onScrollToUpper,
-                  }, { default: () => slots.default && slots.default() })
+                  }), { default: () => slots.default && slots.default() })
                 ]
               })
             ]
           })
         ]
       })
-    )
+    }
   }
 })
 
