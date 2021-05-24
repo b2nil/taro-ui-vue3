@@ -2,6 +2,7 @@
   <page
     class="float-layout-page"
     header-title="Float Layout 浮动弹层"
+    :style="rootStyle"
   >
     <panel
       v-for="(title, index) in ['基本用法', '最大高度', '监听事件']"
@@ -93,7 +94,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs } from "vue"
+import { computed, defineComponent, reactive, toRefs } from "vue"
 import Taro from '@tarojs/taro'
 
 export default defineComponent({
@@ -104,7 +105,16 @@ export default defineComponent({
       isOpened1: false,
       isOpened2: false,
       isOpened3: false
+    })
 
+    const rootStyle = computed(() => {
+      if (state.isOpened1 || state.isOpened2 || state.isOpened3) {
+        return {
+          overflow: 'hidden',
+          height: '100vh'
+        }
+      }
+      return {}
     })
 
     function onScroll(event) {
@@ -141,9 +151,9 @@ export default defineComponent({
       })
     }
 
-
     return {
       ...toRefs(state),
+      rootStyle,
       handleClose,
       handleClick,
       onScroll,
