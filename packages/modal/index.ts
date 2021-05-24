@@ -93,12 +93,14 @@ const AtModal = defineComponent({
     }
 
     return () => {
+      const disableScroll = process.env.TARO_ENV === 'alipay' ? { disableScroll: true } : {}
+
       // if either title or content exists
       if (props.title || props.content) {
         const isRenderAction = props.cancelText || props.confirmText
 
         return (
-          h(View, mergeProps(attrs, {
+          h(View, mergeProps(attrs, disableScroll, {
             class: rootClasses.value,
             catchMove: true,
             onTouchmove: handleTouchMove
@@ -166,7 +168,7 @@ const AtModal = defineComponent({
       }
 
       return (
-        h(View, mergeProps(attrs, {
+        h(View, mergeProps(attrs, disableScroll, {
           class: rootClasses.value,
           catchMove: true,
           onTouchmove: handleTouchMove
