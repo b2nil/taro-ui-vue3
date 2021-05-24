@@ -1,0 +1,1046 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtCalendar should render default calendar -- h5 1`] = `
+<view class="at-calendar">
+  <view class="at-calendar__controller controller">
+    <view class="controller__arrow controller__arrow--left"></view>
+    <picker mode="date" fields="month" end="" start="" value="2020-12"><text class="controller__info">2020 年 12 月</text></picker>
+    <view class="controller__arrow controller__arrow--right"></view>
+  </view>
+  <view class="main at-calendar-slider__main">
+    <view class="at-calendar__header header">
+      <view class="header__flex">
+        <view class="header__flex-item">日</view>
+        <view class="header__flex-item">一</view>
+        <view class="header__flex-item">二</view>
+        <view class="header__flex-item">三</view>
+        <view class="header__flex-item">四</view>
+        <view class="header__flex-item">五</view>
+        <view class="header__flex-item">六</view>
+      </view>
+    </view>
+    <view class="body main__body main__body--slider" style="transform: translateX(-100%) translate3d(0px,0,0);">
+      <view class="body__slider body__slider--pre">
+        <view class="at-calendar__list flex">
+          <view class="flex__item flex__item--pre flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">25</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--pre flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">26</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--pre flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">27</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--pre flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">28</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--pre flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">29</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--pre flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">30</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--pre flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">31</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">1</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">2</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">3</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">4</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">5</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">6</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">7</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">8</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">9</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">10</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">11</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">12</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">13</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">14</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">15</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">16</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">17</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">18</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">19</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">20</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">21</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">22</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">23</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">24</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">25</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">26</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">27</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <view class="extra-marks"><text class="mark">2020-11-27</text></view>
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">28</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">29</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">30</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--next flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">1</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <view class="extra-marks"><text class="mark">2020-12-01</text></view>
+            </view>
+          </view>
+          <view class="flex__item flex__item--next flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">2</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--next flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">3</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--next flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">4</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--next flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">5</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="body__slider body__slider--now">
+        <view class="at-calendar__list flex">
+          <view class="flex__item flex__item--pre flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">29</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--pre flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">30</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">1</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <view class="extra-marks"><text class="mark">2020-12-01</text></view>
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">2</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">3</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">4</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">5</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">6</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">7</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">8</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">9</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">10</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">11</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">12</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">13</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">14</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">15</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">16</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">17</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">18</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">19</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">20</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">21</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">22</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">23</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">24</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">25</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">26</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now flex__item--selected flex__item--selected-head flex__item--selected-tail">
+            <view class="flex__item-container">
+              <view class="container-text">27</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">28</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">29</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">30</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">31</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--next flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">1</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--next flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">2</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--next flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">3</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--next flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">4</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--next flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">5</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--next flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">6</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--next flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">7</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--next flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">8</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--next flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">9</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="body__slider body__slider--next">
+        <view class="at-calendar__list flex">
+          <view class="flex__item flex__item--pre flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">27</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--pre flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">28</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--pre flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">29</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--pre flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">30</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--pre flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">31</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">1</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">2</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">3</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">4</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">5</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">6</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">7</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">8</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">9</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">10</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">11</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">12</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">13</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">14</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">15</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">16</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">17</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">18</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">19</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">20</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">21</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">22</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">23</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">24</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">25</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">26</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">27</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">28</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">29</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">30</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--now">
+            <view class="flex__item-container">
+              <view class="container-text">31</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--next flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">1</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--next flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">2</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--next flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">3</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--next flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">4</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--next flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">5</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+          <view class="flex__item flex__item--next flex__item--blur">
+            <view class="flex__item-container">
+              <view class="container-text">6</view>
+            </view>
+            <view class="flex__item-extra extra">
+              <!---->
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+`;

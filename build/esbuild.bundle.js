@@ -1,5 +1,18 @@
-require('esbuild').buildSync({
-  entryPoints: ['src/index.ts'],
+const { build } = require('esbuild')
+const shell = require('shelljs')
+
+const copyStylePluin = {
+  name: "copyStylePluin",
+  setup(build) {
+    build.onEnd(result => {
+      shell.cp('-R', 'packages/style', 'dist/style')
+      shell.rm('-f', 'dist/style/package.json')
+    })
+  }
+}
+
+build({
+  entryPoints: ['packages/taro-ui-vue3/index.ts'],
   mainFields: ['module'],
   format: "esm",
   minify: false,
@@ -15,8 +28,11 @@ require('esbuild').buildSync({
     '@tarojs/taro',
     '@tarojs/components',
   ],
+  plugins: [copyStylePluin],
   outfile: 'dist/index.esm.js',
-  target: ['esnext'],
+  target: [
+    'es6'
+  ],
   define: {
     'process.env.NODE_ENV': "'development'",
   },

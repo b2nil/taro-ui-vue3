@@ -1,0 +1,14 @@
+{
+  "name": "@taro-ui-vue3/input",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "peerDependencies": {
+    "@tarojs/components": "^3.2.1",
+    "@tarojs/taro": "^3.2.1",
+    "vue": "^3.0.10"
+  },
+  "devDependencies": {
+    "@vue/test-utils": "^2.0.0-rc.0"
+  }
+}

@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SwipeAction should render default props 1`] = `
+<view
+  class="at-swipe-action"
+  id="swipeAction-2020"
+>
+  <view
+    class="at-swipe-action__content animation"
+  />
+  <!---->
+</view>
+`;
+
+exports[`SwipeAction should render prop options 1`] = `
+<view
+  class="at-swipe-action__options"
+  id="swipeActionOptions-2020"
+>
+  <view
+    class="at-swipe-action__option"
+    style="background-color: rgb(97, 144, 232);"
+  >
+    <text
+      class="option__text"
+    >
+      取消
+    </text>
+  </view>
+  <view
+    class="at-swipe-action__option"
+    style="background-color: rgb(255, 73, 73);"
+  >
+    <text
+      class="option__text"
+    >
+      确认
+    </text>
+  </view>
+</view>
+`;

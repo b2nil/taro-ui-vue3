@@ -1,0 +1,10 @@
+{
+  "name": "@taro-ui-vue3/test-utils",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^3.0.10",
+    "@vue/test-utils": "^2.0.0-rc.0"
+  }
+}

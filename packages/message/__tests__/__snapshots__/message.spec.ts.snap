@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtMessage behaviours should open message and render message type -- error 1`] = `
+<view
+  class="at-message at-message--show at-message--error"
+>
+  消息通知
+</view>
+`;
+
+exports[`AtMessage behaviours should open message and render message type -- info 1`] = `
+<view
+  class="at-message at-message--show at-message--info"
+>
+  消息通知
+</view>
+`;
+
+exports[`AtMessage behaviours should open message and render message type -- success 1`] = `
+<view
+  class="at-message at-message--show at-message--success"
+>
+  消息通知
+</view>
+`;
+
+exports[`AtMessage behaviours should open message and render message type -- warning 1`] = `
+<view
+  class="at-message at-message--show at-message--warning"
+>
+  消息通知
+</view>
+`;
+
+exports[`AtMessage should render default AtMessage 1`] = `
+<view
+  class="at-message at-message--hidden at-message--info"
+/>
+`;

@@ -1,0 +1,17 @@
+{
+  "name": "@taro-ui-vue3/swipe-action",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "peerDependencies": {
+    "@tarojs/components": "^3.2.1",
+    "@tarojs/taro": "^3.2.1",
+    "vue": "^3.0.10"
+  },
+  "dependencies": {
+    "lodash-es": "^4.17.15"
+  },
+  "devDependencies": {
+    "@vue/test-utils": "^2.0.0-rc.0"
+  }
+}
