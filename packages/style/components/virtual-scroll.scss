@@ -1,0 +1,27 @@
+.at-virtual-scroll {
+  display: block;
+  flex: 1 1 auto;
+  height: 100%;
+  max-width: 100%;
+  overflow: auto;
+  position: relative;
+  overflow-anchor: auto;
+
+  &__header {
+    display: block;
+  }
+
+  &__container {
+    display: block;
+  }
+
+  &__footer {
+    display: block;
+  }
+
+  &__item {
+    left: 0;
+    position: absolute;
+    right: 0;
+  }
+}
