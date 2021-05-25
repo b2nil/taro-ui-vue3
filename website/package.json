@@ -1,0 +1,34 @@
+{
+  "private": true,
+  "name": "taro-ui-vue3-docs",
+  "version": "1.0.0-alpha.20",
+  "description": "Taro UI Vue3 Documentation",
+  "author": "b2nil<Ken Ho>",
+  "homepage": "https://b2nil.github.io/taro-ui-vue3",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:b2nil/taro-ui-vue3.git"
+  },
+  "license": "MIT",
+  "scripts": {
+    "dev:docs": "npx vitepress",
+    "build:docs": "npx vitepress build",
+    "deploy:docs": "bash ./deploy.sh"
+  },
+  "browserslist": [
+    "last 3 versions",
+    "Android >= 4.1",
+    "ios >= 8"
+  ],
+  "dependencies": {
+    "at-ui-style": "^1.5.1",
+    "qr.js": "^0.0.0",
+    "vue": "^3.0.10"
+  },
+  "devDependencies": {
+    "@vue/compiler-sfc": "^3.0.10",
+    "@vue/server-renderer": "^3.0.10",
+    "sass": "^1.30.0",
+    "vitepress": "^0.13.2"
+  }
+}
