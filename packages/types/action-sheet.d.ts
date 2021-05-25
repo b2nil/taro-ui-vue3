@@ -1,4 +1,4 @@
-import { Component } from '@vue/runtime-core'
+import { DefineComponent } from 'vue'
 import { CommonEvent } from '@tarojs/components/types/common'
 
 import AtComponent from './base'
@@ -17,17 +17,20 @@ export interface AtActionSheetProps extends AtComponent {
    * 取消按钮的内容
    */
   cancelText?: string
-  /**
-   * 元素被关闭触发的事件
-   */
-  onClose?: (event?: CommonEvent) => void
-  /**
-   * 点击了底部取消按钮触发的事件
-   */
-  onCancel?: (event?: CommonEvent) => void
 }
 
-export declare const AtActionSheet: Component<AtActionSheetProps>
+export type AtActionSheetEmitOptions = {
+  /**
+   * 元素被关闭时触发的事件
+   */
+  close?: (event?: CommonEvent) => void
+  /**
+   * 点击底部取消按钮时触发的事件
+   */
+  cancel?: (event?: CommonEvent) => void
+}
+
+export declare const AtActionSheet: DefineComponent<AtActionSheetProps, {}, {}, any, any, any, any, AtActionSheetEmitOptions>
 
 export interface AtActionSheetState {
   _isOpened: boolean
@@ -35,19 +38,21 @@ export interface AtActionSheetState {
 
 export interface AtActionSheetHeaderProps extends AtComponent { }
 
-export interface AtActionSheetFooterProps extends AtComponent {
-  onClick?: Function
+export interface AtActionSheetFooterProps extends AtComponent { }
+
+export type AtActionSheetFooterEmitOptions = {
+  click?: Function
 }
 
 export interface AtActionSheetBodyProps extends AtComponent { }
 
-export interface AtActionSheetItemProps extends AtComponent {
+export interface AtActionSheetItemProps extends AtComponent { }
+
+export type AtActionSheetItemEmitOptions = {
   /**
-   * 点击 Item 触发的事件
-   */
-  onClick?: (event?: CommonEvent) => void
+  * 点击 Item 触发的事件
+  */
+  click?: (event?: CommonEvent) => void
 }
 
-export declare const AtActionSheetItem: Component<AtActionSheetItemProps>
-
-
+export declare const AtActionSheetItem: DefineComponent<AtActionSheetItemProps, {}, {}, any, any, any, any, AtActionSheetItemEmitOptions>
