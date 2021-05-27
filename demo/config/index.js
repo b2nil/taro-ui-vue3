@@ -73,7 +73,7 @@ const config = {
     },
     webpackChain(chain) {
       chain.resolve.alias
-        .set('@tarojs/components$', '@tarojs/components/dist-h5/vue3/index.js')
+        .set('taro-ui-vue3$', path.resolve(__dirname, '../..', 'dist/index.h5.js'))
     },
     router: {
       mode: 'browser'
