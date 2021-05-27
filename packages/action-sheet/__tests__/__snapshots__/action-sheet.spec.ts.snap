@@ -2,7 +2,7 @@
 
 exports[`ActionSheet should render default ActionSheet 1`] = `
 <view
-  catch-move=""
+  catchmove="true"
   class="at-action-sheet"
 >
   <!-- overlay -->
@@ -41,7 +41,7 @@ exports[`ActionSheet should render opened ActionSheet -- props title 1`] = `
 
 exports[`ActionSheet should render opened ActionSheet with header, body and footer 1`] = `
 <view
-  catch-move=""
+  catchmove="true"
   class="at-action-sheet at-action-sheet--active"
 >
   <!-- overlay -->

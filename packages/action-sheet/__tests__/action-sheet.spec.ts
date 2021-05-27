@@ -214,7 +214,7 @@ describe('ActionSheet events', () => {
 
     expect(
       el.attributes()
-    ).toHaveProperty('catch-move')
+    ).toHaveProperty('catchmove')
 
     const event = {
       stopPropagation: jest.fn(),

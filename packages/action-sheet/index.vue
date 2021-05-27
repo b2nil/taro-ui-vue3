@@ -1,10 +1,10 @@
 <template>
   <view
-    catch-move
     v-bind="$attrs"
     :class="['at-action-sheet', {
       'at-action-sheet--active': opened,
     }]"
+    :catchMove="true"
     @touchmove="handleTouchmove"
   >
     <!-- overlay -->
