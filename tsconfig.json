@@ -1,58 +1,31 @@
 {
   "compilerOptions": {
-    "module": "esnext",
-    "target": "es6",
-    "allowJs": true,
-    "sourceMap": true,
-    "noImplicitAny": false,
+    "target": "es2017",
+    "module": "commonjs",
     "removeComments": false,
-    "noUnusedLocals": true,
-    "strictNullChecks": true,
-    "resolveJsonModule": true,
-    "noUnusedParameters": true,
     "preserveConstEnums": true,
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
-    "outDir": "lib",
+    "experimentalDecorators": true,
+    "noImplicitAny": false,
+    "allowSyntheticDefaultImports": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strictNullChecks": true,
+    "sourceMap": true,
     "baseUrl": ".",
     "rootDir": ".",
-    "jsx": "preserve",
-    "lib": [
-      "esnext",
-      "dom"
-    ],
-    "types": [
-      "node",
-      "jest"
-    ],
+    "jsx": "react",
+    "allowJs": true,
+    "resolveJsonModule": true,
     "typeRoots": [
       "node_modules/@types",
-      "typings"
-    ],
-    "paths": {
-      "@/components/*": [
-        "packages/taro-ui-vue3/src/components/*"
-      ],
-      "@/utils/*": [
-        "packages/taro-ui-vue3/src/utils/*"
-      ],
-      "@/style/*": [
-        "packages/taro-ui-vue3/src/style/*"
-      ],
-      "types/*": [
-        "packages/taro-ui-vue3/types/*"
-      ]
-    }
+      "packages/types"
+    ]
   },
-  "exclude": [
-    "node_modules",
-    "dist"
-  ],
-  "include": [
-    "typings",
-    "packages/taro-ui-vue3/types",
-    "packages/taro-ui-vue3/src/**/*"
-  ],
+  "path": {
+    "@taro-ui-vue3/types/*": [
+      "packages/types/*"
+    ]
+  },
   "compileOnSave": false
 }

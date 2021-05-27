@@ -1,17 +1,10 @@
 {
-  "packages": [
-    "packages/taro-ui-vue3/*"
-  ],
-  "command": {
-    "publish": {
-      "message": "chore(release): publish %s"
-    },
-    "create": {
-      "homepage": "https://github.com/b2nil/taro-ui-vue3",
-      "license": "MIT"
-    }
-  },
-  "version": "1.0.0-alpha.13",
+  "version": "1.0.0-alpha.21",
   "npmClient": "yarn",
-  "useWorkspaces": true
+  "useWorkspaces": true,
+  "packages": [
+    "packages/*",
+    "website",
+    "demo"
+  ]
 }
