@@ -69,11 +69,11 @@ import {
 import {
   delayQuerySelector,
   uuid
-} from "@taro-ui-vue3/utils/common"
+} from "@taro-ui-vue3/utils"
 import {
   useIconClasses,
   useIconStyle
-} from "@taro-ui-vue3/composables/icon"
+} from "@taro-ui-vue3/composables"
 
 const AtAccordion = defineComponent({
   name: "AtAccordion",

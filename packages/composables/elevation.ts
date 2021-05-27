@@ -1,5 +1,5 @@
 import { computed } from 'vue'
-import propsFactory from '@taro-ui-vue3/utils/propsFactory'
+import { propsFactory } from '@taro-ui-vue3/utils'
 
 // Types
 export interface ElevationProps {

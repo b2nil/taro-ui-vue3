@@ -4,8 +4,7 @@ import { computed } from 'vue'
 import type { Prop } from 'vue'
 
 // Utils
-import { convertToUnit, keys } from '@taro-ui-vue3/utils/common'
-import propsFactory from '@taro-ui-vue3/utils/propsFactory'
+import { propsFactory, convertToUnit, keys } from '@taro-ui-vue3/utils'
 
 // Props
 const allDimensionsProps = {

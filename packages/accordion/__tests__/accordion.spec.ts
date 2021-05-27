@@ -2,7 +2,7 @@ import { ref } from 'vue'
 import AtAccordion from '../index.vue'
 import { AtIconBaseProps } from '@taro-ui-vue3/types/base'
 import { mountFactory, Slots } from '@taro-ui-vue3/test-utils/helper'
-import * as utils from '@taro-ui-vue3/utils/common'
+import * as utils from '@taro-ui-vue3/utils'
 
 const factory = (
   props = {},
@@ -135,7 +135,7 @@ describe('AtAccordion Behavior', () => {
   let delayQuerySelector: jest.SpyInstance
 
   beforeEach(() => {
-    jest.mock('@taro-ui-vue3/utils/common')
+    jest.mock('@taro-ui-vue3/utils')
     jest.useFakeTimers()
 
     delayQuerySelector = jest
