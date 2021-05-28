@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActivityIndicator should render default props and match snapshot 1`] = `
+<view
+  class="at-activity-indicator at-activity-indicator--isopened"
+>
+  <!-- loading -->
+  <view
+    class="at-activity-indicator__body"
+  >
+    <view
+      class="at-loading"
+      style="width: 1.024rem; height: 1.024rem;"
+    >
+      
+      <view
+        class="at-loading__ring"
+        style="width: 1.024rem; height: 1.024rem; border: 1px solid #6190e8; border-color: #6190e8 transparent transparent transparent;"
+      />
+      <view
+        class="at-loading__ring"
+        style="width: 1.024rem; height: 1.024rem; border: 1px solid #6190e8; border-color: #6190e8 transparent transparent transparent;"
+      />
+      <view
+        class="at-loading__ring"
+        style="width: 1.024rem; height: 1.024rem; border: 1px solid #6190e8; border-color: #6190e8 transparent transparent transparent;"
+      />
+      
+    </view>
+  </view>
+  <!-- text content -->
+  <!--v-if-->
+</view>
+`;
