@@ -1,3 +1,3 @@
-import toHaveBeenWarnedInit from './been-warned'
+import initWarnMatchers from './matchers'
 
-toHaveBeenWarnedInit()
+initWarnMatchers()
