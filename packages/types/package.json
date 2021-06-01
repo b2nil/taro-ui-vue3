@@ -1,7 +1,7 @@
 {
   "name": "@taro-ui-vue3/types",
   "version": "0.0.0",
-  "main": "dist/index.js",
+  "main": "index.d.ts",
   "license": "MIT",
   "peerDependencies": {
     "@tarojs/components": "^3.2.1",

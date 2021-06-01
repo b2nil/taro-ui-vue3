@@ -1,6 +1,6 @@
 {
   "name": "@taro-ui-vue3/style",
   "version": "0.0.0",
-  "main": "dist/index.js",
+  "main": "index.scss",
   "license": "MIT"
 }
