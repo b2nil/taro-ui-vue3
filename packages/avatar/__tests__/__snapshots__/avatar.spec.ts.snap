@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar should render default and match snapshot 1`] = `
+<view
+  class="at-avatar at-avatar--normal"
+>
+  <text
+    class="at-avatar__text"
+  />
+</view>
+`;
