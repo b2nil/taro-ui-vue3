@@ -1,9 +1,9 @@
 const vite = require("vite")
-const path = require("path")
 const vuePlugin = require('@vitejs/plugin-vue')
 
 const {
   readFile,
+  cleanFile,
   writeToFile,
   resolveFile,
   transformTags,
@@ -92,18 +92,6 @@ const genOutDir = (source) => source
   .replace('packages', 'lib')
   .replace(/(\/index\.ts|\/index\.vue)/g, '')
 
-const genRollupOptions = (source) => {
-  return {
-    input: resolveFile(source),
-    output: {
-      file: genOutputFilename(source),
-      format: 'es'
-    },
-    external: externalPackages,
-    treeshake: true
-  }
-}
-
 const vuePluginOptions = {
   template: {
     ssr: false,
@@ -130,13 +118,18 @@ const genViteConfig = (source, isVue) => ({
     emptyOutDir: false,
     lib: {
       entry: resolveFile(source),
+      fileName: "index",
       formats: ['es'],
     },
-    rollupOptions: genRollupOptions(source),
+    rollupOptions: {
+      external: externalPackages,
+      treeshake: true
+    },
     commonjsOptions: {
       include: /\/node_modules\//
     },
-    minify: false
+    minify: false,
+    brotliSize: false
   }
 })
 
@@ -145,9 +138,10 @@ const genViteConfig = (source, isVue) => ({
 async function transformFinalCode(source) {
 
   const filename = genOutputFilename(source)
+  const esFilename = filename.replace(".js", ".es.js")
   const depth = filename.split(/\\|\//).length
 
-  let code = readFile(filename)
+  let code = readFile(esFilename)
 
   // eg: @taro-ui-vue3/utils in lib/flex/item/index.js
   // depths of lib/flex/item/index.js = 4
@@ -173,6 +167,7 @@ async function transformFinalCode(source) {
   }
 
   writeToFile(code, filename)
+  cleanFile(esFilename)
 }
 
 async function genLibEntryFile() {

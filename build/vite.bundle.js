@@ -10,33 +10,9 @@ const {
   isCustomElement,
   removeCommentVnode,
   transformAssetUrls,
-  taroInternalComponents
 } = require("./shared")
 
 const peerDeps = Object.keys(pkg.peerDependencies)
-
-const outputOptions = {
-  mini: {
-    file: pkg.module,
-    format: 'es',
-    sourcemap: true
-  },
-  h5: {
-    file: pkg['main:h5'],
-    format: 'es',
-    sourcemap: true
-  }
-}
-
-const genRollupOptions = (key) => {
-  return {
-    input: resolveFile(pkg.source),
-    output: outputOptions[key],
-    external: peerDeps,
-    treeshake: true,
-    plugins: []
-  }
-}
 
 const genVuePluginOptions = (nodeTransforms, transformAssetUrls, isNativeTag, isCustomElement) => {
   return {
@@ -73,18 +49,24 @@ const baseUserConfig = {
   // Build options
   build: {
     target: 'esnext',
+    outDir: 'dist',
     emptyOutDir: false,
     sourcemap: true,
     lib: {
       entry: resolveFile(pkg.source),
       formats: ['es'],
     },
+    rollupOptions: {
+      external: peerDeps,
+      treeshake: true
+    },
     // See Rollup options docs for more details
     // Options to pass on to @rollup/plugin-commonjs
     commonjsOptions: {
       include: /\/node_modules\//
     },
-    minify: false
+    minify: false,
+    brotliSize: false
   }
 }
 
@@ -101,7 +83,10 @@ const miniappConfig = {
   ],
   build: {
     ...baseUserConfig.build,
-    rollupOptions: genRollupOptions('mini')
+    lib: {
+      ...baseUserConfig.build.lib,
+      fileName: "index"
+    }
   }
 }
 
@@ -117,7 +102,10 @@ const h5Config = {
   ],
   build: {
     ...baseUserConfig.build,
-    rollupOptions: genRollupOptions('h5')
+    lib: {
+      ...baseUserConfig.build.lib,
+      fileName: "index.h5"
+    }
   }
 }
 
@@ -131,11 +119,19 @@ async function copyStyle() {
   shell.rm('-f', 'dist/style/package.json')
 }
 
+async function renameFileNames() {
+  shell.mv('dist/index.es.js', pkg.module)
+  shell.mv('dist/index.es.js.map', pkg.module + '.map')
+  shell.mv('dist/index.h5.es.js', pkg["main:h5"])
+  shell.mv('dist/index.h5.es.js.map', pkg["main:h5"] + '.map')
+}
+
 async function build() {
   await vite.build(miniappConfig)
   await vite.build(h5Config)
   await copyStyle()
   await copyTypes()
+  await renameFileNames()
 }
 
 build()

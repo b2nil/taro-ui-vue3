@@ -21,7 +21,7 @@ const transformAssetUrls = {
 const resolveFile = (p) => path.resolve(__dirname, '..', p)
 
 const writeToFile = (code, filename) => shell.ShellString(code).to(filename)
-
+const cleanFile = (filename) => shell.rm('-f', filename)
 const readFile = (filename) => shell.cat(filename).toString()
 
 function isCustomElement(tag) {
@@ -56,6 +56,7 @@ function transformTags(forH5 = false) {
 
 module.exports = {
   readFile,
+  cleanFile,
   writeToFile,
   resolveFile,
   transformTags,
