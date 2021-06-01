@@ -16,3 +16,20 @@ declare const process: {
     [key: string]: any
   }
 }
+
+declare namespace jest {
+  interface Matchers<R, T> {
+    /**
+     * Ensure `console.warn` is called with expected message
+     */
+    toHaveBeenWarned(): R
+    /**
+     * Ensure previous `console.warn` is called with expected message
+     */
+    toHaveBeenWarnedLast(): R
+    /**
+     * Ensure `console.warn` is called n times with expected message
+     */
+    toHaveBeenWarnedTimes(expect: number): R
+  }
+}
