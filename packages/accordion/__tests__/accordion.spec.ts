@@ -1,24 +1,21 @@
 import { ref } from 'vue'
 import AtAccordion from '../index.vue'
 import { AtIconBaseProps } from '@taro-ui-vue3/types/base'
-import { mountFactory, Slots } from '@taro-ui-vue3/test-utils/helper'
-import * as utils from '@taro-ui-vue3/utils'
+import { genMountFn } from '@taro-ui-vue3/test-utils/helper'
+import * as utils from '@taro-ui-vue3/utils/common'
 
-const factory = (
-  props = {},
-  slots: Slots = { default: ['按钮'] }
-) => {
-  return mountFactory(AtAccordion, {}, props, slots)
-}
+const mountFn = genMountFn(AtAccordion)
 
 describe('AtAccordion', () => {
   it('should render default AtAccordion', () => {
-    const wrapper = factory()
+    const wrapper = mountFn({}, {
+      default: ["按钮"]
+    })
     expect(wrapper.element).toMatchSnapshot()
   })
 
   it('should render prop class', () => {
-    const wrapper = factory({ class: 'test' })
+    const wrapper = mountFn({ class: 'test' })
     expect(
       wrapper
         .get('.at-accordion')
@@ -27,7 +24,7 @@ describe('AtAccordion', () => {
   })
 
   it('should render prop style', () => {
-    const wrapper = factory({ style: { color: 'red' } })
+    const wrapper = mountFn({ style: { color: 'red' } })
     expect(
       wrapper
         .get('.at-accordion')
@@ -39,7 +36,7 @@ describe('AtAccordion', () => {
     'title',
     'note'
   ])('should render prop %s', (propName) => {
-    const wrapper = factory({
+    const wrapper = mountFn({
       [propName]: propName,
     })
     expect(
@@ -59,7 +56,7 @@ describe('AtAccordion', () => {
     ${true}
     ${false}
   `('should render prop open=$open', ({ open }) => {
-    const wrapper = factory({
+    const wrapper = mountFn({
       open,
     })
 
@@ -82,7 +79,7 @@ describe('AtAccordion', () => {
     ['with size', { value: 'chevron-down', size: 10 }],
     ['with prefixClass', { value: 'star', prefixClass: 'prefix-class' }],
   ])('should render prop icon %s', (desc, icon: AtIconBaseProps) => {
-    const wrapper = factory({
+    const wrapper = mountFn({
       icon,
     })
 
@@ -114,7 +111,7 @@ describe('AtAccordion', () => {
   })
 
   it('should render prop hasBorder', async () => {
-    const wrapper = factory()
+    const wrapper = mountFn()
 
     expect(
       wrapper
@@ -135,7 +132,7 @@ describe('AtAccordion Behavior', () => {
   let delayQuerySelector: jest.SpyInstance
 
   beforeEach(() => {
-    jest.mock('@taro-ui-vue3/utils')
+    jest.mock('@taro-ui-vue3/utils/common')
     jest.useFakeTimers()
 
     delayQuerySelector = jest
@@ -148,11 +145,12 @@ describe('AtAccordion Behavior', () => {
   })
 
   afterEach(() => {
-    delayQuerySelector.mockClear()
+    delayQuerySelector.mockReset()
+    delayQuerySelector.mockRestore()
   })
 
   it('should emit click event', async () => {
-    const wrapper = factory()
+    const wrapper = mountFn()
     await wrapper.find('.at-accordion__header').trigger('tap')
     expect(wrapper.emitted()).toHaveProperty('click')
     expect(wrapper.emitted('click')![0]).toEqual([true])
@@ -160,7 +158,7 @@ describe('AtAccordion Behavior', () => {
 
   it('should not emit click event during animated toggle', async () => {
     const onClick = jest.fn()
-    const wrapper = factory({
+    const wrapper = mountFn({
       onClick
     })
 
@@ -177,10 +175,10 @@ describe('AtAccordion Behavior', () => {
   it('should toggle on accordion with animation', async () => {
     const open = ref(false)
     const onClick = jest.fn((e) => { open.value = e })
-    const wrapper = factory({
+    const wrapper = mountFn({
       open: open.value,
       onClick
-    })
+    }, { default: ["按钮"] })
 
     let contentWapper = wrapper.get('.at-accordion__content')
     expect(contentWapper.attributes('style')).toBeFalsy()
@@ -209,10 +207,10 @@ describe('AtAccordion Behavior', () => {
   it('should toggle off accordion with animation', async () => {
     const open = ref(true)
     const onClick = jest.fn((e) => { open.value = e })
-    const wrapper = factory({
+    const wrapper = mountFn({
       open: open.value,
       onClick
-    })
+    }, { default: ["按钮"] })
 
     let contentWapper = wrapper.get('.at-accordion__content')
     expect(contentWapper.classes()).not.toContain('at-accordion__content--inactive')
@@ -244,7 +242,7 @@ describe('AtAccordion Behavior', () => {
   })
 
   it('should not toggle with animation if animation is not used', async () => {
-    const wrapper = factory({
+    const wrapper = mountFn({
       isAnimation: false
     })
     await wrapper.setProps({ open: true })
