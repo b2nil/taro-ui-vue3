@@ -33,7 +33,7 @@ const SIZE_CLASS = {
   small: 'small'
 }
 
-export default defineComponent({
+const AtAvatar = defineComponent({
   name: "AtAvatar",
 
   props: {
@@ -77,4 +77,6 @@ export default defineComponent({
     }
   }
 })
+
+export default AtAvatar
 </script>

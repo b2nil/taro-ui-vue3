@@ -19,7 +19,7 @@
 import { defineComponent, computed, toRef } from "vue"
 import { AtBadgeProps } from "@taro-ui-vue3/types/badge"
 
-export default defineComponent({
+const AtBadge = defineComponent({
   name: "AtBadge",
 
   props: {
@@ -60,4 +60,5 @@ export default defineComponent({
   }
 })
 
+export default AtBadge
 </script>
