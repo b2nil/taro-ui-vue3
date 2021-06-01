@@ -43,7 +43,7 @@
     "css": "sass"
   },
   "scripts": {
-    "bootstrap": "npx lerna bootstrap",
+    "bootstrap": "lerna bootstrap",
     "demo:h5": "yarn dev && cd demo && yarn dev:h5",
     "demo:weapp": "yarn dev && cd demo && yarn dev:weapp",
     "build": "yarn clean && yarn vite:bundle && yarn vite:lib",
@@ -91,6 +91,6 @@
     "tslib": "^2.1.0",
     "typescript": "^4.2.0",
     "vite": "^2.3.4",
-    "vue-jest": "^5.0.0-alpha.7"
+    "vue-jest": "https://github.com/b2nil/vue-jest#next"
   }
 }

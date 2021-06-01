@@ -1,3 +1,5 @@
+const { isCustomElement, transformAssetUrls } = require("./build/shared")
+
 module.exports = {
   preset: 'ts-jest',
   rootDir: __dirname,
@@ -28,6 +30,7 @@ module.exports = {
     '<rootDir>/packages/**/*.ts',
     '<rootDir>/packages/**/*.vue',
     '!<rootDir>/packages/utils/*.ts',
+    '!<rootDir>/packages/composables/*.ts',
     '!<rootDir>/packages/types/*.ts',
     '!<rootDir>/packages/test-utils/**/*.ts',
     '!**/node_modules/**'
@@ -42,9 +45,15 @@ module.exports = {
     },
     'vue-jest': {
       babelConfig: false,
-      tsconfig: 'jest.tsconfig.json'
+      tsconfig: 'jest.tsconfig.json',
+      template: {
+        transformAssetUrls,
+        compilerOptions: {
+          isNativeTag: isCustomElement
+        }
+      }
     }
   },
   maxConcurrency: 4,
-  roots: ['<rootDir>/packages/action-sheet']
+  roots: ['<rootDir>/packages/']
 }
