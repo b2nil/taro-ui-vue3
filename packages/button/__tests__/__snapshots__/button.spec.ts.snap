@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtButton should render alipay button and match snapshot 1`] = `
+<view
+  class="at-button at-button--normal"
+>
+  <!--v-if-->
+  <!--v-if-->
+  <button
+    class="at-button__wxbutton"
+    form-type=""
+    lang="en"
+  />
+  <!--v-if-->
+  <view
+    class="at-button__text"
+  >
+    
+    按钮
+    
+  </view>
+</view>
+`;
+
+exports[`AtButton should render h5 button and match snapshot 1`] = `
+<view
+  class="at-button at-button--normal"
+>
+  <button
+    class="at-button__wxbutton"
+    lang="lang"
+  />
+  <!--v-if-->
+  <!--v-if-->
+  <!--v-if-->
+  <view
+    class="at-button__text"
+  >
+    
+    按钮
+    
+  </view>
+</view>
+`;
+
+exports[`AtButton should render weapp button and match snapshot 1`] = `
+<view
+  class="at-button at-button--normal"
+>
+  <!--v-if-->
+  <form>
+    <button
+      class="at-button__wxbutton"
+      form-type=""
+      lang="en"
+      show-message-card="false"
+    />
+  </form>
+  <!--v-if-->
+  <!--v-if-->
+  <view
+    class="at-button__text"
+  >
+    
+    按钮
+    
+  </view>
+</view>
+`;
