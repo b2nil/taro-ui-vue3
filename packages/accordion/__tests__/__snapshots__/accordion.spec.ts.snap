@@ -4,13 +4,10 @@ exports[`AtAccordion should render default AtAccordion 1`] = `
 <view
   class="at-accordion"
 >
-  <!-- header -->
   <view
     class="at-accordion__header"
   >
-    <!-- icon -->
     <!--v-if-->
-    <!-- info -->
     <view
       class="at-accordion__info"
     >
@@ -21,7 +18,6 @@ exports[`AtAccordion should render default AtAccordion 1`] = `
         class="at-accordion__info__note"
       />
     </view>
-    <!-- arrow -->
     <view
       class="at-accordion__arrow"
     >
@@ -30,7 +26,6 @@ exports[`AtAccordion should render default AtAccordion 1`] = `
       />
     </view>
   </view>
-  <!-- content -->
   <view
     class="at-accordion__content at-accordion__content--inactive"
   >

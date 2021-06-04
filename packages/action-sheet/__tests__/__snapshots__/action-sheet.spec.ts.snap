@@ -5,24 +5,19 @@ exports[`ActionSheet should render default ActionSheet 1`] = `
   catchmove="true"
   class="at-action-sheet"
 >
-  <!-- overlay -->
   <view
     class="at-action-sheet__overlay"
   />
-  <!-- container -->
   <view
     class="at-action-sheet__container"
   >
-    <!-- title -->
     <!--v-if-->
-    <!-- body -->
     <view
       class="at-action-sheet__body"
     >
       
       
     </view>
-    <!-- footer -->
     <!--v-if-->
   </view>
 </view>
@@ -44,15 +39,12 @@ exports[`ActionSheet should render opened ActionSheet with header, body and foot
   catchmove="true"
   class="at-action-sheet at-action-sheet--active"
 >
-  <!-- overlay -->
   <view
     class="at-action-sheet__overlay"
   />
-  <!-- container -->
   <view
     class="at-action-sheet__container"
   >
-    <!-- title -->
     <view
       class="at-action-sheet__header"
     >
@@ -61,14 +53,12 @@ exports[`ActionSheet should render opened ActionSheet with header, body and foot
 可以通过转义字符换行
       
     </view>
-    <!-- body -->
     <view
       class="at-action-sheet__body"
     >
       
       
     </view>
-    <!-- footer -->
     <view
       class="at-action-sheet__footer"
     >

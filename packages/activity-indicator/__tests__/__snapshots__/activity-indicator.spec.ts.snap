@@ -4,7 +4,6 @@ exports[`ActivityIndicator should render default props and match snapshot 1`] = 
 <view
   class="at-activity-indicator at-activity-indicator--isopened"
 >
-  <!-- loading -->
   <view
     class="at-activity-indicator__body"
   >
@@ -28,7 +27,6 @@ exports[`ActivityIndicator should render default props and match snapshot 1`] = 
       
     </view>
   </view>
-  <!-- text content -->
   <!--v-if-->
 </view>
 `;
