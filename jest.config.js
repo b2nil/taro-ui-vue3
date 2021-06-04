@@ -1,4 +1,8 @@
-const { isCustomElement, transformAssetUrls } = require("./build/shared")
+const {
+  isCustomElement,
+  removeCommentVnode,
+  transformAssetUrls
+} = require("./build/shared")
 
 module.exports = {
   preset: 'ts-jest',
@@ -49,7 +53,8 @@ module.exports = {
       template: {
         transformAssetUrls,
         compilerOptions: {
-          isNativeTag: isCustomElement
+          isNativeTag: isCustomElement,
+          nodeTransforms: [removeCommentVnode]
         }
       }
     }
