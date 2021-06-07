@@ -1,4 +1,4 @@
-import { mount, shallowMount } from '@vue/test-utils'
+import { mount, shallowMount, DOMWrapper } from '@vue/test-utils'
 import { VNode, Slot } from '@vue/runtime-core'
 
 export const sleep = async (timeout: number): Promise<null> =>
@@ -49,4 +49,46 @@ export function shallowMountFactory(
     props,
     slots,
   })
+}
+
+export interface Dimension {
+  top?: number
+  bottom?: number
+  left?: number
+  right?: number
+  width?: number
+  height?: number
+}
+
+export function genDelayedSelectorSpy(
+  utils: any,
+  dimensions: Dimension
+): jest.SpyInstance {
+  return jest
+    .spyOn(utils, 'delayQuerySelector')
+    .mockImplementation((_, sel: string, delay?: number) => {
+      return new Promise((resolve) => {
+        resolve([dimensions])
+      })
+    })
+}
+
+export async function triggerTouchEvents(
+  el: DOMWrapper<Element>,
+  touchstartDetails: any,
+  touchendDetails: any
+) {
+  const startDetails = {
+    touches: [touchstartDetails],
+    changedTouches: [touchstartDetails]
+  }
+
+  const endDetails = {
+    touches: [touchendDetails],
+    changedTouches: [touchendDetails]
+  }
+
+  await el.trigger('touchstart', startDetails)
+  await el.trigger('touchmove', endDetails)
+  await el.trigger('touchend', endDetails)
 }
