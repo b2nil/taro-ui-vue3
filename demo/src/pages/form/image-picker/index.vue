@@ -75,7 +75,7 @@
 import { defineComponent, reactive, toRefs } from 'vue'
 import Taro from '@tarojs/taro'
 import './index.scss'
-import { uuid } from '@taro-ui-vue3/utils/common'
+import { uuid } from '@taro-ui-vue3/utils'
 
 type DogaImage = {
   url: string,
