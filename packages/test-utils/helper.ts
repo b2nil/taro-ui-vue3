@@ -1,4 +1,4 @@
-import { mount, shallowMount, DOMWrapper } from '@vue/test-utils'
+import { mount, shallowMount, DOMWrapper, VueWrapper } from '@vue/test-utils'
 import { VNode, Slot } from '@vue/runtime-core'
 
 export const sleep = async (timeout: number): Promise<null> =>
@@ -91,4 +91,23 @@ export async function triggerTouchEvents(
   await el.trigger('touchstart', startDetails)
   await el.trigger('touchmove', endDetails)
   await el.trigger('touchend', endDetails)
+}
+
+export function testPropClassAndStyle(
+  mountFn: (props?: {}, slots?: Slots | undefined) => VueWrapper<any>
+) {
+
+  it.concurrent('should render prop class', async () => {
+    const wrapper = mountFn({ class: 'test' })
+    expect(
+      wrapper.classes()
+    ).toContain('test')
+  })
+
+  it.concurrent('should render prop style', async () => {
+    const wrapper = mountFn({ style: { color: 'red' } })
+    expect(
+      wrapper.attributes('style')
+    ).toContain('color: red;')
+  })
 }
