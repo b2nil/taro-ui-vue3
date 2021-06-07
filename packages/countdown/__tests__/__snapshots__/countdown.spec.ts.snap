@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtCountdown should render default props and match snapshot 1`] = `
+<view
+  class="at-countdown"
+>
+  <!--v-if-->
+  <view
+    class="at-countdown__item"
+  >
+    <view
+      class="at-countdown__time-box"
+    >
+      <text
+        class="at-countdown__time"
+      >
+        00
+      </text>
+    </view>
+    <text
+      class="at-countdown__separator"
+    >
+      时
+    </text>
+  </view>
+  <view
+    class="at-countdown__item"
+  >
+    <view
+      class="at-countdown__time-box"
+    >
+      <text
+        class="at-countdown__time"
+      >
+        00
+      </text>
+    </view>
+    <text
+      class="at-countdown__separator"
+    >
+      分
+    </text>
+  </view>
+  <view
+    class="at-countdown__item"
+  >
+    <view
+      class="at-countdown__time-box"
+    >
+      <text
+        class="at-countdown__time"
+      >
+        00
+      </text>
+    </view>
+    <text
+      class="at-countdown__separator"
+    >
+      秒
+    </text>
+  </view>
+</view>
+`;
