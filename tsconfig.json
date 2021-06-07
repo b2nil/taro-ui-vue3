@@ -8,6 +8,7 @@
     "experimentalDecorators": true,
     "noImplicitAny": false,
     "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "strictNullChecks": true,
@@ -17,6 +18,10 @@
     "jsx": "react",
     "allowJs": true,
     "resolveJsonModule": true,
+    "types": [
+      "jest",
+      "node"
+    ],
     "typeRoots": [
       "node_modules/@types",
       "packages/types"
@@ -27,5 +32,14 @@
       "packages/types/*"
     ]
   },
-  "compileOnSave": false
+  "compileOnSave": false,
+  "include": [
+    "packages/**/*.ts",
+    "packages/**/*.vue",
+    "global.d.ts"
+  ],
+  "exclude": [
+    "node_modules/*",
+    "dist"
+  ]
 }

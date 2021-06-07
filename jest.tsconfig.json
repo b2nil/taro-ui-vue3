@@ -14,11 +14,7 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
-    "outDir": "lib",
-    "baseUrl": ".",
     "rootDir": ".",
-    "jsx": "preserve",
-    "jsxFactory": "h",
     "allowJs": true,
     "resolveJsonModule": true,
     "types": [
@@ -27,17 +23,16 @@
     ],
     "typeRoots": [
       "node_modules/@types",
-      "global.d.ts",
       "packages/types"
     ]
   },
   "include": [
     "packages/**/*.ts",
-    "packages/**/*.vue"
+    "packages/**/*.vue",
+    "global.d.ts"
   ],
   "exclude": [
     "node_modules/*",
-    "dist",
-    "**/*.spec.js"
+    "dist"
   ]
 }

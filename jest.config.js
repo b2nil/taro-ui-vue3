@@ -4,7 +4,7 @@ const {
   transformAssetUrls
 } = require("./build/shared")
 
-module.exports = {
+module.exports = async () => ({
   preset: 'ts-jest',
   rootDir: __dirname,
   moduleFileExtensions: ['js', 'jsx', 'json', 'vue', 'tsx', 'ts'],
@@ -16,7 +16,7 @@ module.exports = {
   transform: {
     '^.+\\.vue$': 'vue-jest',
     '.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
-    // '^.+\\.jsx?$': 'babel-jest',
+    '^.+\\.jsx?$': 'babel-jest',
     '^.+\\.tsx?$': 'ts-jest',
   },
   moduleNameMapper: {
@@ -61,4 +61,4 @@ module.exports = {
   },
   maxConcurrency: 4,
   roots: ['<rootDir>/packages/']
-}
+})
