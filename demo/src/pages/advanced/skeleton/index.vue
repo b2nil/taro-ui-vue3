@@ -30,7 +30,7 @@
             this is test
           </at-flex-item>
           <at-flex-item>
-            this is another thest
+            this is another test
           </at-flex-item>
         </at-skeleton>
       </example-item>
@@ -57,6 +57,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style>
-</style>
