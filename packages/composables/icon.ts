@@ -11,19 +11,30 @@ export function useIconClasses(
         [`${icon?.prefixClass || "at-icon"}`]: Boolean(icon),
         [`${icon?.prefixClass || "at-icon"}-${icon?.value}`]: Boolean(
           icon && icon.value
-        )
+        ),
+        [`${icon?.class}`]: Boolean(icon?.class)
       }
     }
 
     return {
       "at-icon": Boolean(icon),
-      [`at-icon-${icon?.value}`]: Boolean(icon && icon.value)
+      [`at-icon-${icon?.value}`]: Boolean(icon && icon.value),
+      [`${icon?.class}`]: Boolean(icon?.class)
     }
   })
 
   return {
     iconClasses
   }
+}
+
+const cssStringToObject = (css: string) => {
+
+  const r = /(?<=^|;)\s*([^:]+)\s*:\s*([^;]+)\s*/g, o = {}
+  css.replace(r, (m, p, v) => o[p.replace(/-(.)/g, (m, p) => p.toUpperCase())] = v)
+
+  return o
+
 }
 
 export function useIconStyle(
@@ -43,14 +54,18 @@ export function useIconStyle(
       size = Boolean(defaultSize) ? `${defaultSize}px` : ""
     }
 
-    const style = Boolean(icon?.style) ? icon!.style : {}
+    const style = Boolean(icon?.style)
+      ? typeof icon!.style === 'string'
+        ? cssStringToObject(icon!.style)
+        : icon!.style
+      : {}
 
     return {
-      ...(style as CSSProperties),
       color: Boolean(icon && icon.color)
         ? icon!.color
         : defaultColor,
-      fontSize: size
+      fontSize: size,
+      ...(style as CSSProperties)
     }
   })
 
