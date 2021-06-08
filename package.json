@@ -44,8 +44,8 @@
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "demo:h5": "yarn dev && cd demo && yarn dev:h5",
-    "demo:weapp": "yarn dev && cd demo && yarn dev:weapp",
+    "demo:h5": "cd demo && yarn dev:h5",
+    "demo:weapp": "cd demo && yarn dev:weapp",
     "build": "yarn clean && yarn vite:bundle && yarn vite:lib",
     "vite:lib": "node ./build/vite.lib.js",
     "vite:bundle": "node ./build/vite.bundle.js",
