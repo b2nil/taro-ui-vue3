@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtFloatLayout should render all nodes and match snapshot 1`] = `
+<view
+  catchmove="true"
+  class="at-float-layout at-float-layout--active"
+>
+  <view
+    class="at-float-layout__overlay"
+  />
+  <view
+    class="at-float-layout__container layout"
+  >
+    <view
+      class="layout-header"
+    >
+      <text
+        class="layout-header__title"
+      >
+        test
+      </text>
+      <view
+        class="layout-header__btn-close"
+      />
+    </view>
+    <view
+      class="layout-body"
+    >
+      <scroll-view
+        class="layout-body__content"
+        scroll-with-animation="false"
+        scroll-x="false"
+        scroll-y="true"
+      >
+        
+        
+      云对雨，
+      雪对风，
+      晚照对晴空；
+      来鸿对去燕，
+      宿鸟对鸣虫！
+    
+        
+      </scroll-view>
+    </view>
+  </view>
+</view>
+`;
