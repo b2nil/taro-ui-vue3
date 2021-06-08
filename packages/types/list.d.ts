@@ -50,7 +50,7 @@ export interface AtListItemProps extends AtComponent {
   /**
    * 额外信息开关的值
    */
-  switchIsCheck?: boolean
+  switchChecked?: boolean
   /**
    * 开关的颜色
    */
