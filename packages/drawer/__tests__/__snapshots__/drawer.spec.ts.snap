@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtDrawer should render prop show and match snapshot 1`] = `
+<view
+  class="at-drawer at-drawer--left"
+>
+  <view
+    class="at-drawer__mask"
+    style="display: block; opacity: 0;"
+  />
+  <view
+    class="at-drawer__content"
+    style="width: 230px; transition: all 195ms cubic-bezier(0.4, 0, 0.6, 1);"
+  >
+    <view
+      class="at-list"
+    >
+      
+      
+      <view
+        class="at-list__item at-list__item--no-border"
+        data-index="0"
+      >
+        <view
+          class="at-list__item-container"
+        >
+          <!--v-if-->
+          <!--v-if-->
+          <view
+            class="item-content at-list__item-content"
+          >
+            <view
+              class="item-content__info"
+            >
+              <view
+                class="item-content__info-title"
+              >
+                菜单1
+              </view>
+              <!--v-if-->
+            </view>
+          </view>
+          <view
+            class="item-extra at-list__item-extra"
+          >
+            <!--v-if-->
+            <!--v-if-->
+            <!--v-if-->
+            <view
+              class="item-extra__icon"
+            >
+              <view
+                class="at-icon item-extra__icon-arrow at-icon-chevron-right"
+              />
+            </view>
+          </view>
+        </view>
+      </view>
+      <view
+        class="at-list__item at-list__item--no-border"
+        data-index="1"
+      >
+        <view
+          class="at-list__item-container"
+        >
+          <!--v-if-->
+          <!--v-if-->
+          <view
+            class="item-content at-list__item-content"
+          >
+            <view
+              class="item-content__info"
+            >
+              <view
+                class="item-content__info-title"
+              >
+                菜单2
+              </view>
+              <!--v-if-->
+            </view>
+          </view>
+          <view
+            class="item-extra at-list__item-extra"
+          >
+            <!--v-if-->
+            <!--v-if-->
+            <!--v-if-->
+            <view
+              class="item-extra__icon"
+            >
+              <view
+                class="at-icon item-extra__icon-arrow at-icon-chevron-right"
+              />
+            </view>
+          </view>
+        </view>
+      </view>
+      
+      
+    </view>
+  </view>
+</view>
+`;
