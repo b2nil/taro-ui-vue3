@@ -1,0 +1,492 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtFlex align: 
+ should render prop align -- baseline 1`] = `
+<view
+  class="at-row at-row__align--baseline"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlex align: 
+ should render prop align -- center 1`] = `
+<view
+  class="at-row at-row__align--center"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlex align: 
+ should render prop align -- end 1`] = `
+<view
+  class="at-row at-row__align--end"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlex align: 
+ should render prop align -- start 1`] = `
+<view
+  class="at-row at-row__align--start"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlex align: 
+ should render prop align -- stretch 1`] = `
+<view
+  class="at-row at-row__align--stretch"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlex alignContent: 
+ should render prop alignContent -- around 1`] = `
+<view
+  class="at-row at-row__align-content--around"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlex alignContent: 
+ should render prop alignContent -- between 1`] = `
+<view
+  class="at-row at-row__align-content--between"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlex alignContent: 
+ should render prop alignContent -- center 1`] = `
+<view
+  class="at-row at-row__align-content--center"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlex alignContent: 
+ should render prop alignContent -- end 1`] = `
+<view
+  class="at-row at-row__align-content--end"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlex alignContent: 
+ should render prop alignContent -- start 1`] = `
+<view
+  class="at-row at-row__align-content--start"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlex alignContent: 
+ should render prop alignContent -- stretch 1`] = `
+<view
+  class="at-row at-row__align-content--stretch"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlex direction: 
+ should render prop direction -- column 1`] = `
+<view
+  class="at-row at-row__direction--column"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlex direction: 
+ should render prop direction -- column-reverse 1`] = `
+<view
+  class="at-row at-row__direction--column-reverse"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlex direction: 
+ should render prop direction -- row 1`] = `
+<view
+  class="at-row at-row__direction--row"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlex direction: 
+ should render prop direction -- row-reverse 1`] = `
+<view
+  class="at-row at-row__direction--row-reverse"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlex justify: 
+ should render prop justify -- around 1`] = `
+<view
+  class="at-row at-row__justify--around"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlex justify: 
+ should render prop justify -- between 1`] = `
+<view
+  class="at-row at-row__justify--between"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlex justify: 
+ should render prop justify -- center 1`] = `
+<view
+  class="at-row at-row__justify--center"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlex justify: 
+ should render prop justify -- end 1`] = `
+<view
+  class="at-row at-row__justify--end"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlex justify: 
+ should render prop justify -- start 1`] = `
+<view
+  class="at-row at-row__justify--start"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlex wrap: 
+ should render prop wrap -- no-wrap 1`] = `
+<view
+  class="at-row at-row--no-wrap"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlex wrap: 
+ should render prop wrap -- wrap 1`] = `
+<view
+  class="at-row at-row--wrap"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlex wrap: 
+ should render prop wrap -- wrap-reverse 1`] = `
+<view
+  class="at-row at-row--wrap-reverse"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlexItem should render prop -- isAuto 1`] = `
+<view
+  class="at-col--auto at-col"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlexItem should render prop -- isWrap 1`] = `
+<view
+  class="at-col--wrap at-col"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlexItem should render prop align -- bottom 1`] = `
+<view
+  class="at-col__align--bottom at-col"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlexItem should render prop align -- center 1`] = `
+<view
+  class="at-col__align--center at-col"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlexItem should render prop align -- top 1`] = `
+<view
+  class="at-col__align--top at-col"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlexItem should render prop offset -- 1 1`] = `
+<view
+  class="at-col__offset-1 at-col"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlexItem should render prop offset -- 2 1`] = `
+<view
+  class="at-col__offset-2 at-col"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlexItem should render prop offset -- 3 1`] = `
+<view
+  class="at-col__offset-3 at-col"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlexItem should render prop offset -- 4 1`] = `
+<view
+  class="at-col__offset-4 at-col"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlexItem should render prop offset -- 5 1`] = `
+<view
+  class="at-col__offset-5 at-col"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlexItem should render prop offset -- 6 1`] = `
+<view
+  class="at-col__offset-6 at-col"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlexItem should render prop offset -- 7 1`] = `
+<view
+  class="at-col__offset-7 at-col"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlexItem should render prop offset -- 8 1`] = `
+<view
+  class="at-col__offset-8 at-col"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlexItem should render prop offset -- 9 1`] = `
+<view
+  class="at-col__offset-9 at-col"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlexItem should render prop offset -- 10 1`] = `
+<view
+  class="at-col__offset-10 at-col"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlexItem should render prop offset -- 11 1`] = `
+<view
+  class="at-col__offset-11 at-col"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlexItem should render prop offset -- 12 1`] = `
+<view
+  class="at-col__offset-12 at-col"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlexItem should render prop size -- 1 1`] = `
+<view
+  class="at-col-1 at-col"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlexItem should render prop size -- 2 1`] = `
+<view
+  class="at-col-2 at-col"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlexItem should render prop size -- 3 1`] = `
+<view
+  class="at-col-3 at-col"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlexItem should render prop size -- 4 1`] = `
+<view
+  class="at-col-4 at-col"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlexItem should render prop size -- 5 1`] = `
+<view
+  class="at-col-5 at-col"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlexItem should render prop size -- 6 1`] = `
+<view
+  class="at-col-6 at-col"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlexItem should render prop size -- 7 1`] = `
+<view
+  class="at-col-7 at-col"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlexItem should render prop size -- 8 1`] = `
+<view
+  class="at-col-8 at-col"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlexItem should render prop size -- 9 1`] = `
+<view
+  class="at-col-9 at-col"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlexItem should render prop size -- 10 1`] = `
+<view
+  class="at-col-10 at-col"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlexItem should render prop size -- 11 1`] = `
+<view
+  class="at-col-11 at-col"
+>
+  
+  
+</view>
+`;
+
+exports[`AtFlexItem should render prop size -- 12 1`] = `
+<view
+  class="at-col-12 at-col"
+>
+  
+  
+</view>
+`;
