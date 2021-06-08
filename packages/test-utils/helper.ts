@@ -111,3 +111,16 @@ export function testPropClassAndStyle(
     ).toContain('color: red;')
   })
 }
+
+export function hexToRGBA(hex: string, opacity = 1) {
+  hex = hex.replace('#', '')
+  const rgb = hex
+    .match(new RegExp('(.{' + hex.length / 3 + '})', 'g'))!
+    .map((l) => parseInt(hex.length % 2 ? l + l : l, 16))
+
+  const rgba = rgb.concat(isFinite(opacity) ? opacity : 1)
+
+  return opacity === 1
+    ? `rgb(${rgb.join(', ')})`
+    : `rgba(${rgba.join(', ')})`
+}

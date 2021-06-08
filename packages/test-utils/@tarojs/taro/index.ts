@@ -35,11 +35,7 @@ const getEnvMockFn = jest.fn(() => {
   return envs[process.env.TARO_ENV]
 })
 
-export const pxTransformMockFn = jest.fn((size, designWidth) => {
-  if (!designWidth) {
-    designWidth = 750
-  }
-
+export const pxTransformMockFn = jest.fn((size, designWidth = 750) => {
   if (!process.env.TARO_ENV) {
     process.env.TARO_ENV = 'h5'
   }

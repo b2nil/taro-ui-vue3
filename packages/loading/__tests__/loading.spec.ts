@@ -30,7 +30,7 @@ describe('AtLoading', () => {
 
   it.concurrent('should render props size', async () => {
     const wrapper = mountFn({ size: 15 })
-    const expected = `width: ${pxTransformMockFn(15, undefined)}; height: ${pxTransformMockFn(15, undefined)};`
+    const expected = `width: ${pxTransformMockFn(15)}; height: ${pxTransformMockFn(15)};`
 
     expect(
       wrapper
