@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtFab should render default props and match snapshot 1`] = `
+<view
+  class="at-fab at-fab--normal"
+>
+  
+  
+</view>
+`;
