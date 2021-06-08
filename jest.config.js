@@ -54,7 +54,14 @@ module.exports = async () => ({
         transformAssetUrls,
         compilerOptions: {
           isNativeTag: isCustomElement,
-          nodeTransforms: [removeCommentVnode]
+          nodeTransforms: [
+            removeCommentVnode,
+            function (node) {
+              if (node.type === 1 && node.tag.startsWith('at-')) {
+                node.tagType = 1
+              }
+            }
+          ]
         }
       }
     }
