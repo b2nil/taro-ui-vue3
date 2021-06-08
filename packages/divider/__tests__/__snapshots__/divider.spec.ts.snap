@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtDivider should render default props and match snapshot 1`] = `
+<view
+  class="at-divider"
+>
+  <view
+    class="at-divider__content"
+  >
+    
+    
+  </view>
+  <view
+    class="at-divider__line"
+  />
+</view>
+`;
