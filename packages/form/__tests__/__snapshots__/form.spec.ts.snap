@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtForm should render default and match snapshot 1`] = `
+<form
+  class="at-form"
+  report-submit="false"
+>
+  
+  
+</form>
+`;
