@@ -24,7 +24,7 @@ const writeToFile = (code, filename) => shell.ShellString(code).to(filename)
 const cleanFile = (filename) => shell.rm('-f', filename)
 const readFile = (filename) => shell.cat(filename).toString()
 
-function isCustomElement(tag) {
+function isMiniAppNativeTag(tag) {
   return taroInternalComponents.includes(tag)
 }
 
@@ -37,7 +37,6 @@ function removeCommentVnode(node, ctx) {
 function transformTags(forH5 = false) {
   return (node, ctx) => {
     removeCommentVnode(node, ctx)
-
     if (
       node.type === 1 /* NodeTypes.ELEMENT */ &&
       taroInternalComponents.includes(node.tag) /* is built-in tag*/
@@ -51,6 +50,10 @@ function transformTags(forH5 = false) {
       // make all tags to be resolved by `resolveComponent`
       node.tagType = 1 /* ElementTypes.COMPONENT */
     }
+    // make all taro-ui tags to be resolved by `resolveComponent`
+    if (node.type === 1 && node.tag.startsWith('at-')) {
+      node.tagType = 1
+    }
   }
 }
 
@@ -60,7 +63,7 @@ module.exports = {
   writeToFile,
   resolveFile,
   transformTags,
-  isCustomElement,
+  isMiniAppNativeTag,
   removeCommentVnode,
   transformAssetUrls,
   taroInternalComponents

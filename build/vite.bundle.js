@@ -1,5 +1,4 @@
 const vite = require("vite")
-const path = require("path")
 const pkg = require("../package.json")
 const shell = require('shelljs')
 const vuePlugin = require('@vitejs/plugin-vue')
@@ -7,26 +6,38 @@ const vuePlugin = require('@vitejs/plugin-vue')
 const {
   resolveFile,
   transformTags,
-  isCustomElement,
+  isMiniAppNativeTag,
   removeCommentVnode,
   transformAssetUrls,
 } = require("./shared")
 
 const peerDeps = Object.keys(pkg.peerDependencies)
 
-const genVuePluginOptions = (nodeTransforms, transformAssetUrls, isNativeTag, isCustomElement) => {
+const genVuePluginOptions = (
+  nodeTransforms,
+  transformAssetUrls,
+  isNativeTag
+) => {
+  let compilerOptions = {
+    mode: "module",
+    optimizeImports: true,
+    comments: false,
+    isNativeTag,
+    nodeTransforms
+  }
+
+  if (isNativeTag) {
+    compilerOptions = {
+      ...compilerOptions,
+      isNativeTag
+    }
+  }
+
   return {
     template: {
       ssr: false,
       transformAssetUrls,
-      compilerOptions: {
-        mode: "module",
-        optimizeImports: true,
-        comments: false,
-        isNativeTag,
-        isCustomElement,
-        nodeTransforms
-      }
+      compilerOptions,
     }
   }
 }
@@ -77,7 +88,7 @@ const miniappConfig = {
       genVuePluginOptions(
         [removeCommentVnode],
         transformAssetUrls,
-        isCustomElement
+        isMiniAppNativeTag
       )
     )
   ],
