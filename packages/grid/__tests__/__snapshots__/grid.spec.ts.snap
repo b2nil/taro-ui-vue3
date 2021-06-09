@@ -1,0 +1,255 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtGrid should render icon data and match snapshot 1`] = `
+<view
+  class="at-grid"
+>
+  
+  <view
+    class="at-grid__flex"
+  >
+    
+    <view
+      class="at-grid-item at-grid__flex-item at-grid-item--square"
+      style="flex: 0 0 33.333333333333336%;"
+    >
+      <view
+        class="at-grid-item__content"
+      >
+        <view
+          class="at-grid-item__content-inner"
+        >
+          <view
+            class="content-inner__icon"
+          >
+            <text
+              class="at-icon at-icon-bell"
+              style="font-size: 24px;"
+            />
+          </view>
+          <text
+            class="content-inner__text"
+          >
+            领取中心
+          </text>
+        </view>
+      </view>
+    </view>
+    <view
+      class="at-grid-item at-grid__flex-item at-grid-item--square"
+      style="flex: 0 0 33.333333333333336%;"
+    >
+      <view
+        class="at-grid-item__content"
+      >
+        <view
+          class="at-grid-item__content-inner"
+        >
+          <view
+            class="content-inner__icon"
+          >
+            <text
+              class="at-icon at-icon-bookmark"
+              style="color: red; font-size: 30px;"
+            />
+          </view>
+          <text
+            class="content-inner__text"
+          >
+            找折扣
+          </text>
+        </view>
+      </view>
+    </view>
+    <view
+      class="at-grid-item at-grid__flex-item at-grid-item--square at-grid-item--last"
+      style="flex: 0 0 33.333333333333336%;"
+    >
+      <view
+        class="at-grid-item__content"
+      >
+        <view
+          class="at-grid-item__content-inner"
+        >
+          <view
+            class="content-inner__icon"
+          >
+            <text
+              class="taro taro-calendar"
+              style="color: red; font-size: 30px;"
+            />
+          </view>
+          <text
+            class="content-inner__text"
+          >
+            领会员
+          </text>
+        </view>
+      </view>
+    </view>
+    
+  </view>
+  <view
+    class="at-grid__flex"
+  >
+    
+    <view
+      class="at-grid-item at-grid__flex-item at-grid-item--square"
+      style="flex: 0 0 33.333333333333336%;"
+    >
+      <view
+        class="at-grid-item__content"
+      >
+        <view
+          class="at-grid-item__content-inner"
+        >
+          <view
+            class="content-inner__icon"
+          >
+            <text
+              class="at-icon at-icon-subtract klass"
+              style="color: red; font-size: 30px; background: teal;"
+            />
+          </view>
+          <text
+            class="content-inner__text"
+          >
+            新品首发
+          </text>
+        </view>
+      </view>
+    </view>
+    
+  </view>
+  
+</view>
+`;
+
+exports[`AtGrid should render image data and match snapshot 1`] = `
+<view
+  class="at-grid"
+>
+  
+  <view
+    class="at-grid__flex"
+  >
+    
+    <view
+      class="at-grid-item at-grid__flex-item at-grid-item--square"
+      style="flex: 0 0 33.333333333333336%;"
+    >
+      <view
+        class="at-grid-item__content"
+      >
+        <view
+          class="at-grid-item__content-inner"
+        >
+          <view
+            class="content-inner__icon"
+          >
+            <image
+              class="content-inner__img"
+              mode="scaleToFill"
+              src="https://img12.img.com/a89ddf71.png"
+            />
+          </view>
+          <text
+            class="content-inner__text"
+          >
+            领取中心
+          </text>
+        </view>
+      </view>
+    </view>
+    <view
+      class="at-grid-item at-grid__flex-item at-grid-item--square"
+      style="flex: 0 0 33.333333333333336%;"
+    >
+      <view
+        class="at-grid-item__content"
+      >
+        <view
+          class="at-grid-item__content-inner"
+        >
+          <view
+            class="content-inner__icon"
+          >
+            <image
+              class="content-inner__img"
+              mode="scaleToFill"
+              src="https://img20.img.com/040a074b.png"
+            />
+          </view>
+          <text
+            class="content-inner__text"
+          >
+            找折扣
+          </text>
+        </view>
+      </view>
+    </view>
+    <view
+      class="at-grid-item at-grid__flex-item at-grid-item--square at-grid-item--last"
+      style="flex: 0 0 33.333333333333336%;"
+    >
+      <view
+        class="at-grid-item__content"
+      >
+        <view
+          class="at-grid-item__content-inner"
+        >
+          <view
+            class="content-inner__icon"
+          >
+            <image
+              class="content-inner__img"
+              mode="scaleToFill"
+              src="https://img10.img.com/4155b931.png"
+            />
+          </view>
+          <text
+            class="content-inner__text"
+          >
+            领会员
+          </text>
+        </view>
+      </view>
+    </view>
+    
+  </view>
+  <view
+    class="at-grid__flex"
+  >
+    
+    <view
+      class="at-grid-item at-grid__flex-item at-grid-item--square"
+      style="flex: 0 0 33.333333333333336%;"
+    >
+      <view
+        class="at-grid-item__content"
+      >
+        <view
+          class="at-grid-item__content-inner"
+        >
+          <view
+            class="content-inner__icon"
+          >
+            <image
+              class="content-inner__img"
+              mode="scaleToFill"
+              src="https://img12.img.com/31e68303.png"
+            />
+          </view>
+          <text
+            class="content-inner__text"
+          >
+            新品首发
+          </text>
+        </view>
+      </view>
+    </view>
+    
+  </view>
+  
+</view>
+`;
