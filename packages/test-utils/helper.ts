@@ -124,3 +124,5 @@ export function hexToRGBA(hex: string, opacity = 1) {
     ? `rgb(${rgb.join(', ')})`
     : `rgba(${rgba.join(', ')})`
 }
+
+export type TARO_ENV = "h5" | "weapp" | "alipay" | "swan" | "rn" | "tt" | "quickapp" | "qq" | "jd"

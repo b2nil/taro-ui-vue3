@@ -1,10 +1,9 @@
-import { genMountFn } from '@taro-ui-vue3/test-utils/helper'
+import { genMountFn, TARO_ENV } from '@taro-ui-vue3/test-utils/helper'
 import { capitalize } from '@vue/shared'
 import AtButton from '../index.vue'
 import Taro from '@tarojs/taro'
 
 const mountFn = genMountFn(AtButton)
-type TARO_ENV = "h5" | "weapp" | "alipay" | "swan" | "rn" | "tt" | "quickapp" | "qq" | "jd"
 
 describe('AtButton', () => {
   it.each([
