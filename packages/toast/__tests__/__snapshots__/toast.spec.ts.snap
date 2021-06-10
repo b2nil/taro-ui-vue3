@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtToast should render toast using icon and match snapshot 1`] = `
+<view
+  class="at-toast"
+>
+  <view
+    class="at-toast__overlay"
+  />
+  <view
+    class="toast-body"
+  >
+    <view
+      class="toast-body-content"
+    >
+      <view
+        class="toast-body-content__icon"
+      >
+        <text
+          class="at-icon at-icon-loading"
+        />
+      </view>
+      <view
+        class="toast-body-content__info"
+      >
+        <text>
+          测试数据
+        </text>
+      </view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtToast should render toast using image and match snapshot 1`] = `
+<view
+  class="at-toast"
+>
+  <view
+    class="at-toast__overlay"
+  />
+  <view
+    class="toast-body at-toast__body--custom-image"
+  >
+    <view
+      class="toast-body-content"
+    >
+      <view
+        class="toast-body-content__img"
+      >
+        <image
+          class="toast-body-content__img-item"
+          mode="scaleToFill"
+          src="http://img.com/06540.png"
+        />
+      </view>
+      <view
+        class="toast-body-content__info"
+      >
+        <text>
+          测试数据
+        </text>
+      </view>
+    </view>
+  </view>
+</view>
+`;

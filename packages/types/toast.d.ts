@@ -45,5 +45,6 @@ export interface AtToastProps extends AtComponent {
 }
 
 export interface AtToastState {
+  _timer: NodeJS.Timeout | null
   _isOpened: boolean
 }
