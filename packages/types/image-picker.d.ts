@@ -58,7 +58,7 @@ export interface AtImagePickerProps extends AtComponent {
    * 单行的图片数量，不能为 0 或负数
    * @default 4
    */
-  length?: number
+  length: number
   /**
    * 最多可以选择的图片张数
    * @since v2.0.2
@@ -82,9 +82,12 @@ export interface AtImagePickerProps extends AtComponent {
    * @since v2.0.2
    */
   sourceType?: ("album" | "camera" | "user" | "environment")[]
+}
+
+interface EmitsOptions {
   /**
-   * files 值发生变化触发的回调函数, operationType 操作类型有添加，移除，如果是移除操作，则index代表的是移除图片的索引
-   */
+  * files 值发生变化触发的回调函数, operationType 操作类型有添加，移除，如果是移除操作，则index 代表的是移除图片的索引
+  */
   onChange: (args: {
     files: File[],
     operationType: 'add' | 'remove',
@@ -93,7 +96,7 @@ export interface AtImagePickerProps extends AtComponent {
   /**
    * 点击图片触发的回调
    */
-  onImageClick?: (index: number, file: Object) => void
+  onImageClick?: (index: number, file: File) => void
   /**
    * 选择失败触发的回调
    */
