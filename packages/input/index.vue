@@ -86,7 +86,7 @@ import {
   KeyboardHeightEventDetail
 } from "@taro-ui-vue3/types/input"
 import { uuid } from "@taro-ui-vue3/utils"
-import { useModelValue } from '@taro-ui-vue3/composables/model'
+import { useModelValue } from '@taro-ui-vue3/composables'
 
 type PickAtInputProps = Pick<AtInputProps, 'maxLength' | 'disabled' | 'password'>
 type GetInputPropsReturn = PickAtInputProps & Pick<InputProps, 'type'>

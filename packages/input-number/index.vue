@@ -35,7 +35,7 @@
 <script lang="ts">
 import { defineComponent, computed, PropType, toRef } from "vue"
 import _toString from 'lodash-es/toString'
-import { pxTransform } from '@taro-ui-vue3/utils/common'
+import { pxTransform } from '@taro-ui-vue3/utils'
 
 import { CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
 import { AtInputNumberProps, InputError } from '@taro-ui-vue3/types/input-number'
