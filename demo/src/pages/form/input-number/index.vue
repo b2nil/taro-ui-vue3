@@ -5,14 +5,12 @@
       class="panel__content"
     >
       <example-item>
-        <view class="example-item__desc">通过 onChange 事件更新 value 值</view>
         <view class="example-item__desc">min=0, max=10, step=1</view>
         <at-input-number
           :min="0"
           :max="10"
           :step="1"
-          :value="number1"
-          @change="handleNumberChange('number1', $event)"
+          v-model="number1"
         />
       </example-item>
     </panel>
@@ -22,14 +20,13 @@
       class="panel__content"
     >
       <example-item>
-        <view class="example-item__desc">通过 v-model:value 更新 value 值</view>
         <view class="example-item__desc">min = 0, max = 10, step = 0.1</view>
         <at-input-number
           type="digit"
           :min="0"
           :max="10"
           :step="0.1"
-          v-model:value="number2"
+          v-model="number2"
         />
       </example-item>
     </panel>
@@ -44,7 +41,7 @@
           :min="0"
           :max="10"
           :step="1"
-          v-model:value="number3"
+          v-model="number3"
         />
       </example-item>
     </panel>
@@ -59,7 +56,7 @@
           :min="0"
           :max="10"
           :step="1"
-          v-model:value="number4"
+          v-model="number4"
         />
       </example-item>
     </panel>
@@ -74,7 +71,7 @@
           :min="0"
           :max="10"
           :step="1"
-          v-model:value="number5"
+          v-model="number5"
         />
       </example-item>
     </panel>
@@ -89,11 +86,10 @@
           :min="0"
           :max="10"
           :step="1"
-          v-model:value="number6"
+          v-model="number6"
         />
       </example-item>
     </panel>
-
   </page>
 
 </template>
@@ -110,7 +106,6 @@ export default defineComponent({
   name: "InputNumberDemo",
 
   setup() {
-
     const state = reactive<IndexState>({
       number1: 1,
       number2: 1,
@@ -120,17 +115,8 @@ export default defineComponent({
       number6: 1
     })
 
-
-    function handleNumberChange(
-      stateName: string,
-      value: number,
-    ): void {
-      state[stateName] = value
-    }
-
     return {
-      ...toRefs(state),
-      handleNumberChange
+      ...toRefs(state)
     }
 
   }

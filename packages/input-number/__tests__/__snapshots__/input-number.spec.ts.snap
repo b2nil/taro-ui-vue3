@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtInputNumber should render all nodes and match snapshot 1`] = `
+<view
+  class="at-input-number"
+>
+  <view
+    class="at-input-number__btn"
+  >
+    <text
+      class="at-icon at-icon-subtract at-input-number__btn-subtract"
+    />
+  </view>
+  <input
+    class="at-input-number__input"
+    style="width: 2.56rem;"
+    type="number"
+  />
+  <view
+    class="at-input-number__btn"
+  >
+    <text
+      class="at-icon at-icon-add at-input-number__btn-add"
+    />
+  </view>
+</view>
+`;

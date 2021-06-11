@@ -17,11 +17,9 @@ export interface AtInputNumberProps extends AtComponent {
   /**
    * 输入框当前值
    * @type {number | string}
-   * @description 必填，输入框当前值，支持 v-model, 开发者可通过 v-model:value 或 onChange 事件来更新 value 值
+   * @description 必填，输入框当前值，可通过 v-model 进行更新
    */
-  value: number | string
-
-  style?: string
+  modelValue: number | string
   /**
    * 最小值
    * @type {number}
