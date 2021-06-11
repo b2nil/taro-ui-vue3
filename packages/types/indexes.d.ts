@@ -47,7 +47,7 @@ export interface AtIndexesProps extends AtComponent {
    * 是否用弹框显示当前 key
    * @default true
    */
-  isShowToast?: boolean
+  showToast?: boolean
   /**
    * 列表
    */
@@ -63,10 +63,10 @@ export interface AtIndexesProps extends AtComponent {
 }
 
 export interface AtIndexesState {
-  _scrollIntoView: string
-  _scrollTop: number
-  _tipText: string
-  _isShowToast: boolean
+  scrollIntoView: string
+  scrollTop: number
+  showToast: boolean
+  tipText: string
   isWEB: boolean
 }
 

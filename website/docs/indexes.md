@@ -7,7 +7,7 @@
 
 在 Taro 文件中引入组件
 
-```typescript
+```ts
 import { AtIndexes } from 'taro-ui-vue3'
 ```
 
@@ -32,37 +32,20 @@ import { AtIndexes } from 'taro-ui-vue3'
       <AtIndexes
         :list="mockData"
         topKey="Top"
-        @click="onClick"
-        @scroll-into-view="handleScroll"
-      >
-        <view class="custom-area">
-          用户自定义内容
-          <AtSearchBar
-            :value="value"
-            @change="handleChange"
-            placeholder="跳转到指定Key"
-            @action-click="handleActionClick"
-          />
-        </view>
-      </AtIndexes>
+      />
     </view>
   </view>
 </template>
 ```
 
-
-
 ## 跳转到指定key
-
-
-##### html
 
 ```html
 <template>
   <view>
     <AtIndexes
       :list="list"
-      @scroll-into-view="handleScroll"
+      @scroll-into-view="handleScrollIntoView"
     >
       <view class='custom-area'>
         用户自定义内容
@@ -75,26 +58,28 @@ import { AtIndexes } from 'taro-ui-vue3'
   </view>
 </template>
 <script>
+import { ref } from 'vue'
 import mockData from './mock-data'
+
 export default {
   name: 'AtIndexesDemo',
-  data() {
-    return {
-      value: '',
-      list: mockData,
-      scrollToView: null
-    }
-  },
-  methods: {
-    handleActionClick() {
-      if (!this.value) {
-        return
-      }
-      this.scrollToView && this.scrollToView(this.value.toUpperCase())
-      this.value = ''
+  setup() {
+    const key = ref('')
+    const list = ref(mockData)
+    const jumpToView = ref((k: string) => {})
+
+    function handleActionClick() {
+      jumpToView.value(this.value.toUpperCase())
     },
-    handleScroll(fn) {
-      this.scrollToView = fn
+
+    function handleScrollIntoView(fn) {
+      jumpToView.value = fn
+    }
+
+    return {
+      list,
+      handleActionClick,
+      handleScrollIntoView
     }
   }
 }
@@ -108,13 +93,43 @@ export default {
 | ---------- | ------- | ------- | ------- | --- |
 | animation | 是否开启跳转过渡动画 | Boolean  | - | false |
 | isVibrate | 是否切换 key 的震动，只在微信小程序有效 | Boolean  | - | true |
-| isShowToast | 是否用弹框显示当前 key | Boolean  | - | true |
+| showToast | 是否用弹框显示当前 key | Boolean  | - | true |
 | topKey | 右侧导航第一个名称 | String  | - | Top |
-| list | `[ {'{title:列表标题,key:右侧导航标题,items:[{name: 列表项内容}]}'}]` | Array  | - | - |
+| list | 列表内容, 列表项数据结构如下 | Array<ListItem>  | - | - |
+
+
+### `ListItem` 数据结构
+
+
+```ts
+interface Item {
+  /**
+   * 列表项内容
+   */
+  name: string
+
+  [propName: string]: any
+}
+
+interface ListItem {
+  /**
+   * 列表标题
+   */
+  title: string
+  /**
+   * 右侧导航标题
+   */
+  key: string
+  /**
+   * 列表项
+   */
+  items: Array<Item>
+}
+```
 
 ## 事件
 
-| 事件名称 | 说明          | 返回参数  |
-|---------- |-------------- |---------- |
-| onClick | 点击列表项触发事件 |  (item:Object,event) => void |
-| onScrollIntoView | 获取跳转事件跳转到指定key | (fn:Function) => void |
+| 事件名称    | 说明            | 事件签名  |
+|---------- |--------------   |---------- |
+| onClick   | 点击列表项触发事件 |  `(item: Item) => void` |
+| onScrollIntoView | 获取跳转事件，以便跳转到指定 key | `(fn: (key: string) => void) => void` |
