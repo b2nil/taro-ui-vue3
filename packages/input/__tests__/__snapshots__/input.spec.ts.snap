@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtInput should render all nodes and match snapshot 1`] = `
+<view
+  class="at-input"
+>
+  <view
+    class="at-input__container at-input--error"
+  >
+    <view
+      class="at-input__overlay at-input__overlay--hidden"
+    />
+    <label
+      class="at-input__title"
+      for=""
+    >
+      title
+    </label>
+    <input
+      adjust-position="false"
+      auto-focus="false"
+      class="at-input__input"
+      confirm-type="done"
+      cursor="0"
+      cursor-spacing="50"
+      id="weui-inputHBMJLPAH"
+      maxlength="140"
+      name=""
+      password="false"
+      placeholder=""
+      placeholder-class="placeholder"
+      placeholder-style=""
+      selection-end="-1"
+      selection-start="-1"
+      type="text"
+    />
+    <view
+      class="at-input__icon"
+    >
+      <text
+        class="at-icon at-icon-close-circle at-input__icon-close"
+      />
+    </view>
+    <view
+      class="at-input__icon"
+    >
+      <text
+        class="at-icon at-icon-close-circle at-input__icon-alert"
+      />
+    </view>
+    <view
+      class="at-input__children"
+    >
+      
+      slot
+      
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtInput should render clear icon 1`] = `
+<view
+  class="at-input__icon"
+>
+  <text
+    class="at-icon at-icon-close-circle at-input__icon-close"
+  />
+</view>
+`;

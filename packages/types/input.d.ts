@@ -7,6 +7,7 @@ declare type OmitInputProps = Omit<
   InputProps,
   | 'className'
   | 'style'
+  | 'value'
   | 'type'
   | 'onBlur'
   | 'onFocus'
@@ -49,6 +50,8 @@ export declare type KeyboardHeightEventDetail = {
 }
 
 export interface AtInputProps extends AtComponent, OmitInputProps {
+  /** 输入框的初始内容 */
+  modelValue?: string
   /**
    * 输入框的唯一标识，有传入点击 title 会聚焦输入框
    */

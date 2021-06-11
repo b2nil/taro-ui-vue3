@@ -26,7 +26,7 @@ import { AtInput } from 'taro-ui-vue3'
 
 * 由于微信开发者工具的问题，Input 的 `placeholder` 在 `value` 存在的情况下，会出现重叠，在真机上不会出现此问题，可以忽略
 * 由于微信开发者工具的问题，输入法输入中文的时候，`maxLength` 会限制输入过程中的字符，导致无法输入完整的中文，在真机上不会出现此问题，可以忽略
-* 该组件为受控组件，开发者需要通过 `onChange` 事件或 `v-model:value` 来更新 `value` 值变化。不使用 v-model 时，`value` 与 `onChange` 函数必填。在小程序中，如果想改变 `value` 的值，需要 `return value` 从而改变输入框的当前值
+* 该组件为受控组件，开发者需要通过 `v-model` 来更新 `value` 值变化。在小程序中，如果想改变 `value` 的值，需要 `return value` 从而改变输入框的当前值
 * 由于小程序组件化的限制，AtInput 嵌套在 AtForm 或原生小程序组件 Form 中的时候，onSubmit 事件获得的 event 中的 `event.detail.value` 始终为空对象，开发者要获取数据，可以自行在页面的 state 中获取
 
 * 由于此组件是基于小程序的 `Input` 进行封装，该组件是原生组件，使用前请阅读[使用限制](https://developers.weixin.qq.com/miniprogram/dev/component/native-component.html)
@@ -40,16 +40,7 @@ import { AtInput } from 'taro-ui-vue3'
       title='标准五个字'
       type='text'
       placeholder='使用 onChange 更新 value 值'
-      :value="value1"
-      @change="handleInput"
-    />
-
-    <AtInput
-      name='value1'
-      title='标准五个字'
-      type='text'
-      placeholder='使用 v-model:value 更新 value 值'
-      v-model:value="value1"
+      v-model="value1"
     />
   </view>
 </template>
@@ -60,19 +51,12 @@ export default {
     return {
       value1: '',
     }
-  },
-  methods: {
-    handleInput(val) {
-      this.value1 = val
-    }
-  },
+  }
 }
 </script>
 ```
 
-
 ## 不同输入框类型
-
 
 ```html
 <AtForm>
@@ -81,40 +65,35 @@ export default {
     title='文本'
     type='text'
     placeholder='单行文本'
-    :value="value1"
-    @change="handleChange"
+    v-model="value1"
   />
   <AtInput
     name='value2'
     title='数字'
     type='number'
     placeholder='请输入数字'
-    :value="value2"
-    @change="handleChange"
+    v-model="value2"
   />
   <AtInput
     name='value3'
     title='密码'
     type='password'
     placeholder='密码不能少于10位数'
-    :value="value3"
-    @change="handleChange"
+    v-model="value3"
   />
   <AtInput
     name='value4'
     title='身份证'
     type='idcard'
     placeholder='身份证号码'
-    :value="value4"
-    @change="handleChange"
+    v-model="value4"
   />
   <AtInput
     name='value5'
     title='小数'
     type='digit'
     placeholder='请输入小数'
-    :value="value5"
-    @change="handleChange"
+    v-model="value5"
   />
   <AtInput
     name='value6'
@@ -122,8 +101,7 @@ export default {
     title='手机号码'
     type='phone'
     placeholder='手机号码'
-    :value="value6"
-    @change="handleChange"
+    v-model="value6"
   />
 </AtForm>
 ```
@@ -139,16 +117,14 @@ export default {
     title='禁用'
     type='text'
     placeholder='禁止输入'
-    :value="value1"
-    @change="handleChange"
+    v-model="value1"
   />
   <AtInput
     error
     title='出现错误'
     type='text'
     placeholder='点击按钮触发回调'
-    :value="value2"
-    @change="handleChange"
+    v-model="value2"
     @error-click="handleClick"
   />
   <AtInput
@@ -156,8 +132,7 @@ export default {
     title='不可编辑'
     type='text'
     placeholder='不可编辑'
-    :value="value3"
-    @change="handleChange"
+    v-model="value3"
   />
   <AtInput
     clear
@@ -165,8 +140,7 @@ export default {
     title='清除按钮'
     placeholder='点击清除按钮清空内容'
     type='text'
-    :value="value4"
-    @change="handleChange"
+    v-model="value4"
   />
   <AtInput 
     required
@@ -174,14 +148,12 @@ export default {
     title='必填项' 
     type='text' 
     placeholder='必填项' 
-    :value="value5" 
-    @change="handleInput" />
+    v-model="value5"
+  />
 </AtForm>
 ```
 
-
 ## 自定义右边栏
-
 
 ```html
 
@@ -191,13 +163,11 @@ export default {
   type='text'
   maxLength='4'
   placeholder='验证码'
-  :value="value"
-  @change="handleChange"
+  v-model="value"
 >
   <Image src='https://aotu.io/img.png' />
 </AtInput>
 ```
-
 
 ## Input 参数
 
@@ -205,7 +175,7 @@ export default {
 | ---   | ----  | ---- | ---- | ------- | ------- | ------ |
 | name  | √ | √ | 输入框的唯一标识，有传入点击 title 会聚焦输入框 | String  | - | - |
 | type  | √ | √ | 输入框类型 | String | `text`,`number`,`password`,`phone`,`idcard`,`digit` | `text` |
-| value | √ | √ | 输入框当前值，支持 v-model, 开发者可通过 `onChange` 事件或 `v-model:value`来更新 value 值，必填 | String  | - | - |
+| modelValue | √ | √ | 输入框当前值，开发者可通过 `v-model` 来更新 modelValue 值，必填 | String  | - | - |
 | placeholder | √ | √ | 占位符  | String  | - | - |
 | placeholderStyle | √ | x | 指定 placeholder 的样式，只在小程序有效  | String  | - | - |
 | placeholderClass | √ | x | 指定 placeholder 的样式类，只在小程序有效  | String | - | - |
@@ -228,13 +198,12 @@ export default {
 
 ## Input 事件
 
-| 事件名称 |  微信小程序 |  h5 | 说明  | 返回参数  |
+| 事件名称 |  微信小程序 |  h5 | 说明  | 事件签名  |
 |------- |---  |----- |---- | -------- |
-| onChange | √ | √ | 输入框值改变时触发的事件，开发者可通过 onChange 事件来更新 value 值变化，不使用 v-model 时，onChange 函数必填。  | (value,event) => void  |
-| onUpdate:value | √ | √ | 使用 `v-model:value` 时自动触发  | (value,event) => void  |
-| onFocus | √ | √ | 输入框被选中时触发的事件，可以获取 event 参数 | (value,event) => void   |
-| onBlur | √ | √ | 输入框失去焦点时触发的事件，可以获取 event 参数 | (value,event) => void   |
-| onConfirm | √ | x | 点击完成按钮时触发，可以获取 event 参数 | (value,event) => void   |
-| onErrorClick | √ | √ | 点击错误按钮触发的事件 | () => void |
-| onClick | √ | √ | 当 editable 为 false时，点击组件触发的事件  | () => void |
-| onKeyboardHeightChange | √ |   | 键盘高度发生变化的时候触发此事件 | (event) => void |
+| onUpdate:modelValue | √ | √ | 使用 `v-model` 时自动触发  | `(value) => void`  |
+| onFocus | √ | √ | 输入框被选中时触发的事件，可以获取 event 参数 | `(value) => void`   |
+| onBlur | √ | √ | 输入框失去焦点时触发的事件，可以获取 event 参数 | `(value) => void`   |
+| onConfirm | √ | x | 点击完成按钮时触发，可以获取 event 参数 | `(value) => void`   |
+| onErrorClick | √ | √ | 点击错误按钮触发的事件 | `(event) => void` |
+| onClick | √ | √ | 当 `editable` 为 `false` 时，点击组件触发的事件  | `(event) => void` |
+| onKeyboardHeightChange | √ |   | 键盘高度发生变化的时候触发此事件 | `(event) => void` |

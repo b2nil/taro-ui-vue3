@@ -11,23 +11,15 @@
             name="value1"
             title="标准五个字"
             type="text"
-            placeholder="使用了 v-model:value 更新 value"
-            v-model:value="value1"
-          />
-          <at-input
-            name="value2"
-            title="标题实在特别长就换行"
-            placeholder="使用了 onChange 更新 value"
-            :value="value1"
-            @change="handleInput('value1', $event)"
+            placeholder="使用 v-model 更新 value"
+            v-model="value1"
           />
           <at-input
             name="value3"
             title="无标题"
             placeholder="其他列保持正常间距"
             :border="false"
-            :value="value3"
-            @change="handleInput('value3', $event)"
+            v-model="value3"
           />
         </at-form>
       </view>
@@ -46,40 +38,35 @@
             title="文本"
             type="text"
             placeholder="当行文本"
-            :value="value4"
-            @change="handleInput('value4', $event)"
+            v-model="value4"
           />
           <at-input
             name="value5"
             title="数字"
             type="number"
             placeholder="请输入数字"
-            :value="value5"
-            @change="handleInput('value5', $event)"
+            v-model="value5"
           />
           <at-input
             name="value6"
             title="密码"
             type="password"
             placeholder="密码不能少于 10 位数"
-            :value="value6"
-            @change="handleInput('value6', $event)"
+            v-model="value6"
           />
           <at-input
             name="value7"
             title="身份证"
             type="idcard"
             placeholder="身份证号码"
-            :value="value7"
-            @change="handleInput('value7', $event)"
+            v-model="value7"
           />
           <at-input
             name="value8"
             title="小数"
             type="digit"
             placeholder="请输入小数"
-            :value="value8"
-            @change="handleInput('value8', $event)"
+            v-model="value8"
           />
           <at-input
             name="value9"
@@ -87,8 +74,7 @@
             type="phone"
             placeholder="手机号码"
             :border="false"
-            :value="value9"
-            @change="handleInput('value9', $event)"
+            v-model="value9"
           />
         </at-form>
       </view>
@@ -108,8 +94,7 @@
             title="禁用"
             type="text"
             placeholder="禁止输入"
-            :value="value10"
-            @change="handleInput('value10', $event)"
+            v-model="value10"
           />
           <at-input
             error
@@ -117,8 +102,7 @@
             title="出现错误"
             type="text"
             placeholder="点击按钮触发回调"
-            :value="value11"
-            @change="handleInput('value11', $event)"
+            v-model="value11"
             @error-click="onClickErrorIcon"
           />
           <at-input
@@ -136,7 +120,7 @@
             title="清除按钮"
             type="text"
             placeholder="点击清除按钮清空内容"
-            v-model:value="value13"
+            v-model="value13"
           />
           <at-input
             clear
@@ -146,7 +130,7 @@
             title="必填项"
             type="text"
             placeholder="必须填写内容"
-            v-model:value="value16"
+            v-model="value16"
           />
           <at-input
             clear
@@ -155,7 +139,7 @@
             title="监听事件"
             type="text"
             placeholder="监听键盘高度事件"
-            v-model:value="value17"
+            v-model="value17"
             @keyboard-height-change="handleKeyboardHeightChange"
           />
         </at-form>
@@ -177,7 +161,7 @@
             type="text"
             placeholder="验证码"
             :maxLength="4"
-            v-model:value="value14"
+            v-model="value14"
           >
             <image
               :src="verificationCode"
@@ -190,7 +174,7 @@
             type="phone"
             placeholder="请输入手机号码"
             :border="false"
-            v-model:value="value15"
+            v-model="value15"
           >
             <view
               :style="{
@@ -270,10 +254,6 @@ export default defineComponent({
       }, 1000)
     }
 
-    function handleInput(stateName, value) {
-      state[stateName] = value
-    }
-
     // function handleClick(): void {
     //   Taro.showToast({
     //     title: '已发送验证码',
@@ -302,7 +282,6 @@ export default defineComponent({
       ...toRefs(state),
       imageStyle,
       verificationCode,
-      handleInput,
       showTipText,
       sendCode,
       onClickErrorIcon,
