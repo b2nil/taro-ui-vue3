@@ -36,6 +36,21 @@ import { AtCard } from 'taro-ui-vue3'
 </AtCard>
 ```
 
+## 使用插槽自定义标题图标
+```html
+<at-card title="这是标题">
+  这也是内容区, 可以随意定义功能
+  <template #renderIcon>
+    <at-icon
+      value="home"
+      size="28"
+      color="purple"
+      style="margin-right: 10px;"
+    />
+  </template>
+</at-card>
+```
+
 
 ## AtCard 参数
 
@@ -45,7 +60,6 @@ import { AtCard } from 'taro-ui-vue3'
 | note   | 元素的辅助信息 | `String`  | -      | -      |
 | thumb  | 元素的缩略图   | `String`  | -      | -      |
 | icon  | 元素的图标，仅支持 AtIcon 支持的类型: `AtIconBaseProps`, 详细定义如下  | `AtIconBaseProps`  | -      | -      |
-| renderIcon | 元素自定义图标 | `JSX.Element | VNode` | - | - |  
 | extra  | 元素的额外信息 | `String`  | -      | -      |
 | extraStyle | 元素的额外信息自定义样式 | `Object` | - | - |
 | isFull | 是否通栏       | `Boolean` | -      | -      |
@@ -69,3 +83,10 @@ interface AtIconBaseProps {
 | 事件名称 | 说明                 | 返回参数 |
 | -------- | -------------------- | -------- |
 | onClick  | 元素被点击触发的事件 | -        |
+
+## AtCard 插槽
+
+| 插槽名称   | 说明           | 参数    |
+| ------    | -------------- | ------|
+| `default` | 卡片内容插槽     | -    |
+| `renderIcon` | 自定义标题图标插槽  | -  |
