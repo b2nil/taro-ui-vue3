@@ -42,10 +42,17 @@
       no-padding
     >
       <example-item>
-        <at-card
-          title="这是标题"
-          :renderIcon="renderIcon"
-        >这也是内容区 可以随意定义功能</at-card>
+        <at-card title="这是标题">
+          这也是内容区 可以随意定义功能
+          <template #renderIcon>
+            <at-icon
+              value="home"
+              size="28"
+              color="purple"
+              style="margin-right: 10px;"
+            />
+          </template>
+        </at-card>
       </example-item>
     </panel>
     <!-- 带小信息的卡片 -->
@@ -99,20 +106,13 @@
 </template>
 
 <script lang='ts'>
-import { defineComponent, h, resolveComponent } from "vue"
+import { defineComponent } from "vue"
 import Taro from "@tarojs/taro"
 
 export default defineComponent({
   name: "CardDemo",
 
   setup() {
-    const renderIcon = h(resolveComponent('at-icon'), {
-      prefixClass: 'at-icon',
-      value: 'home',
-      size: 16,
-      color: '#6190e8',
-      style: { marginRight: '10px' }
-    })
 
     function handleClick() {
       Taro.showToast({
@@ -122,8 +122,7 @@ export default defineComponent({
     }
 
     return {
-      handleClick,
-      renderIcon
+      handleClick
     }
   }
 })
