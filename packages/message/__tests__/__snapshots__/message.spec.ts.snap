@@ -1,0 +1,639 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtMessage behaviours should open message and render message type -- error 1`] = `
+<view
+  class="at-message at-message--show at-message--error"
+  name="AtMessage"
+  render="function render(_ctx, _cache) {
+  /* istanbul ignore next */
+  cov_1k5cw3mj2n().f[5]++;
+  cov_1k5cw3mj2n().s[13]++;
+  return vue_1.openBlock(), vue_1.createBlock(\\"view\\", vue_1.mergeProps(_ctx.$attrs, {
+    class: _ctx.rootClasses
+  }), vue_1.toDisplayString(_ctx.message), 17
+  /* TEXT, FULL_PROPS */
+  );
+}"
+  setup="function () {
+    /* istanbul ignore next */
+    cov_1k5cw3mj2n().f[2]++;
+
+    var _timer =
+    /* istanbul ignore next */
+    (
+    /* istanbul ignore next */
+    cov_1k5cw3mj2n().s[4]++, (0,
+    /* istanbul ignore next */
+    _vue.
+    /* istanbul ignore next */
+    ref)(null));
+
+    var state =
+    /* istanbul ignore next */
+    (
+    /* istanbul ignore next */
+    cov_1k5cw3mj2n().s[5]++, (0,
+    /* istanbul ignore next */
+    _vue.
+    /* istanbul ignore next */
+    reactive)({
+      _isOpened: false,
+      _message: '',
+      _type: 'info',
+      _duration: 3000
+    }));
+    var rootClasses =
+    /* istanbul ignore next */
+    (
+    /* istanbul ignore next */
+    cov_1k5cw3mj2n().s[6]++, (0,
+    /* istanbul ignore next */
+    _vue.
+    /* istanbul ignore next */
+    computed)(function () {
+      /* istanbul ignore next */
+      cov_1k5cw3mj2n().f[3]++;
+
+      var _a;
+
+      /* istanbul ignore next */
+      cov_1k5cw3mj2n().s[7]++;
+      return _a = {
+        'at-message': true,
+        'at-message--show': state._isOpened,
+        'at-message--hidden': !state._isOpened
+      }, _a[\\"at-message--\\" + state._type] = true, _a;
+    }));
+
+    function bindMessageListener() {
+      /* istanbul ignore next */
+      cov_1k5cw3mj2n().f[4]++;
+
+      /* istanbul ignore next */
+      _taro.
+      /* istanbul ignore next */
+      default.eventCenter.on('atMessage', function (options) {
+        if (options === void 0) {
+          options = {};
+        }
+
+        var message = options.message,
+            type = options.type,
+            duration = options.duration;
+        var newState = {
+          _isOpened: true,
+          _message: message,
+          _type: type,
+          _duration: duration || state._duration
+        };
+        Object.assign(state, newState);
+        /* istanbul ignore next */
+
+        (0,
+        /* istanbul ignore next */
+        _vue.
+        /* istanbul ignore next */
+        nextTick)(function () {
+          clearTimeout(_timer.value);
+          _timer.value = setTimeout(function () {
+            state._isOpened = false;
+          }, state._duration);
+        });
+      }); // 绑定函数
+
+      /* istanbul ignore next */
+
+
+      _taro.
+      /* istanbul ignore next */
+      default.atMessage =
+      /* istanbul ignore next */
+      _taro.
+      /* istanbul ignore next */
+      default.eventCenter.trigger.bind(
+      /* istanbul ignore next */
+      _taro.
+      /* istanbul ignore next */
+      default.eventCenter, 'atMessage');
+    }
+    /* istanbul ignore next */
+
+
+    (0,
+    /* istanbul ignore next */
+    _vue.
+    /* istanbul ignore next */
+    onMounted)(function () {
+      bindMessageListener();
+    });
+    /* istanbul ignore next */
+
+    (0,
+    /* istanbul ignore next */
+    _vue.
+    /* istanbul ignore next */
+    onUnmounted)(function () {
+      /* istanbul ignore next */
+      _taro.
+      /* istanbul ignore next */
+      default.eventCenter.off('atMessage');
+    });
+
+    /* istanbul ignore next */
+    cov_1k5cw3mj2n().s[8]++;
+    return {
+      message:
+      /* istanbul ignore next */
+      (0,
+      /* istanbul ignore next */
+      _vue.
+      /* istanbul ignore next */
+      toRef)(state, '_message'),
+      rootClasses: rootClasses,
+      bindMessageListener: bindMessageListener
+    };
+  }"
+>
+  消息通知
+</view>
+`;
+
+exports[`AtMessage behaviours should open message and render message type -- info 1`] = `
+<view
+  class="at-message at-message--show at-message--info"
+  name="AtMessage"
+  render="function render(_ctx, _cache) {
+  /* istanbul ignore next */
+  cov_1k5cw3mj2n().f[5]++;
+  cov_1k5cw3mj2n().s[13]++;
+  return vue_1.openBlock(), vue_1.createBlock(\\"view\\", vue_1.mergeProps(_ctx.$attrs, {
+    class: _ctx.rootClasses
+  }), vue_1.toDisplayString(_ctx.message), 17
+  /* TEXT, FULL_PROPS */
+  );
+}"
+  setup="function () {
+    /* istanbul ignore next */
+    cov_1k5cw3mj2n().f[2]++;
+
+    var _timer =
+    /* istanbul ignore next */
+    (
+    /* istanbul ignore next */
+    cov_1k5cw3mj2n().s[4]++, (0,
+    /* istanbul ignore next */
+    _vue.
+    /* istanbul ignore next */
+    ref)(null));
+
+    var state =
+    /* istanbul ignore next */
+    (
+    /* istanbul ignore next */
+    cov_1k5cw3mj2n().s[5]++, (0,
+    /* istanbul ignore next */
+    _vue.
+    /* istanbul ignore next */
+    reactive)({
+      _isOpened: false,
+      _message: '',
+      _type: 'info',
+      _duration: 3000
+    }));
+    var rootClasses =
+    /* istanbul ignore next */
+    (
+    /* istanbul ignore next */
+    cov_1k5cw3mj2n().s[6]++, (0,
+    /* istanbul ignore next */
+    _vue.
+    /* istanbul ignore next */
+    computed)(function () {
+      /* istanbul ignore next */
+      cov_1k5cw3mj2n().f[3]++;
+
+      var _a;
+
+      /* istanbul ignore next */
+      cov_1k5cw3mj2n().s[7]++;
+      return _a = {
+        'at-message': true,
+        'at-message--show': state._isOpened,
+        'at-message--hidden': !state._isOpened
+      }, _a[\\"at-message--\\" + state._type] = true, _a;
+    }));
+
+    function bindMessageListener() {
+      /* istanbul ignore next */
+      cov_1k5cw3mj2n().f[4]++;
+
+      /* istanbul ignore next */
+      _taro.
+      /* istanbul ignore next */
+      default.eventCenter.on('atMessage', function (options) {
+        if (options === void 0) {
+          options = {};
+        }
+
+        var message = options.message,
+            type = options.type,
+            duration = options.duration;
+        var newState = {
+          _isOpened: true,
+          _message: message,
+          _type: type,
+          _duration: duration || state._duration
+        };
+        Object.assign(state, newState);
+        /* istanbul ignore next */
+
+        (0,
+        /* istanbul ignore next */
+        _vue.
+        /* istanbul ignore next */
+        nextTick)(function () {
+          clearTimeout(_timer.value);
+          _timer.value = setTimeout(function () {
+            state._isOpened = false;
+          }, state._duration);
+        });
+      }); // 绑定函数
+
+      /* istanbul ignore next */
+
+
+      _taro.
+      /* istanbul ignore next */
+      default.atMessage =
+      /* istanbul ignore next */
+      _taro.
+      /* istanbul ignore next */
+      default.eventCenter.trigger.bind(
+      /* istanbul ignore next */
+      _taro.
+      /* istanbul ignore next */
+      default.eventCenter, 'atMessage');
+    }
+    /* istanbul ignore next */
+
+
+    (0,
+    /* istanbul ignore next */
+    _vue.
+    /* istanbul ignore next */
+    onMounted)(function () {
+      bindMessageListener();
+    });
+    /* istanbul ignore next */
+
+    (0,
+    /* istanbul ignore next */
+    _vue.
+    /* istanbul ignore next */
+    onUnmounted)(function () {
+      /* istanbul ignore next */
+      _taro.
+      /* istanbul ignore next */
+      default.eventCenter.off('atMessage');
+    });
+
+    /* istanbul ignore next */
+    cov_1k5cw3mj2n().s[8]++;
+    return {
+      message:
+      /* istanbul ignore next */
+      (0,
+      /* istanbul ignore next */
+      _vue.
+      /* istanbul ignore next */
+      toRef)(state, '_message'),
+      rootClasses: rootClasses,
+      bindMessageListener: bindMessageListener
+    };
+  }"
+>
+  消息通知
+</view>
+`;
+
+exports[`AtMessage behaviours should open message and render message type -- success 1`] = `
+<view
+  class="at-message at-message--show at-message--success"
+  name="AtMessage"
+  render="function render(_ctx, _cache) {
+  /* istanbul ignore next */
+  cov_1k5cw3mj2n().f[5]++;
+  cov_1k5cw3mj2n().s[13]++;
+  return vue_1.openBlock(), vue_1.createBlock(\\"view\\", vue_1.mergeProps(_ctx.$attrs, {
+    class: _ctx.rootClasses
+  }), vue_1.toDisplayString(_ctx.message), 17
+  /* TEXT, FULL_PROPS */
+  );
+}"
+  setup="function () {
+    /* istanbul ignore next */
+    cov_1k5cw3mj2n().f[2]++;
+
+    var _timer =
+    /* istanbul ignore next */
+    (
+    /* istanbul ignore next */
+    cov_1k5cw3mj2n().s[4]++, (0,
+    /* istanbul ignore next */
+    _vue.
+    /* istanbul ignore next */
+    ref)(null));
+
+    var state =
+    /* istanbul ignore next */
+    (
+    /* istanbul ignore next */
+    cov_1k5cw3mj2n().s[5]++, (0,
+    /* istanbul ignore next */
+    _vue.
+    /* istanbul ignore next */
+    reactive)({
+      _isOpened: false,
+      _message: '',
+      _type: 'info',
+      _duration: 3000
+    }));
+    var rootClasses =
+    /* istanbul ignore next */
+    (
+    /* istanbul ignore next */
+    cov_1k5cw3mj2n().s[6]++, (0,
+    /* istanbul ignore next */
+    _vue.
+    /* istanbul ignore next */
+    computed)(function () {
+      /* istanbul ignore next */
+      cov_1k5cw3mj2n().f[3]++;
+
+      var _a;
+
+      /* istanbul ignore next */
+      cov_1k5cw3mj2n().s[7]++;
+      return _a = {
+        'at-message': true,
+        'at-message--show': state._isOpened,
+        'at-message--hidden': !state._isOpened
+      }, _a[\\"at-message--\\" + state._type] = true, _a;
+    }));
+
+    function bindMessageListener() {
+      /* istanbul ignore next */
+      cov_1k5cw3mj2n().f[4]++;
+
+      /* istanbul ignore next */
+      _taro.
+      /* istanbul ignore next */
+      default.eventCenter.on('atMessage', function (options) {
+        if (options === void 0) {
+          options = {};
+        }
+
+        var message = options.message,
+            type = options.type,
+            duration = options.duration;
+        var newState = {
+          _isOpened: true,
+          _message: message,
+          _type: type,
+          _duration: duration || state._duration
+        };
+        Object.assign(state, newState);
+        /* istanbul ignore next */
+
+        (0,
+        /* istanbul ignore next */
+        _vue.
+        /* istanbul ignore next */
+        nextTick)(function () {
+          clearTimeout(_timer.value);
+          _timer.value = setTimeout(function () {
+            state._isOpened = false;
+          }, state._duration);
+        });
+      }); // 绑定函数
+
+      /* istanbul ignore next */
+
+
+      _taro.
+      /* istanbul ignore next */
+      default.atMessage =
+      /* istanbul ignore next */
+      _taro.
+      /* istanbul ignore next */
+      default.eventCenter.trigger.bind(
+      /* istanbul ignore next */
+      _taro.
+      /* istanbul ignore next */
+      default.eventCenter, 'atMessage');
+    }
+    /* istanbul ignore next */
+
+
+    (0,
+    /* istanbul ignore next */
+    _vue.
+    /* istanbul ignore next */
+    onMounted)(function () {
+      bindMessageListener();
+    });
+    /* istanbul ignore next */
+
+    (0,
+    /* istanbul ignore next */
+    _vue.
+    /* istanbul ignore next */
+    onUnmounted)(function () {
+      /* istanbul ignore next */
+      _taro.
+      /* istanbul ignore next */
+      default.eventCenter.off('atMessage');
+    });
+
+    /* istanbul ignore next */
+    cov_1k5cw3mj2n().s[8]++;
+    return {
+      message:
+      /* istanbul ignore next */
+      (0,
+      /* istanbul ignore next */
+      _vue.
+      /* istanbul ignore next */
+      toRef)(state, '_message'),
+      rootClasses: rootClasses,
+      bindMessageListener: bindMessageListener
+    };
+  }"
+>
+  消息通知
+</view>
+`;
+
+exports[`AtMessage behaviours should open message and render message type -- warning 1`] = `
+<view
+  class="at-message at-message--show at-message--warning"
+  name="AtMessage"
+  render="function render(_ctx, _cache) {
+  /* istanbul ignore next */
+  cov_1k5cw3mj2n().f[5]++;
+  cov_1k5cw3mj2n().s[13]++;
+  return vue_1.openBlock(), vue_1.createBlock(\\"view\\", vue_1.mergeProps(_ctx.$attrs, {
+    class: _ctx.rootClasses
+  }), vue_1.toDisplayString(_ctx.message), 17
+  /* TEXT, FULL_PROPS */
+  );
+}"
+  setup="function () {
+    /* istanbul ignore next */
+    cov_1k5cw3mj2n().f[2]++;
+
+    var _timer =
+    /* istanbul ignore next */
+    (
+    /* istanbul ignore next */
+    cov_1k5cw3mj2n().s[4]++, (0,
+    /* istanbul ignore next */
+    _vue.
+    /* istanbul ignore next */
+    ref)(null));
+
+    var state =
+    /* istanbul ignore next */
+    (
+    /* istanbul ignore next */
+    cov_1k5cw3mj2n().s[5]++, (0,
+    /* istanbul ignore next */
+    _vue.
+    /* istanbul ignore next */
+    reactive)({
+      _isOpened: false,
+      _message: '',
+      _type: 'info',
+      _duration: 3000
+    }));
+    var rootClasses =
+    /* istanbul ignore next */
+    (
+    /* istanbul ignore next */
+    cov_1k5cw3mj2n().s[6]++, (0,
+    /* istanbul ignore next */
+    _vue.
+    /* istanbul ignore next */
+    computed)(function () {
+      /* istanbul ignore next */
+      cov_1k5cw3mj2n().f[3]++;
+
+      var _a;
+
+      /* istanbul ignore next */
+      cov_1k5cw3mj2n().s[7]++;
+      return _a = {
+        'at-message': true,
+        'at-message--show': state._isOpened,
+        'at-message--hidden': !state._isOpened
+      }, _a[\\"at-message--\\" + state._type] = true, _a;
+    }));
+
+    function bindMessageListener() {
+      /* istanbul ignore next */
+      cov_1k5cw3mj2n().f[4]++;
+
+      /* istanbul ignore next */
+      _taro.
+      /* istanbul ignore next */
+      default.eventCenter.on('atMessage', function (options) {
+        if (options === void 0) {
+          options = {};
+        }
+
+        var message = options.message,
+            type = options.type,
+            duration = options.duration;
+        var newState = {
+          _isOpened: true,
+          _message: message,
+          _type: type,
+          _duration: duration || state._duration
+        };
+        Object.assign(state, newState);
+        /* istanbul ignore next */
+
+        (0,
+        /* istanbul ignore next */
+        _vue.
+        /* istanbul ignore next */
+        nextTick)(function () {
+          clearTimeout(_timer.value);
+          _timer.value = setTimeout(function () {
+            state._isOpened = false;
+          }, state._duration);
+        });
+      }); // 绑定函数
+
+      /* istanbul ignore next */
+
+
+      _taro.
+      /* istanbul ignore next */
+      default.atMessage =
+      /* istanbul ignore next */
+      _taro.
+      /* istanbul ignore next */
+      default.eventCenter.trigger.bind(
+      /* istanbul ignore next */
+      _taro.
+      /* istanbul ignore next */
+      default.eventCenter, 'atMessage');
+    }
+    /* istanbul ignore next */
+
+
+    (0,
+    /* istanbul ignore next */
+    _vue.
+    /* istanbul ignore next */
+    onMounted)(function () {
+      bindMessageListener();
+    });
+    /* istanbul ignore next */
+
+    (0,
+    /* istanbul ignore next */
+    _vue.
+    /* istanbul ignore next */
+    onUnmounted)(function () {
+      /* istanbul ignore next */
+      _taro.
+      /* istanbul ignore next */
+      default.eventCenter.off('atMessage');
+    });
+
+    /* istanbul ignore next */
+    cov_1k5cw3mj2n().s[8]++;
+    return {
+      message:
+      /* istanbul ignore next */
+      (0,
+      /* istanbul ignore next */
+      _vue.
+      /* istanbul ignore next */
+      toRef)(state, '_message'),
+      rootClasses: rootClasses,
+      bindMessageListener: bindMessageListener
+    };
+  }"
+>
+  消息通知
+</view>
+`;
+
+exports[`AtMessage should render default AtMessage 1`] = `
+<view
+  class="at-message at-message--hidden at-message--info"
+/>
+`;

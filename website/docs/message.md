@@ -5,7 +5,7 @@
 
 ## 使用指南
 
-```typescript
+```ts
 import { AtMessage } from 'taro-ui-vue3'
 ```
 
@@ -72,8 +72,8 @@ import { AtMessage } from 'taro-ui-vue3'
 
 ## Taro.atMessage Options 字段说明
 
-| 参数       | 说明                                   | 类型    | 可选值                                                              | 默认值   |
-| ---------- | -------------------------------------- | ------- | ------------------------------------------------------------------- | -------- |
-| message | 文本消息内容 | String  | - | - |
-| type | 消息类型 | String  | info，success，error，warning | - |
-| duration | 消息持续时间,单位 ms  | Number  | - | 3000 |
+| 参数       | 说明   | 类型    | 可选值     | 默认值   |
+| ---------- |------| ----- | --------- | ------- |
+| message | 文本消息内容 | `String`  | - | - |
+| type | 消息类型 | `String`  | `info | success | error | warning` | - |
+| duration | 消息持续时间, 单位 ms  | `Number`  | - | `3000` |
