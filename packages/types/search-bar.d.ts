@@ -1,5 +1,5 @@
 
-import { CommonEventFunction, CommonEvent } from '@tarojs/components/types/common'
+import { CommonEventFunction } from '@tarojs/components/types/common'
 
 import AtComponent from './base'
 import AtSearchBarProps, { AtInputProps } from './input'
@@ -8,9 +8,9 @@ export interface AtSearchBarProps extends AtComponent {
   /**
    * 输入框当前值
    * @type {string}
-   * @description 必填，支持 v-model， 开发者可通过 onChange 事件或 v-model:value 来更新 value 值
+   * @description 通过 v-model 来更新值
    */
-  value: string
+  modelValue: string
   /**
    * 输入框占位符
    * @type {string}
@@ -61,6 +61,7 @@ export interface AtSearchBarProps extends AtComponent {
   inputType?: 'text' | 'number' | 'idcard' | 'digit'
   /**
    * 输入框值改变时触发的事件
+   * @deprecated
    * @description 开发者可通过 onChange 事件来更新 value 值变化, 不使用 v-model 时必填
    */
   onChange?: AtInputProps['onChange']
@@ -75,7 +76,7 @@ export interface AtSearchBarProps extends AtComponent {
   onBlur?: AtInputProps['onBlur']
   /**
    * 点击清除按钮时触发事件
-   * @description 若不传，则默认传空字符串调用 onChange 函数，Taro UI 2.0.3 起支持
+   * @description 若不传，则默认传空字符串调用 v-model
    */
   onClear?: CommonEventFunction
   /**

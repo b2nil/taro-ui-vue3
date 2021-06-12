@@ -8,8 +8,7 @@
         <view class="component-item">
           <at-search-bar
             placeholder="通过 onChange 更新 value 值"
-            :value="value1"
-            @change="onChange('value1', $event)"
+            v-model="value1"
             @action-click="onActionClick('value1')"
           />
         </view>
@@ -25,7 +24,7 @@
           <at-search-bar
             action-name="搜一下"
             placeholder="通过 v-model:value 更新 value 值"
-            v-model:value="value2"
+            v-model="value2"
             @action-click="onActionClick('value2')"
           />
         </view>
@@ -41,7 +40,7 @@
           <at-search-bar
             showActionButton
             placeholder="请输入ISBN号"
-            v-model:value="value3"
+            v-model="value3"
             @action-click="onActionClick('value3')"
           />
         </view>
@@ -58,7 +57,7 @@
             showActionButton
             placeholder="请输入数字"
             input-type="number"
-            v-model:value="value4"
+            v-model="value4"
             @action-click="onActionClick('value4')"
           />
         </view>
@@ -72,25 +71,17 @@ import { defineComponent, reactive, toRefs } from 'vue'
 import Taro from '@tarojs/taro'
 import './index.scss'
 
-interface IndexState {
-  [key: string]: string
-}
-
 export default defineComponent({
   name: "SearchBarDemo",
 
   setup() {
 
-    const state = reactive<IndexState>({
+    const state = reactive({
       value1: '',
       value2: '',
       value3: '',
       value4: ''
     })
-
-    function onChange(stateName: string, value: string | number): void {
-      state[stateName] = value as string
-    }
 
     function onActionClick(stateName: string): void {
       Taro.showToast({
@@ -102,7 +93,6 @@ export default defineComponent({
 
     return {
       ...toRefs(state),
-      onChange,
       onActionClick
     }
   }

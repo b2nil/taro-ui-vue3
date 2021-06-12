@@ -1,0 +1,400 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtSearchBar should render default and match snapshot 1`] = `
+<view
+  class="at-search-bar"
+>
+  <view
+    class="at-search-bar__input-cnt"
+  >
+    <view
+      class="at-search-bar__placeholder-wrap"
+      style="flex-grow: 1;"
+    >
+      <text
+        class="at-icon at-icon-search"
+      />
+      <text
+        class="at-search-bar__placeholder"
+        style="visibility: visible;"
+      >
+        搜索
+      </text>
+    </view>
+    <input
+      class="at-search-bar__input"
+      confirm-type="search"
+      id="weui-inputDBIHKIJF"
+      maxlength="140"
+      type="text"
+    />
+    <!--v-if-->
+  </view>
+  <view
+    class="at-search-bar__action"
+    style="opacity: 0; margin-right: -59px;"
+  >
+    搜索
+  </view>
+</view>
+`;
+
+exports[`AtSearchBar should render prop actionName 1`] = `
+<view
+  class="at-search-bar"
+>
+  <view
+    class="at-search-bar__input-cnt"
+  >
+    <view
+      class="at-search-bar__placeholder-wrap"
+      style="flex-grow: 1;"
+    >
+      <text
+        class="at-icon at-icon-search"
+      />
+      <text
+        class="at-search-bar__placeholder"
+        style="visibility: visible;"
+      >
+        搜索
+      </text>
+    </view>
+    <input
+      class="at-search-bar__input"
+      confirm-type="search"
+      id="weui-inputFPPDCLBK"
+      maxlength="140"
+      type="text"
+    />
+    <!--v-if-->
+  </view>
+  <view
+    class="at-search-bar__action"
+    style="opacity: 0; margin-right: -171px;"
+  >
+    actionName
+  </view>
+</view>
+`;
+
+exports[`AtSearchBar should render prop disabled 1`] = `
+<view
+  class="at-search-bar"
+>
+  <view
+    class="at-search-bar__input-cnt"
+  >
+    <view
+      class="at-search-bar__placeholder-wrap"
+      style="flex-grow: 1;"
+    >
+      <text
+        class="at-icon at-icon-search"
+      />
+      <text
+        class="at-search-bar__placeholder"
+        style="visibility: visible;"
+      >
+        搜索
+      </text>
+    </view>
+    <input
+      class="at-search-bar__input"
+      confirm-type="search"
+      disabled=""
+      id="weui-inputLLHMNFIH"
+      maxlength="140"
+      type="text"
+    />
+    <!--v-if-->
+  </view>
+  <view
+    class="at-search-bar__action"
+    style="opacity: 0; margin-right: -59px;"
+  >
+    搜索
+  </view>
+</view>
+`;
+
+exports[`AtSearchBar should render prop fixed 1`] = `
+<view
+  class="at-search-bar at-search-bar--fixed"
+>
+  <view
+    class="at-search-bar__input-cnt"
+  >
+    <view
+      class="at-search-bar__placeholder-wrap"
+      style="flex-grow: 1;"
+    >
+      <text
+        class="at-icon at-icon-search"
+      />
+      <text
+        class="at-search-bar__placeholder"
+        style="visibility: visible;"
+      >
+        搜索
+      </text>
+    </view>
+    <input
+      class="at-search-bar__input"
+      confirm-type="search"
+      id="weui-inputBELJOPLN"
+      maxlength="140"
+      type="text"
+    />
+    <!--v-if-->
+  </view>
+  <view
+    class="at-search-bar__action"
+    style="opacity: 0; margin-right: -59px;"
+  >
+    搜索
+  </view>
+</view>
+`;
+
+exports[`AtSearchBar should render prop focus 1`] = `
+<view
+  class="at-search-bar"
+  fucos="true"
+>
+  <view
+    class="at-search-bar__input-cnt"
+  >
+    <view
+      class="at-search-bar__placeholder-wrap"
+      style="flex-grow: 1;"
+    >
+      <text
+        class="at-icon at-icon-search"
+      />
+      <text
+        class="at-search-bar__placeholder"
+        style="visibility: visible;"
+      >
+        搜索
+      </text>
+    </view>
+    <input
+      class="at-search-bar__input"
+      confirm-type="search"
+      id="weui-inputCNGNCAIN"
+      maxlength="140"
+      type="text"
+    />
+    <!--v-if-->
+  </view>
+  <view
+    class="at-search-bar__action"
+    style="opacity: 0; margin-right: -59px;"
+  >
+    搜索
+  </view>
+</view>
+`;
+
+exports[`AtSearchBar should render prop inputType number 1`] = `
+<view
+  class="at-search-bar"
+>
+  <view
+    class="at-search-bar__input-cnt"
+  >
+    <view
+      class="at-search-bar__placeholder-wrap"
+      style="flex-grow: 1;"
+    >
+      <text
+        class="at-icon at-icon-search"
+      />
+      <text
+        class="at-search-bar__placeholder"
+        style="visibility: visible;"
+      >
+        搜索
+      </text>
+    </view>
+    <input
+      class="at-search-bar__input"
+      confirm-type="search"
+      id="weui-inputFGKGMBEC"
+      maxlength="140"
+      type="number"
+    />
+    <!--v-if-->
+  </view>
+  <view
+    class="at-search-bar__action"
+    style="opacity: 0; margin-right: -59px;"
+  >
+    搜索
+  </view>
+</view>
+`;
+
+exports[`AtSearchBar should render prop maxLength 1`] = `
+<view
+  class="at-search-bar"
+>
+  <view
+    class="at-search-bar__input-cnt"
+  >
+    <view
+      class="at-search-bar__placeholder-wrap"
+      style="flex-grow: 1;"
+    >
+      <text
+        class="at-icon at-icon-search"
+      />
+      <text
+        class="at-search-bar__placeholder"
+        style="visibility: visible;"
+      >
+        搜索
+      </text>
+    </view>
+    <input
+      class="at-search-bar__input"
+      confirm-type="search"
+      id="weui-inputBIFMHCCP"
+      maxlength="120"
+      type="text"
+    />
+    <!--v-if-->
+  </view>
+  <view
+    class="at-search-bar__action"
+    style="opacity: 0; margin-right: -59px;"
+  >
+    搜索
+  </view>
+</view>
+`;
+
+exports[`AtSearchBar should render prop modelValue 1`] = `
+<view
+  class="at-search-bar"
+>
+  <view
+    class="at-search-bar__input-cnt"
+  >
+    <view
+      class="at-search-bar__placeholder-wrap"
+      style="flex-grow: 0;"
+    >
+      <text
+        class="at-icon at-icon-search"
+      />
+      <text
+        class="at-search-bar__placeholder"
+        style="visibility: hidden;"
+      >
+        搜索
+      </text>
+    </view>
+    <input
+      class="at-search-bar__input"
+      confirm-type="search"
+      id="weui-inputHHGPDJNB"
+      maxlength="140"
+      type="text"
+    />
+    <view
+      class="at-search-bar__clear"
+      style="display: flex;"
+    >
+      <text
+        class="at-icon at-icon-close-circle"
+      />
+    </view>
+  </view>
+  <view
+    class="at-search-bar__action"
+    style="opacity: 1; margin-right: 0px;"
+  >
+    搜索
+  </view>
+</view>
+`;
+
+exports[`AtSearchBar should render prop placeholder 1`] = `
+<view
+  class="at-search-bar"
+>
+  <view
+    class="at-search-bar__input-cnt"
+  >
+    <view
+      class="at-search-bar__placeholder-wrap"
+      style="flex-grow: 1;"
+    >
+      <text
+        class="at-icon at-icon-search"
+      />
+      <text
+        class="at-search-bar__placeholder"
+        style="visibility: visible;"
+      >
+        placeholder
+      </text>
+    </view>
+    <input
+      class="at-search-bar__input"
+      confirm-type="search"
+      id="weui-inputDDFDECLE"
+      maxlength="140"
+      type="text"
+    />
+    <!--v-if-->
+  </view>
+  <view
+    class="at-search-bar__action"
+    style="opacity: 0; margin-right: -59px;"
+  >
+    搜索
+  </view>
+</view>
+`;
+
+exports[`AtSearchBar should render prop showActionButton 1`] = `
+<view
+  class="at-search-bar"
+>
+  <view
+    class="at-search-bar__input-cnt"
+  >
+    <view
+      class="at-search-bar__placeholder-wrap"
+      style="flex-grow: 1;"
+    >
+      <text
+        class="at-icon at-icon-search"
+      />
+      <text
+        class="at-search-bar__placeholder"
+        style="visibility: visible;"
+      >
+        搜索
+      </text>
+    </view>
+    <input
+      class="at-search-bar__input"
+      confirm-type="search"
+      id="weui-inputKEDLHODC"
+      maxlength="140"
+      type="text"
+    />
+    <!--v-if-->
+  </view>
+  <view
+    class="at-search-bar__action"
+    style="opacity: 1; margin-right: 0px;"
+  >
+    搜索
+  </view>
+</view>
+`;

@@ -14,8 +14,7 @@
           用户自定义内容
           <at-search-bar
             placeholder="跳转到指定Key"
-            :value="searchbarValue"
-            @change="handleChange"
+            v-model="searchbarValue"
             @action-click="handleActionClick"
           />
         </view>
@@ -61,10 +60,6 @@ export default defineComponent({
       searchbarValue.value = ''
     }
 
-    function handleChange(value) {
-      searchbarValue.value = value
-    }
-
     function handleScrollIntoView(fn) {
       scrollIntoView.value = fn
     }
@@ -73,7 +68,6 @@ export default defineComponent({
       mockdata,
       searchbarValue,
       handleClick,
-      handleChange,
       handleActionClick,
       handleScrollIntoView
     }
