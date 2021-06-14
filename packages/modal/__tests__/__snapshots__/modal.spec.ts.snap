@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtModal should render modal with header and action and match snapshot 1`] = `
+<view
+  catchmove="true"
+  class="at-modal"
+>
+  <view
+    class="at-modal__overlay"
+  />
+  <view
+    class="at-modal__container"
+  >
+    <view
+      class="at-modal__header"
+    >
+      
+      <text>
+        title
+      </text>
+      
+    </view>
+    <scroll-view
+      class="at-modal__content"
+      scrolly="true"
+    >
+      
+      <view
+        class="content-simple"
+      >
+        <text>
+          content
+        </text>
+      </view>
+      
+    </scroll-view>
+    <view
+      class="at-modal__footer at-modal__footer--simple"
+    >
+      <view
+        class="at-modal__action"
+      >
+        
+        <button>
+          cancel
+        </button>
+        <button
+          style="margin-top: 0px;"
+        >
+          confirm
+        </button>
+        
+      </view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtModal should render modal with slot content and match snapshot 1`] = `
+<view
+  catchmove="true"
+  class="at-modal"
+>
+  <view
+    class="at-modal__overlay"
+  />
+  <view
+    class="at-modal__container"
+  >
+    
+    <view
+      class="slot"
+    />
+    
+  </view>
+</view>
+`;
