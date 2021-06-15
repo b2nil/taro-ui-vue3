@@ -40,7 +40,7 @@ import { AtPagination } from 'taro-ui-vue3'
 ## Pagination 参数
 
 | 参数         | 说明                             | 类型    | 可选值 | 默认值 |
-|:-------------|:---------------------------------|:--------|:-------|:-------|
+|:------------|:---------------------------------|:--------|:-------|:-------|
 | current      | 当前页                           | Number  | -      | 1      |
 | total        | 数据总量                         | Number  | -      | 0      |
 | pageSize     | 每页数据量                       | Number  | -      | 20     |
@@ -50,4 +50,18 @@ import { AtPagination } from 'taro-ui-vue3'
 
 | 事件名称     | 说明               | 返回参数      |
 |:-------------|:-------------------|:--------------|
-| onPageChange | 点击页码按钮时触发 | type, current |
+| onPageChange | 点击页码按钮时触发, `PageChangeData` 详情如下 | `PageChangeData` |
+
+## PageChangeData 详情
+```ts
+interface PageChangeData {
+  /**
+   * 翻页事件类型
+   */
+  type: 'prev' | 'next'
+  /**
+   * 当前页
+   */
+  current: number
+}
+```
