@@ -22,6 +22,6 @@ export interface AtProgressProps extends AtComponent {
   /**
    * 是否隐藏文字
    */
-  isHidePercent?: boolean
+  hidePercent?: boolean
 }
 

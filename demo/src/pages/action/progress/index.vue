@@ -20,13 +20,13 @@
       <example-item>
         <at-progress
           :percent="25"
-          is-hide-percent
+          hide-percent
         />
       </example-item>
       <example-item>
         <at-progress
           :percent="75"
-          is-hide-percent
+          hide-percent
         />
       </example-item>
     </panel>

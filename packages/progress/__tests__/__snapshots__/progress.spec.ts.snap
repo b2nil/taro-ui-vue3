@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Progress should render default and match snapshot 1`] = `
+<view
+  class="at-progress"
+>
+  <view
+    class="at-progress__outer"
+  >
+    <view
+      class="at-progress__outer-inner"
+    >
+      <view
+        class="at-progress__outer-inner-background"
+        style="width: 0%; height: 10px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-progress__content"
+  >
+    <text>
+      0%
+    </text>
+  </view>
+</view>
+`;

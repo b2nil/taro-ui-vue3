@@ -62,8 +62,8 @@ export default {
 ```html
 <template>
  <view>
-  <AtProgress :percent="25" isHidePercent />
-  <AtProgress :percent="75" isHidePercent />
+  <AtProgress :percent="25" hidePercent />
+  <AtProgress :percent="75" hidePercent />
  </view>
 </template>
 ```
@@ -119,4 +119,4 @@ export default {
 | status        | 元素的状态   | String  | `progress`,`error`,`success` | -       |
 | percent       | 元素的进度   | Number  | -                            | -       |
 | strokeWidth   | 元素的规格   | Number  | -                            | -       |
-| isHidePercent | 是否隐藏文字 | Boolean | -                            | `false` |
+| hidePercent | 是否隐藏文字 | Boolean | -                            | `false` |
