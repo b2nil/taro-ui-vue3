@@ -7,8 +7,7 @@
       <view class="radio-container">
         <at-radio
           :options="radioOptions1"
-          :value="radioValue1"
-          @click="handleRadioChange"
+          v-model="radioValue1"
         />
       </view>
     </panel>
@@ -20,20 +19,7 @@
       <view class="radio-container">
         <at-radio
           :options="radioOptions2"
-          :value="radioValue2"
-          @click="handleRadioChange2nd"
-        />
-      </view>
-    </panel>
-
-    <panel
-      title="使用 v-model: v-model:value"
-      no-padding
-    >
-      <view class="radio-container">
-        <at-radio
-          :options="radioOptions2"
-          v-model:value="radioValue2"
+          v-model="radioValue2"
         />
       </view>
     </panel>
@@ -45,8 +31,7 @@
       <view class="radio-container">
         <at-radio
           :options="radioOptions3"
-          :value="radioValue3"
-          @click="handleRadioChange3rd"
+          v-model="radioValue3"
         />
       </view>
     </panel>
@@ -55,7 +40,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from 'vue'
-import { RadioOption } from 'types/radio'
+import { RadioOption } from 'taro-ui-vue3/types/radio'
 import './index.scss'
 
 interface IndexState {
@@ -99,21 +84,8 @@ export default defineComponent({
       ]
     })
 
-    function handleRadioChange(value: string): void {
-      state.radioValue1 = value
-    }
-    function handleRadioChange2nd(value: string): void {
-      state.radioValue2 = value
-    }
-    function handleRadioChange3rd(value: string): void {
-      state.radioValue3 = value
-    }
-
     return {
-      ...toRefs(state),
-      handleRadioChange,
-      handleRadioChange2nd,
-      handleRadioChange3rd
+      ...toRefs(state)
     }
   }
 })
