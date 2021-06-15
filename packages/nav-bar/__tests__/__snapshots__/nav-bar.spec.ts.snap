@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtNavBar should render default nav-bar 1`] = `
+<view
+  class="at-nav-bar"
+>
+  <view
+    class="at-nav-bar__left-view"
+    style="color: rgb(97, 144, 232);"
+  >
+    <text
+      class="at-icon at-icon-chevron-left"
+      style="font-size: 1.024rem;"
+    />
+    <!--v-if-->
+  </view>
+  <view
+    class="at-nav-bar__title"
+  >
+    
+    
+  </view>
+  <view
+    class="at-nav-bar__right-view"
+  >
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: rgb(97, 144, 232);"
+    >
+      <!--v-if-->
+    </view>
+    <view
+      class="at-nav-bar__container at-nav-bar__container--hide"
+      style="color: rgb(97, 144, 232);"
+    >
+      <!--v-if-->
+    </view>
+  </view>
+</view>
+`;

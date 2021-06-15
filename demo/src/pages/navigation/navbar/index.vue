@@ -8,14 +8,12 @@
       <example-item>
         <at-nav-bar
           title="NavBar 导航栏示例"
-          leftIconType="chevron-left"
           @click-left-icon="handleClick('返回')"
         />
       </example-item>
       <example-item>
         <at-nav-bar
           title="NavBar 导航栏示例"
-          leftIconType="chevron-left"
           rightFirstIconType="bullet-list"
           rightSecondIconType="user"
           @click-left-icon="handleClick('返回')"
@@ -24,7 +22,6 @@
       <example-item>
         <at-nav-bar
           title="NavBar 导航栏示例"
-          leftIconType="chevron-left"
           rightFirstIconType="user"
           @click-left-icon="handleClick('返回')"
         />
@@ -40,7 +37,6 @@
         <at-nav-bar
           title="NavBar 导航栏示例"
           leftText="返回"
-          leftIconType="chevron-left"
           rightFirstIconType="bullet-list"
           rightSecondIconType="user"
           @click-left-icon="handleClick('返回')"
@@ -69,9 +65,9 @@
           leftText="返回"
           rightFirstIconType="bullet-list"
           rightSecondIconType="user"
-          @click-rg-icon-st="clickList"
-          @click-rg-icon-nd="clickMy"
           @click-left-icon="clickReturn"
+          @click-right-second-icon="clickMy"
+          @click-right-first-icon="clickList"
         />
       </example-item>
     </panel>
@@ -89,9 +85,9 @@
           leftText="返回"
           rightFirstIconType="bullet-list"
           :rightSecondIconType="{ value: 'user', size: 36, color: 'red' }"
-          @click-rg-icon-st="clickList"
-          @click-rg-icon-nd="clickMy"
           @click-left-icon="clickReturn"
+          @click-right-second-icon="clickMy"
+          @click-right-first-icon="clickList"
         />
       </example-item>
     </panel>
@@ -110,9 +106,9 @@
           leftText="返回"
           rightFirstIconType="bullet-list"
           rightSecondIconType="user"
-          @click-rg-icon-st="clickList"
-          @click-rg-icon-nd="clickMy"
           @click-left-icon="clickReturn"
+          @click-right-second-icon="clickMy"
+          @click-right-first-icon="clickList"
         />
       </example-item>
     </panel>
