@@ -3,14 +3,6 @@
     v-bind="$attrs"
     class="at-indexes"
   >
-    <!-- toast message -->
-    <at-toast
-      :is-opened="showToast"
-      :text="tipText"
-      :duration="1000"
-      :style="toastStyle"
-    />
-
     <!-- menu-->
     <view
       class="at-indexes__menu"
@@ -72,6 +64,14 @@
         </at-list>
       </view>
     </scroll-view>
+
+    <!-- toast message -->
+    <at-toast
+      :is-opened="showToast"
+      :text="tipText"
+      :duration="1000"
+      :style="toastStyle"
+    />
   </view>
 </template>
 
@@ -209,10 +209,6 @@ const AtIndexes = defineComponent({
       }
     }
 
-    // function handleTouchend() {
-    //   // currentIndex.value = -1
-    // }
-
     function jumpTarget(scrollIntoView: string, idx: number) {
       currentIndex.value = idx
 
@@ -342,7 +338,6 @@ const AtIndexes = defineComponent({
       jumpTarget,
       handleClick,
       handleScroll,
-      // handleTouchend,
       handleTouchmove,
       genActiveIndexStyle
     }
@@ -351,4 +346,3 @@ const AtIndexes = defineComponent({
 
 export default AtIndexes
 </script>
-

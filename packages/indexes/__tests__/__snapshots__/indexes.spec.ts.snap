@@ -2,15 +2,6 @@
 
 exports[`AtIndexes events should render toast and show active letter style when clicking a letter index 1`] = `
 <view class="at-indexes">
-  <view class="at-toast">
-    <!--v-if-->
-    <view class="toast-body toast-body--text" style="min-width: 2.1334rem;">
-      <view class="toast-body-content">
-        <!--v-if-->
-        <view class="toast-body-content__info"><text>A</text></view>
-      </view>
-    </view>
-  </view>
   <view class="at-indexes__menu">
     <view class="at-indexes__menu-item" style="">Top</view>
     <view class="at-indexes__menu-item" style="color: white; background-color: rgb(97, 144, 232); border-radius: 40px;">A</view>
@@ -143,17 +134,26 @@ exports[`AtIndexes events should render toast and show active letter style when 
       </view>
     </view>
   </scroll-view>
+  <view class="at-toast">
+    <!--v-if-->
+    <view class="toast-body toast-body--text" style="min-width: 2.1334rem;">
+      <view class="toast-body-content">
+        <!--v-if-->
+        <view class="toast-body-content__info"><text>A</text></view>
+      </view>
+    </view>
+  </view>
 </view>
 `;
 
 exports[`AtIndexes should render default indexes 1`] = `
 <view class="at-indexes">
-  <!--v-if-->
   <view class="at-indexes__menu">
     <view class="at-indexes__menu-item" style="color: white; background-color: rgb(97, 144, 232); border-radius: 40px;">Top</view>
   </view>
   <scroll-view class="at-indexes__body" scroll-y="" enable-back-to-top="" scroll-top="0" scroll-into-view="" scroll-with-animation="false">
     <view id="at-indexes__top" class="at-indexes__content"></view>
   </scroll-view>
+  <!--v-if-->
 </view>
 `;
