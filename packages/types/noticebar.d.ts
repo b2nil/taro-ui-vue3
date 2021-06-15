@@ -53,7 +53,5 @@ export interface AtNoticeBarState {
   animElemId: string
   animationData: object[]
   dura: number
-  isWEAPP: boolean
-  isALIPAY: boolean
   isWEB: boolean
 }

@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtNoticebar should render close icon and match snapshot 1`] = `
+<view
+  class="at-noticebar__close"
+>
+  <text
+    class="at-icon at-icon-close"
+  />
+</view>
+`;
+
+exports[`AtNoticebar should render moreText in single-line mode and match snapshot 1`] = `
+<view
+  class="at-noticebar__more"
+>
+  <text
+    class="text"
+  >
+    查看更多
+  </text>
+  <view
+    class="at-noticebar__more-icon"
+  >
+    <text
+      class="at-icon at-icon-chevron-right"
+    />
+  </view>
+</view>
+`;
+
+exports[`AtNoticebar should render prop icon and match snapshot 1`] = `
+<view
+  class="at-noticebar__content-icon"
+>
+  <text
+    class="at-icon at-icon-volume-plus"
+  />
+</view>
+`;

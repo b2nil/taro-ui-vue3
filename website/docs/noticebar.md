@@ -21,14 +21,14 @@ import { AtNoticebar } from 'taro-ui-vue3'
 ## 一般用法
 
 ```html
-<AtNoticebar>这是 NoticeBar 通告栏</AtNoticebar>
+<AtNoticebar>清对浊，苦对咸。一启对三缄。</AtNoticebar>
 ```
 
 ## 文字滚动
 
 ```html
 <AtNoticebar marquee>
-  这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏
+  清对浊，苦对咸。一启对三缄。烟蓑对雨笠，月榜对风帆。
 </AtNoticebar>
 ```
 
@@ -36,7 +36,7 @@ import { AtNoticebar } from 'taro-ui-vue3'
 
 ```html
 <AtNoticebar icon='volume-plus'>
-  这是 NoticeBar 通告栏，这是 NoticeBar 通告栏，这是 NoticeBar 通告栏
+  清对浊，苦对咸。一启对三缄。烟蓑对雨笠，月榜对风帆。
 </AtNoticebar>
 ```
 
@@ -56,6 +56,6 @@ import { AtNoticebar } from 'taro-ui-vue3'
 ## Noticebar 事件
 
 | 事件名称   | 说明                 | 返回参数 |
-|:-----------|:---------------------|:---------|
+|:-----------|:-------------------|:---------|
 | onClose    | 关闭时触发           | -        |
-| onGotoMore | 点击”查看更多“时触发 | -        |
+| onGotoMore | 点击”查看更多“时触发   | -        |
