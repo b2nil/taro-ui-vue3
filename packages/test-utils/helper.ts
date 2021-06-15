@@ -1,5 +1,6 @@
 import { mount, shallowMount, DOMWrapper, VueWrapper } from '@vue/test-utils'
 import { VNode, Slot } from '@vue/runtime-core'
+import { AtIconBaseProps } from '@taro-ui-vue3/types/base'
 
 export const sleep = async (timeout: number): Promise<null> =>
   new Promise((resolve) => setTimeout(resolve, timeout))
@@ -110,6 +111,44 @@ export function testPropClassAndStyle(
       wrapper.attributes('style')
     ).toContain('color: red;')
   })
+}
+
+export function expectIconClassesAndStyle(
+  iconEl: DOMWrapper<Element>,
+  iconInfo: AtIconBaseProps,
+  pxTransform: Function,
+) {
+
+  expect(
+    iconEl.classes()
+  ).toContain(iconInfo.prefixClass || 'at-icon')
+
+  expect(
+    iconEl.classes()
+  ).toContain(`${iconInfo.prefixClass || 'at-icon'}-${iconInfo.value}`)
+
+  if (iconInfo.class) {
+    expect(iconEl.classes()).toContain(`${iconInfo.class}`)
+  }
+
+  if (iconInfo.size) {
+    const expectedFontSize = pxTransform
+      ? `font-size: ${pxTransform(iconInfo.size)};`
+      : `font-size: ${iconInfo.size}px;`
+
+    expect(iconEl.attributes('style')).toContain(expectedFontSize)
+  }
+
+  if (iconInfo.color) {
+    const expectedColorStyle = iconInfo.color.startsWith('#')
+      ? `color: ${hexToRGBA(iconInfo.color)};`
+      : `color: ${iconInfo.color};`
+
+    expect(
+      iconEl.attributes('style')
+    ).toContain(expectedColorStyle)
+  }
+
 }
 
 export function hexToRGBA(hex: string, opacity = 1) {
