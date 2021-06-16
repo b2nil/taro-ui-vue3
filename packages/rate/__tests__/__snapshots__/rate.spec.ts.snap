@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtRate should render default props and match snapshot 1`] = `
+<view
+  class="at-rate"
+>
+  
+  <view
+    class="at-rate__icon at-rate__icon--on"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px; color: rgb(255, 202, 62);"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px; color: rgb(255, 202, 62);"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--on"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px; color: rgb(255, 202, 62);"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px; color: rgb(255, 202, 62);"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--half"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  <view
+    class="at-rate__icon at-rate__icon--off"
+    style="margin-right: 0.1067rem;"
+  >
+    <text
+      class="at-icon at-icon-star-2"
+      style="font-size: 20px;"
+    />
+    <view
+      class="at-rate__left"
+    >
+      <text
+        class="at-icon at-icon-star-2"
+        style="font-size: 20px;"
+      />
+    </view>
+  </view>
+  
+</view>
+`;

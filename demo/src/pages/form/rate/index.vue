@@ -2,10 +2,7 @@
   <page header-title="Rate 评分">
     <panel title="基础用法">
       <example-item>
-        <at-rate
-          :value="rateValue1"
-          @change="handleRateChange('rateValue1', $event)"
-        />
+        <at-rate v-model="rateValue1" />
       </example-item>
     </panel>
 
@@ -13,8 +10,7 @@
       <example-item>
         <at-rate
           :size="16"
-          :value="rateValue2"
-          @change="handleRateChange('rateValue2', $event)"
+          v-model="rateValue2"
         />
       </example-item>
     </panel>
@@ -23,8 +19,7 @@
       <example-item>
         <at-rate
           :max="10"
-          :value="rateValue3"
-          @change="handleRateChange('rateValue3', $event)"
+          v-model="rateValue3"
         />
       </example-item>
     </panel>
@@ -33,8 +28,7 @@
       <example-item>
         <at-rate
           :margin="10"
-          :value="rateValue4"
-          @change="handleRateChange('rateValue4', $event)"
+          v-model="rateValue4"
         />
       </example-item>
     </panel>
@@ -42,17 +36,7 @@
     <panel title="只读">
       <example-item>
         <view>评分: 3.5</view>
-        <at-rate :value="3.5" />
-      </example-item>
-    </panel>
-
-    <panel title="使用 vModel：`v-model:value`">
-      <example-item>
-        <at-rate
-          :size="24"
-          :max="6"
-          v-model:value="rateValue5"
-        />
+        <at-rate modelValue="3.5" />
       </example-item>
     </panel>
 
@@ -62,7 +46,7 @@
           color="teal"
           :size="24"
           :max="6"
-          v-model:value="rateValue5"
+          v-model="rateValue5"
         />
       </example-item>
     </panel>
@@ -70,11 +54,17 @@
     <panel title="自定义图标类型： 支持 star 或 heart">
       <example-item>
         <at-rate
+          color="pink"
+          :size="24"
+          :max="6"
+          v-model="rateValue5"
+        />
+        <at-rate
           color="red"
           icon="heart"
           :size="24"
           :max="6"
-          v-model:value="rateValue5"
+          v-model="rateValue5"
         />
       </example-item>
     </panel>
@@ -102,13 +92,8 @@ export default defineComponent({
       rateValue5: 5,
     })
 
-    function handleRateChange(stateName: string, value: number): void {
-      state[stateName] = value
-    }
-
     return {
-      ...toRefs(state),
-      handleRateChange
+      ...toRefs(state)
     }
   }
 })
