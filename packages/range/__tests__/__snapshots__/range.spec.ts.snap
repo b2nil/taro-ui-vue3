@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtRange should render default props and match snapshot 1`] = `
+<view class="at-range">
+  <view class="at-range__container">
+    <view class="at-range__rail">
+      <view class="at-range__track" style="left: 0%; width: 0%;"></view>
+      <view style="left: 0%; top: 0%;" class="at-range__slider"></view>
+      <view style="left: 0%; top: 0%;" class="at-range__slider"></view>
+    </view>
+  </view>
+</view>
+`;
+
+exports[`AtRange should render prop modelValue 1`] = `
+<view class="at-range">
+  <view class="at-range__container">
+    <view class="at-range__rail">
+      <view class="at-range__track" style="left: 20%; width: 30%;"></view>
+      <view style="left: 20%; top: 0%;" class="at-range__slider"></view>
+      <view style="left: 50%; top: 0%;" class="at-range__slider"></view>
+    </view>
+  </view>
+</view>
+`;

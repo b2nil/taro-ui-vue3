@@ -21,7 +21,7 @@ export interface AtRangeProps extends AtComponent {
    * 当前取值
    * @default [0, 0]
    */
-  value?: RangeTuple
+  modelValue?: RangeTuple
   /**
    * 最小值
    * @default 0
@@ -44,6 +44,7 @@ export interface AtRangeProps extends AtComponent {
   disabled?: boolean
   /**
    * 当 Slider 的值发生改变时，会触发 onChange 事件，并把改变后的值作为参数传入。
+   * @deprecated
    */
   onChange?: (value: RangeTuple) => void
   /**

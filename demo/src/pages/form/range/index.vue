@@ -7,8 +7,7 @@
       <at-range
         :min="30"
         :max="90"
-        :value="value1"
-        @change="handleChange('value1', $event)"
+        v-model="value1"
       />
     </panel>
 
@@ -18,15 +17,14 @@
       </example-item>
       <at-range
         :sliderStyle="{ backgroundColor: '#6190E8' }"
-        :value="value2"
-        @change="handleChange('value2', $event)"
+        v-model="value2"
       />
     </panel>
 
     <panel title="禁止状态">
       <at-range
         disabled
-        :value="[30, 50]"
+        :modelValue="[30, 50]"
       />
     </panel>
   </page>
@@ -49,14 +47,8 @@ export default defineComponent({
       value1: [50, 60],
       value2: [50, 60]
     })
-
-    function handleChange(stateName: string, value: [number, number]) {
-      state[stateName] = value
-    }
-
     return {
-      ...toRefs(state),
-      handleChange
+      ...toRefs(state)
     }
   }
 })
