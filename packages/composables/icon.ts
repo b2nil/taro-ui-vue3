@@ -1,4 +1,5 @@
 import { computed, CSSProperties } from 'vue'
+import { cssStringToObject } from '@taro-ui-vue3/utils'
 import type { AtIconBaseProps } from '@taro-ui-vue3/types/base'
 
 export function useIconClasses(
@@ -26,15 +27,6 @@ export function useIconClasses(
   return {
     iconClasses
   }
-}
-
-const cssStringToObject = (css: string) => {
-
-  const r = /(?<=^|;)\s*([^:]+)\s*:\s*([^;]+)\s*/g, o = {}
-  css.replace(r, (m, p, v) => o[p.replace(/-(.)/g, (m, p) => p.toUpperCase())] = v)
-
-  return o
-
 }
 
 export function useIconStyle(

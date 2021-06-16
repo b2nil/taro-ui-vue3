@@ -1,4 +1,5 @@
 import Taro, { SelectorQuery } from '@tarojs/taro'
+import { CSSProperties } from 'vue'
 
 const { getEnv, ENV_TYPE } = Taro
 const ENV = Taro.getEnv()
@@ -65,6 +66,15 @@ const objectToString = (style: object | string): string => {
     return style
   }
   return ''
+}
+
+function cssStringToObject(css: string) {
+  const o: CSSProperties = {}
+  const r = /(?<=^|;)\s*([^:]+)\s*:\s*([^;]+)\s*/g
+
+  css.replace(r, (m, p, v) => o[p.replace(/-(.)/g, (m, p) => p.toUpperCase())] = v)
+
+  return o
 }
 
 function mergeStyle(style1: object | string, style2: object | string): object | string {
@@ -259,6 +269,7 @@ export {
   pxTransform,
   getEnvs,
   delayQuerySelector,
+  cssStringToObject,
   mergeStyle,
   handleTouchScroll,
   uuid,
