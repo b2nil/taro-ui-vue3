@@ -114,5 +114,5 @@ import { AtSlider } from 'taro-ui-vue3'
 
 | 事件名称   | 说明                                                       | 返回参数 |
 |:-----------|:---------------------------------------------------------|:---------|
-| onChange   | 完成一次拖动后触发的事件，event.detail = {'{ value: value }'} | value    |
-| onChanging | 拖动过程中触发的事件，event.detail = {'{ value: value }'}     | value    |
+| onChange   | 完成一次拖动后触发的事件，`event.detail = { value: number }`  | value    |
+| onChanging | 拖动过程中触发的事件，`event.detail = { value: number }`     | value    |

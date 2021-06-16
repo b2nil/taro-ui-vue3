@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtSlider should render default and match snapshot 1`] = `
+<view
+  class="at-slider"
+>
+  <view
+    class="at-slider__inner"
+  >
+    <slider
+      active-color="#6190e8"
+      background-color="#e9e9e9"
+      block-color="#ffffff"
+      block-size="28"
+      disabled="false"
+      max="100"
+      min="0"
+      step="1"
+      value="0"
+    />
+  </view>
+  <!--v-if-->
+</view>
+`;

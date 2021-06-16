@@ -64,7 +64,3 @@ export interface AtSliderProps extends AtComponent {
   onChanging?: SliderFunction
 }
 
-export interface AtSliderState {
-  _value: number
-}
-
