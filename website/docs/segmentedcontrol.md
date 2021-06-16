@@ -56,7 +56,6 @@ export default {
 
 ## 自定义颜色、字体大小
 
-
 ```html
 <AtSegmentedControl
   @click="handleClick"
@@ -64,14 +63,11 @@ export default {
   fontSize='30'
   :current="current"
   :values="['标签页1', '标签页2', '标签页3']"
+  @click="handleClick"
 />
-
-
 ```
 
-
 ## 禁用
-
 
 ```html
 <AtSegmentedControl
@@ -87,12 +83,12 @@ export default {
 
 | 参数       | 说明     | 类型    | 可选值     | 默认值   |
 | ---------- | ------- | ------- | ------- | -------- |
-| current | 当前选中的`tab`索引值，从0计数  | Number  | - | 0 |
-| color     | 背景颜色与选中标签字体的颜色  | String | - | `#fff` |
-| selectedColor  | 选中的标签背景色与边框颜色  | String | - | `#6190E8` |
-| values | 选项数组，值是字符串，eg: ['标签页1', '标签页2' ] | Array  | - | false |
+| current | 当前选中的`tab`索引值，从 0 开始计数  | `Number`  | - | `0` |
+| color     | 背景颜色与选中标签字体的颜色  | `String` | - | `#fff` |
+| selectedColor  | 选中的标签背景色与边框颜色  | `String` | - | `#6190E8` |
+| values | 选项数组，值是字符串，eg: ['标签页1', '标签页2' ] | `Array`  | - | `false` |
 | disabled | 是否禁止点击 | Boolean  | - | false |
-| fontSize | 字体大小，单位 h5 为 `rem`，小程序为 `rem` | `Number | String`  | - | 28 |
+| fontSize | 字体大小，单位 h5 为 `rem`，小程序为 `rem` | `Number | String`  | - | `28` |
 
 ## 事件
 

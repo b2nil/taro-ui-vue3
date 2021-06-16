@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtSegmentedControl should render default props and match snapshot 1`] = `
+<view
+  class="at-segmented-control"
+  style="border-color: #6190e8;"
+>
+  
+  <view
+    class="at-segmented-control__item at-segmented-control__item--active"
+    style="color: rgb(255, 255, 255); font-size: 0.5974rem; border-color: #6190e8; background-color: rgb(97, 144, 232);"
+  >
+    tab1
+  </view>
+  <view
+    class="at-segmented-control__item"
+    style="color: rgb(97, 144, 232); font-size: 0.5974rem; border-color: #6190e8; background-color: rgb(255, 255, 255);"
+  >
+    tab2
+  </view>
+  <view
+    class="at-segmented-control__item"
+    style="color: rgb(97, 144, 232); font-size: 0.5974rem; border-color: #6190e8; background-color: rgb(255, 255, 255);"
+  >
+    tab3
+  </view>
+  
+</view>
+`;
