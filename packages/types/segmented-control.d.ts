@@ -1,6 +1,3 @@
-
-import { CommonEvent } from '@tarojs/components/types/common'
-
 import AtComponent from './base'
 
 export interface AtSegmentedControlProps extends AtComponent {
@@ -36,5 +33,5 @@ export interface AtSegmentedControlProps extends AtComponent {
   /**
    * 点击触发事件，开发者需要通过 onClick 事件来更新 current 值变化，onClick 函数必填
    */
-  onClick: (index: number, event: CommonEvent) => void
+  onClick?: (index: number) => void
 }
