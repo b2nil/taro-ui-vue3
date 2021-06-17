@@ -20,7 +20,7 @@ import { AtSteps } from 'taro-ui-vue3'
 
 说明:
 
-* 该组件为受控组件，开发者需要通过 onChange 事件来更新 current 值变化，current 与 onChange 函数必填
+* 该组件为受控组件，开发者需要通过 `onChange` 事件来更新 `current` 值变化，`current` 与 `onChange` 函数必填
 
 
 ```html
@@ -174,20 +174,35 @@ export default {
 
 | 参数  | 微信小程序 | h5 | 说明   | 类型    | 可选值 | 默认值 |
 |------|----------|----|-----|---------|--------|--------|
-| current | √   | √  | 必填，当前步骤索引值，开发者需要通过 onChange 事件来更新 current 值 | Number  | -      | 0   |
-| items | √  | √  | 步骤条数据列表, 具体字段详见下表  | Item[] | - | -  |
+| current | √   | √  | 必填，当前步骤索引值，开发者需要通过 `onChange` 事件来更新 `current` 值 | `Number`  | -  | `0`   |
+| items | √  | √  | 步骤条数据列表, 具体字段详见下表  | `Item[]` | - | -  |
 
 ## AtSteps 事件
 
 | 事件名称 | 说明          | 返回参数  |
 |---------- |-------------- |---------- |
-| onChange | 点击触发事件，开发者需要通过 onChange 事件来更新 current，onChange 函数必填  | current,步骤索引值  |
+| `onChange` | 点击触发事件，开发者需要通过 `onChange` 事件来更新步骤索引值 `current`，`onChange` 函数必填  | `current` |
 
-## items object 字段说明
+## `Item` 字段说明
 
 | 参数  | 说明 | 类型    | 可选值 | 默认值 |
 |------|-----|---------|--------|--------|
-| title | 步骤标题 | String  | - | -  |
-| desc | 步骤说明文字  | String | - | -  |
-| status | 步骤的状态，只允许 'success' 或 'error' | String | 'success', 'error' | - |
-| icon | 图标信息，value： 图标类型，activeColor： 激活态颜色，inactiveColor： 非激活态颜色，size： 大小 | Object | - | - |
+| title | 步骤标题 | `String`  | - | -  |
+| desc  | 步骤说明文字  | `String` | - | -  |
+| status | 步骤状态 | `String` | `success | error` | - |
+| icon | 图标信息，详见 `Icon` 字段说明 | `Icon` | - | - |
+
+## `Icon` 字段说明
+
+```ts
+interface Icon {
+  /** 图标类型 */
+  value: string
+  /** 激活态颜色 */
+  activeColor?: string
+  /** 非激活态颜色 */
+  inactiveColor?: string
+  /** 大小 */
+  size?: string | number
+}
+```

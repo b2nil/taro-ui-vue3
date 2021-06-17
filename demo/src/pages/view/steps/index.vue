@@ -82,7 +82,10 @@ export default defineComponent({
       current5: 1
     })
 
-    const items1 = ref<Item[]>([{ title: '步骤一' }, { title: '步骤二' }])
+    const items1 = ref<Item[]>([
+      { title: '步骤一' },
+      { title: '步骤二' }
+    ])
 
     const items2 = ref<Item[]>([
       { title: '步骤一' },
@@ -146,7 +149,7 @@ export default defineComponent({
       }
     ])
 
-    function onChange(stateName: string, current: number): void {
+    function onChange(stateName: string, current: number) {
       state[stateName] = current
     }
 

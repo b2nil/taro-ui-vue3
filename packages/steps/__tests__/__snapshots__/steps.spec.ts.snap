@@ -1,0 +1,228 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtSteps should render items with icon and match snapshot 1`] = `
+<view
+  class="at-steps"
+>
+  
+  <view
+    class="at-steps__item at-steps__item--inactive"
+  >
+    <view
+      class="at-steps__circular-wrap"
+    >
+      <!--v-if-->
+      <view
+        class="at-icon at-steps__single-icon at-icon-check-circle at-steps__single-icon--success"
+      />
+      <view
+        class="at-steps__right-line"
+      />
+    </view>
+    <view
+      class="at-steps__title"
+    >
+      步骤一
+    </view>
+    <view
+      class="at-steps__desc"
+    >
+      这里是额外的信息，最多两行
+    </view>
+  </view>
+  <view
+    class="at-steps__item at-steps__item--inactive"
+  >
+    <view
+      class="at-steps__circular-wrap"
+    >
+      <view
+        class="at-steps__left-line"
+      />
+      <view
+        class="at-icon at-steps__single-icon at-icon-close-circle at-steps__single-icon--error"
+      />
+      <view
+        class="at-steps__right-line"
+      />
+    </view>
+    <view
+      class="at-steps__title"
+    >
+      步骤二
+    </view>
+    <view
+      class="at-steps__desc"
+    >
+      这里是额外的信息，最多两行
+    </view>
+  </view>
+  <view
+    class="at-steps__item at-steps__item--active"
+  >
+    <view
+      class="at-steps__circular-wrap"
+    >
+      <view
+        class="at-steps__left-line"
+      />
+      <view
+        class="at-steps__circular"
+      >
+        <text
+          class="at-icon at-steps__circle-icon at-icon-camera"
+          style="color: rgb(255, 255, 255); font-size: 14px;"
+        />
+      </view>
+      <view
+        class="at-steps__right-line"
+      />
+    </view>
+    <view
+      class="at-steps__title"
+    >
+      步骤三
+    </view>
+    <view
+      class="at-steps__desc"
+    >
+      这里是额外的信息，最多两行
+    </view>
+  </view>
+  <view
+    class="at-steps__item at-steps__item--inactive"
+  >
+    <view
+      class="at-steps__circular-wrap"
+    >
+      <view
+        class="at-steps__left-line"
+      />
+      <view
+        class="at-steps__circular"
+      >
+        <text
+          class="at-icon at-steps__circle-icon at-icon-camera"
+          style="color: rgb(120, 164, 250); font-size: 14px;"
+        />
+      </view>
+      <!--v-if-->
+    </view>
+    <view
+      class="at-steps__title"
+    >
+      步骤四
+    </view>
+    <view
+      class="at-steps__desc"
+    >
+      这里是额外的信息，最多两行
+    </view>
+  </view>
+  
+</view>
+`;
+
+exports[`AtSteps should render items without icon and match snapshot 1`] = `
+<view
+  class="at-steps"
+>
+  
+  <view
+    class="at-steps__item at-steps__item--active"
+  >
+    <view
+      class="at-steps__circular-wrap"
+    >
+      <!--v-if-->
+      <view
+        class="at-steps__circular"
+      >
+        <text
+          class="at-steps__num"
+        >
+          1
+        </text>
+      </view>
+      <view
+        class="at-steps__right-line"
+      />
+    </view>
+    <view
+      class="at-steps__title"
+    >
+      步骤一
+    </view>
+    <view
+      class="at-steps__desc"
+    >
+      这里是额外的信息，最多两行
+    </view>
+  </view>
+  <view
+    class="at-steps__item at-steps__item--inactive"
+  >
+    <view
+      class="at-steps__circular-wrap"
+    >
+      <view
+        class="at-steps__left-line"
+      />
+      <view
+        class="at-steps__circular"
+      >
+        <text
+          class="at-steps__num"
+        >
+          2
+        </text>
+      </view>
+      <view
+        class="at-steps__right-line"
+      />
+    </view>
+    <view
+      class="at-steps__title"
+    >
+      步骤二
+    </view>
+    <view
+      class="at-steps__desc"
+    >
+      这里是额外的信息，最多两行
+    </view>
+  </view>
+  <view
+    class="at-steps__item at-steps__item--inactive"
+  >
+    <view
+      class="at-steps__circular-wrap"
+    >
+      <view
+        class="at-steps__left-line"
+      />
+      <view
+        class="at-steps__circular"
+      >
+        <text
+          class="at-steps__num"
+        >
+          3
+        </text>
+      </view>
+      <!--v-if-->
+    </view>
+    <view
+      class="at-steps__title"
+    >
+      步骤三
+    </view>
+    <view
+      class="at-steps__desc"
+    >
+      这里是额外的信息，最多两行
+    </view>
+  </view>
+  
+</view>
+`;
