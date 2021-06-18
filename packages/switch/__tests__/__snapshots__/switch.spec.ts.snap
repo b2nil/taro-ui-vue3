@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtSwitch should render default props and match snapshot 1`] = `
+<view
+  class="at-switch at-switch--without-border"
+>
+  <view
+    class="at-switch__title"
+  />
+  <view
+    class="at-switch__container"
+  >
+    <view
+      class="at-switch__mask"
+    />
+    <switch
+      checked="false"
+      class="at-switch__switch"
+      color="#6190e8"
+    />
+  </view>
+</view>
+`;

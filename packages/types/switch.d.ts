@@ -13,7 +13,7 @@ export interface AtSwitchProps extends AtComponent {
    */
   color?: string
   /**
-   * 是否显示开启，支持 v-model, 用户可通过 v-model:checked 或 onChange 获取开关状态
+   * 是否显示开启，支持 v-model, 用户可通过 v-model:checked 获取开关状态
    * @default false
    */
   checked?: boolean
@@ -29,6 +29,8 @@ export interface AtSwitchProps extends AtComponent {
   border?: boolean
   /**
    * 输入框值改变时触发的事件
+   * @deprecated
+   * 使用 onUpdate:checked 代替，使用 v-model 时自动触发
    */
   onChange?: (value: boolean) => void
 }
