@@ -7,7 +7,7 @@ export interface Icon {
   /**
    * 图标类型
    */
-  value?: string
+  value: string
   /**
    * 激活态颜色
    */
@@ -55,11 +55,11 @@ export interface AtStepsProps extends AtComponent {
   /**
    * 步骤条数据列表
    */
-  items?: Array<Item>
+  items: Array<Item>
   /**
    * 点击触发事件。
    * 
    * **注意：** 开发者需要通过 onChange 事件来更新 current，onChange 函数必填
    */
-  onChange: (current: number, event: CommonEvent) => void
+  onChange?: (current: number, event?: CommonEvent) => void
 }
