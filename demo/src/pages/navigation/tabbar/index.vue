@@ -25,7 +25,7 @@
       title="自定义图标颜色、字体颜色、背景颜色"
     >
       <at-tab-bar
-        color="#ea6bb8"
+        color="#666464"
         selected-color="#e64340"
         background-color="#FAFBFC"
         :tab-list="tabList2"
@@ -84,7 +84,7 @@ export default defineComponent({
     ])
 
     const tabList2 = ref([
-      { title: '待办事项', iconType: 'bullet-list', text: 'new' },
+      { title: '待办事项', iconType: 'bullet-list', selectedIconType: 'edit', text: 'new' },
       { title: '拍照', iconType: 'camera' },
       { title: '文件夹', iconType: 'folder', text: '100', max: 99 }
     ])
@@ -112,8 +112,8 @@ export default defineComponent({
       }
     ])
 
-    function handleClick(num, value) {
-      state[`current${num}`] = value
+    function handleClick(i: number, value: number) {
+      state[`current${i}`] = value
     }
 
     return {

@@ -1,0 +1,171 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtTabBar should render tabList and match snapshot 1`] = `
+<view
+  class="at-tab-bar"
+  style="background-color: rgb(255, 255, 255);"
+>
+  
+  <view
+    class="at-tab-bar__item at-tab-bar__item--active"
+    style="color: rgb(97, 144, 232);"
+  >
+    <view
+      class="at-badge"
+    >
+      
+      <view
+        class="at-tab-bar__icon"
+      >
+        <text
+          class="at-icon at-icon-bullet-list"
+          style="color: rgb(97, 144, 232); font-size: 24px;"
+        />
+      </view>
+      
+      <view
+        class="at-badge__num"
+      >
+        new
+      </view>
+    </view>
+    <view>
+      <view
+        class="at-badge"
+      >
+        
+        <view
+          class="at-tab-bar__title"
+          style="font-size: 14px;"
+        >
+          待办事项
+        </view>
+        
+        <!--v-if-->
+      </view>
+    </view>
+  </view>
+  <view
+    class="at-tab-bar__item"
+    style="color: rgb(51, 51, 51);"
+  >
+    <view
+      class="at-badge"
+    >
+      
+      <view
+        class="at-tab-bar__icon"
+      >
+        <text
+          class="at-icon at-icon-camera"
+          style="color: rgb(51, 51, 51); font-size: 24px;"
+        />
+      </view>
+      
+      <!--v-if-->
+    </view>
+    <view>
+      <view
+        class="at-badge"
+      >
+        
+        <view
+          class="at-tab-bar__title"
+          style="font-size: 14px;"
+        >
+          拍照
+        </view>
+        
+        <!--v-if-->
+      </view>
+    </view>
+  </view>
+  <view
+    class="at-tab-bar__item"
+    style="color: rgb(51, 51, 51);"
+  >
+    <view
+      class="at-badge"
+    >
+      
+      <view
+        class="at-tab-bar__icon"
+      >
+        <text
+          class="at-icon at-icon-folder"
+          style="color: rgb(51, 51, 51); font-size: 24px;"
+        />
+      </view>
+      
+      <view
+        class="at-badge__num"
+      >
+        99+
+      </view>
+    </view>
+    <view>
+      <view
+        class="at-badge"
+      >
+        
+        <view
+          class="at-tab-bar__title"
+          style="font-size: 14px;"
+        >
+          文件夹
+        </view>
+        
+        <!--v-if-->
+      </view>
+    </view>
+  </view>
+  <view
+    class="at-tab-bar__item"
+    style="color: rgb(51, 51, 51);"
+  >
+    <view
+      class="at-badge"
+    >
+      
+      <view
+        class="at-tab-bar__icon"
+      >
+        <image
+          class="at-tab-bar__inner-img at-tab-bar__inner-img--inactive"
+          mode="widthFix"
+          src="https://test.com/df71.png"
+          style="width: 24px; height: 24px;"
+        />
+        <image
+          class="at-tab-bar__inner-img"
+          mode="widthFix"
+          src="https://test.com/df71.png"
+          style="width: 24px; height: 24px;"
+        />
+      </view>
+      
+      <view
+        class="at-badge__num"
+      >
+        new
+      </view>
+    </view>
+    <view>
+      <view
+        class="at-badge"
+      >
+        
+        <view
+          class="at-tab-bar__title"
+          style="font-size: 14px;"
+        >
+          领取中心
+        </view>
+        
+        <!--v-if-->
+      </view>
+    </view>
+  </view>
+  
+</view>
+`;

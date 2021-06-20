@@ -29,7 +29,7 @@ import { AtTabBar } from 'taro-ui-vue3'
 
 说明：
 
-* 该组件为受控组件，开发者需要通过 onClick 事件来更新 current 值变化，current 与 onClick 函数必填
+* 该组件为受控组件，开发者需要通过 `onClick` 事件来更新 `current` 值变化，`current` 与 `onClick` 函数必填
 
 
 ```html
@@ -155,32 +155,32 @@ export default {
 
 | 参数       | 说明    | 类型    | 可选值   | 默认值   |
 | ---------- | ----- | ------- | ------- | ------- |
-| current | 当前选中的标签索引值，从0计数  | Number  | - | 0 |
-| color   | 未选中标签字体与图标颜色  | String | - | `#333` |
-| selectedColor  | 选中标签字体与图标颜色  | String | - | `#6190E8` |
-| fixed | 是否固定底部 | Boolean  | - | false |
-| backgroundColor | 背景颜色 | String  | - | `#fff` |
-| iconSize | 图标大小 | `Number | String`  | - | 24 |
-| fontSize | 字体大小 | `Number | String`  | - | 14 |
-| tabList | tab 列表, object 字段说明请看下表 | Array  | - | false |
+| current | 当前选中的标签索引值，从 0 计数  | `Number`  | - | `0` |
+| color   | 未选中标签字体与图标颜色  | `String` | - | `#333` |
+| selectedColor  | 选中标签字体与图标颜色  | `String` | - | `#6190E8` |
+| fixed | 是否固定底部 | `Boolean`  | - | `false` |
+| backgroundColor | 背景颜色 | `String`  | - | `#fff` |
+| iconSize | 图标大小 | `Number | String`  | - | `24` |
+| fontSize | 字体大小 | `Number | String`  | - | `14` |
+| tabList | tab 列表, `TabItem` 字段说明请看下表 | `TabItem[]`  | - | `[]` |
 
-## tabList object 字段详解
+## `TabItem` 字段详解
 
 | 参数    | 说明   | 类型    | 可选值  | 默认值   | 可选或必填
 | ---- | --- | ------- | -----| -------- |-------- |
-| title | 标题  | String  | - | 0 | 必填 |
-| iconPrefixClass |  icon className 前缀，用于第三方字体图标库，比如想使用'fa fa-clock' 的图标，则 传入`iconPrefixClass='fa' iconType='clock'`,[拓展图标库详细](/#/docs/icon) | String | - | - | - |
-| iconType | 未选中时展示的 icon 类型，可扩展第三方字体图标库，[拓展图标库详细](/#/docs/icon)  | String | - | - | 可选 |
-| selectedIconType  | 选中时展示的 icon 类型，可扩展第三方字体图标库，[拓展图标库详细](/#/docs/icon)  | String | - | - |可选 |
-| image | 未选中时图片icon的链接 | String | - | - | 可选 |
-| selectedImage | 选中时图片icon的链接 | String | - | - | 可选 |
-| text | 右上角显示到文本，可以为数字或文字，如果有 dot，优先显示 dot | String  | - | - | 可选 |
-| max | text 可显示的最大数字，超过则显示最大数字加'+'，如'99+' | Number  | - | - | 可选 |
-| dot | 是否显示红点，优先级比 text 高 | Boolean  | - | false |可选 |
+| title | 标题  | `String`  | - | - | 必填 |
+| iconPrefixClass |  icon className 前缀，用于第三方字体图标库，比如想使用`'fa fa-clock'` 的图标，则传入`iconPrefixClass='fa' iconType='clock'`,[拓展图标库详细](/#/docs/icon) | `String` | - | - | - |
+| iconType | 未选中时展示的 icon 类型，可扩展第三方字体图标库，[拓展图标库详细](/#/docs/icon)  | `String` | - | - | 可选 |
+| selectedIconType  | 选中时展示的 icon 类型，可扩展第三方字体图标库，[拓展图标库详细](/#/docs/icon)  | `String` | - | - |可选 |
+| image | 未选中时图片 icon 的链接 | `String` | - | - | 可选 |
+| selectedImage | 选中时图片 icon 的链接 | `String` | - | - | 可选 |
+| text | 右上角显示到文本，可以为数字或文字，如果有 `dot`，优先显示 `dot` | `String`  | - | - | 可选 |
+| max | `text` 可显示的最大数字，超过则显示最大数字加`+`，如 `99+` | `Number`  | - | - | 可选 |
+| dot | 是否显示红点，优先级比 `text` 高 | `Boolean`  | - | `false` |可选 |
 
 
 ## 事件
 
 | 事件名称 | 说明          | 返回参数  |
 |---------- |-------------- |---------- |
-| onClick | 点击触发事件，开发者需要通过 onClick 事件来更新 current 值变化，onClick 函数必填  | 选中 tab 列表索引值  |
+| onClick | 点击触发事件，开发者需要通过 `onClick` 事件来更新 `current` 值变化，`onClick` 函数必填  | 选中 tab 列表索引值  |
