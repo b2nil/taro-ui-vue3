@@ -77,6 +77,16 @@ $at-search-bar-placholder-color: $color-grey-2;
     background-color: transparent;
     transition: width 0.3s;
     box-sizing: border-box;
+
+    // align input box to middle in h5
+    .weui-input {
+      margin-top: 5px;
+    }
+
+    .weui-input[type=number] {
+      /* Firefox -- remove arrows/spinners*/
+      -moz-appearance: textfield;
+    }
   }
 
   &__clear {

@@ -62,6 +62,11 @@
     line-height: $line-height-zh;
     vertical-align: middle;
     @include placeholder($at-input-placeholder-color);
+
+    .weui-input[type=number] {
+      /* Firefox -- remove arrows/spinners*/
+      -moz-appearance: textfield;
+    }
   }
 
   input {
