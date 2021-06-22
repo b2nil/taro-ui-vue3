@@ -36,7 +36,7 @@
     <panel title="只读">
       <example-item>
         <view>评分: 3.5</view>
-        <at-rate modelValue="3.5" />
+        <at-rate :modelValue="3.5" />
       </example-item>
     </panel>
 

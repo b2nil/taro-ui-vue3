@@ -47,8 +47,7 @@
       <at-switch
         :border="false"
         :title="isOpened ? '开启中' : '关闭中'"
-        :checked="isOpened"
-        @change="handleChange"
+        v-model:checked="isOpened"
       />
       <example-item>
         <at-activity-indicator
@@ -86,13 +85,8 @@ export default defineComponent({
   setup() {
     const isOpened = ref(true)
 
-    function handleChange(value) {
-      isOpened.value = value
-    }
-
     return {
-      isOpened,
-      handleChange
+      isOpened
     }
   }
 })

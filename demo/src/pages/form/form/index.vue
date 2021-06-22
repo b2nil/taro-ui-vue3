@@ -15,7 +15,7 @@
             title="文本"
             type="text"
             placeholder="单行文本"
-            v-model:value="value1"
+            v-model="value1"
           />
           <at-input
             required
@@ -23,7 +23,7 @@
             title="密码"
             type="password"
             placeholder="请输入密码"
-            v-model:value="value2"
+            v-model="value2"
           />
           <at-checkbox
             :options="[
