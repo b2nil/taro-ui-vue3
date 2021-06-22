@@ -17,8 +17,7 @@
       <template #controller>
         <at-switch
           :title="`${ loading ? '加载中' : '加载完毕'}`"
-          :checked="loading"
-          @change="handleChange"
+          v-model:checked="loading"
         ></at-switch>
       </template>
       <example-item>
@@ -46,13 +45,8 @@ export default defineComponent({
 
   setup() {
     const loading = ref(true)
-
-    function handleChange(value) {
-      loading.value = value
-    }
     return {
-      loading,
-      handleChange
+      loading
     }
   }
 })

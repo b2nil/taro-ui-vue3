@@ -4,7 +4,7 @@ import { computed } from 'vue'
 import type { Prop } from 'vue'
 
 // Utils
-import { propsFactory, convertToUnit, keys } from '@taro-ui-vue3/utils'
+import { propsFactory, convertToUnit } from '@taro-ui-vue3/utils'
 
 // Props
 const allDimensionsProps = {
@@ -34,7 +34,9 @@ type PropNames = keyof typeof allDimensionsProps
 
 // Effect
 export function dimensionsFactory<S extends PropNames>(...possibleProps: S[]) {
-  const selectedProps = possibleProps.length ? possibleProps : keys(allDimensionsProps) as S[]
+  const selectedProps = possibleProps.length
+    ? possibleProps
+    : Object.keys(allDimensionsProps) as S[]
 
   const makeDimensionsProps = propsFactory(selectedProps.reduce((obj, prop) => {
     obj[prop] = allDimensionsProps[prop]

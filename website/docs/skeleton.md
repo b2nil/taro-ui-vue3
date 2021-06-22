@@ -61,19 +61,19 @@ import { AtSkeleton } from 'taro-ui-vue3'
 
 ## AtSkeleton 参数
 
-| 参数     | 说明                                     | 类型    | 可选值                        | 默认值  |
-| -------- | ---------------------------------------- | ------- | ----------------------------- | ------- |
-| boilerplate     | 移除骨架加载动画。                              | `Boolean`  | -                             | `false`       |
-| elevation  | 设置骨架组件的阴影高度，介于 0 至 24 之间数。                                                | `Number | String`  | `0~24`     | -       |
-| loading     | 施加加载动画，当 `default` 插槽中存在内容时，`false` 值才能生效          | `Boolean` | -      | `false`       |
+| 参数     | 说明    | 类型    | 可选值   | 默认值  |
+| -------- | ------- | ----- | ------ | ------- |
+| boilerplate     | 移除骨架加载动画。  | `Boolean`  | -  | `false`       |
+| elevation  | 设置骨架组件的阴影高度，介于 0 至 24 之间数。| `Number | String`  | `0~24`     | -       |
+| loading     | 施加加载动画，当 `default` 插槽中存在内容时，`false` 值才能生效 | `Boolean` | -      | `false`       |
 | tile    | 移除骨架组件的 `border-radius`   | `Boolean`     | -     | `false`       |
 | transition   | 设置骨架组件的过渡效果    | `String` | -        | -      |
-| flat | 移除阴影效果                                                     | `Boolean`  | -        | `false`      |
+| flat | 移除阴影效果   | `Boolean`  | -        | `false`      |
 | height  | 设置骨架组件的高度，作为 css 样式值，单位 px                                                 | `Number | String` | -         | -      |
-| maxHeight  | 设置骨架组件的最大高度度                                                     | `Number | String` | -         | -      |
-| maxWidth  | 设置骨架组件的最大宽度                                                     | `Number | String` | -         | -      |
-| minWidth  | 设置骨架组件的最小宽度                                                     | `Number | String` | -         | -      |
-| width     | 设置骨架组件的宽度                                                         | `Number | String` | -      | -       |
+| maxHeight  | 设置骨架组件的最大高度度 | `Number | String` | -         | -      |
+| maxWidth  | 设置骨架组件的最大宽度 | `Number | String` | -         | -      |
+| minWidth  | 设置骨架组件的最小宽度 | `Number | String` | -         | -      |
+| width     | 设置骨架组件的宽度     | `Number | String` | -      | -       |
 | types | 自定义骨架类型组合，会与预设类型组合合并，示例详见[预设类型组合](#预设骨架类型组合)  | `Record<string, string>` | -        | -      |
 | type     | 描述骨架组件构成类型的字符串，多个要素时以逗号分隔。例如：`type="text@3"` 或 `type="card, list-item"`。组件会根据类型或类型组合描述，以递归方式生成对应的骨架。例如： `article@3` 会生成 3 个 article 骨架，`card, text@3` 会生成 1 个 card 骨架和 3 个 text 骨架。 | `String` | -      | -       |
 

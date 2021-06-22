@@ -1,0 +1,2395 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtSkeleton should dynamically render content 1`] = `
+<view
+  class="at-skeleton"
+>
+  
+  
+  <view>
+    foobar
+  </view>
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should dynamically render content 2`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  <view
+    class="at-skeleton__ at-skeleton__bone"
+  />
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 1`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  
+  <view
+    class="at-skeleton__button at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__button at-skeleton__bone"
+  />
+  
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 2`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  
+  <view
+    class="at-skeleton__heading at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__paragraph at-skeleton__bone"
+  >
+    
+    <view
+      class="at-skeleton__text at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__text at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__text at-skeleton__bone"
+    />
+    
+  </view>
+  
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 3`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 4`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  <view
+    class="at-skeleton__button at-skeleton__bone"
+  />
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 5`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  
+  <view
+    class="at-skeleton__image at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__card-heading at-skeleton__bone"
+  >
+    
+    <view
+      class="at-skeleton__heading at-skeleton__bone"
+    />
+    
+  </view>
+  
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 6`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  
+  <view
+    class="at-skeleton__image at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__list-item-avatar at-skeleton__bone"
+  >
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__text at-skeleton__bone"
+    />
+    
+  </view>
+  
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 7`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  <view
+    class="at-skeleton__heading at-skeleton__bone"
+  />
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 8`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  <view
+    class="at-skeleton__chip at-skeleton__bone"
+  />
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 9`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  
+  <view
+    class="at-skeleton__list-item at-skeleton__bone"
+  >
+    
+    <view
+      class="at-skeleton__text at-skeleton__bone"
+    />
+    
+  </view>
+  
+  
+  <view
+    class="at-skeleton__card-heading at-skeleton__bone"
+  >
+    
+    <view
+      class="at-skeleton__heading at-skeleton__bone"
+    />
+    
+  </view>
+  
+  
+  <view
+    class="at-skeleton__divider at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__date-picker-options at-skeleton__bone"
+  >
+    
+    <view
+      class="at-skeleton__text at-skeleton__bone"
+    />
+    
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+  </view>
+  
+  
+  <view
+    class="at-skeleton__date-picker-days at-skeleton__bone"
+  >
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+  </view>
+  
+  
+  <view
+    class="at-skeleton__actions at-skeleton__bone"
+  >
+    
+    <view
+      class="at-skeleton__button at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__button at-skeleton__bone"
+    />
+    
+  </view>
+  
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 10`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  
+  <view
+    class="at-skeleton__text at-skeleton__bone"
+  />
+  
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 11`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 12`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  <view
+    class="at-skeleton__heading at-skeleton__bone"
+  />
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 13`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  <view
+    class="at-skeleton__image at-skeleton__bone"
+  />
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 14`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  <view
+    class="at-skeleton__text at-skeleton__bone"
+  />
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 15`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__text at-skeleton__bone"
+  />
+  
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 16`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  <view
+    class="at-skeleton__sentences at-skeleton__bone"
+  >
+    
+    <view
+      class="at-skeleton__text at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__text at-skeleton__bone"
+    />
+    
+  </view>
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 17`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__sentences at-skeleton__bone"
+  >
+    
+    <view
+      class="at-skeleton__text at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__text at-skeleton__bone"
+    />
+    
+  </view>
+  
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 18`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  <view
+    class="at-skeleton__paragraph at-skeleton__bone"
+  >
+    
+    <view
+      class="at-skeleton__text at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__text at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__text at-skeleton__bone"
+    />
+    
+  </view>
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 19`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__paragraph at-skeleton__bone"
+  >
+    
+    <view
+      class="at-skeleton__text at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__text at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__text at-skeleton__bone"
+    />
+    
+  </view>
+  
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 20`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  
+  <view
+    class="at-skeleton__text at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__text at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__text at-skeleton__bone"
+  />
+  
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 21`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  
+  <view
+    class="at-skeleton__text at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__text at-skeleton__bone"
+  />
+  
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 22`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  
+  <view
+    class="at-skeleton__table-heading at-skeleton__bone"
+  >
+    
+    <view
+      class="at-skeleton__heading at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__text at-skeleton__bone"
+    />
+    
+  </view>
+  
+  
+  <view
+    class="at-skeleton__table-thead at-skeleton__bone"
+  >
+    
+    <view
+      class="at-skeleton__heading at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__heading at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__heading at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__heading at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__heading at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__heading at-skeleton__bone"
+    />
+    
+  </view>
+  
+  
+  <view
+    class="at-skeleton__table-tbody at-skeleton__bone"
+  >
+    
+    <view
+      class="at-skeleton__table-row-divider at-skeleton__bone"
+    >
+      
+      <view
+        class="at-skeleton__table-row at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__divider at-skeleton__bone"
+      />
+      
+    </view>
+    
+    
+    <view
+      class="at-skeleton__table-row-divider at-skeleton__bone"
+    >
+      
+      <view
+        class="at-skeleton__table-row at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__divider at-skeleton__bone"
+      />
+      
+    </view>
+    
+    
+    <view
+      class="at-skeleton__table-row-divider at-skeleton__bone"
+    >
+      
+      <view
+        class="at-skeleton__table-row at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__divider at-skeleton__bone"
+      />
+      
+    </view>
+    
+    
+    <view
+      class="at-skeleton__table-row-divider at-skeleton__bone"
+    >
+      
+      <view
+        class="at-skeleton__table-row at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__divider at-skeleton__bone"
+      />
+      
+    </view>
+    
+    
+    <view
+      class="at-skeleton__table-row-divider at-skeleton__bone"
+    >
+      
+      <view
+        class="at-skeleton__table-row at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__divider at-skeleton__bone"
+      />
+      
+    </view>
+    
+    
+    <view
+      class="at-skeleton__table-row-divider at-skeleton__bone"
+    >
+      
+      <view
+        class="at-skeleton__table-row at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+        
+        <view
+          class="at-skeleton__table-cell at-skeleton__bone"
+        >
+          
+          <view
+            class="at-skeleton__text at-skeleton__bone"
+          />
+          
+        </view>
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__divider at-skeleton__bone"
+      />
+      
+    </view>
+    
+  </view>
+  
+  
+  <view
+    class="at-skeleton__table-tfoot at-skeleton__bone"
+  >
+    
+    
+    <view
+      class="at-skeleton__text at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__text at-skeleton__bone"
+    />
+    
+    
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+    <view
+      class="at-skeleton__avatar at-skeleton__bone"
+    />
+    
+    
+  </view>
+  
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 23`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  
+  <view
+    class="at-skeleton__heading at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__text at-skeleton__bone"
+  />
+  
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 24`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  
+  <view
+    class="at-skeleton__heading at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__heading at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__heading at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__heading at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__heading at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__heading at-skeleton__bone"
+  />
+  
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 25`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  
+  <view
+    class="at-skeleton__table-row-divider at-skeleton__bone"
+  >
+    
+    <view
+      class="at-skeleton__table-row at-skeleton__bone"
+    >
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+    </view>
+    
+    
+    <view
+      class="at-skeleton__divider at-skeleton__bone"
+    />
+    
+  </view>
+  
+  
+  <view
+    class="at-skeleton__table-row-divider at-skeleton__bone"
+  >
+    
+    <view
+      class="at-skeleton__table-row at-skeleton__bone"
+    >
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+    </view>
+    
+    
+    <view
+      class="at-skeleton__divider at-skeleton__bone"
+    />
+    
+  </view>
+  
+  
+  <view
+    class="at-skeleton__table-row-divider at-skeleton__bone"
+  >
+    
+    <view
+      class="at-skeleton__table-row at-skeleton__bone"
+    >
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+    </view>
+    
+    
+    <view
+      class="at-skeleton__divider at-skeleton__bone"
+    />
+    
+  </view>
+  
+  
+  <view
+    class="at-skeleton__table-row-divider at-skeleton__bone"
+  >
+    
+    <view
+      class="at-skeleton__table-row at-skeleton__bone"
+    >
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+    </view>
+    
+    
+    <view
+      class="at-skeleton__divider at-skeleton__bone"
+    />
+    
+  </view>
+  
+  
+  <view
+    class="at-skeleton__table-row-divider at-skeleton__bone"
+  >
+    
+    <view
+      class="at-skeleton__table-row at-skeleton__bone"
+    >
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+    </view>
+    
+    
+    <view
+      class="at-skeleton__divider at-skeleton__bone"
+    />
+    
+  </view>
+  
+  
+  <view
+    class="at-skeleton__table-row-divider at-skeleton__bone"
+  >
+    
+    <view
+      class="at-skeleton__table-row at-skeleton__bone"
+    >
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+      
+      <view
+        class="at-skeleton__table-cell at-skeleton__bone"
+      >
+        
+        <view
+          class="at-skeleton__text at-skeleton__bone"
+        />
+        
+      </view>
+      
+    </view>
+    
+    
+    <view
+      class="at-skeleton__divider at-skeleton__bone"
+    />
+    
+  </view>
+  
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 26`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  
+  <view
+    class="at-skeleton__table-row at-skeleton__bone"
+  >
+    
+    <view
+      class="at-skeleton__table-cell at-skeleton__bone"
+    >
+      
+      <view
+        class="at-skeleton__text at-skeleton__bone"
+      />
+      
+    </view>
+    
+    
+    <view
+      class="at-skeleton__table-cell at-skeleton__bone"
+    >
+      
+      <view
+        class="at-skeleton__text at-skeleton__bone"
+      />
+      
+    </view>
+    
+    
+    <view
+      class="at-skeleton__table-cell at-skeleton__bone"
+    >
+      
+      <view
+        class="at-skeleton__text at-skeleton__bone"
+      />
+      
+    </view>
+    
+    
+    <view
+      class="at-skeleton__table-cell at-skeleton__bone"
+    >
+      
+      <view
+        class="at-skeleton__text at-skeleton__bone"
+      />
+      
+    </view>
+    
+    
+    <view
+      class="at-skeleton__table-cell at-skeleton__bone"
+    >
+      
+      <view
+        class="at-skeleton__text at-skeleton__bone"
+      />
+      
+    </view>
+    
+    
+    <view
+      class="at-skeleton__table-cell at-skeleton__bone"
+    >
+      
+      <view
+        class="at-skeleton__text at-skeleton__bone"
+      />
+      
+    </view>
+    
+  </view>
+  
+  
+  <view
+    class="at-skeleton__divider at-skeleton__bone"
+  />
+  
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 27`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  
+  <view
+    class="at-skeleton__table-cell at-skeleton__bone"
+  >
+    
+    <view
+      class="at-skeleton__text at-skeleton__bone"
+    />
+    
+  </view>
+  
+  
+  <view
+    class="at-skeleton__table-cell at-skeleton__bone"
+  >
+    
+    <view
+      class="at-skeleton__text at-skeleton__bone"
+    />
+    
+  </view>
+  
+  
+  <view
+    class="at-skeleton__table-cell at-skeleton__bone"
+  >
+    
+    <view
+      class="at-skeleton__text at-skeleton__bone"
+    />
+    
+  </view>
+  
+  
+  <view
+    class="at-skeleton__table-cell at-skeleton__bone"
+  >
+    
+    <view
+      class="at-skeleton__text at-skeleton__bone"
+    />
+    
+  </view>
+  
+  
+  <view
+    class="at-skeleton__table-cell at-skeleton__bone"
+  >
+    
+    <view
+      class="at-skeleton__text at-skeleton__bone"
+    />
+    
+  </view>
+  
+  
+  <view
+    class="at-skeleton__table-cell at-skeleton__bone"
+  >
+    
+    <view
+      class="at-skeleton__text at-skeleton__bone"
+    />
+    
+  </view>
+  
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 28`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  <view
+    class="at-skeleton__text at-skeleton__bone"
+  />
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 29`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  
+  
+  <view
+    class="at-skeleton__text at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__text at-skeleton__bone"
+  />
+  
+  
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__avatar at-skeleton__bone"
+  />
+  
+  
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate a skeleton recursive tree 30`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  <view
+    class="at-skeleton__text at-skeleton__bone"
+  />
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should generate an array of elements based upon @ value 1`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  
+  <view
+    class="at-skeleton__text at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__text at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__text at-skeleton__bone"
+  />
+  
+  
+  <view
+    class="at-skeleton__text at-skeleton__bone"
+  />
+  
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should have the correct a11y attributes when loading 1`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  
+  
+  <view
+    class="at-skeleton__ at-skeleton__bone"
+  />
+  
+  
+</view>
+`;
+
+exports[`AtSkeleton should render transition stub 1`] = `
+<view
+  aria-busy="true"
+  aria-live="polite"
+  class="at-skeleton--is-loading at-skeleton"
+  role="alert"
+>
+  <transition-stub>
+    
+    <view
+      class="at-skeleton__text at-skeleton__bone"
+    />
+    
+  </transition-stub>
+</view>
+`;
