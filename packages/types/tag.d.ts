@@ -40,5 +40,5 @@ export interface AtTagProps extends AtComponent {
   /**
    * 点击标签时触发，返回标签名字和状态的对象
    */
-  onClick?: (tagInfo: TagInfo, event: CommonEvent) => void
+  onClick?: (tagInfo: TagInfo, event?: CommonEvent) => void
 }
