@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtTextarea should render all nodes and match snapshot 1`] = `
+<view
+  class="at-textarea at-textarea--WEB"
+>
+  <textarea
+    auto-focus="false"
+    class="at-textarea__textarea"
+    cursor-spacing="100"
+    fixed="false"
+    maxlength="200"
+    placeholder=""
+    placeholder-class="placeholder"
+    placeholder-style=""
+    selection-end="-1"
+    selection-start="-1"
+    show-confirm-bar="false"
+  />
+  <view
+    class="at-textarea__counter"
+  >
+    0 / 200
+  </view>
+</view>
+`;

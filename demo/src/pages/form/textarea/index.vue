@@ -3,10 +3,9 @@
     <panel title="基础用法">
       <example-item>
         <at-textarea
-          placeholder="通过 onChange 更新 value 的值..."
+          placeholder="基础用法..."
           :max-length="200"
-          :value="value1"
-          @change="handleChange('value1', $event)"
+          v-model="value1"
         />
       </example-item>
     </panel>
@@ -14,10 +13,10 @@
     <panel title="不显示字数">
       <example-item>
         <at-textarea
-          placeholder="通过 v-model:value 更新 value 的值..."
+          placeholder="不显示字数..."
           :count="false"
           :max-length="200"
-          v-model:value="value2"
+          v-model="value2"
         />
       </example-item>
     </panel>
@@ -25,10 +24,10 @@
     <panel title="文字超出仍可输入">
       <example-item>
         <at-textarea
-          placeholder="通过 v-model:value 更新 value 的值..."
+          placeholder="文字超出仍可输入..."
           :text-overflow-forbidden="false"
           :max-length="200"
-          v-model:value="value3"
+          v-model="value3"
         />
       </example-item>
     </panel>
@@ -36,10 +35,10 @@
     <panel title="自定义高度">
       <example-item>
         <at-textarea
-          placeholder="通过 v-model:value 更新 value 的值..."
+          placeholder="自定义高度..."
           height="300"
           :max-length="200"
-          v-model:value="value4"
+          v-model="value4"
         />
       </example-item>
     </panel>
@@ -50,28 +49,19 @@
 import { defineComponent, reactive, toRefs } from 'vue'
 import './index.scss'
 
-interface IndexState {
-  [key: string]: string
-}
-
 export default defineComponent({
   name: "TextareaDemo",
 
   setup() {
-    const state = reactive<IndexState>({
+    const state = reactive({
       value1: '',
       value2: '',
       value3: '',
       value4: ''
     })
 
-    function handleChange(stateName: string, value: string): void {
-      state[stateName] = value
-    }
-
     return {
-      ...toRefs(state),
-      handleChange
+      ...toRefs(state)
     }
   }
 })
