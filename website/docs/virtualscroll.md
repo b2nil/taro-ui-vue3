@@ -145,7 +145,7 @@ export default defineComponent({
 
 
 ### 跳转至指定列表行数
-组件提供了 `scrollIntoItem` 参数，该参数应为 `列表行数的索引值`，即传入默认插槽的 `index`。设置该参数后，可视区域会滚动至该单项所在的区域。
+组件提供了 `scrollToItem` 参数，该参数应为 `列表行数的索引值`，即传入默认插槽的 `index`。设置该参数后，可视区域会滚动至该单项所在的区域。
 
 ```html
 <!-- template -->
@@ -162,7 +162,7 @@ export default defineComponent({
     height="300"
     item-height="64"
     :items="items"
-    :scroll-into-item="toItem"
+    :scroll-to-item="toItem"
   >
     <template #default="{ index, item }">
       <at-list-item
@@ -238,8 +238,8 @@ export default defineComponent({
 
 | 参数     | 说明                                     | 类型    | 可选值                        | 默认值  |
 | -------- | ---------------------------------------- | ------- | ----------------------------- | ------- |
-| bench     | 列表渲染提前量，即在可视区域之外提前渲染的列表行数。 值设置得越高，快速滚动时出现白屏的概率就越小；相应地，每次滚动的性能会变得越差。                              | `Number | String`  | -                             | `0`       |
-| itemHeight     | 列表单项高度，用于计算列表单项的 `top` 样式值，单位 `px`。必填          | `Number | String` | -      | -       |
+| bench  | 列表渲染提前量，即在可视区域之外提前渲染的列表行数。 值设置得越高，快速滚动时出现白屏的概率就越小；相应地，每次滚动的性能会变得越差。 | `Number | String`  | -   | `0`       |
+| itemHeight | 列表单项高度，用于计算列表单项的 `top` 样式值，单位 `px`。必填          | `Number | String` | -      | -       |
 | items    | 渲染数据，必填                                                          | `Array<any>`     | -     | -       |
 | height   | 列表的高度，作为 css 样式值，单位 `px`                                    | `Number | String` | -        | -      |
 | maxHeight | 置组件的最大高度                                                       | `Number | String` | -        | -      |
@@ -247,7 +247,7 @@ export default defineComponent({
 | maxWidth  | 设置组件的最大宽度                                                     | `Number | String` | -         | -      |
 | minWidth  | 设置组件的最小宽度                                                     | `Number | String` | -         | -      |
 | width     | 设置组件的宽度                                                         | `Number | String` | -      | -       |
-| scrollIntoItem  | 列表单项的索引值，设置后，可视区域滚动至该单项所在区域 | `Number | String` | -       | -       |
+| scrollToItem  | 列表单项的索引值，设置后，可视区域滚动至该单项所在区域 | `Number | String` | -       | -       |
 | reachTopThreshold  | 触顶阈值，距顶部多远时（单位 `px`），触发 `onReachTop` 事件 | `Number | String` | -        | `50`       |
 | reachBottomThreshold  | 触底阈值，距底部多远时（单位 `px`），触发 `onReachBottom` 事件 | `Number | String` | -  | `50`       |
 
@@ -256,8 +256,8 @@ export default defineComponent({
 
 | 事件名称 | 说明                     | 返回参数 |
 | -------- | ------------------------ | -------- |
-| onReachTop  | 滚动到顶部时触发的事件 | -        |
-| onReachBottom  | 滚动到底部时触发的事件 | -        |
+| onReachTop  | 滚动到顶部时触发的事件 | `event`   |
+| onReachBottom  | 滚动到底部时触发的事件 | `event`   |
 
 
 ## AtVirtualScroll 插槽

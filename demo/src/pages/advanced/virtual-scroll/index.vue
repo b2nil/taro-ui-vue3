@@ -41,8 +41,7 @@
                     :min="0"
                     :max="10"
                     :step="1"
-                    :value="benched"
-                    @change="handleBenchChange"
+                    v-model="benched"
                   />
                 </prop-item>
               </at-flex-item>
@@ -76,8 +75,7 @@
                   <at-switch
                     style="padding: 0;"
                     :title="`${reachTopOn ? '启用' : '禁用'}`"
-                    :checked="reachTopOn"
-                    @change="handleReachToOn"
+                    v-model:checked="reachTopOn"
                   />
                 </prop-item>
               </at-flex-item>
@@ -111,8 +109,7 @@
                   <at-switch
                     style="padding: 0;"
                     :title="`${reachBottomOn ? '启用' : '禁用'}`"
-                    :checked="reachBottomOn"
-                    @change="handleReachBottomOn"
+                    v-model:checked="reachBottomOn"
                   />
                 </prop-item>
               </at-flex-item>
@@ -128,7 +125,7 @@
           :bench="benched"
           :height="height"
           :items="directoryItems"
-          :scroll-into-item="toItem"
+          :scroll-to-item="toItem"
           :item-height="itemHeight"
           :reach-bottom-threshold="5"
           @reach-top="handleReachTop"
@@ -143,8 +140,7 @@
               action-name="跳转"
               placeholder="header 插槽: 输入需跳转的列表索引"
               input-type="number"
-              :value="searchbarValue"
-              @change="handleChange"
+              v-model="searchbarValue"
               @action-click="handleActionClick"
             />
           </template>
@@ -194,23 +190,6 @@
 <script lang="ts">
 import './index.scss'
 import { defineComponent, computed, ref } from 'vue'
-import {
-  AtFab,
-  AtFlex,
-  AtCard,
-  AtButton,
-  AtSlider,
-  AtSwitch,
-  AtDivider,
-  AtFlexItem,
-  AtListItem,
-  AtLoadMore,
-  AtInputNumber,
-  AtVirtualScroll,
-  AtSwipeAction,
-  AtSearchBar,
-} from 'taro-ui-vue3'
-
 import Taro from '@tarojs/taro'
 
 
