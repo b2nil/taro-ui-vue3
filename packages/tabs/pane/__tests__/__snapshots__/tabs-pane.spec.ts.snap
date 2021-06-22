@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtTabsPane should render default and match snapshot 1`] = `
+<view
+  class="at-tabs-pane--active at-tabs-pane"
+>
+  
+  test
+  
+</view>
+`;

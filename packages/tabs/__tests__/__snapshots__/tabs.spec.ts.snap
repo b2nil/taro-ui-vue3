@@ -1,0 +1,313 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AtTabs should render default AtTabs 1`] = `
+<view
+  class="at-tabs--horizontal at-tabs--WEB at-tabs"
+>
+  <view
+    class="at-tabs__header"
+    id="__tests__2021"
+  >
+    
+    
+  </view>
+  <view
+    class="at-tabs__body"
+    style="transform: translate3d(-0%, 0px, 0px);"
+  >
+    <view
+      class="at-tabs__underline"
+      style="width: 0%;"
+    />
+    
+    
+  </view>
+</view>
+`;
+
+exports[`AtTabs should render prop height 1`] = `
+<view
+  class="at-tabs__header"
+  id="__tests__2021"
+>
+  
+  <view
+    class="at-tabs__item at-tabs__item--active"
+    id="tab__tests__20210"
+  >
+    <text
+      style="white-space: nowrap;"
+    >
+      标签页1
+    </text>
+    <view
+      class="at-tabs__item-underline"
+    />
+  </view>
+  <view
+    class="at-tabs__item"
+    id="tab__tests__20211"
+  >
+    <text
+      style="white-space: nowrap;"
+    >
+      标签页2
+    </text>
+    <view
+      class="at-tabs__item-underline"
+    />
+  </view>
+  <view
+    class="at-tabs__item"
+    id="tab__tests__20212"
+  >
+    <text
+      style="white-space: nowrap;"
+    >
+      标签页3
+    </text>
+    <view
+      class="at-tabs__item-underline"
+    />
+  </view>
+  
+</view>
+`;
+
+exports[`AtTabs should render prop scroll 1`] = `
+<scroll-view
+  class="at-tabs__header"
+  id="__tests__2021"
+  scroll-into-view=""
+  scroll-left="0"
+  scroll-top="0"
+  scroll-with-animation=""
+  scroll-x="true"
+  scroll-y="false"
+>
+  
+  <view
+    class="at-tabs__item at-tabs__item--active"
+    id="tab__tests__20210"
+  >
+    <text
+      style="white-space: nowrap;"
+    >
+      标签页1
+    </text>
+    <view
+      class="at-tabs__item-underline"
+    />
+  </view>
+  <view
+    class="at-tabs__item"
+    id="tab__tests__20211"
+  >
+    <text
+      style="white-space: nowrap;"
+    >
+      标签页2
+    </text>
+    <view
+      class="at-tabs__item-underline"
+    />
+  </view>
+  <view
+    class="at-tabs__item"
+    id="tab__tests__20212"
+  >
+    <text
+      style="white-space: nowrap;"
+    >
+      标签页3
+    </text>
+    <view
+      class="at-tabs__item-underline"
+    />
+  </view>
+  
+</scroll-view>
+`;
+
+exports[`AtTabs should render prop tabDirection 1`] = `
+<view
+  class="at-tabs--horizontal at-tabs--WEB at-tabs"
+>
+  <view
+    class="at-tabs__header"
+    id="__tests__2021"
+  >
+    
+    <view
+      class="at-tabs__item at-tabs__item--active"
+      id="tab__tests__20210"
+    >
+      <text
+        style="white-space: nowrap;"
+      >
+        标签页1
+      </text>
+      <view
+        class="at-tabs__item-underline"
+      />
+    </view>
+    <view
+      class="at-tabs__item"
+      id="tab__tests__20211"
+    >
+      <text
+        style="white-space: nowrap;"
+      >
+        标签页2
+      </text>
+      <view
+        class="at-tabs__item-underline"
+      />
+    </view>
+    <view
+      class="at-tabs__item"
+      id="tab__tests__20212"
+    >
+      <text
+        style="white-space: nowrap;"
+      >
+        标签页3
+      </text>
+      <view
+        class="at-tabs__item-underline"
+      />
+    </view>
+    
+  </view>
+  <view
+    class="at-tabs__body"
+    style="transform: translate3d(-0%, 0px, 0px);"
+  >
+    <view
+      class="at-tabs__underline"
+      style="width: 300%;"
+    />
+    
+    
+  </view>
+</view>
+`;
+
+exports[`AtTabs should render prop tabDirection 2`] = `
+<view
+  class="at-tabs--vertical at-tabs--scroll at-tabs--WEB at-tabs"
+>
+  <scroll-view
+    class="at-tabs__header"
+    id="__tests__2021"
+    scroll-into-view=""
+    scroll-left="0"
+    scroll-top="0"
+    scroll-with-animation=""
+    scroll-x="false"
+    scroll-y="true"
+  >
+    
+    <view
+      class="at-tabs__item at-tabs__item--active"
+      id="tab__tests__20210"
+    >
+      <text
+        style="white-space: nowrap;"
+      >
+        标签页1
+      </text>
+      <view
+        class="at-tabs__item-underline"
+      />
+    </view>
+    <view
+      class="at-tabs__item"
+      id="tab__tests__20211"
+    >
+      <text
+        style="white-space: nowrap;"
+      >
+        标签页2
+      </text>
+      <view
+        class="at-tabs__item-underline"
+      />
+    </view>
+    <view
+      class="at-tabs__item"
+      id="tab__tests__20212"
+    >
+      <text
+        style="white-space: nowrap;"
+      >
+        标签页3
+      </text>
+      <view
+        class="at-tabs__item-underline"
+      />
+    </view>
+    
+  </scroll-view>
+  <view
+    class="at-tabs__body"
+    style="transform: translate3d(0px, -0%, 0px);"
+  >
+    <view
+      class="at-tabs__underline"
+      style="width: 300%; height: 300%;"
+    />
+    
+    
+  </view>
+</view>
+`;
+
+exports[`AtTabs should render prop tabList 1`] = `
+<view
+  class="at-tabs__header"
+  id="__tests__2021"
+>
+  
+  <view
+    class="at-tabs__item at-tabs__item--active"
+    id="tab__tests__20210"
+  >
+    <text
+      style="white-space: nowrap;"
+    >
+      标签页1
+    </text>
+    <view
+      class="at-tabs__item-underline"
+    />
+  </view>
+  <view
+    class="at-tabs__item"
+    id="tab__tests__20211"
+  >
+    <text
+      style="white-space: nowrap;"
+    >
+      标签页2
+    </text>
+    <view
+      class="at-tabs__item-underline"
+    />
+  </view>
+  <view
+    class="at-tabs__item"
+    id="tab__tests__20212"
+  >
+    <text
+      style="white-space: nowrap;"
+    >
+      标签页3
+    </text>
+    <view
+      class="at-tabs__item-underline"
+    />
+  </view>
+  
+</view>
+`;

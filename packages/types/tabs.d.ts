@@ -48,11 +48,11 @@ export interface AtTabsProps extends AtComponent {
   /**
    * 点击或滑动时触发事件
    */
-  onClick: (index: number, event: CommonEvent) => void
+  onClick?: (index: number, event: CommonEvent) => void
 }
 
 export interface AtTabsState {
-  _scrollLeft: number
-  _scrollTop: number
-  _scrollIntoView: string
+  scrollLeft: number
+  scrollTop: number
+  scrollIntoView: string
 }
