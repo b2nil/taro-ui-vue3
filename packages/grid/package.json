@@ -6,7 +6,7 @@
   "peerDependencies": {
     "@tarojs/components": "^3.2.1",
     "@tarojs/taro": "^3.2.1",
-    "vue": "^3.0.10"
+    "vue": "^3.1.0"
   },
   "dependencies": {
     "lodash-es": "^4.17.15"

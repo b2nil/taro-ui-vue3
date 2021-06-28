@@ -23,11 +23,11 @@
   "dependencies": {
     "at-ui-style": "^1.5.1",
     "qr.js": "^0.0.0",
-    "vue": "^3.0.10"
+    "vue": "^3.1.0"
   },
   "devDependencies": {
-    "@vue/compiler-sfc": "^3.0.10",
-    "@vue/server-renderer": "^3.0.10",
+    "@vue/compiler-sfc": "^3.1.0",
+    "@vue/server-renderer": "^3.1.0",
     "sass": "^1.30.0",
     "vitepress": "^0.13.2"
   }

@@ -53,7 +53,7 @@
     "build:docs": "cd website && yarn build:docs",
     "deploy:docs": "cd website && yarn deploy:docs",
     "prepublishOnly": "yarn clean && yarn build",
-    "test": "cross-env NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules && jest --coverage --maxWorkers=4",
+    "test": "cross-env NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules && jest --coverage",
     "clean": "rimraf .temp dist lib coverage types"
   },
   "browserslist": [
@@ -68,7 +68,7 @@
   "peerDependencies": {
     "@tarojs/components": "^3.2.1",
     "@tarojs/taro": "^3.2.1",
-    "vue": "^3.0.10"
+    "vue": "^3.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
@@ -79,7 +79,7 @@
     "@types/lodash-es": "^4.17.3",
     "@types/shelljs": "^0.8.8",
     "@vitejs/plugin-vue": "^1.2.2",
-    "@vue/test-utils": "2.0.0-rc.0",
+    "@vue/test-utils": "2.0.0-rc.8",
     "babel-jest": "^27.0.2",
     "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
