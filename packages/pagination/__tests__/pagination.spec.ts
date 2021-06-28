@@ -27,70 +27,72 @@ describe('AtPagination', () => {
 })
 
 describe('AtPagination Behavior', () => {
-  it('should trigger event onPageChange - prev', async () => {
+  it('should trigger page-change event - prev', async () => {
     const current = ref(2)
     const onPageChange = jest.fn().mockImplementation((val) => {
       current.value = val.current
     })
     const wrapper = mountFn({
       total: 100,
-      current: current.value,
+      current,
       onPageChange,
     })
-    expect(wrapper.element).toMatchSnapshot()
-    await wrapper.find('.at-pagination .at-pagination__btn-prev .at-button').trigger('tap')
+
+    await wrapper
+      .find('.at-pagination .at-pagination__btn-prev .at-button')
+      .trigger('tap')
+
+    expect(wrapper.emitted()).toHaveProperty('page-change')
+    expect(wrapper.emitted('page-change')![0]).toEqual([{ type: 'prev', current: 1 }])
+
     expect(onPageChange).toBeCalled()
+    expect(onPageChange.mock.calls[0][0].type).toEqual('prev')
+    expect(onPageChange.mock.calls[0][0].current).toEqual(1)
+
     expect(current.value).toBe(1)
   })
 
-  it('should trigger event onPageChange - next', async () => {
+  it('should trigger page-change event - next', async () => {
     const current = ref(2)
     const onPageChange = jest.fn().mockImplementation((val) => {
       current.value = val.current
     })
     const wrapper = mountFn({
       total: 100,
-      current: current.value,
+      current,
       onPageChange,
     })
-    expect(wrapper.element).toMatchSnapshot()
-    await wrapper.find('.at-pagination .at-pagination__btn-next .at-button').trigger('tap')
+
+    await wrapper
+      .find('.at-pagination .at-pagination__btn-next .at-button')
+      .trigger('tap')
+
+    expect(wrapper.emitted()).toHaveProperty('page-change')
+    expect(wrapper.emitted('page-change')![0]).toEqual([{ type: 'next', current: 3 }])
+
     expect(onPageChange).toBeCalled()
+    expect(onPageChange.mock.calls[0][0].type).toEqual('next')
+    expect(onPageChange.mock.calls[0][0].current).toEqual(3)
+
     expect(current.value).toBe(3)
   })
 
-  it('should not trigger event onPageChange when disabled', async () => {
+  it('should not trigger page-change event when disabled', async () => {
     const onPageChange = jest.fn()
     const wrapper = mountFn({
       total: 20,
       onPageChange,
     })
     expect(wrapper.element).toMatchSnapshot()
-    await wrapper.find('.at-pagination .at-pagination__btn-prev .at-button').trigger('tap')
-    await wrapper.find('.at-pagination .at-pagination__btn-next .at-button').trigger('tap')
+
+    await wrapper
+      .find('.at-pagination .at-pagination__btn-prev .at-button')
+      .trigger('tap')
+    await wrapper
+      .find('.at-pagination .at-pagination__btn-next .at-button')
+      .trigger('tap')
+
+    expect(wrapper.emitted()).not.toHaveProperty('page-change')
     expect(onPageChange).not.toBeCalled()
-  })
-
-  it('onPageChange should return params {type, current} - prev', async () => {
-    const onPageChange = jest.fn()
-    const wrapper = mountFn({
-      current: 2,
-      total: 100,
-      onPageChange,
-    })
-    await wrapper.find('.at-pagination .at-pagination__btn-prev .at-button').trigger('tap')
-    expect(onPageChange.mock.calls[0][0].type).toEqual('prev')
-    expect(onPageChange.mock.calls[0][0].current).toEqual(1)
-  })
-
-  it('onPageChange should return params {type, current} - next', async () => {
-    const onPageChange = jest.fn()
-    const wrapper = mountFn({
-      total: 100,
-      onPageChange,
-    })
-    await wrapper.find('.at-pagination .at-pagination__btn-next .at-button').trigger('tap')
-    expect(onPageChange.mock.calls[0][0].type).toEqual('next')
-    expect(onPageChange.mock.calls[0][0].current).toEqual(2)
   })
 })

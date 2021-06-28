@@ -1,29 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AtPagination Event AtPagination onPageChange - next 1`] = `
+exports[`AtPagination Behavior should not trigger page-change event when disabled 1`] = `
 <view
   class="at-pagination"
 >
-  <!-- btn prev -->
   <view
     class="at-pagination__btn-prev"
   >
     <!--v-if-->
     <view
-      class="at-button--small at-button"
+      class="at-button at-button--small at-button--disabled"
     >
-      <!-- web button -->
-      <button
-        class="at-button__wxbutton"
-        lang="lang"
-      />
-      <!-- weapp button -->
       <!--v-if-->
-      <!-- alipay button -->
       <!--v-if-->
-      <!-- loading && icon -->
       <!--v-if-->
-      <!-- button text slot -->
+      <!--v-if-->
       <view
         class="at-button__text"
       >
@@ -33,160 +24,6 @@ exports[`AtPagination Event AtPagination onPageChange - next 1`] = `
       </view>
     </view>
   </view>
-  <!-- pagination number -->
-  <view
-    class="at-pagination__number"
-  >
-    <text
-      class="at-pagination__number-current"
-    >
-      2
-    </text>
-    <text>
-      /5
-    </text>
-  </view>
-  <!-- btn next -->
-  <view
-    class="at-pagination__btn-next"
-  >
-    <!--v-if-->
-    <view
-      class="at-button--small at-button"
-    >
-      <!-- web button -->
-      <button
-        class="at-button__wxbutton"
-        lang="lang"
-      />
-      <!-- weapp button -->
-      <!--v-if-->
-      <!-- alipay button -->
-      <!--v-if-->
-      <!-- loading && icon -->
-      <!--v-if-->
-      <!-- button text slot -->
-      <view
-        class="at-button__text"
-      >
-        
-        下一页
-        
-      </view>
-    </view>
-  </view>
-</view>
-`;
-
-exports[`AtPagination Event AtPagination onPageChange - prev 1`] = `
-<view
-  class="at-pagination"
->
-  <!-- btn prev -->
-  <view
-    class="at-pagination__btn-prev"
-  >
-    <!--v-if-->
-    <view
-      class="at-button--small at-button"
-    >
-      <!-- web button -->
-      <button
-        class="at-button__wxbutton"
-        lang="lang"
-      />
-      <!-- weapp button -->
-      <!--v-if-->
-      <!-- alipay button -->
-      <!--v-if-->
-      <!-- loading && icon -->
-      <!--v-if-->
-      <!-- button text slot -->
-      <view
-        class="at-button__text"
-      >
-        
-        上一页
-        
-      </view>
-    </view>
-  </view>
-  <!-- pagination number -->
-  <view
-    class="at-pagination__number"
-  >
-    <text
-      class="at-pagination__number-current"
-    >
-      2
-    </text>
-    <text>
-      /5
-    </text>
-  </view>
-  <!-- btn next -->
-  <view
-    class="at-pagination__btn-next"
-  >
-    <!--v-if-->
-    <view
-      class="at-button--small at-button"
-    >
-      <!-- web button -->
-      <button
-        class="at-button__wxbutton"
-        lang="lang"
-      />
-      <!-- weapp button -->
-      <!--v-if-->
-      <!-- alipay button -->
-      <!--v-if-->
-      <!-- loading && icon -->
-      <!--v-if-->
-      <!-- button text slot -->
-      <view
-        class="at-button__text"
-      >
-        
-        下一页
-        
-      </view>
-    </view>
-  </view>
-</view>
-`;
-
-exports[`AtPagination Event AtPagination onPageChange not to be called(disabled prev or next) 1`] = `
-<view
-  class="at-pagination"
->
-  <!-- btn prev -->
-  <view
-    class="at-pagination__btn-prev"
-  >
-    <!--v-if-->
-    <view
-      class="at-button--small at-button--disabled at-button"
-    >
-      <!-- web button -->
-      <!--v-if-->
-      <!-- weapp button -->
-      <!--v-if-->
-      <!-- alipay button -->
-      <!--v-if-->
-      <!-- loading && icon -->
-      <!--v-if-->
-      <!-- button text slot -->
-      <view
-        class="at-button__text"
-      >
-        
-        上一页
-        
-      </view>
-    </view>
-  </view>
-  <!-- pagination number -->
   <view
     class="at-pagination__number"
   >
@@ -199,23 +36,17 @@ exports[`AtPagination Event AtPagination onPageChange not to be called(disabled 
       /1
     </text>
   </view>
-  <!-- btn next -->
   <view
     class="at-pagination__btn-next"
   >
     <!--v-if-->
     <view
-      class="at-button--small at-button--disabled at-button"
+      class="at-button at-button--small at-button--disabled"
     >
-      <!-- web button -->
       <!--v-if-->
-      <!-- weapp button -->
       <!--v-if-->
-      <!-- alipay button -->
       <!--v-if-->
-      <!-- loading && icon -->
       <!--v-if-->
-      <!-- button text slot -->
       <view
         class="at-button__text"
       >
@@ -228,27 +59,21 @@ exports[`AtPagination Event AtPagination onPageChange not to be called(disabled 
 </view>
 `;
 
-exports[`AtPagination Snap render AtPagination -- props current 1`] = `
+exports[`AtPagination should render prop -- current 1`] = `
 <view
   class="at-pagination"
 >
-  <!-- btn prev -->
   <view
     class="at-pagination__btn-prev"
   >
     <!--v-if-->
     <view
-      class="at-button--small at-button--disabled at-button"
+      class="at-button at-button--small at-button--disabled"
     >
-      <!-- web button -->
       <!--v-if-->
-      <!-- weapp button -->
       <!--v-if-->
-      <!-- alipay button -->
       <!--v-if-->
-      <!-- loading && icon -->
       <!--v-if-->
-      <!-- button text slot -->
       <view
         class="at-button__text"
       >
@@ -258,7 +83,6 @@ exports[`AtPagination Snap render AtPagination -- props current 1`] = `
       </view>
     </view>
   </view>
-  <!-- pagination number -->
   <view
     class="at-pagination__number"
   >
@@ -271,23 +95,17 @@ exports[`AtPagination Snap render AtPagination -- props current 1`] = `
       /1
     </text>
   </view>
-  <!-- btn next -->
   <view
     class="at-pagination__btn-next"
   >
     <!--v-if-->
     <view
-      class="at-button--small at-button--disabled at-button"
+      class="at-button at-button--small at-button--disabled"
     >
-      <!-- web button -->
       <!--v-if-->
-      <!-- weapp button -->
       <!--v-if-->
-      <!-- alipay button -->
       <!--v-if-->
-      <!-- loading && icon -->
       <!--v-if-->
-      <!-- button text slot -->
       <view
         class="at-button__text"
       >
@@ -300,26 +118,20 @@ exports[`AtPagination Snap render AtPagination -- props current 1`] = `
 </view>
 `;
 
-exports[`AtPagination Snap render AtPagination -- props icon 1`] = `
+exports[`AtPagination should render prop -- icon 1`] = `
 <view
   class="at-pagination at-pagination--icon"
 >
-  <!-- btn prev -->
   <view
     class="at-pagination__btn-prev"
   >
     <view
-      class="at-button--small at-button--disabled at-button"
+      class="at-button at-button--small at-button--disabled"
     >
-      <!-- web button -->
       <!--v-if-->
-      <!-- weapp button -->
       <!--v-if-->
-      <!-- alipay button -->
       <!--v-if-->
-      <!-- loading && icon -->
       <!--v-if-->
-      <!-- button text slot -->
       <view
         class="at-button__text"
       >
@@ -332,7 +144,6 @@ exports[`AtPagination Snap render AtPagination -- props icon 1`] = `
     </view>
     <!--v-if-->
   </view>
-  <!-- pagination number -->
   <view
     class="at-pagination__number"
   >
@@ -345,22 +156,16 @@ exports[`AtPagination Snap render AtPagination -- props icon 1`] = `
       /1
     </text>
   </view>
-  <!-- btn next -->
   <view
     class="at-pagination__btn-next"
   >
     <view
-      class="at-button--small at-button--disabled at-button"
+      class="at-button at-button--small at-button--disabled"
     >
-      <!-- web button -->
       <!--v-if-->
-      <!-- weapp button -->
       <!--v-if-->
-      <!-- alipay button -->
       <!--v-if-->
-      <!-- loading && icon -->
       <!--v-if-->
-      <!-- button text slot -->
       <view
         class="at-button__text"
       >
@@ -376,27 +181,21 @@ exports[`AtPagination Snap render AtPagination -- props icon 1`] = `
 </view>
 `;
 
-exports[`AtPagination Snap render AtPagination -- props pageSize 1`] = `
+exports[`AtPagination should render prop -- pageSize 1`] = `
 <view
   class="at-pagination"
 >
-  <!-- btn prev -->
   <view
     class="at-pagination__btn-prev"
   >
     <!--v-if-->
     <view
-      class="at-button--small at-button--disabled at-button"
+      class="at-button at-button--small at-button--disabled"
     >
-      <!-- web button -->
       <!--v-if-->
-      <!-- weapp button -->
       <!--v-if-->
-      <!-- alipay button -->
       <!--v-if-->
-      <!-- loading && icon -->
       <!--v-if-->
-      <!-- button text slot -->
       <view
         class="at-button__text"
       >
@@ -406,7 +205,6 @@ exports[`AtPagination Snap render AtPagination -- props pageSize 1`] = `
       </view>
     </view>
   </view>
-  <!-- pagination number -->
   <view
     class="at-pagination__number"
   >
@@ -419,23 +217,17 @@ exports[`AtPagination Snap render AtPagination -- props pageSize 1`] = `
       /1
     </text>
   </view>
-  <!-- btn next -->
   <view
     class="at-pagination__btn-next"
   >
     <!--v-if-->
     <view
-      class="at-button--small at-button--disabled at-button"
+      class="at-button at-button--small at-button--disabled"
     >
-      <!-- web button -->
       <!--v-if-->
-      <!-- weapp button -->
       <!--v-if-->
-      <!-- alipay button -->
       <!--v-if-->
-      <!-- loading && icon -->
       <!--v-if-->
-      <!-- button text slot -->
       <view
         class="at-button__text"
       >
@@ -448,27 +240,21 @@ exports[`AtPagination Snap render AtPagination -- props pageSize 1`] = `
 </view>
 `;
 
-exports[`AtPagination Snap render AtPagination -- props total 1`] = `
+exports[`AtPagination should render prop -- total 1`] = `
 <view
   class="at-pagination"
 >
-  <!-- btn prev -->
   <view
     class="at-pagination__btn-prev"
   >
     <!--v-if-->
     <view
-      class="at-button--small at-button--disabled at-button"
+      class="at-button at-button--small at-button--disabled"
     >
-      <!-- web button -->
       <!--v-if-->
-      <!-- weapp button -->
       <!--v-if-->
-      <!-- alipay button -->
       <!--v-if-->
-      <!-- loading && icon -->
       <!--v-if-->
-      <!-- button text slot -->
       <view
         class="at-button__text"
       >
@@ -478,7 +264,6 @@ exports[`AtPagination Snap render AtPagination -- props total 1`] = `
       </view>
     </view>
   </view>
-  <!-- pagination number -->
   <view
     class="at-pagination__number"
   >
@@ -491,26 +276,20 @@ exports[`AtPagination Snap render AtPagination -- props total 1`] = `
       /5
     </text>
   </view>
-  <!-- btn next -->
   <view
     class="at-pagination__btn-next"
   >
     <!--v-if-->
     <view
-      class="at-button--small at-button"
+      class="at-button at-button--small"
     >
-      <!-- web button -->
       <button
         class="at-button__wxbutton"
         lang="lang"
       />
-      <!-- weapp button -->
       <!--v-if-->
-      <!-- alipay button -->
       <!--v-if-->
-      <!-- loading && icon -->
       <!--v-if-->
-      <!-- button text slot -->
       <view
         class="at-button__text"
       >
