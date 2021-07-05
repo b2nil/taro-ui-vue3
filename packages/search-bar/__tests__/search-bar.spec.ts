@@ -67,7 +67,7 @@ describe('AtSearchBar events', () => {
     const modelValue = ref('props.value')
     const onUpdateValue = jest.fn((e) => modelValue.value = e)
     const wrapper = mountFn({
-      modelValue: modelValue.value,
+      modelValue,
       ['onUpdate:modelValue']: onUpdateValue
     })
 

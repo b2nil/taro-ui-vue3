@@ -7,7 +7,7 @@ import * as utils from '@taro-ui-vue3/utils/common'
 const mountFn = genMountFn(AtAccordion)
 
 describe('AtAccordion', () => {
-  it('should render default AtAccordion', () => {
+  it('should render default AtAccordion', async () => {
     const wrapper = mountFn({}, {
       default: ["按钮"]
     })

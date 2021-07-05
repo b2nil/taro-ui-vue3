@@ -10,7 +10,7 @@ describe('AtButton', () => {
     'weapp',
     'alipay',
     'h5'
-  ])('should render %s button and match snapshot', (platform: TARO_ENV) => {
+  ])('should render %s button and match snapshot', async (platform: TARO_ENV) => {
     process.env.TARO_ENV = platform
 
     const wrapper = mountFn({}, { default: ['按钮'] })
@@ -23,7 +23,7 @@ describe('AtButton', () => {
     process.env.TARO_ENV = 'h5'
   })
 
-  it.concurrent.each([
+  it.each([
     'normal',
     'small'
   ])('should render prop size -- %s', async (size) => {
@@ -42,7 +42,7 @@ describe('AtButton', () => {
 
   })
 
-  it.concurrent.each([
+  it.each([
     'primary',
     'secondary',
     ''
@@ -86,7 +86,7 @@ describe('AtButton', () => {
     ).toContain(`at-button--${propValue}`)
   })
 
-  it.concurrent.each([
+  it.each([
     'circle',
     'disabled',
     'full',
@@ -109,7 +109,7 @@ describe('AtButton', () => {
     ).toContain(expected)
   })
 
-  it.concurrent.each([
+  it.each([
     'submit',
     'reset'
   ])('should render prop formType -- %s', async (formType) => {
@@ -121,7 +121,7 @@ describe('AtButton', () => {
     ).toBe(formType)
   })
 
-  it.concurrent.each([
+  it.each([
     'weapp',
     'alipay',
     'h5',
@@ -170,7 +170,7 @@ describe('AtButton events', () => {
     ).toHaveBeenWarned()
   })
 
-  it.concurrent('it should trigger submit', async () => {
+  it('it should trigger submit', async () => {
     process.env.TARO_ENV = 'weapp'
 
     jest.mock('@tarojs/taro')
@@ -187,7 +187,7 @@ describe('AtButton events', () => {
     process.env.TARO_ENV = 'h5'
   })
 
-  it.concurrent('it should trigger reset', async () => {
+  it('it should trigger reset', async () => {
     process.env.TARO_ENV = 'weapp'
 
     jest.mock('@tarojs/taro')

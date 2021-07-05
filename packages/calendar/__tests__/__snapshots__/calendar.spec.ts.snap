@@ -69,60 +69,6 @@ exports[`AtCalendarBody should render h5 calendar body and match snapshot 1`] = 
             <view
               class="container-text"
             >
-              25
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
-          class="flex__item flex__item--pre flex__item--blur"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
-              26
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
-          class="flex__item flex__item--pre flex__item--blur"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
-              27
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
-          class="flex__item flex__item--pre flex__item--blur"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
               28
             </view>
           </view>
@@ -160,6 +106,24 @@ exports[`AtCalendarBody should render h5 calendar body and match snapshot 1`] = 
               class="container-text"
             >
               30
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
+          class="flex__item flex__item--pre flex__item--blur"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              31
             </view>
           </view>
           <view
@@ -709,24 +673,6 @@ exports[`AtCalendarBody should render h5 calendar body and match snapshot 1`] = 
           </view>
         </view>
         <view
-          class="flex__item flex__item--now"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
-              31
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
           class="flex__item flex__item--next flex__item--blur"
         >
           <view
@@ -808,6 +754,60 @@ exports[`AtCalendarBody should render h5 calendar body and match snapshot 1`] = 
               class="container-text"
             >
               5
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
+          class="flex__item flex__item--next flex__item--blur"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              6
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
+          class="flex__item flex__item--next flex__item--blur"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              7
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
+          class="flex__item flex__item--next flex__item--blur"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              8
             </view>
           </view>
           <view
@@ -835,7 +835,7 @@ exports[`AtCalendarBody should render h5 calendar body and match snapshot 1`] = 
             <view
               class="container-text"
             >
-              30
+              25
             </view>
           </view>
           <view
@@ -853,7 +853,79 @@ exports[`AtCalendarBody should render h5 calendar body and match snapshot 1`] = 
             <view
               class="container-text"
             >
-              31
+              26
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
+          class="flex__item flex__item--pre flex__item--blur"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              27
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
+          class="flex__item flex__item--pre flex__item--blur"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              28
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
+          class="flex__item flex__item--pre flex__item--blur"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              29
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
+          class="flex__item flex__item--pre flex__item--blur"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              30
             </view>
           </view>
           <view
@@ -971,7 +1043,7 @@ exports[`AtCalendarBody should render h5 calendar body and match snapshot 1`] = 
           </view>
         </view>
         <view
-          class="flex__item flex__item--now flex__item--today"
+          class="flex__item flex__item--now"
         >
           <view
             class="flex__item-container"
@@ -1403,6 +1475,24 @@ exports[`AtCalendarBody should render h5 calendar body and match snapshot 1`] = 
           </view>
         </view>
         <view
+          class="flex__item flex__item--now"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              31
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
           class="flex__item flex__item--next flex__item--blur"
         >
           <view
@@ -1484,96 +1574,6 @@ exports[`AtCalendarBody should render h5 calendar body and match snapshot 1`] = 
               class="container-text"
             >
               5
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
-          class="flex__item flex__item--next flex__item--blur"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
-              6
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
-          class="flex__item flex__item--next flex__item--blur"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
-              7
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
-          class="flex__item flex__item--next flex__item--blur"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
-              8
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
-          class="flex__item flex__item--next flex__item--blur"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
-              9
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
-          class="flex__item flex__item--next flex__item--blur"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
-              10
             </view>
           </view>
           <view
@@ -1601,61 +1601,25 @@ exports[`AtCalendarBody should render h5 calendar body and match snapshot 1`] = 
             <view
               class="container-text"
             >
-              27
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
-          class="flex__item flex__item--pre flex__item--blur"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
-              28
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
-          class="flex__item flex__item--pre flex__item--blur"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
-              29
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
-          class="flex__item flex__item--pre flex__item--blur"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
               30
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
+          class="flex__item flex__item--pre flex__item--blur"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              31
             </view>
           </view>
           <view
@@ -2205,24 +2169,6 @@ exports[`AtCalendarBody should render h5 calendar body and match snapshot 1`] = 
           </view>
         </view>
         <view
-          class="flex__item flex__item--now"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
-              31
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
           class="flex__item flex__item--next flex__item--blur"
         >
           <view
@@ -2340,6 +2286,60 @@ exports[`AtCalendarBody should render h5 calendar body and match snapshot 1`] = 
               class="container-text"
             >
               7
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
+          class="flex__item flex__item--next flex__item--blur"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              8
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
+          class="flex__item flex__item--next flex__item--blur"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              9
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
+          class="flex__item flex__item--next flex__item--blur"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              10
             </view>
           </view>
           <view
@@ -2429,60 +2429,6 @@ exports[`AtCalendarBody should render miniapp calendar body and match snapshot 1
             <view
               class="container-text"
             >
-              25
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
-          class="flex__item flex__item--pre flex__item--blur"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
-              26
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
-          class="flex__item flex__item--pre flex__item--blur"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
-              27
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
-          class="flex__item flex__item--pre flex__item--blur"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
               28
             </view>
           </view>
@@ -2520,6 +2466,24 @@ exports[`AtCalendarBody should render miniapp calendar body and match snapshot 1
               class="container-text"
             >
               30
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
+          class="flex__item flex__item--pre flex__item--blur"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              31
             </view>
           </view>
           <view
@@ -3069,24 +3033,6 @@ exports[`AtCalendarBody should render miniapp calendar body and match snapshot 1
           </view>
         </view>
         <view
-          class="flex__item flex__item--now"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
-              31
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
           class="flex__item flex__item--next flex__item--blur"
         >
           <view
@@ -3168,6 +3114,60 @@ exports[`AtCalendarBody should render miniapp calendar body and match snapshot 1
               class="container-text"
             >
               5
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
+          class="flex__item flex__item--next flex__item--blur"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              6
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
+          class="flex__item flex__item--next flex__item--blur"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              7
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
+          class="flex__item flex__item--next flex__item--blur"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              8
             </view>
           </view>
           <view
@@ -3195,7 +3195,7 @@ exports[`AtCalendarBody should render miniapp calendar body and match snapshot 1
             <view
               class="container-text"
             >
-              30
+              25
             </view>
           </view>
           <view
@@ -3213,7 +3213,79 @@ exports[`AtCalendarBody should render miniapp calendar body and match snapshot 1
             <view
               class="container-text"
             >
-              31
+              26
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
+          class="flex__item flex__item--pre flex__item--blur"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              27
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
+          class="flex__item flex__item--pre flex__item--blur"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              28
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
+          class="flex__item flex__item--pre flex__item--blur"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              29
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
+          class="flex__item flex__item--pre flex__item--blur"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              30
             </view>
           </view>
           <view
@@ -3331,7 +3403,7 @@ exports[`AtCalendarBody should render miniapp calendar body and match snapshot 1
           </view>
         </view>
         <view
-          class="flex__item flex__item--now flex__item--today"
+          class="flex__item flex__item--now"
         >
           <view
             class="flex__item-container"
@@ -3763,6 +3835,24 @@ exports[`AtCalendarBody should render miniapp calendar body and match snapshot 1
           </view>
         </view>
         <view
+          class="flex__item flex__item--now"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              31
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
           class="flex__item flex__item--next flex__item--blur"
         >
           <view
@@ -3844,96 +3934,6 @@ exports[`AtCalendarBody should render miniapp calendar body and match snapshot 1
               class="container-text"
             >
               5
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
-          class="flex__item flex__item--next flex__item--blur"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
-              6
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
-          class="flex__item flex__item--next flex__item--blur"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
-              7
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
-          class="flex__item flex__item--next flex__item--blur"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
-              8
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
-          class="flex__item flex__item--next flex__item--blur"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
-              9
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
-          class="flex__item flex__item--next flex__item--blur"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
-              10
             </view>
           </view>
           <view
@@ -3961,61 +3961,25 @@ exports[`AtCalendarBody should render miniapp calendar body and match snapshot 1
             <view
               class="container-text"
             >
-              27
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
-          class="flex__item flex__item--pre flex__item--blur"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
-              28
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
-          class="flex__item flex__item--pre flex__item--blur"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
-              29
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
-          class="flex__item flex__item--pre flex__item--blur"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
               30
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
+          class="flex__item flex__item--pre flex__item--blur"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              31
             </view>
           </view>
           <view
@@ -4565,24 +4529,6 @@ exports[`AtCalendarBody should render miniapp calendar body and match snapshot 1
           </view>
         </view>
         <view
-          class="flex__item flex__item--now"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
-              31
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
           class="flex__item flex__item--next flex__item--blur"
         >
           <view
@@ -4700,6 +4646,60 @@ exports[`AtCalendarBody should render miniapp calendar body and match snapshot 1
               class="container-text"
             >
               7
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
+          class="flex__item flex__item--next flex__item--blur"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              8
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
+          class="flex__item flex__item--next flex__item--blur"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              9
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
+          class="flex__item flex__item--next flex__item--blur"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              10
             </view>
           </view>
           <view
@@ -4784,7 +4784,7 @@ exports[`AtCalendarBody should render non-swiper calendar body and match snapsho
             <view
               class="container-text"
             >
-              30
+              25
             </view>
           </view>
           <view
@@ -4802,7 +4802,79 @@ exports[`AtCalendarBody should render non-swiper calendar body and match snapsho
             <view
               class="container-text"
             >
-              31
+              26
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
+          class="flex__item flex__item--pre flex__item--blur"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              27
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
+          class="flex__item flex__item--pre flex__item--blur"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              28
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
+          class="flex__item flex__item--pre flex__item--blur"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              29
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
+          class="flex__item flex__item--pre flex__item--blur"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              30
             </view>
           </view>
           <view
@@ -4920,7 +4992,7 @@ exports[`AtCalendarBody should render non-swiper calendar body and match snapsho
           </view>
         </view>
         <view
-          class="flex__item flex__item--now flex__item--today"
+          class="flex__item flex__item--now"
         >
           <view
             class="flex__item-container"
@@ -5352,6 +5424,24 @@ exports[`AtCalendarBody should render non-swiper calendar body and match snapsho
           </view>
         </view>
         <view
+          class="flex__item flex__item--now"
+        >
+          <view
+            class="flex__item-container"
+          >
+            <view
+              class="container-text"
+            >
+              31
+            </view>
+          </view>
+          <view
+            class="flex__item-extra extra"
+          >
+            <!--v-if-->
+          </view>
+        </view>
+        <view
           class="flex__item flex__item--next flex__item--blur"
         >
           <view
@@ -5441,96 +5531,6 @@ exports[`AtCalendarBody should render non-swiper calendar body and match snapsho
             <!--v-if-->
           </view>
         </view>
-        <view
-          class="flex__item flex__item--next flex__item--blur"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
-              6
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
-          class="flex__item flex__item--next flex__item--blur"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
-              7
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
-          class="flex__item flex__item--next flex__item--blur"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
-              8
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
-          class="flex__item flex__item--next flex__item--blur"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
-              9
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
-        <view
-          class="flex__item flex__item--next flex__item--blur"
-        >
-          <view
-            class="flex__item-container"
-          >
-            <view
-              class="container-text"
-            >
-              10
-            </view>
-          </view>
-          <view
-            class="flex__item-extra extra"
-          >
-            <!--v-if-->
-          </view>
-        </view>
         
       </view>
     </view>
@@ -5550,12 +5550,12 @@ exports[`AtCalendarController should render calendar header and match snapshot 1
     fields="month"
     mode="date"
     start=""
-    value="2021-06"
+    value="2021-04"
   >
     <text
       class="controller__info"
     >
-      2021 年 06 月
+      2021 年 04 月
     </text>
   </picker>
   <view

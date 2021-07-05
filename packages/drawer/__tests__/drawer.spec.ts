@@ -13,7 +13,7 @@ describe('AtDrawer', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it.concurrent('should render prop width', async () => {
+  it('should render prop width', async () => {
     const wrapper = mountFn({ show: true, width: '50px' })
     expect(
       wrapper
@@ -22,7 +22,7 @@ describe('AtDrawer', () => {
     ).toContain('width: 50px;')
   })
 
-  it.concurrent('should render prop right', async () => {
+  it('should render prop right', async () => {
     const wrapper = mountFn({ show: true })
     expect(wrapper.classes()).toContain('at-drawer--left')
     expect(wrapper.classes()).not.toContain('at-drawer--right')
@@ -32,7 +32,7 @@ describe('AtDrawer', () => {
     expect(wrapper.classes()).toContain('at-drawer--right')
   })
 
-  it.concurrent('should render prop mask', async () => {
+  it('should render prop mask', async () => {
     const wrapper = mountFn({ show: true })
     expect(
       wrapper.find('.at-drawer__mask').attributes('style')
@@ -44,7 +44,7 @@ describe('AtDrawer', () => {
     ).toContain('display: none;')
   })
 
-  it.concurrent('should render prop items', async () => {
+  it('should render prop items', async () => {
     const wrapper = mountFn({ show: true, items: items })
 
     expect(

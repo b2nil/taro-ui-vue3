@@ -7,10 +7,10 @@ exports[`AtMessage behaviours should open message and render message type -- err
   render="function render(_ctx, _cache) {
   /* istanbul ignore next */
   cov_1k5cw3mj2n().f[5]++;
-  cov_1k5cw3mj2n().s[13]++;
-  return vue_1.openBlock(), vue_1.createBlock(\\"view\\", vue_1.mergeProps(_ctx.$attrs, {
+  cov_1k5cw3mj2n().s[17]++;
+  return _openBlock(), _createBlock(\\"view\\", _mergeProps(_ctx.$attrs, {
     class: _ctx.rootClasses
-  }), vue_1.toDisplayString(_ctx.message), 17
+  }), _toDisplayString(_ctx.message), 17
   /* TEXT, FULL_PROPS */
   );
 }"
@@ -165,10 +165,10 @@ exports[`AtMessage behaviours should open message and render message type -- inf
   render="function render(_ctx, _cache) {
   /* istanbul ignore next */
   cov_1k5cw3mj2n().f[5]++;
-  cov_1k5cw3mj2n().s[13]++;
-  return vue_1.openBlock(), vue_1.createBlock(\\"view\\", vue_1.mergeProps(_ctx.$attrs, {
+  cov_1k5cw3mj2n().s[17]++;
+  return _openBlock(), _createBlock(\\"view\\", _mergeProps(_ctx.$attrs, {
     class: _ctx.rootClasses
-  }), vue_1.toDisplayString(_ctx.message), 17
+  }), _toDisplayString(_ctx.message), 17
   /* TEXT, FULL_PROPS */
   );
 }"
@@ -323,10 +323,10 @@ exports[`AtMessage behaviours should open message and render message type -- suc
   render="function render(_ctx, _cache) {
   /* istanbul ignore next */
   cov_1k5cw3mj2n().f[5]++;
-  cov_1k5cw3mj2n().s[13]++;
-  return vue_1.openBlock(), vue_1.createBlock(\\"view\\", vue_1.mergeProps(_ctx.$attrs, {
+  cov_1k5cw3mj2n().s[17]++;
+  return _openBlock(), _createBlock(\\"view\\", _mergeProps(_ctx.$attrs, {
     class: _ctx.rootClasses
-  }), vue_1.toDisplayString(_ctx.message), 17
+  }), _toDisplayString(_ctx.message), 17
   /* TEXT, FULL_PROPS */
   );
 }"
@@ -481,10 +481,10 @@ exports[`AtMessage behaviours should open message and render message type -- war
   render="function render(_ctx, _cache) {
   /* istanbul ignore next */
   cov_1k5cw3mj2n().f[5]++;
-  cov_1k5cw3mj2n().s[13]++;
-  return vue_1.openBlock(), vue_1.createBlock(\\"view\\", vue_1.mergeProps(_ctx.$attrs, {
+  cov_1k5cw3mj2n().s[17]++;
+  return _openBlock(), _createBlock(\\"view\\", _mergeProps(_ctx.$attrs, {
     class: _ctx.rootClasses
-  }), vue_1.toDisplayString(_ctx.message), 17
+  }), _toDisplayString(_ctx.message), 17
   /* TEXT, FULL_PROPS */
   );
 }"

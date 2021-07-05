@@ -222,7 +222,6 @@ describe('AtImagePicker', () => {
 })
 
 describe('AtImagePicker events', () => {
-  jest.mock('@tarojs/taro')
 
   afterEach(() => {
     process.env.TARO_ENV = 'h5'
@@ -263,15 +262,6 @@ describe('AtImagePicker events', () => {
     'h5'
   ])('should emit change by clicking add button in %s', async (env: TARO_ENV) => {
     process.env.TARO_ENV = env
-    const spy = jest.spyOn(Taro, 'chooseImage').mockImplementation(() => {
-      return new Promise((resolve) => {
-        resolve({
-          tempFilePaths: ['/path/to/file'],
-          tempFiles: [{ path: '/path/to/file', size: 256 }],
-          errMsg: ''
-        })
-      })
-    })
     const _files = ref(files)
     const onChange = jest.fn((args) => {
       _files.value = args.files
@@ -295,8 +285,6 @@ describe('AtImagePicker events', () => {
     expect(
       wrapper.findAll('.at-image-picker__preview-img').length
     ).toBe(6)
-
-    spy.mockClear()
   })
 
   it('should emit image-click', async () => {

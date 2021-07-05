@@ -18,7 +18,7 @@ describe('AtDivider', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it.concurrent('should render prop content', async () => {
+  it('should render prop content', async () => {
     const wrapper = mountFn({ content: 'content' })
     expect(
       wrapper
@@ -27,7 +27,7 @@ describe('AtDivider', () => {
     ).toEqual('content')
   })
 
-  it.concurrent('should render slot content', async () => {
+  it('should render slot content', async () => {
     const wrapper = mountFn({}, {
       default: ['content']
     })
@@ -38,14 +38,14 @@ describe('AtDivider', () => {
     ).toEqual('content')
   })
 
-  it.concurrent('should render prop height', async () => {
+  it('should render prop height', async () => {
     const wrapper = mountFn({ height: '120' })
     expect(
       wrapper.attributes('style')
     ).toEqual(`height: ${pxTransformMockFn(120)};`)
   })
 
-  it.concurrent.each([
+  it.each([
     ['fontColor', '#fff'],
     ['fontSize', 56]
   ])('should render prop %s', async (prop, value) => {
@@ -62,7 +62,7 @@ describe('AtDivider', () => {
     ).toContain(expected)
   })
 
-  it.concurrent('should render prop lineColor', async () => {
+  it('should render prop lineColor', async () => {
     const wrapper = mountFn({ lineColor: '#ddd' })
 
     expect(

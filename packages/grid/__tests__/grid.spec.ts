@@ -72,7 +72,7 @@ describe('AtGrid', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it.concurrent('should render prop hasBorder', async () => {
+  it('should render prop hasBorder', async () => {
     const wrapper = mountFn({ data: IMAGE_DATA })
     let gridItems = wrapper.findAll('.at-grid-item')
     for (const el of gridItems) {
@@ -86,7 +86,7 @@ describe('AtGrid', () => {
     }
   })
 
-  it.concurrent.each([
+  it.each([
     'square', 'rect'
   ])('should render prop mode -- %s', async (mode) => {
     const wrapper = mountFn({ data: IMAGE_DATA, mode })
@@ -107,7 +107,7 @@ describe('AtGrid', () => {
     ).toHaveBeenWarned()
   })
 
-  it.concurrent('should render prop columnNum', async () => {
+  it('should render prop columnNum', async () => {
     const wrapper = mountFn({ data: ICON_DATA })
     expect(
       wrapper.findAll('.at-grid__flex').length

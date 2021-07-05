@@ -35,7 +35,7 @@ describe('AtIndexes', () => {
     expect(wrapper.html()).toMatchSnapshot()
   })
 
-  it.concurrent('should render an index menu of letters', async () => {
+  it('should render an index menu of letters', async () => {
     const wrapper = mountFn({ list: mockData, isVibrate: false })
     const letters = ['Top', 'A', 'B', 'J']
     wrapper.findAll('.at-indexes__menu-item').forEach((el, i) => {
@@ -43,7 +43,7 @@ describe('AtIndexes', () => {
     })
   })
 
-  it.concurrent('should render the default slot content', async () => {
+  it('should render the default slot content', async () => {
     const wrapper = mountFn({ list: mockData, isVibrate: false }, {
       default: [h('view', { class: 'slot' })]
     })

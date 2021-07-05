@@ -112,7 +112,7 @@ describe('AtTextarea', () => {
     ).toBeFalsy()
   })
 
-  it.skip('should render prop height', () => {
+  it('should render prop height', () => {
     const wrapper = mountFn({ height: 3000 })
     expect(
       wrapper

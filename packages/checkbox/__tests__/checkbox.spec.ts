@@ -53,7 +53,7 @@ describe('AtCheckbox', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it.concurrent('should render prop selectedList', async () => {
+  it('should render prop selectedList', async () => {
     const wrapper = mountFn({ options, selectedList: ['list2'] })
     const optionEls = wrapper.findAll('.at-checkbox__option')
 

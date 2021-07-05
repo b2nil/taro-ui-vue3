@@ -9,14 +9,14 @@ describe('ActivityIndicator', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it.concurrent('should render props size and color', async () => {
+  it('should render props size and color', async () => {
     const wrapper = mountFn({ size: 32, color: '#13CE66' })
     const loadingEl = wrapper.findComponent('.at-loading')
     expect(loadingEl.props('size')).toEqual(32)
     expect(loadingEl.props('color')).toEqual('#13CE66')
   })
 
-  it.concurrent('should render props content', async () => {
+  it('should render props content', async () => {
     const wrapper = mountFn()
 
     expect(
@@ -34,7 +34,7 @@ describe('ActivityIndicator', () => {
     ).toEqual('加载中...')
   })
 
-  it.concurrent('should render props mode', async () => {
+  it('should render props mode', async () => {
     const wrapper = mountFn()
     expect(
       wrapper
@@ -50,7 +50,7 @@ describe('ActivityIndicator', () => {
     ).toBeTruthy()
   })
 
-  it.concurrent('should render props isOpened', async () => {
+  it('should render props isOpened', async () => {
     const wrapper = mountFn()
     expect(
       wrapper

@@ -23,14 +23,14 @@ describe('AtLoadMore', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it.concurrent('should render prop moreText', async () => {
+  it('should render prop moreText', async () => {
     const wrapper = mountFn({ moreText: 'moreText', status: 'more' })
     expect(
       wrapper.findComponent('.at-button').text()
     ).toEqual('moreText')
   })
 
-  it.concurrent('should render prop loadingText', async () => {
+  it('should render prop loadingText', async () => {
     const wrapper = mountFn({ loadingText: 'loadingText', status: 'loading' })
     expect(
       wrapper
@@ -39,7 +39,7 @@ describe('AtLoadMore', () => {
     ).toEqual('loadingText')
   })
 
-  it.concurrent('should render prop noMoreText', async () => {
+  it('should render prop noMoreText', async () => {
     const wrapper = mountFn({ noMoreText: 'noMoreText', status: 'noMore' })
     expect(
       wrapper
@@ -48,7 +48,7 @@ describe('AtLoadMore', () => {
     ).toEqual('noMoreText')
   })
 
-  it.concurrent.each([
+  it.each([
     ['cssString', 'background-color: red;'],
     ['cssProperties', { backgroundColor: 'red' }],
   ])('should render prop noMoreTextStyle -- %s', async (desc, propValue) => {
@@ -63,7 +63,7 @@ describe('AtLoadMore', () => {
     ).toContain('background-color: red;')
   })
 
-  it.concurrent.each([
+  it.each([
     ['cssString', 'background-color: red;'],
     ['cssProperties', { backgroundColor: 'red' }],
   ])('should render prop moreBtnStyle -- %s', async (desc, propValue) => {

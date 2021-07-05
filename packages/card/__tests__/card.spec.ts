@@ -23,7 +23,7 @@ describe('AtCard', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it.concurrent.each([
+  it.each([
     ['thumb', thumb],
     ['icon', { value: 'menu', color: 'red', size: 12 }],
     ['title', title],
@@ -79,7 +79,7 @@ describe('AtCard', () => {
 
   })
 
-  it.concurrent('should render prop note', async () => {
+  it('should render prop note', async () => {
     const wrapper = mountFn({ note })
     const noteEl = wrapper.find('.at-card__content-note')
     expect(
@@ -90,12 +90,12 @@ describe('AtCard', () => {
     ).toEqual(note)
   })
 
-  it.concurrent('should render prop isFull', async () => {
+  it('should render prop isFull', async () => {
     const wrapper = mountFn({ isFull: true })
     expect(wrapper.find('.at-card--full').exists()).toBeTruthy()
   })
 
-  it.concurrent('should render slot contents', async () => {
+  it('should render slot contents', async () => {
     const wrapper = mountFn({}, {
       default: () => [h('view', { class: 'defualt' })],
       renderIcon: () => [h('icon', { class: 'renderIcon' })]

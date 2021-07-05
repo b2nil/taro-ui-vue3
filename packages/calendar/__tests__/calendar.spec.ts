@@ -16,7 +16,7 @@ import AtCalendarList from '../ui/date-list/index.vue'
 describe("AtCalendarHeader", () => {
   const mountFn = genMountFn(AtCalendarHeader)
 
-  it("should render calendar header and match snapshot", () => {
+  it("should render calendar header and match snapshot", async () => {
     const wrapper = mountFn()
     expect(wrapper.element).toMatchSnapshot()
 
@@ -60,7 +60,7 @@ describe("AtCalendarList", () => {
     }
   ]
 
-  it("should render calendar list and match snapshot", () => {
+  it("should render calendar list and match snapshot", async () => {
     const wrapper = mountFn({ list })
     expect(wrapper.element).toMatchSnapshot()
   })
@@ -81,12 +81,12 @@ describe("AtCalendarList", () => {
 describe("AtCalendarController", () => {
   const mountFn = genMountFn(AtCalendarController)
 
-  it("should render calendar header and match snapshot", () => {
-    const wrapper = mountFn()
+  it("should render calendar header and match snapshot", async () => {
+    const wrapper = mountFn({ generateDate: '2021-04-01' })
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it.concurrent("should render prop hideArrow", async () => {
+  it("should render prop hideArrow", async () => {
     const wrapper = mountFn({ hideArrow: true })
     expect(
       wrapper
@@ -95,7 +95,7 @@ describe("AtCalendarController", () => {
     ).toEqual(0)
   })
 
-  it.concurrent("should render prop generateDate", async () => {
+  it("should render prop generateDate", async () => {
     const wrapper = mountFn({ generateDate: "2021-05-01" })
     expect(
       wrapper.get('picker').attributes('value')
@@ -106,7 +106,7 @@ describe("AtCalendarController", () => {
     ).toEqual('2021 年 05 月')
   })
 
-  it.concurrent.each([
+  it.each([
     'minDate',
     'maxDate'
   ])("should render prop %s", async (propName) => {
@@ -118,19 +118,19 @@ describe("AtCalendarController", () => {
     ).toEqual('2021-05')
   })
 
-  it.concurrent("should render emit pre-month event", async () => {
+  it("should render emit pre-month event", async () => {
     const wrapper = mountFn()
     wrapper.find(".controller__arrow--left").trigger("tap")
     expect(wrapper.emitted()).toHaveProperty("pre-month")
   })
 
-  it.concurrent("should render emit next-month event", async () => {
+  it("should render emit next-month event", async () => {
     const wrapper = mountFn()
     wrapper.find(".controller__arrow--right").trigger("tap")
     expect(wrapper.emitted()).toHaveProperty("next-month")
   })
 
-  it.concurrent("should render emit select-date event", async () => {
+  it("should render emit select-date event", async () => {
     const wrapper = mountFn()
     wrapper.get("picker").trigger("change")
     expect(wrapper.emitted()).toHaveProperty("select-date")
@@ -138,7 +138,7 @@ describe("AtCalendarController", () => {
 })
 
 describe("AtCalendarBody", () => {
-  const generateDate = "2021-06-04"
+  const generateDate = "2021-05-04"
   const mountFn = genMountFn(AtCalendarBody)
   let delayedSelector: jest.SpyInstance
 
@@ -155,7 +155,7 @@ describe("AtCalendarBody", () => {
     delayedSelector.mockRestore()
   })
 
-  it("should render non-swiper calendar body and match snapshot", () => {
+  it("should render non-swiper calendar body and match snapshot", async () => {
     const wrapper = mountFn({
       isSwiper: false,
       generateDate
@@ -176,7 +176,8 @@ describe("AtCalendarBody", () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it("should render h5 calendar body and match snapshot", () => {
+  it("should render h5 calendar body and match snapshot", async () => {
+    process.env.TARO_ENV = 'h5'
     const wrapper = mountFn({ generateDate })
 
     expect(
@@ -198,23 +199,24 @@ describe("AtCalendarBody", () => {
     ).toBeTruthy()
 
     expect(wrapper.element).toMatchSnapshot()
+    process.env.TARO_ENV = 'h5'
   })
 
-  it("should render miniapp calendar body and match snapshot", () => {
+  it("should render miniapp calendar body and match snapshot", async () => {
     process.env.TARO_ENV = 'weapp'
     const wrapper = mountFn({ generateDate })
 
+    expect(wrapper.element).toMatchSnapshot()
     expect(
       wrapper
         .findAll('.main > swiper > swiper-item')
         .length
     ).toEqual(3)
 
-    expect(wrapper.element).toMatchSnapshot()
     process.env.TARO_ENV = 'h5'
   })
 
-  it.concurrent('should render prop isVertical in h5', async () => {
+  it('should render prop isVertical in h5', async () => {
     const wrapper = mountFn({ isVertical: true, generateDate })
 
     let h5MainBodyStyle = wrapper
@@ -244,7 +246,7 @@ describe("AtCalendarBody", () => {
     )
   })
 
-  it.concurrent('should render prop isVertical in weapp', async () => {
+  it('should render prop isVertical in weapp', async () => {
     process.env.TARO_ENV = 'weapp'
     const wrapper = mountFn({ isVertical: true, generateDate })
 
@@ -405,7 +407,22 @@ describe('AtCalendar', () => {
 
   const dString = todayStr.substring(0, 7)
 
-  it.concurrent('should render marks', async () => {
+  let delayedSelector: jest.SpyInstance
+
+  beforeAll(() => {
+    jest.mock('@taro-ui-vue3/utils/common')
+    jest.useFakeTimers()
+    delayedSelector = genDelayedSelectorSpy(utils, {
+      width: 480,
+      height: 480
+    })
+  })
+
+  afterAll(() => {
+    delayedSelector.mockRestore()
+  })
+
+  it('should render marks', async () => {
     today.setDate(today.getDate() - 28)
     const prevM = new Date(today).toISOString().substring(0, 10)
 
@@ -434,7 +451,7 @@ describe('AtCalendar', () => {
     ).toBe(3)
   })
 
-  it.concurrent('should render minDate and maxDate', async () => {
+  it('should render minDate and maxDate', async () => {
     const wrapper = mountFn({
       currentDate: '2020-12-27',
       minDate: '2020-12-27',
@@ -459,7 +476,7 @@ describe('AtCalendar', () => {
 
   // need to enable handleSelectedDates in plugin.ts
   // currently selectedDates not supported
-  it.concurrent.skip('should render multi-selected dates', async () => {
+  it.skip('should render multi-selected dates', async () => {
     const wrapper = mountFn({
       isMultiSelect: true,
       currentDate: '2021-06-04',
@@ -498,7 +515,7 @@ describe('AtCalendar', () => {
     ).toEqual(17)
   })
 
-  it.concurrent('should render valid dates', () => {
+  it('should render valid dates', async () => {
     const wrapper = mountFn({
       validDates: [
         { value: `${dString}-21` },
@@ -694,7 +711,7 @@ describe('AtCalendar', () => {
     })
 
     // TODO: mock how to select multiple dates
-    it.concurrent('should select multiple dates', async () => {
+    it('should select multiple dates', async () => {
       const onSelectDate = jest.fn()
       const onDayClick = jest.fn()
       const wrapper = mountFn({

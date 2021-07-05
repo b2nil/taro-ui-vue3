@@ -12,7 +12,7 @@ describe('AtFab', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it.concurrent.each([
+  it.each([
     'normal', 'small'
   ])('should render prop size -- %s', async (option) => {
     const wrapper = mountFn({ size: option })
@@ -21,7 +21,7 @@ describe('AtFab', () => {
     ).toContain(`at-fab--${option}`)
   })
 
-  it.concurrent('should render slot content', async () => {
+  it('should render slot content', async () => {
     const wrapper = mountFn({}, {
       default: [h('view', { class: 'test' })]
     })

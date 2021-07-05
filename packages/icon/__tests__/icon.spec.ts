@@ -9,26 +9,26 @@ import AtIcon from '../index.vue'
 const mountFn = genMountFn(AtIcon)
 
 describe('AtIcon', () => {
-  it.concurrent('should render prop value and match snapshot', async () => {
+  it('should render prop value and match snapshot', async () => {
     const wrapper = mountFn({ value: 'star' })
     expect(wrapper.classes()).toContain('at-icon-star')
   })
 
-  it.concurrent('should render prop color', async () => {
+  it('should render prop color', async () => {
     const wrapper = mountFn({ value: 'star', color: '#fff' })
     expect(
       wrapper.attributes('style')
     ).toContain(`color: ${hexToRGBA('#fff')}`)
   })
 
-  it.concurrent('should render prop size', async () => {
+  it('should render prop size', async () => {
     const wrapper = mountFn({ value: 'star', size: '14' })
     expect(
       wrapper.attributes('style')
     ).toContain(`font-size: ${pxTransformMockFn(28)}`)
   })
 
-  it.concurrent('should render prop prefixClass', async () => {
+  it('should render prop prefixClass', async () => {
     const wrapper = mountFn({ prefixClass: 'prefixClass', value: 'star' })
     expect(wrapper.classes()).toContain('prefixClass-star')
     expect(wrapper.classes()).toContain('prefixClass')

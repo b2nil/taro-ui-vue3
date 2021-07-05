@@ -202,7 +202,7 @@ describe('AtInput events', () => {
       modelValue.value = e
     })
     const wrapper = mountFn({
-      modelValue: modelValue.value,
+      modelValue,
       'onUpdate:modelValue': onUpdateValue
     })
 

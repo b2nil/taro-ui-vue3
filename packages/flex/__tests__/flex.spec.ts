@@ -33,7 +33,7 @@ describe('AtFlex', () => {
     })
   })
 
-  it.concurrent('should render default slot content', async () => {
+  it('should render default slot content', async () => {
     const wrapper = mountFn({}, { default: [h('view')] })
     expect(wrapper.find('.at-row > view').exists()).toBeTruthy()
   })
@@ -81,7 +81,7 @@ describe('AtFlexItem', () => {
     expect(wrapper.find(`.at-col-${propOption}`).exists()).toBeTruthy()
   })
 
-  it.concurrent('should render default slot content', async () => {
+  it('should render default slot content', async () => {
     const wrapper = mountFn({}, { default: [h('view')] })
     expect(wrapper.find('.at-col > view').exists()).toBeTruthy()
   })

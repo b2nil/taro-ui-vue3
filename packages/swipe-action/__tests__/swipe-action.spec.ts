@@ -50,12 +50,8 @@ const SLOT = h('view', {
 }, "AtSwipeAction 一般使用场景")
 
 describe('SwipeAction', () => {
-  beforeEach(() => {
-    jest.mock('@taro-ui-vue3/utils/common')
-    jest.spyOn(utils, 'uuid').mockReturnValue('2020')
-  })
 
-  it('should render default props', () => {
+  it('should render default props and match snapshot', () => {
     const wrapper = mountFn()
     expect(wrapper.element).toMatchSnapshot()
   })
@@ -128,14 +124,7 @@ describe('SwipeAction events', () => {
 
     const swipeActionEl = wrapper.find('.at-swipe-action')
 
-    await swipeActionEl.trigger('touchstart', {
-      touches: [START_INFO]
-    })
-    await swipeActionEl.trigger('touchmove', {
-      touches: [MOVE_INFO]
-    })
-    await swipeActionEl.trigger('touchend')
-
+    await triggerTouchEvents(swipeActionEl, START_INFO, MOVE_INFO)
     await wrapper
       .find('.at-swipe-action__option')
       .trigger('tap')
@@ -162,17 +151,11 @@ describe('SwipeAction events', () => {
     })
 
     const swipeActionEl = wrapper.find('.at-swipe-action')
-    await swipeActionEl.trigger('touchstart', {
-      touches: [START_INFO]
-    })
-    await swipeActionEl.trigger('touchmove', {
-      touches: [MOVE_INFO]
-    })
-    await swipeActionEl.trigger('touchend')
 
+    await triggerTouchEvents(swipeActionEl, START_INFO, MOVE_INFO)
     expect(wrapper.emitted()).not.toHaveProperty('opened')
-    expect(onOpened).not.toBeCalled()
     expect(wrapper.emitted()).not.toHaveProperty('closed')
+    expect(onOpened).not.toBeCalled()
     expect(onClosed).not.toBeCalled()
 
   })

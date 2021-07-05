@@ -11,7 +11,7 @@ describe('ActionSheet', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it.concurrent('should render opened ActionSheet', async () => {
+  it('should render opened ActionSheet', async () => {
     const wrapper = mountFn({
       isOpened: true,
     })
@@ -52,7 +52,7 @@ describe('ActionSheet', () => {
     expect(footer.element).toMatchSnapshot()
   })
 
-  it.concurrent('should not render ActionSheetFooter without props cancelText', async () => {
+  it('should not render ActionSheetFooter without props cancelText', async () => {
     const wrapper = mountFn({
       isOpened: true
     })
@@ -75,7 +75,7 @@ describe('ActionSheet', () => {
     expect(header.element).toMatchSnapshot()
   })
 
-  it.concurrent('should not render ActionSheetHeader without prop title', async () => {
+  it('should not render ActionSheetHeader without prop title', async () => {
     const wrapper = mountFn({
       isOpened: true
     })
@@ -98,7 +98,7 @@ describe('ActionSheet', () => {
 
 describe('ActionSheet events', () => {
 
-  it.concurrent('should emit close event by clicking the overlay', async () => {
+  it('should emit close event by clicking the overlay', async () => {
     const onClose = jest.fn()
 
     const wrapper = mountFn({
@@ -119,7 +119,7 @@ describe('ActionSheet events', () => {
     expect(wrapper.emitted()).toHaveProperty('close')
   })
 
-  it.concurrent('should emit both close and cancel events by click the footer with cancel text', async () => {
+  it('should emit both close and cancel events by click the footer with cancel text', async () => {
     const onCancel = jest.fn()
     const onClose = jest.fn()
 
@@ -145,7 +145,7 @@ describe('ActionSheet events', () => {
     expect(wrapper.emitted()).toHaveProperty('close')
   })
 
-  it.concurrent('should emit close event when switching prop isOpened to false', async () => {
+  it('should emit close event when switching prop isOpened to false', async () => {
     const onClose = jest.fn()
     const wrapper = mountFn({
       isOpened: true,
@@ -163,7 +163,7 @@ describe('ActionSheet events', () => {
     expect(wrapper.emitted()).toHaveProperty('close')
   })
 
-  it.concurrent('should not emit close event when switching prop isOpened to true', async () => {
+  it('should not emit close event when switching prop isOpened to true', async () => {
     const onClose = jest.fn()
     const wrapper = mountFn({
       cancelText: '取消',
@@ -180,7 +180,7 @@ describe('ActionSheet events', () => {
     expect(wrapper.emitted()).not.toHaveProperty('close')
   })
 
-  it.concurrent('AtActionSheetItem should emit click event', async () => {
+  it('AtActionSheetItem should emit click event', async () => {
     const onClick = jest.fn()
 
     const wrapper = mountFn({
@@ -203,7 +203,7 @@ describe('ActionSheet events', () => {
     expect(onClick.mock.calls.length).toBe(1)
   })
 
-  it.concurrent('should stop propagation of touch event', async () => {
+  it('should stop propagation of touch event', async () => {
     const wrapper = mountFn({
       isOpened: true,
       cancelText: '取消',

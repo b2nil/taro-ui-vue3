@@ -46,7 +46,7 @@ describe('AtToast', () => {
     expect(wrapper.find('.at-toast__overlay').exists()).toBeTruthy()
   })
 
-  it.concurrent.each([
+  it.each([
     'loading',
     'error',
     'success'
@@ -80,7 +80,7 @@ describe('AtToast events ', () => {
     expect(wrapper.find(".at-toast").exists()).toBeFalsy()
   })
 
-  it.concurrent.each([
+  it.each([
     3000,
     1000,
     0

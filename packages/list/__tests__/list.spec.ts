@@ -16,7 +16,7 @@ describe('AtList', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it.concurrent('should render default slot', async () => {
+  it('should render default slot', async () => {
     const wrapper = mountFn({}, {
       default: ['slot content']
     })
@@ -26,7 +26,7 @@ describe('AtList', () => {
     ).toBe('slot content')
   })
 
-  it.concurrent('should render prop hasBorder', async () => {
+  it('should render prop hasBorder', async () => {
     const wrapper = mountFn(AtList)
     expect(
       wrapper
@@ -70,7 +70,7 @@ describe('AtListItem', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it.concurrent('should render prop thumb', async () => {
+  it('should render prop thumb', async () => {
     const wrapper = mountFn({
       thumb: 'http://img.test.com/3N31e.png'
     })
@@ -85,7 +85,7 @@ describe('AtListItem', () => {
 
   })
 
-  it.concurrent('should render prop iconInfo', async () => {
+  it('should render prop iconInfo', async () => {
     const wrapper = mountFn({
       iconInfo: {
         ...iconInfo,
@@ -112,7 +112,7 @@ describe('AtListItem', () => {
     )
   })
 
-  it.concurrent.each([
+  it.each([
     'title',
     'note'
   ])('should render prop %s', async (propName) => {
@@ -127,7 +127,7 @@ describe('AtListItem', () => {
     ).toEqual(propName)
   })
 
-  it.concurrent('should render prop extraText', async () => {
+  it('should render prop extraText', async () => {
     const wrapper = mountFn({
       extraText: 'extraText'
     })
@@ -186,7 +186,7 @@ describe('AtListItem', () => {
     ).toBe("true")
   })
 
-  it.concurrent.each([
+  it.each([
     'up', 'down', 'right'
   ])('should render prop arrow -- %s', (option) => {
     const wrapper = mountFn({

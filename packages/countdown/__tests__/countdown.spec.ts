@@ -24,12 +24,12 @@ describe('AtCountdown', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it.concurrent('should render prop isCard', async () => {
+  it('should render prop isCard', async () => {
     const wrapper = mountFn({ isCard: true })
     expect(wrapper.classes()).toContain('at-countdown--card')
   })
 
-  it.concurrent('should render prop format', async () => {
+  it('should render prop format', async () => {
     const wrapper = mountFn({
       format: { hours: ':', minutes: ':', seconds: '' }
     })
@@ -39,7 +39,7 @@ describe('AtCountdown', () => {
     expect(seps[2].text()).toEqual('')
   })
 
-  it.concurrent.each([
+  it.each([
     ['day', 1, 0, '24'],
     ['hours', 1, 0, '01'],
     ['minutes', 1, 1, '01'],
@@ -79,7 +79,7 @@ describe('AtCountdown', () => {
     })
   })
 
-  it.concurrent('should render prop isShowDay', async () => {
+  it('should render prop isShowDay', async () => {
     const wrapper = mountFn({ isShowDay: true, day: 1 })
 
     expect(
@@ -93,7 +93,7 @@ describe('AtCountdown', () => {
     ).toEqual('天')
   })
 
-  it.concurrent('should render prop hours when > 24 and show day', async () => {
+  it('should render prop hours when > 24 and show day', async () => {
     const wrapper = mountFn({
       isShowDay: true,
       hours: 25,
@@ -110,7 +110,7 @@ describe('AtCountdown', () => {
     ).toEqual('天')
   })
 
-  it.concurrent('should render prop hours when > 24 and not show day', async () => {
+  it('should render prop hours when > 24 and not show day', async () => {
     const wrapper = mountFn({
       isShowDay: false,
       hours: 25,

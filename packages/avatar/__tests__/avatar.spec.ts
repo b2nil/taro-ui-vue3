@@ -9,7 +9,7 @@ describe('Avatar', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it.concurrent.each([
+  it.each([
     'large',
     'normal',
     'small'
@@ -38,7 +38,7 @@ describe('Avatar', () => {
   })
 
 
-  it.concurrent('should render props circle', async () => {
+  it('should render props circle', async () => {
     const wrapper = mountFn({ circle: true })
     expect(
       wrapper
@@ -54,7 +54,7 @@ describe('Avatar', () => {
     expect(textEL.text()).toEqual("")
   })
 
-  it.concurrent.each([
+  it.each([
     'image',
     'text'
   ])('should render prop %s', async (propName) => {
@@ -71,7 +71,7 @@ describe('Avatar', () => {
     }
   })
 
-  it.concurrent('should render prop openData', async () => {
+  it('should render prop openData', async () => {
     process.env.TARO_ENV = "weapp"
     const wrapper = mountFn({ openData: { type: 'userAvatarUrl' } })
     expect(
@@ -83,7 +83,7 @@ describe('Avatar', () => {
     process.env.TARO_ENV = "h5"
   })
 
-  it.concurrent('should not render open-data element if type of openData is not userAvatarUrl', async () => {
+  it('should not render open-data element if type of openData is not userAvatarUrl', async () => {
     process.env.TARO_ENV = "weapp"
     const wrapper = mountFn({ openData: { type: 'nickName' } })
     expect(wrapper.find('open-data').exists()).toBe(false)

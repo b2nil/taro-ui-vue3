@@ -25,14 +25,14 @@ describe('AtFloatLayout', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it.concurrent('should render prop isOpened', async () => {
+  it('should render prop isOpened', async () => {
     const wrapper = mountFn({ isOpened: true })
     expect(
       wrapper.classes()
     ).toContain('at-float-layout--active')
   })
 
-  it.concurrent('should render prop title', async () => {
+  it('should render prop title', async () => {
     const wrapper = mountFn({ title: '这是个标题', isOpened: true })
     expect(
       wrapper.find('.layout-header').exists()
@@ -42,7 +42,7 @@ describe('AtFloatLayout', () => {
     ).toEqual('这是个标题')
   })
 
-  it.concurrent.each([
+  it.each([
     ['scrollX', 'scroll-x', true],
     ['scrollY', 'scroll-y', true],
     ['scrollTop', 'scroll-top', 20],
@@ -59,7 +59,7 @@ describe('AtFloatLayout', () => {
     ).toEqual(`${value}`)
   })
 
-  it.concurrent('should render disableScroll and trapScroll in alipay', async () => {
+  it('should render disableScroll and trapScroll in alipay', async () => {
     process.env.TARO_ENV = 'alipay'
 
     const wrapper = mountFn({

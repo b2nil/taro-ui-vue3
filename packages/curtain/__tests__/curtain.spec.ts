@@ -16,7 +16,7 @@ describe('AtCurtain', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it.concurrent('should render prop isOpened', async () => {
+  it('should render prop isOpened', async () => {
     const wrapper = mountFn()
     expect(
       wrapper.find('.at-curtain--closed').exists()
@@ -28,7 +28,7 @@ describe('AtCurtain', () => {
     ).toBeFalsy()
   })
 
-  it.concurrent.each([
+  it.each([
     "top", "top-left", "top-right", "bottom", "bottom-left", "bottom-right"
   ])('should render close button at position -- %s', (position) => {
     const wrapper = mountFn({ closeBtnPosition: position })
@@ -63,7 +63,7 @@ describe('AtCurtain', () => {
   })
 
 
-  it.concurrent('should render default slot content', async () => {
+  it('should render default slot content', async () => {
     const wrapper = mountFn({}, {
       default: [h('view', { class: 'slot' })]
     })

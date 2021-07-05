@@ -16,6 +16,7 @@ exports[`AtTextarea should render all nodes and match snapshot 1`] = `
     selection-end="-1"
     selection-start="-1"
     show-confirm-bar="false"
+    style="height: 2.1334rem;"
   />
   <view
     class="at-textarea__counter"

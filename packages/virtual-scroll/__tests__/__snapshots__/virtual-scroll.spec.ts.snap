@@ -2,18 +2,13 @@
 
 exports[`AtVirtualScroll should render component with scopedSlot and match snapshot 1`] = `
 <view>
-  <view
-    class="at-virtual-scroll__header"
-  >
-    
-    
-  </view>
+  <!--v-if-->
   <scroll-view
     class="at-virtual-scroll"
     lower-threshold="50"
-    scroll-with-animation=""
-    scroll-y=""
-    scrollintoview="item-undefined"
+    scroll-with-animation="true"
+    scroll-y="true"
+    scrollintoview="item-0"
     style="height: 100px;"
     upper-threshold="50"
   >
@@ -51,12 +46,7 @@ exports[`AtVirtualScroll should render component with scopedSlot and match snaps
         </view>
         
       </view>
-      <view
-        class="at-virtual-scroll__footer"
-      >
-        
-        
-      </view>
+      <!--v-if-->
     </view>
   </scroll-view>
 </view>
@@ -64,18 +54,13 @@ exports[`AtVirtualScroll should render component with scopedSlot and match snaps
 
 exports[`AtVirtualScroll should render footer slot 1`] = `
 <view>
-  <view
-    class="at-virtual-scroll__header"
-  >
-    
-    
-  </view>
+  <!--v-if-->
   <scroll-view
     class="at-virtual-scroll"
     lower-threshold="50"
-    scroll-with-animation=""
-    scroll-y=""
-    scrollintoview="item-undefined"
+    scroll-with-animation="true"
+    scroll-y="true"
+    scrollintoview="item-0"
     style="height: 100px;"
     upper-threshold="50"
   >
@@ -137,9 +122,9 @@ exports[`AtVirtualScroll should render header slot 1`] = `
   <scroll-view
     class="at-virtual-scroll"
     lower-threshold="50"
-    scroll-with-animation=""
-    scroll-y=""
-    scrollintoview="item-undefined"
+    scroll-with-animation="true"
+    scroll-y="true"
+    scrollintoview="item-0"
     style="height: 100px;"
     upper-threshold="50"
   >
@@ -177,12 +162,7 @@ exports[`AtVirtualScroll should render header slot 1`] = `
         </view>
         
       </view>
-      <view
-        class="at-virtual-scroll__footer"
-      >
-        
-        
-      </view>
+      <!--v-if-->
     </view>
   </scroll-view>
 </view>
@@ -190,18 +170,13 @@ exports[`AtVirtualScroll should render header slot 1`] = `
 
 exports[`AtVirtualScroll should render not more than 5 hidden items and match snapshot 1`] = `
 <view>
-  <view
-    class="at-virtual-scroll__header"
-  >
-    
-    
-  </view>
+  <!--v-if-->
   <scroll-view
     class="at-virtual-scroll"
     lower-threshold="50"
-    scroll-with-animation=""
-    scroll-y=""
-    scrollintoview="item-undefined"
+    scroll-with-animation="true"
+    scroll-y="true"
+    scrollintoview="item-0"
     style="height: 100px;"
     upper-threshold="50"
   >
@@ -239,12 +214,7 @@ exports[`AtVirtualScroll should render not more than 5 hidden items and match sn
         </view>
         
       </view>
-      <view
-        class="at-virtual-scroll__footer"
-      >
-        
-        
-      </view>
+      <!--v-if-->
     </view>
   </scroll-view>
 </view>
@@ -252,18 +222,13 @@ exports[`AtVirtualScroll should render not more than 5 hidden items and match sn
 
 exports[`AtVirtualScroll should render right items on scroll and match snapshot 1`] = `
 <view>
-  <view
-    class="at-virtual-scroll__header"
-  >
-    
-    
-  </view>
+  <!--v-if-->
   <scroll-view
     class="at-virtual-scroll"
     lower-threshold="50"
-    scroll-with-animation=""
-    scroll-y=""
-    scrollintoview="item-undefined"
+    scroll-with-animation="true"
+    scroll-y="true"
+    scrollintoview="item-0"
     style="height: 100px;"
     upper-threshold="50"
   >
@@ -275,12 +240,7 @@ exports[`AtVirtualScroll should render right items on scroll and match snapshot 
         
         
       </view>
-      <view
-        class="at-virtual-scroll__footer"
-      >
-        
-        
-      </view>
+      <!--v-if-->
     </view>
   </scroll-view>
 </view>
@@ -288,17 +248,12 @@ exports[`AtVirtualScroll should render right items on scroll and match snapshot 
 
 exports[`AtVirtualScroll should scroll to the provided item index 1`] = `
 <view>
-  <view
-    class="at-virtual-scroll__header"
-  >
-    
-    
-  </view>
+  <!--v-if-->
   <scroll-view
     class="at-virtual-scroll"
     lower-threshold="50"
-    scroll-with-animation=""
-    scroll-y=""
+    scroll-with-animation="true"
+    scroll-y="true"
     scrollintoview="item-10"
     style="height: 100px;"
     upper-threshold="50"
@@ -337,12 +292,7 @@ exports[`AtVirtualScroll should scroll to the provided item index 1`] = `
         </view>
         
       </view>
-      <view
-        class="at-virtual-scroll__footer"
-      >
-        
-        
-      </view>
+      <!--v-if-->
     </view>
   </scroll-view>
 </view>
@@ -350,17 +300,12 @@ exports[`AtVirtualScroll should scroll to the provided item index 1`] = `
 
 exports[`AtVirtualScroll should scroll to the provided item index 2`] = `
 <view>
-  <view
-    class="at-virtual-scroll__header"
-  >
-    
-    
-  </view>
+  <!--v-if-->
   <scroll-view
     class="at-virtual-scroll"
     lower-threshold="50"
-    scroll-with-animation=""
-    scroll-y=""
+    scroll-with-animation="true"
+    scroll-y="true"
     scrollintoview="item-15"
     style="height: 100px;"
     upper-threshold="50"
@@ -399,12 +344,7 @@ exports[`AtVirtualScroll should scroll to the provided item index 2`] = `
         </view>
         
       </view>
-      <view
-        class="at-virtual-scroll__footer"
-      >
-        
-        
-      </view>
+      <!--v-if-->
     </view>
   </scroll-view>
 </view>

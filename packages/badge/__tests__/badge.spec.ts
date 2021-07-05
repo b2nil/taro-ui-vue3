@@ -10,7 +10,7 @@ describe('AtBadge', () => {
     expect(wrapper.element).toMatchSnapshot()
   })
 
-  it.concurrent.each`
+  it.each`
     value
     ${3}
     50
@@ -31,7 +31,7 @@ describe('AtBadge', () => {
     ).toEqual(text)
   })
 
-  it.concurrent('should not render prop value if empty', async () => {
+  it('should not render prop value if empty', async () => {
     const wrapper = mountFn()
     expect(
       wrapper
@@ -47,7 +47,7 @@ describe('AtBadge', () => {
     ).toBeFalsy()
   })
 
-  it.concurrent.each`
+  it.each`
     dot
     ${true}
     ${false}
@@ -60,7 +60,7 @@ describe('AtBadge', () => {
     ).toBe(dot)
   })
 
-  it.concurrent.each([
+  it.each([
     9,
     50
   ])('should render prop maxValue=%i', async (maxValue) => {
@@ -70,7 +70,7 @@ describe('AtBadge', () => {
     expect(numEl.text()).toEqual(10 > maxValue ? `${maxValue}+` : '10')
   })
 
-  it.concurrent('should render slot content', async () => {
+  it('should render slot content', async () => {
     const wrapper = mountFn({}, {
       default: [h('view', { class: 'test' }, { default: () => 'test' })]
     })
