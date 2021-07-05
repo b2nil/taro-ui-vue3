@@ -1,9 +1,3 @@
-const Taro = process.env.TARO_ENV === 'h5'
-  ? require('@tarojs/taro/h5')
-  : require('@tarojs/taro')
-
-const runtime = require('@tarojs/runtime')
-const { createAnimation } = require('@tarojs/taro-h5')
 
 const ENV_TYPE = {
   WEAPP: 'WEAPP',
@@ -28,14 +22,14 @@ const envs = {
   "jd": ENV_TYPE.JD,
 }
 
-const getEnvMockFn = jest.fn(() => {
+export const getEnvMockFn = () => {
   if (!process.env.TARO_ENV) {
     process.env.TARO_ENV = 'h5'
   }
   return envs[process.env.TARO_ENV]
-})
+}
 
-export const pxTransformMockFn = jest.fn((size, designWidth = 750) => {
+export const pxTransformMockFn = (size, designWidth = 750) => {
   if (!process.env.TARO_ENV) {
     process.env.TARO_ENV = 'h5'
   }
@@ -46,48 +40,38 @@ export const pxTransformMockFn = jest.fn((size, designWidth = 750) => {
     828: 1.81 / 2
   }
 
+  if (!size) return ''
+
   return process.env.TARO_ENV === 'h5'
     ? Math.ceil(parseInt(`${size}`, 10) / 40 * 640 / designWidth * 10000) / 10000 + 'rem'
     : parseInt(size, 10) * deviceRatio[designWidth] + 'rpx'
-})
+}
 
 export const querySelectorMockFn = (
   rect0 = { width: 30, left: 30, height: 30, right: 30 }
-) => jest.fn(() => {
+) => (): any => {
   const query = {
-    exec: jest.fn()
-      .mockImplementation((cb) => {
-        cb([rect0])
-      })
+    exec: (cb) => { cb([rect0]) }
   }
   query['select'] = jest.fn().mockReturnValue({
     boundingClientRect: jest.fn().mockReturnValue(query)
   })
 
   return query
-})
+}
 
-Taro.ENV_TYPE = ENV_TYPE
-Taro.pxTransform = pxTransformMockFn
-Taro.getEnv = getEnvMockFn
-Taro.createSelectorQuery = querySelectorMockFn()
-Taro.eventCenter = runtime.eventCenter
-Taro.createAnimation = createAnimation
-
-Taro.chooseImage = jest.fn(() => {
-  return new Promise((resolve) => {
+export const chooseImageMockFn = () => {
+  return new Promise<any>((resolve) => {
     resolve({
-      tempFilePaths: [''],
-      tempFiles: [{ path: '', size: 0 }],
+      tempFilePaths: ['/path/to/file'],
+      tempFiles: [{ path: '/path/to/file', size: 256 }],
       errMsg: ''
     })
   })
-})
+}
 
 document.querySelector = jest.fn((sel) => {
   return {
     getBoundingClientRect: jest.fn().mockReturnValueOnce({ width: 30 })
   }
 })
-
-export default Taro

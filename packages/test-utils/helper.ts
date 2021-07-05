@@ -98,14 +98,14 @@ export function testPropClassAndStyle(
   mountFn: (props?: {}, slots?: Slots | undefined) => VueWrapper<any>
 ) {
 
-  it.concurrent('should render prop class', async () => {
+  it('should render prop class', async () => {
     const wrapper = mountFn({ class: 'test' })
     expect(
       wrapper.classes()
     ).toContain('test')
   })
 
-  it.concurrent('should render prop style', async () => {
+  it('should render prop style', async () => {
     const wrapper = mountFn({ style: { color: 'red' } })
     expect(
       wrapper.attributes('style')

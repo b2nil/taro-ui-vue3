@@ -1,9 +1,4 @@
-import * as utils from "@taro-ui-vue3/utils/common"
-
-jest.mock('@taro-ui-vue3/utils/common')
-
 let warn: jest.SpyInstance
-let uuid: jest.SpyInstance
 
 const asserted: Set<string> = new Set()
 const NOOP = () => { }
@@ -78,7 +73,6 @@ function initWarnMatchers() {
   beforeEach(() => {
     asserted.clear()
     warn = jest.spyOn(console, 'warn').mockImplementation(NOOP)
-    uuid = jest.spyOn(utils, 'uuid').mockReturnValue('__tests__2021')
 
     // NOT working in concurrent mode
     // should avoid use in test.concurrent()
@@ -99,7 +93,6 @@ function initWarnMatchers() {
         })
       })
 
-    uuid.mockRestore()
     warn.mockRestore()
 
     if (nonAssertedWarnings.length) {
