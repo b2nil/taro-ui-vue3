@@ -1,12 +1,13 @@
 const {
-  isCustomElement,
+  isMiniAppNativeTag,
   removeCommentVnode,
-  transformAssetUrls
+  transformAssetUrls,
 } = require("./build/shared")
 
 module.exports = async () => ({
   preset: 'ts-jest',
   rootDir: __dirname,
+  extensionsToTreatAsEsm: [".ts", ".json", ".vue"],
   moduleFileExtensions: ['js', 'jsx', 'json', 'vue', 'tsx', 'ts'],
   transformIgnorePatterns: [],
   testEnvironment: 'jsdom',
@@ -14,15 +15,31 @@ module.exports = async () => ({
     "<rootDir>/packages/test-utils/setupTests.ts"
   ],
   transform: {
-    '^.+\\.vue$': 'vue-jest',
     '.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
     '^.+\\.jsx?$': 'babel-jest',
     '^.+\\.tsx?$': 'ts-jest',
-  },
-  moduleNameMapper: {
-    '^@tarojs/components$': "<rootDir>/packages/test-utils/@tarojs/components/index.ts",
-    '^@tarojs/taro$': "<rootDir>/packages/test-utils/@tarojs/taro/index.ts",
-    '@tarojs/runtime': "<rootDir>/node_modules/@tarojs/runtime/dist/index"
+    '^.+\\.vue$': ['vue-jest', {
+      babelConfig: true,
+      tsconfig: 'jest.tsconfig.json',
+      template: {
+        transformAssetUrls,
+        compilerOptions: {
+          mode: 'module',
+          optimizeImports: true,
+          cacheHandlers: true,
+          comments: false,
+          isNativeTag: isMiniAppNativeTag,
+          nodeTransforms: [
+            removeCommentVnode,
+            function (node) {
+              if (node.type === 1 && node.tag.startsWith('at-')) {
+                node.tagType = 1
+              }
+            }
+          ]
+        }
+      }
+    }],
   },
   snapshotSerializers: ['jest-serializer-vue'],
   testMatch: [
@@ -33,6 +50,7 @@ module.exports = async () => ({
   collectCoverageFrom: [
     '<rootDir>/packages/**/*.ts',
     '<rootDir>/packages/**/*.vue',
+    '!<rootDir>/packages/*.d.ts',
     '!<rootDir>/packages/utils/*.ts',
     '!<rootDir>/packages/composables/*.ts',
     '!<rootDir>/packages/types/*.ts',
@@ -45,24 +63,6 @@ module.exports = async () => ({
       // work around: https://github.com/kulshekhar/ts-jest/issues/748#issuecomment-423528659
       diagnostics: {
         ignoreCodes: [151001],
-      }
-    },
-    'vue-jest': {
-      babelConfig: false,
-      tsconfig: 'jest.tsconfig.json',
-      template: {
-        transformAssetUrls,
-        compilerOptions: {
-          isNativeTag: isCustomElement,
-          nodeTransforms: [
-            removeCommentVnode,
-            function (node) {
-              if (node.type === 1 && node.tag.startsWith('at-')) {
-                node.tagType = 1
-              }
-            }
-          ]
-        }
       }
     }
   },
