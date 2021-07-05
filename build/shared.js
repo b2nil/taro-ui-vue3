@@ -1,5 +1,6 @@
 const path = require("path")
 const shell = require('shelljs')
+const { toCamelCase } = require("@tarojs/shared")
 
 const taroInternalComponents = [
   "view", "icon", "progress", "rich-text", "text", "button", "checkbox", "checkbox-group",
@@ -57,6 +58,29 @@ function transformTags(forH5 = false) {
   }
 }
 
+// transform prop attributes to camelCase
+function transformPropAttributes(node) {
+  if (node.type === 1) {
+    node.props.forEach((prop, index) => {
+      if (prop.type === 6) {
+        if (prop.value === undefined) {
+          prop.value = {
+            type: 4,
+            content: true,
+            constType: 0
+          }
+        }
+        prop.name = toCamelCase(prop.name)
+      } else if (prop.type === 7 &&
+        prop.name === 'bind' &&
+        prop.arg && !['class', 'style'].includes(prop.arg.content)
+      ) {
+        prop.arg.content = toCamelCase(prop.arg.content)
+      }
+    })
+  }
+}
+
 module.exports = {
   readFile,
   cleanFile,
@@ -65,6 +89,7 @@ module.exports = {
   transformTags,
   isMiniAppNativeTag,
   removeCommentVnode,
+  transformPropAttributes,
   transformAssetUrls,
   taroInternalComponents
 }

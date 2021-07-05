@@ -106,6 +106,9 @@ const vuePluginOptions = {
 }
 
 const genViteConfig = (source, isVue) => ({
+  define: {
+    'process.env.TARO_ENV': 'process.env.TARO_ENV'
+  },
   resolve: {
     extensions: ['.json', '.js', '.ts', '.vue']
   },

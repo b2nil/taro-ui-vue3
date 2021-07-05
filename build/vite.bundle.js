@@ -9,6 +9,7 @@ const {
   isMiniAppNativeTag,
   removeCommentVnode,
   transformAssetUrls,
+  transformPropAttributes
 } = require("./shared")
 
 const peerDeps = Object.keys(pkg.peerDependencies)
@@ -16,20 +17,19 @@ const peerDeps = Object.keys(pkg.peerDependencies)
 const genVuePluginOptions = (
   nodeTransforms,
   transformAssetUrls,
-  isNativeTag
+  isCustomElement
 ) => {
   let compilerOptions = {
     mode: "module",
     optimizeImports: true,
     comments: false,
-    isNativeTag,
     nodeTransforms
   }
 
-  if (isNativeTag) {
+  if (isCustomElement) {
     compilerOptions = {
       ...compilerOptions,
-      isNativeTag
+      isCustomElement
     }
   }
 
@@ -86,7 +86,7 @@ const miniappConfig = {
   plugins: [
     vuePlugin(
       genVuePluginOptions(
-        [removeCommentVnode],
+        [removeCommentVnode, transformPropAttributes],
         transformAssetUrls,
         isMiniAppNativeTag
       )
@@ -103,10 +103,13 @@ const miniappConfig = {
 
 const h5Config = {
   ...baseUserConfig,
+  define: {
+    'process.env.TARO_ENV': 'process.env.TARO_ENV'
+  },
   plugins: [
     vuePlugin(
       genVuePluginOptions(
-        [transformTags(true)],
+        [transformTags(true), transformPropAttributes],
         transformAssetUrls
       )
     ),
