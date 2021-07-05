@@ -176,11 +176,11 @@ export interface AtCalendarControllerProps {
 
   monthFormat: string
 
-  onPreMonth: () => void
+  onPreMonth?: () => void
 
-  onNextMonth: () => void
+  onNextMonth?: () => void
 
-  onSelectDate: (e: CommonEvent) => void
+  onSelectDate?: (e: CommonEvent) => void
 }
 
 export interface AtCalendarControllerState { }
@@ -210,11 +210,11 @@ export interface AtCalendarBodyProps {
 
   selectedDates: Array<Calendar.SelectedDate> | []
 
-  onDayClick: (item: Calendar.Item) => void
+  onDayClick?: (item: Calendar.Item) => void
 
-  onSwipeMonth: (vectorCount: number) => void
+  onSwipeMonth?: (vectorCount: number) => void
 
-  onLongClick: (item: Calendar.Item) => void
+  onLongClick?: (item: Calendar.Item) => void
 }
 
 export interface AtCalendarBodyState {
