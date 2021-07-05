@@ -107,12 +107,7 @@ const AtSwipeAction = defineComponent({
     const maxOffsetSize = ref<number>(0)
     const isMoving = ref<boolean>(false)
     const isTouching = ref<boolean>(false)
-    const domInfo = ref<any>({
-      top: 0,
-      bottom: 0,
-      left: 0,
-      right: 0
-    })
+    const domInfo = ref<any>({})
 
     const state = reactive<AtSwipeActionState>({
       componentId: uuid(),
@@ -237,6 +232,8 @@ const AtSwipeAction = defineComponent({
     }
 
     function handleTouchend(event: ITouchEvent) {
+      if (props.disabled) return
+
       isTouching.value = false
 
       const { offsetSize } = state
