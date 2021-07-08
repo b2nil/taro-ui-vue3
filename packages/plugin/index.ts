@@ -1,4 +1,4 @@
-export default (ctx, options) => {
+module.exports = function (ctx, options) {
   const componentMap = {
     'accordion': ['view', 'text', 'slot'],
     'action-sheet': ['view', 'slot'],
@@ -61,7 +61,7 @@ export default (ctx, options) => {
   // 收集使用到的小程序组件
   ctx.onParseCreateElement(({ nodeName, componentConfig }) => {
     const includes = componentConfig.includes
-    if (nodeName.startsWith('at-')) {
+    if (nodeName && nodeName.startsWith('at-')) {
       const key = nodeName.substring(3)
       const tags = componentMap[key]
       for (const tag of tags) {
