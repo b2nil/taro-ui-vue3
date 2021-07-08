@@ -38,6 +38,19 @@ $ npm install taro-ui-vue3
 
 ### 4. 使用 `taro-ui-vue3`
 
+#### **配置编译插件**
+
+  由于 `taro-ui-vue3@^1.1.0` 提供的是采用 Vue 3.0 SFC 编译后的文件，Taro 目前尚不支持自动收集使用渲染函数编写的组件中所使用的小程序组件标签。
+
+  `taro-ui-vue3` 提供了一个自动收集小程序组件标签的插件，请在编译配置文件中进行配置。
+  
+  ```ts
+  // ./config/index.js
+  {
+    plugins: ['taro-ui-vue3/lib/plugin'],
+  }
+  ```
+
 #### **全局引用组件和样式 -- 引用全部组件和样式**
   ```typescript
   import { createApp } from 'vue'
