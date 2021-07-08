@@ -11,7 +11,9 @@ const config = {
   },
   sourceRoot: 'src',
   outputRoot: `dist/${process.env.TARO_ENV}`,
-  plugins: [],
+  plugins: [
+    ['E:\\miniprogram\\taro-ui-vue3\\lib\\plugin\\index.js']
+  ],
   defineConstants: {
     __VUE_OPTIONS_API__: true,
     __VUE_PROD_DEVTOOLS__: true

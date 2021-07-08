@@ -73,6 +73,7 @@ const vueEntries = [
 const tsEntries = [
   'packages/composables/index.ts',
   'packages/utils/index.ts',
+  'packages/plugin/index.ts'
 ]
 
 const externalPackages = [
