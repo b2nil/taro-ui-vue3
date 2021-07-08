@@ -15398,7 +15398,7 @@ vm2@^3.8.4:
 
 "vue-jest@https://github.com/b2nil/vue-jest#next":
   version "5.0.0-alpha.10"
-  resolved "https://github.com/b2nil/vue-jest#6807bd9ca9a323385997334c5f64ef47b5e81608"
+  resolved "https://github.com/b2nil/vue-jest#fe2d3a54387868ddb879b1975666b654a2006d42"
   dependencies:
     "@babel/plugin-transform-modules-commonjs" "^7.2.0"
     chalk "^2.1.0"

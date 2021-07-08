@@ -1,6 +1,6 @@
 {
   "name": "taro-ui-vue3",
-  "version": "1.0.0-alpha.21",
+  "version": "1.1.0-dev.1",
   "description": "Taro UI Rewritten in Vue 3.0",
   "main:h5": "dist/index.h5.js",
   "module": "dist/index.esm.js",
@@ -53,7 +53,7 @@
     "build:docs": "cd website && yarn build:docs",
     "deploy:docs": "cd website && yarn deploy:docs",
     "prepublishOnly": "yarn clean && yarn build",
-    "test": "cross-env NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules && jest --coverage",
+    "test": "cross-env NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules && jest --coverage --runInBand",
     "clean": "rimraf .temp dist lib coverage types"
   },
   "browserslist": [
