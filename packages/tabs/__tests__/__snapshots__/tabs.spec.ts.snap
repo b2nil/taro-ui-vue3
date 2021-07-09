@@ -6,7 +6,7 @@ exports[`AtTabs should render default AtTabs 1`] = `
 >
   <view
     class="at-tabs__header"
-    id="__tests__"
+    id="__tests__2021"
   />
   <view
     class="at-tabs__body"
@@ -24,11 +24,11 @@ exports[`AtTabs should render default AtTabs 1`] = `
 exports[`AtTabs should render prop -- height 1`] = `
 <view
   class="at-tabs__header"
-  id="__tests__"
+  id="__tests__2021"
 >
   <view
     class="at-tabs__item at-tabs__item--active"
-    id="tab__tests__0"
+    id="tab__tests__20210"
   >
     <text
       style="white-space: nowrap;"
@@ -41,7 +41,7 @@ exports[`AtTabs should render prop -- height 1`] = `
   </view>
   <view
     class="at-tabs__item"
-    id="tab__tests__1"
+    id="tab__tests__20211"
   >
     <text
       style="white-space: nowrap;"
@@ -54,7 +54,7 @@ exports[`AtTabs should render prop -- height 1`] = `
   </view>
   <view
     class="at-tabs__item"
-    id="tab__tests__2"
+    id="tab__tests__20212"
   >
     <text
       style="white-space: nowrap;"
@@ -71,7 +71,7 @@ exports[`AtTabs should render prop -- height 1`] = `
 exports[`AtTabs should render prop -- scroll 1`] = `
 <scroll-view
   class="at-tabs__header"
-  id="__tests__"
+  id="__tests__2021"
   scrollintoview=""
   scrollwithanimation="true"
   scrollx="true"
@@ -79,7 +79,7 @@ exports[`AtTabs should render prop -- scroll 1`] = `
 >
   <view
     class="at-tabs__item at-tabs__item--active"
-    id="tab__tests__0"
+    id="tab__tests__20210"
   >
     <text
       style="white-space: nowrap;"
@@ -92,7 +92,7 @@ exports[`AtTabs should render prop -- scroll 1`] = `
   </view>
   <view
     class="at-tabs__item"
-    id="tab__tests__1"
+    id="tab__tests__20211"
   >
     <text
       style="white-space: nowrap;"
@@ -105,7 +105,7 @@ exports[`AtTabs should render prop -- scroll 1`] = `
   </view>
   <view
     class="at-tabs__item"
-    id="tab__tests__2"
+    id="tab__tests__20212"
   >
     <text
       style="white-space: nowrap;"
@@ -125,11 +125,11 @@ exports[`AtTabs should render prop -- tabDirection 1`] = `
 >
   <view
     class="at-tabs__header"
-    id="__tests__"
+    id="__tests__2021"
   >
     <view
       class="at-tabs__item at-tabs__item--active"
-      id="tab__tests__0"
+      id="tab__tests__20210"
     >
       <text
         style="white-space: nowrap;"
@@ -142,7 +142,7 @@ exports[`AtTabs should render prop -- tabDirection 1`] = `
     </view>
     <view
       class="at-tabs__item"
-      id="tab__tests__1"
+      id="tab__tests__20211"
     >
       <text
         style="white-space: nowrap;"
@@ -155,7 +155,7 @@ exports[`AtTabs should render prop -- tabDirection 1`] = `
     </view>
     <view
       class="at-tabs__item"
-      id="tab__tests__2"
+      id="tab__tests__20212"
     >
       <text
         style="white-space: nowrap;"
@@ -186,7 +186,7 @@ exports[`AtTabs should render prop -- tabDirection 2`] = `
 >
   <scroll-view
     class="at-tabs__header"
-    id="__tests__"
+    id="__tests__2021"
     scrollintoview=""
     scrollwithanimation="true"
     scrollx="false"
@@ -194,7 +194,7 @@ exports[`AtTabs should render prop -- tabDirection 2`] = `
   >
     <view
       class="at-tabs__item at-tabs__item--active"
-      id="tab__tests__0"
+      id="tab__tests__20210"
     >
       <text
         style="white-space: nowrap;"
@@ -207,7 +207,7 @@ exports[`AtTabs should render prop -- tabDirection 2`] = `
     </view>
     <view
       class="at-tabs__item"
-      id="tab__tests__1"
+      id="tab__tests__20211"
     >
       <text
         style="white-space: nowrap;"
@@ -220,7 +220,7 @@ exports[`AtTabs should render prop -- tabDirection 2`] = `
     </view>
     <view
       class="at-tabs__item"
-      id="tab__tests__2"
+      id="tab__tests__20212"
     >
       <text
         style="white-space: nowrap;"
@@ -248,11 +248,11 @@ exports[`AtTabs should render prop -- tabDirection 2`] = `
 exports[`AtTabs should render prop -- tabList 1`] = `
 <view
   class="at-tabs__header"
-  id="__tests__"
+  id="__tests__2021"
 >
   <view
     class="at-tabs__item at-tabs__item--active"
-    id="tab__tests__0"
+    id="tab__tests__20210"
   >
     <text
       style="white-space: nowrap;"
@@ -265,7 +265,7 @@ exports[`AtTabs should render prop -- tabList 1`] = `
   </view>
   <view
     class="at-tabs__item"
-    id="tab__tests__1"
+    id="tab__tests__20211"
   >
     <text
       style="white-space: nowrap;"
@@ -278,7 +278,7 @@ exports[`AtTabs should render prop -- tabList 1`] = `
   </view>
   <view
     class="at-tabs__item"
-    id="tab__tests__2"
+    id="tab__tests__20212"
   >
     <text
       style="white-space: nowrap;"

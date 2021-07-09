@@ -1,8 +1,7 @@
-import { mountFactory, Slots } from '@taro-ui-vue3/test-utils/helper'
+import { mountFactory, Slots, triggerTouchEvents } from '@taro-ui-vue3/test-utils/helper'
 import { h } from '@vue/runtime-core'
 import { ref } from 'vue'
 import AtTabs from '../index'
-import * as utils from '@taro-ui-vue3/utils/common'
 
 const factory = (props = {}, slots?: Slots) => {
   return mountFactory(AtTabs, undefined, props, slots)
@@ -20,8 +19,6 @@ describe('AtTabs', () => {
     jest.useFakeTimers()
     jest.advanceTimersByTime(100)
     jest.runAllTimers()
-    jest.mock('@taro-ui-vue3/utils/common')
-    jest.spyOn(utils, 'uuid').mockReturnValue('__tests__')
   })
 
   it('should render default AtTabs', () => {
@@ -75,12 +72,12 @@ describe('AtTabs', () => {
 
     const activeTab = wrapper.find('.at-tabs__item--active')
     const tabs = wrapper.findAll('.at-tabs__item')
-    expect(tabs[0]).toEqual(activeTab)
+    expect(tabs[0].html()).toEqual(activeTab.html())
 
     await wrapper.setProps({ current: 2 })
     const activeTab1 = wrapper.find('.at-tabs__item--active')
     const tabs1 = wrapper.findAll('.at-tabs__item')
-    expect(tabs1[2]).toEqual(activeTab1)
+    expect(tabs1[2].html()).toEqual(activeTab1.html())
   })
 
   it('should render prop -- scroll', async () => {
@@ -282,7 +279,7 @@ describe('AtTabs Behavior', () => {
     const wrapper = factory(
       {
         tabList,
-        current: current.value,
+        current,
         swipeable: true,
         onClick: handleClick
       },
@@ -296,35 +293,25 @@ describe('AtTabs Behavior', () => {
     ).toContain('at-tabs__item--active')
 
     // swipe towards left
-    await wrapper
-      .find('.at-tabs__body')
-      .trigger('touchstart', {
-        touches: [{
-          clientX: 372,
-          clientY: 392,
-          pageX: 372,
-          pageY: 792,
-        }]
-      })
-
-    await wrapper
-      .find('.at-tabs__body')
-      .trigger('touchmove', {
-        touches: [{
-          clientX: 103,
-          clientY: 392,
-          pageX: 103,
-          pageY: 792,
-        }]
-      })
-
-    await wrapper
-      .find('.at-tabs__body')
-      .trigger('touchend')
+    let bodyEl = wrapper.find('.at-tabs__body')
+    await triggerTouchEvents(
+      bodyEl,
+      {
+        clientX: 372,
+        clientY: 392,
+        pageX: 372,
+        pageY: 792,
+      },
+      {
+        clientX: 103,
+        clientY: 392,
+        pageX: 103,
+        pageY: 792,
+      }
+    )
 
     await wrapper.vm.$nextTick()
     expect(current.value).toBe(1)
-    await wrapper.setProps({ current: current.value })
     expect(
       wrapper
         .findAll('.at-tabs__item')[1]
@@ -332,34 +319,24 @@ describe('AtTabs Behavior', () => {
     ).toContain('at-tabs__item--active')
 
     // swipe towards left
-    await wrapper
-      .find('.at-tabs__body')
-      .trigger('touchstart', {
-        touches: [{
-          clientX: 372,
-          clientY: 392,
-          pageX: 372,
-          pageY: 792,
-        }]
-      })
-
-    await wrapper
-      .find('.at-tabs__body')
-      .trigger('touchmove', {
-        touches: [{
-          clientX: 103,
-          clientY: 392,
-          pageX: 103,
-          pageY: 792,
-        }]
-      })
-
-    await wrapper
-      .find('.at-tabs__body')
-      .trigger('touchend')
+    bodyEl = wrapper.find('.at-tabs__body')
+    await triggerTouchEvents(
+      bodyEl,
+      {
+        clientX: 372,
+        clientY: 392,
+        pageX: 372,
+        pageY: 792,
+      },
+      {
+        clientX: 103,
+        clientY: 392,
+        pageX: 103,
+        pageY: 792,
+      }
+    )
 
     expect(current.value).toBe(2)
-    await wrapper.setProps({ current: current.value })
     expect(
       wrapper
         .findAll('.at-tabs__item')[2]
@@ -367,34 +344,24 @@ describe('AtTabs Behavior', () => {
     ).toContain('at-tabs__item--active')
 
     // swipe towards right
-    await wrapper
-      .find('.at-tabs__body')
-      .trigger('touchstart', {
-        touches: [{
-          clientX: 40,
-          clientY: 392,
-          pageX: 40,
-          pageY: 792,
-        }]
-      })
-
-    await wrapper
-      .find('.at-tabs__body')
-      .trigger('touchmove', {
-        touches: [{
-          clientX: 300,
-          clientY: 392,
-          pageX: 300,
-          pageY: 792,
-        }]
-      })
-
-    await wrapper
-      .find('.at-tabs__body')
-      .trigger('touchend')
+    bodyEl = wrapper.find('.at-tabs__body')
+    await triggerTouchEvents(
+      bodyEl,
+      {
+        clientX: 40,
+        clientY: 392,
+        pageX: 40,
+        pageY: 792,
+      },
+      {
+        clientX: 300,
+        clientY: 392,
+        pageX: 300,
+        pageY: 792,
+      }
+    )
 
     expect(current.value).toBe(1)
-    await wrapper.setProps({ current: current.value })
     expect(
       wrapper
         .findAll('.at-tabs__item')[1]
@@ -411,7 +378,7 @@ describe('AtTabs Behavior', () => {
     const wrapper = factory(
       {
         tabList,
-        current: current.value,
+        current,
         swipeable: true,
         tabDirection: "vertical",
         onClick: handleClick
@@ -420,31 +387,22 @@ describe('AtTabs Behavior', () => {
     )
 
     // swipe towards left
-    await wrapper
-      .find('.at-tabs__body')
-      .trigger('touchstart', {
-        touches: [{
-          clientX: 372,
-          clientY: 392,
-          pageX: 372,
-          pageY: 792,
-        }]
-      })
-
-    await wrapper
-      .find('.at-tabs__body')
-      .trigger('touchmove', {
-        touches: [{
-          clientX: 103,
-          clientY: 392,
-          pageX: 103,
-          pageY: 792,
-        }]
-      })
-
-    await wrapper
-      .find('.at-tabs__body')
-      .trigger('touchend')
+    let bodyEl = wrapper.find('.at-tabs__body')
+    await triggerTouchEvents(
+      bodyEl,
+      {
+        clientX: 372,
+        clientY: 392,
+        pageX: 372,
+        pageY: 792,
+      },
+      {
+        clientX: 103,
+        clientY: 392,
+        pageX: 103,
+        pageY: 792,
+      }
+    )
 
     expect(handleClick).not.toBeCalled()
     expect(current.value).not.toEqual(1)
