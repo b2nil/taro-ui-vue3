@@ -24,8 +24,8 @@ exports[`AtDrawer should render prop -- items 1`] = `
         <view
           class="at-list__item-container"
         >
-          
-          
+          <!---->
+          <!---->
           <view
             class="at-list__item-content item-content"
           >
@@ -37,14 +37,14 @@ exports[`AtDrawer should render prop -- items 1`] = `
               >
                 菜单1
               </view>
-              
+              <!---->
             </view>
           </view>
           <view
             class="at-list__item-extra item-extra"
           >
-            
-            
+            <!---->
+            <!---->
             <!---->
             <view
               class="item-extra__icon"
@@ -63,8 +63,8 @@ exports[`AtDrawer should render prop -- items 1`] = `
         <view
           class="at-list__item-container"
         >
-          
-          
+          <!---->
+          <!---->
           <view
             class="at-list__item-content item-content"
           >
@@ -76,14 +76,14 @@ exports[`AtDrawer should render prop -- items 1`] = `
               >
                 菜单2
               </view>
-              
+              <!---->
             </view>
           </view>
           <view
             class="at-list__item-extra item-extra"
           >
-            
-            
+            <!---->
+            <!---->
             <!---->
             <view
               class="item-extra__icon"
