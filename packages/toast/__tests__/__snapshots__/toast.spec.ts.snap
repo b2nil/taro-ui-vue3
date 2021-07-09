@@ -17,7 +17,7 @@ exports[`Toast should render opened  Toast with prop hasMask 1`] = `
     >
       <!---->
       <!---->
-      
+      <!---->
     </view>
   </view>
 </view>
@@ -44,7 +44,7 @@ exports[`Toast should render opened  Toast with prop image 1`] = `
         />
       </view>
       <!---->
-      
+      <!---->
     </view>
   </view>
 </view>
@@ -63,7 +63,7 @@ exports[`Toast should render opened Toast 1`] = `
     >
       <!---->
       <!---->
-      
+      <!---->
     </view>
   </view>
 </view>
@@ -88,7 +88,7 @@ exports[`Toast should render opened Toast with prop icon 1`] = `
           class="at-icon at-icon-loading"
         />
       </view>
-      
+      <!---->
     </view>
   </view>
 </view>
@@ -115,7 +115,7 @@ exports[`Toast should render opened Toast with prop status -- error  1`] = `
         />
       </view>
       <!---->
-      
+      <!---->
     </view>
   </view>
 </view>
@@ -142,7 +142,7 @@ exports[`Toast should render opened Toast with prop status -- loading  1`] = `
         />
       </view>
       <!---->
-      
+      <!---->
     </view>
   </view>
 </view>
@@ -169,7 +169,7 @@ exports[`Toast should render opened Toast with prop status -- success  1`] = `
         />
       </view>
       <!---->
-      
+      <!---->
     </view>
   </view>
 </view>

@@ -9,17 +9,17 @@ const AtToast = defineComponent({
   name: "AtToast",
 
   props: {
-    isOpened: { type: Boolean, default: false },
-    text: { type: String, default: '' },
-    icon: { type: String, default: '' },
-    image: { type: String, default: '' },
+    isOpened: Boolean,
+    hasMask: Boolean,
+    text: String,
+    icon: String,
+    image: String,
+    duration: { type: Number, default: 3000 },
     status: {
       type: String as PropType<AtToastProps['status']>,
       default: '',
       validator: (val: string) => ['', 'error', 'loading', 'success'].includes(val)
     },
-    duration: { type: Number, default: 3000 },
-    hasMask: Boolean,
     onClick: Function as unknown as PropType<AtToastProps['onClick']>,
     onClose: Function as unknown as PropType<AtToastProps['onClose']>,
   },
@@ -34,18 +34,13 @@ const AtToast = defineComponent({
       makeTimer(props.duration || 0)
     }
 
-    const realImg = computed(() => (props.image || statusImg[props.status!] || null))
-    const isRenderIcon = computed(() => !!(props.icon && !(props.image || statusImg[props.status!])))
-
-    const rootClasses = computed(() => ({
-      'at-toast': true,
-      [`${attrs.class}`]: Boolean(attrs.class)
-    }))
+    const useImg = computed(() => (props.image || statusImg[props.status!] || null))
+    const useIcon = computed(() => !!(props.icon && !useImg.value))
 
     const bodyClasses = computed(() => ({
       'toast-body': true,
       'at-toast__body--custom-image': props.image,
-      'toast-body--text': !realImg.value && !props.icon,
+      'toast-body--text': !useImg.value && !props.icon,
       [`at-toast__body--${props.status}`]: !!props.status
     }))
 
@@ -114,7 +109,7 @@ const AtToast = defineComponent({
     return () => {
       return state._isOpened && (
         h(View, {
-          class: rootClasses.value
+          class: ['at-toast', Boolean(attrs.class) && attrs.class]
         }, {
           default: () => [
             // mask layer
@@ -133,20 +128,20 @@ const AtToast = defineComponent({
                 }, {
                   default: () => [
                     // use real image
-                    realImg.value && h(View, {
+                    useImg.value && h(View, {
                       class: 'toast-body-content__img'
                     }, {
                       default: () => [
                         h(Image, {
                           class: 'toast-body-content__img-item',
-                          src: realImg.value,
+                          src: useImg.value,
                           mode: 'scaleToFill'
                         })
                       ]
                     }),
 
                     // use icon
-                    isRenderIcon.value && h(View, {
+                    useIcon.value && h(View, {
                       class: 'toast-body-content__icon'
                     }, {
                       default: () => [
