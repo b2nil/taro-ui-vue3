@@ -3,7 +3,7 @@ import _chunk from 'lodash-es/chunk'
 import { Image, View, Text } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types'
 import { AtGridProps, AtGridItem } from '@taro-ui-vue3/types/grid'
-import { mergeStyle } from '@taro-ui-vue3/utils/common'
+import { useIconClasses, useIconStyle } from '@taro-ui-vue3/composables/icon'
 
 const AtGrid = defineComponent({
   name: "AtGrid",
@@ -25,6 +25,7 @@ const AtGrid = defineComponent({
     mode: {
       type: String as PropType<AtGridProps['mode']>,
       default: 'square',
+      validator: (m: string) => ['square', 'rect'].includes(m)
     },
     onClick: {
       type: Function as unknown as PropType<AtGridProps['onClick']>,
@@ -36,15 +37,22 @@ const AtGrid = defineComponent({
 
     const gridGroup = computed(() => _chunk(props.data, props.columnNum))
 
-    const bodyClass = computed(() => ({
-      'at-grid-item': true,
-      'at-grid__flex-item': true,
-      [`at-grid-item--${props.mode}`]: true,
-      'at-grid-item--no-border': !props.hasBorder
-    }))
+    const bodyClasses = computed(() => {
+      let mode = props.mode
+      if (mode && !['square', 'rect'].includes(mode)) {
+        mode = 'square'
+      }
 
-    const gridItemClass = computed(() => (index) => ({
-      ...bodyClass.value,
+      return {
+        'at-grid-item': true,
+        'at-grid__flex-item': true,
+        [`at-grid-item--${mode}`]: Boolean(mode),
+        'at-grid-item--no-border': !props.hasBorder
+      }
+    })
+
+    const genGridItemClasses = computed(() => (index: number) => ({
+      ...bodyClasses.value,
       'at-grid-item--last': index === props.columnNum! - 1
     }))
 
@@ -52,21 +60,15 @@ const AtGrid = defineComponent({
       flex: `0 0 ${100 / props.columnNum!}%`
     }))
 
-    const iconInfoClass = computed(() => (childItem) => ({
-      [`${childItem.iconInfo?.prefixClass || 'at-icon'}`]: true,
-      [`${childItem.iconInfo?.prefixClass || 'at-icon'
-        }-${childItem.iconInfo?.value}`]: Boolean(childItem.iconInfo?.value),
-      [`${childItem.iconInfo?.className}`]: Boolean(childItem.iconInfo?.className)
-    }))
+    const genIconClasses = (item: AtGridItem) => {
+      const { iconClasses } = useIconClasses(item.iconInfo, true)
+      return iconClasses.value
+    }
 
-    const iconInfoStyle = computed(() => (childItem) => mergeStyle(
-      {
-        color: childItem.iconInfo?.color,
-        fontSize: `${childItem.iconInfo?.size || 24}px`
-      },
-      childItem.iconInfo!.customStyle!
-    ))
-
+    const genIconStyle = (item: AtGridItem) => {
+      const { iconStyle } = useIconStyle(item.iconInfo, "", 24)
+      return iconStyle.value
+    }
 
     function handleClick(
       item: AtGridItem,
@@ -97,7 +99,7 @@ const AtGrid = defineComponent({
             default: () => item.map((childItem, index) => (
               h(View, {
                 key: `at-grid-item-${index}`,
-                class: gridItemClass.value(index),
+                class: genGridItemClasses.value(index),
                 style: flexStyle.value,
                 onTap: handleClick.bind(this, childItem, index, i)
               }, {
@@ -124,10 +126,10 @@ const AtGrid = defineComponent({
                               ),
 
                               // use icon
-                              childItem.iconInfo && !childItem.image && (
+                              childItem.iconInfo && childItem.iconInfo.value && !childItem.image && (
                                 h(Text, {
-                                  class: iconInfoClass.value(childItem),
-                                  style: iconInfoStyle.value(childItem)
+                                  class: genIconClasses(childItem),
+                                  style: genIconStyle(childItem)
                                 })
                               )
                             ]
