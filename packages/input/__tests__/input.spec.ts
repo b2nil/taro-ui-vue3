@@ -123,10 +123,10 @@ describe('AtInput', () => {
         expect(inputEl.attributes('maxlength')).toEqual('11')
         expect(
           '[Vue warn]: Failed setting prop \"selectionStart\" on <input>: value -1 is invalid.'
-        ).toHaveBeenTipped()
+        ).toHaveBeenWarned()
         expect(
           '[Vue warn]: Failed setting prop \"selectionEnd\" on <input>: value -1 is invalid.'
-        ).toHaveBeenTipped()
+        ).toHaveBeenWarned()
         break
       case 'password':
         expect(inputEl.attributes('type')).toEqual('text')
@@ -137,10 +137,10 @@ describe('AtInput', () => {
         if (typeOption === 'number') {
           expect(
             '[Vue warn]: Failed setting prop \"selectionStart\" on <input>: value -1 is invalid.'
-          ).toHaveBeenTipped()
+          ).toHaveBeenWarned()
           expect(
             '[Vue warn]: Failed setting prop \"selectionEnd\" on <input>: value -1 is invalid.'
-          ).toHaveBeenTipped()
+          ).toHaveBeenWarned()
         }
         break
     }

@@ -10,7 +10,7 @@ import {
   InputEventDetail,
   KeyboardHeightEventDetail,
 } from '@taro-ui-vue3/types/input'
-import { isTest, uuid } from '@taro-ui-vue3/utils/common'
+import { uuid } from '@taro-ui-vue3/utils/common'
 import { useModelValue } from '@taro-ui-vue3/composables/model'
 
 type PickAtInputProps = Pick<AtInputProps, 'maxLength' | 'disabled' | 'password'>
@@ -129,7 +129,7 @@ const AtInput = defineComponent({
 
   setup(props: AtInputProps, { attrs, slots, emit }) {
     const inputValue = useModelValue(props, emit, 'value')
-    const inputID = ref(`weui-input_${isTest() ? '2020' : uuid()}`)
+    const inputID = ref(`weui-input_${uuid()}`)
     const inputProps = computed(() => getInputProps(props))
 
     const rootClasses = computed(() => ({
