@@ -2,7 +2,7 @@ import { h, defineComponent, reactive, computed, CSSProperties, mergeProps, ref,
 import { Input, Text, View } from '@tarojs/components'
 import { BaseEventOrig, CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
 import { AtSearchBarProps, AtSearchBarState } from '@taro-ui-vue3/types/search-bar'
-import { isTest, uuid } from '@taro-ui-vue3/utils/common'
+import { uuid } from '@taro-ui-vue3/utils/common'
 import { useModelValue } from '@taro-ui-vue3/composables/model'
 
 const AtSearchBar = defineComponent({
@@ -59,7 +59,7 @@ const AtSearchBar = defineComponent({
       isFocus: !!props.focus
     })
 
-    const inputID = ref(isTest() ? 'weui-input_2020' : 'weui-input_' + uuid())
+    const inputID = ref('weui-input_' + uuid())
     const inputValue = useModelValue(props, emit, 'value')
 
     const fontSize = 14

@@ -24,7 +24,7 @@ exports[`AtSearchBar should render default AtSearchBar 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-input_2020"
+      id="weui-input___tests__2021"
       maxlength="140"
       type="text"
     />
@@ -63,7 +63,7 @@ exports[`AtSearchBar should render prop -- actionName 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-input_2020"
+      id="weui-input___tests__2021"
       maxlength="140"
       type="text"
     />
@@ -102,7 +102,7 @@ exports[`AtSearchBar should render prop -- class 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-input_2020"
+      id="weui-input___tests__2021"
       maxlength="140"
       type="text"
     />
@@ -142,7 +142,7 @@ exports[`AtSearchBar should render prop -- disabled 1`] = `
       class="at-search-bar__input"
       confirmtype="search"
       disabled=""
-      id="weui-input_2020"
+      id="weui-input___tests__2021"
       maxlength="140"
       type="text"
     />
@@ -181,7 +181,7 @@ exports[`AtSearchBar should render prop -- fixed 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-input_2020"
+      id="weui-input___tests__2021"
       maxlength="140"
       type="text"
     />
@@ -221,7 +221,7 @@ exports[`AtSearchBar should render prop -- focus 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-input_2020"
+      id="weui-input___tests__2021"
       maxlength="140"
       type="text"
     />
@@ -260,7 +260,7 @@ exports[`AtSearchBar should render prop -- inputType number 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-input_2020"
+      id="weui-input___tests__2021"
       maxlength="140"
       type="number"
     />
@@ -299,7 +299,7 @@ exports[`AtSearchBar should render prop -- maxLength 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-input_2020"
+      id="weui-input___tests__2021"
       maxlength="120"
       type="text"
     />
@@ -338,7 +338,7 @@ exports[`AtSearchBar should render prop -- placeholder 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-input_2020"
+      id="weui-input___tests__2021"
       maxlength="140"
       type="text"
     />
@@ -377,7 +377,7 @@ exports[`AtSearchBar should render prop -- showActionButton 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-input_2020"
+      id="weui-input___tests__2021"
       maxlength="140"
       type="text"
     />
@@ -417,7 +417,7 @@ exports[`AtSearchBar should render prop -- style 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-input_2020"
+      id="weui-input___tests__2021"
       maxlength="140"
       type="text"
     />
@@ -456,7 +456,7 @@ exports[`AtSearchBar should render prop -- value 1`] = `
     <input
       class="at-search-bar__input"
       confirmtype="search"
-      id="weui-input_2020"
+      id="weui-input___tests__2021"
       maxlength="140"
       type="text"
     />
