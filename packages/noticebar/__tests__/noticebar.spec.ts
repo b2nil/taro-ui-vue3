@@ -168,9 +168,7 @@ describe('AtNoticebar Behavior', () => {
   })
 
   it('should initiate miniapp animation when mounted if marquee is used', () => {
-    jest
-      .spyOn(Taro, 'getEnv')
-      .mockReturnValue(Taro.ENV_TYPE.WEAPP)
+    process.env.TARO_ENV = 'weapp'
 
     jest.spyOn(Taro, 'createSelectorQuery')
       // @ts-ignore
@@ -196,5 +194,7 @@ describe('AtNoticebar Behavior', () => {
     jest.runOnlyPendingTimers()
     jest.advanceTimersByTime(900)
     expect(setTimeout).toBeCalledTimes(4)
+
+    process.env.TARO_ENV = 'h5'
   })
 })
