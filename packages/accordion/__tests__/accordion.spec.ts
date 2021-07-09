@@ -1,7 +1,8 @@
-import { mountFactory, Slots } from '@taro-ui-vue3/test-utils/helper'
+import { mountFactory, Slots, genDelayedSelectorSpy } from '@taro-ui-vue3/test-utils/helper'
 import { ref } from 'vue'
 import AtAccordion from '../index'
-import Taro, { querySelectorMockFn } from '@taro-ui-vue3/test-utils/@tarojs/taro'
+import * as utils from '@taro-ui-vue3/utils/common'
+import { AtIconBaseProps } from '@taro-ui-vue3/types/base'
 
 const factory = (
   values = {},
@@ -43,64 +44,41 @@ describe('AtAccordion', () => {
     expect(wrapper.find(".at-accordion__content--inactive").exists()).toBeTruthy()
   })
 
-  it('should render prop -- icon', () => {
+  it.each([
+    ['', { value: 'chevron-down' }],
+    ['with color', { value: 'chevron-down', color: 'red' }],
+    ['with size', { value: 'chevron-down', size: 10 }],
+    ['with prefixClass', { value: 'star', prefixClass: 'prefix-class' }],
+  ])('should render prop icon %s', (desc, icon: AtIconBaseProps) => {
     const wrapper = factory({
-      icon: { value: 'chevron-down' },
+      icon,
     })
-    expect(wrapper.element).toMatchSnapshot()
-    expect(wrapper.find(".at-icon-chevron-down").exists()).toBeTruthy()
-  })
 
-  it('should render prop -- icon with color', async () => {
-    const wrapper = factory({
-      icon: { value: 'chevron-down', color: 'red' },
-    })
-    expect(wrapper.element).toMatchSnapshot()
-    expect(wrapper.find(".at-icon-chevron-down").exists()).toBeTruthy()
-    expect(
-      wrapper.find(".at-icon-chevron-down").attributes("style")
-    ).toBe("color: red;")
+    const iconClass = Boolean(icon.prefixClass)
+      ? `.${icon.prefixClass}-${icon.value}`
+      : `.at-icon-${icon.value}`
 
-    await wrapper.setProps({ icon: { value: 'chevron-down' } })
-    expect(
-      wrapper.find(".at-icon-chevron-down").exists()
-    ).toBeTruthy()
-    expect(
-      wrapper.find(".at-icon-chevron-down").attributes("style")
-    ).toBe("")
-  })
+    const iconEl = wrapper.find(iconClass)
 
-  it('should render prop -- icon with size', async () => {
-    const wrapper = factory({
-      icon: { value: 'chevron-down', size: 10 },
-    })
-    expect(wrapper.element).toMatchSnapshot()
-    expect(wrapper.find(".at-icon-chevron-down").exists()).toBeTruthy()
-    expect(
-      wrapper.find(".at-icon-chevron-down").attributes().style
-    ).toBe("font-size: 10px;")
+    expect(iconEl.exists()).toBeTruthy()
+    expect(iconEl.element).toMatchSnapshot()
 
-    await wrapper.setProps({ icon: { value: 'chevron-down' } })
-    expect(wrapper.find(".at-icon-chevron-down").exists()).toBeTruthy()
-    expect(
-      wrapper.find(".at-icon-chevron-down").attributes("style")
-    ).toBe("")
-  })
+    if (icon.color) {
+      expect(
+        iconEl.attributes('style')
+      ).toEqual(`color: ${icon.color};`)
+    }
 
-  it('should render prop -- icon with prefixClass', async () => {
-    const wrapper = factory({
-      icon: { prefixClass: 'prefixClass', value: 'star' },
-    })
-    expect(wrapper.element).toMatchSnapshot()
+    if (icon.size) {
+      expect(
+        iconEl.attributes('style')
+      ).toEqual(`font-size: ${icon.size}px;`)
+    }
 
-    const iconElement = wrapper.find(".at-accordion__icon")
-    expect(iconElement.classes()).toContain('prefixClass')
-    expect(iconElement.classes()).toContain('prefixClass-star')
-
-    await wrapper.setProps({ icon: { value: 'star' } })
-    const iconElement2 = wrapper.find(".at-accordion__icon")
-    expect(iconElement2.classes()).not.toContain('prefixClass')
-    expect(iconElement2.classes()).not.toContain('prefixClass-star')
+    if (icon.prefixClass) {
+      expect(iconEl.classes()).toContain(icon.prefixClass)
+      expect(iconEl.classes()).toContain(`${icon.prefixClass}-${icon.value}`)
+    }
   })
 
   it('should render prop -- hasBorder', async () => {
@@ -126,45 +104,115 @@ describe('AtAccordion', () => {
 })
 
 describe('AtAccordion Behavior', () => {
+  let delayQuerySelector: jest.SpyInstance
+
   beforeEach(() => {
-    jest.mock('@tarojs/taro')
+    jest.mock('@taro-ui-vue3/utils/common')
     jest.useFakeTimers()
+    delayQuerySelector = genDelayedSelectorSpy(utils, { height: 30 })
   })
 
-  it.skip('should trigger onClick event to toggle accordion', async () => {
+  afterEach(() => {
+    delayQuerySelector.mockReset()
+    delayQuerySelector.mockRestore()
+  })
+
+  it('should trigger click event', async () => {
+    const onClick = jest.fn()
+    const wrapper = factory({ onClick })
+    await wrapper.find('.at-accordion__header').trigger('tap')
+    expect(onClick).toBeCalled()
+    expect(onClick.mock.calls[0][0]).toBe(true)
+  })
+
+  it('should not trigger click event during animated toggle', async () => {
+    const onClick = jest.fn()
+    const wrapper = factory({
+      onClick
+    })
+
+    await wrapper.setProps({ open: true })
+
+    jest.advanceTimersByTime(400)
+    await wrapper.find('.at-accordion__header').trigger('tap')
+    await wrapper.vm.$nextTick()
+
+    expect(onClick).not.toBeCalled()
+  })
+
+  it('should toggle on accordion with animation', async () => {
     const open = ref(false)
     const onClick = jest.fn((e) => { open.value = e })
     const wrapper = factory({
-      open: open.value,
-      onClick,
-    })
+      open,
+      onClick
+    }, { default: ["按钮"] })
 
-    expect(wrapper.find('.at-accordion__content--inactive').exists()).toBeTruthy()
+    let contentWapper = wrapper.get('.at-accordion__content')
+    expect(contentWapper.attributes('style')).toBeFalsy()
+    expect(contentWapper.classes()).toContain('at-accordion__content--inactive')
 
     await wrapper.find('.at-accordion__header').trigger('tap')
-    expect(wrapper.find('.at-accordion__content--inactive').exists()).toBeFalsy()
 
-    await wrapper.find('.at-accordion__header').trigger('tap')
-    expect(wrapper.find('.at-accordion__content--inactive').exists()).toBeTruthy()
-    expect(onClick.mock.calls.length).toBe(2)
+    jest.advanceTimersByTime(90)
+    await wrapper.vm.$nextTick()
+    contentWapper = wrapper.get('.at-accordion__content')
+    expect(contentWapper.attributes('style')).toEqual('height: 0px;')
+
+    jest.advanceTimersByTime(10)
+    await wrapper.vm.$nextTick()
+    contentWapper = wrapper.get('.at-accordion__content')
+    expect(contentWapper.attributes('style')).toEqual('height: 30px;')
+
+    jest.advanceTimersByTime(700)
+    await wrapper.vm.$nextTick()
+    contentWapper = wrapper.get('.at-accordion__content')
+    expect(contentWapper.attributes('style')).toEqual('')
+    expect(contentWapper.classes()).not.toContain('at-accordion__content--inactive')
   })
 
-  it('should trigger setTimeout', async () => {
-    const mockFn = querySelectorMockFn()
-    const createSelectorQuery = jest.spyOn(Taro, 'createSelectorQuery').mockImplementation(mockFn)
-    const setTimeout = jest.spyOn(global, 'setTimeout').mockImplementation(jest.fn())
-    const onClick = jest.fn()
+  it('should toggle off accordion with animation', async () => {
+    const open = ref(true)
+    const onClick = jest.fn((e) => { open.value = e })
     const wrapper = factory({
-      isAnimation: false,
-      onClick: onClick,
-    })
-    expect(setTimeout).not.toBeCalled()
+      open,
+      onClick
+    }, { default: ["按钮"] })
 
-    await wrapper.setProps({ open: true, isAnimation: true })
-    jest.runAllTimers()
-    expect(setTimeout).toHaveBeenNthCalledWith(1, expect.any(Function), 30)
-    expect(createSelectorQuery).toBeCalled()
-    createSelectorQuery.mockClear()
+    let contentWapper = wrapper.get('.at-accordion__content')
+    expect(contentWapper.classes()).not.toContain('at-accordion__content--inactive')
+
+    await wrapper.find('.at-accordion__header').trigger('tap')
+
+    jest.advanceTimersByTime(90)
+    await wrapper.vm.$nextTick()
+
+    contentWapper = wrapper.get('.at-accordion__content')
+    expect(contentWapper.attributes('style')).toEqual('height: 30px;')
+
+    jest.advanceTimersByTime(10)
+    await wrapper.vm.$nextTick()
+
+    await wrapper.find('.at-accordion__header').trigger('tap')
+    expect(onClick).toBeCalledTimes(1)
+
+    contentWapper = wrapper.get('.at-accordion__content')
+    expect(contentWapper.attributes('style')).toEqual('height: 0px;')
+
+    jest.advanceTimersByTime(700)
+    await wrapper.vm.$nextTick()
+
+    contentWapper = wrapper.get('.at-accordion__content')
+    expect(contentWapper.attributes('style')).toEqual('')
+    expect(contentWapper.classes()).toContain('at-accordion__content--inactive')
+  })
+
+  it('should not toggle with animation if animation is not used', async () => {
+    const wrapper = factory({
+      isAnimation: false
+    })
+    await wrapper.setProps({ open: true })
+    expect(delayQuerySelector).not.toBeCalled()
   })
 
 })

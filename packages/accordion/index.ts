@@ -2,7 +2,8 @@ import { h, defineComponent, reactive, ref, watch, computed, mergeProps, PropTyp
 import { Text, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
 import { AtAccordionProps, AtAccordionState } from '@taro-ui-vue3/types/accordion'
-import { delayQuerySelector } from '@taro-ui-vue3/utils/common'
+import { delayQuerySelector, uuid } from '@taro-ui-vue3/utils/common'
+import { useIconClasses, useIconStyle } from "@taro-ui-vue3/composables/icon"
 
 const AtAccordion = defineComponent({
   name: "AtAccordion",
@@ -38,31 +39,23 @@ const AtAccordion = defineComponent({
     const contentID = ref('content')
     const state = reactive<AtAccordionState>({ wrapperHeight: 'unset' })
 
-    const iconClass = computed(() => ({
-      [`${props.icon!.prefixClass || 'at-icon'}`]: Boolean(props.icon),
-      [`${props.icon!.prefixClass || 'at-icon'}-${props.icon!.value}`]: Boolean(props.icon && props.icon.value),
-      'at-accordion__icon': true
-    }))
-
-    const headerClass = computed(() => ({
+    const headerClasses = computed(() => ({
       'at-accordion__header': true,
       'at-accordion__header--noborder': !props.hasBorder
     }))
 
-    const arrowClass = computed(() => ({
+    const arrowClasses = computed(() => ({
       'at-accordion__arrow': true,
       'at-accordion__arrow--folded': !!props.open
     }))
 
-    const contentClass = computed(() => ({
+    const contentClasses = computed(() => ({
       'at-accordion__content': true,
       'at-accordion__content--inactive': (!props.open && isCompleted.value) || startOpen.value
     }))
 
-    const iconStyle = computed(() => ({
-      color: (props.icon && props.icon.color) ? props.icon.color : '',
-      fontSize: (props.icon && props.icon.size) ? `${props.icon.size}px` : ''
-    }))
+    const { iconStyle } = useIconStyle(props.icon)
+    const { iconClasses } = useIconClasses(props.icon, true)
 
     const contentStyle = computed(() => ({
       height: isCompleted.value
@@ -78,10 +71,9 @@ const AtAccordion = defineComponent({
     })
 
     function handleClick(e: CommonEvent) {
-      contentID.value = 'content' + String(e.timeStamp).replace('.', '')
-
       if (!isCompleted.value) return
 
+      contentID.value = "content_" + uuid()
       props.onClick && props.onClick(!props.open, e)
     }
 
@@ -114,13 +106,13 @@ const AtAccordion = defineComponent({
       }), {
         default: () => [
           h(View, {
-            class: headerClass.value,
+            class: headerClasses.value,
             onTap: handleClick
           }, {
             default: () => [
               props.icon && props.icon.value && (
                 h(Text, {
-                  class: iconClass.value,
+                  class: [iconClasses.value, 'at-accordion__icon'],
                   style: iconStyle.value
                 })
               ),
@@ -139,7 +131,7 @@ const AtAccordion = defineComponent({
               }),
 
               h(View, {
-                class: arrowClass.value
+                class: arrowClasses.value
               }, {
                 default: () => [
                   h(Text, { class: 'at-icon at-icon-chevron-down' })
@@ -149,7 +141,7 @@ const AtAccordion = defineComponent({
           }),
 
           h(View, {
-            class: contentClass.value,
+            class: contentClasses.value,
             style: contentStyle.value
           }, {
             default: () => [

@@ -39,172 +39,6 @@ exports[`AtAccordion should render default AtAccordion 1`] = `
 </view>
 `;
 
-exports[`AtAccordion should render prop -- icon 1`] = `
-<view
-  class="at-accordion"
->
-  <view
-    class="at-accordion__header"
-  >
-    <text
-      class="at-icon at-icon-chevron-down at-accordion__icon"
-    />
-    <view
-      class="at-accordion__info"
-    >
-      <view
-        class="at-accordion__info__title"
-      />
-      <view
-        class="at-accordion__info__note"
-      />
-    </view>
-    <view
-      class="at-accordion__arrow"
-    >
-      <text
-        class="at-icon at-icon-chevron-down"
-      />
-    </view>
-  </view>
-  <view
-    class="at-accordion__content at-accordion__content--inactive"
-  >
-    <view
-      class="at-accordion__body"
-      id="content"
-    >
-      按钮
-    </view>
-  </view>
-</view>
-`;
-
-exports[`AtAccordion should render prop -- icon with color 1`] = `
-<view
-  class="at-accordion"
->
-  <view
-    class="at-accordion__header"
-  >
-    <text
-      class="at-icon at-icon-chevron-down at-accordion__icon"
-      style="color: red;"
-    />
-    <view
-      class="at-accordion__info"
-    >
-      <view
-        class="at-accordion__info__title"
-      />
-      <view
-        class="at-accordion__info__note"
-      />
-    </view>
-    <view
-      class="at-accordion__arrow"
-    >
-      <text
-        class="at-icon at-icon-chevron-down"
-      />
-    </view>
-  </view>
-  <view
-    class="at-accordion__content at-accordion__content--inactive"
-  >
-    <view
-      class="at-accordion__body"
-      id="content"
-    >
-      按钮
-    </view>
-  </view>
-</view>
-`;
-
-exports[`AtAccordion should render prop -- icon with prefixClass 1`] = `
-<view
-  class="at-accordion"
->
-  <view
-    class="at-accordion__header"
-  >
-    <text
-      class="prefixClass prefixClass-star at-accordion__icon"
-    />
-    <view
-      class="at-accordion__info"
-    >
-      <view
-        class="at-accordion__info__title"
-      />
-      <view
-        class="at-accordion__info__note"
-      />
-    </view>
-    <view
-      class="at-accordion__arrow"
-    >
-      <text
-        class="at-icon at-icon-chevron-down"
-      />
-    </view>
-  </view>
-  <view
-    class="at-accordion__content at-accordion__content--inactive"
-  >
-    <view
-      class="at-accordion__body"
-      id="content"
-    >
-      按钮
-    </view>
-  </view>
-</view>
-`;
-
-exports[`AtAccordion should render prop -- icon with size 1`] = `
-<view
-  class="at-accordion"
->
-  <view
-    class="at-accordion__header"
-  >
-    <text
-      class="at-icon at-icon-chevron-down at-accordion__icon"
-      style="font-size: 10px;"
-    />
-    <view
-      class="at-accordion__info"
-    >
-      <view
-        class="at-accordion__info__title"
-      />
-      <view
-        class="at-accordion__info__note"
-      />
-    </view>
-    <view
-      class="at-accordion__arrow"
-    >
-      <text
-        class="at-icon at-icon-chevron-down"
-      />
-    </view>
-  </view>
-  <view
-    class="at-accordion__content at-accordion__content--inactive"
-  >
-    <view
-      class="at-accordion__body"
-      id="content"
-    >
-      按钮
-    </view>
-  </view>
-</view>
-`;
-
 exports[`AtAccordion should render prop -- note 1`] = `
 <view
   class="at-accordion"
@@ -363,4 +197,30 @@ exports[`AtAccordion should render prop -- title 1`] = `
     </view>
   </view>
 </view>
+`;
+
+exports[`AtAccordion should render prop icon  1`] = `
+<text
+  class="at-icon at-icon-chevron-down at-accordion__icon"
+/>
+`;
+
+exports[`AtAccordion should render prop icon with color 1`] = `
+<text
+  class="at-icon at-icon-chevron-down at-accordion__icon"
+  style="color: red;"
+/>
+`;
+
+exports[`AtAccordion should render prop icon with prefixClass 1`] = `
+<text
+  class="prefix-class prefix-class-star at-accordion__icon"
+/>
+`;
+
+exports[`AtAccordion should render prop icon with size 1`] = `
+<text
+  class="at-icon at-icon-chevron-down at-accordion__icon"
+  style="font-size: 10px;"
+/>
 `;
