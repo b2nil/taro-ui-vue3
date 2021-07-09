@@ -1,4 +1,4 @@
-import { mountFactory, Slots } from '@taro-ui-vue3/test-utils/helper'
+import { mountFactory, Slots, triggerTouchEvents } from '@taro-ui-vue3/test-utils/helper'
 import { h } from '@vue/runtime-core'
 import * as utils from '@taro-ui-vue3/utils/common'
 
@@ -52,10 +52,6 @@ const SLOT = h('view', {
 }, "AtSwipeAction 一般使用场景")
 
 describe('SwipeAction', () => {
-  beforeEach(() => {
-    jest.mock('@taro-ui-vue3/utils/common')
-    jest.spyOn(utils, 'uuid').mockReturnValue('2020')
-  })
 
   it('should render default props', () => {
     const wrapper = factory()
@@ -89,7 +85,6 @@ describe('SwipeAction', () => {
 describe('SwipeAction Behaviours', () => {
   beforeEach(() => {
     jest.mock('@taro-ui-vue3/utils/common')
-    jest.spyOn(utils, 'uuid').mockReturnValue('2020')
     jest.spyOn(utils, 'delayGetClientRect').mockReturnValue(new Promise(resolve => {
       resolve([MOVE_INFO])
     }))
@@ -126,13 +121,7 @@ describe('SwipeAction Behaviours', () => {
 
     const swipeActionEl = wrapper.find('.at-swipe-action')
 
-    await swipeActionEl.trigger('touchstart', {
-      touches: [START_INFO]
-    })
-    await swipeActionEl.trigger('touchmove', {
-      touches: [MOVE_INFO]
-    })
-    await swipeActionEl.trigger('touchend')
+    await triggerTouchEvents(swipeActionEl, START_INFO, MOVE_INFO)
 
     await wrapper
       .find('.at-swipe-action__option')
