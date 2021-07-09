@@ -1,7 +1,5 @@
 import { mountFactory, Slots } from '@taro-ui-vue3/test-utils/helper'
 import AtButton from '../index'
-import * as utils from '@taro-ui-vue3/utils/common'
-
 const factory = (
   values = {},
   slots: Slots = { default: ['按钮'] }
@@ -82,46 +80,28 @@ describe('AtButton', () => {
     })
 
     it('should render weapp Button', () => {
-      const getEnvs = jest.spyOn(utils, 'getEnvs').mockImplementation(() => {
-        return {
-          isWEAPP: true,
-          isALIPAY: false,
-          isWEB: false
-        }
-      })
+      process.env.TARO_ENV = 'weapp'
       const wrapper = factory()
       expect(wrapper.element).toMatchSnapshot()
       expect(wrapper.find('form > .at-button__wxbutton').exists()).toBe(true)
 
-      getEnvs.mockClear()
+      process.env.TARO_ENV = 'h5'
     })
 
     it('should render web button', () => {
-      const getEnvs = jest.spyOn(utils, 'getEnvs').mockImplementation(() => {
-        return {
-          isWEAPP: false,
-          isALIPAY: false,
-          isWEB: true
-        }
-      })
       const wrapper = factory()
       expect(wrapper.element).toMatchSnapshot()
       expect(wrapper.find('.at-button > .at-button__wxbutton').exists()).toBe(true)
-      getEnvs.mockClear()
     })
 
     it('should render alipay Button', () => {
-      const getEnvs = jest.spyOn(utils, 'getEnvs').mockImplementation(() => {
-        return {
-          isWEAPP: false,
-          isALIPAY: true,
-          isWEB: false
-        }
-      })
+      process.env.TARO_ENV = 'alipay'
+
       const wrapper = factory()
       expect(wrapper.element).toMatchSnapshot()
       expect(wrapper.find('.at-button > .at-button__wxbutton').exists()).toBe(true)
-      getEnvs.mockClear()
+
+      process.env.TARO_ENV = 'h5'
     })
   })
 })
@@ -145,7 +125,7 @@ describe('AtButton Behavior', () => {
     // expect(onClick).not.toBeCalled()
     expect(
       '[Vue warn]: AtButton 绑定的点击事件应为 `click`， 而非 `tap`。'
-    ).toHaveBeenTipped()
+    ).toHaveBeenWarned()
   })
 
   it('AtButton should not trigger onClick event when disabled', async () => {
@@ -166,20 +146,12 @@ describe('AtButton Behavior', () => {
   })
 
   describe('AtButton should trigger Taro button events', () => {
-    let getEnvs
     beforeEach(() => {
-      jest.mock('@taro-ui-vue3/utils/common')
-      getEnvs = jest.spyOn(utils, 'getEnvs').mockImplementation(() => {
-        return {
-          isWEAPP: true,
-          isALIPAY: false,
-          isWEB: false
-        }
-      })
+      process.env.TARO_ENV = 'weapp'
     })
 
     afterEach(() => {
-      getEnvs.mockClear()
+      process.env.TARO_ENV = 'h5'
     })
 
     it('should trigger onGetUserInfo when openType == getUserInfo', async () => {
@@ -192,7 +164,7 @@ describe('AtButton Behavior', () => {
       expect(onGetUserInfo).toBeCalled()
       expect(
         '[Vue warn]: 2021 年 4 月 13 日后发布的新版本小程序，'
-      ).toHaveBeenTipped()
+      ).toHaveBeenWarned()
     })
 
     it('should not trigger onGetUserInfo when openType != getUserInfo', async () => {
@@ -204,7 +176,7 @@ describe('AtButton Behavior', () => {
       expect(onGetUserInfo).not.toBeCalled()
       expect(
         '[Vue warn]: 2021 年 4 月 13 日后发布的新版本小程序，'
-      ).not.toHaveBeenTipped()
+      ).not.toHaveBeenWarned()
     })
 
     it('should not trigger onGetUserInfo if eventHandler not passed', async () => {
@@ -216,7 +188,7 @@ describe('AtButton Behavior', () => {
       expect(onGetUserInfo).not.toBeCalled()
       expect(
         '[Vue warn]: 2021 年 4 月 13 日后发布的新版本小程序，'
-      ).toHaveBeenTipped()
+      ).toHaveBeenWarned()
     })
 
     it('should trigger onContact when openType == contact', async () => {
@@ -343,13 +315,8 @@ describe('AtButton Behavior', () => {
     })
 
     it('should trigger onGetAuthorize when openType == getAuthorize', async () => {
-      getEnvs = jest.spyOn(utils, 'getEnvs').mockImplementation(() => {
-        return {
-          isWEAPP: false,
-          isALIPAY: true,
-          isWEB: false
-        }
-      })
+      process.env.TARO_ENV = 'alipay'
+
       const onGetAuthorize = jest.fn()
       const wrapper = factory({
         openType: 'getAuthorize',
@@ -357,36 +324,32 @@ describe('AtButton Behavior', () => {
       })
       await wrapper.find('.at-button__wxbutton').trigger('getauthorize')
       expect(onGetAuthorize).toBeCalled()
+
+      process.env.TARO_ENV = 'h5'
     })
 
     it('should not trigger onGetAuthorize when openType != getAuthorize', async () => {
-      getEnvs = jest.spyOn(utils, 'getEnvs').mockImplementation(() => {
-        return {
-          isWEAPP: false,
-          isALIPAY: true,
-          isWEB: false
-        }
-      })
+      process.env.TARO_ENV = 'alipay'
+
       const onGetAuthorize = jest.fn()
       const wrapper = factory({
         onGetAuthorize: onGetAuthorize
       })
       await wrapper.find('.at-button__wxbutton').trigger('getauthorize')
       expect(onGetAuthorize).not.toBeCalled()
+
+      process.env.TARO_ENV = 'h5'
     })
 
     it('should not trigger onGetAuthorize if eventHandler not passed', async () => {
-      getEnvs = jest.spyOn(utils, 'getEnvs').mockImplementation(() => {
-        return {
-          isWEAPP: false,
-          isALIPAY: true,
-          isWEB: false
-        }
-      })
+      process.env.TARO_ENV = 'alipay'
+
       const onGetAuthorize = jest.fn()
       const wrapper = factory({ openType: 'getAuthorize' })
       await wrapper.find('.at-button__wxbutton').trigger('getauthorize')
       expect(onGetAuthorize).not.toBeCalled()
+
+      process.env.TARO_ENV = 'h5'
     })
 
   })
