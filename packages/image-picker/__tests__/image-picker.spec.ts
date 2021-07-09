@@ -40,18 +40,14 @@ const files = ref([
 ])
 
 describe('AtImagePicker', () => {
-  let getEnv
   window.URL.revokeObjectURL = jest.fn()
 
   beforeEach(() => {
-    jest.mock('@tarojs/taro')
-    getEnv = jest.spyOn(Taro, 'getEnv').mockImplementation(() => {
-      return Taro.ENV_TYPE.WEAPP
-    })
+    process.env.TARO_ENV = 'weapp'
   })
 
   afterEach(() => {
-    getEnv.mockClear()
+    process.env.TARO_ENV = 'h5'
   })
 
   it('should render all nodes and match snapshot', async () => {
@@ -133,16 +129,13 @@ describe('AtImagePicker', () => {
 })
 
 describe('AtImagePicker Behaviours', () => {
-  let getEnv
   beforeEach(() => {
     jest.mock('@tarojs/taro')
-    getEnv = jest.spyOn(Taro, 'getEnv').mockImplementation(() => {
-      return Taro.ENV_TYPE.WEAPP
-    })
+    process.env.TARO_ENV = 'weapp'
   })
 
   afterEach(() => {
-    getEnv.mockClear()
+    process.env.TARO_ENV = 'h5'
   })
 
   it('should trigger onChange by clicking remove button', async () => {
