@@ -1,7 +1,9 @@
 import { h, defineComponent, computed, mergeProps, PropType } from 'vue'
 import { Image, Text, View } from '@tarojs/components'
 import { CommonEvent } from '@tarojs/components/types/common'
+import { AtIconBaseProps } from '@taro-ui-vue3/types/base'
 import { AtTabBarProps, TabItem } from '@taro-ui-vue3/types/tab-bar'
+import { useIconClasses, useIconStyle } from "@taro-ui-vue3/composables/icon"
 import { convertToUnit } from '@taro-ui-vue3/utils/common'
 
 import AtBadge from '../badge/index'
@@ -10,14 +12,7 @@ const AtTabBar = defineComponent({
   name: "AtTabBar",
 
   props: {
-    fixed: {
-      type: Boolean,
-      default: false
-    },
-    backgroundColor: {
-      type: String,
-      default: '#fff'
-    },
+    fixed: Boolean,
     current: {
       type: Number,
       default: 0
@@ -44,6 +39,10 @@ const AtTabBar = defineComponent({
       type: String,
       default: '#6190E8'
     },
+    backgroundColor: {
+      type: String,
+      default: '#fff'
+    },
     tabList: {
       type: Array as PropType<AtTabBarProps['tabList']>,
       default: []
@@ -56,20 +55,12 @@ const AtTabBar = defineComponent({
 
   setup(props: AtTabBarProps, { attrs }) {
 
-    const defaultStyle = computed(() => ({
-      color: props.color || ''
-    }))
-
-    const selectedStyle = computed(() => ({
-      color: props.selectedColor || ''
+    const rootStyle = computed(() => ({
+      backgroundColor: props.backgroundColor
     }))
 
     const titleStyle = computed(() => ({
       fontSize: props.fontSize ? convertToUnit(props.fontSize) : ''
-    }))
-
-    const rootStyle = computed(() => ({
-      backgroundColor: props.backgroundColor || ''
     }))
 
     const imgStyle = computed(() => ({
@@ -77,33 +68,60 @@ const AtTabBar = defineComponent({
       height: convertToUnit(props.iconSize)
     }))
 
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       'at-tab-bar': true,
       'at-tab-bar--fixed': props.fixed
     }))
 
-    const tabItemClass = computed(() => (i) => ({
+    const genItemClasses = (i: number) => ({
       'at-tab-bar__item': true,
       'at-tab-bar__item--active': props.current === i
-    }))
+    })
 
-    const tabBarItemIconClass = computed(() => (item, i) => ({
-      [`${item.iconPrefixClass || 'at-icon'}`]: true,
-      [`${item.iconPrefixClass || 'at-icon'}-${item.selectedIconType
-        }`]: props.current === i && item.selectedIconType,
-      [`${item.iconPrefixClass || 'at-icon'}-${item.iconType
-        }`]: !(props.current === i && item.selectedIconType)
-    }))
-
-    const tabBarItemIconStyle = computed(() => (i) => ({
-      color: props.current === i ? props.selectedColor : props.color,
-      fontSize: props.iconSize ? convertToUnit(props.iconSize) : ''
-    }))
-
-    const tabBarItemInnerImgClass = computed(() => (selected: boolean) => ({
+    const genImgClasses = computed(() => (selected: boolean) => ({
       'at-tab-bar__inner-img': true,
       'at-tab-bar__inner-img--inactive': selected
     }))
+
+    const genImgSrc = (item: TabItem, i: number) => {
+      return props.current === i
+        ? item.selectedImage || item.image
+        : item.image
+    }
+
+    const genItemStyle = (i: number) => {
+      return props.current === i
+        ? { color: props.selectedColor }
+        : { color: props.color }
+    }
+
+    function genIconInfo(item: TabItem, i: number): AtIconBaseProps {
+      const iconInfo: AtIconBaseProps = {
+        prefixClass: item.iconPrefixClass,
+        value: item.iconType!,
+        color: props.color,
+        size: props.iconSize
+      }
+
+      if (props.current === i) {
+        iconInfo.value = item.selectedIconType || item.iconType!
+        iconInfo.color = props.selectedColor
+      }
+
+      return iconInfo
+    }
+
+    const genIconClasses = (item: TabItem, i: number) => {
+      const iconInfo = genIconInfo(item, i)
+      const { iconClasses } = useIconClasses(iconInfo, true)
+      return iconClasses.value
+    }
+
+    const genIconStyle = (item: TabItem, i: number) => {
+      const iconInfo = genIconInfo(item, i)
+      const { iconStyle } = useIconStyle(iconInfo)
+      return iconStyle.value
+    }
 
     function handleClick(index: number, event: CommonEvent): void {
       props.onClick(index, event)
@@ -111,15 +129,15 @@ const AtTabBar = defineComponent({
 
     return () => (
       h(View, mergeProps(attrs, {
-        class: rootClass.value,
+        class: rootClasses.value,
         style: rootStyle.value,
       }), {
         default: () => props.tabList.map((item: TabItem, i: number) => (
           // tab-bar item
           h(View, {
             key: item.title,
-            class: tabItemClass.value(i),
-            style: props.current === i ? selectedStyle.value : defaultStyle.value,
+            class: genItemClasses(i),
+            style: genItemStyle(i),
             onTap: handleClick.bind(this, i)
           }, {
             default: () => [
@@ -136,8 +154,8 @@ const AtTabBar = defineComponent({
                     }, {
                       default: () => [
                         h(Text, {
-                          class: tabBarItemIconClass.value(item, i),
-                          style: tabBarItemIconStyle.value(i),
+                          class: genIconClasses(item, i),
+                          style: genIconStyle(item, i),
                         })
                       ]
                     })
@@ -146,7 +164,7 @@ const AtTabBar = defineComponent({
               ),
 
               // tab bar image
-              item.image && (
+              item.image && !item.iconType && (
                 h(AtBadge, {
                   dot: !!item.dot,
                   value: item.text,
@@ -158,16 +176,16 @@ const AtTabBar = defineComponent({
                     }, {
                       default: () => [
                         h(Image, {
-                          class: tabBarItemInnerImgClass.value(props.current !== i),
+                          class: genImgClasses.value(props.current !== i),
                           mode: 'widthFix',
-                          src: item.selectedImage || item.image,
+                          src: genImgSrc(item, i),
                           style: imgStyle.value
                         }),
                         h(Image, {
-                          class: tabBarItemInnerImgClass.value(props.current === i),
+                          class: genImgClasses.value(props.current === i),
                           mode: 'widthFix',
-                          src: item.image,
-                          style: imgStyle.value,
+                          src: genImgSrc(item, i),
+                          style: imgStyle.value
                         })
                       ]
                     })

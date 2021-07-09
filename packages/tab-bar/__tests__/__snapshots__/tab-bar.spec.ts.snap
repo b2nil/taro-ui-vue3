@@ -157,7 +157,7 @@ exports[`AtTabBar should render prop -- color 1`] = `
         <image
           class="at-tab-bar__inner-img at-tab-bar__inner-img--inactive"
           mode="widthFix"
-          src="https://img14.360buyimg.com/jdphoto/s72x72_jfs/t17251/336/1311038817/3177/72595a07/5ac44618Na1db7b09.png"
+          src="https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png"
           style="width: 24px; height: 24px;"
         />
         <image
@@ -329,7 +329,7 @@ exports[`AtTabBar should render prop -- fontSize 1`] = `
         <image
           class="at-tab-bar__inner-img at-tab-bar__inner-img--inactive"
           mode="widthFix"
-          src="https://img14.360buyimg.com/jdphoto/s72x72_jfs/t17251/336/1311038817/3177/72595a07/5ac44618Na1db7b09.png"
+          src="https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png"
           style="width: 24px; height: 24px;"
         />
         <image
@@ -501,7 +501,7 @@ exports[`AtTabBar should render prop -- iconSize 1`] = `
         <image
           class="at-tab-bar__inner-img at-tab-bar__inner-img--inactive"
           mode="widthFix"
-          src="https://img14.360buyimg.com/jdphoto/s72x72_jfs/t17251/336/1311038817/3177/72595a07/5ac44618Na1db7b09.png"
+          src="https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png"
           style="width: 26px; height: 26px;"
         />
         <image
@@ -674,7 +674,7 @@ exports[`AtTabBar should render prop -- scroll 1`] = `
         <image
           class="at-tab-bar__inner-img at-tab-bar__inner-img--inactive"
           mode="widthFix"
-          src="https://img14.360buyimg.com/jdphoto/s72x72_jfs/t17251/336/1311038817/3177/72595a07/5ac44618Na1db7b09.png"
+          src="https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png"
           style="width: 24px; height: 24px;"
         />
         <image
@@ -846,7 +846,7 @@ exports[`AtTabBar should render prop -- selectedColor 1`] = `
         <image
           class="at-tab-bar__inner-img at-tab-bar__inner-img--inactive"
           mode="widthFix"
-          src="https://img14.360buyimg.com/jdphoto/s72x72_jfs/t17251/336/1311038817/3177/72595a07/5ac44618Na1db7b09.png"
+          src="https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png"
           style="width: 24px; height: 24px;"
         />
         <image
@@ -1025,7 +1025,7 @@ exports[`AtTabBar should render prop -- tabList 1`] = `
         <image
           class="at-tab-bar__inner-img at-tab-bar__inner-img--inactive"
           mode="widthFix"
-          src="https://img14.360buyimg.com/jdphoto/s72x72_jfs/t17251/336/1311038817/3177/72595a07/5ac44618Na1db7b09.png"
+          src="https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png"
           style="width: 24px; height: 24px;"
         />
         <image
