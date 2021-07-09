@@ -30,7 +30,7 @@ exports[`AtListItem should render all nodes and match snapshot 1`] = `
     >
       <view
         class="at-icon at-icon-calendar"
-        style=""
+        style="font-size: 24px;"
       />
     </view>
     <view
@@ -59,7 +59,7 @@ exports[`AtListItem should render all nodes and match snapshot 1`] = `
       >
         extraText
       </view>
-      
+      <!---->
       <!---->
       <view
         class="item-extra__icon"

@@ -1,31 +1,26 @@
 import { h, defineComponent, mergeProps, computed, PropType } from 'vue'
 import { View, Image, Switch } from '@tarojs/components'
-import { mergeStyle } from "@taro-ui-vue3/utils/common"
+import { useIconClasses, useIconStyle } from "@taro-ui-vue3/composables/icon"
 
 import type { CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
 import type { AtListItemProps } from '@taro-ui-vue3/types/list'
-import type { AtIconBaseProps } from '@taro-ui-vue3/types/base'
 
 const AtListItem = defineComponent({
   props: {
-    note: { type: String, default: '' },
+    note: String,
     title: { type: String, default: '' },
-    thumb: { type: String, default: '' },
-    extraText: { type: String, default: '' },
-    extraThumb: { type: String, default: '' },
+    thumb: String,
+    extraText: String,
+    extraThumb: String,
     switchColor: { type: String, default: '#6190E8' },
-    disabled: { type: Boolean, default: false },
-    isSwitch: { type: Boolean, default: false },
-    switchIsCheck: { type: Boolean, default: false },
-    hasBorder: { type: Boolean, default: false },
-    iconInfo: {
-      type: Object as PropType<AtListItemProps['iconInfo']>,
-      default: () => ({ value: '' } as AtIconBaseProps)
-    },
+    disabled: Boolean,
+    isSwitch: Boolean,
+    switchIsCheck: Boolean,
+    hasBorder: Boolean,
+    iconInfo: Object as PropType<AtListItemProps['iconInfo']>,
     arrow: {
       type: String as PropType<AtListItemProps['arrow']>,
-      default: '',
-      validator: (prop: string) => ['up', 'down', 'right', ''].includes(prop)
+      validator: (prop: string) => ['up', 'down', 'right'].includes(prop)
     },
     onClick: Function as unknown as PropType<AtListItemProps['onClick']>,
     onSwitchChange: Function as unknown as PropType<AtListItemProps['onSwitchChange']>
@@ -41,25 +36,23 @@ const AtListItem = defineComponent({
       'at-list__item--no-border': !props.hasBorder,
     }))
 
-    const iconClasses = computed(() => ({
-      [`${props.iconInfo!.prefixClass || 'at-icon'}`]: true,
-      [`${props.iconInfo!.prefixClass || 'at-icon'}-${props.iconInfo!.value}`]: Boolean(props.iconInfo!.value),
-      [`${props.iconInfo!.class}`]: Boolean(props.iconInfo!.class)
-    }))
+    const { iconStyle } = useIconStyle(props.iconInfo, '', 24)
+    const { iconClasses } = useIconClasses(props.iconInfo, true)
 
-    const iconStyle = computed(() => mergeStyle(
-      {
-        color: props.iconInfo!.color || '',
-        fontSize: `${props.iconInfo!.size || 24}px`,
-      },
-      props.iconInfo!.style! as Object
-    ))
+    const arrowClasses = computed(() => {
+      if (!props.arrow) return {}
 
-    const arrowClasses = computed(() => ({
-      'at-icon': Boolean(props.arrow),
-      'item-extra__icon-arrow': Boolean(props.arrow),
-      [`at-icon-chevron-${props.arrow}`]: Boolean(props.arrow)
-    }))
+      let arrow = 'right'
+      if (['up', 'down'].includes(props.arrow)) {
+        arrow = props.arrow
+      }
+
+      return {
+        'at-icon': Boolean(props.arrow),
+        'item-extra__icon-arrow': Boolean(props.arrow),
+        [`at-icon-chevron-${arrow}`]: Boolean(props.arrow)
+      }
+    })
 
     function handleClick(e: ITouchEvent) {
       if (typeof props.onClick === 'function' && !props.disabled) {
@@ -101,7 +94,7 @@ const AtListItem = defineComponent({
                 })
               ),
 
-              props.iconInfo!.value && (
+              Boolean(props.iconInfo?.value) && (
                 h(View, {
                   class: 'at-list__item-icon item-icon'
                 }, {
