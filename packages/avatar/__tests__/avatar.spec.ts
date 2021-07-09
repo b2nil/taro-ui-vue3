@@ -1,6 +1,5 @@
 import { mount } from '@vue/test-utils'
 import AtAvatar from '../index'
-import * as utils from '@taro-ui-vue3/utils/common'
 
 const factory = (values = {}, slots = { default: [] }) => {
   return mount(AtAvatar as any, {
@@ -29,10 +28,10 @@ describe('Avatar', () => {
     const wrapper = factory({ size: 'xsmall' })
     expect(
       '[Vue warn]: Invalid prop: custom validator check failed for prop \"size\".'
-    ).toHaveBeenTipped()
+    ).toHaveBeenWarned()
     expect(
       "[Vue warn]: Prop size must be of PropType<'large' | 'normal' | 'small'>, actual:"
-    ).toHaveBeenTipped()
+    ).toHaveBeenWarned()
     expect(wrapper.find('.at-avatar--xsamll').exists()).toBe(false)
     expect(wrapper.find('.at-avatar--normal').exists()).toBe(true)
   })
@@ -53,34 +52,22 @@ describe('Avatar', () => {
   })
 
   it('should render prop -- openData', () => {
-    jest.mock('@taro-ui-vue3/utils/common')
-    const getEnvs = jest.spyOn(utils, 'getEnvs').mockImplementation(() => {
-      return {
-        isWEAPP: true,
-        isALIPAY: false,
-        isWEB: false
-      }
-    })
+    process.env.TARO_ENV = 'weapp'
 
     const wrapper = factory({ openData: { type: 'userAvatarUrl' } })
     expect(wrapper.element).toMatchSnapshot()
     expect(wrapper.find('open-data').exists()).toBe(true)
     expect(wrapper.find('open-data').attributes('type')).toBe('userAvatarUrl')
-    getEnvs.mockClear()
+
+    process.env.TARO_ENV = 'h5'
   })
 
   it('should not render open-data element if type of openData is not userAvatarUrl', () => {
-    jest.mock('@taro-ui-vue3/utils/common')
-    const getEnvs = jest.spyOn(utils, 'getEnvs').mockImplementation(() => {
-      return {
-        isWEAPP: true,
-        isALIPAY: false,
-        isWEB: false
-      }
-    })
+    process.env.TARO_ENV = 'weapp'
 
     const wrapper = factory({ openData: { type: 'nickName' } })
     expect(wrapper.find('open-data').exists()).toBe(false)
-    getEnvs.mockClear()
+
+    process.env.TARO_ENV = 'h5'
   })
 })
