@@ -18,7 +18,7 @@ const AtCalendarController = defineComponent({
     hideArrow: Boolean,
     monthFormat: {
       type: String as PropType<AtCalendarControllerProps["monthFormat"]>,
-      default: 'YYYY年MM月'
+      default: 'YYYY 年 MM 月'
     },
     onPreMonth: Function as unknown as PropType<AtCalendarControllerProps["onPreMonth"]>,
     onNextMonth: Function as unknown as PropType<AtCalendarControllerProps["onNextMonth"]>,
@@ -70,7 +70,7 @@ const AtCalendarController = defineComponent({
         default: () => [
           !props.hideArrow && h(View, {
             class: genArrowClass('left', isMinMonth.value),
-            onTap: props.onPreMonth.bind(this, isMinMonth.value)
+            onTap: props.onPreMonth?.bind(this, isMinMonth.value)
           }),
 
           h(Picker, {
@@ -90,7 +90,7 @@ const AtCalendarController = defineComponent({
 
           !props.hideArrow && h(View, {
             class: genArrowClass('right', isMaxMonth.value),
-            onTap: props.onNextMonth.bind(this, isMaxMonth.value)
+            onTap: props.onNextMonth?.bind(this, isMaxMonth.value)
           })
         ]
       })

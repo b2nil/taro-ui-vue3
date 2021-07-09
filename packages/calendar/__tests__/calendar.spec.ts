@@ -1,318 +1,765 @@
-import { mountFactory } from '@taro-ui-vue3/test-utils/helper'
+import {
+  genMountFn,
+  triggerTouchEvents,
+  genDelayedSelectorSpy
+} from '@taro-ui-vue3/test-utils/helper'
+import { Calendar } from "@taro-ui-vue3/types/calendar"
+import * as utils from '@taro-ui-vue3/utils/common'
+
 import AtCalendar from '../index'
-import Taro from '@tarojs/taro'
+import AtCalendarBody from '../body'
+import AtCalendarController from '../controller'
+import AtCalendarHeader from '../ui/day-list'
+import AtCalendarList from '../ui/date-list'
 
-const paddingZero = (digit) => {
-  return digit < 10 ? `0${digit}` : `${digit}`
-}
+describe("AtCalendarHeader", () => {
+  const mountFn = genMountFn(AtCalendarHeader)
 
-const normalizeDateString = (dateStr): string => {
-  const d = dateStr.split('-')
-  return `${d[0]}-${paddingZero(d[1])}-${paddingZero(d[2])}`
-}
+  it("should render calendar header and match snapshot", async () => {
+    const wrapper = mountFn()
+    expect(wrapper.element).toMatchSnapshot()
 
-const today = new Date()
+    const days = ['日', '一', '二', '三', '四', '五', '六']
+    const dayEls = wrapper.findAll(".header__flex-item")
 
-const todayStr = normalizeDateString(today
-  .toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })
-  .split(/上午|下午/)[0]
-  .replace(/\//g, '-')
-  .trimEnd()
-)
-
-const dString = todayStr.substring(0, 7)
-
-let getEnv: jest.SpyInstance
-jest.mock('@tarojs/taro')
-
-describe('AtCalendar', () => {
-
-  beforeEach(() => {
-    getEnv = jest.spyOn(Taro, 'getEnv').mockReturnValue(Taro.ENV_TYPE.WEB)
-  })
-
-  afterEach(() => {
-    getEnv.mockRestore()
-  })
-
-  it('should render default calendar -- h5', () => {
-    const wrapper = mountFactory(AtCalendar, undefined, {
-      currentDate: '2020-12-27',
-      marks: [{ value: "2020-11-27" }, { value: "2020-12-01" }]
+    days.forEach((day, index) => {
+      expect(dayEls[index].text()).toEqual(day)
     })
-    expect(wrapper.html()).toMatchSnapshot()
-    expect(wrapper.find('.main > .main__body > .body__slider--pre').exists()).toBeTruthy()
-    expect(wrapper.find('.main > .main__body > .body__slider--now').exists()).toBeTruthy()
-    expect(wrapper.find('.main > .main__body > .body__slider--next').exists()).toBeTruthy()
+  })
+})
+
+describe("AtCalendarList", () => {
+  const mountFn = genMountFn(AtCalendarList)
+  const list: Calendar.List<Calendar.Item> = [
+    {
+      value: '2021/06/04',
+      text: 4,
+      type: 0,
+      marks: [{ value: '2021/06/04' }],
+      isActive: true,
+      isToday: true,
+      isBeforeMin: true,
+      isAfterMax: true,
+      isDisabled: true,
+      isSelected: true,
+      isSelectedHead: true,
+      isSelectedTail: true,
+    },
+    {
+      value: '2021/06/05',
+      text: 5,
+      type: 1,
+      marks: [{ value: '2021/06/05' }],
+    },
+    {
+      value: '2021/06/06',
+      text: 6,
+      type: -1,
+      marks: [{ value: '2021/06/06' }],
+    }
+  ]
+
+  it("should render calendar list and match snapshot", async () => {
+    const wrapper = mountFn({ list })
+    expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render default calendar -- mini-apps', () => {
-    getEnv = jest.spyOn(Taro, 'getEnv').mockReturnValue(Taro.ENV_TYPE.WEAPP)
+  it.each([
+    ['onClick', 'tap'],
+    ['onLongClick', 'longpress']
+  ])("should trigger %s event", async (desc, evtName) => {
+    const mockFn = jest.fn()
+    const wrapper = mountFn({ list, [desc]: mockFn })
+    await wrapper.find(".flex__item").trigger(evtName)
+    expect(mockFn).toBeCalled()
+  })
+})
 
-    const wrapper = mountFactory(AtCalendar, undefined, { currentDate: '2020-12-27' })
+describe("AtCalendarController", () => {
+  const mountFn = genMountFn(AtCalendarController)
 
-    expect(wrapper.find('.main > swiper > swiper-item').exists()).toBeTruthy()
-    expect(wrapper.find('.main > swiper > swiper-item').exists()).toBeTruthy()
-    expect(wrapper.find('.main > swiper > swiper-item').exists()).toBeTruthy()
+  it("should render calendar header and match snapshot", async () => {
+    const wrapper = mountFn({ generateDate: '2021-04-01' })
+    expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should only render date list of the current month if not using swiper', () => {
-    const wrapper = mountFactory(AtCalendar, undefined, {
+  it("should render prop hideArrow", async () => {
+    const wrapper = mountFn({ hideArrow: true })
+    expect(
+      wrapper
+        .findAll('.controller__arrow')
+        .length
+    ).toEqual(0)
+  })
+
+  it("should render prop generateDate", async () => {
+    const wrapper = mountFn({ generateDate: "2021-05-01" })
+    expect(
+      wrapper.get('picker').attributes('value')
+    ).toEqual('2021-05')
+
+    expect(
+      wrapper.get('.controller__info').text()
+    ).toEqual('2021 年 05 月')
+  })
+
+  it.each([
+    'minDate',
+    'maxDate'
+  ])("should render prop %s", async (propName) => {
+    const wrapper = mountFn({ [propName]: "2021-05-01" })
+    const attrs = { minDate: 'start', maxDate: 'end' }
+
+    expect(
+      wrapper.get('picker').attributes(attrs[propName])
+    ).toEqual('2021-05')
+  })
+
+  it("should trigger pre-month event", async () => {
+    const onPreMonth = jest.fn()
+    const wrapper = mountFn({ onPreMonth })
+    wrapper.find(".controller__arrow--left").trigger("tap")
+    expect(onPreMonth).toBeCalled()
+  })
+
+  it("should trigger next-month event", async () => {
+    const onNextMonth = jest.fn()
+    const wrapper = mountFn({ onNextMonth })
+    wrapper.find(".controller__arrow--right").trigger("tap")
+    expect(onNextMonth).toBeCalled()
+  })
+
+  it("should trigger select-date event", async () => {
+    const onSelectDate = jest.fn()
+    const wrapper = mountFn({ onSelectDate })
+    wrapper.get("picker").trigger("change")
+    expect(onSelectDate).toBeCalled()
+  })
+})
+
+describe("AtCalendarBody", () => {
+  const generateDate = "2021-05-04"
+  const mountFn = genMountFn(AtCalendarBody)
+  let delayedSelector: jest.SpyInstance
+
+  beforeAll(() => {
+    jest.mock('@taro-ui-vue3/utils/common')
+    jest.useFakeTimers()
+    delayedSelector = genDelayedSelectorSpy(utils, {
+      width: 480,
+      height: 480
+    })
+  })
+
+  afterAll(() => {
+    delayedSelector.mockRestore()
+  })
+
+  it("should render non-swiper calendar body and match snapshot", async () => {
+    const wrapper = mountFn({
       isSwiper: false,
-      currentDate: '2020-12-27'
+      generateDate
     })
-    expect(wrapper.find('.body__slider--now').exists()).toBeTruthy()
-    expect(wrapper.find('.body__slider--pre').exists()).toBeFalsy()
-    expect(wrapper.find('.body__slider--next').exists()).toBeFalsy()
+
+    expect(
+      wrapper.find('.body__slider--now').exists()
+    ).toBeTruthy()
+
+    expect(
+      wrapper.find('.body__slider--pre').exists()
+    ).toBeFalsy()
+
+    expect(
+      wrapper.find('.body__slider--next').exists()
+    ).toBeFalsy()
+
+    expect(wrapper.element).toMatchSnapshot()
   })
 
-  it('should render calendar controller', async () => {
-    const wrapper = mountFactory(AtCalendar, undefined, { currentDate: '2020-12-27' })
-    expect(wrapper.find('.at-calendar__controller').exists()).toBeTruthy()
-    expect(wrapper.find('.controller__info').text()).toEqual('2020 年 12 月')
+  it("should render h5 calendar body and match snapshot", async () => {
+    process.env.TARO_ENV = 'h5'
+    const wrapper = mountFn({ generateDate })
 
-    await wrapper.setProps({ hideArrow: true })
-    await wrapper.vm.$nextTick()
-    expect(wrapper.find('.controller__arrow').exists()).toBeFalsy()
+    expect(
+      wrapper
+        .find('.main > .main__body > .body__slider--pre')
+        .exists()
+    ).toBeTruthy()
+
+    expect(
+      wrapper
+        .find('.main > .main__body > .body__slider--now')
+        .exists()
+    ).toBeTruthy()
+
+    expect(
+      wrapper
+        .find('.main > .main__body > .body__slider--next')
+        .exists()
+    ).toBeTruthy()
+
+    expect(wrapper.element).toMatchSnapshot()
+    process.env.TARO_ENV = 'h5'
+  })
+
+  it("should render miniapp calendar body and match snapshot", async () => {
+    process.env.TARO_ENV = 'weapp'
+    const wrapper = mountFn({ generateDate })
+
+    expect(wrapper.element).toMatchSnapshot()
+    expect(
+      wrapper
+        .findAll('.main > swiper > swiper-item')
+        .length
+    ).toEqual(3)
+
+    process.env.TARO_ENV = 'h5'
   })
 
   it('should render prop isVertical in h5', async () => {
-    const wrapper = mountFactory(AtCalendar, undefined, {
-      currentDate: '2020-12-27',
-      isVertical: true
-    })
+    const wrapper = mountFn({ isVertical: true, generateDate })
 
-    const h5MainBodyStyle = wrapper
+    let h5MainBodyStyle = wrapper
       .find('.main__body--slider')
       .attributes('style')
 
     expect(h5MainBodyStyle).toContain(
       'transform: translateY(-100%) translate3d(0,0px,0);'
     )
+
     expect(h5MainBodyStyle).toContain(
+      'flex-direction: column;'
+    )
+
+    await wrapper.setProps({ isVertical: false })
+
+    h5MainBodyStyle = wrapper
+      .find('.main__body--slider')
+      .attributes('style')
+
+    expect(h5MainBodyStyle).toContain(
+      'transform: translateX(-100%) translate3d(0px,0,0);'
+    )
+
+    expect(h5MainBodyStyle).not.toContain(
       'flex-direction: column;'
     )
   })
 
   it('should render prop isVertical in weapp', async () => {
-    getEnv = jest.spyOn(Taro, 'getEnv').mockReturnValue(Taro.ENV_TYPE.WEAPP)
-
-    const wrapper = mountFactory(AtCalendar, undefined, {
-      currentDate: '2020-12-27',
-      isVertical: true
-    })
+    process.env.TARO_ENV = 'weapp'
+    const wrapper = mountFn({ isVertical: true, generateDate })
 
     const swiperEl = wrapper.find('.main__body')
     expect(swiperEl.attributes('vertical')).toBe('true')
+    process.env.TARO_ENV = 'h5'
   })
 
-  it('should render calendar header', () => {
-    const days = ['日', '一', '二', '三', '四', '五', '六']
-    const wrapper = mountFactory(AtCalendar)
+  describe("events:\n", () => {
+    it("should trigger events day-click and long-click if not using swiper in h5", async () => {
+      const onDayClick = jest.fn()
+      const onLongClick = jest.fn()
+      const wrapper = mountFn({ isSwiper: false, generateDate, onDayClick, onLongClick })
+      const dateList = wrapper.find('.body__slider--now .flex__item')
 
-    expect(wrapper.find('.at-calendar__header').exists()).toBeTruthy()
+      await dateList.trigger('tap')
+      await dateList.trigger('longpress')
 
-    wrapper.findAll('.header__flex-item').forEach((headerItem, index) => {
-      expect(headerItem.text()).toEqual(days[index])
+      expect(onDayClick).toBeCalled()
+      expect(onLongClick).toBeCalled()
+    })
+
+    it("should trigger events swipe-month, day-click and long-click in h5", async () => {
+      const onDayClick = jest.fn()
+      const onLongClick = jest.fn()
+      const onSwipeMonth = jest.fn()
+
+      const wrapper = mountFn({ generateDate, onDayClick, onLongClick, onSwipeMonth })
+      const dateList = wrapper
+        .find('.body__slider--now .flex__item')
+
+      await dateList.trigger('tap')
+      await dateList.trigger('longpress')
+
+      expect(onDayClick).toBeCalled()
+      expect(onLongClick).toBeCalled()
+
+      let swiperEl = wrapper.find('.main.at-calendar-slider__main')
+
+      await triggerTouchEvents(
+        swiperEl,
+        { clientX: 50, clientY: 200 },
+        { clientX: 350, clientY: 200 }
+      )
+
+      jest.advanceTimersByTime(300)
+      await wrapper.vm.$nextTick()
+
+      expect(onSwipeMonth).toBeCalled()
+      expect(onSwipeMonth.mock.calls).toHaveLength(1)
+      expect(onSwipeMonth.mock.calls[0][0]).toEqual(-1)
+
+      await wrapper.setProps({
+        isVertical: true,
+        generateDate: Date.now()
+      })
+
+      swiperEl = wrapper.find('.main__body')
+
+      await triggerTouchEvents(
+        swiperEl,
+        { clientX: 200, clientY: 400 },
+        { clientX: 200, clientY: 50 }
+      )
+
+      jest.advanceTimersByTime(300)
+      await wrapper.vm.$nextTick()
+
+      expect(onSwipeMonth.mock.calls).toHaveLength(2)
+      expect(onSwipeMonth.mock.calls[1][0]).toEqual(1)
+    })
+
+    it("should not trigger swipe-month in h5 if touch distance is shorter than breakpoint", async () => {
+      const onSwipeMonth = jest.fn()
+      const wrapper = mountFn({ isVertical: true, onSwipeMonth })
+      const swiperEl = wrapper.find('.main.at-calendar-slider__main')
+
+      await triggerTouchEvents(
+        swiperEl,
+        { clientX: 350, clientY: 200 },
+        { clientX: 350, clientY: 350 }
+      )
+
+      jest.advanceTimersByTime(300)
+      await wrapper.vm.$nextTick()
+
+      expect(onSwipeMonth).not.toBeCalled()
+    })
+
+    it("should trigger events swipe-month, day-click and long-click in miniapp", async () => {
+      process.env.TARO_ENV = "weapp"
+      const onDayClick = jest.fn()
+      const onLongClick = jest.fn()
+      const onSwipeMonth = jest.fn()
+      const wrapper = mountFn({ generateDate, onDayClick, onLongClick, onSwipeMonth })
+
+      const dateEl = wrapper
+        .find('.main__body swiper-item[itemid="1"] .flex__item')
+
+      await dateEl.trigger('tap')
+      await dateEl.trigger('longpress')
+
+      expect(onDayClick).toBeCalled()
+      expect(onLongClick).toBeCalled()
+
+      let swiperEl = wrapper.find('.main__body')
+
+      await triggerTouchEvents(
+        swiperEl,
+        { clientX: 50, clientY: 200 },
+        { clientX: 350, clientY: 200 }
+      )
+      await swiperEl.trigger('change', {
+        detail: {
+          current: 0,
+          source: 'touch'
+        }
+      })
+      await swiperEl.trigger('animationfinish')
+
+      expect(onSwipeMonth).toBeCalled()
+      expect(onSwipeMonth.mock.calls).toHaveLength(1)
+      expect(onSwipeMonth.mock.calls[0][0]).toEqual(-1)
+
+      await wrapper.setProps({ isVertical: true })
+      swiperEl = wrapper.find('.main__body')
+
+      await triggerTouchEvents(
+        swiperEl,
+        { clientX: 200, clientY: 400 },
+        { clientX: 200, clientY: 50 }
+      )
+      await swiperEl.trigger('change', {
+        detail: {
+          current: 2,
+          source: 'touch'
+        }
+      })
+      await swiperEl.trigger('animationfinish')
+
+      expect(onSwipeMonth.mock.calls).toHaveLength(2)
+      expect(onSwipeMonth.mock.calls[1][0]).toEqual(1)
+
+      process.env.TARO_ENV = "h5"
+    })
+  })
+})
+
+describe('AtCalendar', () => {
+  const mountFn = genMountFn(AtCalendar)
+  const paddingZero = (digit) => {
+    return digit < 10 ? `0${digit}` : `${digit}`
+  }
+
+  const normalizeDateString = (dateStr): string => {
+    const d = dateStr.split('-')
+    return `${d[0]}-${paddingZero(d[1])}-${paddingZero(d[2])}`
+  }
+
+  const today = new Date()
+
+  const todayStr = normalizeDateString(today
+    .toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })
+    .split(/上午|下午/)[0]
+    .replace(/\//g, '-')
+    .trimEnd()
+  )
+
+  const dString = todayStr.substring(0, 7)
+
+  let delayedSelector: jest.SpyInstance
+
+  beforeAll(() => {
+    jest.mock('@taro-ui-vue3/utils/common')
+    jest.useFakeTimers()
+    delayedSelector = genDelayedSelectorSpy(utils, {
+      width: 480,
+      height: 480
     })
   })
 
-  it('should render calendar date-list', () => {
-    const wrapper = mountFactory(
-      AtCalendar,
-      undefined,
-      { currentDate: '2020-12-27' }
-    )
-
-    const preMonthList = wrapper.findAll(
-      '.body__slider--pre > .at-calendar__list > .flex__item--now'
-    )
-
-    const nowMonthList = wrapper.findAll(
-      '.body__slider--now > .at-calendar__list > .flex__item--now'
-    )
-
-    const nextMonthList = wrapper.findAll(
-      '.body__slider--next > .at-calendar__list > .flex__item--now'
-    )
-
-    expect(preMonthList.length).toEqual(30)
-    expect(nowMonthList.length).toEqual(31)
-    expect(nextMonthList.length).toEqual(31)
+  afterAll(() => {
+    delayedSelector.mockRestore()
   })
 
   it('should render marks', async () => {
     today.setDate(today.getDate() - 28)
     const prevM = new Date(today).toISOString().substring(0, 10)
-    const wrapper = mountFactory(AtCalendar, undefined, { marks: [{ value: prevM }] })
-    expect(wrapper.findAll('.flex__item:not(.flex__item--blur) .mark').length).toBe(1)
-    await wrapper.setProps({ marks: [{ value: `${dString}-21` }, { value: prevM }, { value: `${dString}-23` }] })
+
+    const wrapper = mountFn({
+      marks: [{ value: prevM }]
+    })
+
+    expect(
+      wrapper
+        .findAll('.flex__item:not(.flex__item--blur) .mark')
+        .length
+    ).toBe(1)
+
+    await wrapper.setProps({
+      marks: [
+        { value: `${dString}-21` },
+        { value: prevM },
+        { value: `${dString}-23` }
+      ]
+    })
     await wrapper.vm.$nextTick()
-    expect(wrapper.findAll('.flex__item:not(.flex__item--blur) .mark').length).toBe(3)
+
+    expect(wrapper
+      .findAll('.flex__item:not(.flex__item--blur) .mark')
+      .length
+    ).toBe(3)
   })
 
-  it('should render minDate and maxDate', () => {
-    const wrapper = mountFactory(AtCalendar, undefined, {
+  it('should render minDate and maxDate', async () => {
+    const wrapper = mountFn({
       currentDate: '2020-12-27',
       minDate: '2020-12-27',
       maxDate: '2020-12-28'
     })
+
     expect(
       wrapper
-        .findAll('.body__slider--now .flex__item--now:not(.flex__item--blur)')
+        .findAll(
+          '.body__slider--now .flex__item--now:not(.flex__item--blur)'
+        )
         .length
     ).toBe(2)
     expect(
       wrapper
-        .findAll('.body__slider--now > .at-calendar__list > .flex__item--now.flex__item--blur')
+        .findAll(
+          '.body__slider--now > .at-calendar__list > .flex__item--now.flex__item--blur'
+        )
         .length
     ).toBe(29)
   })
 
   // need to enable handleSelectedDates in plugin.ts
   // currently selectedDates not supported
-  it.skip('should render multi-selected dates', () => {
-    const wrapper = mountFactory(AtCalendar, undefined, {
-      currentDate: { start: '2020-12-27', end: '2020-12-28' },
+  it.skip('should render multi-selected dates', async () => {
+    const wrapper = mountFn({
       isMultiSelect: true,
-      selectedDates: [{ start: '2020-12-27', end: '2020-12-28' }]
+      currentDate: '2021-06-04',
+      selectedDates: [{
+        start: '2021-06-16',
+        end: '2021-06-17'
+      }]
     })
+
+    const currentMonth = wrapper
+      .find('.main__body--slider .body__slider--now')
+
+    const itemNow = '.flex__item--now'
+    const itemSelected = '.flex__item--selected'
+    const itemSelectedHead = '.flex__item--selected-head'
+    const itemSelectedTail = '.flex__item--selected-tail'
+    const itemText = '.flex__item-container > .container-text'
+
+    expect(currentMonth.findAll(itemNow).length).toEqual(30)
+
+    const selectedEls = currentMonth.findAll(itemSelected)
+    expect(selectedEls.length).toBe(2)
+    expect(selectedEls[0].classes()).toContain(itemSelectedHead)
+
     expect(
-      wrapper
-        .findAll('.flex__item--selected')
-        .length
-    ).toBe(2)
-  })
+      selectedEls[0]
+        .find(itemText)
+        .text()
+    ).toEqual(16)
 
-  it('should render valid dates', () => {
-    const wrapper = mountFactory(AtCalendar, undefined, {
-      validDates: [{ value: `${dString}-21` }, { value: `${dString}-25` }]
-    })
-
+    expect(selectedEls[1].classes()).toContain(itemSelectedTail)
     expect(
-      wrapper
-        .findAll('.body__slider--now .flex__item--now:not(.flex__item--blur)')
-        .length
-    ).toBe(2)
-  })
-})
-
-describe('AtCalendar Behavior', () => {
-  let mockFn: jest.Mock<any, any>
-  let currentDate = todayStr
-  let year = parseInt(currentDate.split('-')[0])
-  let month = parseInt(currentDate.split('-')[1])
-
-  beforeEach(() => {
-    mockFn = jest.fn()
-    getEnv = jest.spyOn(Taro, 'getEnv').mockReturnValue(Taro.ENV_TYPE.WEB)
+      selectedEls[1]
+        .find(itemText)
+        .text()
+    ).toEqual(17)
   })
 
-  afterEach(() => {
-    getEnv.mockRestore()
-    mockFn.mockRestore()
-  })
-
-  it('should trigger onClickPreMonth', async () => {
-    const wrapper = mountFactory(AtCalendar, undefined, {
-      currentDate,
-      onClickPreMonth: mockFn
-    })
-    expect(wrapper.find('.controller__info').text()).toEqual(`${year} 年 ${paddingZero(month)} 月`)
-
-    await wrapper.find('.controller__arrow--left').trigger('tap')
-    expect(
-      wrapper.find('.controller__info').text()
-    ).toEqual(
-      `${month === 1 ? year - 1 : year} 年 ${month === 1 ? 12 : paddingZero(month - 1)} 月`
-    )
-
-    expect(mockFn).toBeCalled()
-  })
-
-  it('should trigger onClickNextMonth', async () => {
-    const wrapper = mountFactory(AtCalendar, undefined, {
-      currentDate,
-      onClickNextMonth: mockFn
-    })
-    expect(wrapper.find('.controller__info').text()).toEqual(`${year} 年 ${paddingZero(month)} 月`)
-
-    await wrapper.find('.controller__arrow--right').trigger('tap')
-    expect(
-      wrapper.find('.controller__info').text()
-    ).toEqual(
-      `${month === 12 ? year + 1 : year} 年 ${month === 12 ? '01' : paddingZero(month + 1)} 月`
-    )
-
-    expect(mockFn).toBeCalled()
-  })
-
-  it('should trigger onDayClick and onSelectDate', async () => {
-    const onSelectDate = jest.fn()
-    const wrapper = mountFactory(AtCalendar, undefined, {
-      currentDate,
-      onSelectDate,
-      onDayClick: mockFn
-    })
-    await wrapper.find('.flex__item--today').trigger('tap', { value: currentDate })
-    expect(mockFn).toBeCalled()
-    expect(mockFn.mock.calls[0][0]).toEqual({ value: currentDate })
-    await wrapper.vm.$nextTick()
-    expect(onSelectDate).toBeCalled()
-    expect(onSelectDate.mock.calls[0][0]).toEqual({ value: { start: currentDate, end: currentDate } })
-
-  })
-
-  it('should trigger onDayLongClick', async () => {
-    const wrapper = mountFactory(AtCalendar, undefined, {
-      currentDate,
-      onDayLongClick: mockFn,
-    })
-    await wrapper.find('.flex__item--today').trigger('longpress', { value: currentDate })
-    expect(mockFn).toBeCalled()
-    expect(mockFn.mock.calls[0][0]).toEqual({ value: currentDate })
-  })
-
-  it('should trigger onMonthChange when picking dates from the controller', async () => {
-    const wrapper = mountFactory(AtCalendar, undefined, { onMonthChange: mockFn })
-
-    await wrapper
-      .find('.at-calendar__controller > picker')
-      .trigger('change', { detail: { value: '2020-12-27' } })
-
-    expect(mockFn).toBeCalled()
-    expect(mockFn.mock.calls[0][0]).toEqual('2020-12-27')
-  })
-
-  it.skip('should trigger onMonthChange by swiping when use Swiper in h5', async () => {
-    const wrapper = mountFactory(AtCalendar, undefined, {
-      isSwiper: true,
-      onMonthChange: mockFn
-    })
-
-    await wrapper
-      .find('.at-calendar-slider__main')
-      .trigger('touchend', { touches: [{ clientX: 30 }] })
-
-    expect(mockFn).toBeCalled()
-  })
-
-  it.skip('should trigger onMonthChange by swiping in mini-app', async () => {
-    const getEnv = jest.spyOn(Taro, 'getEnv').mockReturnValue(Taro.ENV_TYPE.WEAPP)
-
-    const wrapper = mountFactory(AtCalendar, undefined, { onMonthChange: mockFn })
-
-    const swiper = wrapper.find('swiper.main__body')
-    expect(swiper.exists()).toBe(true)
-
-    await swiper.trigger('touchstart', {
-      changedTouches: [
-        {
-          clientX: 20,
-          clientY: 50
-        }
+  it('should render valid dates', async () => {
+    const wrapper = mountFn({
+      validDates: [
+        { value: `${dString}-21` },
+        { value: `${dString}-25` }
       ]
     })
-    expect(mockFn).toBeCalled()
+
+    expect(
+      wrapper
+        .findAll(
+          '.body__slider--now .flex__item--now:not(.flex__item--blur)'
+        )
+        .length
+    ).toBe(2)
   })
+
+  describe('events:\n', () => {
+    let mockFn: jest.Mock<any, any>
+    let currentDate = todayStr
+    let year = parseInt(currentDate.split('-')[0])
+    let month = parseInt(currentDate.split('-')[1])
+
+    beforeEach(() => {
+      mockFn = jest.fn()
+    })
+
+    afterEach(() => {
+      mockFn.mockRestore()
+    })
+
+    it('should trigger click-pre-month', async () => {
+      const wrapper = mountFn({
+        currentDate,
+        onClickPreMonth: mockFn
+      })
+
+      expect(
+        wrapper.find('.controller__info').text()
+      ).toEqual(`${year} 年 ${paddingZero(month)} 月`)
+
+      await wrapper.find('.controller__arrow--left').trigger('tap')
+
+      expect(
+        wrapper.find('.controller__info').text()
+      ).toEqual(
+        `${month === 1 ? year - 1 : year} 年 ${month === 1 ? 12 : paddingZero(month - 1)} 月`
+      )
+
+      expect(mockFn).toBeCalled()
+    })
+
+    it('should trigger click-next-month', async () => {
+      const wrapper = mountFn({
+        currentDate,
+        onClickNextMonth: mockFn
+      })
+      expect(
+        wrapper.find('.controller__info').text()
+      ).toEqual(`${year} 年 ${paddingZero(month)} 月`)
+
+      await wrapper.find('.controller__arrow--right').trigger('tap')
+      expect(
+        wrapper.find('.controller__info').text()
+      ).toEqual(
+        `${month === 12 ? year + 1 : year} 年 ${month === 12 ? '01' : paddingZero(month + 1)} 月`
+      )
+
+      expect(mockFn).toBeCalled()
+    })
+
+    it('should trigger day-click and select-date', async () => {
+      const onSelectDate = jest.fn()
+      const wrapper = mountFn({
+        currentDate,
+        onSelectDate,
+        onDayClick: mockFn
+      })
+      await wrapper
+        .find('.flex__item--today')
+        .trigger('tap', { value: currentDate })
+
+      expect(mockFn).toBeCalled()
+      expect(
+        mockFn.mock.calls[0][0]
+      ).toEqual({ value: currentDate })
+
+      await wrapper.vm.$nextTick()
+
+      expect(onSelectDate).toBeCalled()
+      expect(
+        onSelectDate.mock.calls[0][0]
+      ).toEqual({ value: { start: currentDate, end: currentDate } })
+    })
+
+    it('should trigger day-long-click', async () => {
+      const wrapper = mountFn({
+        currentDate,
+        onDayLongClick: mockFn,
+      })
+
+      await wrapper
+        .find('.flex__item--today')
+        .trigger('longpress', { value: currentDate })
+
+      expect(mockFn).toBeCalled()
+      expect(mockFn.mock.calls[0][0]).toEqual({ value: currentDate })
+    })
+
+    it('should trigger month-change when picking dates from the controller', async () => {
+      const wrapper = mountFn({ onMonthChange: mockFn })
+
+      await wrapper
+        .find('.at-calendar__controller > picker')
+        .trigger('change', { detail: { value: '2020-12-27' } })
+
+      expect(mockFn).toBeCalled()
+      expect(mockFn.mock.calls[0][0]).toEqual('2020-12-27')
+    })
+
+    it('should trigger month-change by swiping when use Swiper in h5', async () => {
+      const wrapper = mountFn({
+        isSwiper: true,
+        onMonthChange: mockFn
+      })
+
+      const touchEL = wrapper.find('.at-calendar-slider__main')
+
+      await triggerTouchEvents(
+        touchEL,
+        { clientX: 50, clientY: 200 },
+        { clientX: 350, clientY: 200 }
+      )
+
+      jest.advanceTimersByTime(300)
+      await wrapper.vm.$nextTick()
+
+      expect(mockFn).toBeCalled()
+    })
+
+    it('should trigger month-change by swiping in miniapp', async () => {
+      process.env.TARO_ENV = "weapp"
+
+      const wrapper = mountFn({
+        isSwiper: true,
+        onMonthChange: mockFn
+      })
+
+      const touchEL = wrapper.find('swiper.main__body')
+      expect(touchEL.exists()).toBe(true)
+
+      await triggerTouchEvents(
+        touchEL,
+        { clientX: 50, clientY: 200 },
+        { clientX: 350, clientY: 200 }
+      )
+
+      await touchEL.trigger('change', {
+        detail: {
+          current: 0,
+          source: 'touch'
+        }
+      })
+
+      await touchEL.trigger('animationfinish')
+
+      expect(mockFn).toBeCalled()
+
+      process.env.TARO_ENV = "h5"
+    })
+
+    // TODO: mock how to select multiple dates
+    it('should select multiple dates', async () => {
+      const onSelectDate = jest.fn()
+      const onDayClick = jest.fn()
+      const wrapper = mountFn({
+        isMultiSelect: true,
+        currentDate: { start: '2021-05-01', end: '2021-05-01' },
+        onSelectDate,
+        onDayClick
+      })
+
+      const monthSlider = '.main__body--slider .body__slider--now'
+      const itemNow = '.flex__item--now'
+      const itemSelectedHead = '.flex__item--selected-head'
+      const itemSelectedTail = '.flex__item--selected-tail'
+
+      let currentMonth = wrapper.find(monthSlider)
+      let dayEls = currentMonth.findAll(itemNow)
+
+      expect(
+        currentMonth.findAll(itemNow).length
+      ).toEqual(31)
+
+      // mock click 2021-05-10 and 2021-05-16
+      await dayEls[9].trigger('tap')
+      await dayEls[15].trigger('tap', {
+        value: '2021-05-16',
+        type: 0,
+        isSelected: true,
+        isSelectedTail: true
+      })
+
+      currentMonth = wrapper.find(monthSlider)
+      dayEls = currentMonth.findAll(itemNow)
+
+      expect(onDayClick.mock.calls.length).toBe(2)
+      expect(onSelectDate.mock.calls.length).toBe(2)
+      expect(
+        dayEls[9].classes()
+      ).toContain(itemSelectedHead.substring(1))
+      expect(
+        onDayClick.mock.calls[0][0]
+      ).toEqual({ "value": "2021-05-10" })
+      expect(
+        onSelectDate.mock.calls[0][0]
+      ).toEqual({ "value": { "start": "2021-05-10" } })
+
+      // expect(
+      //   dayEls[15].classes()
+      // ).toContain(itemSelectedTail.substring(1))
+
+      // expect(
+      //   onDayClick.mock.calls[1][1]
+      // ).toBe({ "value": "2021-05-16" })
+
+      // expect(
+      //   onSelectDate.mock.calls[1][1]
+      // ).toBe({
+      //   "value": {
+      //     "start": "2021-05-10",
+      //     "end": "2021-05-16"
+      //   }
+      // })
+    })
+  })
+
 })

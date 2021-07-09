@@ -176,11 +176,11 @@ export interface AtCalendarControllerProps {
 
   monthFormat: string
 
-  onPreMonth: () => void
+  onPreMonth?: () => void
 
-  onNextMonth: () => void
+  onNextMonth?: () => void
 
-  onSelectDate: (e: CommonEvent) => void
+  onSelectDate?: (e: CommonEvent) => void
 }
 
 export interface AtCalendarControllerState { }
