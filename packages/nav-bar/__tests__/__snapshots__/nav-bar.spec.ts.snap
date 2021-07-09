@@ -10,7 +10,7 @@ exports[`AtNavBar Behavior  should trigger onClickLeftIcon 1`] = `
   >
     <text
       class="at-icon at-icon-test"
-      style=""
+      style="font-size: 1.024rem;"
     />
     <text
       class="at-nav-bar__text"
@@ -26,13 +26,13 @@ exports[`AtNavBar Behavior  should trigger onClickLeftIcon 1`] = `
       class="at-nav-bar__container at-nav-bar__container--hide"
       style="color: rgb(97, 144, 232);"
     >
-      
+      <!---->
     </view>
     <view
       class="at-nav-bar__container at-nav-bar__container--hide"
       style="color: rgb(97, 144, 232);"
     >
-      
+      <!---->
     </view>
   </view>
 </view>
@@ -48,7 +48,7 @@ exports[`AtNavBar Behavior  should trigger onClickRightFirstIcon 1`] = `
   >
     <text
       class="at-icon at-icon-test"
-      style=""
+      style="font-size: 1.024rem;"
     />
     <text
       class="at-nav-bar__text"
@@ -64,13 +64,13 @@ exports[`AtNavBar Behavior  should trigger onClickRightFirstIcon 1`] = `
       class="at-nav-bar__container at-nav-bar__container--hide"
       style="color: rgb(97, 144, 232);"
     >
-      
+      <!---->
     </view>
     <view
       class="at-nav-bar__container at-nav-bar__container--hide"
       style="color: rgb(97, 144, 232);"
     >
-      
+      <!---->
     </view>
   </view>
 </view>
@@ -86,7 +86,7 @@ exports[`AtNavBar Behavior  should trigger onClickRightSecondIcon 1`] = `
   >
     <text
       class="at-icon at-icon-test"
-      style=""
+      style="font-size: 1.024rem;"
     />
     <text
       class="at-nav-bar__text"
@@ -102,13 +102,13 @@ exports[`AtNavBar Behavior  should trigger onClickRightSecondIcon 1`] = `
       class="at-nav-bar__container at-nav-bar__container--hide"
       style="color: rgb(97, 144, 232);"
     >
-      
+      <!---->
     </view>
     <view
       class="at-nav-bar__container at-nav-bar__container--hide"
       style="color: rgb(97, 144, 232);"
     >
-      
+      <!---->
     </view>
   </view>
 </view>
@@ -122,7 +122,10 @@ exports[`AtNavBar should render default AtNavBar 1`] = `
     class="at-nav-bar__left-view"
     style="color: rgb(97, 144, 232);"
   >
-    
+    <text
+      class="at-icon at-icon-chevron-left"
+      style="font-size: 1.024rem;"
+    />
     <text
       class="at-nav-bar__text"
     />
@@ -137,13 +140,13 @@ exports[`AtNavBar should render default AtNavBar 1`] = `
       class="at-nav-bar__container at-nav-bar__container--hide"
       style="color: rgb(97, 144, 232);"
     >
-      
+      <!---->
     </view>
     <view
       class="at-nav-bar__container at-nav-bar__container--hide"
       style="color: rgb(97, 144, 232);"
     >
-      
+      <!---->
     </view>
   </view>
 </view>
@@ -157,7 +160,10 @@ exports[`AtNavBar should render prop -- class 1`] = `
     class="at-nav-bar__left-view"
     style="color: rgb(97, 144, 232);"
   >
-    
+    <text
+      class="at-icon at-icon-chevron-left"
+      style="font-size: 1.024rem;"
+    />
     <text
       class="at-nav-bar__text"
     />
@@ -172,13 +178,13 @@ exports[`AtNavBar should render prop -- class 1`] = `
       class="at-nav-bar__container at-nav-bar__container--hide"
       style="color: rgb(97, 144, 232);"
     >
-      
+      <!---->
     </view>
     <view
       class="at-nav-bar__container at-nav-bar__container--hide"
       style="color: rgb(97, 144, 232);"
     >
-      
+      <!---->
     </view>
   </view>
 </view>
@@ -192,7 +198,10 @@ exports[`AtNavBar should render prop -- color 1`] = `
     class="at-nav-bar__left-view"
     style="color: rgb(255, 255, 255);"
   >
-    
+    <text
+      class="at-icon at-icon-chevron-left"
+      style="font-size: 1.024rem;"
+    />
     <text
       class="at-nav-bar__text"
     />
@@ -207,13 +216,13 @@ exports[`AtNavBar should render prop -- color 1`] = `
       class="at-nav-bar__container at-nav-bar__container--hide"
       style="color: rgb(255, 255, 255);"
     >
-      
+      <!---->
     </view>
     <view
       class="at-nav-bar__container at-nav-bar__container--hide"
       style="color: rgb(255, 255, 255);"
     >
-      
+      <!---->
     </view>
   </view>
 </view>
@@ -227,7 +236,10 @@ exports[`AtNavBar should render prop -- fixed 1`] = `
     class="at-nav-bar__left-view"
     style="color: rgb(97, 144, 232);"
   >
-    
+    <text
+      class="at-icon at-icon-chevron-left"
+      style="font-size: 1.024rem;"
+    />
     <text
       class="at-nav-bar__text"
     />
@@ -242,13 +254,13 @@ exports[`AtNavBar should render prop -- fixed 1`] = `
       class="at-nav-bar__container at-nav-bar__container--hide"
       style="color: rgb(97, 144, 232);"
     >
-      
+      <!---->
     </view>
     <view
       class="at-nav-bar__container at-nav-bar__container--hide"
       style="color: rgb(97, 144, 232);"
     >
-      
+      <!---->
     </view>
   </view>
 </view>
@@ -264,7 +276,7 @@ exports[`AtNavBar should render prop -- leftIconType 1`] = `
   >
     <text
       class="at-icon at-icon-test"
-      style=""
+      style="font-size: 1.024rem;"
     />
     <text
       class="at-nav-bar__text"
@@ -280,13 +292,13 @@ exports[`AtNavBar should render prop -- leftIconType 1`] = `
       class="at-nav-bar__container at-nav-bar__container--hide"
       style="color: rgb(97, 144, 232);"
     >
-      
+      <!---->
     </view>
     <view
       class="at-nav-bar__container at-nav-bar__container--hide"
       style="color: rgb(97, 144, 232);"
     >
-      
+      <!---->
     </view>
   </view>
 </view>
@@ -318,13 +330,13 @@ exports[`AtNavBar should render prop -- leftIconType 2`] = `
       class="at-nav-bar__container at-nav-bar__container--hide"
       style="color: rgb(97, 144, 232);"
     >
-      
+      <!---->
     </view>
     <view
       class="at-nav-bar__container at-nav-bar__container--hide"
       style="color: rgb(97, 144, 232);"
     >
-      
+      <!---->
     </view>
   </view>
 </view>
@@ -338,7 +350,10 @@ exports[`AtNavBar should render prop -- leftText 1`] = `
     class="at-nav-bar__left-view"
     style="color: rgb(97, 144, 232);"
   >
-    
+    <text
+      class="at-icon at-icon-chevron-left"
+      style="font-size: 1.024rem;"
+    />
     <text
       class="at-nav-bar__text"
     >
@@ -355,13 +370,13 @@ exports[`AtNavBar should render prop -- leftText 1`] = `
       class="at-nav-bar__container at-nav-bar__container--hide"
       style="color: rgb(97, 144, 232);"
     >
-      
+      <!---->
     </view>
     <view
       class="at-nav-bar__container at-nav-bar__container--hide"
       style="color: rgb(97, 144, 232);"
     >
-      
+      <!---->
     </view>
   </view>
 </view>
@@ -375,7 +390,10 @@ exports[`AtNavBar should render prop -- rightFirstIconType 1`] = `
     class="at-nav-bar__left-view"
     style="color: rgb(97, 144, 232);"
   >
-    
+    <text
+      class="at-icon at-icon-chevron-left"
+      style="font-size: 1.024rem;"
+    />
     <text
       class="at-nav-bar__text"
     />
@@ -390,7 +408,7 @@ exports[`AtNavBar should render prop -- rightFirstIconType 1`] = `
       class="at-nav-bar__container at-nav-bar__container--hide"
       style="color: rgb(97, 144, 232);"
     >
-      
+      <!---->
     </view>
     <view
       class="at-nav-bar__container"
@@ -398,7 +416,7 @@ exports[`AtNavBar should render prop -- rightFirstIconType 1`] = `
     >
       <text
         class="at-icon at-icon-test"
-        style=""
+        style="font-size: 1.024rem;"
       />
     </view>
   </view>
@@ -414,7 +432,10 @@ exports[`AtNavBar should render prop -- rightFirstIconType 2`] = `
     class="at-nav-bar__left-view"
     style="color: red;"
   >
-    
+    <text
+      class="at-icon at-icon-chevron-left"
+      style="font-size: 1.024rem;"
+    />
     <text
       class="at-nav-bar__text"
     />
@@ -429,7 +450,7 @@ exports[`AtNavBar should render prop -- rightFirstIconType 2`] = `
       class="at-nav-bar__container at-nav-bar__container--hide"
       style="color: red;"
     >
-      
+      <!---->
     </view>
     <view
       class="at-nav-bar__container"
@@ -437,7 +458,7 @@ exports[`AtNavBar should render prop -- rightFirstIconType 2`] = `
     >
       <text
         class="at-icon at-icon-test"
-        style=""
+        style="font-size: 1.024rem;"
       />
     </view>
   </view>
@@ -452,7 +473,10 @@ exports[`AtNavBar should render prop -- rightSecondIconType 1`] = `
     class="at-nav-bar__left-view"
     style="color: rgb(97, 144, 232);"
   >
-    
+    <text
+      class="at-icon at-icon-chevron-left"
+      style="font-size: 1.024rem;"
+    />
     <text
       class="at-nav-bar__text"
     />
@@ -469,14 +493,14 @@ exports[`AtNavBar should render prop -- rightSecondIconType 1`] = `
     >
       <text
         class="at-icon at-icon-test"
-        style=""
+        style="font-size: 1.024rem;"
       />
     </view>
     <view
       class="at-nav-bar__container at-nav-bar__container--hide"
       style="color: rgb(97, 144, 232);"
     >
-      
+      <!---->
     </view>
   </view>
 </view>
@@ -491,7 +515,10 @@ exports[`AtNavBar should render prop -- rightSecondIconType 2`] = `
     class="at-nav-bar__left-view"
     style="color: red;"
   >
-    
+    <text
+      class="at-icon at-icon-chevron-left"
+      style="font-size: 1.024rem;"
+    />
     <text
       class="at-nav-bar__text"
     />
@@ -508,14 +535,14 @@ exports[`AtNavBar should render prop -- rightSecondIconType 2`] = `
     >
       <text
         class="at-icon at-icon-test"
-        style=""
+        style="font-size: 1.024rem;"
       />
     </view>
     <view
       class="at-nav-bar__container at-nav-bar__container--hide"
       style="color: red;"
     >
-      
+      <!---->
     </view>
   </view>
 </view>
@@ -530,7 +557,10 @@ exports[`AtNavBar should render prop -- style 1`] = `
     class="at-nav-bar__left-view"
     style="color: rgb(97, 144, 232);"
   >
-    
+    <text
+      class="at-icon at-icon-chevron-left"
+      style="font-size: 1.024rem;"
+    />
     <text
       class="at-nav-bar__text"
     />
@@ -545,13 +575,13 @@ exports[`AtNavBar should render prop -- style 1`] = `
       class="at-nav-bar__container at-nav-bar__container--hide"
       style="color: rgb(97, 144, 232);"
     >
-      
+      <!---->
     </view>
     <view
       class="at-nav-bar__container at-nav-bar__container--hide"
       style="color: rgb(97, 144, 232);"
     >
-      
+      <!---->
     </view>
   </view>
 </view>
@@ -566,7 +596,10 @@ exports[`AtNavBar should render title as both slot and prop 1`] = `
       class="at-nav-bar__left-view"
       style="color: rgb(97, 144, 232);"
     >
-      
+      <text
+        class="at-icon at-icon-chevron-left"
+        style="font-size: 1.024rem;"
+      />
       <text
         class="at-nav-bar__text"
       />
@@ -585,13 +618,13 @@ exports[`AtNavBar should render title as both slot and prop 1`] = `
         class="at-nav-bar__container at-nav-bar__container--hide"
         style="color: rgb(97, 144, 232);"
       >
-        
+        <!---->
       </view>
       <view
         class="at-nav-bar__container at-nav-bar__container--hide"
         style="color: rgb(97, 144, 232);"
       >
-        
+        <!---->
       </view>
     </view>
   </view>
@@ -602,7 +635,10 @@ exports[`AtNavBar should render title as both slot and prop 1`] = `
       class="at-nav-bar__left-view"
       style="color: rgb(97, 144, 232);"
     >
-      
+      <text
+        class="at-icon at-icon-chevron-left"
+        style="font-size: 1.024rem;"
+      />
       <text
         class="at-nav-bar__text"
       />
@@ -619,13 +655,13 @@ exports[`AtNavBar should render title as both slot and prop 1`] = `
         class="at-nav-bar__container at-nav-bar__container--hide"
         style="color: rgb(97, 144, 232);"
       >
-        
+        <!---->
       </view>
       <view
         class="at-nav-bar__container at-nav-bar__container--hide"
         style="color: rgb(97, 144, 232);"
       >
-        
+        <!---->
       </view>
     </view>
   </view>

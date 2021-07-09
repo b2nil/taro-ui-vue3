@@ -1,8 +1,11 @@
 import { h, defineComponent, computed, mergeProps, PropType } from 'vue'
 import { Text, View } from '@tarojs/components'
+import { pxTransform } from '@taro-ui-vue3/utils/common'
+import { useIconClasses, useIconStyle } from "@taro-ui-vue3/composables/icon"
+
 import { ITouchEvent } from '@tarojs/components/types/common'
 import { AtNavBarProps } from '@taro-ui-vue3/types/nav-bar'
-import { mergeStyle, pxTransform } from '@taro-ui-vue3/utils/common'
+import { AtIconBaseProps } from '@taro-ui-vue3/types/base'
 
 const AtNavBar = defineComponent({
   name: "AtNavBar",
@@ -21,22 +24,16 @@ const AtNavBar = defineComponent({
       type: String as PropType<AtNavBarProps['color']>,
       default: '#6190E8'
     },
-    leftIconType: {
-      type: [String, Object] as PropType<AtNavBarProps['leftIconType']>,
-      default: ''
-    },
     leftText: {
       type: String as PropType<AtNavBarProps['leftText']>,
       default: ''
     },
-    rightFirstIconType: {
-      type: [String, Object] as PropType<AtNavBarProps['rightFirstIconType']>,
-      default: ''
+    leftIconType: {
+      type: [String, Object] as PropType<AtNavBarProps['leftIconType']>,
+      default: 'chevron-left'
     },
-    rightSecondIconType: {
-      type: [String, Object] as PropType<AtNavBarProps['rightFirstIconType']>,
-      default: ''
-    },
+    rightFirstIconType: [String, Object] as PropType<AtNavBarProps['rightFirstIconType']>,
+    rightSecondIconType: [String, Object] as PropType<AtNavBarProps['rightFirstIconType']>,
     // events
     onClickLeftIcon: Function as unknown as PropType<AtNavBarProps['onClickLeftIcon']>,
     onClickRightFirstIcon: Function as unknown as PropType<AtNavBarProps['onClickRightFirstIcon']>,
@@ -47,92 +44,63 @@ const AtNavBar = defineComponent({
 
     const linkStyle = computed(() => ({ color: props.color }))
 
-    const defaultIconInfo = {
-      customStyle: '',
-      className: '',
-      prefixClass: 'at-icon',
-      value: '',
-      color: '',
-      size: 24
-    }
-
-    const leftIconInfo = computed(() =>
-      props.leftIconType instanceof Object
-        ? { ...defaultIconInfo, ...props.leftIconType }
-        : { ...defaultIconInfo, value: props.leftIconType }
-    )
-
-    const leftIconClasses = computed(() => ({
-      [`${leftIconInfo.value.prefixClass}`]: Boolean(leftIconInfo.value.prefixClass),
-      [`${leftIconInfo.value.prefixClass}-${leftIconInfo.value.value}`]: Boolean(leftIconInfo.value.value),
-      [`${leftIconInfo.value.className}`]: Boolean(leftIconInfo.value.className)
-    }))
-
-    const rightFirstIconInfo = computed(() =>
-      props.rightFirstIconType instanceof Object
-        ? { ...defaultIconInfo, ...props.rightFirstIconType }
-        : { ...defaultIconInfo, value: props.rightFirstIconType }
-    )
-
-    const rightFirstIconClasses = computed(() => ({
-      [`${rightFirstIconInfo.value.prefixClass}`]: Boolean(rightFirstIconInfo.value.prefixClass),
-      [`${rightFirstIconInfo.value.prefixClass}-${rightFirstIconInfo.value.value}`]: Boolean(rightFirstIconInfo.value.value),
-      [`${rightFirstIconInfo.value.className}`]: Boolean(rightFirstIconInfo.value.className)
-    }))
-
-    const rightSecondIconInfo = computed(() =>
-      props.rightSecondIconType instanceof Object
-        ? { ...defaultIconInfo, ...props.rightSecondIconType }
-        : { ...defaultIconInfo, value: props.rightSecondIconType }
-    )
-
-    const rightSecondIconClasses = computed(() => ({
-      [`${rightSecondIconInfo.value.prefixClass}`]: Boolean(rightSecondIconInfo.value.prefixClass),
-      [`${rightSecondIconInfo.value.prefixClass}-${rightSecondIconInfo.value.value}`]: Boolean(rightSecondIconInfo.value.value),
-      [`${rightSecondIconInfo.value.className}`]: Boolean(rightSecondIconInfo.value.className)
-    }))
-
-    const rootClass = computed(() => ({
+    const rootClasses = computed(() => ({
       'at-nav-bar': true,
       'at-nav-bar--fixed': props.fixed,
       'at-nav-bar--no-border': !props.border
     }))
-
-    const leftIconStyle = computed(() => mergeStyle(
-      {
-        color: leftIconInfo.value.color,
-        fontSize: `${pxTransform(
-          parseInt(leftIconInfo.value.size.toString()) * 2
-        )}`
-      },
-      leftIconInfo.value.customStyle
-    ))
-
-    const rightSecondIconStyle = computed(() => mergeStyle(
-      {
-        color: rightSecondIconInfo.value.color,
-        fontSize: `${pxTransform(
-          parseInt(rightSecondIconInfo.value.size.toString()) * 2
-        )}`
-      },
-      rightSecondIconInfo.value.customStyle
-    ))
 
     const genContainerClasses = computed(() => (iconType) => ({
       'at-nav-bar__container': true,
       'at-nav-bar__container--hide': !iconType
     }))
 
-    const rightFirstIconStyle = computed(() => mergeStyle(
-      {
-        color: rightFirstIconInfo.value.color,
-        fontSize: `${pxTransform(
-          parseInt(rightFirstIconInfo.value.size.toString()) * 2
-        )}`
-      },
-      rightFirstIconInfo.value.customStyle
-    ))
+    const defaultIconInfo = {
+      prefixClass: 'at-icon',
+      value: '',
+      color: '',
+      size: 24
+    }
 
+    const genIconInfo = (iconType?: string | AtIconBaseProps) => {
+      const iconInfo = computed(() => (
+        iconType instanceof Object
+          ? { ...defaultIconInfo, ...iconType }
+          : { ...defaultIconInfo, value: iconType || '' }
+      ))
+      if (iconInfo.value.size) {
+        iconInfo.value.size = parseInt(iconInfo.value.size.toString()) * 2
+      }
+      return iconInfo
+    }
+
+    const leftIconInfo = genIconInfo(props.leftIconType)
+    const rightFirstIconInfo = genIconInfo(props.rightFirstIconType)
+    const rightSecondIconInfo = genIconInfo(props.rightSecondIconType)
+
+    const {
+      iconClasses: leftIconClasses
+    } = useIconClasses(leftIconInfo.value, true)
+
+    const {
+      iconStyle: leftIconStyle
+    } = useIconStyle(leftIconInfo.value, undefined, undefined, pxTransform)
+
+    const {
+      iconClasses: rightFirstIconClasses
+    } = useIconClasses(rightFirstIconInfo.value, true)
+
+    const {
+      iconStyle: rightFirstIconStyle
+    } = useIconStyle(rightFirstIconInfo.value, undefined, undefined, pxTransform)
+
+    const {
+      iconClasses: rightSecondIconClasses
+    } = useIconClasses(rightSecondIconInfo.value, true)
+
+    const {
+      iconStyle: rightSecondIconStyle
+    } = useIconStyle(rightSecondIconInfo.value, undefined, undefined, pxTransform)
 
     function handleLeftIconClick(event: ITouchEvent): void {
       props.onClickLeftIcon?.(event)
@@ -148,7 +116,7 @@ const AtNavBar = defineComponent({
 
     return () => (
       h(View, mergeProps(attrs, {
-        class: rootClass.value
+        class: rootClasses.value
       }), {
         default: () => [
           // left-view
