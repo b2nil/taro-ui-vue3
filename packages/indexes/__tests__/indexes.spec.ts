@@ -1,6 +1,12 @@
-import { mountFactory, Slots } from '@taro-ui-vue3/test-utils/helper'
+import {
+  genMountFn,
+  genDelayedSelectorSpy
+} from '@taro-ui-vue3/test-utils/helper'
+import { flushPromises } from '@vue/test-utils'
 import { h } from '@vue/runtime-core'
 import AtIndexes from '../index'
+import * as utils from '@taro-ui-vue3/utils/common'
+import { ref } from 'vue'
 
 const mockData = [
   {
@@ -21,25 +27,25 @@ const mockData = [
   }
 ]
 
-const mountFn = (props?: any, slots?: Slots) => {
-  return mountFactory(AtIndexes, undefined, props, slots)
-}
+const mountFn = genMountFn(AtIndexes)
 
 describe('AtIndexes', () => {
-  it.concurrent('should render default indexes', async () => {
+  it('should render default indexes', async () => {
     const wrapper = mountFn({ isVibrate: false })
     expect(wrapper.html()).toMatchSnapshot()
   })
 
-  it.concurrent('should render an index menu of letters', async () => {
+  it('should render an index menu of letters', async () => {
     const wrapper = mountFn({ list: mockData, isVibrate: false })
     const letters = ['Top', 'A', 'B', 'J']
-    wrapper.findAll('.at-indexes__menu-item').forEach((el, i) => {
-      expect(el.text()).toEqual(letters[i])
-    })
+    wrapper
+      .findAll('.at-indexes__menu-item')
+      .forEach((el, i) => {
+        expect(el.text()).toEqual(letters[i])
+      })
   })
 
-  it.concurrent('should render the default slot content', async () => {
+  it('should render the default slot content', async () => {
     const wrapper = mountFn({ list: mockData, isVibrate: false }, {
       default: [h('view', { class: 'slot' })]
     })
@@ -47,18 +53,41 @@ describe('AtIndexes', () => {
   })
 })
 
-describe('AtIndexes Behaviour', () => {
-  it.concurrent('should render toast and show active letter style when clicking a letter index', async () => {
+describe('AtIndexes events', () => {
+  jest.mock('@taro-ui-vue3/utils/common')
+  jest.useFakeTimers()
+  let delayedSelector: jest.SpyInstance
+
+  beforeEach(() => {
+    delayedSelector = genDelayedSelectorSpy(utils, {
+      top: 100,
+      height: 60
+    })
+  })
+
+  afterEach(() => {
+    delayedSelector.mockClear()
+    delayedSelector.mockRestore()
+  })
+
+  it('should render toast and show active letter style when clicking a letter index', async () => {
+
     const wrapper = mountFn({ list: mockData, isVibrate: false })
 
-    await wrapper.find('.at-indexes__menu-item:nth-child(2)').trigger('tap')
+    jest.advanceTimersByTime(500) // allow time to calculate all heights
+    await flushPromises()
+    await wrapper
+      .find('.at-indexes__menu-item:nth-child(2)')
+      .trigger('tap')
     await wrapper.vm.$nextTick()
-    expect(wrapper.html()).toMatchSnapshot()
+
     expect(
       wrapper
         .find('.at-indexes__menu-item:nth-child(2)')
         .attributes('style')
     ).toContain('color: white;')
+
+    expect(wrapper.html()).toMatchSnapshot()
 
     expect(
       wrapper
@@ -67,29 +96,121 @@ describe('AtIndexes Behaviour', () => {
     ).toEqual('A')
   })
 
-  it.concurrent('should tigger onClick when clicking on list item', async () => {
+  it('should trigger click when clicking on list item', async () => {
     const onClick = jest.fn()
-    const wrapper = mountFn({ list: mockData, isVibrate: false, onClick: onClick })
+    const wrapper = mountFn({
+      list: mockData,
+      isVibrate: false,
+      onClick
+    })
 
-    await wrapper.find('#at-indexes__list-B .at-list__item').trigger('tap')
+    await wrapper
+      .find('#at-indexes__list-B .at-list__item')
+      .trigger('tap')
+
     expect(onClick).toBeCalled()
   })
 
-  it.concurrent('should tigger onScrollIntoView', async () => {
-    const onScrollIntoView = jest.fn()
-    const wrapper = mountFn({ list: mockData, isVibrate: false, onScrollIntoView })
+  it('should trigger onScrollIntoView', async () => {
+    const jumpToView = ref((k) => { })
+    const onScrollIntoView = jest.fn((fn) => {
+      jumpToView.value = fn
+    })
 
-    await wrapper.vm.$nextTick()
+    const wrapper = mountFn({
+      list: mockData,
+      isVibrate: false,
+      onScrollIntoView
+    })
+
+    jest.advanceTimersByTime(500)
+    await flushPromises()
     expect(onScrollIntoView).toBeCalled()
+
+    // jump to J
+    jumpToView.value('J')
+    jest.advanceTimersByTime(1000) // allow to update state
+    await wrapper.vm.$nextTick()
+
+    const jEl = wrapper.find('.at-indexes__menu-item:nth-child(4)')
+    expect(jEl.text()).toEqual('J')
+    expect(jEl.attributes('style')).toContain('color: white;')
+
+    // jump to Top
+    jumpToView.value('top')
+    jest.advanceTimersByTime(1000)
+    await wrapper.vm.$nextTick()
+
+    const topEl = wrapper.find('.at-indexes__menu-item:nth-child(1)')
+    expect(topEl.text()).toEqual('Top')
+    expect(topEl.attributes('style')).toContain('color: white;')
   })
 
-  it.concurrent('should render active menu letters when scrolling', async () => {
-    const wrapper = mountFn({ list: mockData, isVibrate: false })
+  // @TODO: cannot trigger scroll with scroll event details
+  it('should render active menu letters when scrolling', async () => {
+    const wrapper = mountFn({
+      list: mockData,
+      isVibrate: false
+    })
+
+    jest.advanceTimersByTime(500)
+    await flushPromises()
+
+    expect(
+      wrapper
+        .find('.at-indexes__menu-item:nth-child(1)')
+        .attributes('style')
+    ).toContain('color: white;')
 
     await wrapper
       .find('.at-indexes__body')
-      .trigger('scroll', { detail: { scrollTop: 20 } })
+      .trigger('scroll', {
+        detail: { scrollTop: 80 }
+      })
+    await wrapper.vm.$nextTick()
 
-    expect(wrapper.html()).toMatchSnapshot()
+    // @TODO: handleScroll(e) --> e.detail is 0 ?
+    // expect(
+    //   wrapper
+    //     .find('.at-indexes__menu-item:nth-child(2)')
+    //     .attributes('style')
+    // ).toContain('color: white;')
+  })
+
+  it('should render active letter when touchmoves the menu', async () => {
+    const wrapper = mountFn({
+      list: mockData,
+      isVibrate: false
+    })
+
+    jest.advanceTimersByTime(500)
+    await flushPromises()
+
+    expect(
+      wrapper
+        .find('.at-indexes__menu-item:nth-child(1)')
+        .attributes('style')
+    ).toContain('color: white;')
+
+    await wrapper
+      .find('.at-indexes__menu')
+      .trigger('touchmove', {
+        stopPropagation: jest.fn(),
+        preventDefault: jest.fn(),
+        touches: [{
+          // mocking touchmove to the 3rd menu letter
+          // (pageY - startTop) / itemHeight
+          // (145 - 100) / (60 / (3 + 1)) = 3
+          pageY: 145
+        }]
+      })
+    await wrapper.vm.$nextTick()
+    jest.advanceTimersByTime(1000)
+
+    expect(
+      wrapper
+        .find('.at-indexes__menu-item:nth-child(4)')
+        .attributes('style')
+    ).toContain('color: white;')
   })
 })

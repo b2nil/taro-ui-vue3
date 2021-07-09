@@ -19,7 +19,7 @@ import {
 
 import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
-import { CommonEvent } from '@tarojs/components/types/common'
+import { CommonEvent, ITouchEvent } from '@tarojs/components/types/common'
 import { AtIndexesProps, AtIndexesState, Item, ListItem } from '@taro-ui-vue3/types/indexes'
 
 import AtList from '../list'
@@ -55,8 +55,11 @@ const AtIndexes = defineComponent({
   },
 
   setup(props: AtIndexesProps, { attrs, slots }) {
-    const scrollItemHeights = ref<number[]>([])
-    const currentIndex = ref(0)  // Set intital index at 0 so that active style is applied
+    const menuHeight = ref(0)                    // 右侧导航高度
+    const startTop = ref(0)                      // 右侧导航距离顶部高度
+    const itemHeight = ref(0)                    // 右侧导航元素高度
+    const scrollItemHeights = ref<number[]>([])  // 列表项目的所有高度
+    const currentIndex = ref(0)  // Set intital active style at 0
     const timeoutTimer = ref<NodeJS.Timeout | number | null>(null)
 
     const state = reactive<AtIndexesState>({
@@ -71,11 +74,12 @@ const AtIndexes = defineComponent({
       minWidth: pxTransform(100)
     }))
 
-    const activeIndexStyle = computed(() => (i) => {
+    const genActiveIndexStyle = computed(() => (i: number) => {
       return currentIndex.value === i
         ? {
           color: 'white',
-          backgroundColor: 'rgba(97, 144, 232, 1)', // rgba($color: $at-calendar-main-color, $alpha: 0.7)
+          // rgba($color: $at-calendar-main-color, $alpha: 0.7)
+          backgroundColor: 'rgba(97, 144, 232, 1)',
           borderRadius: '40px'
         }
         : {}
@@ -89,6 +93,25 @@ const AtIndexes = defineComponent({
 
     function handleClick(item: Item) {
       props.onClick && props.onClick(item)
+    }
+
+    function handleTouchmove(e: ITouchEvent) {
+      e.stopPropagation()
+      e.preventDefault()
+
+      const pageY = e.touches[0].pageY
+      const index = Math.floor((pageY - startTop.value) / itemHeight.value)
+
+      if (
+        index >= 0 &&
+        index <= props.list.length &&
+        currentIndex.value !== index
+      ) {
+        currentIndex.value = index
+        const key = index > 0 ? props.list[index - 1].key : 'top'
+        const touchView = `at-indexes__list-${key}`
+        jumpTarget(touchView, index)
+      }
     }
 
     function jumpTarget(_scrollIntoView: string, idx: number) {
@@ -133,14 +156,20 @@ const AtIndexes = defineComponent({
         await _getScrollListItemHeights(props.list).then(res => {
           scrollItemHeights.value = [...res]
         })
+
+        // 获取右侧导航高度、顶部位置以及元素高度
+        delayQuerySelector(this, '.at-indexes__menu').then(rect => {
+          const len = props.list.length
+          // @ts-ignore
+          menuHeight.value = rect[0].height
+          // @ts-ignore
+          startTop.value = rect[0].top
+          itemHeight.value = Math.floor(menuHeight.value / (len + 1))
+        })
       }
     }
 
-    function _getHeight(selector: string, delay?: number): Promise<number> {
-      // 默认延时 500 毫秒，确保获取到所有高度
-      if (!delay) {
-        delay = 500
-      }
+    function _getHeight(selector: string, delay = 500): Promise<number> {
 
       return new Promise<number>((resolve) => {
         delayQuerySelector(this, selector, delay).then(rect => {
@@ -214,11 +243,12 @@ const AtIndexes = defineComponent({
         default: () => [
           h(View, {
             class: 'at-indexes__menu',
+            onTouchmove: handleTouchmove
           }, {
             default: () => [
               h(View, {
                 class: 'at-indexes__menu-item',
-                style: activeIndexStyle.value(0),
+                style: genActiveIndexStyle.value(0),
                 onTap: jumpTarget.bind(this, 'at-indexes__top', 0)
               }, { default: () => props.topKey }),
 
@@ -229,7 +259,7 @@ const AtIndexes = defineComponent({
                   h(View, {
                     key: `${key}-${i}`,
                     class: 'at-indexes__menu-item',
-                    style: activeIndexStyle.value(i + 1),
+                    style: genActiveIndexStyle.value(i + 1),
                     onTap: jumpTarget.bind(this, targetView, i + 1)
                   }, { default: () => key })
                 )

@@ -1,18 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[` 1`] = `
-<view class="at-indexes">
-  <view class="at-indexes__menu">
-    <view class="at-indexes__menu-item" style="color: white; background-color: rgb(97, 144, 232); border-radius: 40px;">Top</view>
-  </view>
-  <scroll-view class="at-indexes__body" scrolly="true" enablebacktotop="true" scrollwithanimation="false" scrollintoview="">
-    <view id="at-indexes__top" class="at-indexes__content"></view>
-  </scroll-view>
-  <!---->
-</view>
-`;
-
-exports[` 2`] = `
+exports[`AtIndexes events should render toast and show active letter style when clicking a letter index 1`] = `
 <view class="at-indexes">
   <view class="at-indexes__menu">
     <view class="at-indexes__menu-item" style="">Top</view>
@@ -27,24 +15,36 @@ exports[` 2`] = `
       <view class="at-list">
         <view class="at-list__item at-list__item--no-border">
           <view class="at-list__item-container">
+            <!---->
+            <!---->
             <view class="at-list__item-content item-content">
               <view class="item-content__info">
                 <view class="item-content__info-title"> 阿坝 </view>
+                <!---->
               </view>
             </view>
             <view class="at-list__item-extra item-extra">
+              <!---->
+              <!---->
+              <!---->
               <!---->
             </view>
           </view>
         </view>
         <view class="at-list__item at-list__item--no-border">
           <view class="at-list__item-container">
+            <!---->
+            <!---->
             <view class="at-list__item-content item-content">
               <view class="item-content__info">
                 <view class="item-content__info-title"> 阿拉善 </view>
+                <!---->
               </view>
             </view>
             <view class="at-list__item-extra item-extra">
+              <!---->
+              <!---->
+              <!---->
               <!---->
             </view>
           </view>
@@ -56,12 +56,18 @@ exports[` 2`] = `
       <view class="at-list">
         <view class="at-list__item at-list__item--no-border">
           <view class="at-list__item-container">
+            <!---->
+            <!---->
             <view class="at-list__item-content item-content">
               <view class="item-content__info">
                 <view class="item-content__info-title"> 北京 </view>
+                <!---->
               </view>
             </view>
             <view class="at-list__item-extra item-extra">
+              <!---->
+              <!---->
+              <!---->
               <!---->
             </view>
           </view>
@@ -73,36 +79,54 @@ exports[` 2`] = `
       <view class="at-list">
         <view class="at-list__item at-list__item--no-border">
           <view class="at-list__item-container">
+            <!---->
+            <!---->
             <view class="at-list__item-content item-content">
               <view class="item-content__info">
                 <view class="item-content__info-title"> 济南 </view>
+                <!---->
               </view>
             </view>
             <view class="at-list__item-extra item-extra">
+              <!---->
+              <!---->
+              <!---->
               <!---->
             </view>
           </view>
         </view>
         <view class="at-list__item at-list__item--no-border">
           <view class="at-list__item-container">
+            <!---->
+            <!---->
             <view class="at-list__item-content item-content">
               <view class="item-content__info">
                 <view class="item-content__info-title"> 佳木斯 </view>
+                <!---->
               </view>
             </view>
             <view class="at-list__item-extra item-extra">
+              <!---->
+              <!---->
+              <!---->
               <!---->
             </view>
           </view>
         </view>
         <view class="at-list__item at-list__item--no-border">
           <view class="at-list__item-container">
+            <!---->
+            <!---->
             <view class="at-list__item-content item-content">
               <view class="item-content__info">
                 <view class="item-content__info-title"> 吉安 </view>
+                <!---->
               </view>
             </view>
             <view class="at-list__item-extra item-extra">
+              <!---->
+              <!---->
+              <!---->
               <!---->
             </view>
           </view>
@@ -123,103 +147,13 @@ exports[` 2`] = `
 </view>
 `;
 
-exports[` 3`] = `
+exports[`AtIndexes should render default indexes 1`] = `
 <view class="at-indexes">
   <view class="at-indexes__menu">
     <view class="at-indexes__menu-item" style="color: white; background-color: rgb(97, 144, 232); border-radius: 40px;">Top</view>
-    <view class="at-indexes__menu-item">A</view>
-    <view class="at-indexes__menu-item">B</view>
-    <view class="at-indexes__menu-item">J</view>
   </view>
   <scroll-view class="at-indexes__body" scrolly="true" enablebacktotop="true" scrollwithanimation="false" scrollintoview="">
     <view id="at-indexes__top" class="at-indexes__content"></view>
-    <view id="at-indexes__list-A" class="at-indexes__list">
-      <view class="at-indexes__list-title">A</view>
-      <view class="at-list">
-        <view class="at-list__item at-list__item--no-border">
-          <view class="at-list__item-container">
-            <view class="at-list__item-content item-content">
-              <view class="item-content__info">
-                <view class="item-content__info-title"> 阿坝 </view>
-              </view>
-            </view>
-            <view class="at-list__item-extra item-extra">
-              <!---->
-            </view>
-          </view>
-        </view>
-        <view class="at-list__item at-list__item--no-border">
-          <view class="at-list__item-container">
-            <view class="at-list__item-content item-content">
-              <view class="item-content__info">
-                <view class="item-content__info-title"> 阿拉善 </view>
-              </view>
-            </view>
-            <view class="at-list__item-extra item-extra">
-              <!---->
-            </view>
-          </view>
-        </view>
-      </view>
-    </view>
-    <view id="at-indexes__list-B" class="at-indexes__list">
-      <view class="at-indexes__list-title">B</view>
-      <view class="at-list">
-        <view class="at-list__item at-list__item--no-border">
-          <view class="at-list__item-container">
-            <view class="at-list__item-content item-content">
-              <view class="item-content__info">
-                <view class="item-content__info-title"> 北京 </view>
-              </view>
-            </view>
-            <view class="at-list__item-extra item-extra">
-              <!---->
-            </view>
-          </view>
-        </view>
-      </view>
-    </view>
-    <view id="at-indexes__list-J" class="at-indexes__list">
-      <view class="at-indexes__list-title">J</view>
-      <view class="at-list">
-        <view class="at-list__item at-list__item--no-border">
-          <view class="at-list__item-container">
-            <view class="at-list__item-content item-content">
-              <view class="item-content__info">
-                <view class="item-content__info-title"> 济南 </view>
-              </view>
-            </view>
-            <view class="at-list__item-extra item-extra">
-              <!---->
-            </view>
-          </view>
-        </view>
-        <view class="at-list__item at-list__item--no-border">
-          <view class="at-list__item-container">
-            <view class="at-list__item-content item-content">
-              <view class="item-content__info">
-                <view class="item-content__info-title"> 佳木斯 </view>
-              </view>
-            </view>
-            <view class="at-list__item-extra item-extra">
-              <!---->
-            </view>
-          </view>
-        </view>
-        <view class="at-list__item at-list__item--no-border">
-          <view class="at-list__item-container">
-            <view class="at-list__item-content item-content">
-              <view class="item-content__info">
-                <view class="item-content__info-title"> 吉安 </view>
-              </view>
-            </view>
-            <view class="at-list__item-extra item-extra">
-              <!---->
-            </view>
-          </view>
-        </view>
-      </view>
-    </view>
   </scroll-view>
   <!---->
 </view>
