@@ -26,6 +26,7 @@ module.exports = {
   collectCoverage: true,
   collectCoverageFrom: [
     '<rootDir>/packages/**/*.ts',
+    '!<rootDir>/packages/composables/*.ts',
     '!<rootDir>/packages/utils/*.ts',
     '!<rootDir>/packages/types/*.ts',
     '!<rootDir>/packages/test-utils/**/*.ts',

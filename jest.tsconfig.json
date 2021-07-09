@@ -27,12 +27,12 @@
     ],
     "typeRoots": [
       "node_modules/@types",
-      "global.d.ts",
       "packages/types"
     ]
   },
   "include": [
-    "packages/**/*.ts"
+    "packages/**/*.ts",
+    "global.d.ts"
   ],
   "exclude": [
     "node_modules/*",

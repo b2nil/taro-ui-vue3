@@ -1,3 +1,5 @@
-import toHaveBeenWarnedInit from './been-warned'
+import initWarnMatchers from './matchers'
+import initMocks from './funcMocks'
 
-toHaveBeenWarnedInit()
+initWarnMatchers()
+initMocks()
