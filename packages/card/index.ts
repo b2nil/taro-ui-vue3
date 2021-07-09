@@ -1,34 +1,19 @@
 import { h, defineComponent, computed, mergeProps, PropType } from "vue"
 import { Image, Text, View } from '@tarojs/components'
+import { useIconClasses, useIconStyle } from "@taro-ui-vue3/composables/icon"
 import { AtCardProps } from '@taro-ui-vue3/types/card'
 
 const AtCard = defineComponent({
   name: "AtCard",
 
   props: {
-    note: {
-      type: String as PropType<AtCardProps['note']>,
-      default: ''
-    },
+    note: String as PropType<AtCardProps['note']>,
     isFull: Boolean,
-    thumb: {
-      type: String as PropType<AtCardProps['thumb']>,
-      default: ''
-    },
-    title: {
-      type: String as PropType<AtCardProps['title']>,
-      default: ''
-    },
-    extra: {
-      type: String as PropType<AtCardProps['extra']>,
-      default: ''
-    },
-    extraStyle: {
-      type: Object as PropType<AtCardProps['extraStyle']>,
-      default: () => ({})
-    },
+    thumb: String as PropType<AtCardProps['thumb']>,
+    title: String as PropType<AtCardProps['title']>,
+    extra: String as PropType<AtCardProps['extra']>,
+    extraStyle: Object as PropType<AtCardProps['extraStyle']>,
     icon: Object as PropType<AtCardProps['icon']>,
-    renderIcon: Object as PropType<AtCardProps['renderIcon']>,
     onClick: Function as unknown as PropType<AtCardProps['onClick']>
   },
 
@@ -39,16 +24,8 @@ const AtCard = defineComponent({
       'at-card--full': props.isFull
     }))
 
-    const iconClasses = computed(() => ({
-      [`at-icon-${props.icon?.value}`]: Boolean(props.icon && props.icon.value),
-      'at-card__header-icon': true,
-      'at-icon': true
-    }))
-
-    const iconStyle = computed(() => ({
-      color: (props.icon && props.icon.color) || '',
-      fontSize: (props.icon && `${props.icon.size}px`) || ''
-    }))
+    const { iconClasses } = useIconClasses(props.icon)
+    const { iconStyle } = useIconStyle(props.icon)
 
     function handleClick(args: any) {
       if (typeof props.onClick === 'function') {
@@ -79,7 +56,7 @@ const AtCard = defineComponent({
                 ]
               }),
 
-              (!props.thumb && props.renderIcon) && h(props.renderIcon),
+              (!props.thumb && slots.renderIcon) && slots.renderIcon(),
 
               (!props.thumb && props.icon && props.icon.value) && h(Text, {
                 class: iconClasses.value,

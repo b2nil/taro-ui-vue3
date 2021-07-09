@@ -35,6 +35,7 @@ export interface AtCardProps extends AtComponent {
   icon?: AtIconBaseProps
   /**
    * 元素自定义图标
+   * @deprecated 使用 `renderIcon` 插槽替代
    */
   renderIcon?: JSX.Element | VNode
   /**

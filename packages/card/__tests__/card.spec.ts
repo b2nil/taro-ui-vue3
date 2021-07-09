@@ -122,7 +122,7 @@ describe('AtCard', () => {
 
   })
 
-  it('should render prop renderIcon', () => {
+  it('should render slot renderIcon', () => {
     const renderIcon = h(AtIcon, {
       prefixClass: 'at-icon',
       value: 'home',
@@ -131,8 +131,9 @@ describe('AtCard', () => {
       style: { marginRight: '10px' }
     })
 
-    const wrapper = factory({
-      renderIcon
+    const wrapper = factory({}, {
+      default: [''],
+      renderIcon: [renderIcon]
     })
 
     expect(
