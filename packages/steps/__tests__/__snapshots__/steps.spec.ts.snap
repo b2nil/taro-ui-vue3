@@ -28,6 +28,7 @@ exports[`AtSteps should render prop -- current 1`] = `
       >
         <text
           class="at-icon at-icon-sound at-steps__circle-icon"
+          style="color: rgb(120, 164, 250); font-size: 14px;"
         />
       </view>
       <view
@@ -59,6 +60,7 @@ exports[`AtSteps should render prop -- current 1`] = `
       >
         <text
           class="at-icon at-icon-shopping-cart at-steps__circle-icon"
+          style="color: rgb(255, 255, 255); font-size: 14px;"
         />
       </view>
       <view
@@ -90,6 +92,7 @@ exports[`AtSteps should render prop -- current 1`] = `
       >
         <text
           class="at-icon at-icon-camera at-steps__circle-icon"
+          style="color: rgb(120, 164, 250); font-size: 14px;"
         />
       </view>
       <!---->
@@ -124,6 +127,7 @@ exports[`AtSteps should render prop -- items 1`] = `
       >
         <text
           class="at-icon at-icon-sound at-steps__circle-icon"
+          style="color: rgb(255, 255, 255); font-size: 14px;"
         />
       </view>
       <view
@@ -155,6 +159,7 @@ exports[`AtSteps should render prop -- items 1`] = `
       >
         <text
           class="at-icon at-icon-shopping-cart at-steps__circle-icon"
+          style="color: rgb(120, 164, 250); font-size: 14px;"
         />
       </view>
       <view
@@ -186,6 +191,7 @@ exports[`AtSteps should render prop -- items 1`] = `
       >
         <text
           class="at-icon at-icon-camera at-steps__circle-icon"
+          style="color: rgb(120, 164, 250); font-size: 14px;"
         />
       </view>
       <!---->
