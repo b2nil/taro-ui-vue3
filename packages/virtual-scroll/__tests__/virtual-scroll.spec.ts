@@ -1,7 +1,6 @@
 import { h } from '@vue/runtime-core'
 import { mountFactory, Slots } from '@taro-ui-vue3/test-utils/helper'
 import AtVirtualScroll from '../index'
-import Taro from '@tarojs/taro'
 
 const elementHeight = 100
 
@@ -27,10 +26,7 @@ describe('AtVirtualScroll', () => {
 
   beforeEach(() => {
     // mock Taro.getEnv, and return a non-WEB environment
-    jest.mock('@tarojs/taro')
-    jest.spyOn(Taro, 'getEnv').mockImplementation(() => {
-      return Taro.ENV_TYPE.WEAPP
-    })
+    process.env.TARO_ENV = 'weapp'
 
     // mock clientHeight
     mock = jest.spyOn(window.HTMLElement.prototype, 'clientHeight', 'get').mockReturnValue(elementHeight)
@@ -38,6 +34,7 @@ describe('AtVirtualScroll', () => {
 
   afterEach(() => {
     mock.mockRestore()
+    process.env.TARO_ENV = 'h5'
   })
 
   it('should render component with scopedSlot and match snapshot', async () => {
