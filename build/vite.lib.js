@@ -79,6 +79,7 @@ const tsEntries = [
 const externalPackages = [
   "@tarojs/components",
   "@tarojs/taro",
+  "@tarojs/shared",
   "vue",
   "@taro-ui-vue3/utils",
   "@taro-ui-vue3/composables",
