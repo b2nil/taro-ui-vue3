@@ -1,43 +1,26 @@
 const vite = require("vite")
 const pkg = require("../package.json")
 const shell = require('shelljs')
-const vuePlugin = require('@vitejs/plugin-vue')
+const { vuePlugin } = require('taro-plugin-vue')
 
 const {
   resolveFile,
-  transformTags,
-  isMiniAppNativeTag,
   removeCommentVnode,
-  transformAssetUrls,
   transformPropAttributes
 } = require("./shared")
 
 const peerDeps = Object.keys(pkg.peerDependencies)
 
-const genVuePluginOptions = (
-  nodeTransforms,
-  transformAssetUrls,
-  isCustomElement
-) => {
-  let compilerOptions = {
-    mode: "module",
-    optimizeImports: true,
-    comments: false,
-    nodeTransforms
-  }
-
-  if (isCustomElement) {
-    compilerOptions = {
-      ...compilerOptions,
-      isCustomElement
-    }
-  }
-
+const genVuePluginOptions = (h5 = false) => {
   return {
+    h5,
     template: {
-      ssr: false,
-      transformAssetUrls,
-      compilerOptions,
+      compilerOptions: {
+        nodeTransforms: [
+          removeCommentVnode,
+          transformPropAttributes
+        ]
+      }
     }
   }
 }
@@ -84,13 +67,7 @@ const baseUserConfig = {
 const miniappConfig = {
   ...baseUserConfig,
   plugins: [
-    vuePlugin(
-      genVuePluginOptions(
-        [removeCommentVnode, transformPropAttributes],
-        transformAssetUrls,
-        isMiniAppNativeTag
-      )
-    )
+    vuePlugin(genVuePluginOptions())
   ],
   build: {
     ...baseUserConfig.build,
@@ -107,12 +84,7 @@ const h5Config = {
     'process.env.TARO_ENV': 'process.env.TARO_ENV'
   },
   plugins: [
-    vuePlugin(
-      genVuePluginOptions(
-        [transformTags(true), transformPropAttributes],
-        transformAssetUrls
-      )
-    ),
+    vuePlugin(genVuePluginOptions(true)),
   ],
   build: {
     ...baseUserConfig.build,

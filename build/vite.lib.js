@@ -1,13 +1,11 @@
 const vite = require("vite")
-const vuePlugin = require('@vitejs/plugin-vue')
+const { vuePlugin } = require('taro-plugin-vue')
 
 const {
   readFile,
   cleanFile,
   writeToFile,
   resolveFile,
-  transformTags,
-  transformAssetUrls,
   taroInternalComponents
 } = require("./shared")
 
@@ -94,19 +92,6 @@ const genOutDir = (source) => source
   .replace('packages', 'lib')
   .replace(/(\/index\.ts|\/index\.vue)/g, '')
 
-const vuePluginOptions = {
-  template: {
-    ssr: false,
-    transformAssetUrls,
-    compilerOptions: {
-      mode: "module",
-      optimizeImports: true,
-      comments: false,
-      nodeTransforms: [transformTags()]
-    }
-  }
-}
-
 const genViteConfig = (source, isVue) => ({
   define: {
     'process.env.TARO_ENV': 'process.env.TARO_ENV'
@@ -115,7 +100,7 @@ const genViteConfig = (source, isVue) => ({
     extensions: ['.json', '.js', '.ts', '.vue']
   },
   plugins: [
-    isVue && vuePlugin(vuePluginOptions)
+    isVue && vuePlugin({ h5: true })
   ],
   build: {
     target: 'esnext',
@@ -162,10 +147,10 @@ async function transformFinalCode(source) {
 
     for (const m of matches) {
       const func = m.replace(resolveReg, "$1")
-      const tag = m.replace(resolveReg, "$2")
-
-      if (taroInternalComponents.includes(tag)) {
-        const r = `process.env.TARO_ENV === "h5" ? ${func}("taro-${tag}") : "${tag}";`
+      const h5Tag = m.replace(resolveReg, "$2")
+      const miniTag = h5Tag.substring(5)
+      if (taroInternalComponents.includes(miniTag)) {
+        const r = `process.env.TARO_ENV === "h5" ? ${func}("${h5Tag}") : "${miniTag}";`
         code = code.replace(m, r)
       }
     }
