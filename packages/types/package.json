@@ -5,7 +5,7 @@
   "license": "MIT",
   "peerDependencies": {
     "@tarojs/components": "^3.2.1",
-    "@tarojs/taro": "^3.2.1",
+    "@tarojs/taro": "^3.3.0",
     "vue": "^3.0.10"
   }
 }

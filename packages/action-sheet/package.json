@@ -4,8 +4,8 @@
   "main": "dist/index.js",
   "license": "MIT",
   "peerDependencies": {
-    "@tarojs/taro": "^3.2.1",
-    "vue": "^3.1.0"
+    "@tarojs/taro": "^3.3.0",
+    "vue": "^3.2.0"
   },
   "devDependencies": {
     "@vue/test-utils": "^2.0.0-rc.0"
